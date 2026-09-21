@@ -61,3 +61,11 @@ World v0 is not yet a general compiler, operating system, hot-patch runtime, or 
 hardware result. Its two module types lower through a deliberately fixed, reviewed
 32-byte RV32I backend. The next milestone adds an ARM64 hosted Target Pack and backend
 for the first one-world/two-backend portability proof.
+
+## Verified environments
+
+- QEMU 10.2.1 in the development environment;
+- QEMU 11.1.1 on the learner's Apple Silicon Mac.
+
+Both environments reproduced the same portable world hash, Target Pack hash, baseline
+and patched image hashes, observed output, rejection cases, and rollback result.

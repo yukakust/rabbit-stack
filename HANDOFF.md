@@ -69,13 +69,12 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - The learner manually changed `A` to `B`, predicted the exact byte change, and ran both
   the original verifier and the first deterministic `addi` encoder tests.
 - U0 (the target-coupled patchable console world) is complete.
-- U1 is implemented in the development environment: the portable world no longer
-  contains a target field, while the QEMU RV32I Target Pack owns ISA, memory, device,
-  image, and runner facts. Reproduction on the learner's Mac remains before completion.
+- U1 is complete: the portable world no longer contains a target field, while the QEMU
+  RV32I Target Pack owns ISA, memory, device, image, and runner facts. The complete suite
+  passes in both development environments.
 - The architecture has changed from a Pico-oriented path to Universal Rabbit: portable
   worlds plus replaceable Target Packs.
-- U1 remains current until Mac reproduction; U2 (one unchanged world on QEMU RV32I and
-  hosted ARM64) follows immediately afterward.
+- U2 (one unchanged world on QEMU RV32I and hosted ARM64) is the next milestone.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -135,7 +134,7 @@ This is a **cold patch** and a deliberately fixed lowering template. It is not y
 general module system, a hot-patch runtime, an OS, physical RISC-V execution, or proof
 that arbitrary generated code is safe.
 
-## U1 implementation result
+## U1 verified result
 
 `world.json` and `targets/qemu-rv32i.json` now have independent canonical identities.
 The builder derives UART address, exit-device address/value, byte order, image size, and
@@ -146,15 +145,19 @@ The verifier rejects target fields in portable worlds, malformed or incomplete T
 Packs, unsupported backends, stale target/artifact combinations, and evidence not bound
 to the exact world and target revisions.
 
+The full contract passed under QEMU 10.2.1 in the development environment and under
+QEMU 11.1.1 on the learner's Apple Silicon Mac. Both reproduced the same world, target,
+and machine-image identities.
+
 ## Immediate implementation sequence
 
-1. Reproduce the complete U1 verifier on the learner's Mac with QEMU 11.1.1.
-2. Mark U1 complete without changing its reviewed artifacts.
-3. Define a separately validated hosted ARM64 Target Pack.
-4. Lower the same unchanged portable world to the hosted ARM64 target.
-5. Observe exactly `A` and `B` with status `0` on both backends.
-6. Reject cross-target evidence and unsupported capability bindings.
-7. Run a combined two-target conformance verifier, then begin the module graph.
+1. Define a separately validated hosted ARM64 Target Pack.
+2. Lower the same unchanged portable world to the hosted ARM64 target.
+3. Observe exactly `A` and `B` with status `0` on both backends.
+4. Keep world identity shared while target and artifact identities differ.
+5. Reject cross-target evidence and unsupported capability bindings.
+6. Run a combined two-target conformance verifier.
+7. Then begin the universal typed module graph.
 
 ## Safety and honesty constraints
 
@@ -170,12 +173,11 @@ to the exact world and target revisions.
 
 ## Definition of the next milestone
 
-U1 is complete only when:
+U2 is complete only when:
 
-- the portable world contains no target or machine-specific field;
-- the QEMU RV32I Target Pack supplies every target fact separately;
-- world and Target Pack have independent canonical hashes;
-- the existing `A` and patched `B` images remain byte-identical;
-- stale worlds, stale targets, missing capabilities, and dishonest evidence are rejected;
-- baseline, patch, rollback, CLI, and negative tests pass on both development
-  environments.
+- one unchanged portable world and patch drive both Target Packs;
+- the QEMU artifacts remain byte-identical and fully verified;
+- hosted ARM64 observes the same output and exit contracts;
+- world identity is shared while target and artifact identities remain separate;
+- cross-target evidence and unsupported capabilities are rejected;
+- the combined conformance suite passes reproducibly.

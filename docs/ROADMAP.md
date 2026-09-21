@@ -89,7 +89,7 @@ This proved the validation pattern, not portability: the original U0 world still
 contained the target name `qemu-virt-rv32i`. U1 removed that coupling without changing
 the resulting machine images.
 
-### U1 — Separate world from target (current: Mac confirmation pending)
+### U1 — Separate world from target (complete)
 
 Target identity is now outside the universal manifest:
 
@@ -101,7 +101,7 @@ targets/qemu-rv32i.json
 The Target Contract gives world, target, and built artifact separate canonical hashes.
 The QEMU behavior, reviewed bytes, rollback, and negative validation tests are preserved.
 
-### U2 — Two-backend portability proof (next after U1 confirmation)
+### U2 — Two-backend portability proof (next)
 
 Run one unchanged world and patch through two substantially different backends:
 
@@ -253,15 +253,14 @@ Every result should preserve:
 
 The public story is: **one intent, many bodies, one verifiable meaning**.
 
-## Definition of U1 completion
+## Definition of U2 completion
 
-U1 is complete only when:
+U2 is complete only when:
 
-- the portable world contains no target or machine-specific field;
-- a separately validated QEMU RV32I Target Pack supplies every target fact;
-- world and Target Pack have independent canonical hashes;
-- the existing 32-byte `A` and patched `B` images remain byte-identical;
-- stale worlds, stale targets, missing capabilities, unknown fields, and dishonest
-  evidence are rejected;
-- removing the patch still restores the exact base world and artifact;
-- the documented CLI and full verifier pass on both development environments.
+- one unchanged portable world and patch are accepted by both Target Packs;
+- the existing QEMU RV32I backend remains byte-identical and fully verified;
+- a separately validated ARM64 hosted Target Pack supplies its own execution facts;
+- target-specific artifacts have different identities while world identity is shared;
+- both targets observe exactly `A` for the base and `B` for the patch with status `0`;
+- unsupported capabilities, stale targets, and cross-target evidence are rejected;
+- both documented CLIs and the combined conformance verifier pass reproducibly.
