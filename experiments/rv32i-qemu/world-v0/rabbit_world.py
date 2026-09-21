@@ -72,6 +72,7 @@ HOSTED_RUNNER_KEYS = {
     "compiler",
     "architecture",
     "minimum_os",
+    "compile_timeout_seconds",
     "timeout_seconds",
 }
 IDENTIFIER_PATTERN = re.compile(r"[a-z0-9][a-z0-9-]{0,63}")
@@ -229,6 +230,17 @@ def _validate_timeout(runner: dict[str, Any]) -> None:
         raise WorldError("target.runner.timeout_seconds must be from 1 to 30")
 
 
+def _validate_compile_timeout(runner: dict[str, Any]) -> None:
+    timeout = _require_integer(
+        runner["compile_timeout_seconds"],
+        "target.runner.compile_timeout_seconds",
+    )
+    if not 1 <= timeout <= 120:
+        raise WorldError(
+            "target.runner.compile_timeout_seconds must be from 1 to 120"
+        )
+
+
 def _validate_qemu_rv32i_target(target: dict[str, Any]) -> None:
     if target["execution_envelope"] != "native":
         raise WorldError("RV32I target.execution_envelope must be 'native'")
@@ -360,6 +372,7 @@ def _validate_hosted_arm64_target(target: dict[str, Any]) -> None:
     for field, expected in expected_strings.items():
         if runner[field] != expected:
             raise WorldError(f"target.runner.{field} must be {expected!r}")
+    _validate_compile_timeout(runner)
     _validate_timeout(runner)
 
 
@@ -725,7 +738,7 @@ def _run_hosted_arm64(
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 check=False,
-                timeout=runner["timeout_seconds"],
+                timeout=runner["compile_timeout_seconds"],
             )
         except FileNotFoundError as error:
             raise WorldError(

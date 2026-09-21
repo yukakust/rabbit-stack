@@ -24,6 +24,8 @@ reports exact evidence and byte diff.
 Both targets consume the exact same `world.json` and `patches/say-b.json`. The hosted
 target maps the v0 `uart.write` intent to POSIX standard output; the capability keeps
 its historical name until the universal module graph generalizes it in U3.
+Compilation and execution have separate limits: a cold Apple toolchain gets up to 30
+seconds, while the resulting one-byte program must still finish within 3 seconds.
 
 Run from this directory:
 

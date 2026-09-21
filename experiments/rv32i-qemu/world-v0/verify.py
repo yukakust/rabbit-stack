@@ -455,7 +455,7 @@ def main() -> int:
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                     check=False,
-                    timeout=10,
+                    timeout=40,
                 )
                 require(hosted_cli.returncode == 0, "hosted ARM64 CLI returned failure")
                 require(hosted_cli.stderr == b"", "hosted ARM64 CLI wrote to stderr")

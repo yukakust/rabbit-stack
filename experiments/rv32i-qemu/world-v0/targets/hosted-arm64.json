@@ -22,6 +22,7 @@
     "compiler": "clang",
     "architecture": "arm64",
     "minimum_os": "14.0",
+    "compile_timeout_seconds": 30,
     "timeout_seconds": 3
   }
 }
