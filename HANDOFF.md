@@ -77,7 +77,9 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - U2 is complete: one unchanged world and patch lower through QEMU RV32I and hosted
   Darwin ARM64 Target Packs, and the complete two-backend contract passes on the
   learner's Apple Silicon Mac.
-- U3 (the universal typed module graph) is the next milestone.
+- U3 is implemented in the development environment: graph v1 emits `HI`, and an
+  immutable patch adds and connects punctuation to emit `HI!` on QEMU RV32I. Hosted
+  ARM64 execution on the learner's Mac remains before completion.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -169,16 +171,32 @@ separate compile and execution timeouts, and an infinite return loop exposed a m
 ARM64 `x30` save around `bl _write`. The backend now preserves `x29/x30`, compilation
 gets a bounded 30 seconds, and the resulting program still must finish within 3 seconds.
 
+## U3 implementation result
+
+`experiments/universal-graph-v1/` introduces explicit versioned imports and dependencies,
+capabilities, resource budgets, modules, typed port endpoints, event connections, and an
+observable contract. The deliberately linear base graph derives `HI` by traversing
+`start -> letter-h -> letter-i -> exit`.
+
+`patches/add-bang.json` is bound to the exact base graph hash. It adds only a punctuation
+module, removes the final `letter-i -> exit` edge, and inserts punctuation between them.
+It cannot request a backend edit or change resource authority. The same lowerers build a
+40-byte RV32I base artifact, a 48-byte patched artifact, and distinct Darwin ARM64 source
+artifacts. QEMU has observed exactly `HI` and `HI!` with status `0`.
+
+The verifier rejects dangling and unknown ports, byte-to-event type mismatches, cycles,
+missing authority, module/output budget overflow, stale patches and targets, backend-edit
+fields, ambiguous JSON, and cross-target evidence. Removing the patch restores the exact
+base graph, artifact, and output. Apple Silicon execution remains the completion gate.
+
 ## Immediate implementation sequence
 
-1. Define the smallest portable schema for modules, typed ports, connections, events,
-   dependencies, and resource budgets.
-2. Express a base `HI` world as a validated graph on both existing Target Packs.
-3. Add and connect a punctuation module by patch so the world becomes `HI!`.
-4. Reject dangling connections, incompatible port types, undeclared authority, stale
-   graph revisions, and resource-budget overflow.
-5. Prove the patch requires no backend or runtime edit and rolls back exactly on both
-   targets.
+1. Pull graph v1 on the learner's Apple Silicon Mac and run `python3 verify.py`.
+2. Confirm hosted ARM64 observes exactly `HI` and patched `HI!` with status `0`.
+3. Confirm the combined graph suite rejects invalid topology, types, authority,
+   revisions, budgets, and cross-target evidence.
+4. Mark U3 complete without changing either backend for the punctuation patch.
+5. Begin U4 capability negotiation across more device-shaped effects.
 
 ## Safety and honesty constraints
 

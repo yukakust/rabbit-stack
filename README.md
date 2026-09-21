@@ -33,11 +33,14 @@ every layer we would otherwise be tempted to hide.
   patchable, target-independent world. A separate QEMU RV32I Target Pack lowers the
   immutable `A` world and `A -> B` overlay to canonical images, reports their exact
   identities and byte diff, and supports rollback.
+- [`experiments/universal-graph-v1`](experiments/universal-graph-v1): the first portable
+  typed module graph. One immutable patch adds and connects a punctuation module,
+  changing `HI` to `HI!` through the RV32I and hosted ARM64 targets without backend edits.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then run
-[`experiments/rv32i-qemu/world-v0/README.md`](experiments/rv32i-qemu/world-v0/README.md).
+[`experiments/universal-graph-v1/README.md`](experiments/universal-graph-v1/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

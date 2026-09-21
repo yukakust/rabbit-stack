@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "patch_id": "add-bang",
+  "base_world": "hello-graph",
+  "base_hash": "f57cf0870322a7fe63c1184c021ca2477c5b9b67ef8e2d9c312d1d5fa7efd0c6",
+  "add_modules": [
+    {"id": "punctuation", "type": "console-byte", "value": 33}
+  ],
+  "remove_connections": [
+    {
+      "from": {"module": "letter-i", "port": "done"},
+      "to": {"module": "exit", "port": "trigger"}
+    }
+  ],
+  "add_connections": [
+    {
+      "from": {"module": "letter-i", "port": "done"},
+      "to": {"module": "punctuation", "port": "trigger"}
+    },
+    {
+      "from": {"module": "punctuation", "port": "done"},
+      "to": {"module": "exit", "port": "trigger"}
+    }
+  ],
+  "contract": {
+    "stdout": "HI!",
+    "exit_status": 0
+  }
+}

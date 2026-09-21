@@ -112,11 +112,14 @@ Machine images differ while world identity and observable contract remain the sa
 combined verifier passes on the learner's Apple Silicon Mac and rejects cross-target and
 stale-target evidence.
 
-### U3 — Universal module graph (next)
+### U3 — Universal module graph (current: Mac confirmation pending)
 
 Represent modules, typed ports, events, imports, dependencies, and resource budgets.
 A patch must add and connect a supported module without editing the world runtime or
 unrelated modules. The first demonstration extends `HI` to `HI!` on both backends.
+Graph v1, its two revised Target Packs, deterministic lowerers, rollback, and negative
+conformance suite are implemented. Completion awaits the combined verifier on the
+learner's Apple Silicon Mac.
 
 ### U4 — Target Packs and capability negotiation
 
