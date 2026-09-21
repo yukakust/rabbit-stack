@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Validate, build, patch, and run the first Rabbit World.
 
-World v0 is intentionally narrow. It accepts one UART-byte module and one successful
-exit module, then lowers that typed world to the reviewed 32-byte RV32I/QEMU image.
+World v0 is intentionally narrow. It accepts one UART-byte module, one successful exit
+module, and a separately validated Target Pack, then lowers them to the reviewed
+32-byte RV32I/QEMU image.
 """
 
 from __future__ import annotations
@@ -20,7 +21,6 @@ from typing import Any
 
 
 SCHEMA_VERSION = 1
-TARGET = "qemu-virt-rv32i"
 UART_CAPABILITY = "uart.write"
 EXIT_CAPABILITY = "machine.exit"
 KNOWN_CAPABILITIES = {UART_CAPABILITY, EXIT_CAPABILITY}
@@ -28,10 +28,19 @@ KNOWN_CAPABILITIES = {UART_CAPABILITY, EXIT_CAPABILITY}
 WORLD_KEYS = {
     "schema_version",
     "world_id",
-    "target",
     "capabilities",
     "modules",
     "contract",
+}
+TARGET_KEYS = {
+    "schema_version",
+    "target_id",
+    "execution_envelope",
+    "architecture",
+    "byte_order",
+    "image",
+    "capabilities",
+    "runner",
 }
 PATCH_KEYS = {
     "schema_version",
@@ -42,6 +51,18 @@ PATCH_KEYS = {
     "contract",
 }
 CONTRACT_KEYS = {"stdout", "exit_status"}
+IMAGE_KEYS = {"load_address", "size"}
+UART_BINDING_KEYS = {"driver", "address"}
+EXIT_BINDING_KEYS = {"driver", "address", "success_value"}
+RUNNER_KEYS = {
+    "kind",
+    "executable",
+    "machine",
+    "bios",
+    "nographic",
+    "cpu_num",
+    "timeout_seconds",
+}
 IDENTIFIER_PATTERN = re.compile(r"[a-z0-9][a-z0-9-]{0,63}")
 
 
@@ -118,9 +139,6 @@ def validate_world(value: Any) -> dict[str, Any]:
     if _require_integer(world["schema_version"], "world.schema_version") != SCHEMA_VERSION:
         raise WorldError(f"world.schema_version must be {SCHEMA_VERSION}")
     _require_identifier(world["world_id"], "world.world_id")
-    target = _require_string(world["target"], "world.target")
-    if target != TARGET:
-        raise WorldError(f"world.target must be {TARGET!r}")
 
     capabilities = world["capabilities"]
     if not isinstance(capabilities, list) or not all(
@@ -183,12 +201,133 @@ def validate_world(value: Any) -> dict[str, Any]:
     return world
 
 
+def _require_page_address(value: Any, context: str) -> int:
+    address = _require_integer(value, context)
+    if not 0 <= address <= 0xFFFFF000 or address % 0x1000 != 0:
+        raise WorldError(
+            f"{context} must be a 32-bit address aligned to a 4 KiB page"
+        )
+    return address
+
+
+def validate_target(value: Any) -> dict[str, Any]:
+    """Validate and return the first QEMU RV32I Target Pack."""
+
+    target = _require_object(value, "target")
+    _require_exact_keys(target, TARGET_KEYS, "target")
+
+    if _require_integer(target["schema_version"], "target.schema_version") != SCHEMA_VERSION:
+        raise WorldError(f"target.schema_version must be {SCHEMA_VERSION}")
+    _require_identifier(target["target_id"], "target.target_id")
+
+    if target["execution_envelope"] != "native":
+        raise WorldError("target.execution_envelope must be 'native'")
+    if target["architecture"] != "rv32i":
+        raise WorldError("target.architecture must be 'rv32i'")
+    if target["byte_order"] != "little":
+        raise WorldError("target.byte_order must be 'little'")
+
+    image = _require_object(target["image"], "target.image")
+    _require_exact_keys(image, IMAGE_KEYS, "target.image")
+    load_address = _require_integer(
+        image["load_address"], "target.image.load_address"
+    )
+    if not 0 <= load_address <= 0xFFFFFFFF or load_address % 4 != 0:
+        raise WorldError("target.image.load_address must be an aligned 32-bit address")
+    if _require_integer(image["size"], "target.image.size") != 32:
+        raise WorldError("target.image.size must be 32 in World v0")
+
+    capabilities = _require_object(target["capabilities"], "target.capabilities")
+    _require_exact_keys(capabilities, KNOWN_CAPABILITIES, "target.capabilities")
+
+    uart = _require_object(
+        capabilities[UART_CAPABILITY], f"target.capabilities.{UART_CAPABILITY}"
+    )
+    _require_exact_keys(
+        uart, UART_BINDING_KEYS, f"target.capabilities.{UART_CAPABILITY}"
+    )
+    if uart["driver"] != "qemu-virt-uart":
+        raise WorldError("target uart.write driver must be 'qemu-virt-uart'")
+    _require_page_address(
+        uart["address"], f"target.capabilities.{UART_CAPABILITY}.address"
+    )
+
+    exit_device = _require_object(
+        capabilities[EXIT_CAPABILITY], f"target.capabilities.{EXIT_CAPABILITY}"
+    )
+    _require_exact_keys(
+        exit_device,
+        EXIT_BINDING_KEYS,
+        f"target.capabilities.{EXIT_CAPABILITY}",
+    )
+    if exit_device["driver"] != "qemu-sifive-test":
+        raise WorldError("target machine.exit driver must be 'qemu-sifive-test'")
+    _require_page_address(
+        exit_device["address"],
+        f"target.capabilities.{EXIT_CAPABILITY}.address",
+    )
+    success_value = _require_integer(
+        exit_device["success_value"],
+        f"target.capabilities.{EXIT_CAPABILITY}.success_value",
+    )
+    if not 0 <= success_value <= 0x7FFFFFFF:
+        raise WorldError("target machine.exit success_value must fit signed 32 bits")
+
+    runner = _require_object(target["runner"], "target.runner")
+    _require_exact_keys(runner, RUNNER_KEYS, "target.runner")
+    expected_strings = {
+        "kind": "qemu",
+        "executable": "qemu-system-riscv32",
+        "machine": "virt",
+        "bios": "none",
+    }
+    for field, expected in expected_strings.items():
+        if runner[field] != expected:
+            raise WorldError(f"target.runner.{field} must be {expected!r}")
+    if runner["nographic"] is not True:
+        raise WorldError("target.runner.nographic must be true")
+    if _require_integer(runner["cpu_num"], "target.runner.cpu_num") != 0:
+        raise WorldError("target.runner.cpu_num must be 0 in World v0")
+    timeout = _require_integer(
+        runner["timeout_seconds"], "target.runner.timeout_seconds"
+    )
+    if not 1 <= timeout <= 30:
+        raise WorldError("target.runner.timeout_seconds must be from 1 to 30")
+    return target
+
+
+def validate_binding(
+    world: dict[str, Any], target: dict[str, Any]
+) -> None:
+    """Require the Target Pack to satisfy every capability requested by the world."""
+
+    validate_world(world)
+    validate_target(target)
+    missing = sorted(set(world["capabilities"]) - set(target["capabilities"]))
+    if missing:
+        values = ", ".join(repr(item) for item in missing)
+        raise WorldError(f"target is missing required capabilities: {values}")
+
+
 def world_hash(world: dict[str, Any]) -> str:
     """Return the canonical manifest hash for an exact valid world revision."""
 
     validate_world(world)
     canonical = json.dumps(
         world,
+        ensure_ascii=True,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("ascii")
+    return hashlib.sha256(canonical).hexdigest()
+
+
+def target_hash(target: dict[str, Any]) -> str:
+    """Return the canonical manifest hash for an exact valid Target Pack revision."""
+
+    validate_target(target)
+    canonical = json.dumps(
+        target,
         ensure_ascii=True,
         separators=(",", ":"),
         sort_keys=True,
@@ -290,21 +429,65 @@ def _encode_addi(rd: int, rs1: int, imm: int) -> int:
     return ((imm & 0xFFF) << 20) | (rs1 << 15) | (rd << 7) | 0b0010011
 
 
-def build_image(world: dict[str, Any]) -> bytes:
-    """Lower a valid World v0 object to its canonical 32-byte RV32I image."""
+def _encode_lui(rd: int, immediate: int) -> int:
+    if not 0 <= rd <= 31:
+        raise WorldError("internal lui register is outside 0..31")
+    if not 0 <= immediate <= 0xFFFFF:
+        raise WorldError("internal lui immediate is outside unsigned 20-bit range")
+    return (immediate << 12) | (rd << 7) | 0b0110111
 
-    validate_world(world)
-    words = (
-        0x100002B7,  # lui  t0, 0x10000      (UART address)
-        _encode_addi(6, 0, _uart_value(world)),
-        0x00628023,  # sb   t1, 0(t0)
-        0x001002B7,  # lui  t0, 0x100        (SiFive test address)
-        0x00005337,  # lui  t1, 0x5
-        0x55530313,  # addi t1, t1, 0x555
-        0x0062A023,  # sw   t1, 0(t0)        (successful exit)
-        0x0000006F,  # jal  zero, 0          (safety loop)
+
+def _encode_store(rs2: int, rs1: int, immediate: int, funct3: int) -> int:
+    if not 0 <= rs2 <= 31 or not 0 <= rs1 <= 31:
+        raise WorldError("internal store register is outside 0..31")
+    if not -2048 <= immediate <= 2047:
+        raise WorldError("internal store immediate is outside signed 12-bit range")
+    if not 0 <= funct3 <= 0b111:
+        raise WorldError("internal store funct3 is outside 3-bit range")
+    encoded_immediate = immediate & 0xFFF
+    return (
+        ((encoded_immediate >> 5) << 25)
+        | (rs2 << 20)
+        | (rs1 << 15)
+        | (funct3 << 12)
+        | ((encoded_immediate & 0x1F) << 7)
+        | 0b0100011
     )
-    return b"".join(word.to_bytes(4, byteorder="little") for word in words)
+
+
+def _split_lui_addi(value: int) -> tuple[int, int]:
+    upper = (value + 0x800) >> 12
+    lower = value - (upper << 12)
+    if not 0 <= upper <= 0xFFFFF or not -2048 <= lower <= 2047:
+        raise WorldError("target value cannot be materialized by the World v0 template")
+    return upper, lower
+
+
+def build_image(world: dict[str, Any], target: dict[str, Any]) -> bytes:
+    """Lower a portable World v0 object through a validated RV32I Target Pack."""
+
+    validate_binding(world, target)
+    bindings = target["capabilities"]
+    uart_address = bindings[UART_CAPABILITY]["address"]
+    exit_device = bindings[EXIT_CAPABILITY]
+    exit_address = exit_device["address"]
+    exit_upper, exit_lower = _split_lui_addi(exit_device["success_value"])
+    words = (
+        _encode_lui(5, uart_address >> 12),
+        _encode_addi(6, 0, _uart_value(world)),
+        _encode_store(6, 5, 0, 0b000),
+        _encode_lui(5, exit_address >> 12),
+        _encode_lui(6, exit_upper),
+        _encode_addi(6, 6, exit_lower),
+        _encode_store(6, 5, 0, 0b010),
+        0x0000006F,
+    )
+    image = b"".join(
+        word.to_bytes(4, byteorder=target["byte_order"]) for word in words
+    )
+    if len(image) != target["image"]["size"]:
+        raise WorldError("built image size does not match the Target Pack")
+    return image
 
 
 def byte_diff(before: bytes, after: bytes) -> list[dict[str, int]]:
@@ -317,22 +500,36 @@ def byte_diff(before: bytes, after: bytes) -> list[dict[str, int]]:
     ]
 
 
-def run_image(image: bytes, qemu: str = "qemu-system-riscv32") -> dict[str, Any]:
-    """Run an image in QEMU and return raw observed behavior."""
+def run_image(
+    image: bytes,
+    target: dict[str, Any],
+    qemu: str | None = None,
+) -> dict[str, Any]:
+    """Run an image with its Target Pack and return raw observed behavior."""
 
+    validate_target(target)
+    if len(image) != target["image"]["size"]:
+        raise WorldError("image size does not match the Target Pack")
+    runner = target["runner"]
+    executable = qemu or runner["executable"]
     with tempfile.TemporaryDirectory(prefix="rabbit-world-v0-") as temp_dir:
         image_path = Path(temp_dir) / "world.bin"
         image_path.write_bytes(image)
         command = [
-            qemu,
+            executable,
             "-machine",
-            "virt",
-            "-nographic",
-            "-bios",
-            "none",
-            "-device",
-            f"loader,file={image_path},addr=0x80000000,cpu-num=0",
+            runner["machine"],
         ]
+        if runner["nographic"]:
+            command.append("-nographic")
+        command.extend([
+            "-bios",
+            runner["bios"],
+            "-device",
+            "loader,file="
+            f"{image_path},addr=0x{target['image']['load_address']:x},"
+            f"cpu-num={runner['cpu_num']}",
+        ])
         try:
             completed = subprocess.run(
                 command,
@@ -340,17 +537,26 @@ def run_image(image: bytes, qemu: str = "qemu-system-riscv32") -> dict[str, Any]
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 check=False,
-                timeout=3,
+                timeout=runner["timeout_seconds"],
             )
         except FileNotFoundError as error:
-            raise WorldError(f"QEMU executable not found: {qemu}") from error
+            raise WorldError(f"QEMU executable not found: {executable}") from error
         except subprocess.TimeoutExpired as error:
-            raise WorldError("QEMU did not exit within three seconds") from error
+            raise WorldError(
+                "QEMU did not exit within "
+                f"{runner['timeout_seconds']} seconds"
+            ) from error
 
     return {
         "stdout": completed.stdout,
         "stderr": completed.stderr,
         "exit_status": completed.returncode,
+        "execution": {
+            "runner": runner["kind"],
+            "executable": executable,
+            "machine": runner["machine"],
+            "bios": runner["bios"],
+        },
     }
 
 
@@ -358,19 +564,23 @@ def make_report(
     base_world: dict[str, Any],
     effective_world: dict[str, Any],
     patch: dict[str, Any] | None,
+    target: dict[str, Any],
     image: bytes,
     observed: dict[str, Any],
 ) -> dict[str, Any]:
     validate_world(base_world)
     validate_world(effective_world)
+    validate_binding(effective_world, target)
     expected_world = apply_patch(base_world, patch) if patch else base_world
     if world_hash(effective_world) != world_hash(expected_world):
         raise WorldError("effective world does not match the supplied base and patch")
 
-    base_image = build_image(base_world)
-    expected_image = build_image(effective_world)
+    base_image = build_image(base_world, target)
+    expected_image = build_image(effective_world, target)
     if image != expected_image:
-        raise WorldError("report image does not match the effective world")
+        raise WorldError(
+            "report image does not match the effective world and Target Pack"
+        )
     expected_stdout = effective_world["contract"]["stdout"].encode("ascii")
     expected_status = effective_world["contract"]["exit_status"]
     contract_passed = (
@@ -385,7 +595,12 @@ def make_report(
         "base_world_sha256": world_hash(base_world),
         "effective_world_sha256": world_hash(effective_world),
         "patch_id": patch["patch_id"] if patch else None,
-        "target": effective_world["target"],
+        "target": {
+            "target_id": target["target_id"],
+            "sha256": target_hash(target),
+            "execution_envelope": target["execution_envelope"],
+            "architecture": target["architecture"],
+        },
         "capabilities": list(effective_world["capabilities"]),
         "intent": {
             "base_uart_byte": _uart_value(base_world),
@@ -407,6 +622,7 @@ def make_report(
             "stderr_hex": observed["stderr"].hex(),
             "exit_status": observed["exit_status"],
         },
+        "execution": dict(observed["execution"]),
         "contract_passed": contract_passed,
     }
 
@@ -457,6 +673,11 @@ def _write_report(path: Path, report: dict[str, Any]) -> None:
 def print_report(report: dict[str, Any]) -> None:
     patch_name = report["patch_id"] or "none (immutable base)"
     print(f"WORLD: {report['world_id']}")
+    print(
+        f"TARGET: {report['target']['target_id']} "
+        f"({report['target']['architecture']}, "
+        f"sha256={report['target']['sha256']})"
+    )
     print(f"PATCH: {patch_name}")
     print(f"CAPABILITIES: {', '.join(report['capabilities'])}")
     print(
@@ -493,22 +714,32 @@ def main() -> int:
         description="Build and run the first typed, patchable Rabbit World."
     )
     parser.add_argument("world", type=Path, help="path to a World v0 JSON file")
+    parser.add_argument(
+        "--target",
+        required=True,
+        type=Path,
+        help="path to a separately validated Target Pack JSON file",
+    )
     parser.add_argument("--patch", type=Path, help="optional patch overlay")
     parser.add_argument("--output", type=Path, help="optional raw image output path")
     parser.add_argument("--report", type=Path, help="optional JSON report output path")
     parser.add_argument(
-        "--qemu", default="qemu-system-riscv32", help="QEMU executable name or path"
+        "--qemu", help="optional override for the Target Pack QEMU executable"
     )
     args = parser.parse_args()
 
     try:
         base_world = load_json(args.world)
         validate_world(base_world)
+        target = load_json(args.target)
+        validate_binding(base_world, target)
         patch = load_json(args.patch) if args.patch else None
         effective_world = apply_patch(base_world, patch) if patch else base_world
-        image = build_image(effective_world)
-        observed = run_image(image, qemu=args.qemu)
-        report = make_report(base_world, effective_world, patch, image, observed)
+        image = build_image(effective_world, target)
+        observed = run_image(image, target, qemu=args.qemu)
+        report = make_report(
+            base_world, effective_world, patch, target, image, observed
+        )
 
         if args.output:
             _write_bytes(args.output, image)

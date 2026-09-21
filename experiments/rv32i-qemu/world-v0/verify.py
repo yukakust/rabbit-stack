@@ -20,7 +20,10 @@ from rabbit_world import (
     load_json,
     make_report,
     run_image,
+    target_hash,
+    validate_binding,
     validate_patch,
+    validate_target,
     validate_world,
     world_hash,
 )
@@ -52,32 +55,40 @@ def main() -> int:
     try:
         base = load_json(ROOT / "world.json")
         patch = load_json(ROOT / "patches" / "say-b.json")
+        target_path = ROOT / "targets" / "qemu-rv32i.json"
+        target = load_json(target_path)
         validate_world(base)
+        validate_binding(base, target)
         validate_patch(patch, base)
+        require("target" not in base, "portable world still contains a target field")
         require(
             patch["base_hash"] == world_hash(base),
             "patch does not identify the exact base manifest",
         )
 
         day_01_image = bytes.fromhex(DAY_01_HEX.read_text(encoding="ascii"))
-        base_image = build_image(base)
+        target_snapshot = copy.deepcopy(target)
+        base_image = build_image(base, target)
         require(len(base_image) == 32, "base image is not exactly 32 bytes")
         require(
             base_image == day_01_image,
             "base world does not lower to the reviewed Day 01 image",
         )
         require(
-            build_image(copy.deepcopy(base)) == base_image,
+            build_image(copy.deepcopy(base), copy.deepcopy(target)) == base_image,
             "repeated base builds are not deterministic",
         )
+        require(target == target_snapshot, "building an image mutated the Target Pack")
         print(
-            "PASS: immutable A world lowers to the reviewed 32-byte image "
+            "PASS: portable A world plus qemu-rv32i Target Pack lower to the "
+            "reviewed 32-byte image "
             f"({hashlib.sha256(base_image).hexdigest()})"
         )
+        print(f"PASS: Target Pack hash is {target_hash(target)}")
 
         base_snapshot = copy.deepcopy(base)
         patched = apply_patch(base, patch)
-        patched_image = build_image(patched)
+        patched_image = build_image(patched, target)
         require(base == base_snapshot, "applying a patch mutated the base world")
         require(
             byte_diff(base_image, patched_image)
@@ -85,29 +96,35 @@ def main() -> int:
             "A -> B did not produce the predicted one-byte image diff",
         )
         require(
-            build_image(copy.deepcopy(patched)) == patched_image,
+            build_image(copy.deepcopy(patched), copy.deepcopy(target)) == patched_image,
             "repeated patched builds are not deterministic",
         )
         print("PASS: say-b is an overlay with byte diff offset 6: 0x10 -> 0x20")
 
-        base_observed = run_image(base_image)
-        base_report = make_report(base, base, None, base_image, base_observed)
+        base_observed = run_image(base_image, target)
+        base_report = make_report(
+            base, base, None, target, base_image, base_observed
+        )
         require(base_report["contract_passed"], "QEMU did not observe A / exit 0")
+        require(
+            base_report["target"]["sha256"] == target_hash(target),
+            "evidence report did not bind the exact Target Pack",
+        )
         print("PASS: QEMU observed exactly A on stdout, empty stderr, and exit 0")
 
-        patched_observed = run_image(patched_image)
+        patched_observed = run_image(patched_image, target)
         patched_report = make_report(
-            base, patched, patch, patched_image, patched_observed
+            base, patched, patch, target, patched_image, patched_observed
         )
         require(patched_report["contract_passed"], "QEMU did not observe B / exit 0")
         print("PASS: QEMU observed exactly B on stdout, empty stderr, and exit 0")
 
-        rollback_image = build_image(base)
+        rollback_image = build_image(base, target)
         require(base == base_snapshot, "base world changed before rollback")
         require(rollback_image == base_image, "rollback did not restore the base image")
-        rollback_observed = run_image(rollback_image)
+        rollback_observed = run_image(rollback_image, target)
         rollback_report = make_report(
-            base, base, None, rollback_image, rollback_observed
+            base, base, None, target, rollback_image, rollback_observed
         )
         require(rollback_report["contract_passed"], "rolled-back world did not emit A")
         print("PASS: removing the overlay rolls back exactly to the A world")
@@ -117,6 +134,13 @@ def main() -> int:
         expect_rejected(
             "a UART module without uart.write authority",
             lambda: validate_world(missing_capability),
+        )
+
+        coupled_world = copy.deepcopy(base)
+        coupled_world["target"] = "qemu-rv32i"
+        expect_rejected(
+            "a portable world containing a machine-specific target field",
+            lambda: validate_world(coupled_world),
         )
 
         unknown_module = copy.deepcopy(patch)
@@ -167,9 +191,57 @@ def main() -> int:
         expect_rejected(
             "an evidence report for bytes not built from the effective world",
             lambda: make_report(
-                base, patched, patch, tampered_image, patched_observed
+                base, patched, patch, target, tampered_image, patched_observed
             ),
         )
+
+        missing_target_capability = copy.deepcopy(target)
+        del missing_target_capability["capabilities"]["uart.write"]
+        expect_rejected(
+            "a Target Pack missing a required capability",
+            lambda: validate_binding(base, missing_target_capability),
+        )
+
+        unknown_target_field = copy.deepcopy(target)
+        unknown_target_field["vendor_sdk"] = "hidden-dependency"
+        expect_rejected(
+            "an undeclared Target Pack field",
+            lambda: validate_target(unknown_target_field),
+        )
+
+        wrong_architecture = copy.deepcopy(target)
+        wrong_architecture["architecture"] = "x86-64"
+        expect_rejected(
+            "a Target Pack for an unsupported backend",
+            lambda: validate_target(wrong_architecture),
+        )
+
+        stale_target = copy.deepcopy(target)
+        stale_target["capabilities"]["uart.write"]["address"] += 0x1000
+        validate_target(stale_target)
+        require(
+            target_hash(stale_target) != target_hash(target),
+            "different Target Pack revisions have the same hash",
+        )
+        expect_rejected(
+            "an image built for a stale Target Pack revision",
+            lambda: make_report(
+                base, patched, patch, stale_target, patched_image, patched_observed
+            ),
+        )
+
+        runner_revision = copy.deepcopy(target)
+        runner_revision["runner"]["timeout_seconds"] = 4
+        validate_target(runner_revision)
+        require(
+            world_hash(base) == patch["base_hash"],
+            "changing only a Target Pack changed portable world identity",
+        )
+        require(
+            target_hash(runner_revision) != target_hash(target),
+            "Target Pack runner revision did not change target identity",
+        )
+        print("PASS: world and Target Pack revisions have independent identities")
 
         with tempfile.TemporaryDirectory(prefix="rabbit-world-verify-") as temp_dir:
             temp_root = Path(temp_dir)
@@ -193,7 +265,13 @@ def main() -> int:
             )
 
             baseline_cli = subprocess.run(
-                [sys.executable, str(ROOT / "rabbit_world.py"), str(ROOT / "world.json")],
+                [
+                    sys.executable,
+                    str(ROOT / "rabbit_world.py"),
+                    str(ROOT / "world.json"),
+                    "--target",
+                    str(target_path),
+                ],
                 stdin=subprocess.DEVNULL,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
@@ -215,6 +293,8 @@ def main() -> int:
                     sys.executable,
                     str(ROOT / "rabbit_world.py"),
                     str(ROOT / "world.json"),
+                    "--target",
+                    str(target_path),
                     "--patch",
                     str(ROOT / "patches" / "say-b.json"),
                     "--output",

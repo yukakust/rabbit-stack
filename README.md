@@ -30,8 +30,9 @@ every layer we would otherwise be tempted to hide.
   instruction words supplied directly as 32 machine-code bytes. There is no guest OS,
   firmware, compiler, assembler, or linker.
 - [`experiments/rv32i-qemu/world-v0`](experiments/rv32i-qemu/world-v0): the first typed,
-  patchable world. An immutable `A` world and an `A -> B` overlay lower to canonical
-  RV32I images, run in QEMU, report their exact byte diff, and support rollback.
+  patchable, target-independent world. A separate QEMU RV32I Target Pack lowers the
+  immutable `A` world and `A -> B` overlay to canonical images, reports their exact
+  identities and byte diff, and supports rollback.
 
 ## Start here
 

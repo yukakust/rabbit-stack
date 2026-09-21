@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "target_id": "qemu-rv32i",
+  "execution_envelope": "native",
+  "architecture": "rv32i",
+  "byte_order": "little",
+  "image": {
+    "load_address": 2147483648,
+    "size": 32
+  },
+  "capabilities": {
+    "uart.write": {
+      "driver": "qemu-virt-uart",
+      "address": 268435456
+    },
+    "machine.exit": {
+      "driver": "qemu-sifive-test",
+      "address": 1048576,
+      "success_value": 21845
+    }
+  },
+  "runner": {
+    "kind": "qemu",
+    "executable": "qemu-system-riscv32",
+    "machine": "virt",
+    "bios": "none",
+    "nographic": true,
+    "cpu_num": 0,
+    "timeout_seconds": 3
+  }
+}

@@ -54,6 +54,9 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - Support three execution envelopes: hosted, native, and bridge.
 - Select future physical targets from actual available inventory by documentation,
   observability, and recoverability; Raspberry Pi is optional, not foundational.
+- The preferred first physical candidate is an available x86-64 UEFI computer booted
+  from removable USB after the same target works in QEMU; never write its internal disk
+  or firmware.
 - FPGA comes only after a soft core or custom operation works in RTL simulation.
 - LLVM MC, LLD, and mold are references and research subjects, not articles of faith.
 - Every lowering step needs differential tests or another independent checker.
@@ -66,9 +69,13 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - The learner manually changed `A` to `B`, predicted the exact byte change, and ran both
   the original verifier and the first deterministic `addi` encoder tests.
 - U0 (the target-coupled patchable console world) is complete.
+- U1 is implemented in the development environment: the portable world no longer
+  contains a target field, while the QEMU RV32I Target Pack owns ISA, memory, device,
+  image, and runner facts. Reproduction on the learner's Mac remains before completion.
 - The architecture has changed from a Pico-oriented path to Universal Rabbit: portable
   worlds plus replaceable Target Packs.
-- U1 (separate the world from its QEMU RV32I target) is the next product milestone.
+- U1 remains current until Mac reproduction; U2 (one unchanged world on QEMU RV32I and
+  hosted ARM64) follows immediately afterward.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -128,15 +135,26 @@ This is a **cold patch** and a deliberately fixed lowering template. It is not y
 general module system, a hot-patch runtime, an OS, physical RISC-V execution, or proof
 that arbitrary generated code is safe.
 
+## U1 implementation result
+
+`world.json` and `targets/qemu-rv32i.json` now have independent canonical identities.
+The builder derives UART address, exit-device address/value, byte order, image size, and
+runner configuration from the Target Pack. Despite removing the target from the world,
+the baseline and patched RV32I artifacts remain byte-identical to U0 and Day 01.
+
+The verifier rejects target fields in portable worlds, malformed or incomplete Target
+Packs, unsupported backends, stale target/artifact combinations, and evidence not bound
+to the exact world and target revisions.
+
 ## Immediate implementation sequence
 
-1. Remove `target` from the portable `world.json` schema.
-2. Introduce a separately validated `targets/qemu-rv32i.json` Target Pack.
-3. Give world, Target Pack, and built artifact independent canonical hashes.
-4. Preserve the exact reviewed 32-byte `A` and `B` images and rollback behavior.
-5. Add stale-target, missing-capability, and dishonest-evidence rejection tests.
-6. Add an ARM64 hosted backend for the first two-backend portability proof.
-7. Then replace the fixed module list with a universal typed module graph.
+1. Reproduce the complete U1 verifier on the learner's Mac with QEMU 11.1.1.
+2. Mark U1 complete without changing its reviewed artifacts.
+3. Define a separately validated hosted ARM64 Target Pack.
+4. Lower the same unchanged portable world to the hosted ARM64 target.
+5. Observe exactly `A` and `B` with status `0` on both backends.
+6. Reject cross-target evidence and unsupported capability bindings.
+7. Run a combined two-target conformance verifier, then begin the module graph.
 
 ## Safety and honesty constraints
 
@@ -159,5 +177,5 @@ U1 is complete only when:
 - world and Target Pack have independent canonical hashes;
 - the existing `A` and patched `B` images remain byte-identical;
 - stale worlds, stale targets, missing capabilities, and dishonest evidence are rejected;
-- baseline, patch, rollback, CLI, and negative tests remain reproducible on both
-  development environments.
+- baseline, patch, rollback, CLI, and negative tests pass on both development
+  environments.

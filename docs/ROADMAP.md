@@ -85,22 +85,23 @@ The immutable `A` world and typed `A -> B` overlay lower to canonical 32-byte RV
 images, run in QEMU, report exact hashes and byte diffs, reject malformed authority, and
 roll back to the byte-identical base.
 
-This proves the validation pattern, not portability: the v0 world still contains the
-target name `qemu-virt-rv32i`.
+This proved the validation pattern, not portability: the original U0 world still
+contained the target name `qemu-virt-rv32i`. U1 removed that coupling without changing
+the resulting machine images.
 
-### U1 — Separate world from target (next)
+### U1 — Separate world from target (current: Mac confirmation pending)
 
-Move target identity out of the universal manifest:
+Target identity is now outside the universal manifest:
 
 ```text
 world.json
 targets/qemu-rv32i.json
 ```
 
-Introduce a Target Contract and separate canonical hashes for world, target, and built
-artifact. Preserve the current QEMU behavior and every negative validation test.
+The Target Contract gives world, target, and built artifact separate canonical hashes.
+The QEMU behavior, reviewed bytes, rollback, and negative validation tests are preserved.
 
-### U2 — Two-backend portability proof
+### U2 — Two-backend portability proof (next after U1 confirmation)
 
 Run one unchanged world and patch through two substantially different backends:
 
@@ -140,6 +141,10 @@ Choose targets from available hardware using documented and recoverable boot pat
 Prove the same small world on at least two dissimilar physical targets over time. A
 Raspberry Pi Pico 2, old PC, phone, or another board may participate, but none is a core
 architectural dependency.
+
+The current preferred first physical candidate is an available x86-64 UEFI computer
+booted from removable USB, first reproduced under x86-64 QEMU. The experiment must not
+write its internal disk or firmware; removing the USB device is the recovery path.
 
 ### U8 — Transactional patches
 

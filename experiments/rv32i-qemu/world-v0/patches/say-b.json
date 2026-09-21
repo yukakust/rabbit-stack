@@ -2,7 +2,7 @@
   "schema_version": 1,
   "patch_id": "say-b",
   "base_world": "console",
-  "base_hash": "38afcaf1b3cb2a84dd7df33c889fd73914a6d36397c15fac7168466a9e9c7291",
+  "base_hash": "ef53d2c63844bf9fc3c97ea8893581b34676ed00ba13f63caf5325eeb1a29ec5",
   "changes": [
     {
       "module": "greeting",
