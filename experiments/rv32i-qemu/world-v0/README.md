@@ -82,7 +82,8 @@ RV32I behavior, but prints `SKIP` for the ARM64 execution that host cannot perfo
 ## Verified environments
 
 - QEMU 10.2.1 in the development environment;
-- QEMU 11.1.1 on the learner's Apple Silicon Mac.
+- QEMU 11.1.1 and hosted Darwin ARM64 on the learner's Apple Silicon Mac.
 
-Both environments reproduced the same portable world hash, Target Pack hash, baseline
-and patched image hashes, observed output, rejection cases, and rollback result.
+The complete Mac run observed `A` and patched `B` with empty stderr and status `0` on
+both backends. It preserved shared world identity and separate target/artifact identities,
+rejected cross-target and stale evidence, and completed every rollback and CLI check.

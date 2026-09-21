@@ -74,9 +74,10 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
   passes in both development environments.
 - The architecture has changed from a Pico-oriented path to Universal Rabbit: portable
   worlds plus replaceable Target Packs.
-- U2 is implemented in the development environment: one unchanged world and patch now
-  lower through QEMU RV32I and hosted Darwin ARM64 Target Packs. Apple Silicon runtime
-  confirmation remains before completion.
+- U2 is complete: one unchanged world and patch lower through QEMU RV32I and hosted
+  Darwin ARM64 Target Packs, and the complete two-backend contract passes on the
+  learner's Apple Silicon Mac.
+- U3 (the universal typed module graph) is the next milestone.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -151,13 +152,33 @@ The full contract passed under QEMU 10.2.1 in the development environment and un
 QEMU 11.1.1 on the learner's Apple Silicon Mac. Both reproduced the same world, target,
 and machine-image identities.
 
+## U2 verified result
+
+The unchanged portable world and `say-b` patch now lower to two distinct artifacts:
+the reviewed 32-byte RV32I image and deterministic Darwin ARM64 assembly. QEMU executes
+the first as a bare-metal guest; Apple `clang` links the second into a temporary Mach-O
+process that runs on the Mac's physical ARM64 processor. Both observe exactly `A` for
+the base, `B` for the overlay, empty stderr, and status `0`.
+
+World identity remains shared while Target Pack and artifact identities differ. Evidence
+is bound to the exact Target Pack and artifact hashes, so QEMU evidence, stale target
+evidence, and unsupported hosted bindings are rejected.
+
+Two failed Mac runs became regression cases: a cold `clang` startup exposed the need for
+separate compile and execution timeouts, and an infinite return loop exposed a missing
+ARM64 `x30` save around `bl _write`. The backend now preserves `x29/x30`, compilation
+gets a bounded 30 seconds, and the resulting program still must finish within 3 seconds.
+
 ## Immediate implementation sequence
 
-1. Pull U2 on the learner's Apple Silicon Mac and run `python3 verify.py`.
-2. Confirm native hosted ARM64 observes exactly `A` and `B` with status `0`.
-3. Confirm the combined suite rejects cross-target and stale-target evidence.
-4. Mark U2 complete without changing the portable world or reviewed RV32I bytes.
-5. Then begin the universal typed module graph.
+1. Define the smallest portable schema for modules, typed ports, connections, events,
+   dependencies, and resource budgets.
+2. Express a base `HI` world as a validated graph on both existing Target Packs.
+3. Add and connect a punctuation module by patch so the world becomes `HI!`.
+4. Reject dangling connections, incompatible port types, undeclared authority, stale
+   graph revisions, and resource-budget overflow.
+5. Prove the patch requires no backend or runtime edit and rolls back exactly on both
+   targets.
 
 ## Safety and honesty constraints
 
@@ -173,11 +194,12 @@ and machine-image identities.
 
 ## Definition of the next milestone
 
-U2 is complete only when:
+U3 is complete only when:
 
-- one unchanged portable world and patch drive both Target Packs;
-- the QEMU artifacts remain byte-identical and fully verified;
-- hosted ARM64 observes the same output and exit contracts;
-- world identity is shared while target and artifact identities remain separate;
-- cross-target evidence and unsupported capabilities are rejected;
-- the combined conformance suite passes reproducibly.
+- a portable graph explicitly represents modules, typed ports, connections, events,
+  dependencies, and resource budgets;
+- one base graph produces `HI` on both existing targets;
+- one patch adds and connects a supported module to produce `HI!` without backend edits;
+- invalid topology, types, authority, revisions, and budgets are rejected;
+- removing the patch restores the exact base graph and behavior;
+- the combined two-target graph conformance suite passes reproducibly.

@@ -101,18 +101,18 @@ targets/qemu-rv32i.json
 The Target Contract gives world, target, and built artifact separate canonical hashes.
 The QEMU behavior, reviewed bytes, rollback, and negative validation tests are preserved.
 
-### U2 — Two-backend portability proof (current: Mac confirmation pending)
+### U2 — Two-backend portability proof (complete)
 
 Run one unchanged world and patch through two substantially different backends:
 
 - direct RV32I bytes in the QEMU bare-metal guest;
 - an ARM64 hosted implementation on the Apple Silicon Mac.
 
-Machine images may differ. World identity and observable contract must remain the same.
-The second Target Pack and deterministic Darwin ARM64 assembly backend are implemented;
-completion awaits the combined verifier running on the learner's Apple Silicon Mac.
+Machine images differ while world identity and observable contract remain the same. The
+combined verifier passes on the learner's Apple Silicon Mac and rejects cross-target and
+stale-target evidence.
 
-### U3 — Universal module graph
+### U3 — Universal module graph (next)
 
 Represent modules, typed ports, events, imports, dependencies, and resource budgets.
 A patch must add and connect a supported module without editing the world runtime or
@@ -255,14 +255,16 @@ Every result should preserve:
 
 The public story is: **one intent, many bodies, one verifiable meaning**.
 
-## Definition of U2 completion
+## Definition of U3 completion
 
-U2 is complete only when:
+U3 is complete only when:
 
-- one unchanged portable world and patch are accepted by both Target Packs;
-- the existing QEMU RV32I backend remains byte-identical and fully verified;
-- a separately validated ARM64 hosted Target Pack supplies its own execution facts;
-- target-specific artifacts have different identities while world identity is shared;
-- both targets observe exactly `A` for the base and `B` for the patch with status `0`;
-- unsupported capabilities, stale targets, and cross-target evidence are rejected;
-- both documented CLIs and the combined conformance verifier pass reproducibly.
+- a portable graph explicitly represents modules, typed ports, connections, events,
+  imports or dependencies, and resource budgets;
+- one base graph produces `HI` through both existing Target Packs;
+- one patch adds and connects a punctuation module to produce `HI!` without changing
+  either backend or unrelated modules;
+- dangling connections, incompatible types, undeclared authority, stale revisions, and
+  resource-budget overflow are rejected;
+- removing the patch restores the exact base graph and observed behavior;
+- both documented CLIs and the combined two-target conformance suite pass reproducibly.
