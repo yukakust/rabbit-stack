@@ -6,6 +6,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import platform
 import subprocess
 import sys
 import tempfile
@@ -57,8 +58,11 @@ def main() -> int:
         patch = load_json(ROOT / "patches" / "say-b.json")
         target_path = ROOT / "targets" / "qemu-rv32i.json"
         target = load_json(target_path)
+        hosted_target_path = ROOT / "targets" / "hosted-arm64.json"
+        hosted_target = load_json(hosted_target_path)
         validate_world(base)
         validate_binding(base, target)
+        validate_binding(base, hosted_target)
         validate_patch(patch, base)
         require("target" not in base, "portable world still contains a target field")
         require(
@@ -101,6 +105,36 @@ def main() -> int:
         )
         print("PASS: say-b is an overlay with byte diff offset 6: 0x10 -> 0x20")
 
+        hosted_base_image = build_image(base, hosted_target)
+        hosted_patched_image = build_image(patched, hosted_target)
+        require(
+            build_image(copy.deepcopy(base), copy.deepcopy(hosted_target))
+            == hosted_base_image,
+            "repeated hosted ARM64 builds are not deterministic",
+        )
+        require(
+            hosted_base_image != base_image,
+            "different backends unexpectedly produced the same artifact",
+        )
+        require(
+            b".byte 0x41" in hosted_base_image
+            and b".byte 0x42" in hosted_patched_image,
+            "hosted ARM64 artifacts do not carry the requested UART byte",
+        )
+        require(
+            world_hash(base) == patch["base_hash"],
+            "adding another backend changed portable world identity",
+        )
+        require(
+            target_hash(hosted_target) != target_hash(target),
+            "the two Target Packs do not have independent identities",
+        )
+        print(
+            "PASS: the unchanged world lowers deterministically to distinct RV32I "
+            "and hosted ARM64 artifacts"
+        )
+        print(f"PASS: hosted ARM64 Target Pack hash is {target_hash(hosted_target)}")
+
         base_observed = run_image(base_image, target)
         base_report = make_report(
             base, base, None, target, base_image, base_observed
@@ -118,6 +152,58 @@ def main() -> int:
         )
         require(patched_report["contract_passed"], "QEMU did not observe B / exit 0")
         print("PASS: QEMU observed exactly B on stdout, empty stderr, and exit 0")
+
+        hosted_available = (
+            platform.system() == "Darwin"
+            and platform.machine().lower() in {"arm64", "aarch64"}
+        )
+        if hosted_available:
+            hosted_base_observed = run_image(hosted_base_image, hosted_target)
+            hosted_base_report = make_report(
+                base,
+                base,
+                None,
+                hosted_target,
+                hosted_base_image,
+                hosted_base_observed,
+            )
+            require(
+                hosted_base_report["contract_passed"],
+                "hosted ARM64 did not observe A / exit 0",
+            )
+            hosted_patched_observed = run_image(
+                hosted_patched_image, hosted_target
+            )
+            hosted_patched_report = make_report(
+                base,
+                patched,
+                patch,
+                hosted_target,
+                hosted_patched_image,
+                hosted_patched_observed,
+            )
+            require(
+                hosted_patched_report["contract_passed"],
+                "hosted ARM64 did not observe B / exit 0",
+            )
+            require(
+                hosted_base_report["base_world_sha256"]
+                == base_report["base_world_sha256"],
+                "the two backends reported different portable world identities",
+            )
+            print(
+                "PASS: hosted ARM64 observed exactly A and B with empty stderr "
+                "and exit 0"
+            )
+            print(
+                "PASS: RV32I and ARM64 share world identity while target and "
+                "artifact identities differ"
+            )
+        else:
+            print(
+                "SKIP: hosted ARM64 execution requires an Apple Silicon Mac; "
+                "its Target Pack and deterministic artifacts were verified"
+            )
 
         rollback_image = build_image(base, target)
         require(base == base_snapshot, "base world changed before rollback")
@@ -230,6 +316,47 @@ def main() -> int:
             ),
         )
 
+        expect_rejected(
+            "QEMU evidence reused for the hosted ARM64 target",
+            lambda: make_report(
+                base,
+                base,
+                None,
+                hosted_target,
+                hosted_base_image,
+                base_observed,
+            ),
+        )
+
+        wrong_hosted_driver = copy.deepcopy(hosted_target)
+        wrong_hosted_driver["capabilities"]["uart.write"]["driver"] = (
+            "unreviewed-stdout"
+        )
+        expect_rejected(
+            "an unsupported hosted capability binding",
+            lambda: validate_target(wrong_hosted_driver),
+        )
+
+        stale_hosted_target = copy.deepcopy(hosted_target)
+        stale_hosted_target["runner"]["timeout_seconds"] = 4
+        validate_target(stale_hosted_target)
+        hosted_claim = copy.deepcopy(base_observed)
+        hosted_claim["binding"] = {
+            "target_sha256": target_hash(hosted_target),
+            "image_sha256": hashlib.sha256(hosted_base_image).hexdigest(),
+        }
+        expect_rejected(
+            "hosted evidence bound to a stale Target Pack revision",
+            lambda: make_report(
+                base,
+                base,
+                None,
+                stale_hosted_target,
+                hosted_base_image,
+                hosted_claim,
+            ),
+        )
+
         runner_revision = copy.deepcopy(target)
         runner_revision["runner"]["timeout_seconds"] = 4
         validate_target(runner_revision)
@@ -313,12 +440,39 @@ def main() -> int:
             require(output_path.read_bytes() == patched_image, "CLI image is incorrect")
             cli_report = json.loads(report_path.read_text(encoding="utf-8"))
             require(cli_report == patched_report, "CLI evidence report is incorrect")
-            print("PASS: documented baseline and patched CLI workflows are intact")
+            if hosted_available:
+                hosted_cli = subprocess.run(
+                    [
+                        sys.executable,
+                        str(ROOT / "rabbit_world.py"),
+                        str(ROOT / "world.json"),
+                        "--target",
+                        str(hosted_target_path),
+                        "--patch",
+                        str(ROOT / "patches" / "say-b.json"),
+                    ],
+                    stdin=subprocess.DEVNULL,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    check=False,
+                    timeout=10,
+                )
+                require(hosted_cli.returncode == 0, "hosted ARM64 CLI returned failure")
+                require(hosted_cli.stderr == b"", "hosted ARM64 CLI wrote to stderr")
+                require(
+                    b"PASS: observed behavior matches the typed contract"
+                    in hosted_cli.stdout,
+                    "hosted ARM64 CLI did not print its success evidence",
+                )
+            print("PASS: documented CLI workflows are intact")
     except (OSError, ValueError, VerificationError) as error:
         print(f"FAIL: {error}")
         return 1
 
-    print("PASS: complete World v0 contract")
+    if hosted_available:
+        print("PASS: complete U2 two-backend World v0 contract")
+    else:
+        print("PASS: U2 implementation contract; Apple Silicon execution pending")
     return 0
 
 

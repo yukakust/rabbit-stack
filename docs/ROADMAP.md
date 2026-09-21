@@ -101,7 +101,7 @@ targets/qemu-rv32i.json
 The Target Contract gives world, target, and built artifact separate canonical hashes.
 The QEMU behavior, reviewed bytes, rollback, and negative validation tests are preserved.
 
-### U2 — Two-backend portability proof (next)
+### U2 — Two-backend portability proof (current: Mac confirmation pending)
 
 Run one unchanged world and patch through two substantially different backends:
 
@@ -109,6 +109,8 @@ Run one unchanged world and patch through two substantially different backends:
 - an ARM64 hosted implementation on the Apple Silicon Mac.
 
 Machine images may differ. World identity and observable contract must remain the same.
+The second Target Pack and deterministic Darwin ARM64 assembly backend are implemented;
+completion awaits the combined verifier running on the learner's Apple Silicon Mac.
 
 ### U3 — Universal module graph
 

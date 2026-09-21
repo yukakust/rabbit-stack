@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "target_id": "hosted-arm64-darwin",
+  "execution_envelope": "hosted",
+  "architecture": "arm64",
+  "byte_order": "little",
+  "image": {
+    "format": "darwin-arm64-assembly"
+  },
+  "capabilities": {
+    "uart.write": {
+      "driver": "darwin-posix-write",
+      "file_descriptor": 1
+    },
+    "machine.exit": {
+      "driver": "darwin-main-return",
+      "status": 0
+    }
+  },
+  "runner": {
+    "kind": "darwin-clang",
+    "compiler": "clang",
+    "architecture": "arm64",
+    "minimum_os": "14.0",
+    "timeout_seconds": 3
+  }
+}

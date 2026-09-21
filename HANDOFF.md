@@ -74,7 +74,9 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
   passes in both development environments.
 - The architecture has changed from a Pico-oriented path to Universal Rabbit: portable
   worlds plus replaceable Target Packs.
-- U2 (one unchanged world on QEMU RV32I and hosted ARM64) is the next milestone.
+- U2 is implemented in the development environment: one unchanged world and patch now
+  lower through QEMU RV32I and hosted Darwin ARM64 Target Packs. Apple Silicon runtime
+  confirmation remains before completion.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -151,13 +153,11 @@ and machine-image identities.
 
 ## Immediate implementation sequence
 
-1. Define a separately validated hosted ARM64 Target Pack.
-2. Lower the same unchanged portable world to the hosted ARM64 target.
-3. Observe exactly `A` and `B` with status `0` on both backends.
-4. Keep world identity shared while target and artifact identities differ.
-5. Reject cross-target evidence and unsupported capability bindings.
-6. Run a combined two-target conformance verifier.
-7. Then begin the universal typed module graph.
+1. Pull U2 on the learner's Apple Silicon Mac and run `python3 verify.py`.
+2. Confirm native hosted ARM64 observes exactly `A` and `B` with status `0`.
+3. Confirm the combined suite rejects cross-target and stale-target evidence.
+4. Mark U2 complete without changing the portable world or reviewed RV32I bytes.
+5. Then begin the universal typed module graph.
 
 ## Safety and honesty constraints
 

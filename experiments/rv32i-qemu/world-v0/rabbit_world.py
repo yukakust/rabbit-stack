@@ -2,8 +2,8 @@
 """Validate, build, patch, and run the first Rabbit World.
 
 World v0 is intentionally narrow. It accepts one UART-byte module, one successful exit
-module, and a separately validated Target Pack, then lowers them to the reviewed
-32-byte RV32I/QEMU image.
+module, and a separately validated Target Pack, then lowers them either to the reviewed
+32-byte RV32I/QEMU image or to hosted ARM64 assembly for Apple Silicon macOS.
 """
 
 from __future__ import annotations
@@ -12,6 +12,7 @@ import argparse
 import copy
 import hashlib
 import json
+import platform
 import re
 import subprocess
 import sys
@@ -51,16 +52,26 @@ PATCH_KEYS = {
     "contract",
 }
 CONTRACT_KEYS = {"stdout", "exit_status"}
-IMAGE_KEYS = {"load_address", "size"}
+RV32I_IMAGE_KEYS = {"load_address", "size"}
+HOSTED_ARM64_IMAGE_KEYS = {"format"}
 UART_BINDING_KEYS = {"driver", "address"}
 EXIT_BINDING_KEYS = {"driver", "address", "success_value"}
-RUNNER_KEYS = {
+HOSTED_UART_BINDING_KEYS = {"driver", "file_descriptor"}
+HOSTED_EXIT_BINDING_KEYS = {"driver", "status"}
+QEMU_RUNNER_KEYS = {
     "kind",
     "executable",
     "machine",
     "bios",
     "nographic",
     "cpu_num",
+    "timeout_seconds",
+}
+HOSTED_RUNNER_KEYS = {
+    "kind",
+    "compiler",
+    "architecture",
+    "minimum_os",
     "timeout_seconds",
 }
 IDENTIFIER_PATTERN = re.compile(r"[a-z0-9][a-z0-9-]{0,63}")
@@ -210,25 +221,22 @@ def _require_page_address(value: Any, context: str) -> int:
     return address
 
 
-def validate_target(value: Any) -> dict[str, Any]:
-    """Validate and return the first QEMU RV32I Target Pack."""
+def _validate_timeout(runner: dict[str, Any]) -> None:
+    timeout = _require_integer(
+        runner["timeout_seconds"], "target.runner.timeout_seconds"
+    )
+    if not 1 <= timeout <= 30:
+        raise WorldError("target.runner.timeout_seconds must be from 1 to 30")
 
-    target = _require_object(value, "target")
-    _require_exact_keys(target, TARGET_KEYS, "target")
 
-    if _require_integer(target["schema_version"], "target.schema_version") != SCHEMA_VERSION:
-        raise WorldError(f"target.schema_version must be {SCHEMA_VERSION}")
-    _require_identifier(target["target_id"], "target.target_id")
-
+def _validate_qemu_rv32i_target(target: dict[str, Any]) -> None:
     if target["execution_envelope"] != "native":
-        raise WorldError("target.execution_envelope must be 'native'")
-    if target["architecture"] != "rv32i":
-        raise WorldError("target.architecture must be 'rv32i'")
+        raise WorldError("RV32I target.execution_envelope must be 'native'")
     if target["byte_order"] != "little":
-        raise WorldError("target.byte_order must be 'little'")
+        raise WorldError("RV32I target.byte_order must be 'little'")
 
     image = _require_object(target["image"], "target.image")
-    _require_exact_keys(image, IMAGE_KEYS, "target.image")
+    _require_exact_keys(image, RV32I_IMAGE_KEYS, "target.image")
     load_address = _require_integer(
         image["load_address"], "target.image.load_address"
     )
@@ -274,7 +282,7 @@ def validate_target(value: Any) -> dict[str, Any]:
         raise WorldError("target machine.exit success_value must fit signed 32 bits")
 
     runner = _require_object(target["runner"], "target.runner")
-    _require_exact_keys(runner, RUNNER_KEYS, "target.runner")
+    _require_exact_keys(runner, QEMU_RUNNER_KEYS, "target.runner")
     expected_strings = {
         "kind": "qemu",
         "executable": "qemu-system-riscv32",
@@ -288,11 +296,90 @@ def validate_target(value: Any) -> dict[str, Any]:
         raise WorldError("target.runner.nographic must be true")
     if _require_integer(runner["cpu_num"], "target.runner.cpu_num") != 0:
         raise WorldError("target.runner.cpu_num must be 0 in World v0")
-    timeout = _require_integer(
-        runner["timeout_seconds"], "target.runner.timeout_seconds"
+    _validate_timeout(runner)
+
+
+def _validate_hosted_arm64_target(target: dict[str, Any]) -> None:
+    if target["execution_envelope"] != "hosted":
+        raise WorldError("ARM64 target.execution_envelope must be 'hosted'")
+    if target["byte_order"] != "little":
+        raise WorldError("ARM64 target.byte_order must be 'little'")
+
+    image = _require_object(target["image"], "target.image")
+    _require_exact_keys(image, HOSTED_ARM64_IMAGE_KEYS, "target.image")
+    if image["format"] != "darwin-arm64-assembly":
+        raise WorldError(
+            "ARM64 target.image.format must be 'darwin-arm64-assembly'"
+        )
+
+    capabilities = _require_object(target["capabilities"], "target.capabilities")
+    _require_exact_keys(capabilities, KNOWN_CAPABILITIES, "target.capabilities")
+
+    stdout = _require_object(
+        capabilities[UART_CAPABILITY], f"target.capabilities.{UART_CAPABILITY}"
     )
-    if not 1 <= timeout <= 30:
-        raise WorldError("target.runner.timeout_seconds must be from 1 to 30")
+    _require_exact_keys(
+        stdout,
+        HOSTED_UART_BINDING_KEYS,
+        f"target.capabilities.{UART_CAPABILITY}",
+    )
+    if stdout["driver"] != "darwin-posix-write":
+        raise WorldError("ARM64 target uart.write driver must be 'darwin-posix-write'")
+    if _require_integer(
+        stdout["file_descriptor"],
+        f"target.capabilities.{UART_CAPABILITY}.file_descriptor",
+    ) != 1:
+        raise WorldError("ARM64 target uart.write file_descriptor must be 1")
+
+    process_exit = _require_object(
+        capabilities[EXIT_CAPABILITY], f"target.capabilities.{EXIT_CAPABILITY}"
+    )
+    _require_exact_keys(
+        process_exit,
+        HOSTED_EXIT_BINDING_KEYS,
+        f"target.capabilities.{EXIT_CAPABILITY}",
+    )
+    if process_exit["driver"] != "darwin-main-return":
+        raise WorldError(
+            "ARM64 target machine.exit driver must be 'darwin-main-return'"
+        )
+    if _require_integer(
+        process_exit["status"],
+        f"target.capabilities.{EXIT_CAPABILITY}.status",
+    ) != 0:
+        raise WorldError("ARM64 target machine.exit status must be 0")
+
+    runner = _require_object(target["runner"], "target.runner")
+    _require_exact_keys(runner, HOSTED_RUNNER_KEYS, "target.runner")
+    expected_strings = {
+        "kind": "darwin-clang",
+        "compiler": "clang",
+        "architecture": "arm64",
+        "minimum_os": "14.0",
+    }
+    for field, expected in expected_strings.items():
+        if runner[field] != expected:
+            raise WorldError(f"target.runner.{field} must be {expected!r}")
+    _validate_timeout(runner)
+
+
+def validate_target(value: Any) -> dict[str, Any]:
+    """Validate and return a supported World v0 Target Pack."""
+
+    target = _require_object(value, "target")
+    _require_exact_keys(target, TARGET_KEYS, "target")
+
+    if _require_integer(target["schema_version"], "target.schema_version") != SCHEMA_VERSION:
+        raise WorldError(f"target.schema_version must be {SCHEMA_VERSION}")
+    _require_identifier(target["target_id"], "target.target_id")
+
+    architecture = target["architecture"]
+    if architecture == "rv32i":
+        _validate_qemu_rv32i_target(target)
+    elif architecture == "arm64":
+        _validate_hosted_arm64_target(target)
+    else:
+        raise WorldError("target.architecture must be 'rv32i' or 'arm64'")
     return target
 
 
@@ -463,10 +550,7 @@ def _split_lui_addi(value: int) -> tuple[int, int]:
     return upper, lower
 
 
-def build_image(world: dict[str, Any], target: dict[str, Any]) -> bytes:
-    """Lower a portable World v0 object through a validated RV32I Target Pack."""
-
-    validate_binding(world, target)
+def _build_rv32i_image(world: dict[str, Any], target: dict[str, Any]) -> bytes:
     bindings = target["capabilities"]
     uart_address = bindings[UART_CAPABILITY]["address"]
     exit_device = bindings[EXIT_CAPABILITY]
@@ -490,6 +574,40 @@ def build_image(world: dict[str, Any], target: dict[str, Any]) -> bytes:
     return image
 
 
+def _build_hosted_arm64_image(
+    world: dict[str, Any], target: dict[str, Any]
+) -> bytes:
+    value = _uart_value(world)
+    file_descriptor = target["capabilities"][UART_CAPABILITY]["file_descriptor"]
+    exit_status = target["capabilities"][EXIT_CAPABILITY]["status"]
+    source = f""".section __TEXT,__text,regular,pure_instructions
+.globl _main
+.p2align 2
+_main:
+    mov w0, #{file_descriptor}
+    adrp x1, _rabbit_byte@PAGE
+    add x1, x1, _rabbit_byte@PAGEOFF
+    mov w2, #1
+    bl _write
+    mov w0, #{exit_status}
+    ret
+
+.section __TEXT,__const
+_rabbit_byte:
+    .byte 0x{value:02x}
+"""
+    return source.encode("ascii")
+
+
+def build_image(world: dict[str, Any], target: dict[str, Any]) -> bytes:
+    """Lower a portable World v0 object through a validated Target Pack."""
+
+    validate_binding(world, target)
+    if target["architecture"] == "rv32i":
+        return _build_rv32i_image(world, target)
+    return _build_hosted_arm64_image(world, target)
+
+
 def byte_diff(before: bytes, after: bytes) -> list[dict[str, int]]:
     if len(before) != len(after):
         raise WorldError("cannot diff images of different sizes in World v0")
@@ -504,10 +622,25 @@ def run_image(
     image: bytes,
     target: dict[str, Any],
     qemu: str | None = None,
+    compiler: str | None = None,
 ) -> dict[str, Any]:
     """Run an image with its Target Pack and return raw observed behavior."""
 
     validate_target(target)
+    if target["architecture"] == "rv32i":
+        observed = _run_qemu_rv32i(image, target, qemu)
+    else:
+        observed = _run_hosted_arm64(image, target, compiler)
+    observed["binding"] = {
+        "target_sha256": target_hash(target),
+        "image_sha256": hashlib.sha256(image).hexdigest(),
+    }
+    return observed
+
+
+def _run_qemu_rv32i(
+    image: bytes, target: dict[str, Any], qemu: str | None
+) -> dict[str, Any]:
     if len(image) != target["image"]["size"]:
         raise WorldError("image size does not match the Target Pack")
     runner = target["runner"]
@@ -560,6 +693,75 @@ def run_image(
     }
 
 
+def _run_hosted_arm64(
+    image: bytes, target: dict[str, Any], compiler: str | None
+) -> dict[str, Any]:
+    if platform.system() != "Darwin" or platform.machine().lower() not in {
+        "arm64",
+        "aarch64",
+    }:
+        raise WorldError("hosted ARM64 target requires an Apple Silicon Mac")
+
+    runner = target["runner"]
+    compiler_executable = compiler or runner["compiler"]
+    with tempfile.TemporaryDirectory(prefix="rabbit-world-v0-arm64-") as temp_dir:
+        temp_root = Path(temp_dir)
+        source_path = temp_root / "world.s"
+        executable_path = temp_root / "world"
+        source_path.write_bytes(image)
+        compile_command = [
+            compiler_executable,
+            "-arch",
+            runner["architecture"],
+            f"-mmacosx-version-min={runner['minimum_os']}",
+            str(source_path),
+            "-o",
+            str(executable_path),
+        ]
+        try:
+            compiled = subprocess.run(
+                compile_command,
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+                timeout=runner["timeout_seconds"],
+            )
+        except FileNotFoundError as error:
+            raise WorldError(
+                f"ARM64 compiler not found: {compiler_executable}"
+            ) from error
+        except subprocess.TimeoutExpired as error:
+            raise WorldError("ARM64 compilation timed out") from error
+        if compiled.returncode != 0:
+            diagnostic = compiled.stderr.decode(errors="replace").strip()
+            raise WorldError(f"ARM64 compilation failed: {diagnostic}")
+
+        try:
+            completed = subprocess.run(
+                [str(executable_path)],
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+                timeout=runner["timeout_seconds"],
+            )
+        except subprocess.TimeoutExpired as error:
+            raise WorldError("hosted ARM64 program timed out") from error
+
+    return {
+        "stdout": completed.stdout,
+        "stderr": completed.stderr,
+        "exit_status": completed.returncode,
+        "execution": {
+            "runner": runner["kind"],
+            "compiler": compiler_executable,
+            "architecture": runner["architecture"],
+            "minimum_os": runner["minimum_os"],
+        },
+    }
+
+
 def make_report(
     base_world: dict[str, Any],
     effective_world: dict[str, Any],
@@ -581,6 +783,14 @@ def make_report(
         raise WorldError(
             "report image does not match the effective world and Target Pack"
         )
+    binding = _require_object(observed.get("binding"), "observed.binding")
+    _require_exact_keys(
+        binding, {"target_sha256", "image_sha256"}, "observed.binding"
+    )
+    if binding["target_sha256"] != target_hash(target):
+        raise WorldError("observed evidence belongs to a different Target Pack")
+    if binding["image_sha256"] != hashlib.sha256(image).hexdigest():
+        raise WorldError("observed evidence belongs to a different image")
     expected_stdout = effective_world["contract"]["stdout"].encode("ascii")
     expected_status = effective_world["contract"]["exit_status"]
     contract_passed = (
@@ -622,6 +832,7 @@ def make_report(
             "stderr_hex": observed["stderr"].hex(),
             "exit_status": observed["exit_status"],
         },
+        "evidence_binding": dict(binding),
         "execution": dict(observed["execution"]),
         "contract_passed": contract_passed,
     }
@@ -721,10 +932,13 @@ def main() -> int:
         help="path to a separately validated Target Pack JSON file",
     )
     parser.add_argument("--patch", type=Path, help="optional patch overlay")
-    parser.add_argument("--output", type=Path, help="optional raw image output path")
+    parser.add_argument("--output", type=Path, help="optional built artifact output path")
     parser.add_argument("--report", type=Path, help="optional JSON report output path")
     parser.add_argument(
         "--qemu", help="optional override for the Target Pack QEMU executable"
+    )
+    parser.add_argument(
+        "--compiler", help="optional override for the hosted Target Pack compiler"
     )
     args = parser.parse_args()
 
@@ -736,7 +950,9 @@ def main() -> int:
         patch = load_json(args.patch) if args.patch else None
         effective_world = apply_patch(base_world, patch) if patch else base_world
         image = build_image(effective_world, target)
-        observed = run_image(image, target, qemu=args.qemu)
+        observed = run_image(
+            image, target, qemu=args.qemu, compiler=args.compiler
+        )
         report = make_report(
             base_world, effective_world, patch, target, image, observed
         )
