@@ -120,16 +120,16 @@ unrelated modules. The first demonstration extends `HI` to `HI!` on both backend
 The combined verifier passes on the learner's Apple Silicon Mac: both targets observe
 `HI` and patched `HI!`, rollback is exact, and invalid graph changes are rejected.
 
-### U4 — Target Packs and capability negotiation (current: Mac confirmation pending)
+### U4 — Target Packs and capability negotiation (complete)
 
 Define schemas and conformance suites for target resources and device capabilities.
 Resolve portable capabilities such as `display.text`, `light.emit`, `storage.read`, or
 `network.send` to explicit target drivers, or reject the deployment before building.
-Capability negotiation v1 implements semantic requests, reviewed offers, canonical
-deployment plans, plan-bound evidence, required/optional behavior, and precise rejection.
-Completion awaits the combined verifier on the learner's Apple Silicon Mac.
+The combined verifier passes on the learner's Apple Silicon Mac. QEMU UART and Darwin
+stdout preserve one semantic contract; optional absence and required rejection are both
+explicit, and plan-bound evidence prevents target or driver substitution.
 
-### U5 — Hosted, native, and bridge runners
+### U5 — Hosted, native, and bridge runners (next)
 
 Implement the three execution envelopes behind the same evidence contract. A runner
 must expose its remaining software layers, authority, installation effects, and recovery
@@ -260,18 +260,15 @@ Every result should preserve:
 
 The public story is: **one intent, many bodies, one verifiable meaning**.
 
-## Definition of U4 completion
+## Definition of U5 completion
 
-U4 is complete only when:
+U5 is complete only when:
 
-- portable worlds request versioned semantic capabilities with required/optional status
-  and explicit constraints, without target driver names;
-- Target Packs advertise validated capability versions, drivers, limits, remaining
-  layers, and authority effects;
-- a deterministic resolver emits a canonical deployment plan or a precise rejection;
-- `display.text` binds to QEMU UART and Darwin stdout without changing graph meaning;
-- unavailable optional capabilities are reported and omitted, while unavailable required
-  capabilities reject before artifact construction;
-- plan identity binds the exact world, target, selected drivers, and execution evidence;
-- stale offers, incompatible versions, constraint failures, hidden drivers, and budget
-  overflow are rejected by the combined two-target conformance suite.
+- hosted, native, and simulated bridge runners implement one strict Runner Contract;
+- each declares its remaining layers, authority, mutations, timeouts, and recovery path;
+- one unchanged semantic world and patch produce `HI/HI!` through all three envelopes;
+- bridge communication uses a deterministic framed protocol whose transcript is evidence;
+- runner, plan, artifact, and transcript identities are bound into reports;
+- mislabeled envelopes, hidden writes/effects, protocol violations, replay, timeout, and
+  missing recovery information are rejected;
+- the documented three-envelope CLI and combined conformance suite pass reproducibly.

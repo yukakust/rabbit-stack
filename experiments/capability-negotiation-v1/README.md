@@ -57,11 +57,19 @@ python3 rabbit_capabilities.py world.json \
   --patch patches/add-bang.json
 ```
 
-On an Apple Silicon Mac, success ends with:
+The complete suite has passed on the learner's Apple Silicon Mac and ends with:
 
 ```text
 PASS: complete U4 capability negotiation contract
 ```
+
+## Verified result
+
+The same semantic `display.text` request bound to QEMU UART and Darwin stdout. Both plans
+observed `HI` and patched `HI!` with empty stderr and status `0`. Optional `light.emit`
+was explicitly omitted; making it required rejected before building. Every version,
+constraint, driver, authority-effect, stale-plan, cross-target, evidence, and CLI check
+passed.
 
 This is still a small closed registry. It does not discover physical devices, install
 drivers, contact a network, control a real light, or authorize new effects dynamically.

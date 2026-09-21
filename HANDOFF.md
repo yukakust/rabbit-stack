@@ -79,9 +79,10 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
   learner's Apple Silicon Mac.
 - U3 is complete: graph v1 emits `HI`, and an immutable patch adds and connects
   punctuation to emit `HI!` through both QEMU RV32I and hosted Darwin ARM64.
-- U4 is implemented in the development environment: semantic `display.text` resolves to
-  QEMU UART or Darwin stdout through canonical deployment plans. QEMU execution passes;
-  hosted ARM64 execution on the learner's Mac remains before completion.
+- U4 is complete: semantic `display.text` resolves to QEMU UART or Darwin stdout through
+  canonical deployment plans, and the combined capability contract passes on the
+  learner's Apple Silicon Mac.
+- U5 (hosted, native, and bridge runner contracts) is the next milestone.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -195,7 +196,7 @@ The complete suite passed on the learner's Apple Silicon Mac. QEMU RV32I and hos
 ARM64 both observed exactly `HI` and patched `HI!` with empty stderr and status `0`,
 while sharing graph identity and retaining separate target and artifact identities.
 
-## U4 implementation result
+## U4 verified result
 
 `experiments/capability-negotiation-v1/` removes target-shaped `console.write` from the
 portable world. It requests versioned `display.text` and `machine.exit` semantics with
@@ -213,15 +214,23 @@ verifier rejects incompatible capability versions, target-limit violations, hidd
 drivers, undeclared authority effects, stale and cross-target plans, substituted drivers,
 stale Target Packs, and evidence from another plan.
 
+The complete suite passed on the learner's Apple Silicon Mac. QEMU UART and Darwin POSIX
+stdout both observed the unchanged semantic contracts `HI` and patched `HI!`; optional
+`light.emit` was explicitly omitted, while required `light.emit` rejected deployment
+before artifact construction.
+
 ## Immediate implementation sequence
 
-1. Pull capability negotiation v1 on the learner's Apple Silicon Mac and run the full
-   verifier.
-2. Confirm the Darwin plan binds `display.text` to POSIX stdout and observes `HI/HI!`.
-3. Confirm required/optional, constraint, hidden-effect, stale-plan, and cross-target
-   rejection cases pass unchanged.
-4. Mark U4 complete without exposing concrete drivers to the portable world.
-5. Begin U5 by separating hosted, native, and bridge runner contracts.
+1. Define one Runner Contract that explicitly labels the execution envelope, command or
+   protocol, authority, remaining layers, mutations, timeouts, and recovery path.
+2. Migrate the proven hosted Darwin and native QEMU execution behind that contract
+   without changing semantic worlds or deployment plans.
+3. Add a deterministic simulated bridge target using an explicit framed protocol to a
+   separate child process; label it simulation, not physical hardware.
+4. Observe `HI/HI!` through all three envelopes and bind runner identity and protocol
+   transcript into evidence.
+5. Reject mislabeled envelopes, undocumented effects or writes, protocol mismatch,
+   stale/replayed transcripts, timeout, and missing recovery information.
 
 ## Safety and honesty constraints
 
@@ -237,14 +246,13 @@ stale Target Packs, and evidence from another plan.
 
 ## Definition of the next milestone
 
-U4 is complete only when:
+U5 is complete only when:
 
-- portable worlds request versioned semantic capabilities with explicit constraints and
-  required/optional status, never target driver names;
-- Target Packs advertise independently validated offers, limits, layers, and effects;
-- a deterministic resolver produces a canonical plan or a precise rejection;
-- `display.text` binds to QEMU UART and Darwin stdout while preserving graph meaning;
-- unavailable optional capabilities are reported and omitted, but unavailable required
-  capabilities reject before building;
-- plan hashes bind world, target, selected drivers, constraints, and execution evidence;
-- the combined two-target negotiation and negative conformance suite passes reproducibly.
+- hosted, native, and simulated bridge execution implement one explicit Runner Contract;
+- each runner declares remaining layers, authority, mutations, timeouts, and recovery;
+- one unchanged semantic world and patch observe `HI/HI!` through all three envelopes;
+- bridge communication uses a deterministic framed protocol with transcript evidence;
+- runner, plan, artifact, and transcript identities are bound into the final report;
+- mislabeled envelopes, hidden writes/effects, protocol violations, replay, timeout, and
+  missing recovery information are rejected;
+- the combined three-envelope conformance suite passes reproducibly.
