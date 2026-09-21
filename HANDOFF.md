@@ -1,6 +1,6 @@
 # Rabbit Stack handoff
 
-Updated: 2026-09-15
+Updated: 2026-09-21
 
 ## Mission
 
@@ -20,6 +20,8 @@ This is simultaneously:
 - Host: Apple Silicon Mac (`arm64`) with zsh and Apple command-line tools.
 - Preferred format: dialogue with a teacher, prediction questions, terminal work, and
   short explanations; no textbook prerequisite.
+- The current fork is in builder mode: implement and verify the roadmap now; the
+  step-by-step lesson continues separately later.
 - Pace: roughly two hours per day when active.
 - Prior work: basic C values, bytes, formatting, functions, conditions, branches,
   loops, exit statuses, compiler output, and introductory ARM64 assembly.
@@ -55,22 +57,12 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 
 ## Current position
 
-The next learner action is environment discovery on the Mac:
-
-```sh
-uname -m
-command -v brew
-command -v qemu-system-riscv32
-```
-
-If QEMU is absent:
-
-```sh
-brew install qemu
-qemu-system-riscv32 --version
-```
-
-Then perform Day 01 in `experiments/rv32i-qemu/day-01/README.md`.
+- E0 (native ARM64 baseline) is complete.
+- E1 (direct RV32I bytes in QEMU) is complete.
+- The learner manually changed `A` to `B`, predicted the exact byte change, and ran both
+  the original verifier and the first deterministic `addi` encoder tests.
+- W0 (patchable console world) is complete and starts E2 (intent and typed IR).
+- W1 (a real typed module graph) is the next product milestone.
 
 ## Day 01 verified result
 
@@ -94,19 +86,50 @@ binary size: exactly 32 bytes
 
 The experiment was independently reproduced with QEMU 10.2.1 before this handoff.
 
-## Immediate teaching sequence
+## W0 verified result
 
-1. Establish the difference between host (`arm64`) and emulated target (`riscv32`).
-2. Build `hello.bin` from visible bytes and run it.
-3. Inspect the 32 bytes with `xxd`.
-4. Decode one instruction at a time, starting with `addi`.
-5. Change `A` to `B` by editing only the immediate field and predict the changed byte.
-6. Write a tiny deterministic encoder for one instruction family.
-7. Compare our encoding against LLVM MC or GNU `as`.
-8. Add labels/fixups, then the smallest possible image builder.
+`experiments/rv32i-qemu/world-v0/` is the first complete vertical slice:
 
-Do not jump directly to a large language, MLIR, FPGA, or a universal linker. The first
-research milestone is a tiny end-to-end slice whose every byte can be explained.
+```text
+typed world + typed patch
+    -> strict validation and capability checks
+    -> deterministic 32-byte RV32I image
+    -> QEMU observation
+    -> evidence report or rejection
+```
+
+The immutable base world declares `uart.write` and `machine.exit`, emits `A`, and exits
+with status `0`. The `say-b` overlay changes only the UART module value to `66`. It does
+not mutate the base and is bound to that exact base revision by its canonical manifest
+hash. The resulting image differs only at offset `6`, `0x10 -> 0x20`. QEMU observes
+exactly `A` for the base, exactly `B` for the overlay, empty stderr, and status `0` in
+both cases. Removing the overlay rebuilds the byte-identical base image.
+
+Run the complete positive and negative contract:
+
+```sh
+cd experiments/rv32i-qemu/world-v0
+python3 verify.py
+```
+
+The verifier also rejects missing capabilities, unknown modules, out-of-range UART
+values, dishonest output contracts, and undeclared patch fields.
+It also rejects stale-base hashes, duplicate JSON fields, unsafe identifiers, and
+evidence reports whose bytes were not built from the effective world.
+
+This is a **cold patch** and a deliberately fixed lowering template. It is not yet a
+general module system, a hot-patch runtime, an OS, physical RISC-V execution, or proof
+that arbitrary generated code is safe.
+
+## Immediate implementation sequence
+
+1. Replace the fixed two-module arrangement with a typed module graph.
+2. Give modules typed input/output ports, explicit dependencies, and resource budgets.
+3. Let a patch add and connect one supported module without editing the runtime.
+4. Add deterministic layout, symbols, labels, and fixups for the resulting graph.
+5. Differentially check emitted instructions against LLVM MC or GNU `as`.
+6. Enforce MMIO capabilities so a UART-only module cannot address another device.
+7. Only then introduce transactional hot patches and state migration.
 
 ## Safety and honesty constraints
 
@@ -121,10 +144,12 @@ research milestone is a tiny end-to-end slice whose every byte can be explained.
 
 ## Definition of the next milestone
 
-Milestone E1 is complete only when:
+W1 is complete only when:
 
-- the learner can explain why the host and target architectures differ;
-- the 32-byte image prints `A` and exits with status 0;
-- the verifier passes;
-- changing the intended character produces a predicted byte-level change;
-- the result is reproducible from a fresh clone using documented commands.
+- a world is a validated graph rather than a fixed list interpreted by special-case
+  lowering code;
+- ports and connections reject incompatible types;
+- a patch can add and connect a supported module without modifying the runtime;
+- resource and capability violations are rejected before image construction;
+- the graph has a canonical representation, image, memory map, hash, and byte diff;
+- baseline, patched result, invalid patches, and rollback all pass reproducibly.

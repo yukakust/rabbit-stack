@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "world_id": "console",
+  "target": "qemu-virt-rv32i",
+  "capabilities": [
+    "uart.write",
+    "machine.exit"
+  ],
+  "modules": [
+    {
+      "id": "greeting",
+      "type": "uart-byte",
+      "value": 65
+    },
+    {
+      "id": "exit",
+      "type": "successful-exit"
+    }
+  ],
+  "contract": {
+    "stdout": "A",
+    "exit_status": 0
+  }
+}
