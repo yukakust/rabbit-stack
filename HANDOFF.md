@@ -5,14 +5,14 @@ Updated: 2026-09-21
 ## Mission
 
 Build understanding from electrical state and machine instructions upward, while
-testing whether a human can describe intent to an LLM and receive a machine image that
-is safer and more explainable than ordinary vibe coding.
+testing whether a human can describe intent to an LLM and receive a portable world that
+can be lowered into safer, explainable effects across different computers and devices.
 
 This is simultaneously:
 
 1. an interactive computer-science course;
 2. a sequence of reproducible systems experiments;
-3. early research toward a verified LLM-to-hardware toolchain.
+3. early research toward a verified, hardware-adaptive LLM-to-world toolchain.
 
 ## Learner context
 
@@ -49,7 +49,11 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - First machine: QEMU `virt`, 32-bit RISC-V, with `-bios none`.
 - First representation: explicit little-endian machine bytes, before introducing a
   reference assembler or linker.
-- First physical target later: Raspberry Pi Pico 2 H / RP2350 Hazard3.
+- Universal worlds must not contain an ISA, board, boot protocol, driver address, or
+  vendor SDK. Those facts belong in separately validated Target Packs.
+- Support three execution envelopes: hosted, native, and bridge.
+- Select future physical targets from actual available inventory by documentation,
+  observability, and recoverability; Raspberry Pi is optional, not foundational.
 - FPGA comes only after a soft core or custom operation works in RTL simulation.
 - LLVM MC, LLD, and mold are references and research subjects, not articles of faith.
 - Every lowering step needs differential tests or another independent checker.
@@ -61,8 +65,11 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - E1 (direct RV32I bytes in QEMU) is complete.
 - The learner manually changed `A` to `B`, predicted the exact byte change, and ran both
   the original verifier and the first deterministic `addi` encoder tests.
-- W0 (patchable console world) is complete and starts E2 (intent and typed IR).
-- W1 (a real typed module graph) is the next product milestone.
+- U0 (the target-coupled patchable console world) is complete.
+- The architecture has changed from a Pico-oriented path to Universal Rabbit: portable
+  worlds plus replaceable Target Packs.
+- U1 (separate the world from its QEMU RV32I target) is the next product milestone.
+- E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
 
@@ -86,7 +93,7 @@ binary size: exactly 32 bytes
 
 The experiment was independently reproduced with QEMU 10.2.1 before this handoff.
 
-## W0 verified result
+## U0 verified result
 
 `experiments/rv32i-qemu/world-v0/` is the first complete vertical slice:
 
@@ -123,33 +130,34 @@ that arbitrary generated code is safe.
 
 ## Immediate implementation sequence
 
-1. Replace the fixed two-module arrangement with a typed module graph.
-2. Give modules typed input/output ports, explicit dependencies, and resource budgets.
-3. Let a patch add and connect one supported module without editing the runtime.
-4. Add deterministic layout, symbols, labels, and fixups for the resulting graph.
-5. Differentially check emitted instructions against LLVM MC or GNU `as`.
-6. Enforce MMIO capabilities so a UART-only module cannot address another device.
-7. Only then introduce transactional hot patches and state migration.
+1. Remove `target` from the portable `world.json` schema.
+2. Introduce a separately validated `targets/qemu-rv32i.json` Target Pack.
+3. Give world, Target Pack, and built artifact independent canonical hashes.
+4. Preserve the exact reviewed 32-byte `A` and `B` images and rollback behavior.
+5. Add stale-target, missing-capability, and dishonest-evidence rejection tests.
+6. Add an ARM64 hosted backend for the first two-backend portability proof.
+7. Then replace the fixed module list with a universal typed module graph.
 
 ## Safety and honesty constraints
 
 - Never call this literal bare metal on the physical Mac. It is bare-metal guest code
   inside an emulator hosted by macOS.
-- Do not write OTP, enable irreversible secure boot, or disable debug on future RP2350
-  hardware used for learning.
-- Do not purchase new hardware merely to keep momentum; QEMU is the current target.
+- Do not write OTP, enable irreversible secure boot, or disable debug on hardware used
+  for learning.
+- Do not purchase new hardware merely to keep momentum. Prefer available inventory and
+  require a reviewed Target Pack and recovery path before physical writes.
 - Treat direct machine-code generation as unsafe until the verifier rejects malformed,
   out-of-policy, and non-terminating candidates.
 - Record failures and counterexamples. They are evidence, not interruptions.
 
 ## Definition of the next milestone
 
-W1 is complete only when:
+U1 is complete only when:
 
-- a world is a validated graph rather than a fixed list interpreted by special-case
-  lowering code;
-- ports and connections reject incompatible types;
-- a patch can add and connect a supported module without modifying the runtime;
-- resource and capability violations are rejected before image construction;
-- the graph has a canonical representation, image, memory map, hash, and byte diff;
-- baseline, patched result, invalid patches, and rollback all pass reproducibly.
+- the portable world contains no target or machine-specific field;
+- the QEMU RV32I Target Pack supplies every target fact separately;
+- world and Target Pack have independent canonical hashes;
+- the existing `A` and patched `B` images remain byte-identical;
+- stale worlds, stale targets, missing capabilities, and dishonest evidence are rejected;
+- baseline, patch, rollback, CLI, and negative tests remain reproducible on both
+  development environments.

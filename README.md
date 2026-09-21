@@ -1,21 +1,23 @@
 # Rabbit Stack
 
-Rabbit Stack is a learning and research project about a verifiable path from human
-intent to hardware:
+Rabbit Stack is a public learning and research project about a verifiable,
+hardware-adaptive path from human intent to effects across computers and devices:
 
 ```text
 human intent
     -> LLM candidate
-    -> typed intent IR
-    -> deterministic verifier
-    -> instruction encoder
-    -> image builder
-    -> emulator / hardware
+    -> universal world / patch
+    -> deterministic verifier and capability gate
+    -> separately validated Target Pack
+    -> target-specific artifact
+    -> hosted runtime / native boot / device bridge
+    -> observed result or rollback
 ```
 
 The central hypothesis is that probabilistic interpretation can stop at a strict,
 testable boundary. Below that boundary, every transformation should be deterministic,
-inspectable, and independently checked.
+inspectable, and independently checked. Worlds describe portable effects; replaceable
+Target Packs contain ISA, boot, memory, driver, deployment, and recovery facts.
 
 This repository starts much smaller than that final system. Its first job is to expose
 every layer we would otherwise be tempted to hide.
@@ -36,11 +38,14 @@ every layer we would otherwise be tempted to hide.
 Read [`HANDOFF.md`](HANDOFF.md), then run
 [`experiments/rv32i-qemu/world-v0/README.md`](experiments/rv32i-qemu/world-v0/README.md).
 
-The working architecture and experiment map lives on the private Miro board:
-[Rabbit Stack board](https://miro.com/app/board/uXjVHnNnOoY=/).
+The hardware-adaptive architecture and delivery sequence are in
+[`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is
+in [`docs/INVITATION.md`](docs/INVITATION.md).
 
 ## Project rule
 
 ```text
 LLM proposes. Deterministic machinery decides. Evidence updates the plan.
 ```
+
+One intent. Many bodies. One verifiable meaning.
