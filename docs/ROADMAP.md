@@ -129,16 +129,15 @@ The combined verifier passes on the learner's Apple Silicon Mac. QEMU UART and D
 stdout preserve one semantic contract; optional absence and required rejection are both
 explicit, and plan-bound evidence prevents target or driver substitution.
 
-### U5 — Hosted, native, and bridge runners (current: Mac confirmation pending)
+### U5 — Hosted, native, and bridge runners (complete)
 
 Implement the three execution envelopes behind the same evidence contract. A runner
 must expose its remaining software layers, authority, installation effects, and recovery
 path rather than claiming universal bare metal.
-Runner Contract v1 implements all three envelopes, including a deliberately simulated
-framed bridge with transcript evidence. Native and bridge conformance pass; completion
-awaits the combined hosted ARM64 run on the learner's Mac.
+Runner Contract v1 passes on the learner's Apple Silicon Mac across hosted Darwin,
+native QEMU, and an explicitly simulated framed bridge with transcript evidence.
 
-### U6 — Hardware discovery and installation plan
+### U6 — Hardware discovery and installation plan (next)
 
 Inspect a candidate device without mutating it. Select a compatible Target Pack and
 produce a reviewable plan containing capabilities, missing support, writes, risks,
@@ -263,15 +262,17 @@ Every result should preserve:
 
 The public story is: **one intent, many bodies, one verifiable meaning**.
 
-## Definition of U5 completion
+## Definition of U6 completion
 
-U5 is complete only when:
+U6 is complete only when:
 
-- hosted, native, and simulated bridge runners implement one strict Runner Contract;
-- each declares its remaining layers, authority, mutations, timeouts, and recovery path;
-- one unchanged semantic world and patch produce `HI/HI!` through all three envelopes;
-- bridge communication uses a deterministic framed protocol whose transcript is evidence;
-- runner, plan, artifact, and transcript identities are bound into reports;
-- mislabeled envelopes, hidden writes/effects, protocol violations, replay, timeout, and
-  missing recovery information are rejected;
-- the documented three-envelope CLI and combined conformance suite pass reproducibly.
+- read-only discovery produces a canonical inventory of architecture, firmware/boot,
+  removable-media support, memory, observable I/O, devices, and security state;
+- an available x86-64 UEFI computer is matched to a supported Target Pack or rejected
+  with precise missing requirements;
+- a separate installation plan names every removable-media write, expected observation,
+  verification step, risk, and recovery action;
+- internal disks, firmware changes, hidden effects, stale inventories, and missing
+  recovery are rejected;
+- discovery, planning, and installation remain separate authorization boundaries;
+- inventory, target matching, plan, and negative conformance checks pass reproducibly.

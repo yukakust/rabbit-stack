@@ -82,9 +82,9 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - U4 is complete: semantic `display.text` resolves to QEMU UART or Darwin stdout through
   canonical deployment plans, and the combined capability contract passes on the
   learner's Apple Silicon Mac.
-- U5 is implemented in the development environment: native QEMU and a simulated framed
-  bridge run the unchanged U4 world and patch through one Runner Contract. Hosted ARM64
-  confirmation on the learner's Mac remains before completion.
+- U5 is complete: hosted Darwin ARM64, native QEMU RV32I, and a simulated framed bridge
+  run the unchanged U4 world and patch through one Runner Contract on the learner's Mac.
+- U6 (read-only hardware discovery and reviewable installation planning) is next.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -221,7 +221,7 @@ stdout both observed the unchanged semantic contracts `HI` and patched `HI!`; op
 `light.emit` was explicitly omitted, while required `light.emit` rejected deployment
 before artifact construction.
 
-## U5 implementation result
+## U5 verified result
 
 `experiments/runner-contract-v1/` wraps the unchanged U4 world, patch, negotiation, and
 backends in one strict contract for `native`, `hosted`, and `bridge`. Each target declares
@@ -237,13 +237,22 @@ The verifier rejects mislabeled envelopes, unreviewed mutations, persistent writ
 missing recovery, protocol mismatch, replayed or tampered transcripts, timeouts, and
 evidence bound to a stale runner revision.
 
+The complete suite passed on the learner's Apple Silicon Mac. All three envelopes
+observed exact `HI/HI!` with status `0`; the bridge remained explicitly labeled as a
+simulation and produced independently hashed request, response, and transcript evidence.
+
 ## Immediate implementation sequence
 
-1. Pull Runner Contract v1 on the learner's Mac and run the combined verifier.
-2. Confirm hosted, native, and simulated bridge all observe exact `HI/HI!`.
-3. Confirm transcript, replay, timeout, authority, mutation, and recovery rejections.
-4. Mark U5 complete while retaining the bridge's explicit simulation label.
-5. Begin U6 read-only hardware discovery and reviewable installation planning.
+1. Define a canonical, read-only hardware inventory containing architecture, firmware
+   and boot mode, removable-boot support, memory, observable I/O, device identifiers,
+   security state, and discovery evidence.
+2. Probe a candidate old x86-64 UEFI computer without changing disks or firmware.
+3. Match its inventory against supported Target Packs or return precise `UNSUPPORTED`
+   reasons rather than guessing drivers.
+4. Produce a separately reviewable installation plan listing exact removable-media
+   writes, expected observations, risks, verification, and recovery by removing USB.
+5. Reject stale inventories, hidden writes, internal-disk/firmware targets, missing
+   recovery, and any attempt to combine discovery with installation.
 
 ## Safety and honesty constraints
 
@@ -259,13 +268,14 @@ evidence bound to a stale runner revision.
 
 ## Definition of the next milestone
 
-U5 is complete only when:
+U6 is complete only when:
 
-- hosted, native, and simulated bridge execution implement one explicit Runner Contract;
-- each runner declares remaining layers, authority, mutations, timeouts, and recovery;
-- one unchanged semantic world and patch observe `HI/HI!` through all three envelopes;
-- bridge communication uses a deterministic framed protocol with transcript evidence;
-- runner, plan, artifact, and transcript identities are bound into the final report;
-- mislabeled envelopes, hidden writes/effects, protocol violations, replay, timeout, and
-  missing recovery information are rejected;
-- the combined three-envelope conformance suite passes reproducibly.
+- discovery is demonstrably read-only and yields a canonical hardware inventory;
+- a real available x86-64 UEFI candidate is matched to a supported Target Pack or
+  rejected with precise missing requirements;
+- the installation plan targets removable media only and enumerates every intended write;
+- internal disks, firmware, secure-boot changes, hidden effects, stale inventories, and
+  missing recovery are rejected;
+- planning and installation remain separate authorization boundaries;
+- removing the USB device is the documented recovery path;
+- inventory, match, plan, and negative conformance evidence pass reproducibly.

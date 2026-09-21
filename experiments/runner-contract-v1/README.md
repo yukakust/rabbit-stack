@@ -43,8 +43,15 @@ python3 rabbit_runners.py ../capability-negotiation-v1/world.json \
   --patch ../capability-negotiation-v1/patches/add-bang.json
 ```
 
-Completion on Apple Silicon ends with:
+The complete suite has passed on the learner's Apple Silicon Mac and ends with:
 
 ```text
 PASS: complete U5 three-envelope Runner Contract
 ```
+
+## Verified result
+
+Hosted Darwin ARM64, native QEMU RV32I, and the simulated framed bridge all observed
+exact `HI` and patched `HI!` with status `0`. Runner identities, plan/artifact bindings,
+bridge transcript hashes, recovery declarations, replay/timeout rejection, and all three
+documented CLI workflows passed.
