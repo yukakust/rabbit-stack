@@ -86,3 +86,32 @@ PASS: QEMU wrote exactly b'A' and exited with status 0
 
 Do not try to memorise these encodings. The next lesson derives one of them from the
 RV32I bit fields and then changes `A` to `B` deliberately.
+
+## First deterministic encoder
+
+`encode_addi.py` is deliberately not a general assembler. It encodes exactly one
+base-RV32I instruction family using explicit fields:
+
+```text
+encode_addi(rd, rs1, imm) -> 32-bit word -> four little-endian bytes
+```
+
+For the two reviewed Day 01 values, run:
+
+```sh
+python3 encode_addi.py 6 0 65
+python3 encode_addi.py 6 0 66
+python3 verify_encode_addi.py
+```
+
+Expected words and bytes:
+
+| Intent | RV32I word | Memory bytes |
+|---|---|---|
+| `addi t1, zero, 65` (`A`) | `0x04100313` | `13 03 10 04` |
+| `addi t1, zero, 66` (`B`) | `0x04200313` | `13 03 20 04` |
+
+The verifier checks both reviewed vectors, a vector that changes register fields,
+and invalid register/immediate inputs. It is still not an independent reference
+implementation; the later LLVM MC or GNU `as` comparison supplies that independent
+check.
