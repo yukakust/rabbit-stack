@@ -1,0 +1,43 @@
+{
+  "schema_version": 4,
+  "target_id": "stdio-bridge-simulator-v1",
+  "execution_envelope": "bridge",
+  "architecture": "protocol-v1",
+  "byte_order": "not-applicable",
+  "image": {"format": "ascii-payload", "max_size": 16},
+  "capability_offers": [
+    {
+      "capability": "display.text", "version": 1,
+      "driver": "rabbit-frame-display",
+      "limits": {"encodings": ["ascii"], "max_bytes": 16},
+      "binding": {"channel": "display"},
+      "effects": ["writes-simulated-device-display"]
+    },
+    {
+      "capability": "machine.exit", "version": 1,
+      "driver": "rabbit-frame-complete",
+      "limits": {"statuses": [0]},
+      "binding": {"channel": "control", "status": 0},
+      "effects": ["completes-simulated-device-command"]
+    }
+  ],
+  "runner": {
+    "kind": "python-stdio-bridge", "executable": "python3",
+    "device": "bridge_device.py", "timeout_seconds": 3
+  },
+  "runner_contract": {
+    "version": 1,
+    "envelope": "bridge",
+    "transport": "stdio",
+    "authority": ["start-simulated-device", "send-framed-command"],
+    "remaining_layers": ["python", "host-operating-system", "simulated-device-process"],
+    "mutations": ["none"],
+    "timeouts": {"startup_seconds": 3, "execution_seconds": 3},
+    "recovery": {"method": "terminate-child-process", "persistent_writes": false},
+    "protocol": {
+      "name": "rabbit-frame", "version": 1,
+      "framing": "u32-big-endian-length-plus-canonical-json", "max_frame_bytes": 4096
+    },
+    "simulation": true
+  }
+}

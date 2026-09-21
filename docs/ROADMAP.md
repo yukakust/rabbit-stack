@@ -129,11 +129,14 @@ The combined verifier passes on the learner's Apple Silicon Mac. QEMU UART and D
 stdout preserve one semantic contract; optional absence and required rejection are both
 explicit, and plan-bound evidence prevents target or driver substitution.
 
-### U5 — Hosted, native, and bridge runners (next)
+### U5 — Hosted, native, and bridge runners (current: Mac confirmation pending)
 
 Implement the three execution envelopes behind the same evidence contract. A runner
 must expose its remaining software layers, authority, installation effects, and recovery
 path rather than claiming universal bare metal.
+Runner Contract v1 implements all three envelopes, including a deliberately simulated
+framed bridge with transcript evidence. Native and bridge conformance pass; completion
+awaits the combined hosted ARM64 run on the learner's Mac.
 
 ### U6 — Hardware discovery and installation plan
 

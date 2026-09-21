@@ -39,11 +39,14 @@ every layer we would otherwise be tempted to hide.
 - [`experiments/capability-negotiation-v1`](experiments/capability-negotiation-v1): a
   deterministic resolver that turns semantic requests such as `display.text` into
   reviewed, plan-bound QEMU UART or Darwin stdout drivers—or rejects deployment.
+- [`experiments/runner-contract-v1`](experiments/runner-contract-v1): one explicit
+  execution contract for native QEMU, hosted Darwin, and a framed simulated bridge with
+  transcript-bound evidence and recovery declarations.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then run
-[`experiments/capability-negotiation-v1/README.md`](experiments/capability-negotiation-v1/README.md).
+[`experiments/runner-contract-v1/README.md`](experiments/runner-contract-v1/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

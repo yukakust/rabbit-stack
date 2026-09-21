@@ -82,7 +82,9 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - U4 is complete: semantic `display.text` resolves to QEMU UART or Darwin stdout through
   canonical deployment plans, and the combined capability contract passes on the
   learner's Apple Silicon Mac.
-- U5 (hosted, native, and bridge runner contracts) is the next milestone.
+- U5 is implemented in the development environment: native QEMU and a simulated framed
+  bridge run the unchanged U4 world and patch through one Runner Contract. Hosted ARM64
+  confirmation on the learner's Mac remains before completion.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -219,18 +221,29 @@ stdout both observed the unchanged semantic contracts `HI` and patched `HI!`; op
 `light.emit` was explicitly omitted, while required `light.emit` rejected deployment
 before artifact construction.
 
+## U5 implementation result
+
+`experiments/runner-contract-v1/` wraps the unchanged U4 world, patch, negotiation, and
+backends in one strict contract for `native`, `hosted`, and `bridge`. Each target declares
+transport, authority, remaining layers, temporary mutations, timeouts, recovery, whether
+persistent writes occur, and whether execution is simulated.
+
+The bridge is an explicitly labeled child-process simulator using canonical JSON frames
+with a four-byte big-endian length prefix. Requests bind plan and artifact identities;
+responses bind the request and observation. Request, response, and whole-transcript hashes
+enter evidence. Native QEMU and bridge both observe exact `HI/HI!` with status `0`.
+
+The verifier rejects mislabeled envelopes, unreviewed mutations, persistent writes,
+missing recovery, protocol mismatch, replayed or tampered transcripts, timeouts, and
+evidence bound to a stale runner revision.
+
 ## Immediate implementation sequence
 
-1. Define one Runner Contract that explicitly labels the execution envelope, command or
-   protocol, authority, remaining layers, mutations, timeouts, and recovery path.
-2. Migrate the proven hosted Darwin and native QEMU execution behind that contract
-   without changing semantic worlds or deployment plans.
-3. Add a deterministic simulated bridge target using an explicit framed protocol to a
-   separate child process; label it simulation, not physical hardware.
-4. Observe `HI/HI!` through all three envelopes and bind runner identity and protocol
-   transcript into evidence.
-5. Reject mislabeled envelopes, undocumented effects or writes, protocol mismatch,
-   stale/replayed transcripts, timeout, and missing recovery information.
+1. Pull Runner Contract v1 on the learner's Mac and run the combined verifier.
+2. Confirm hosted, native, and simulated bridge all observe exact `HI/HI!`.
+3. Confirm transcript, replay, timeout, authority, mutation, and recovery rejections.
+4. Mark U5 complete while retaining the bridge's explicit simulation label.
+5. Begin U6 read-only hardware discovery and reviewable installation planning.
 
 ## Safety and honesty constraints
 

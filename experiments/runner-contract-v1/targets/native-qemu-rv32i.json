@@ -1,0 +1,40 @@
+{
+  "schema_version": 4,
+  "target_id": "native-qemu-rv32i-runner-v1",
+  "execution_envelope": "native",
+  "architecture": "rv32i",
+  "byte_order": "little",
+  "image": {"load_address": 2147483648, "max_size": 256},
+  "capability_offers": [
+    {
+      "capability": "display.text", "version": 1,
+      "driver": "qemu-virt-uart",
+      "limits": {"encodings": ["ascii"], "max_bytes": 16},
+      "binding": {"address": 268435456},
+      "effects": ["writes-emulated-uart"]
+    },
+    {
+      "capability": "machine.exit", "version": 1,
+      "driver": "qemu-sifive-test",
+      "limits": {"statuses": [0]},
+      "binding": {"address": 1048576, "success_value": 21845},
+      "effects": ["terminates-emulated-machine"]
+    }
+  ],
+  "runner": {
+    "kind": "qemu", "executable": "qemu-system-riscv32", "machine": "virt",
+    "bios": "none", "nographic": true, "cpu_num": 0, "timeout_seconds": 3
+  },
+  "runner_contract": {
+    "version": 1,
+    "envelope": "native",
+    "transport": "qemu-loader",
+    "authority": ["execute-emulated-machine", "write-emulated-uart"],
+    "remaining_layers": ["qemu", "host-operating-system", "physical-host"],
+    "mutations": ["temporary-artifact-file"],
+    "timeouts": {"startup_seconds": 3, "execution_seconds": 3},
+    "recovery": {"method": "terminate-qemu-and-delete-temporary-directory", "persistent_writes": false},
+    "protocol": null,
+    "simulation": true
+  }
+}

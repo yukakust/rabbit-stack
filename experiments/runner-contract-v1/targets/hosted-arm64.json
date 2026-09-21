@@ -1,0 +1,40 @@
+{
+  "schema_version": 4,
+  "target_id": "hosted-arm64-darwin-runner-v1",
+  "execution_envelope": "hosted",
+  "architecture": "arm64",
+  "byte_order": "little",
+  "image": {"format": "darwin-arm64-assembly", "max_size": 4096},
+  "capability_offers": [
+    {
+      "capability": "display.text", "version": 1,
+      "driver": "darwin-posix-write",
+      "limits": {"encodings": ["ascii"], "max_bytes": 16},
+      "binding": {"file_descriptor": 1},
+      "effects": ["writes-process-stdout"]
+    },
+    {
+      "capability": "machine.exit", "version": 1,
+      "driver": "darwin-main-return",
+      "limits": {"statuses": [0]},
+      "binding": {"status": 0},
+      "effects": ["terminates-hosted-process"]
+    }
+  ],
+  "runner": {
+    "kind": "darwin-clang", "compiler": "clang", "architecture": "arm64",
+    "minimum_os": "14.0", "compile_timeout_seconds": 30, "timeout_seconds": 3
+  },
+  "runner_contract": {
+    "version": 1,
+    "envelope": "hosted",
+    "transport": "process-exec",
+    "authority": ["compile-temporary-executable", "execute-hosted-process", "write-process-stdout"],
+    "remaining_layers": ["apple-clang", "mach-o-linker", "macos", "libsystem"],
+    "mutations": ["temporary-source-file", "temporary-executable-file"],
+    "timeouts": {"startup_seconds": 30, "execution_seconds": 3},
+    "recovery": {"method": "terminate-process-and-delete-temporary-directory", "persistent_writes": false},
+    "protocol": null,
+    "simulation": false
+  }
+}
