@@ -79,7 +79,9 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
   learner's Apple Silicon Mac.
 - U3 is complete: graph v1 emits `HI`, and an immutable patch adds and connects
   punctuation to emit `HI!` through both QEMU RV32I and hosted Darwin ARM64.
-- U4 (Target Pack capability negotiation) is the next milestone.
+- U4 is implemented in the development environment: semantic `display.text` resolves to
+  QEMU UART or Darwin stdout through canonical deployment plans. QEMU execution passes;
+  hosted ARM64 execution on the learner's Mac remains before completion.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -193,18 +195,33 @@ The complete suite passed on the learner's Apple Silicon Mac. QEMU RV32I and hos
 ARM64 both observed exactly `HI` and patched `HI!` with empty stderr and status `0`,
 while sharing graph identity and retaining separate target and artifact identities.
 
+## U4 implementation result
+
+`experiments/capability-negotiation-v1/` removes target-shaped `console.write` from the
+portable world. It requests versioned `display.text` and `machine.exit` semantics with
+constraints and also requests optional `light.emit`. Target Packs separately advertise
+reviewed offers, limits, concrete bindings, authority effects, and remaining layers.
+
+The deterministic resolver binds `display.text` to `qemu-virt-uart` on RV32I and to
+`darwin-posix-write` on hosted ARM64. Because neither target offers a light, both plans
+record optional `light.emit` as `not-offered`; making it required rejects deployment
+before artifact construction. A reviewed adapter feeds the plan into the unchanged U3
+backends. QEMU observes the original `HI` and patched `HI!` contracts.
+
+World, target, plan, and artifact identities are independently bound into evidence. The
+verifier rejects incompatible capability versions, target-limit violations, hidden
+drivers, undeclared authority effects, stale and cross-target plans, substituted drivers,
+stale Target Packs, and evidence from another plan.
+
 ## Immediate implementation sequence
 
-1. Replace backend-shaped `console.write` requests with a versioned semantic capability
-   such as `display.text` plus explicit required/optional status and constraints.
-2. Let each Target Pack advertise supported capability versions, drivers, limits,
-   remaining software layers, and authority effects.
-3. Produce a canonical deployment plan that binds the same graph to QEMU UART and
-   Darwin stdout without placing either driver name in the portable world.
-4. Demonstrate an unavailable optional capability such as `light.emit` being reported
-   but safely omitted, while the same capability marked required rejects deployment.
-5. Bind plan identity into build and execution evidence; reject stale, incompatible,
-   over-budget, or undeclared bindings.
+1. Pull capability negotiation v1 on the learner's Apple Silicon Mac and run the full
+   verifier.
+2. Confirm the Darwin plan binds `display.text` to POSIX stdout and observes `HI/HI!`.
+3. Confirm required/optional, constraint, hidden-effect, stale-plan, and cross-target
+   rejection cases pass unchanged.
+4. Mark U4 complete without exposing concrete drivers to the portable world.
+5. Begin U5 by separating hosted, native, and bridge runner contracts.
 
 ## Safety and honesty constraints
 

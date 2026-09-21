@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "world_id": "hello-capabilities",
+  "imports": [
+    {"name": "world-start", "version": 1},
+    {"name": "console-byte", "version": 1},
+    {"name": "successful-exit", "version": 1}
+  ],
+  "dependencies": [
+    {"name": "rabbit-graph-core", "version": 1}
+  ],
+  "capabilities": [
+    {
+      "capability": "display.text",
+      "version": 1,
+      "required": true,
+      "constraints": {"encoding": "ascii", "max_bytes": 3}
+    },
+    {
+      "capability": "machine.exit",
+      "version": 1,
+      "required": true,
+      "constraints": {"status": 0}
+    },
+    {
+      "capability": "light.emit",
+      "version": 1,
+      "required": false,
+      "constraints": {"color": "white", "brightness_percent": 50}
+    }
+  ],
+  "resources": {
+    "max_modules": 5,
+    "max_connections": 4,
+    "max_output_bytes": 3
+  },
+  "modules": [
+    {"id": "start", "type": "world-start"},
+    {"id": "letter-h", "type": "console-byte", "value": 72},
+    {"id": "letter-i", "type": "console-byte", "value": 73},
+    {"id": "exit", "type": "successful-exit"}
+  ],
+  "connections": [
+    {
+      "from": {"module": "start", "port": "started"},
+      "to": {"module": "letter-h", "port": "trigger"}
+    },
+    {
+      "from": {"module": "letter-h", "port": "done"},
+      "to": {"module": "letter-i", "port": "trigger"}
+    },
+    {
+      "from": {"module": "letter-i", "port": "done"},
+      "to": {"module": "exit", "port": "trigger"}
+    }
+  ],
+  "contract": {"stdout": "HI", "exit_status": 0}
+}

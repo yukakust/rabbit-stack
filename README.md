@@ -36,11 +36,14 @@ every layer we would otherwise be tempted to hide.
 - [`experiments/universal-graph-v1`](experiments/universal-graph-v1): the first portable
   typed module graph. One immutable patch adds and connects a punctuation module,
   changing `HI` to `HI!` through the RV32I and hosted ARM64 targets without backend edits.
+- [`experiments/capability-negotiation-v1`](experiments/capability-negotiation-v1): a
+  deterministic resolver that turns semantic requests such as `display.text` into
+  reviewed, plan-bound QEMU UART or Darwin stdout drivers—or rejects deployment.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then run
-[`experiments/universal-graph-v1/README.md`](experiments/universal-graph-v1/README.md).
+[`experiments/capability-negotiation-v1/README.md`](experiments/capability-negotiation-v1/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

@@ -1,0 +1,35 @@
+{
+  "schema_version": 3,
+  "target_id": "hosted-arm64-darwin-capabilities-v1",
+  "execution_envelope": "hosted",
+  "architecture": "arm64",
+  "byte_order": "little",
+  "image": {"format": "darwin-arm64-assembly", "max_size": 4096},
+  "capability_offers": [
+    {
+      "capability": "display.text",
+      "version": 1,
+      "driver": "darwin-posix-write",
+      "limits": {"encodings": ["ascii"], "max_bytes": 16},
+      "binding": {"file_descriptor": 1},
+      "effects": ["writes-process-stdout"]
+    },
+    {
+      "capability": "machine.exit",
+      "version": 1,
+      "driver": "darwin-main-return",
+      "limits": {"statuses": [0]},
+      "binding": {"status": 0},
+      "effects": ["terminates-hosted-process"]
+    }
+  ],
+  "remaining_layers": ["apple-clang", "mach-o-linker", "macos", "libsystem"],
+  "runner": {
+    "kind": "darwin-clang",
+    "compiler": "clang",
+    "architecture": "arm64",
+    "minimum_os": "14.0",
+    "compile_timeout_seconds": 30,
+    "timeout_seconds": 3
+  }
+}

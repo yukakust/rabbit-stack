@@ -120,11 +120,14 @@ unrelated modules. The first demonstration extends `HI` to `HI!` on both backend
 The combined verifier passes on the learner's Apple Silicon Mac: both targets observe
 `HI` and patched `HI!`, rollback is exact, and invalid graph changes are rejected.
 
-### U4 — Target Packs and capability negotiation (next)
+### U4 — Target Packs and capability negotiation (current: Mac confirmation pending)
 
 Define schemas and conformance suites for target resources and device capabilities.
 Resolve portable capabilities such as `display.text`, `light.emit`, `storage.read`, or
 `network.send` to explicit target drivers, or reject the deployment before building.
+Capability negotiation v1 implements semantic requests, reviewed offers, canonical
+deployment plans, plan-bound evidence, required/optional behavior, and precise rejection.
+Completion awaits the combined verifier on the learner's Apple Silicon Mac.
 
 ### U5 — Hosted, native, and bridge runners
 

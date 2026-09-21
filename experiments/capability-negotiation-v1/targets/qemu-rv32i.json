@@ -1,0 +1,36 @@
+{
+  "schema_version": 3,
+  "target_id": "qemu-rv32i-capabilities-v1",
+  "execution_envelope": "native",
+  "architecture": "rv32i",
+  "byte_order": "little",
+  "image": {"load_address": 2147483648, "max_size": 256},
+  "capability_offers": [
+    {
+      "capability": "display.text",
+      "version": 1,
+      "driver": "qemu-virt-uart",
+      "limits": {"encodings": ["ascii"], "max_bytes": 16},
+      "binding": {"address": 268435456},
+      "effects": ["writes-emulated-uart"]
+    },
+    {
+      "capability": "machine.exit",
+      "version": 1,
+      "driver": "qemu-sifive-test",
+      "limits": {"statuses": [0]},
+      "binding": {"address": 1048576, "success_value": 21845},
+      "effects": ["terminates-emulated-machine"]
+    }
+  ],
+  "remaining_layers": ["qemu", "host-operating-system", "physical-host"],
+  "runner": {
+    "kind": "qemu",
+    "executable": "qemu-system-riscv32",
+    "machine": "virt",
+    "bios": "none",
+    "nographic": true,
+    "cpu_num": 0,
+    "timeout_seconds": 3
+  }
+}
