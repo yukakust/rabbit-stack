@@ -597,12 +597,15 @@ def _build_hosted_arm64_image(
 .globl _main
 .p2align 2
 _main:
+    stp x29, x30, [sp, #-16]!
+    mov x29, sp
     mov w0, #{file_descriptor}
     adrp x1, _rabbit_byte@PAGE
     add x1, x1, _rabbit_byte@PAGEOFF
     mov w2, #1
     bl _write
     mov w0, #{exit_status}
+    ldp x29, x30, [sp], #16
     ret
 
 .section __TEXT,__const

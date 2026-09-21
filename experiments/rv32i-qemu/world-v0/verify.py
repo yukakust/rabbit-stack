@@ -122,6 +122,11 @@ def main() -> int:
             "hosted ARM64 artifacts do not carry the requested UART byte",
         )
         require(
+            b"stp x29, x30, [sp, #-16]!" in hosted_base_image
+            and b"ldp x29, x30, [sp], #16" in hosted_base_image,
+            "hosted ARM64 artifact does not preserve the caller return address",
+        )
+        require(
             world_hash(base) == patch["base_hash"],
             "adding another backend changed portable world identity",
         )
