@@ -137,12 +137,15 @@ path rather than claiming universal bare metal.
 Runner Contract v1 passes on the learner's Apple Silicon Mac across hosted Darwin,
 native QEMU, and an explicitly simulated framed bridge with transcript evidence.
 
-### U6 — Hardware discovery and installation plan (next)
+### U6 — Hardware discovery and installation plan (current: real inventory pending)
 
 Inspect a candidate device without mutating it. Select a compatible Target Pack and
 produce a reviewable plan containing capabilities, missing support, writes, risks,
 recovery steps, and expected observations. Installation remains a separate authorized
 action.
+The inventory schema, matcher, simulated supported/unsupported fixtures, and a strictly
+non-executable removable-USB plan are implemented. Completion awaits read-only inventory
+from an actual available x86-64 UEFI computer.
 
 ### U7 — Physical conformance
 

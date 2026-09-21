@@ -84,7 +84,9 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
   learner's Apple Silicon Mac.
 - U5 is complete: hosted Darwin ARM64, native QEMU RV32I, and a simulated framed bridge
   run the unchanged U4 world and patch through one Runner Contract on the learner's Mac.
-- U6 (read-only hardware discovery and reviewable installation planning) is next.
+- U6 tooling is implemented against simulated fixtures: read-only inventory validation,
+  Target matching, and a non-executable removable-USB proposal pass. A real old computer
+  inventory remains before U6 completion.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -243,16 +245,12 @@ simulation and produced independently hashed request, response, and transcript e
 
 ## Immediate implementation sequence
 
-1. Define a canonical, read-only hardware inventory containing architecture, firmware
-   and boot mode, removable-boot support, memory, observable I/O, device identifiers,
-   security state, and discovery evidence.
-2. Probe a candidate old x86-64 UEFI computer without changing disks or firmware.
-3. Match its inventory against supported Target Packs or return precise `UNSUPPORTED`
-   reasons rather than guessing drivers.
-4. Produce a separately reviewable installation plan listing exact removable-media
-   writes, expected observations, risks, verification, and recovery by removing USB.
-5. Reject stale inventories, hidden writes, internal-disk/firmware targets, missing
-   recovery, and any attempt to combine discovery with installation.
+1. Obtain basic details and current operating system for an available old computer.
+2. Choose OS-appropriate read-only commands and collect their output without installing
+   or changing anything.
+3. Convert reviewed observations into a real inventory while preserving raw evidence.
+4. Run the matcher and inspect either exact `UNSUPPORTED` reasons or a `PROPOSED` plan.
+5. Keep image building and USB writing outside U6 and behind separate U7 authorization.
 
 ## Safety and honesty constraints
 

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "inventory_id": "simulated-unsupported-pc",
+  "source": "simulated-fixture",
+  "discovery_mode": "read-only",
+  "architecture": "x86-64",
+  "memory_mib": 2048,
+  "firmware": {
+    "interface": "bios",
+    "secure_boot": "not-applicable",
+    "removable_boot": false,
+    "boot_menu": false
+  },
+  "observable_io": {
+    "firmware_display": false,
+    "usb_keyboard": true,
+    "display_connectors": ["vga"]
+  },
+  "storage": [
+    {"device_id": "internal-only", "kind": "internal", "capacity_mib": 80000}
+  ],
+  "controllers": ["usb-ehci", "sata"],
+  "device_ids": ["cpu:x86-64-legacy-demo"],
+  "evidence": {
+    "collector": "fixture-only",
+    "commands": [],
+    "writes_performed": []
+  }
+}

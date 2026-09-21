@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "inventory_id": "simulated-supported-pc",
+  "source": "simulated-fixture",
+  "discovery_mode": "read-only",
+  "architecture": "x86-64",
+  "memory_mib": 4096,
+  "firmware": {
+    "interface": "uefi",
+    "secure_boot": "disabled",
+    "removable_boot": true,
+    "boot_menu": true
+  },
+  "observable_io": {
+    "firmware_display": true,
+    "usb_keyboard": true,
+    "display_connectors": ["hdmi"]
+  },
+  "storage": [
+    {"device_id": "internal-demo", "kind": "internal", "capacity_mib": 238000},
+    {"device_id": "usb-demo", "kind": "removable", "capacity_mib": 16000}
+  ],
+  "controllers": ["usb-xhci", "nvme"],
+  "device_ids": ["cpu:x86-64-demo", "display:uefi-gop-demo"],
+  "evidence": {
+    "collector": "fixture-only",
+    "commands": [],
+    "writes_performed": []
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "target_id": "x86-64-uefi-usb-v0",
+  "requirements": {
+    "architecture": "x86-64",
+    "firmware_interface": "uefi",
+    "secure_boot": "disabled",
+    "removable_boot": true,
+    "boot_menu": true,
+    "minimum_memory_mib": 1024,
+    "firmware_display": true,
+    "usb_keyboard": true,
+    "required_controllers": ["usb-xhci"],
+    "minimum_removable_capacity_mib": 64
+  },
+  "installation_policy": {
+    "allowed_target_kind": "removable",
+    "internal_storage_writes": false,
+    "firmware_writes": false,
+    "secure_boot_changes": false,
+    "recovery_method": "power-off-and-remove-usb"
+  }
+}

@@ -42,11 +42,14 @@ every layer we would otherwise be tempted to hide.
 - [`experiments/runner-contract-v1`](experiments/runner-contract-v1): one explicit
   execution contract for native QEMU, hosted Darwin, and a framed simulated bridge with
   transcript-bound evidence and recovery declarations.
+- [`experiments/hardware-discovery-v1`](experiments/hardware-discovery-v1): strict
+  read-only inventory matching and a non-executable, removable-USB-only installation
+  proposal, currently tested exclusively with simulated hardware fixtures.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then run
-[`experiments/runner-contract-v1/README.md`](experiments/runner-contract-v1/README.md).
+[`experiments/hardware-discovery-v1/README.md`](experiments/hardware-discovery-v1/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is
