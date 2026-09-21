@@ -77,9 +77,9 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - U2 is complete: one unchanged world and patch lower through QEMU RV32I and hosted
   Darwin ARM64 Target Packs, and the complete two-backend contract passes on the
   learner's Apple Silicon Mac.
-- U3 is implemented in the development environment: graph v1 emits `HI`, and an
-  immutable patch adds and connects punctuation to emit `HI!` on QEMU RV32I. Hosted
-  ARM64 execution on the learner's Mac remains before completion.
+- U3 is complete: graph v1 emits `HI`, and an immutable patch adds and connects
+  punctuation to emit `HI!` through both QEMU RV32I and hosted Darwin ARM64.
+- U4 (Target Pack capability negotiation) is the next milestone.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -171,7 +171,7 @@ separate compile and execution timeouts, and an infinite return loop exposed a m
 ARM64 `x30` save around `bl _write`. The backend now preserves `x29/x30`, compilation
 gets a bounded 30 seconds, and the resulting program still must finish within 3 seconds.
 
-## U3 implementation result
+## U3 verified result
 
 `experiments/universal-graph-v1/` introduces explicit versioned imports and dependencies,
 capabilities, resource budgets, modules, typed port endpoints, event connections, and an
@@ -187,16 +187,24 @@ artifacts. QEMU has observed exactly `HI` and `HI!` with status `0`.
 The verifier rejects dangling and unknown ports, byte-to-event type mismatches, cycles,
 missing authority, module/output budget overflow, stale patches and targets, backend-edit
 fields, ambiguous JSON, and cross-target evidence. Removing the patch restores the exact
-base graph, artifact, and output. Apple Silicon execution remains the completion gate.
+base graph, artifact, and output.
+
+The complete suite passed on the learner's Apple Silicon Mac. QEMU RV32I and hosted
+ARM64 both observed exactly `HI` and patched `HI!` with empty stderr and status `0`,
+while sharing graph identity and retaining separate target and artifact identities.
 
 ## Immediate implementation sequence
 
-1. Pull graph v1 on the learner's Apple Silicon Mac and run `python3 verify.py`.
-2. Confirm hosted ARM64 observes exactly `HI` and patched `HI!` with status `0`.
-3. Confirm the combined graph suite rejects invalid topology, types, authority,
-   revisions, budgets, and cross-target evidence.
-4. Mark U3 complete without changing either backend for the punctuation patch.
-5. Begin U4 capability negotiation across more device-shaped effects.
+1. Replace backend-shaped `console.write` requests with a versioned semantic capability
+   such as `display.text` plus explicit required/optional status and constraints.
+2. Let each Target Pack advertise supported capability versions, drivers, limits,
+   remaining software layers, and authority effects.
+3. Produce a canonical deployment plan that binds the same graph to QEMU UART and
+   Darwin stdout without placing either driver name in the portable world.
+4. Demonstrate an unavailable optional capability such as `light.emit` being reported
+   but safely omitted, while the same capability marked required rejects deployment.
+5. Bind plan identity into build and execution evidence; reject stale, incompatible,
+   over-budget, or undeclared bindings.
 
 ## Safety and honesty constraints
 
@@ -212,12 +220,14 @@ base graph, artifact, and output. Apple Silicon execution remains the completion
 
 ## Definition of the next milestone
 
-U3 is complete only when:
+U4 is complete only when:
 
-- a portable graph explicitly represents modules, typed ports, connections, events,
-  dependencies, and resource budgets;
-- one base graph produces `HI` on both existing targets;
-- one patch adds and connects a supported module to produce `HI!` without backend edits;
-- invalid topology, types, authority, revisions, and budgets are rejected;
-- removing the patch restores the exact base graph and behavior;
-- the combined two-target graph conformance suite passes reproducibly.
+- portable worlds request versioned semantic capabilities with explicit constraints and
+  required/optional status, never target driver names;
+- Target Packs advertise independently validated offers, limits, layers, and effects;
+- a deterministic resolver produces a canonical plan or a precise rejection;
+- `display.text` binds to QEMU UART and Darwin stdout while preserving graph meaning;
+- unavailable optional capabilities are reported and omitted, but unavailable required
+  capabilities reject before building;
+- plan hashes bind world, target, selected drivers, constraints, and execution evidence;
+- the combined two-target negotiation and negative conformance suite passes reproducibly.

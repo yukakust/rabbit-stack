@@ -112,16 +112,15 @@ Machine images differ while world identity and observable contract remain the sa
 combined verifier passes on the learner's Apple Silicon Mac and rejects cross-target and
 stale-target evidence.
 
-### U3 — Universal module graph (current: Mac confirmation pending)
+### U3 — Universal module graph (complete)
 
 Represent modules, typed ports, events, imports, dependencies, and resource budgets.
 A patch must add and connect a supported module without editing the world runtime or
 unrelated modules. The first demonstration extends `HI` to `HI!` on both backends.
-Graph v1, its two revised Target Packs, deterministic lowerers, rollback, and negative
-conformance suite are implemented. Completion awaits the combined verifier on the
-learner's Apple Silicon Mac.
+The combined verifier passes on the learner's Apple Silicon Mac: both targets observe
+`HI` and patched `HI!`, rollback is exact, and invalid graph changes are rejected.
 
-### U4 — Target Packs and capability negotiation
+### U4 — Target Packs and capability negotiation (next)
 
 Define schemas and conformance suites for target resources and device capabilities.
 Resolve portable capabilities such as `display.text`, `light.emit`, `storage.read`, or
@@ -258,16 +257,18 @@ Every result should preserve:
 
 The public story is: **one intent, many bodies, one verifiable meaning**.
 
-## Definition of U3 completion
+## Definition of U4 completion
 
-U3 is complete only when:
+U4 is complete only when:
 
-- a portable graph explicitly represents modules, typed ports, connections, events,
-  imports or dependencies, and resource budgets;
-- one base graph produces `HI` through both existing Target Packs;
-- one patch adds and connects a punctuation module to produce `HI!` without changing
-  either backend or unrelated modules;
-- dangling connections, incompatible types, undeclared authority, stale revisions, and
-  resource-budget overflow are rejected;
-- removing the patch restores the exact base graph and observed behavior;
-- both documented CLIs and the combined two-target conformance suite pass reproducibly.
+- portable worlds request versioned semantic capabilities with required/optional status
+  and explicit constraints, without target driver names;
+- Target Packs advertise validated capability versions, drivers, limits, remaining
+  layers, and authority effects;
+- a deterministic resolver emits a canonical deployment plan or a precise rejection;
+- `display.text` binds to QEMU UART and Darwin stdout without changing graph meaning;
+- unavailable optional capabilities are reported and omitted, while unavailable required
+  capabilities reject before artifact construction;
+- plan identity binds the exact world, target, selected drivers, and execution evidence;
+- stale offers, incompatible versions, constraint failures, hidden drivers, and budget
+  overflow are rejected by the combined two-target conformance suite.

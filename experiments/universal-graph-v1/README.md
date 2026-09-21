@@ -60,8 +60,15 @@ Target Packs are graph-v1 revisions because variable-length output replaces Worl
 fixed 32-byte image contract; the proven World v0 files remain unchanged.
 
 On non-Apple-Silicon development hosts the verifier checks the ARM64 artifact but skips
-its execution. U3 is complete only after the same verifier ends with
-`PASS: complete U3 universal module graph contract` on the learner's Mac.
+its execution. The complete suite has passed on the learner's Apple Silicon Mac with
+`PASS: complete U3 universal module graph contract`.
+
+## Verified result
+
+QEMU RV32I and hosted Darwin ARM64 both observed exactly `HI` for the immutable base and
+`HI!` after adding the punctuation module, with empty stderr and status `0`. They shared
+graph identity while retaining separate Target Pack and artifact identities. All graph,
+budget, rollback, CLI, stale-evidence, and cross-target rejection checks passed.
 
 This remains a deliberately linear, stateless graph. Branches, queues, persistent state,
 dynamic loading, and hot patches are not implemented yet.
