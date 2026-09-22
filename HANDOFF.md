@@ -445,6 +445,16 @@ no HCI or radio authority. Exact evidence is now committed. This opens the combi
 read-only preparation workflow, but not physical-media replacement: a fresh external
 disk identity and explicit owner authorization are still required.
 
+The owner subsequently authorized and ran that exact image on the physical Dell. The
+program found `0CF3:E009` interface `00`, selected interrupt endpoint `81`, sent only
+HCI Read Local Version Information (`0x1001`), and received Command Complete status
+`00`. The controller reported HCI/LMP version `07`, manufacturer `001D`, and LMP
+subversion `025A`, corresponding to Bluetooth Core 4.1 and Qualcomm in the Bluetooth
+SIG Assigned Numbers. The observation is exact-hash-bound in
+`evidence/dell-optiplex-3060-physical-observed.json`. No reset, firmware download,
+scan, advertising, pairing, connection, ACL data, radio data, or persistent write ran.
+The next boundary is one combined local-capability artifact, not yet a radio link.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

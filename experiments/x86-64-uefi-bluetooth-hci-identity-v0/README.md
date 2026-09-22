@@ -55,6 +55,27 @@ fail-closed result: it reached Stage 1, did not find `0CF3:E009`, and sent no HC
 command. The owner-reviewed evidence is bound to the exact probe, target, program, EFI,
 and image identities and makes no physical claim.
 
-Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. `prepare_physical.py` is now open.
-Physical USB replacement still requires a fresh removable-device identity and explicit
-owner authorization because this artifact introduces one real USB command.
+## Physical Dell result
+
+On 2026-09-23 the exact image ran on the Dell OptiPlex 3060 and found interface `00`
+of `0CF3:E009`. It sent the sole authorized local command and received a successful
+Command Complete event on endpoint `81`:
+
+```text
+status:          00
+HCI version:     07
+HCI revision:    0000
+LMP version:     07
+manufacturer:    001D
+LMP subversion:  025A
+```
+
+The [Bluetooth SIG Assigned Numbers](https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Assigned_Numbers/out/en/index-en.html)
+identify version `07` as Bluetooth Core 4.1 and manufacturer `001D` as Qualcomm. This
+proves that our UEFI program can speak the HCI protocol to the physical controller
+without an operating system. It does not yet prove a radio link: no scan, advertising,
+pairing, connection, or radio-data operation ran.
+
+Status: **PHYSICAL-DELL-OBSERVED**. The next boundary combines bounded local supported-
+commands and supported-features queries into one image before authorizing any radio
+operation.

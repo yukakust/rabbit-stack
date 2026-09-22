@@ -164,6 +164,56 @@ def main() -> int:
         require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
         print("PASS: exact QEMU evidence proves the artifact fails closed without 0CF3:E009")
 
+        physical = load_json(ROOT / "evidence" / "dell-optiplex-3060-physical-observed.json")
+        require(physical["status"] == "OBSERVED-PHYSICAL-DELL-HCI-LOCAL-VERSION", "physical evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical["bindings"][field] == report_a[field], f"physical {field} binding changed")
+        require(
+            physical["observation"] == {
+                "method": "owner-reviewed-photograph",
+                "visible_version": "v0.1",
+                "target_usb_id": "0CF3:E009",
+                "interface_number": "00",
+                "event_endpoint": "81",
+                "command_opcode": "0x1001",
+                "command_complete_status": "00",
+                "hci_version": "07",
+                "hci_revision": "0000",
+                "lmp_version": "07",
+                "manufacturer": "001D",
+                "lmp_subversion": "025A",
+            },
+            "physical HCI observation changed",
+        )
+        require(
+            physical["interpretation"] == {
+                "hci_core_version": "Bluetooth Core Specification 4.1",
+                "manufacturer_name": "Qualcomm",
+                "controller_transport": "internal-usb-hci",
+            },
+            "physical controller interpretation changed",
+        )
+        require(
+            physical["safety"] == {
+                "hci_commands_sent": 1,
+                "allowed_hci_opcodes": ["0x1001"],
+                "scan_requested": False,
+                "advertising_requested": False,
+                "pairing_attempts": 0,
+                "connection_attempts": 0,
+                "radio_data_packets_sent": 0,
+                "controller_resets": 0,
+                "firmware_downloads": 0,
+                "persistent_machine_changes": False,
+            },
+            "physical safety observation changed",
+        )
+        require(
+            physical["next_boundary"] == "bounded-local-capability-query-before-any-radio-operation",
+            "physical evidence opens an unexpected next boundary",
+        )
+        print("PASS: exact physical evidence records Qualcomm Bluetooth 4.1 identity over endpoint 81")
+
         over_budget = copy.deepcopy(probe)
         over_budget["limits"]["max_hci_commands"] = 2
         rejected("two HCI commands", lambda: validate_probe(over_budget))
@@ -185,7 +235,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: QEMU-observed single-command Bluetooth HCI identity contract")
+    print("PASS: physical-Dell-observed single-command Bluetooth HCI identity contract")
     return 0
 
 

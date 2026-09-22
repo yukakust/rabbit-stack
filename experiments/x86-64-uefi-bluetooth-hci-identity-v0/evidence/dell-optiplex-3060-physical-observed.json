@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-bluetooth-hci-identity-v0.1-physical-2026-09-23",
+  "status": "OBSERVED-PHYSICAL-DELL-HCI-LOCAL-VERSION",
+  "bindings": {
+    "probe_sha256": "d8f28775ef6a025935e177f06ff59628b7dce8deed329d27f74b6bccf455de91",
+    "target_sha256": "a682160b86c4d46895280e359748d811885fe1f28af5cac26b4cab17b205c97e",
+    "program_sha256": "63c54bfbc690a5af5094c5cc393fadbd1626071a5cc104cec215784bf01702aa",
+    "efi_sha256": "b7da72b8fa450e047c9f6d69c0879c394aa7274ba28b8643813885186d9485fe",
+    "image_sha256": "c5658d3edf41028089f72d2be324c12dddbaad1b3f0c037930a1d81bd91ec8de"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "processor": "Intel Core i5-8500T",
+    "firmware": "UEFI",
+    "secure_boot": "disabled-by-owner-dedicated-lab-policy",
+    "boot_medium": "external-removable-usb",
+    "operating_system_present": false,
+    "internal_storage_present": false
+  },
+  "observation": {
+    "method": "owner-reviewed-photograph",
+    "visible_version": "v0.1",
+    "target_usb_id": "0CF3:E009",
+    "interface_number": "00",
+    "event_endpoint": "81",
+    "command_opcode": "0x1001",
+    "command_complete_status": "00",
+    "hci_version": "07",
+    "hci_revision": "0000",
+    "lmp_version": "07",
+    "manufacturer": "001D",
+    "lmp_subversion": "025A"
+  },
+  "interpretation": {
+    "hci_core_version": "Bluetooth Core Specification 4.1",
+    "manufacturer_name": "Qualcomm",
+    "controller_transport": "internal-usb-hci"
+  },
+  "safety": {
+    "hci_commands_sent": 1,
+    "allowed_hci_opcodes": [
+      "0x1001"
+    ],
+    "scan_requested": false,
+    "advertising_requested": false,
+    "pairing_attempts": 0,
+    "connection_attempts": 0,
+    "radio_data_packets_sent": 0,
+    "controller_resets": 0,
+    "firmware_downloads": 0,
+    "persistent_machine_changes": false
+  },
+  "next_boundary": "bounded-local-capability-query-before-any-radio-operation"
+}

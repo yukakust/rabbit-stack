@@ -311,6 +311,14 @@ reported that no HCI command was sent. Physical preparation may now proceed, whi
 removable-media write and first real controller command remain separate owner-authorized
 boundaries.
 
+The authorized physical run then completed on the Dell. The exact `0CF3:E009` interface
+accepted HCI Read Local Version Information and returned Command Complete status `00`
+on interrupt endpoint `81`: HCI/LMP version `07`, manufacturer `001D`, and LMP
+subversion `025A`. Assigned Numbers map these values to Bluetooth Core 4.1 and Qualcomm.
+No radio operation or persistent write occurred. The next artifact will combine the
+remaining bounded local capability queries in one boot before any separately authorized
+scan, advertising, pairing, or connection experiment.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve
