@@ -283,10 +283,14 @@ protocols, Ethernet `10EC:8168`, and wireless-class controller `168C:0042`. The 
 transport must be wireless because no additional cable is available. Before committing
 to the substantially larger QCA9377 path, `x86-64-uefi-bluetooth-probe-v0` performs a
 bounded read-only UEFI USB inventory and identifies standard Bluetooth class
-`E0/01/01`. It is built but awaits QEMU. A positive physical result selects a staged BLE
-Rabbit bridge; no candidate selects the read-only QCA9377 planning path. HCI commands,
-pairing, firmware loading, association, credentials, receive, and transmit all remain
-outside this discovery step.
+`E0/01/01`. QEMU displayed its emulated USB keyboard and the probe correctly rejected
+that device as Bluetooth; the exact evidence is bound to the artifact without claiming
+physical execution. The safe preparation steps are now collapsed into one command that
+verifies, builds, hashes, and inspects external media read-only. Device writing and the
+first activation of a new hardware authority remain explicit separate boundaries. A
+positive physical result selects a staged BLE Rabbit bridge; no candidate selects the
+read-only QCA9377 planning path. HCI commands, pairing, firmware loading, association,
+credentials, receive, and transmit all remain outside this discovery step.
 
 ### U10 — Universal installer
 

@@ -33,6 +33,10 @@ Dell's Bluetooth hardware, so `BLUETOOTH CANDIDATES: 00` is acceptable there. Th
 must show at least one described USB interface and must not label the keyboard as
 Bluetooth. Photograph the screen, then press any key.
 
+On 2026-09-23 the owner observed exactly that result under QEMU 11.1.1: USB keyboard
+`0627:0001`, interface class `03/01/01`, `BT=NO`, one described interface, and zero
+Bluetooth candidates. The evidence is exact-bound and makes no physical Dell claim.
+
 Build the physical candidate without writing a device:
 
 ```sh
@@ -40,6 +44,16 @@ python3 build_image.py \
   --output /tmp/rabbit-bluetooth-probe-v01.img \
   --report /tmp/rabbit-bluetooth-probe-v01.json
 ```
+
+The shortened safe workflow combines verification, building, hashing, external-media
+listing, and full `diskutil info` into one non-destructive command:
+
+```sh
+python3 prepare_physical.py
+```
+
+It never unmounts or writes a device. Exact-device review and explicit authorization
+remain separate because they are the destructive boundary.
 
 Reviewed identities:
 
@@ -49,8 +63,8 @@ EFI SHA-256:     9c143212037c6368187f4daecf09b360a8f6d1689146a1e2c7ef7ae9706c1c3
 image SHA-256:   15bc2c6e19236bbb0a1f2823eda0ab89f55a93b51b682d81e53e85db8e5d69a2
 ```
 
-Status: **BUILT-NOT-INSTALLED**. A QEMU observation is required before any fresh device
-identification, explicit physical-write authorization, or Dell execution.
+Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. The combined preparation command may
+now be used, but physical writing still requires explicit authorization.
 
 The result is a routing decision, not Bluetooth support. `BT=YES` opens a staged BLE
 bridge path; zero candidates sends the project back to the observed QCA9377 Wi-Fi path.

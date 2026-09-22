@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-bluetooth-probe-v0.1-macos-arm64-2026-09-23",
+  "status": "OBSERVED-MANUAL-QEMU-USB-BLUETOOTH-PROBE",
+  "bindings": {
+    "probe_sha256": "69741ff58157e88b4f8b59a01cbd1e57979d7ae34ecee65385ca817cb7ab0e96",
+    "target_sha256": "af9b486ceca68af2fe65b808aaa37bcdce10aed7f292948b06eb851b1c7b6b64",
+    "program_sha256": "1a716bd0f4f7a9eeee3b2b5cdcca2b1ecc460933d02bc33c8802d04bc142a0ce",
+    "efi_sha256": "9c143212037c6368187f4daecf09b360a8f6d1689146a1e2c7ef7ae9706c1c34",
+    "image_sha256": "15bc2c6e19236bbb0a1f2823eda0ab89f55a93b51b682d81e53e85db8e5d69a2"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "emulated_usb_device": "qemu-usb-keyboard",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "visible_version": "v0.1",
+    "usb_interfaces": [
+      {
+        "vendor_id": "0627",
+        "product_id": "0001",
+        "device_class": "00/00/00",
+        "interface_number": "00",
+        "interface_class": "03/01/01",
+        "bluetooth_candidate": false
+      }
+    ],
+    "described_interfaces": 1,
+    "bluetooth_candidates": 0
+  },
+  "physical_dell_status": "NOT-OBSERVED",
+  "limitations": [
+    "QEMU models a USB keyboard, not the Dell internal Bluetooth hardware",
+    "zero QEMU Bluetooth candidates does not predict the Dell result",
+    "a separately authorized physical run is required"
+  ]
+}

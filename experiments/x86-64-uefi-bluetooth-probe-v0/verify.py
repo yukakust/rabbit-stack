@@ -155,6 +155,29 @@ def main() -> int:
         require(not is_bluetooth((0, 0, 0), (0x08, 0x06, 0x50)), "USB storage misclassified as Bluetooth")
         print("PASS: Bluetooth class matching accepts device/interface E0/01/01 and rejects keyboard/storage")
 
+        qemu = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(qemu["status"] == "OBSERVED-MANUAL-QEMU-USB-BLUETOOTH-PROBE", "QEMU evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu["bindings"][field] == report_a[field], f"QEMU {field} binding changed")
+        require(qemu["observation"]["visible_version"] == "v0.1", "QEMU version marker changed")
+        require(
+            qemu["observation"]["usb_interfaces"]
+            == [{
+                "vendor_id": "0627",
+                "product_id": "0001",
+                "device_class": "00/00/00",
+                "interface_number": "00",
+                "interface_class": "03/01/01",
+                "bluetooth_candidate": False,
+            }],
+            "QEMU USB keyboard observation changed",
+        )
+        require(qemu["observation"]["described_interfaces"] == 1, "QEMU interface count changed")
+        require(qemu["observation"]["bluetooth_candidates"] == 0, "QEMU Bluetooth count changed")
+        require(qemu["physical_dell_status"] == "NOT-OBSERVED", "QEMU evidence overclaims physical Dell")
+        require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
+        print("PASS: exact QEMU evidence classifies the USB keyboard as non-Bluetooth and makes no physical claim")
+
         mutated = copy.deepcopy(probe)
         mutated["mutations"] = ["enable-bluetooth"]
         rejected("a probe that enables Bluetooth", lambda: validate_probe(mutated))
@@ -176,7 +199,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-QEMU read-only UEFI USB/Bluetooth inventory contract")
+    print("PASS: QEMU-observed read-only UEFI USB/Bluetooth inventory contract")
     return 0
 
 

@@ -414,7 +414,12 @@ facts, and caps enumeration at 64 interfaces. Its reviewed program is 1,152 byte
 image identity is
 `15bc2c6e19236bbb0a1f2823eda0ab89f55a93b51b682d81e53e85db8e5d69a2`.
 Deterministic, PE/FAT, ABI, classifier, budget, policy, tamper, and duplicate-JSON tests
-pass. It is `BUILT-NOT-INSTALLED`: QEMU evidence is the next gate. No HCI command,
+pass. QEMU 11.1.1 then displayed one emulated USB keyboard (`0627:0001`, interface
+class `03/01/01`), correctly classified it as non-Bluetooth, and reported zero
+Bluetooth candidates. Exact-bound evidence is committed and makes no physical Dell
+claim. `prepare_physical.py` now combines verification, building, hashing, and read-only
+external-media inspection into one command. It deliberately stops before unmounting or
+writing: exact-device review and explicit authorization remain separate. No HCI command,
 pairing, radio packet, port reset, USB data transfer, or persistent write is authorized.
 
 ## U7 pre-physical artifact result
