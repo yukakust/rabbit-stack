@@ -9,7 +9,7 @@ import struct
 from collections.abc import Callable
 
 from rabbit_interactive import (
-    BuildError, GOP_GUID, IMAGE_SIZE, PARTITION_LBA, SECTOR_SIZE, TARGET_PATH, WORLD_PATH,
+    BuildError, GOP_GUID, IMAGE_SIZE, PARTITION_LBA, ROOT, SECTOR_SIZE, TARGET_PATH, WORLD_PATH,
     build, load_json, machine_code, simulate_key, validate_target, validate_world,
 )
 
@@ -129,11 +129,31 @@ def main() -> int:
         inspect_efi(efi, code)
         require(hashlib.sha256(efi).hexdigest() == report_a["efi_sha256"], "embedded EFI hash differs")
         verify_model()
+        observed = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(observed["status"] == "OBSERVED-MANUAL-QEMU-INTERACTION", "QEMU evidence status changed")
+        require(
+            observed["bindings"] == {
+                "world_sha256": report_a["world_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "efi_sha256": report_a["efi_sha256"],
+                "image_sha256": report_a["image_sha256"],
+            },
+            "QEMU evidence is stale or bound to another interactive artifact",
+        )
+        interaction = observed["observation"]
+        require(interaction["directions_observed"] == ["up", "down", "left", "right"], "not all directions observed")
+        require(interaction["step_pixels"] == 16, "observed movement step changed")
+        require(interaction["old_frame_erased_without_orange_trail"] is True, "frame erasure was not observed")
+        require(interaction["screen_boundaries_clamped"] is True, "boundary clamping was not observed")
+        require(interaction["escape_returned_from_application"] is True, "Escape behavior was not observed")
+        require(observed["execution"]["physical_execution_verified"] is False, "QEMU claimed physical execution")
+        require(observed["execution"]["physical_writes_performed"] == [], "QEMU claimed physical writes")
         print("PASS: interactive world lowers deterministically to 542 reviewed x86-64 code/data bytes")
         print("PASS: code clears the framebuffer, draws, reads UEFI scan codes, erases, moves, and redraws")
         print("PASS: arrow model moves by 16 pixels, clamps all four edges, and preserves opposite-step identity")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
         print("PASS: artifact remains BUILT-NOT-INSTALLED with no physical writes")
+        print("PASS: owner-reviewed QEMU interaction binds four-way movement, erasure, boundaries, and Escape to exact identities")
 
         wrong_step = copy.deepcopy(world)
         wrong_step["contract"]["movement_step_pixels"] = 32

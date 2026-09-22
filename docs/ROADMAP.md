@@ -208,7 +208,10 @@ The next artifact is now built but not yet observed: a keyboard-controlled `128 
 orange object. Reviewed x86-64 bytes clear the screen, retain coordinates, read standard
 UEFI arrow scan codes, erase the old object, clamp the next position, and redraw. Escape
 returns success. Its deterministic build, instruction checks, movement model, boundary
-tests, and negative policy tests pass; interactive QEMU execution is the next gate.
+tests, and negative policy tests pass. QEMU 11.1.1 has now manually demonstrated all
+four directions, clean old-frame erasure, boundary clamping, and Escape; the observation
+is bound to exact world, target, EFI, and image identities. Physical Dell interaction is
+the next gate.
 
 ### U8 — Transactional patches
 

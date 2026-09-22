@@ -282,8 +282,8 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Run `experiments/x86-64-uefi-interactive-v0/` in QEMU and verify all four arrows,
-   boundary clamping, erasure/redraw, and Escape before any physical-media write.
+1. Re-identify the external Kingston device, obtain explicit authorization, install the
+   QEMU-observed interactive image, verify its EFI hash, and test it on the Dell.
 2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
    reconsider it if the machine stops being a dedicated lab target.
 3. Add a second dissimilar physical target when real inventory becomes available, then
@@ -319,7 +319,10 @@ UEFI arrow scan codes, erases the old position, moves by 16 pixels, clamps every
 and redraws; Escape exits. The artifact comprises 542 reviewed x86-64 code/data bytes
 inside the same deterministic PE32+/FAT32 envelope. Static instruction checks, an
 independent movement model, boundary tests, policy rejection, and repeated builds pass.
-QEMU interaction remains the next evidence gate; no USB write is authorized yet.
+QEMU 11.1.1 then demonstrated all four directions, clean old-frame erasure, boundary
+clamping, and Escape; the owner-reviewed interaction is bound to exact identities. No
+USB write is authorized yet; fresh device identification and authorization remain the
+next gate.
 
 ## U7 pre-physical artifact result
 

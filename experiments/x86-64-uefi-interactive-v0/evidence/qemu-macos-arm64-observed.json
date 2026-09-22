@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-interactive-macos-arm64-2026-09-22",
+  "status": "OBSERVED-MANUAL-QEMU-INTERACTION",
+  "bindings": {
+    "world_sha256": "f6d22aa19f64ff36e6057b9904624e2fb4d551e75234aa59d774a82b539462b9",
+    "target_sha256": "bbec78f05b18422021999adf8e6fbafd34695cf6c6fb8ef1235c858245b7f9ac",
+    "efi_sha256": "b633e0aa48f850bd350d2d1d55bb7e431b83f43f7f1b783e84864e10ede7ef84",
+    "image_sha256": "be2d4ba213672e1ce11879c5b644976a59edad924cfffd6237643e0afa65e06f"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "firmware": "TianoCore EDK II",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-live-qemu-interaction",
+    "initial_square_visible": true,
+    "directions_observed": ["up", "down", "left", "right"],
+    "step_pixels": 16,
+    "old_frame_erased_without_orange_trail": true,
+    "screen_boundaries_clamped": true,
+    "escape_returned_from_application": true
+  },
+  "limitations": [
+    "the live interaction was reviewed manually rather than captured by an automated framebuffer/input oracle",
+    "this is emulator evidence, not physical Dell execution",
+    "UEFI still configured graphics and supplied keyboard scan codes"
+  ]
+}

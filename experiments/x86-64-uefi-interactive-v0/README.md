@@ -30,8 +30,13 @@ Expected behavior:
 4. it stops at screen boundaries;
 5. Escape returns from the application.
 
-This is `BUILT-NOT-INSTALLED`. QEMU interaction is the next evidence gate. Physical USB
-installation requires another exact device check and explicit authorization.
+On 2026-09-22 the owner ran the exact image under QEMU 11.1.1 and manually confirmed
+all four arrow directions, 16-pixel movement, erasure without an orange trail, clamping
+at every screen edge, and successful return on Escape. The observation is bound to the
+exact world, target, EFI, and image in `evidence/qemu-macos-arm64-observed.json`.
+
+This remains physically `BUILT-NOT-INSTALLED`. USB installation requires another exact
+device check and explicit authorization.
 
 Reviewed identities:
 
