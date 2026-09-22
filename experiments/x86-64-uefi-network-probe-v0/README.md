@@ -73,6 +73,12 @@ The exact v0.4 image subsequently passed QEMU 11.1.1: its version marker, all th
 stages, Simple Network `YES`, Wi-Fi v1/v2 `NO`, and emulated `8086:10D3` controller were
 visible. This proves the ABI correction preserves the QEMU behavior; only the physical
 Dell run can confirm or reject it as the cause of the dark screen.
+The separately authorized physical run then succeeded. The Dell exposed no UEFI Simple
+Network or standardized Wi-Fi protocol, but reported two PCI network controllers:
+Ethernet `10EC:8168` at `01:00.0` and a wireless-class `168C:0042` controller at
+`02:00.0`. No packets were sent and no PCI configuration or persistent machine state
+was changed. The controlled v0.3-dark/v0.4-visible result supports the corrected call
+frame as the cause of the earlier failure.
 
 Build the physical candidate without writing a device:
 
@@ -90,5 +96,6 @@ EFI SHA-256:     2ef0a4b872e9879769090195792de840fc8a7f53282fd5931f13b5ccf48edd2
 image SHA-256:   cef4a46e3e3c73445f480cab1f19efc195163831f2423fb3aa7e63ed325614b4
 ```
 
-Status: **V0.4-QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. Another physical USB rewrite
-still requires fresh device identification and explicit authorization.
+Status: **V0.4-PHYSICALLY-OBSERVED**. The next boundary is a read-only native-driver
+planning probe for exact controller `168C:0042`; network association and transmission
+remain unauthorized and unimplemented.

@@ -282,11 +282,10 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Build ABI-corrected network-probe v0.4 and freshly identify the removable device;
-   its exact QEMU evidence is already recorded.
-2. After explicit authorization, run exact v0.4 on
-   the Dell and use its visible stage plus real protocol and PCI
-   vendor/device results to choose firmware-provided Wi-Fi or a concrete native driver.
+1. Build a read-only native-driver planning probe for the observed wireless controller
+   `168C:0042`: collect revision, subsystem, PCI capabilities, and BAR resource facts
+   without mapping MMIO, loading firmware, associating, or transmitting.
+2. Turn those exact facts into a reviewed QCA9377 Target Pack and staged bring-up plan.
 3. Implement receive-only framed `.rabbit` package transport over that selected path,
    then add authenticated transactional replacement and responses.
 4. Put the package interpreter behind the UEFI framebuffer/input/network Target Pack so
@@ -398,6 +397,13 @@ V0.4 then passed QEMU 11.1.1 with its version marker, all three stages, and the 
 emulated network inventory visible. This confirms that the correction preserves QEMU
 behavior. The diagnosis remains a hypothesis until the separately authorized physical
 Dell run.
+The exact v0.4 image was then written and verified, and the physical Dell displayed all
+three stages. It exposed no UEFI Simple Network or Wi-Fi protocol and reported Ethernet
+`10EC:8168` at `01:00.0` plus wireless-class `168C:0042` at `02:00.0`. No packet or PCI
+configuration write occurred. The physical A/B result supports the corrected nested
+call frame as the earlier failure cause. Upstream ath10k maps device `0042` to QCA9377,
+so the next experiment is read-only driver planning for that exact device, not a generic
+or guessed Wi-Fi implementation.
 
 ## U7 pre-physical artifact result
 

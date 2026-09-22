@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-network-probe-v0.4-physical-2026-09-23",
+  "status": "OBSERVED-PHYSICAL-DELL-NETWORK-INVENTORY",
+  "bindings": {
+    "probe_sha256": "a78eef05dc116f80351b0ed979663e33f6b458591d183de1bc5b53c4e67dd14d",
+    "target_sha256": "46a040fe8f929bff4dc190e5a4f9bb739861c2f96fe3cc94ecfbc03781f2237e",
+    "program_sha256": "ab444601b3976fc39764d7e25b8c464676f294eb62b0c65d601fe52e893d98de",
+    "efi_sha256": "2ef0a4b872e9879769090195792de840fc8a7f53282fd5931f13b5ccf48edd2c",
+    "image_sha256": "cef4a46e3e3c73445f480cab1f19efc195163831f2423fb3aa7e63ed325614b4"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "processor": "Intel Core i5-8500T",
+    "firmware_interface": "UEFI",
+    "secure_boot": "disabled-by-owner-dedicated-lab-policy",
+    "boot_medium": "external-removable-usb",
+    "operating_system_present": false,
+    "internal_storage_used": false
+  },
+  "observation": {
+    "method": "owner-reviewed-photograph",
+    "visible_version": "v0.4",
+    "visible_stages": [
+      "STAGE 1: TEXT OK",
+      "STAGE 2: PROTOCOL CHECKS",
+      "STAGE 3: PCI HANDLES"
+    ],
+    "uefi_simple_network": false,
+    "uefi_wifi_v1": false,
+    "uefi_wifi_v2": false,
+    "pci_network_controllers": [
+      {
+        "bus": 1,
+        "device": 0,
+        "function": 0,
+        "vendor_id": "10EC",
+        "device_id": "8168",
+        "subclass": "00"
+      },
+      {
+        "bus": 2,
+        "device": 0,
+        "function": 0,
+        "vendor_id": "168C",
+        "device_id": "0042",
+        "subclass": "80"
+      }
+    ],
+    "total": 2
+  },
+  "safety": {
+    "network_packets_sent": 0,
+    "configuration_data_writes": 0,
+    "persistent_machine_changes": false
+  },
+  "diagnosis": {
+    "v0_3_dark_before_stage_1": true,
+    "v0_4_abi_call_frame_corrected": true,
+    "physical_result_supports_call_frame_hypothesis": true
+  },
+  "next_boundary": "read-only-native-driver-planning-for-pci-168c-0042"
+}

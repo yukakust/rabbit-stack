@@ -278,6 +278,11 @@ nested text-output helper: it now supplies the firmware call's mandatory shadow 
 and stack alignment. The corrected v0.4 passed a fresh QEMU gate with every stage and
 the same emulated inventory visible. It now awaits a fresh device check and separately
 authorized physical run.
+That run succeeded: the Dell displayed every stage and reported no firmware network
+protocols, Ethernet `10EC:8168`, and wireless-class controller `168C:0042`. The next
+step is a read-only QCA9377 planning probe for revision, subsystem, PCI capabilities,
+and BAR resources. Firmware loading, association, credentials, receive, and transmit
+remain outside that discovery step.
 
 ### U10 — Universal installer
 

@@ -198,6 +198,27 @@ def main() -> int:
         require(qemu_v04["execution"]["physical_execution_verified"] is False, "v0.4 QEMU evidence claims physical execution")
         print("PASS: exact v0.4 QEMU evidence shows the ABI-corrected path and makes no physical claim")
 
+        physical_v04 = load_json(ROOT / "evidence" / "dell-optiplex-3060-v0.4-physical-observed.json")
+        require(physical_v04["status"] == "OBSERVED-PHYSICAL-DELL-NETWORK-INVENTORY", "physical v0.4 status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical_v04["bindings"][field] == report_a[field], f"physical v0.4 {field} binding changed")
+        require(physical_v04["observation"]["visible_version"] == "v0.4", "physical version marker changed")
+        require(physical_v04["observation"]["uefi_simple_network"] is False, "Dell SNP observation changed")
+        require(physical_v04["observation"]["uefi_wifi_v1"] is False, "Dell Wi-Fi v1 observation changed")
+        require(physical_v04["observation"]["uefi_wifi_v2"] is False, "Dell Wi-Fi v2 observation changed")
+        require(
+            physical_v04["observation"]["pci_network_controllers"]
+            == [
+                {"bus": 1, "device": 0, "function": 0, "vendor_id": "10EC", "device_id": "8168", "subclass": "00"},
+                {"bus": 2, "device": 0, "function": 0, "vendor_id": "168C", "device_id": "0042", "subclass": "80"},
+            ],
+            "physical Dell network inventory changed",
+        )
+        require(physical_v04["observation"]["total"] == 2, "physical controller count changed")
+        require(physical_v04["safety"] == {"network_packets_sent": 0, "configuration_data_writes": 0, "persistent_machine_changes": False}, "physical safety evidence changed")
+        require(physical_v04["diagnosis"]["physical_result_supports_call_frame_hypothesis"] is True, "physical ABI result changed")
+        print("PASS: exact physical v0.4 evidence identifies both Dell network controllers without transmission")
+
         mutated = copy.deepcopy(probe)
         mutated["mutations"] = ["connect-wifi"]
         rejected("discovery that connects to Wi-Fi", lambda: validate_probe(mutated))
@@ -217,7 +238,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: QEMU-observed ABI-corrected v0.4 read-only network discovery contract")
+    print("PASS: physical Dell-observed ABI-corrected v0.4 read-only network discovery contract")
     return 0
 
 
