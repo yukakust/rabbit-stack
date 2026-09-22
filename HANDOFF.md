@@ -375,6 +375,15 @@ or v2 protocol, and one emulated Intel `8086:10D3` Ethernet controller at `00:02
 The owner-reviewed screen is bound to the exact probe, target, program, EFI, and image
 identities. Those facts cannot approve v0.2 or predict the Dell.
 
+V0.2 then passed QEMU quickly, but the physical Dell again remained dark for 30 seconds
+after selecting the UEFI USB, before even the title could be confirmed. This falsifies
+the claim that only brute-force PCI enumeration caused the visible failure. V0.3 removes
+the early `ClearScreen()` call and prints `STAGE 1: TEXT OK`, `STAGE 2: PROTOCOL CHECKS`,
+and `STAGE 3: PCI HANDLES` before the corresponding work. Its current image identity is
+`afac5e6d866fcb6e0e7bd770d37bc77b755837dd0bdb2a8553aabd07ef502a61`.
+Both failed physical attempts remain exact-bound; v0.3 is `BUILT-NOT-INSTALLED` and must
+pass QEMU before any new USB write.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

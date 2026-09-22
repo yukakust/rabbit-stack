@@ -52,7 +52,10 @@ original probe and its formatting worked under QEMU. On the Dell, however, v0.1 
 on a dark screen for multiple minutes because it attempted every possible PCI bus.
 Power-off and USB removal recovered safely; no inventory was claimed. v0.2 replaces that
 algorithm with bounded firmware-handle enumeration. The owner then reproduced the same
-`SNP=YES`, Wi-Fi v1/v2=`NO`, `8086:10D3` result under QEMU with the new exact v0.2 image.
+`SNP=YES`, Wi-Fi v1/v2=`NO`, `8086:10D3` result under QEMU with the exact v0.2 image.
+On physical Dell, v0.2 still remained dark before even its title was visible. This moves
+the suspected failure earlier than PCI enumeration. V0.3 removes `ClearScreen()` and
+prints explicit `STAGE 1`, `STAGE 2`, and `STAGE 3` markers before each subsystem.
 
 Build the physical candidate without writing a device:
 
@@ -65,10 +68,10 @@ python3 build_image.py \
 Reviewed identities:
 
 ```text
-program SHA-256: 1ee59aedd97ad54b02ceffb2422173fb831dcc83e5decea3aaefddc12c203abc
-EFI SHA-256:     3711e4dac38dab0b9f7580da3f4166f5cc5fce31a3720eea6dedcb6e840820aa
-image SHA-256:   d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e
+program SHA-256: eaf88bd663d5f51753bf31c559ed39887ccaf23825643cd4a327c9ca75787f67
+EFI SHA-256:     4547120eae006c8fcddb96f7a3956a9fa9ea19ee5ef63bd0dcd4bddad39b150d
+image SHA-256:   afac5e6d866fcb6e0e7bd770d37bc77b755837dd0bdb2a8553aabd07ef502a61
 ```
 
-Status: **V0.2-QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. A physical USB rewrite still
-requires fresh device identification and explicit authorization.
+Status: **V0.3-BUILT-NOT-INSTALLED**. It must pass QEMU before another physical USB
+rewrite, which still requires fresh device identification and explicit authorization.

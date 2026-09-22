@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "probe_id": "x86-64-network-inventory-v0",
+  "implementation_revision": 3,
   "operations": [
     "locate-uefi-simple-network-protocol",
     "locate-uefi-wireless-mac-connection-v1",

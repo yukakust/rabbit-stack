@@ -28,10 +28,9 @@
     "total": 1,
     "returned_after_key": true
   },
-  "physical_dell_status": "NOT-OBSERVED-YET",
+  "physical_dell_status": "FAILED-SAFE-BEFORE-FIRST-TEXT",
   "limitations": [
     "the result describes an emulated Intel e1000e controller, not the Dell hardware",
-    "manual screen review is not an automated protocol oracle",
-    "successful v0.2 QEMU execution does not prove physical Dell execution"
+    "physical v0.2 remained dark before visible stage output"
   ]
 }

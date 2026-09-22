@@ -19,10 +19,9 @@ rabbit_entry:
     mov rbp, [rdx + 0x40]       # SystemTable->ConOut
     mov rdi, [rdx + 0x60]       # SystemTable->BootServices
 
-    mov rcx, rbp
-    mov rax, [rcx + 0x30]       # ConOut->ClearScreen
-    call rax
     lea rdx, [rip + title]
+    call print_ascii
+    lea rdx, [rip + stage_protocols]
     call print_ascii
 
     lea rcx, [rip + snp_guid]
@@ -59,6 +58,8 @@ print_wifi1:
     jnz print_wifi2
     lea rdx, [rip + wifi2_yes]
 print_wifi2:
+    call print_ascii
+    lea rdx, [rip + stage_pci]
     call print_ascii
     lea rdx, [rip + pci_heading]
     call print_ascii
@@ -237,7 +238,9 @@ hex_loop:
     jns hex_loop
     ret
 
-title:       .asciz "RABBIT NETWORK PROBE v0.2\r\n=========================\r\n"
+title:       .asciz "\r\nRABBIT NETWORK PROBE v0.3\r\n=========================\r\nSTAGE 1: TEXT OK\r\n"
+stage_protocols: .asciz "STAGE 2: PROTOCOL CHECKS\r\n"
+stage_pci:   .asciz "STAGE 3: PCI HANDLES\r\n"
 snp_yes:     .asciz "UEFI SIMPLE NETWORK: YES\r\n"
 snp_no:      .asciz "UEFI SIMPLE NETWORK: NO\r\n"
 wifi1_yes:   .asciz "UEFI WIFI v1: YES\r\n"

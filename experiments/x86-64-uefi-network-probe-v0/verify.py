@@ -15,11 +15,11 @@ from rabbit_network_probe import (
 )
 
 
-EXPECTED_PROBE_SHA256 = "c8571ac94a3c901cbf393b024fbb1069736547c09d24b891c526e830f8b089aa"
+EXPECTED_PROBE_SHA256 = "e48f50e41c9ecc134bbb64cefb936414c5a93862d29d169a8ed3756af587d8d5"
 EXPECTED_TARGET_SHA256 = "46a040fe8f929bff4dc190e5a4f9bb739861c2f96fe3cc94ecfbc03781f2237e"
-EXPECTED_SOURCE_SHA256 = "c9171e5cd77cbbda0565937978511a99b2fa63a5257b46c254a6ef76430d16e2"
-EXPECTED_EFI_SHA256 = "3711e4dac38dab0b9f7580da3f4166f5cc5fce31a3720eea6dedcb6e840820aa"
-EXPECTED_IMAGE_SHA256 = "d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e"
+EXPECTED_SOURCE_SHA256 = "003c1eb5ebf5cbdb67d3cf119467ef792ed21cf0c531d4a0c67573087bca2a37"
+EXPECTED_EFI_SHA256 = "4547120eae006c8fcddb96f7a3956a9fa9ea19ee5ef63bd0dcd4bddad39b150d"
+EXPECTED_IMAGE_SHA256 = "afac5e6d866fcb6e0e7bd770d37bc77b755837dd0bdb2a8553aabd07ef502a61"
 SNP_GUID = bytes.fromhex("b9 32 98 a1 25 ac d3 11 9a 2d 00 90 27 3f c1 4d")
 WIFI1_GUID = bytes.fromhex("c9 5b a5 0d f8 45 b4 4b 87 19 52 24 f1 8a 4d 45")
 WIFI2_GUID = bytes.fromhex("bf b9 0f 1b 9d 69 dd 4f a7 c3 25 46 68 1b f6 3b")
@@ -133,28 +133,16 @@ def main() -> int:
         failed = load_json(ROOT / "evidence" / "dell-optiplex-3060-v0.1-failed.json")
         require(failed["status"] == "FAILED-SAFE-PCI-BRUTE-FORCE-TIMEOUT", "physical failure status changed")
         require(failed["recovery"]["persistent_machine_changes"] is False, "failure evidence claims persistent changes")
-        require(failed["superseded_by_image_sha256"] == report_a["image_sha256"], "failure is not bound to replacement image")
-        print("PASS: the slow physical v0.1 attempt is preserved as failed evidence and cannot approve v0.2")
-        observed = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
-        require(observed["status"] == "OBSERVED-MANUAL-QEMU-NETWORK-PROBE", "v0.2 QEMU evidence status changed")
         require(
-            observed["bindings"] == {
-                "probe_sha256": report_a["probe_sha256"],
-                "target_sha256": report_a["target_sha256"],
-                "program_sha256": report_a["program_sha256"],
-                "efi_sha256": report_a["efi_sha256"],
-                "image_sha256": report_a["image_sha256"],
-            },
-            "v0.2 QEMU evidence is stale or bound to another probe",
+            failed["superseded_by_image_sha256"] == "d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e",
+            "v0.1 failure is not bound to its v0.2 replacement",
         )
-        observation = observed["observation"]
-        require(observation["uefi_simple_network"] is True, "QEMU did not expose Simple Network")
-        require(observation["uefi_wifi_v1"] is False and observation["uefi_wifi_v2"] is False, "QEMU Wi-Fi result changed")
-        require(observation["pci_network_controllers"] == [
-            {"bus": 0, "device": 2, "function": 0, "vendor_id": "8086", "device_id": "10D3", "subclass": "00"}
-        ], "QEMU PCI result changed")
-        require(observed["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
-        print("PASS: v0.2 QEMU observed SNP=YES, Wi-Fi v1/v2=NO, and emulated 8086:10D3")
+        print("PASS: the slow physical v0.1 attempt is preserved as failed evidence and cannot approve v0.2")
+        failed_v02 = load_json(ROOT / "evidence" / "dell-optiplex-3060-v0.2-failed.json")
+        require(failed_v02["status"] == "FAILED-SAFE-BEFORE-FIRST-TEXT", "v0.2 physical failure status changed")
+        require(failed_v02["recovery"]["persistent_machine_changes"] is False, "v0.2 failure claims persistent changes")
+        require(failed_v02["superseded_by_image_sha256"] == report_a["image_sha256"], "v0.2 failure is not bound to v0.3")
+        print("PASS: the dark physical v0.2 attempt is preserved and cannot approve staged-text v0.3")
 
         mutated = copy.deepcopy(probe)
         mutated["mutations"] = ["connect-wifi"]
@@ -175,7 +163,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: QEMU-gated v0.2 read-only network discovery contract")
+    print("PASS: pre-QEMU staged-text v0.3 read-only network discovery contract")
     return 0
 
 

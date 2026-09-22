@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-network-probe-v0.2-failed-2026-09-22",
+  "status": "FAILED-SAFE-BEFORE-FIRST-TEXT",
+  "bindings": {
+    "probe_sha256": "c8571ac94a3c901cbf393b024fbb1069736547c09d24b891c526e830f8b089aa",
+    "target_sha256": "46a040fe8f929bff4dc190e5a4f9bb739861c2f96fe3cc94ecfbc03781f2237e",
+    "program_sha256": "1ee59aedd97ad54b02ceffb2422173fb831dcc83e5decea3aaefddc12c203abc",
+    "efi_sha256": "3711e4dac38dab0b9f7580da3f4166f5cc5fce31a3720eea6dedcb6e840820aa",
+    "image_sha256": "d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e"
+  },
+  "observation": {
+    "machine": "Dell OptiPlex 3060",
+    "screen": "dark-after-selecting-uefi-usb",
+    "duration_seconds": 30,
+    "first_probe_text_visible": false,
+    "network_inventory_obtained": false,
+    "cause_hypothesis": "failure-occurs-before-pci-enumeration;-clear-screen-or-earlier-console-path"
+  },
+  "recovery": {
+    "action": "power-off-and-remove-usb",
+    "persistent_machine_changes": false
+  },
+  "superseded_by_image_sha256": "afac5e6d866fcb6e0e7bd770d37bc77b755837dd0bdb2a8553aabd07ef502a61"
+}

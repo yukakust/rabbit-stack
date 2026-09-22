@@ -17,8 +17,8 @@ TARGET_PATH = ROOT / "target.json"
 PROGRAM_PATH = ROOT / "program.hex"
 SOURCE_PATH = ROOT / "program.S"
 MEDIA_BUILDER_PATH = ROOT.parent / "x86-64-uefi-v0" / "build_image.py"
-PROGRAM_SIZE = 1248
-PROGRAM_SHA256 = "1ee59aedd97ad54b02ceffb2422173fb831dcc83e5decea3aaefddc12c203abc"
+PROGRAM_SIZE = 1328
+PROGRAM_SHA256 = "eaf88bd663d5f51753bf31c559ed39887ccaf23825643cd4a327c9ca75787f67"
 
 
 def _load_media_builder():

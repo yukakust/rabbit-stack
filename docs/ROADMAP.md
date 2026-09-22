@@ -266,7 +266,11 @@ power-off and USB removal succeeded; the run is preserved as failed evidence rat
 than inventory. V0.2 now uses bounded UEFI PCI I/O handle enumeration and must pass a
 fresh QEMU gate before another authorized physical write. That v0.2 QEMU gate now
 passes quickly with the same expected emulated result and distinct exact identities;
-physical USB replacement remains separately gated.
+physical USB replacement remained separately gated. The exact v0.2 image was then
+written and verified, but the physical Dell again remained dark before its first title.
+V0.3 therefore removes the early console clear and adds three visible stage markers,
+turning the next run into a precise localization test. It must repeat the QEMU gate
+before another physical write.
 
 ### U10 — Universal installer
 
