@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "world_id": "jump-and-stone",
+  "capabilities": [
+    {"capability": "display.scene", "version": 1, "required": true},
+    {"capability": "input.keys", "version": 1, "required": true},
+    {"capability": "time.delay", "version": 1, "required": true},
+    {"capability": "machine.exit", "version": 1, "required": true}
+  ],
+  "player": {
+    "shape": "solid-square",
+    "color": "#ffd400",
+    "x": 100,
+    "y": 100,
+    "size": 64,
+    "movement_step": 16
+  },
+  "actions": {
+    "arrows": "move-with-screen-and-stone-collision",
+    "space": {"effect": "jump-and-return", "height": 32, "hold_microseconds": 120000},
+    "z": {"effect": "leave-one-stone-behind-and-step-forward", "stone_size": 16},
+    "escape": "exit-successfully"
+  },
+  "stone": {
+    "color": "#ffd400",
+    "solid": true,
+    "maximum_count": 1,
+    "replacement": "next-z-relocates-existing-stone"
+  },
+  "contract": {
+    "background": "#000000",
+    "player_cannot_cross_stone": true,
+    "player_can_move_around_stone": true,
+    "exit_status": 0
+  }
+}

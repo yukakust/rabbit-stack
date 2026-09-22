@@ -54,11 +54,14 @@ every layer we would otherwise be tempted to hide.
 - [`experiments/x86-64-uefi-interactive-v0`](experiments/x86-64-uefi-interactive-v0):
   the first keyboard-controlled world candidate: arrow keys update persistent position,
   erase the old rectangle, clamp it to the screen, and draw the next framebuffer frame.
+- [`experiments/x86-64-uefi-jump-stone-v0`](experiments/x86-64-uefi-jump-stone-v0):
+  the first natural-language-requested world: a yellow player jumps on Space, leaves a
+  solid stone on `Z`, moves away, collides with it, and can route around it.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
-[`experiments/x86-64-uefi-interactive-v0/README.md`](experiments/x86-64-uefi-interactive-v0/README.md).
+[`experiments/x86-64-uefi-jump-stone-v0/README.md`](experiments/x86-64-uefi-jump-stone-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

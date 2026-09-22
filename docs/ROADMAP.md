@@ -216,6 +216,14 @@ EFI hash verification, the physical Dell reproduced that complete interaction wi
 or internal storage. The next qualitative capability is time: autonomous frame updates,
 velocity, and collision rules rather than movement only in direct response to a key.
 
+The owner then supplied the first ordinary-language world request. Its reviewed v0
+contract makes a yellow player jump and return on Space, leave one small persistent
+yellow stone and step away on `Z`, reject movement through that stone, and permit routing
+around it. The implementation adds a UEFI `Stall()` time binding and explicit AABB
+collision logic to the existing framebuffer/input substrate. Deterministic construction,
+exact instruction identity, semantic simulation, collision/route-around tests, and
+negative policy tests pass. QEMU observation is the next gate.
+
 ### U8 — Transactional patches
 
 Apply cold, warm, and hot patches through prepare, validation, staging, health checks,

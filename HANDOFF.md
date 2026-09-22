@@ -282,8 +282,9 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Add a semantic time capability and a first autonomous rule: periodic movement with
-   boundary collision/reflection, while retaining input and direct framebuffer output.
+1. Run `experiments/x86-64-uefi-jump-stone-v0/` in QEMU and verify arrows, Space jump,
+   `Z` placement/push-away, blocked crossing, route-around, second-`Z` relocation, and
+   Escape before any physical-media write.
 2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
    reconsider it if the machine stops being a dedicated lab target.
 3. Add a second dissimilar physical target when real inventory becomes available, then
@@ -324,6 +325,15 @@ clamping, and Escape; the owner-reviewed interaction is bound to exact identitie
 fresh device identification, explicit authorization, physical write, and exact EFI hash
 check followed. The physical Dell then reproduced four-way movement, clean erasure,
 boundary clamping, and Escape with no OS or internal storage involved.
+
+The owner then described the first world in ordinary language: a yellow square jumps
+and returns on Space; `Z` leaves a smaller yellow solid stone and moves the player away;
+the player cannot cross the stone but can route around it. The reviewed v0 contract uses
+one persistent stone, relocated by the next `Z`. The new experiment adds a semantic
+`time.delay` capability bound to UEFI `Stall()`, 1,064 reviewed x86-64 code/data bytes,
+and explicit AABB collision logic. Deterministic builds, an independent state model,
+placement/blocking/route-around/replacement/boundary tests, and negative checks pass. It
+is `BUILT-NOT-INSTALLED`; QEMU interaction is the next gate.
 
 ## U7 pre-physical artifact result
 
