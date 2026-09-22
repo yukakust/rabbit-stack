@@ -32,6 +32,10 @@ attaches the image read-only. The expected screen is exactly `HI`; press one key
 the UEFI application return, then close the QEMU window. This is still emulator
 evidence, not a physical Dell result.
 
+The runner deliberately does not use QEMU's global `-snapshot` flag: that flag also
+makes the pflash variable store read-only. Persistence is still impossible because the
+only writable pflash file is the disposable copy inside the temporary directory.
+
 The builder may create `/tmp/rabbit-x86-64-uefi-v0.img`; it does **not** select or write
 a physical device. Generated binaries are intentionally excluded from Git.
 

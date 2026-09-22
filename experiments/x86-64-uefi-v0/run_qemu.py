@@ -63,7 +63,6 @@ def main() -> int:
             "-m", "256M",
             "-nic", "none",
             "-no-reboot",
-            "-snapshot",
             "-drive", f"if=pflash,format=raw,unit=0,readonly=on,file={code}",
             "-drive", f"if=pflash,format=raw,unit=1,file={variables_path}",
             "-drive", f"file={image_path},format=raw,readonly=on",
