@@ -168,6 +168,34 @@ def main() -> int:
         require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
         print("PASS: exact QEMU evidence proves all three local queries fail closed without 0CF3:E009")
 
+        physical = load_json(ROOT / "evidence" / "dell-optiplex-3060-physical-observed.json")
+        require(physical["status"] == "OBSERVED-PHYSICAL-DELL-HCI-LOCAL-CAPABILITIES", "physical evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical["bindings"][field] == report_a[field], f"physical {field} binding changed")
+        observation = physical["observation"]
+        commands = bytes.fromhex(observation["supported_commands_64b"])
+        bredr = bytes.fromhex(observation["bredr_features_8b"])
+        le = bytes.fromhex(observation["le_features_8b"])
+        require(len(commands) == 64 and len(bredr) == 8 and len(le) == 8, "physical capability-map length changed")
+        require(observation["queries_completed"] == observation["queries_expected"] == 3, "physical query count changed")
+        for octet, bit, label in (
+            (25, 5, "LE Set Advertising Parameters"),
+            (25, 7, "LE Set Advertising Data"),
+            (26, 1, "LE Set Advertising Enable"),
+            (26, 2, "LE Set Scan Parameters"),
+            (26, 3, "LE Set Scan Enable"),
+            (26, 4, "LE Create Connection"),
+        ):
+            require(commands[octet] & (1 << bit), f"physical controller lacks {label}")
+        require(le[0] == 0x1F and le[1:] == bytes(7), "physical LE feature map changed")
+        require(physical["safety"]["radio_data_packets_sent"] == 0, "physical evidence claims radio data")
+        require(physical["safety"]["scan_requested"] is False, "physical evidence claims scanning")
+        require(
+            physical["next_boundary"] == "bounded-receive-only-le-scan-for-one-rabbit-beacon",
+            "physical evidence opens an unexpected next boundary",
+        )
+        print("PASS: physical evidence proves legacy BLE advertising, scanning, and connection commands are supported")
+
         over_budget = copy.deepcopy(probe)
         over_budget["limits"]["max_hci_commands"] = 4
         rejected("four HCI commands", lambda: validate_probe(over_budget))
@@ -189,7 +217,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: QEMU-observed three-command Bluetooth local-capability contract")
+    print("PASS: physical-Dell-observed three-command Bluetooth local-capability contract")
     return 0
 
 

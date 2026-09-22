@@ -333,6 +333,13 @@ the emulated USB hardware, and reported that no HCI command was sent. Exact-boun
 evidence now opens the combined read-only physical-preparation command. Removable-media
 replacement remains a separate explicit authorization boundary.
 
+The authorized Dell run then completed all three local queries. Its 64-byte map confirms
+support for legacy LE advertising, scanning, and connection commands; its LE feature map
+is `1F00000000000000`. The controller therefore has the primitives for a small BLE
+bridge. No radio operation occurred. The next boundary is deliberately narrower than a
+full connection: a bounded, receive-only scan for one exact Rabbit beacon from the Mac,
+with no pairing or persistent state.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

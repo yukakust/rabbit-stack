@@ -473,6 +473,15 @@ COMMAND SENT`. The owner-reviewed screen is bound to all five artifact identitie
 `prepare_physical.py` workflow is now open, while actual removable-media replacement
 still requires a fresh device identity and explicit owner authorization.
 
+The owner authorized the exact Kingston replacement and the physical Dell completed all
+three local queries. It returned the 64-byte supported-command map
+`FFFFFF03CEFFEFFFFFFFFF7FF20FE8FE3FF783FF1C00000061FFFFFF7F8620F5FFF0F90700000000000000000000000000000000000000000000000000000000`,
+BR/EDR features `FFFE8FFED83F5B87`, and LE features `1F00000000000000`.
+These bits confirm legacy LE advertising, scanning, and connection command support.
+Exact evidence is committed; no scan, pairing, connection, or radio packet occurred.
+The next boundary is one bounded receive-only scan for an exact Rabbit beacon from the
+Mac, not yet a general Bluetooth connection.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

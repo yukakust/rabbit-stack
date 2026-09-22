@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-bluetooth-local-capabilities-v0.1-physical-2026-09-23",
+  "status": "OBSERVED-PHYSICAL-DELL-HCI-LOCAL-CAPABILITIES",
+  "bindings": {
+    "probe_sha256": "00e209f0b457b5f52b8b076f806d4dd8636bf854765b4556903f2245d3c35d76",
+    "target_sha256": "92706f0913e5807c2639331f3d2f58cfaded58e195a9c3111da59d97b24eb9af",
+    "program_sha256": "4ad4b42f4a9805a4363d9f36f33e76a4f9ae658c68a2f2e5bdf64300ca80e142",
+    "efi_sha256": "23ffeb7474d03cec04d139fa18be5e91737c40d254e6411ac8f93a54a45e6b5e",
+    "image_sha256": "006ed8b12843b7d91712764cc4b42462c1e192924d8a1ddb6ae05fa3232336ea"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "processor": "Intel Core i5-8500T",
+    "firmware": "UEFI",
+    "boot_medium": "external-removable-usb",
+    "operating_system_present": false,
+    "internal_storage_present": false
+  },
+  "observation": {
+    "method": "owner-reviewed-photograph-and-transcription",
+    "visible_version": "v0.1",
+    "target_usb_id": "0CF3:E009",
+    "interface_number": "00",
+    "event_endpoint": "81",
+    "supported_commands_64b": "FFFFFF03CEFFEFFFFFFFFF7FF20FE8FE3FF783FF1C00000061FFFFFF7F8620F5FFF0F90700000000000000000000000000000000000000000000000000000000",
+    "bredr_features_8b": "FFFE8FFED83F5B87",
+    "le_features_8b": "1F00000000000000",
+    "queries_completed": 3,
+    "queries_expected": 3
+  },
+  "interpretation": {
+    "legacy_le_advertising_commands": true,
+    "legacy_le_scanning_commands": true,
+    "legacy_le_connection_commands": true,
+    "le_encryption": true,
+    "connection_parameters_request_procedure": true,
+    "extended_reject_indication": true,
+    "peripheral_initiated_features_exchange": true,
+    "le_ping": true
+  },
+  "safety": {
+    "hci_commands_sent": 3,
+    "allowed_hci_opcodes": [
+      "0x1002",
+      "0x1003",
+      "0x2003"
+    ],
+    "scan_requested": false,
+    "advertising_requested": false,
+    "pairing_attempts": 0,
+    "connection_attempts": 0,
+    "radio_data_packets_sent": 0,
+    "controller_resets": 0,
+    "firmware_downloads": 0,
+    "persistent_machine_changes": false
+  },
+  "next_boundary": "bounded-receive-only-le-scan-for-one-rabbit-beacon"
+}

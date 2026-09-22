@@ -56,4 +56,21 @@ EFI SHA-256:     23ffeb7474d03cec04d139fa18be5e91737c40d254e6411ac8f93a54a45e6b5
 image SHA-256:   006ed8b12843b7d91712764cc4b42462c1e192924d8a1ddb6ae05fa3232336ea
 ```
 
-Status: **QEMU-OBSERVED; NOT PHYSICALLY INSTALLED**.
+## Physical Dell result
+
+The exact image then completed all three queries on the physical Dell:
+
+```text
+SUPPORTED COMMANDS (64B)=FFFFFF03CEFFEFFFFFFFFF7FF20FE8FE3FF783FF1C00000061FFFFFF7F8620F5FFF0F90700000000000000000000000000000000000000000000000000000000
+BR/EDR FEATURES (8B)=FFFE8FFED83F5B87
+LE FEATURES (8B)=1F00000000000000
+LOCAL CAPABILITY QUERIES: 3/3 OK
+```
+
+The supported-command bits confirm the legacy LE advertising, scanning, and connection
+commands needed for a first small bridge. The LE feature byte `1F` reports the first
+five Bluetooth 4.1-era LE features. No radio operation occurred during this query.
+
+Status: **PHYSICAL-DELL-OBSERVED**. The next separately reviewed boundary is a bounded,
+receive-only LE scan that accepts one exact Rabbit beacon sent by the Mac. It will not
+pair or connect.
