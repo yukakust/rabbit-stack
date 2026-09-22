@@ -208,9 +208,27 @@ def main() -> int:
         patched_efi = inspect_image(patched_a)
         inspect_efi(patched_efi, "HI!")
         require(patched_a != image_a and patched_efi != efi, "patch did not change the artifact")
+        patched_observed = load_json(ROOT / "evidence" / "qemu-macos-arm64-add-bang-observed.json")
+        require(patched_observed["status"] == "OBSERVED-MANUAL-QEMU", "patched QEMU evidence status changed")
+        require(
+            patched_observed["bindings"] == {
+                "base_world_sha256": patched_report_a["base_world_sha256"],
+                "effective_world_sha256": patched_report_a["world_sha256"],
+                "patch_id": patched_report_a["patch_id"],
+                "patch_sha256": patched_report_a["patch_sha256"],
+                "target_sha256": patched_report_a["target_sha256"],
+                "efi_sha256": patched_report_a["efi_sha256"],
+                "image_sha256": patched_report_a["image_sha256"],
+            },
+            "patched QEMU evidence is stale or bound to another artifact",
+        )
+        require(patched_observed["observation"]["display_text"] == "HI!", "patched QEMU display differs")
+        require(patched_observed["physical_execution_verified"] is False, "patched QEMU claimed physical execution")
+        require(patched_observed["physical_writes_performed"] == [], "patched QEMU claimed a physical write")
         rolled_back, rolled_back_report = build(world, target)
         require(rolled_back == image_a and rolled_back_report == report_a, "removing patch did not restore base")
         print("PASS: immutable add-bang patch builds exact HI! UEFI identities and removal restores exact HI")
+        print("PASS: owner-reviewed QEMU display binds HI! to exact base, patch, target, EFI, and image identities")
 
         wrong_text = copy.deepcopy(world)
         wrong_text["contract"]["stdout"] = "BYE"

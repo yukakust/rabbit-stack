@@ -47,6 +47,12 @@ The verifier also proves that removing `add-bang` rebuilds the exact original `H
 world, EFI application, and disk image. Neither variant is permitted to edit the base
 world in place.
 
+On 2026-09-22 the owner ran `python3 run_qemu.py --patch add-bang` with QEMU 11.1.1
+and observed exactly `HI!`. The manual emulator observation is bound to the base world,
+effective world, patch, target, EFI, and image identities in
+`evidence/qemu-macos-arm64-add-bang-observed.json`. No physical media was written by that
+run.
+
 `run_qemu.py` locates the x86-64 EDK2 code and variable-store template bundled with
 QEMU. It attaches the code as read-only pflash, copies the mutable variable store into a
 temporary directory, builds the disk image there, disables emulated networking, and

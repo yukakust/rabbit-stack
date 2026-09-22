@@ -282,18 +282,19 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Run the newly built immutable `add-bang` UEFI artifact under QEMU and observe `HI!`.
-2. Reinstall the exact patched payload on the same removable device, observe physical
+1. Reinstall the QEMU-observed exact patched payload on the same removable device,
+   observe physical
    `HI!`, then remove the patch and prove exact rollback to physical `HI`.
-3. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
+2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
    reconsider it if the machine stops being a dedicated lab target.
-4. Add a second dissimilar physical target when real inventory becomes available, then
+3. Add a second dissimilar physical target when real inventory becomes available, then
    proceed into the broader U8 transactional patch lifecycle.
 
 The first part of the patch slice is implemented: `build_image.py --patch add-bang`
 validates the existing immutable semantic patch, derives `HI!`, produces reviewed EFI
 and image hashes, and proves that removing the patch restores the exact base `HI` image.
-QEMU and physical patched observations remain open.
+QEMU 11.1.1 has now displayed exact `HI!`; removable-media replacement and physical
+patched/rollback observations remain open.
 
 ## U7 pre-physical artifact result
 
