@@ -222,7 +222,15 @@ yellow stone and step away on `Z`, reject movement through that stone, and permi
 around it. The implementation adds a UEFI `Stall()` time binding and explicit AABB
 collision logic to the existing framebuffer/input substrate. Deterministic construction,
 exact instruction identity, semantic simulation, collision/route-around tests, and
-negative policy tests pass. QEMU observation is the next gate.
+negative policy tests pass. QEMU 11.1.1 has now manually reproduced the complete world;
+that evidence is exact-bound and explicitly does not claim physical Dell execution.
+
+The next boundary is also implemented in `world-package-v0`: the approved Russian
+intent, reviewed interpretation, and portable semantic world compile deterministically
+to one 1,060-byte `.rabbit` package. An independent decoder recovers the complete
+operation sequence. The package contains no x86, UEFI, QEMU, framebuffer, firmware,
+USB, or Dell binding and has performed no deployment. This is the first reusable input
+contract for the Rabbit Runtime rather than another bespoke boot image.
 
 ### U8 — Transactional patches
 
@@ -230,11 +238,17 @@ Apply cold, warm, and hot patches through prepare, validation, staging, health c
 commit, and automatic rollback. State migration and unsupported transitions must be
 explicit.
 
-### U9 — Rabbit runtime and kernel
+### U9 — Rabbit runtime and kernel (current prototype boundary)
 
 Add only the substrate required by native targets: traps, interrupts, memory,
 scheduling, isolation, drivers, and module lifecycle. Hosted and bridge targets may use
 their existing environments while preserving the same world contract.
+
+The first step is intentionally smaller than a kernel: implement the reviewed package
+decoder and opcode interpreter in a hosted reference runner, then place the same runtime
+inside the recoverable x86-64 UEFI image. Once both consume the identical `.rabbit`
+package, add an explicit transport for replacing a package without recompiling or
+rewriting the runtime. Microphone and LLM input sit above this deterministic boundary.
 
 ### U10 — Universal installer
 

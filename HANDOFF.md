@@ -282,13 +282,15 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Run `experiments/x86-64-uefi-jump-stone-v0/` in QEMU and verify arrows, Space jump,
-   `Z` placement/push-away, blocked crossing, route-around, second-`Z` relocation, and
-   Escape before any physical-media write.
-2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
-   reconsider it if the machine stops being a dedicated lab target.
-3. Add a second dissimilar physical target when real inventory becomes available, then
-   proceed into the broader U8 transactional patch lifecycle.
+1. Implement a hosted reference Rabbit Runtime that consumes the exact
+   `world-package-v0` bytes rather than importing the source world or compiling another
+   bespoke program.
+2. Put the same reviewed package decoder and opcode interpreter behind the x86-64 UEFI
+   framebuffer/input Target Pack, then prove both runtimes preserve one package identity.
+3. Add a framed live transport and transactional package replacement before placing a
+   microphone/LLM interface above the deterministic acceptance boundary.
+4. Keep the persistent Secure Boot-off state explicit in every future physical evidence
+   record; reconsider it if the Dell stops being a dedicated lab target.
 
 The first part of the patch slice is implemented: `build_image.py --patch add-bang`
 validates the existing immutable semantic patch, derives `HI!`, produces reviewed EFI
@@ -332,8 +334,20 @@ the player cannot cross the stone but can route around it. The reviewed v0 contr
 one persistent stone, relocated by the next `Z`. The new experiment adds a semantic
 `time.delay` capability bound to UEFI `Stall()`, 1,064 reviewed x86-64 code/data bytes,
 and explicit AABB collision logic. Deterministic builds, an independent state model,
-placement/blocking/route-around/replacement/boundary tests, and negative checks pass. It
-is `BUILT-NOT-INSTALLED`; QEMU interaction is the next gate.
+placement/blocking/route-around/replacement/boundary tests, and negative checks pass.
+The owner manually reproduced the complete behavior in QEMU 11.1.1. That observation is
+hash-bound; physical Dell execution was deliberately skipped and remains unclaimed.
+
+`experiments/world-package-v0/` now separates that world from its first bespoke x86-64
+program. The approved Russian intent and reviewed interpretation deterministically
+produce a 1,060-byte `.rabbit` package with a canonical manifest and compact operations
+for player setup, movement, timed jump, stone placement, clamping, collision, and exit.
+The package identity is
+`e7d642aef7810cb8edfeb51693b29c7909024ae5d3dc4fb9741e44e4b42b8d9b`.
+An independent decoder recovers the exact operation stream; tampering, truncation, stale
+interpretation, semantic drift, duplicate fields, and target-specific vocabulary are
+rejected. It is `PACKAGE-BUILT-NOT-DEPLOYED`: no runtime consumes it yet and no physical
+write is claimed.
 
 ## U7 pre-physical artifact result
 

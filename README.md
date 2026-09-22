@@ -57,11 +57,15 @@ every layer we would otherwise be tempted to hide.
 - [`experiments/x86-64-uefi-jump-stone-v0`](experiments/x86-64-uefi-jump-stone-v0):
   the first natural-language-requested world: a yellow player jumps on Space, leaves a
   solid stone on `Z`, moves away, collides with it, and can route around it.
+- [`experiments/world-package-v0`](experiments/world-package-v0): the same owner-approved
+  world compiled into a 1,060-byte target-independent `.rabbit` package. It binds the
+  Russian intent interpretation and semantic world without embedding x86, UEFI, QEMU,
+  framebuffer, firmware, USB, or Dell facts.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
-[`experiments/x86-64-uefi-jump-stone-v0/README.md`](experiments/x86-64-uefi-jump-stone-v0/README.md).
+[`experiments/world-package-v0/README.md`](experiments/world-package-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

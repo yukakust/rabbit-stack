@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-jump-stone-macos-arm64-2026-09-22",
+  "status": "OBSERVED-MANUAL-QEMU-WORLD",
+  "bindings": {
+    "world_sha256": "94a67cd0e7b83e56a12f07bf32ffc783af694220fcb2a746943e074435998cc0",
+    "target_sha256": "d84e054883f0165aed09c4177f26fabdf076eca1ca2024cb94a08a50313e0822",
+    "program_sha256": "4c22fa9be1fd0a6495b909ac35765914cea95bc4d91dafd4f17144ecedf53331",
+    "efi_sha256": "1b5b816e533360f71917307e92cb3a8ef8afe4efbfe6cfd2fc3e199f40eea639",
+    "image_sha256": "a319494061ec42f7a756e073c623de0f0d3983fa4fa9a260059c1bfd1de5a7aa"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-live-qemu-interaction",
+    "yellow_player_visible": true,
+    "arrow_movement_worked": true,
+    "space_jump_returned_to_logical_position": true,
+    "z_left_small_yellow_stone_and_moved_player_away": true,
+    "movement_through_stone_was_blocked": true,
+    "movement_around_stone_worked": true,
+    "second_z_relocated_single_stone": true,
+    "escape_returned_from_application": true
+  },
+  "physical_dell_status": "NOT-OBSERVED-BY-OWNER-AT-THIS-CHECKPOINT",
+  "limitations": [
+    "the interaction was reviewed manually rather than by an automated framebuffer/input oracle",
+    "successful QEMU execution does not prove physical Dell execution"
+  ]
+}

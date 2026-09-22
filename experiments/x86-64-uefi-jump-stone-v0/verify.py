@@ -9,7 +9,7 @@ import struct
 from collections.abc import Callable
 
 from rabbit_jump_stone import (
-    BuildError, IMAGE_SIZE, PARTITION_LBA, PROGRAM_SHA256, SECTOR_SIZE, State,
+    BuildError, IMAGE_SIZE, PARTITION_LBA, PROGRAM_SHA256, ROOT, SECTOR_SIZE, State,
     TARGET_PATH, WORLD_PATH, build, leave_stone, load_json, load_program, move,
     overlaps_stone, validate_target,
 )
@@ -120,11 +120,35 @@ def main() -> int:
         efi = inspect_image(image_a)
         inspect_efi(efi, program)
         verify_model()
+        observed = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(observed["status"] == "OBSERVED-MANUAL-QEMU-WORLD", "QEMU evidence status changed")
+        require(
+            observed["bindings"] == {
+                "world_sha256": report_a["world_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "program_sha256": report_a["program_sha256"],
+                "efi_sha256": report_a["efi_sha256"],
+                "image_sha256": report_a["image_sha256"],
+            },
+            "QEMU evidence is stale or bound to another world",
+        )
+        observation = observed["observation"]
+        for field in (
+            "yellow_player_visible", "arrow_movement_worked",
+            "space_jump_returned_to_logical_position",
+            "z_left_small_yellow_stone_and_moved_player_away",
+            "movement_through_stone_was_blocked", "movement_around_stone_worked",
+            "second_z_relocated_single_stone", "escape_returned_from_application",
+        ):
+            require(observation[field] is True, f"QEMU did not confirm {field}")
+        require(observed["execution"]["physical_execution_verified"] is False, "QEMU claimed physical execution")
+        require(observed["physical_dell_status"] == "NOT-OBSERVED-BY-OWNER-AT-THIS-CHECKPOINT", "physical status overstated")
         print("PASS: requested yellow player, jump, Z stone, push-away, and solid collision world is canonical")
         print("PASS: 1064 reviewed x86-64 bytes include framebuffer, keyboard, Stall timing, state, and AABB collision paths")
         print("PASS: model proves stone placement, blocked crossing, route-around, replacement, and screen boundary behavior")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
         print("PASS: artifact remains BUILT-NOT-INSTALLED with no physical writes")
+        print("PASS: owner-reviewed QEMU interaction is exact-bound while physical Dell remains explicitly unobserved")
         wrong_count = copy.deepcopy(world)
         wrong_count["stone"]["maximum_count"] = 2
         rejected("an undeclared second persistent stone", lambda: build(wrong_count, target))

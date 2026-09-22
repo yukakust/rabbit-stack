@@ -25,9 +25,10 @@ python3 verify.py
 python3 run_qemu.py
 ```
 
-In QEMU, verify arrows, Space, `Z`, blocked movement through the stone, movement around
-it, a second `Z`, and Escape. This remains `BUILT-NOT-INSTALLED`; physical USB writing
-requires a separate exact-device check and explicit authorization.
+On 2026-09-22 the owner verified arrows, Space, `Z`, blocked movement through the stone,
+movement around it, a second `Z`, and Escape under QEMU 11.1.1. Exact-bound evidence is
+in `evidence/qemu-macos-arm64-observed.json`. Physical Dell execution was deliberately
+skipped at this checkpoint, so it remains explicitly unobserved rather than inferred.
 
 Reviewed identities:
 

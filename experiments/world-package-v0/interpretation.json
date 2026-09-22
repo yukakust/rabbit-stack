@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "intent_language": "ru",
+  "source": "intent.ru.txt",
+  "resolved_decisions": {
+    "player_size": 64,
+    "movement_step": 16,
+    "jump_height": 32,
+    "jump_hold_microseconds": 120000,
+    "stone_size": 16,
+    "stone_count": 1,
+    "repeated_z": "relocate-existing-stone",
+    "stone_collision": "solid-axis-aligned-rectangle"
+  },
+  "unresolved_decisions": [],
+  "approval_status": "implemented-and-owner-observed-in-qemu"
+}
