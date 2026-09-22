@@ -340,6 +340,15 @@ bridge. No radio operation occurred. The next boundary is deliberately narrower 
 full connection: a bounded, receive-only scan for one exact Rabbit beacon from the Mac,
 with no pairing or persistent state.
 
+That first-radio candidate now exists as `x86-64-uefi-bluetooth-beacon-rx-v0`. The Mac
+advertises only UUID `52414242-4954-4C45-8000-000000000001` through CoreBluetooth. The
+Dell Target Pack permits a fixed five-command sequence that exposes advertising reports,
+configures passive scan, enables it for at most 20 seconds, and disables it before the
+result. Bluetooth passive scan receives but does not transmit scan requests. Exact
+machine bytes, UUID agreement, event parsing, timeout, cleanup, and rejection of active
+scan, transmit, pairing, connection, reset, firmware, persistence, tamper, and ambiguity
+pass. QEMU fail-closed observation remains the next gate before physical replacement.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

@@ -482,6 +482,17 @@ Exact evidence is committed; no scan, pairing, connection, or radio packet occur
 The next boundary is one bounded receive-only scan for an exact Rabbit beacon from the
 Mac, not yet a general Bluetooth connection.
 
+`experiments/x86-64-uefi-bluetooth-beacon-rx-v0/` now implements that next candidate.
+The reviewed Mac sender advertises one exact 128-bit service UUID through CoreBluetooth.
+The Dell program issues only general/LE event masks, passive scan parameters, scan
+enable, and mandatory scan disable. It listens for at most 100 events over 20 seconds,
+accepts the Rabbit UUID in either on-air little-endian or canonical order, and never
+authorizes active scan, radio transmit, pairing, connection, controller reset, firmware
+download, or persistent writes. The program is 3,432 bytes; image identity is
+`0fa4c4ce888d9a2ba916898f1ab43f579b92b52553d7f6a96b44fabddc2dd50c`.
+All deterministic and negative checks pass. Status is PRE-QEMU and NOT-PHYSICALLY-
+INSTALLED; the next action is the fail-closed QEMU gate on the owner's Mac.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

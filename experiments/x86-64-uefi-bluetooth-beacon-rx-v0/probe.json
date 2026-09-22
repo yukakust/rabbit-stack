@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "probe_id": "x86-64-usb-bluetooth-rabbit-beacon-rx-v0",
+  "implementation_revision": 1,
+  "target_usb_id": "0CF3:E009",
+  "rabbit_service_uuid": "52414242-4954-4C45-8000-000000000001",
+  "operations": [
+    "find-exact-usb-device-and-interface-00",
+    "find-bounded-interrupt-in-endpoint",
+    "enable-le-meta-event-only-in-general-mask",
+    "enable-le-advertising-report-only-in-le-mask",
+    "configure-passive-scan",
+    "enable-passive-scan",
+    "receive-bounded-advertising-reports",
+    "match-exact-rabbit-service-uuid",
+    "disable-passive-scan",
+    "display-received-or-timeout"
+  ],
+  "limits": {
+    "max_usb_interfaces": 64,
+    "max_endpoints_per_interface": 8,
+    "max_hci_commands": 5,
+    "max_command_events": 8,
+    "max_scan_events": 100,
+    "event_timeout_ms": 200,
+    "max_scan_duration_ms": 20000,
+    "max_event_bytes": 80
+  },
+  "forbidden_operations": [
+    "controller-reset",
+    "firmware-download",
+    "active-scan",
+    "advertise",
+    "pair",
+    "connect",
+    "acl-data",
+    "radio-transmit",
+    "persistent-write"
+  ],
+  "contract": "receive-one-exact-rabbit-uuid-by-bounded-passive-le-scan"
+}

@@ -75,13 +75,17 @@ every layer we would otherwise be tempted to hide.
 - [`experiments/x86-64-uefi-bluetooth-local-capabilities-v0`](experiments/x86-64-uefi-bluetooth-local-capabilities-v0):
   one bounded boot queries the controller's supported-command, BR/EDR-feature, and
   BLE-feature maps without reset, discovery, connection, or radio traffic.
+- [`experiments/x86-64-uefi-bluetooth-beacon-rx-v0`](experiments/x86-64-uefi-bluetooth-beacon-rx-v0):
+  the first intentional radio boundary: a reviewed Mac CoreBluetooth beacon and a
+  20-second receive-only Dell passive scan match one exact Rabbit service UUID without
+  active scanning, pairing, connection, or radio transmission from the Dell.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
 [`experiments/x86-64-uefi-bluetooth-probe-v0/README.md`](experiments/x86-64-uefi-bluetooth-probe-v0/README.md).
 The active next gate is
-[`experiments/x86-64-uefi-bluetooth-local-capabilities-v0/README.md`](experiments/x86-64-uefi-bluetooth-local-capabilities-v0/README.md).
+[`experiments/x86-64-uefi-bluetooth-beacon-rx-v0/README.md`](experiments/x86-64-uefi-bluetooth-beacon-rx-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is
