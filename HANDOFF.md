@@ -365,7 +365,10 @@ V0.2 instead asks UEFI for handles of devices that actually exist, reads only th
 packets, writes no PCI configuration data, and changes no persistent state. The physical
 chipset is still intentionally not guessed. Current v0.2 image identity is
 `d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e`.
-The replacement is `BUILT-NOT-INSTALLED`; fresh QEMU observation is the next gate.
+The replacement is now QEMU-observed: it completed quickly and reproduced Simple
+Network `YES`, Wi-Fi v1/v2 `NO`, and emulated `8086:10D3`. The evidence is bound to the
+new v0.2 identities and does not reuse v0.1 approval. A fresh removable-device check and
+explicit write authorization are the next gates.
 
 The earlier v0.1 QEMU gate showed Simple Network, no Wireless MAC v1
 or v2 protocol, and one emulated Intel `8086:10D3` Ethernet controller at `00:02.0`.

@@ -51,8 +51,8 @@ On 2026-09-22 the owner observed v0.1 under QEMU: `SIMPLE NETWORK: YES`, both UE
 original probe and its formatting worked under QEMU. On the Dell, however, v0.1 remained
 on a dark screen for multiple minutes because it attempted every possible PCI bus.
 Power-off and USB removal recovered safely; no inventory was claimed. v0.2 replaces that
-algorithm with bounded firmware-handle enumeration and therefore requires a fresh QEMU
-observation before another physical write.
+algorithm with bounded firmware-handle enumeration. The owner then reproduced the same
+`SNP=YES`, Wi-Fi v1/v2=`NO`, `8086:10D3` result under QEMU with the new exact v0.2 image.
 
 Build the physical candidate without writing a device:
 
@@ -70,5 +70,5 @@ EFI SHA-256:     3711e4dac38dab0b9f7580da3f4166f5cc5fce31a3720eea6dedcb6e840820a
 image SHA-256:   d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e
 ```
 
-Status: **V0.2-BUILT-NOT-INSTALLED**. QEMU observation must be repeated. A physical USB
-rewrite still requires fresh device identification and explicit authorization.
+Status: **V0.2-QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. A physical USB rewrite still
+requires fresh device identification and explicit authorization.

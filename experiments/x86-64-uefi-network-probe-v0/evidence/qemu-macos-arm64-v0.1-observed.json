@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "evidence_id": "qemu-x86-64-uefi-network-probe-v0.2-macos-arm64-2026-09-22",
+  "evidence_id": "qemu-x86-64-uefi-network-probe-v0.1-macos-arm64-2026-09-22",
   "status": "OBSERVED-MANUAL-QEMU-NETWORK-PROBE",
   "bindings": {
-    "probe_sha256": "c8571ac94a3c901cbf393b024fbb1069736547c09d24b891c526e830f8b089aa",
-    "target_sha256": "46a040fe8f929bff4dc190e5a4f9bb739861c2f96fe3cc94ecfbc03781f2237e",
-    "program_sha256": "1ee59aedd97ad54b02ceffb2422173fb831dcc83e5decea3aaefddc12c203abc",
-    "efi_sha256": "3711e4dac38dab0b9f7580da3f4166f5cc5fce31a3720eea6dedcb6e840820aa",
-    "image_sha256": "d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e"
+    "probe_sha256": "532488524036c2f59fdb70d498ab017a144b5981501813bf58d5c49c553cd2af",
+    "target_sha256": "aa5951299999243680b62569cd62fbc74ddef6af53c1caf6c0f425a1cccca36f",
+    "program_sha256": "da81a6f725fcc259403e3658c6c4d1f6b5b7b6fecceebf6d88711cbad2add831",
+    "efi_sha256": "d48db92f82e10642f980906379d4dd11db20f51754d46886f3ca35cb9b8efd8f",
+    "image_sha256": "a6a34c676d6772cfd378397e312f4d99faf4a233b8a20307420503864fc35598"
   },
   "execution": {
     "host_architecture": "arm64",
@@ -28,10 +28,9 @@
     "total": 1,
     "returned_after_key": true
   },
-  "physical_dell_status": "NOT-OBSERVED-YET",
+  "physical_dell_status": "FAILED-SAFE-IN-V0.1",
   "limitations": [
     "the result describes an emulated Intel e1000e controller, not the Dell hardware",
-    "manual screen review is not an automated protocol oracle",
-    "successful v0.2 QEMU execution does not prove physical Dell execution"
+    "v0.1 physical PCI brute-force did not complete and this evidence cannot approve v0.2"
   ]
 }

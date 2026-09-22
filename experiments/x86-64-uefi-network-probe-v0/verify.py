@@ -135,6 +135,26 @@ def main() -> int:
         require(failed["recovery"]["persistent_machine_changes"] is False, "failure evidence claims persistent changes")
         require(failed["superseded_by_image_sha256"] == report_a["image_sha256"], "failure is not bound to replacement image")
         print("PASS: the slow physical v0.1 attempt is preserved as failed evidence and cannot approve v0.2")
+        observed = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(observed["status"] == "OBSERVED-MANUAL-QEMU-NETWORK-PROBE", "v0.2 QEMU evidence status changed")
+        require(
+            observed["bindings"] == {
+                "probe_sha256": report_a["probe_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "program_sha256": report_a["program_sha256"],
+                "efi_sha256": report_a["efi_sha256"],
+                "image_sha256": report_a["image_sha256"],
+            },
+            "v0.2 QEMU evidence is stale or bound to another probe",
+        )
+        observation = observed["observation"]
+        require(observation["uefi_simple_network"] is True, "QEMU did not expose Simple Network")
+        require(observation["uefi_wifi_v1"] is False and observation["uefi_wifi_v2"] is False, "QEMU Wi-Fi result changed")
+        require(observation["pci_network_controllers"] == [
+            {"bus": 0, "device": 2, "function": 0, "vendor_id": "8086", "device_id": "10D3", "subclass": "00"}
+        ], "QEMU PCI result changed")
+        require(observed["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
+        print("PASS: v0.2 QEMU observed SNP=YES, Wi-Fi v1/v2=NO, and emulated 8086:10D3")
 
         mutated = copy.deepcopy(probe)
         mutated["mutations"] = ["connect-wifi"]
@@ -155,7 +175,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-QEMU v0.2 read-only network discovery contract")
+    print("PASS: QEMU-gated v0.2 read-only network discovery contract")
     return 0
 
 

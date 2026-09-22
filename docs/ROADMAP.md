@@ -264,7 +264,9 @@ either standardized Wi-Fi protocol, and PCI enumeration reported the configured 
 all possible PCI buses remained on a dark screen for multiple minutes. Recovery by
 power-off and USB removal succeeded; the run is preserved as failed evidence rather
 than inventory. V0.2 now uses bounded UEFI PCI I/O handle enumeration and must pass a
-fresh QEMU gate before another authorized physical write.
+fresh QEMU gate before another authorized physical write. That v0.2 QEMU gate now
+passes quickly with the same expected emulated result and distinct exact identities;
+physical USB replacement remains separately gated.
 
 ### U10 — Universal installer
 
