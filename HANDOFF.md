@@ -1,6 +1,6 @@
 # Rabbit Stack handoff
 
-Updated: 2026-09-21
+Updated: 2026-09-22
 
 ## Mission
 
@@ -84,9 +84,15 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
   learner's Apple Silicon Mac.
 - U5 is complete: hosted Darwin ARM64, native QEMU RV32I, and a simulated framed bridge
   run the unchanged U4 world and patch through one Runner Contract on the learner's Mac.
-- U6 tooling is implemented against simulated fixtures: read-only inventory validation,
-  Target matching, and a non-executable removable-USB proposal pass. A real old computer
-  inventory remains before U6 completion.
+- U6 is complete: simulated fixtures and a real read-only Dell OptiPlex 3060 firmware
+  inventory pass validation. The real snapshot is honestly `UNSUPPORTED` by the v0
+  target because Secure Boot is enabled and no removable device was present during
+  discovery; no firmware setting or storage was changed.
+- U7 has begun with a pre-physical artifact: the unchanged semantic `HI` world lowers
+  deterministically to a reviewed x86-64 PE32+ UEFI application at
+  `EFI/BOOT/BOOTX64.EFI` inside a 64 MiB MBR/FAT32 image. Structural, identity,
+  tamper, policy, and repeat-build tests pass; QEMU/OVMF and physical execution remain
+  deliberately unclaimed.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -243,14 +249,59 @@ The complete suite passed on the learner's Apple Silicon Mac. All three envelope
 observed exact `HI/HI!` with status `0`; the bridge remained explicitly labeled as a
 simulation and produced independently hashed request, response, and transcript evidence.
 
+## U6 real inventory result
+
+The available target is a Dell OptiPlex 3060 with an Intel Core i5-8500T, 8192 MiB of
+RAM, UEFI 1.2.22, working HDMI firmware display, working USB keyboard input, enabled USB
+boot and front/rear USB ports, and no installed M.2 storage. The manually reviewed BIOS
+screens performed no writes. Service Tag and Express Service Code are deliberately
+excluded from the repository.
+
+`inventories/dell-optiplex-3060-observed.json` validates as a real read-only inventory.
+Against `x86-64-uefi-usb-v0` it deterministically returns `UNSUPPORTED` for exactly:
+
+```text
+secure-boot-state-unsupported
+suitable-removable-media-missing
+```
+
+The second reason means only that the purchased USB device was not present in the
+observed hardware snapshot; its identity and capacity must be collected on the Mac
+before any write. The first is a separate human decision. U6 did not disable Secure
+Boot or authorize installation.
+
 ## Immediate implementation sequence
 
-1. Obtain basic details and current operating system for an available old computer.
-2. Choose OS-appropriate read-only commands and collect their output without installing
-   or changing anything.
-3. Convert reviewed observations into a real inventory while preserving raw evidence.
-4. Run the matcher and inspect either exact `UNSUPPORTED` reasons or a `PROPOSED` plan.
-5. Keep image building and USB writing outside U6 and behind separate U7 authorization.
+1. Reproduce the built x86-64 UEFI artifact under QEMU/OVMF before touching removable
+   media.
+2. Inspect the purchased USB device read-only on the Mac and bind its exact identity and
+   capacity into a fresh inventory/installation proposal.
+3. Review Secure Boot options separately; do not silently change firmware policy.
+4. Require explicit authorization naming the removable device before erasing or writing
+   it, then verify the bytes after the write.
+5. Boot once via F12, record the observed display, and prove recovery by powering off
+   and removing USB.
+
+## U7 pre-physical artifact result
+
+`experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk
+image. Its FAT32 partition contains the standard removable-media path
+`EFI/BOOT/BOOTX64.EFI`. The PE32+ application uses the x86-64 UEFI calling convention,
+calls `EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL.OutputString()` with UTF-16 `HI`, waits for one
+key through firmware input, and returns `EFI_SUCCESS`.
+
+Current reviewed identities are:
+
+```text
+EFI SHA-256:   a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128
+image SHA-256: 806d4fef5a33c1bc7d0451bd06d4c665ef21612acd32bddea93fd3f9ca56a594
+status:        BUILT-NOT-INSTALLED
+```
+
+The binary image is generated into a disposable path and is not committed. The verifier
+checks the MBR, FAT32 path, PE32+ machine/subsystem/entry point, exact reviewed machine
+bytes and UTF-16 message, deterministic identities, no physical writes, and rejection
+of altered worlds, policy escalation, signing claims, and code tampering.
 
 ## Safety and honesty constraints
 

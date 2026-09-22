@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "inventory_id": "dell-optiplex-3060-observed-2026-09-22",
+  "source": "manual-read-only",
+  "discovery_mode": "read-only",
+  "architecture": "x86-64",
+  "memory_mib": 8192,
+  "firmware": {
+    "interface": "uefi",
+    "secure_boot": "enabled",
+    "removable_boot": true,
+    "boot_menu": true
+  },
+  "observable_io": {
+    "firmware_display": true,
+    "usb_keyboard": true,
+    "display_connectors": ["hdmi"]
+  },
+  "storage": [],
+  "controllers": ["usb-xhci"],
+  "device_ids": [
+    "cpu:intel-core-i5-8500t",
+    "system:dell-optiplex-3060",
+    "display:uefi-firmware-console"
+  ],
+  "evidence": {
+    "collector": "owner-reviewed-firmware-screens",
+    "commands": [
+      "f12: bios-setup",
+      "bios: system-information",
+      "bios: boot-sequence",
+      "bios: secure-boot-enable",
+      "bios: usb-configuration"
+    ],
+    "writes_performed": []
+  }
+}

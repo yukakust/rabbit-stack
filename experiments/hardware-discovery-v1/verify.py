@@ -38,9 +38,11 @@ def main() -> int:
     try:
         supported = load_json(ROOT / "inventories" / "simulated-supported-pc.json")
         unsupported = load_json(ROOT / "inventories" / "simulated-unsupported-pc.json")
+        observed = load_json(ROOT / "inventories" / "dell-optiplex-3060-observed.json")
         target = load_json(ROOT / "targets" / "x86-64-uefi-usb.json")
         validate_inventory(supported)
         validate_inventory(unsupported)
+        validate_inventory(observed)
         validate_target(target)
 
         good_match = match_inventory(supported, target)
@@ -51,6 +53,20 @@ def main() -> int:
         require("firmware-interface-mismatch" in bad_match["reasons"], "missing firmware rejection")
         require("suitable-removable-media-missing" in bad_match["reasons"], "missing removable-media rejection")
         print("PASS: matcher distinguishes planning-compatible and unsupported inventories")
+
+        observed_match = match_inventory(observed, target)
+        require(observed_match["status"] == "UNSUPPORTED", "observed Dell unexpectedly matched")
+        require(
+            observed_match["reasons"] == [
+                "secure-boot-state-unsupported",
+                "suitable-removable-media-missing",
+            ],
+            "observed Dell rejection reasons changed",
+        )
+        require(observed["storage"] == [], "observed inventory invented a storage device")
+        require(observed["evidence"]["writes_performed"] == [], "observed discovery performed writes")
+        print("PASS: real Dell inventory is read-only and rejected for exact observed blockers")
+        print(f"PASS: observed-inventory={canonical_hash(observed)}")
 
         plan = make_plan(supported, target, "usb-demo")
         validate_plan(plan, supported, target, "usb-demo")
@@ -112,7 +128,7 @@ def main() -> int:
     except (OSError, ValueError, RuntimeError) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: U6 simulated hardware discovery and planning contract")
+    print("PASS: U6 real hardware discovery and planning contract")
     return 0
 
 

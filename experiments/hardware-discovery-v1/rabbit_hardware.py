@@ -88,8 +88,8 @@ def validate_inventory(value: Any) -> dict[str, Any]:
         raise HardwareError("observable I/O flags must be boolean")
     string_list(io["display_connectors"], "display_connectors")
     storage = value["storage"]
-    if not isinstance(storage, list) or not storage:
-        raise HardwareError("inventory.storage must be non-empty")
+    if not isinstance(storage, list):
+        raise HardwareError("inventory.storage must be a list")
     ids: set[str] = set()
     for index, device in enumerate(storage):
         if not isinstance(device, dict):

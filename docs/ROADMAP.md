@@ -137,17 +137,21 @@ path rather than claiming universal bare metal.
 Runner Contract v1 passes on the learner's Apple Silicon Mac across hosted Darwin,
 native QEMU, and an explicitly simulated framed bridge with transcript evidence.
 
-### U6 — Hardware discovery and installation plan (current: real inventory pending)
+### U6 — Hardware discovery and installation plan (complete)
 
 Inspect a candidate device without mutating it. Select a compatible Target Pack and
 produce a reviewable plan containing capabilities, missing support, writes, risks,
 recovery steps, and expected observations. Installation remains a separate authorized
 action.
 The inventory schema, matcher, simulated supported/unsupported fixtures, and a strictly
-non-executable removable-USB plan are implemented. Completion awaits read-only inventory
-from an actual available x86-64 UEFI computer.
+non-executable removable-USB plan are implemented. A real Dell OptiPlex 3060 was
+inspected through read-only firmware screens: x86-64, 8192 MiB RAM, UEFI, HDMI and USB
+keyboard observation, USB boot enabled, no installed M.2 device, and Secure Boot
+enabled. The exact snapshot is rejected for enabled Secure Boot and absent removable
+media rather than silently changing either condition. No firmware or storage write was
+performed.
 
-### U7 — Physical conformance
+### U7 — Physical conformance (current)
 
 Choose targets from available hardware using documented and recoverable boot paths.
 Prove the same small world on at least two dissimilar physical targets over time. A
@@ -157,6 +161,12 @@ architectural dependency.
 The current preferred first physical candidate is an available x86-64 UEFI computer
 booted from removable USB, first reproduced under x86-64 QEMU. The experiment must not
 write its internal disk or firmware; removing the USB device is the recovery path.
+
+The first pre-physical artifact now exists: the unchanged `HI` world lowers to a
+deterministic x86-64 PE32+ UEFI application inside a 64 MiB MBR/FAT32 removable-media
+image. The builder and verifier claim only `BUILT-NOT-INSTALLED`; QEMU/OVMF reproduction,
+exact removable-device identification, explicit write authorization, and physical boot
+evidence remain open gates.
 
 ### U8 — Transactional patches
 

@@ -44,12 +44,14 @@ every layer we would otherwise be tempted to hide.
   transcript-bound evidence and recovery declarations.
 - [`experiments/hardware-discovery-v1`](experiments/hardware-discovery-v1): strict
   read-only inventory matching and a non-executable, removable-USB-only installation
-  proposal, currently tested exclusively with simulated hardware fixtures.
+  proposal, including the real read-only Dell OptiPlex 3060 firmware inventory.
+- [`experiments/x86-64-uefi-v0`](experiments/x86-64-uefi-v0): the unchanged semantic
+  `HI` world lowered into a deterministic pre-physical PE32+/FAT32 UEFI image.
 
 ## Start here
 
-Read [`HANDOFF.md`](HANDOFF.md), then run
-[`experiments/hardware-discovery-v1/README.md`](experiments/hardware-discovery-v1/README.md).
+Read [`HANDOFF.md`](HANDOFF.md), then continue with
+[`experiments/x86-64-uefi-v0/README.md`](experiments/x86-64-uefi-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is
