@@ -61,11 +61,15 @@ every layer we would otherwise be tempted to hide.
   world compiled into a 1,060-byte target-independent `.rabbit` package. It binds the
   Russian intent interpretation and semantic world without embedding x86, UEFI, QEMU,
   framebuffer, firmware, USB, or Dell facts.
+- [`experiments/x86-64-uefi-network-probe-v0`](experiments/x86-64-uefi-network-probe-v0):
+  a read-only boot probe for selecting the Dell's real Wi-Fi path. It reports standardized
+  UEFI network/Wi-Fi protocol availability and exact PCI network-controller identities
+  without transmitting packets or changing device configuration.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
-[`experiments/world-package-v0/README.md`](experiments/world-package-v0/README.md).
+[`experiments/x86-64-uefi-network-probe-v0/README.md`](experiments/x86-64-uefi-network-probe-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

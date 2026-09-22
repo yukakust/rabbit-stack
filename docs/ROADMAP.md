@@ -250,6 +250,14 @@ inside the recoverable x86-64 UEFI image. Once both consume the identical `.rabb
 package, add an explicit transport for replacing a package without recompiling or
 rewriting the runtime. Microphone and LLM input sit above this deterministic boundary.
 
+The owner selected Wi-Fi as the first live transport. `x86-64-uefi-network-probe-v0`
+is the read-only discovery gate: it checks UEFI Simple Network and both standardized
+UEFI Wireless MAC protocols, then enumerates PCI network controllers by exact
+bus/device/function, vendor, device, and subclass. It sends no packets and writes no PCI
+configuration data. QEMU observation comes before a separately authorized physical
+probe. The observed Dell result will choose between firmware-provided Wi-Fi and a
+driver for the actual controller; no chipset is assumed in advance.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

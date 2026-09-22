@@ -282,14 +282,17 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Implement a hosted reference Rabbit Runtime that consumes the exact
-   `world-package-v0` bytes rather than importing the source world or compiling another
-   bespoke program.
-2. Put the same reviewed package decoder and opcode interpreter behind the x86-64 UEFI
-   framebuffer/input Target Pack, then prove both runtimes preserve one package identity.
-3. Add a framed live transport and transactional package replacement before placing a
-   microphone/LLM interface above the deterministic acceptance boundary.
-4. Keep the persistent Secure Boot-off state explicit in every future physical evidence
+1. Run the read-only `x86-64-uefi-network-probe-v0` under QEMU and record the emulated
+   protocol/PCI result before authorizing any physical-media write.
+2. Run the same exact-bound probe on the Dell and use its real protocol and PCI
+   vendor/device results to choose firmware-provided Wi-Fi or a concrete native driver.
+3. Implement receive-only framed `.rabbit` package transport over that selected path,
+   then add authenticated transactional replacement and responses.
+4. Put the package interpreter behind the UEFI framebuffer/input/network Target Pack so
+   the Dell can change worlds without rebuilding or moving the boot USB.
+5. Add microphone, speech recognition, and LLM proposal on the Mac above the deterministic
+   validation boundary; move components onto the Dell only when useful.
+6. Keep the persistent Secure Boot-off state explicit in every future physical evidence
    record; reconsider it if the Dell stops being a dedicated lab target.
 
 The first part of the patch slice is implemented: `build_image.py --patch add-bang`
@@ -348,6 +351,16 @@ An independent decoder recovers the exact operation stream; tampering, truncatio
 interpretation, semantic drift, duplicate fields, and target-specific vocabulary are
 rejected. It is `PACKAGE-BUILT-NOT-DEPLOYED`: no runtime consumes it yet and no physical
 write is claimed.
+
+The owner chose Wi-Fi rather than removable-media shuttling as the first live command
+transport. `experiments/x86-64-uefi-network-probe-v0/` now builds a deterministic
+read-only UEFI application that locates Simple Network, Wireless MAC v1, and Wireless
+MAC v2 protocols and enumerates PCI base-class `02` devices through the x86 CF8/CFC
+configuration mechanism. It writes only the address selector, never PCI configuration
+data; it sends and receives no packets and changes no persistent state. The physical
+chipset is intentionally not guessed. Current image identity is
+`a6a34c676d6772cfd378397e312f4d99faf4a233b8a20307420503864fc35598`.
+The artifact is `BUILT-NOT-INSTALLED`; QEMU is the next observation gate.
 
 ## U7 pre-physical artifact result
 

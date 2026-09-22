@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "target_id": "x86-64-uefi-network-probe-usb-v0",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "executable_format": "pe32-plus-efi-application",
+  "media": {
+    "layout": "mbr-fat32",
+    "size_bytes": 67108864,
+    "partition_start_lba": 2048,
+    "default_boot_path": "EFI/BOOT/BOOTX64.EFI"
+  },
+  "capability_bindings": {
+    "display.text": "uefi-simple-text-output",
+    "input.key": "uefi-simple-text-input",
+    "firmware.protocol-discovery": "uefi-locate-protocol",
+    "hardware.pci-config-read": "x86-cf8-cfc-read-only"
+  },
+  "probe_policy": {
+    "pci_segments": [0],
+    "pci_buses": [0, 255],
+    "pci_devices": [0, 31],
+    "pci_functions": [0, 7],
+    "configuration_data_writes": false,
+    "network_transmit": false,
+    "network_receive": false
+  },
+  "boot_policy": {"secure_boot": "disabled", "signed": false},
+  "installation_policy": {
+    "removable_media_only": true,
+    "internal_storage_writes": false,
+    "firmware_writes": false,
+    "recovery": "power-off-and-remove-usb"
+  }
+}
