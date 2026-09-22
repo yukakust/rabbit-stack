@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-network-probe-v0.1-failed-2026-09-22",
+  "status": "FAILED-SAFE-PCI-BRUTE-FORCE-TIMEOUT",
+  "bindings": {
+    "probe_sha256": "532488524036c2f59fdb70d498ab017a144b5981501813bf58d5c49c553cd2af",
+    "target_sha256": "aa5951299999243680b62569cd62fbc74ddef6af53c1caf6c0f425a1cccca36f",
+    "program_sha256": "da81a6f725fcc259403e3658c6c4d1f6b5b7b6fecceebf6d88711cbad2add831",
+    "efi_sha256": "d48db92f82e10642f980906379d4dd11db20f51754d46886f3ca35cb9b8efd8f",
+    "image_sha256": "a6a34c676d6772cfd378397e312f4d99faf4a233b8a20307420503864fc35598"
+  },
+  "observation": {
+    "machine": "Dell OptiPlex 3060",
+    "screen": "dark",
+    "duration": "multiple-minutes",
+    "network_inventory_obtained": false,
+    "cause_hypothesis": "brute-force-access-to-absent-pci-buses-is-not-bounded-on-this-firmware"
+  },
+  "recovery": {
+    "action": "power-off-and-remove-usb",
+    "usb_returned_to_mac": true,
+    "persistent_machine_changes": false
+  },
+  "superseded_by_image_sha256": "d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e"
+}

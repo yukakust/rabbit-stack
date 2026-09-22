@@ -2,9 +2,8 @@
 .section .text
 .global rabbit_entry
 
-# Read-only network inventory for x86-64 UEFI systems.
-# It checks three firmware protocols and reads PCI configuration headers through
-# the legacy CF8/CFC mechanism. It never writes PCI configuration data.
+# Read-only network inventory for x86-64 UEFI systems. PCI devices are obtained
+# from firmware's PCI I/O protocol handles; no absent buses are probed directly.
 rabbit_entry:
     push rbx
     push rbp
@@ -14,7 +13,7 @@ rabbit_entry:
     push r13
     push r14
     push r15
-    sub rsp, 0x158
+    sub rsp, 0x198
 
     mov rbx, [rdx + 0x30]       # SystemTable->ConIn
     mov rbp, [rdx + 0x40]       # SystemTable->ConOut
@@ -28,7 +27,7 @@ rabbit_entry:
 
     lea rcx, [rip + snp_guid]
     xor edx, edx
-    lea r8, [rsp + 0x20]
+    lea r8, [rsp + 0x40]
     mov rax, [rdi + 0x140]      # BootServices->LocateProtocol
     call rax
     test rax, rax
@@ -40,7 +39,7 @@ print_snp:
 
     lea rcx, [rip + wifi1_guid]
     xor edx, edx
-    lea r8, [rsp + 0x28]
+    lea r8, [rsp + 0x40]
     mov rax, [rdi + 0x140]
     call rax
     test rax, rax
@@ -52,7 +51,7 @@ print_wifi1:
 
     lea rcx, [rip + wifi2_guid]
     xor edx, edx
-    lea r8, [rsp + 0x30]
+    lea r8, [rsp + 0x40]
     mov rax, [rdi + 0x140]
     call rax
     test rax, rax
@@ -64,48 +63,64 @@ print_wifi2:
     lea rdx, [rip + pci_heading]
     call print_ascii
 
-    xor r12d, r12d              # bus
-    xor r15d, r15d              # network-device count
-bus_loop:
-    xor r13d, r13d              # device
-device_loop:
-    xor r14d, r14d              # function
-function_loop:
-    mov eax, 0x80000000
-    mov ecx, r12d
-    shl ecx, 16
-    or eax, ecx
-    mov ecx, r13d
-    shl ecx, 11
-    or eax, ecx
-    mov ecx, r14d
-    shl ecx, 8
-    or eax, ecx
-    mov r10d, eax
-    mov dx, 0x0cf8
-    out dx, eax                 # select PCI config address only
-    mov dx, 0x0cfc
-    in eax, dx                  # vendor/device read
-    cmp ax, 0xffff
-    je next_function
-    test ax, ax
-    jz next_function
-    mov [rsp + 0x38], eax
+    # LocateHandleBuffer(ByProtocol, PciIoGuid, NULL, &count, &handles).
+    mov qword ptr [rsp + 0x30], 0
+    mov qword ptr [rsp + 0x38], 0
+    mov ecx, 2                   # ByProtocol
+    lea rdx, [rip + pci_io_guid]
+    xor r8d, r8d
+    lea r9, [rsp + 0x30]
+    lea rax, [rsp + 0x38]
+    mov [rsp + 0x20], rax       # fifth Microsoft-x64 argument
+    mov rax, [rdi + 0x138]      # BootServices->LocateHandleBuffer
+    call rax
+    test rax, rax
+    jnz no_pci_handles
 
-    mov eax, r10d
-    or eax, 8
-    mov dx, 0x0cf8
-    out dx, eax
-    mov dx, 0x0cfc
-    in eax, dx                  # revision/prog-if/subclass/class read
-    mov [rsp + 0x3c], eax
-    shr eax, 24
-    cmp al, 2                   # PCI base class: network controller
-    jne next_function
+    xor r12d, r12d              # handle index
+    xor r15d, r15d              # network-controller count
+handle_loop:
+    cmp r12, [rsp + 0x30]
+    jae handles_done
+    mov rax, [rsp + 0x38]
+    mov rcx, [rax + r12 * 8]
+    lea rdx, [rip + pci_io_guid]
+    lea r8, [rsp + 0x40]
+    mov rax, [rdi + 0x98]       # BootServices->HandleProtocol
+    call rax
+    test rax, rax
+    jnz next_handle
+    mov rsi, [rsp + 0x40]       # EFI_PCI_IO_PROTOCOL
+
+    # Pci.Read(This, Uint32, offset 0, count 4, 16-byte header buffer).
+    mov rcx, rsi
+    mov edx, 2                  # EfiPciIoWidthUint32
+    xor r8d, r8d
+    mov r9d, 4
+    lea rax, [rsp + 0x68]
+    mov [rsp + 0x20], rax
+    mov rax, [rsi + 0x30]       # Pci.Read
+    call rax
+    test rax, rax
+    jnz next_handle
+    cmp byte ptr [rsp + 0x73], 2 # PCI base class byte
+    jne next_handle
+
+    # GetLocation(This, &segment, &bus, &device, &function).
+    mov rcx, rsi
+    lea rdx, [rsp + 0x48]
+    lea r8, [rsp + 0x50]
+    lea r9, [rsp + 0x58]
+    lea rax, [rsp + 0x60]
+    mov [rsp + 0x20], rax
+    mov rax, [rsi + 0x70]       # PciIo->GetLocation
+    call rax
+    test rax, rax
+    jnz next_handle
 
     inc r15d
     lea rsi, [rip + pci_template]
-    lea rdx, [rsp + 0x50]
+    lea rdx, [rsp + 0x80]
 copy_template:
     mov al, [rsi]
     mov [rdx], al
@@ -113,51 +128,46 @@ copy_template:
     inc rdx
     test al, al
     jnz copy_template
-
-    mov eax, r12d
-    lea rdx, [rsp + 0x50 + pci_bus - pci_template]
+    mov eax, [rsp + 0x50]
+    lea rdx, [rsp + 0x80 + pci_bus - pci_template]
     mov r10d, 2
     call write_hex
-    mov eax, r13d
-    lea rdx, [rsp + 0x50 + pci_device - pci_template]
+    mov eax, [rsp + 0x58]
+    lea rdx, [rsp + 0x80 + pci_device - pci_template]
     mov r10d, 2
     call write_hex
-    mov eax, r14d
-    lea rdx, [rsp + 0x50 + pci_function - pci_template]
+    mov eax, [rsp + 0x60]
+    lea rdx, [rsp + 0x80 + pci_function - pci_template]
     mov r10d, 1
     call write_hex
-    mov eax, [rsp + 0x38]
-    movzx eax, ax
-    lea rdx, [rsp + 0x50 + pci_vendor - pci_template]
+    movzx eax, word ptr [rsp + 0x68]
+    lea rdx, [rsp + 0x80 + pci_vendor - pci_template]
     mov r10d, 4
     call write_hex
-    mov eax, [rsp + 0x38]
-    shr eax, 16
-    lea rdx, [rsp + 0x50 + pci_product - pci_template]
+    movzx eax, word ptr [rsp + 0x6a]
+    lea rdx, [rsp + 0x80 + pci_product - pci_template]
     mov r10d, 4
     call write_hex
-    mov eax, [rsp + 0x3c]
-    shr eax, 16
-    and eax, 0xff
-    lea rdx, [rsp + 0x50 + pci_subclass - pci_template]
+    movzx eax, byte ptr [rsp + 0x72]
+    lea rdx, [rsp + 0x80 + pci_subclass - pci_template]
     mov r10d, 2
     call write_hex
-    lea rdx, [rsp + 0x50]
+    lea rdx, [rsp + 0x80]
     call print_ascii
-
-next_function:
-    inc r14d
-    cmp r14d, 8
-    jb function_loop
-    inc r13d
-    cmp r13d, 32
-    jb device_loop
+next_handle:
     inc r12d
-    cmp r12d, 256
-    jb bus_loop
+    jmp handle_loop
 
+handles_done:
+    mov rcx, [rsp + 0x38]
+    mov rax, [rdi + 0x48]       # BootServices->FreePool
+    call rax
+    jmp print_count
+no_pci_handles:
+    xor r15d, r15d
+print_count:
     lea rsi, [rip + count_template]
-    lea rdx, [rsp + 0x50]
+    lea rdx, [rsp + 0x80]
 copy_count:
     mov al, [rsi]
     mov [rdx], al
@@ -166,23 +176,23 @@ copy_count:
     test al, al
     jnz copy_count
     mov eax, r15d
-    lea rdx, [rsp + 0x50 + count_digits - count_template]
+    lea rdx, [rsp + 0x80 + count_digits - count_template]
     mov r10d, 2
     call write_hex
-    lea rdx, [rsp + 0x50]
+    lea rdx, [rsp + 0x80]
     call print_ascii
     lea rdx, [rip + footer]
     call print_ascii
 
 wait_key:
     mov rcx, rbx
-    lea rdx, [rsp + 0x40]
+    lea rdx, [rsp + 0x78]
     mov rax, [rcx + 8]
     call rax
     test rax, rax
     jnz wait_key
     xor eax, eax
-    add rsp, 0x158
+    add rsp, 0x198
     pop r15
     pop r14
     pop r13
@@ -193,10 +203,9 @@ wait_key:
     pop rbx
     ret
 
-# RDX points to a zero-terminated ASCII string. Convert it to UTF-16 on the
-# stack, then call EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL.OutputString().
+# RDX points to ASCII. Convert to UTF-16 in the stack buffer, then print.
 print_ascii:
-    lea r8, [rsp + 0xa0]
+    lea r8, [rsp + 0xd0]
     mov r9, r8
 convert_ascii:
     movzx eax, byte ptr [rdx]
@@ -211,7 +220,7 @@ convert_ascii:
     call rax
     ret
 
-# EAX=value, RDX=ASCII destination, R10D=number of hexadecimal digits.
+# EAX=value, RDX=ASCII destination, R10D=hexadecimal digit count.
 write_hex:
     mov r8d, eax
     lea r9d, [r10d * 4 - 4]
@@ -228,7 +237,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title:       .asciz "RABBIT NETWORK PROBE\r\n====================\r\n"
+title:       .asciz "RABBIT NETWORK PROBE v0.2\r\n=========================\r\n"
 snp_yes:     .asciz "UEFI SIMPLE NETWORK: YES\r\n"
 snp_no:      .asciz "UEFI SIMPLE NETWORK: NO\r\n"
 wifi1_yes:   .asciz "UEFI WIFI v1: YES\r\n"
@@ -257,3 +266,5 @@ wifi1_guid:
     .byte 0xc9,0x5b,0xa5,0x0d,0xf8,0x45,0xb4,0x4b,0x87,0x19,0x52,0x24,0xf1,0x8a,0x4d,0x45
 wifi2_guid:
     .byte 0xbf,0xb9,0x0f,0x1b,0x9d,0x69,0xdd,0x4f,0xa7,0xc3,0x25,0x46,0x68,0x1b,0xf6,0x3b
+pci_io_guid:
+    .byte 0x00,0xb2,0xf5,0x4c,0xb8,0x68,0xa5,0x4c,0x9e,0xec,0xb2,0x3e,0x3f,0x50,0x02,0x9a

@@ -5,7 +5,7 @@
     "locate-uefi-simple-network-protocol",
     "locate-uefi-wireless-mac-connection-v1",
     "locate-uefi-wireless-mac-connection-v2",
-    "read-pci-network-controller-identities"
+    "enumerate-uefi-pci-io-network-controller-identities"
   ],
   "pci_filter": {"base_class": 2},
   "observable": [

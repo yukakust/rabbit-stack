@@ -258,10 +258,13 @@ configuration data. QEMU observation comes before a separately authorized physic
 probe. The observed Dell result will choose between firmware-provided Wi-Fi and a
 driver for the actual controller; no chipset is assumed in advance.
 
-QEMU 11.1.1 has now validated the probe path: TianoCore exposed Simple Network but not
+QEMU 11.1.1 validated v0.1: TianoCore exposed Simple Network but not
 either standardized Wi-Fi protocol, and PCI enumeration reported the configured Intel
-`e1000e` identity `8086:10D3`. This is exact-bound emulator evidence only. Physical Dell
-inventory remains pending a fresh removable-device check and separately authorized write.
+`e1000e` identity `8086:10D3`. On the physical Dell, however, brute-force reads across
+all possible PCI buses remained on a dark screen for multiple minutes. Recovery by
+power-off and USB removal succeeded; the run is preserved as failed evidence rather
+than inventory. V0.2 now uses bounded UEFI PCI I/O handle enumeration and must pass a
+fresh QEMU gate before another authorized physical write.
 
 ### U10 — Universal installer
 

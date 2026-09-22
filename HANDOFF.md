@@ -282,8 +282,8 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Run the read-only `x86-64-uefi-network-probe-v0` under QEMU and record the emulated
-   protocol/PCI result before authorizing any physical-media write.
+1. Run network-probe v0.2 under QEMU and record the firmware-handle PCI result before
+   authorizing another physical-media write. Do not reuse v0.1 evidence.
 2. Run the same exact-bound probe on the Dell and use its real protocol and PCI
    vendor/device results to choose firmware-provided Wi-Fi or a concrete native driver.
 3. Implement receive-only framed `.rabbit` package transport over that selected path,
@@ -355,19 +355,22 @@ write is claimed.
 The owner chose Wi-Fi rather than removable-media shuttling as the first live command
 transport. `experiments/x86-64-uefi-network-probe-v0/` now builds a deterministic
 read-only UEFI application that locates Simple Network, Wireless MAC v1, and Wireless
-MAC v2 protocols and enumerates PCI base-class `02` devices through the x86 CF8/CFC
-configuration mechanism. It writes only the address selector, never PCI configuration
-data; it sends and receives no packets and changes no persistent state. The physical
-chipset is intentionally not guessed. Current image identity is
-`a6a34c676d6772cfd378397e312f4d99faf4a233b8a20307420503864fc35598`.
-The artifact is `BUILT-NOT-INSTALLED`; QEMU is the next observation gate.
+MAC v2 protocols and enumerates PCI base-class `02` devices. The original v0.1 used
+direct CF8/CFC reads across every possible bus. It passed QEMU, but the physical Dell
+remained dark for multiple minutes; power-off and USB removal recovered safely and no
+inventory was claimed. That failed exact-bound attempt is retained as evidence.
 
-That QEMU gate is now complete. QEMU 11.1.1 exposed Simple Network, no Wireless MAC v1
+V0.2 instead asks UEFI for handles of devices that actually exist, reads only those via
+`EFI_PCI_IO_PROTOCOL`, and frees its temporary handle buffer. It sends and receives no
+packets, writes no PCI configuration data, and changes no persistent state. The physical
+chipset is still intentionally not guessed. Current v0.2 image identity is
+`d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e`.
+The replacement is `BUILT-NOT-INSTALLED`; fresh QEMU observation is the next gate.
+
+The earlier v0.1 QEMU gate showed Simple Network, no Wireless MAC v1
 or v2 protocol, and one emulated Intel `8086:10D3` Ethernet controller at `00:02.0`.
 The owner-reviewed screen is bound to the exact probe, target, program, EFI, and image
-identities. These are deliberately emulator facts, not predictions about the Dell. The
-next gate is fresh Kingston device identification followed by explicit authorization to
-write the unchanged probe image for physical read-only observation.
+identities. Those facts cannot approve v0.2 or predict the Dell.
 
 ## U7 pre-physical artifact result
 

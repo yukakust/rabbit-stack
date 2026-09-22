@@ -14,13 +14,11 @@
     "display.text": "uefi-simple-text-output",
     "input.key": "uefi-simple-text-input",
     "firmware.protocol-discovery": "uefi-locate-protocol",
-    "hardware.pci-config-read": "x86-cf8-cfc-read-only"
+    "hardware.pci-config-read": "uefi-pci-io-protocol-read-only"
   },
   "probe_policy": {
-    "pci_segments": [0],
-    "pci_buses": [0, 255],
-    "pci_devices": [0, 31],
-    "pci_functions": [0, 7],
+    "enumeration": "uefi-locate-handle-buffer-by-pci-io-protocol",
+    "temporary_handle_buffer": "freed-before-exit",
     "configuration_data_writes": false,
     "network_transmit": false,
     "network_receive": false

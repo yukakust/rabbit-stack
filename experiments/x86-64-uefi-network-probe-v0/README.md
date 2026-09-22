@@ -10,7 +10,8 @@ come first without guessing:
    UEFI Wi-Fi protocol?
 
 The probe boots without Windows or Linux, clears the UEFI text screen, prints protocol
-availability, scans PCI segment 0 for base class `02` (network controller), and displays
+availability, asks firmware for the handles of PCI devices that actually exist, filters
+base class `02` (network controller), and displays
 lines such as:
 
 ```text
@@ -28,8 +29,9 @@ actual screen. `SUB=00` means Ethernet; `SUB=80` commonly identifies another net
 controller such as Wi-Fi, but the vendor/device pair is what selects a concrete driver.
 
 The machine code calls UEFI `LocateProtocol()` for Simple Network, Wireless MAC v1, and
-Wireless MAC v2. For PCI it writes only the configuration **address selector** port
-`0xCF8`, then reads data from `0xCFC`; it never writes configuration data, sends a packet,
+Wireless MAC v2. For PCI v0.2 uses `LocateHandleBuffer()`, `HandleProtocol()`,
+`EFI_PCI_IO_PROTOCOL.Pci.Read()`, and `GetLocation()`, then frees the temporary handle
+buffer. It never probes absent buses, writes PCI configuration data, sends a packet,
 joins Wi-Fi, reads storage, or changes firmware.
 
 Verify and emulate first:
@@ -44,10 +46,13 @@ QEMU includes an emulated Intel `e1000e` controller so at least one PCI network 
 expected. UEFI protocol availability depends on the bundled TianoCore drivers. Press any
 key after recording the screen.
 
-On 2026-09-22 the owner observed `SIMPLE NETWORK: YES`, both UEFI Wi-Fi protocols as
+On 2026-09-22 the owner observed v0.1 under QEMU: `SIMPLE NETWORK: YES`, both UEFI Wi-Fi protocols as
 `NO`, and the single emulated controller `8086:10D3` at `00:02.0`. This proves that the
-probe and its formatting work under QEMU; it says nothing yet about the Dell's physical
-controllers. Exact-bound evidence is in `evidence/qemu-macos-arm64-observed.json`.
+original probe and its formatting worked under QEMU. On the Dell, however, v0.1 remained
+on a dark screen for multiple minutes because it attempted every possible PCI bus.
+Power-off and USB removal recovered safely; no inventory was claimed. v0.2 replaces that
+algorithm with bounded firmware-handle enumeration and therefore requires a fresh QEMU
+observation before another physical write.
 
 Build the physical candidate without writing a device:
 
@@ -60,10 +65,10 @@ python3 build_image.py \
 Reviewed identities:
 
 ```text
-program SHA-256: da81a6f725fcc259403e3658c6c4d1f6b5b7b6fecceebf6d88711cbad2add831
-EFI SHA-256:     d48db92f82e10642f980906379d4dd11db20f51754d46886f3ca35cb9b8efd8f
-image SHA-256:   a6a34c676d6772cfd378397e312f4d99faf4a233b8a20307420503864fc35598
+program SHA-256: 1ee59aedd97ad54b02ceffb2422173fb831dcc83e5decea3aaefddc12c203abc
+EFI SHA-256:     3711e4dac38dab0b9f7580da3f4166f5cc5fce31a3720eea6dedcb6e840820aa
+image SHA-256:   d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e
 ```
 
-Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. A physical USB rewrite still
-requires fresh device identification and explicit authorization.
+Status: **V0.2-BUILT-NOT-INSTALLED**. QEMU observation must be repeated. A physical USB
+rewrite still requires fresh device identification and explicit authorization.

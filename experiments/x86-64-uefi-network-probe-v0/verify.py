@@ -15,14 +15,15 @@ from rabbit_network_probe import (
 )
 
 
-EXPECTED_PROBE_SHA256 = "532488524036c2f59fdb70d498ab017a144b5981501813bf58d5c49c553cd2af"
-EXPECTED_TARGET_SHA256 = "aa5951299999243680b62569cd62fbc74ddef6af53c1caf6c0f425a1cccca36f"
-EXPECTED_SOURCE_SHA256 = "7436da89ea1c19f91ccc4a9ce20c9e86e93fd3fa7945bfaea19ecb581be1d403"
-EXPECTED_EFI_SHA256 = "d48db92f82e10642f980906379d4dd11db20f51754d46886f3ca35cb9b8efd8f"
-EXPECTED_IMAGE_SHA256 = "a6a34c676d6772cfd378397e312f4d99faf4a233b8a20307420503864fc35598"
+EXPECTED_PROBE_SHA256 = "c8571ac94a3c901cbf393b024fbb1069736547c09d24b891c526e830f8b089aa"
+EXPECTED_TARGET_SHA256 = "46a040fe8f929bff4dc190e5a4f9bb739861c2f96fe3cc94ecfbc03781f2237e"
+EXPECTED_SOURCE_SHA256 = "c9171e5cd77cbbda0565937978511a99b2fa63a5257b46c254a6ef76430d16e2"
+EXPECTED_EFI_SHA256 = "3711e4dac38dab0b9f7580da3f4166f5cc5fce31a3720eea6dedcb6e840820aa"
+EXPECTED_IMAGE_SHA256 = "d9718a582019fc7d82cd3f87048471138d450d62422ccbbf526910372a60ce5e"
 SNP_GUID = bytes.fromhex("b9 32 98 a1 25 ac d3 11 9a 2d 00 90 27 3f c1 4d")
 WIFI1_GUID = bytes.fromhex("c9 5b a5 0d f8 45 b4 4b 87 19 52 24 f1 8a 4d 45")
 WIFI2_GUID = bytes.fromhex("bf b9 0f 1b 9d 69 dd 4f a7 c3 25 46 68 1b f6 3b")
+PCI_IO_GUID = bytes.fromhex("00 b2 f5 4c b8 68 a5 4c 9e ec b2 3e 3f 50 02 9a")
 
 
 def require(condition: bool, message: str) -> None:
@@ -92,11 +93,14 @@ def inspect_program(program: bytes) -> None:
     require(len(program) == PROGRAM_SIZE, "program size changed")
     require(hashlib.sha256(program).hexdigest() == PROGRAM_SHA256, "program identity changed")
     require(program.count(b"\x48\x8b\x87\x40\x01\x00\x00\xff\xd0") == 3, "LocateProtocol checks changed")
-    for guid in (SNP_GUID, WIFI1_GUID, WIFI2_GUID):
+    for guid in (SNP_GUID, WIFI1_GUID, WIFI2_GUID, PCI_IO_GUID):
         require(program.count(guid) == 1, "reviewed network protocol GUID changed")
-    require(program.count(bytes.fromhex("66 ba f8 0c ef")) == 2, "PCI address-selection path changed")
-    require(program.count(bytes.fromhex("66 ba fc 0c ed")) == 2, "PCI data-read path changed")
-    require(bytes.fromhex("66 ba fc 0c ef") not in program, "program writes PCI configuration data")
+    require(bytes.fromhex("48 8b 87 38 01 00 00 ff d0") in program, "LocateHandleBuffer path changed")
+    require(bytes.fromhex("48 8b 87 98 00 00 00 ff d0") in program, "HandleProtocol path changed")
+    require(bytes.fromhex("48 8b 46 30 ff d0") in program, "Pci.Read path changed")
+    require(bytes.fromhex("48 8b 46 70 ff d0") in program, "Pci.GetLocation path changed")
+    require(bytes.fromhex("48 8b 47 48 ff d0") in program, "temporary handle-buffer cleanup changed")
+    require(bytes.fromhex("66 ba f8 0c ef") not in program, "legacy brute-force PCI I/O remains")
     require(b"PCI NETWORK CONTROLLERS:\r\n" in program, "PCI result format changed")
     require(b"PHOTOGRAPH THIS SCREEN" in program, "observation instruction changed")
 
@@ -119,35 +123,18 @@ def main() -> int:
         program = load_program()
         inspect_program(program)
         inspect_efi(inspect_image(image_a), program)
-        require(b"out dx, eax" in SOURCE_PATH.read_bytes(), "auditable source lost PCI selector operation")
-        observed = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
-        require(observed["status"] == "OBSERVED-MANUAL-QEMU-NETWORK-PROBE", "QEMU evidence status changed")
-        require(
-            observed["bindings"] == {
-                "probe_sha256": report_a["probe_sha256"],
-                "target_sha256": report_a["target_sha256"],
-                "program_sha256": report_a["program_sha256"],
-                "efi_sha256": report_a["efi_sha256"],
-                "image_sha256": report_a["image_sha256"],
-            },
-            "QEMU evidence is stale or bound to another probe",
-        )
-        observation = observed["observation"]
-        require(observation["uefi_simple_network"] is True, "QEMU did not expose Simple Network")
-        require(observation["uefi_wifi_v1"] is False and observation["uefi_wifi_v2"] is False, "QEMU Wi-Fi observation changed")
-        require(
-            observation["pci_network_controllers"] == [
-                {"bus": 0, "device": 2, "function": 0, "vendor_id": "8086", "device_id": "10D3", "subclass": "00"}
-            ] and observation["total"] == 1,
-            "QEMU PCI observation changed",
-        )
-        require(observed["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
-        require(observed["physical_dell_status"] == "NOT-OBSERVED-YET", "physical Dell status is overstated")
+        source = SOURCE_PATH.read_bytes()
+        require(b"LocateHandleBuffer" in source and b"Pci.Read" in source, "auditable firmware PCI path changed")
+        require(b"out dx" not in source and b"in eax" not in source, "source still performs direct PCI port scanning")
         print("PASS: deterministic UEFI image checks SNP, Wi-Fi v1/v2, and PCI network identities")
-        print("PASS: reviewed code writes only the PCI address selector and reads PCI configuration data")
+        print("PASS: reviewed code enumerates only firmware-present PCI I/O handles and frees its temporary buffer")
         print("PASS: probe sends and receives no network packets and performs no persistent machine writes")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
-        print("PASS: QEMU observed SNP=YES, Wi-Fi v1/v2=NO, and emulated 8086:10D3; Dell remains unobserved")
+        failed = load_json(ROOT / "evidence" / "dell-optiplex-3060-v0.1-failed.json")
+        require(failed["status"] == "FAILED-SAFE-PCI-BRUTE-FORCE-TIMEOUT", "physical failure status changed")
+        require(failed["recovery"]["persistent_machine_changes"] is False, "failure evidence claims persistent changes")
+        require(failed["superseded_by_image_sha256"] == report_a["image_sha256"], "failure is not bound to replacement image")
+        print("PASS: the slow physical v0.1 attempt is preserved as failed evidence and cannot approve v0.2")
 
         mutated = copy.deepcopy(probe)
         mutated["mutations"] = ["connect-wifi"]
@@ -168,7 +155,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: QEMU-gated read-only network discovery contract")
+    print("PASS: pre-QEMU v0.2 read-only network discovery contract")
     return 0
 
 
