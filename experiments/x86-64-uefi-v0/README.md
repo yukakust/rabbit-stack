@@ -132,3 +132,10 @@ users, untrusted boot media, or another role. Exact evidence is recorded in
 This completes the first physical target slice of U7. Overall U7 remains open until the
 same meaning is shown on another dissimilar physical target. The immediate next slice is
 an immutable physical cold patch `HI -> HI!` followed by exact rollback to `HI`.
+
+On 2026-09-22 the patched payload was independently hash-checked on the removable media
+and selected through the same Dell UEFI boot entry. The physical display showed exactly
+`HI!`. `evidence/dell-optiplex-3060-add-bang-physical-observed.json` binds that result to
+the base world, immutable patch, effective world, target, QEMU evidence, EFI, image, and
+the earlier physical base observation. Physical removal of the patch and rollback to
+`HI` remain explicitly pending.

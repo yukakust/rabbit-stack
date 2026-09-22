@@ -225,10 +225,44 @@ def main() -> int:
         require(patched_observed["observation"]["display_text"] == "HI!", "patched QEMU display differs")
         require(patched_observed["physical_execution_verified"] is False, "patched QEMU claimed physical execution")
         require(patched_observed["physical_writes_performed"] == [], "patched QEMU claimed a physical write")
+        patched_physical = load_json(ROOT / "evidence" / "dell-optiplex-3060-add-bang-physical-observed.json")
+        require(
+            patched_physical["status"] == "OBSERVED-MANUAL-PHYSICAL-PATCH",
+            "patched physical evidence status changed",
+        )
+        require(
+            patched_physical["bindings"] == {
+                "base_world_sha256": patched_report_a["base_world_sha256"],
+                "effective_world_sha256": patched_report_a["world_sha256"],
+                "patch_id": patched_report_a["patch_id"],
+                "patch_sha256": patched_report_a["patch_sha256"],
+                "target_sha256": patched_report_a["target_sha256"],
+                "efi_sha256": patched_report_a["efi_sha256"],
+                "image_sha256": patched_report_a["image_sha256"],
+                "qemu_evidence_id": patched_observed["evidence_id"],
+                "base_physical_evidence_id": physical["evidence_id"],
+            },
+            "patched physical evidence is stale or bound to another artifact",
+        )
+        require(
+            patched_physical["deployment"]["observed_boot_payload_sha256"]
+            == patched_report_a["efi_sha256"],
+            "physical patched payload differs from the reviewed EFI",
+        )
+        require(patched_physical["observation"]["display_text"] == "HI!", "physical patch display differs")
+        require(
+            patched_physical["execution"]["physical_processor_executed"] is True,
+            "patched physical execution is unclaimed",
+        )
+        require(
+            patched_physical["rollback"]["status"] == "PENDING-PHYSICAL-OBSERVATION",
+            "physical rollback status is dishonest",
+        )
         rolled_back, rolled_back_report = build(world, target)
         require(rolled_back == image_a and rolled_back_report == report_a, "removing patch did not restore base")
         print("PASS: immutable add-bang patch builds exact HI! UEFI identities and removal restores exact HI")
         print("PASS: owner-reviewed QEMU display binds HI! to exact base, patch, target, EFI, and image identities")
+        print("PASS: owner-reviewed Dell display binds physical HI! to the exact immutable patch artifact")
 
         wrong_text = copy.deepcopy(world)
         wrong_text["contract"]["stdout"] = "BYE"

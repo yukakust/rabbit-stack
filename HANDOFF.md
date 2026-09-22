@@ -282,9 +282,8 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Reinstall the QEMU-observed exact patched payload on the same removable device,
-   observe physical
-   `HI!`, then remove the patch and prove exact rollback to physical `HI`.
+1. Remove the physically observed `add-bang` patch, reinstall the exact base payload,
+   and prove physical rollback from `HI!` to `HI`.
 2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
    reconsider it if the machine stops being a dedicated lab target.
 3. Add a second dissimilar physical target when real inventory becomes available, then
@@ -293,8 +292,13 @@ Boot or authorize installation.
 The first part of the patch slice is implemented: `build_image.py --patch add-bang`
 validates the existing immutable semantic patch, derives `HI!`, produces reviewed EFI
 and image hashes, and proves that removing the patch restores the exact base `HI` image.
-QEMU 11.1.1 has now displayed exact `HI!`; removable-media replacement and physical
-patched/rollback observations remain open.
+QEMU 11.1.1 and the physical Dell have now displayed exact `HI!`; only physical rollback
+to the reviewed base `HI` remains open in this slice.
+
+The physical patched evidence is bound to the base/effective world, patch, target,
+QEMU evidence, EFI, image, and earlier physical base result. It explicitly reports
+rollback as `PENDING-PHYSICAL-OBSERVATION` rather than inferring reversibility from the
+builder alone.
 
 ## U7 pre-physical artifact result
 

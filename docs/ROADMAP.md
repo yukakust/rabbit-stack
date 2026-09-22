@@ -188,8 +188,9 @@ the existing immutable `HI -> HI!` patch physically and proves rollback to `HI`.
 The UEFI builder now accepts that exact hash-bound `add-bang` patch and deterministically
 produces a distinct `HI!` PE32+/FAT32 artifact. Structural verification passes and patch
 removal restores the exact original `HI` image. QEMU 11.1.1 has manually displayed exact
-`HI!`; physical USB replacement, physical `HI!`, and physical rollback remain the next
-evidence gates.
+`HI!`; the patched payload was then hash-checked and the physical Dell also displayed
+exact `HI!`. Physical removal of the patch and rollback to `HI` is the remaining gate in
+this slice.
 
 ### U8 — Transactional patches
 
