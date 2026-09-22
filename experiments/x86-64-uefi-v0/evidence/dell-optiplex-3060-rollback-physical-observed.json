@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
-  "evidence_id": "dell-optiplex-3060-physical-hi-bang-2026-09-22",
-  "status": "OBSERVED-MANUAL-PHYSICAL-PATCH",
+  "evidence_id": "dell-optiplex-3060-physical-hi-rollback-2026-09-22",
+  "status": "OBSERVED-MANUAL-PHYSICAL-ROLLBACK",
   "bindings": {
     "base_world_sha256": "18c0cc6b739378cce4544c5068ef01e9f4d1cf00f3b8b41e65caaa85ec1aef75",
-    "effective_world_sha256": "3bdda867e932c39e1ed68079609463c53627914b7eca886a41f2b4bf68109586",
-    "patch_id": "add-bang",
-    "patch_sha256": "43a0914a14d78dace32013ece24c45c92d66a52414c3aa7ff285a87d5d923868",
+    "removed_patch_id": "add-bang",
+    "removed_patch_sha256": "43a0914a14d78dace32013ece24c45c92d66a52414c3aa7ff285a87d5d923868",
     "target_sha256": "59c85cbc83c8f42bec7c0f59763e86553e51abfe187d523a3c19d2756f6b2d1b",
-    "efi_sha256": "b20888a358ddd69c42d249a76f128f4684dc460098db6863614d51b0d322c796",
-    "image_sha256": "2099b5e4cd07551ecabda7262a6ae2b882bfe495dd32d45070e3d35d10fd26b5",
-    "qemu_evidence_id": "qemu-x86-64-uefi-add-bang-macos-arm64-2026-09-22",
-    "base_physical_evidence_id": "dell-optiplex-3060-physical-hi-2026-09-22"
+    "restored_efi_sha256": "a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128",
+    "restored_image_sha256": "806d4fef5a33c1bc7d0451bd06d4c665ef21612acd32bddea93fd3f9ca56a594",
+    "patched_physical_evidence_id": "dell-optiplex-3060-physical-hi-bang-2026-09-22",
+    "original_base_physical_evidence_id": "dell-optiplex-3060-physical-hi-2026-09-22"
   },
   "deployment": {
     "device": "Kingston DataTraveler Duo",
+    "bytes_written": 67108864,
     "boot_payload_path": "EFI/BOOT/BOOTX64.EFI",
-    "observed_boot_payload_sha256": "b20888a358ddd69c42d249a76f128f4684dc460098db6863614d51b0d322c796",
+    "observed_boot_payload_sha256": "a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128",
     "whole_image_exact_after_host_mount": false,
     "host_metadata_mutation_permitted": true
   },
   "observation": {
     "method": "owner-reviewed-physical-display",
     "boot_selection": "UEFI: KingstonDataTraveler Duo0000",
-    "display_text": "HI!",
+    "display_text": "HI",
     "waited_for_key": true
   },
   "execution": {
@@ -33,9 +33,10 @@
   },
   "internal_storage_writes_performed": [],
   "rollback": {
-    "status": "OBSERVED-MANUAL-PHYSICAL",
-    "expected_display_after_patch_removal": "HI",
-    "evidence_id": "dell-optiplex-3060-physical-hi-rollback-2026-09-22"
+    "from_display": "HI!",
+    "to_display": "HI",
+    "patch_removed": true,
+    "base_artifact_restored": true
   },
   "limitations": [
     "display evidence was reviewed manually rather than captured by an automated physical oracle",

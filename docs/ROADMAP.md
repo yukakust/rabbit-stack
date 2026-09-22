@@ -189,8 +189,9 @@ The UEFI builder now accepts that exact hash-bound `add-bang` patch and determin
 produces a distinct `HI!` PE32+/FAT32 artifact. Structural verification passes and patch
 removal restores the exact original `HI` image. QEMU 11.1.1 has manually displayed exact
 `HI!`; the patched payload was then hash-checked and the physical Dell also displayed
-exact `HI!`. Physical removal of the patch and rollback to `HI` is the remaining gate in
-this slice.
+exact `HI!`. The owner subsequently removed the patch, rewrote the exact reviewed base
+payload, verified its EFI hash, and observed exact `HI` again on the same Dell. This
+closes the physical cold-patch cycle `HI -> HI! -> HI`.
 
 ### U8 — Transactional patches
 

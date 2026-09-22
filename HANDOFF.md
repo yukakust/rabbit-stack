@@ -282,8 +282,8 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Remove the physically observed `add-bang` patch, reinstall the exact base payload,
-   and prove physical rollback from `HI!` to `HI`.
+1. Begin the next physical graphics slice by negotiating a framebuffer and drawing a
+   deterministic color object without UEFI Simple Text Output.
 2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
    reconsider it if the machine stops being a dedicated lab target.
 3. Add a second dissimilar physical target when real inventory becomes available, then
@@ -292,13 +292,14 @@ Boot or authorize installation.
 The first part of the patch slice is implemented: `build_image.py --patch add-bang`
 validates the existing immutable semantic patch, derives `HI!`, produces reviewed EFI
 and image hashes, and proves that removing the patch restores the exact base `HI` image.
-QEMU 11.1.1 and the physical Dell have now displayed exact `HI!`; only physical rollback
-to the reviewed base `HI` remains open in this slice.
+QEMU 11.1.1 and the physical Dell displayed exact `HI!`. The owner then rebuilt the
+reviewed base, re-identified and rewrote the external Kingston device, verified the exact
+base EFI payload hash, and observed exact `HI` again on the physical Dell.
 
-The physical patched evidence is bound to the base/effective world, patch, target,
-QEMU evidence, EFI, image, and earlier physical base result. It explicitly reports
-rollback as `PENDING-PHYSICAL-OBSERVATION` rather than inferring reversibility from the
-builder alone.
+The physical patched and rollback evidence bind the complete `HI -> HI! -> HI` lifecycle
+to the base/effective worlds, patch, target, QEMU evidence, both EFI/image identities,
+and both owner-reviewed physical observations. Secure Boot remained disabled under the
+explicit dedicated-lab policy, and no internal storage participated.
 
 ## U7 pre-physical artifact result
 

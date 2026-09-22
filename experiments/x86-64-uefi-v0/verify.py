@@ -254,15 +254,65 @@ def main() -> int:
             patched_physical["execution"]["physical_processor_executed"] is True,
             "patched physical execution is unclaimed",
         )
-        require(
-            patched_physical["rollback"]["status"] == "PENDING-PHYSICAL-OBSERVATION",
-            "physical rollback status is dishonest",
-        )
         rolled_back, rolled_back_report = build(world, target)
         require(rolled_back == image_a and rolled_back_report == report_a, "removing patch did not restore base")
+        rollback_physical = load_json(ROOT / "evidence" / "dell-optiplex-3060-rollback-physical-observed.json")
+        require(
+            rollback_physical["status"] == "OBSERVED-MANUAL-PHYSICAL-ROLLBACK",
+            "physical rollback evidence status changed",
+        )
+        require(
+            rollback_physical["bindings"] == {
+                "base_world_sha256": report_a["world_sha256"],
+                "removed_patch_id": patched_report_a["patch_id"],
+                "removed_patch_sha256": patched_report_a["patch_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "restored_efi_sha256": report_a["efi_sha256"],
+                "restored_image_sha256": report_a["image_sha256"],
+                "patched_physical_evidence_id": patched_physical["evidence_id"],
+                "original_base_physical_evidence_id": physical["evidence_id"],
+            },
+            "physical rollback evidence is stale or bound to another lifecycle",
+        )
+        require(
+            rollback_physical["deployment"]["observed_boot_payload_sha256"] == report_a["efi_sha256"],
+            "physical rollback payload differs from the reviewed base EFI",
+        )
+        require(rollback_physical["observation"]["display_text"] == "HI", "physical rollback display differs")
+        require(
+            rollback_physical["execution"]["physical_processor_executed"] is True,
+            "physical rollback execution is unclaimed",
+        )
+        require(
+            rollback_physical["execution"]["guest_or_host_operating_system_present"] is False,
+            "physical rollback evidence unexpectedly includes an operating system",
+        )
+        require(
+            rollback_physical["execution"]["secure_boot"] == "disabled-by-owner-dedicated-lab-policy",
+            "physical rollback evidence hides boot policy",
+        )
+        require(rollback_physical["internal_storage_writes_performed"] == [], "physical rollback reports internal writes")
+        require(
+            rollback_physical["rollback"] == {
+                "from_display": "HI!",
+                "to_display": "HI",
+                "patch_removed": True,
+                "base_artifact_restored": True,
+            },
+            "physical rollback outcome changed",
+        )
+        require(
+            patched_physical["rollback"] == {
+                "status": "OBSERVED-MANUAL-PHYSICAL",
+                "expected_display_after_patch_removal": "HI",
+                "evidence_id": rollback_physical["evidence_id"],
+            },
+            "patched physical evidence is not linked to the observed rollback",
+        )
         print("PASS: immutable add-bang patch builds exact HI! UEFI identities and removal restores exact HI")
         print("PASS: owner-reviewed QEMU display binds HI! to exact base, patch, target, EFI, and image identities")
         print("PASS: owner-reviewed Dell display binds physical HI! to the exact immutable patch artifact")
+        print("PASS: owner-reviewed Dell rollback restores exact physical HI from the reviewed base artifact")
 
         wrong_text = copy.deepcopy(world)
         wrong_text["contract"]["stdout"] = "BYE"

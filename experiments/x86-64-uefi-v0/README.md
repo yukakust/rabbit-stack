@@ -137,5 +137,12 @@ On 2026-09-22 the patched payload was independently hash-checked on the removabl
 and selected through the same Dell UEFI boot entry. The physical display showed exactly
 `HI!`. `evidence/dell-optiplex-3060-add-bang-physical-observed.json` binds that result to
 the base world, immutable patch, effective world, target, QEMU evidence, EFI, image, and
-the earlier physical base observation. Physical removal of the patch and rollback to
-`HI` remain explicitly pending.
+the earlier physical base observation.
+
+The owner then rebuilt the exact base image without `add-bang`, re-identified the
+external removable Kingston device, wrote exactly 67,108,864 bytes, and verified the
+restored `BOOTX64.EFI` hash before ejecting it. The same Dell booted that payload with
+the documented Secure Boot-off lab policy and displayed exactly `HI`. Evidence in
+`evidence/dell-optiplex-3060-rollback-physical-observed.json` therefore closes the
+physical cold-patch lifecycle `HI -> HI! -> HI`; it does not infer physical rollback
+from the deterministic builder alone.
