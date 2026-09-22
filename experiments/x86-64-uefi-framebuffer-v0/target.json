@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "target_id": "x86-64-uefi-framebuffer-usb-v0",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "executable_format": "pe32-plus-efi-application",
+  "media": {
+    "layout": "mbr-fat32",
+    "size_bytes": 67108864,
+    "partition_start_lba": 2048,
+    "default_boot_path": "EFI/BOOT/BOOTX64.EFI"
+  },
+  "capability_bindings": {
+    "display.region": "uefi-gop-linear-framebuffer",
+    "input.key": "uefi-simple-text-input",
+    "machine.exit": "return-efi-success"
+  },
+  "graphics_policy": {
+    "minimum_width": 356,
+    "minimum_height": 356,
+    "bytes_per_pixel": 4,
+    "accepted_pixel_formats": [
+      "PixelRedGreenBlueReserved8BitPerColor",
+      "PixelBlueGreenRedReserved8BitPerColor"
+    ]
+  },
+  "boot_policy": {
+    "secure_boot": "disabled",
+    "signed": false
+  },
+  "installation_policy": {
+    "removable_media_only": true,
+    "internal_storage_writes": false,
+    "firmware_writes": false,
+    "recovery": "power-off-and-remove-usb"
+  }
+}

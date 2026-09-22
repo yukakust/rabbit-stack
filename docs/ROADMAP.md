@@ -193,6 +193,13 @@ exact `HI!`. The owner subsequently removed the patch, rewrote the exact reviewe
 payload, verified its EFI hash, and observed exact `HI` again on the same Dell. This
 closes the physical cold-patch cycle `HI -> HI! -> HI`.
 
+The next U7 graphics slice is now built but not yet observed. A new portable world asks
+for one orange rectangle rather than text. Its Target Pack binds `display.region` to the
+UEFI GOP linear framebuffer. Reviewed x86-64 bytes locate GOP, read the framebuffer base,
+resolution, stride, and packed RGB/BGR format, then directly store 65,536 pixels. The
+artifact contains no `HI` string and never calls Simple Text Output. QEMU observation is
+the next gate; no physical-media write is authorized by this pre-physical build.
+
 ### U8 — Transactional patches
 
 Apply cold, warm, and hot patches through prepare, validation, staging, health checks,

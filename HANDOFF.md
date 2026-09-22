@@ -282,8 +282,8 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Begin the next physical graphics slice by negotiating a framebuffer and drawing a
-   deterministic color object without UEFI Simple Text Output.
+1. Run the new framebuffer artifact in QEMU and manually observe its orange square
+   before considering any physical-media write.
 2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
    reconsider it if the machine stops being a dedicated lab target.
 3. Add a second dissimilar physical target when real inventory becomes available, then
@@ -300,6 +300,14 @@ The physical patched and rollback evidence bind the complete `HI -> HI! -> HI` l
 to the base/effective worlds, patch, target, QEMU evidence, both EFI/image identities,
 and both owner-reviewed physical observations. Secure Boot remained disabled under the
 explicit dedicated-lab policy, and no internal storage participated.
+
+The next pre-physical graphics artifact now exists in
+`experiments/x86-64-uefi-framebuffer-v0/`. Its portable world requests one orange
+`256 x 256` rectangle at `(100,100)`. The x86-64 UEFI Target Pack binds that request to
+GOP's configured linear framebuffer. Reviewed machine bytes locate GOP, inspect
+resolution/stride/pixel format, and directly write 65,536 pixels without calling Simple
+Text Output or embedding `HI`. Deterministic and negative tests pass. It remains
+`BUILT-NOT-INSTALLED`; QEMU observation is the next evidence gate.
 
 ## U7 pre-physical artifact result
 

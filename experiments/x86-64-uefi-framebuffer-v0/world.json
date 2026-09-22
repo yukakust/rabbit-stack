@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "world_id": "first-color-object",
+  "capabilities": [
+    {
+      "capability": "display.region",
+      "version": 1,
+      "required": true,
+      "constraints": {
+        "shape": "rectangle",
+        "color": "#ff8000",
+        "x": 100,
+        "y": 100,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "capability": "input.key",
+      "version": 1,
+      "required": true,
+      "constraints": {
+        "action": "finish"
+      }
+    },
+    {
+      "capability": "machine.exit",
+      "version": 1,
+      "required": true,
+      "constraints": {
+        "status": 0
+      }
+    }
+  ],
+  "objects": [
+    {
+      "id": "first-light",
+      "type": "solid-rectangle",
+      "x": 100,
+      "y": 100,
+      "width": 256,
+      "height": 256,
+      "color": "#ff8000"
+    }
+  ],
+  "contract": {
+    "visible_object": "first-light",
+    "wait_for_key": true,
+    "exit_status": 0
+  }
+}

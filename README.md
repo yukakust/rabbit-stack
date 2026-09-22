@@ -46,12 +46,16 @@ every layer we would otherwise be tempted to hide.
   read-only inventory matching and a non-executable, removable-USB-only installation
   proposal, including the real read-only Dell OptiPlex 3060 firmware inventory.
 - [`experiments/x86-64-uefi-v0`](experiments/x86-64-uefi-v0): the unchanged semantic
-  `HI` world lowered into a deterministic pre-physical PE32+/FAT32 UEFI image.
+  `HI` world lowered into deterministic PE32+/FAT32 UEFI images, physically patched to
+  `HI!`, and rolled back to exact `HI` on the Dell.
+- [`experiments/x86-64-uefi-framebuffer-v0`](experiments/x86-64-uefi-framebuffer-v0):
+  the first semantic color object lowered to reviewed x86-64 instructions that obtain
+  the UEFI GOP framebuffer and write pixels directly, without firmware text output.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
-[`experiments/x86-64-uefi-v0/README.md`](experiments/x86-64-uefi-v0/README.md).
+[`experiments/x86-64-uefi-framebuffer-v0/README.md`](experiments/x86-64-uefi-framebuffer-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is
