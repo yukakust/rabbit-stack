@@ -65,12 +65,13 @@ def main() -> int:
             "-no-reboot",
             "-drive", f"if=pflash,format=raw,unit=0,readonly=on,file={code}",
             "-drive", f"if=pflash,format=raw,unit=1,file={variables_path}",
-            "-drive", f"file={image_path},format=raw,readonly=on",
+            "-drive", f"file={image_path},format=raw,snapshot=on",
         ]
         print(f"IMAGE SHA256: {report['image_sha256']}")
         print(f"UEFI code: {code} ({code.stat().st_size} bytes, read-only)")
         print(f"UEFI variables template: {variables} ({variables.stat().st_size} bytes)")
         print("UEFI variables working copy: temporary")
+        print("Rabbit disk writes: temporary snapshot overlay")
         print("Expected screen: exactly HI; press one key to return to firmware.")
         print("Close the QEMU window after observing the result. No physical device is used.")
         try:
