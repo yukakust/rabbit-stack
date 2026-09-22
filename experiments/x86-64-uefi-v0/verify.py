@@ -118,6 +118,21 @@ def main() -> int:
         require(report_a["physical_execution_verified"] is False, "build claimed physical execution")
         require(report_a["efi_sha256"] == EXPECTED_EFI_SHA256, "reviewed EFI identity changed")
         require(report_a["image_sha256"] == EXPECTED_IMAGE_SHA256, "reviewed image identity changed")
+        observed = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(observed["schema_version"] == 1, "observed evidence schema changed")
+        require(observed["status"] == "OBSERVED-MANUAL-QEMU", "manual evidence status changed")
+        require(
+            observed["bindings"] == {
+                "world_sha256": report_a["world_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "efi_sha256": report_a["efi_sha256"],
+                "image_sha256": report_a["image_sha256"],
+            },
+            "manual evidence is stale or bound to another artifact",
+        )
+        require(observed["observation"]["display_text"] == "HI", "manual evidence reports another display")
+        require(observed["physical_execution_verified"] is False, "QEMU evidence claimed physical execution")
+        require(observed["physical_writes_performed"] == [], "QEMU evidence claimed physical writes")
         efi = inspect_image(image_a)
         inspect_efi(efi, "HI")
         require(report_a["efi_sha256"] == __import__("hashlib").sha256(efi).hexdigest(), "EFI hash mismatch")
@@ -125,6 +140,7 @@ def main() -> int:
         print("PASS: 64 MiB MBR/FAT32 image contains EFI/BOOT/BOOTX64.EFI")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
         print("PASS: artifact is built but not installed, written, or physically verified")
+        print("PASS: owner-reviewed QEMU screenshot is bound to the exact world, target, EFI, and image")
 
         wrong_text = copy.deepcopy(world)
         wrong_text["contract"]["stdout"] = "BYE"

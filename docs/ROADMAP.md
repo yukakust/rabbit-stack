@@ -164,9 +164,13 @@ write its internal disk or firmware; removing the USB device is the recovery pat
 
 The first pre-physical artifact now exists: the unchanged `HI` world lowers to a
 deterministic x86-64 PE32+ UEFI application inside a 64 MiB MBR/FAT32 removable-media
-image. The builder and verifier claim only `BUILT-NOT-INSTALLED`; QEMU/OVMF reproduction,
-exact removable-device identification, explicit write authorization, and physical boot
-evidence remain open gates.
+image. The builder and structural verifier claim only `BUILT-NOT-INSTALLED`; they do not
+convert an observation into physical evidence by themselves.
+
+The exact image has now also been observed manually under QEMU 11.1.1 with TianoCore
+EDK II on the Apple Silicon Mac: firmware started the removable-media application and
+the display showed `HI`. That evidence is hash-bound and explicitly remains emulator
+evidence. Exact USB identification, authorization, and physical Dell boot are still open.
 
 ### U8 — Transactional patches
 

@@ -39,17 +39,23 @@ The emulated SATA controller receives a writable snapshot overlay rather than di
 write access to the generated base image; the overlay is deleted with the same temporary
 directory.
 
+On 2026-09-22, QEMU 11.1.1 on the Apple Silicon Mac loaded the exact reviewed image
+through TianoCore EDK II. The firmware screen showed that `UEFI QEMU HARDDISK QM00001`
+started and the application displayed `HI`. The owner supplied a screenshot and terminal
+transcript; `evidence/qemu-macos-arm64-observed.json` binds that manual observation to
+the exact world, Target Pack, EFI, and image hashes. This is deliberately labeled manual
+QEMU evidence, not an automated oracle or a physical-hardware result.
+
 The builder may create `/tmp/rabbit-x86-64-uefi-v0.img`; it does **not** select or write
 a physical device. Generated binaries are intentionally excluded from Git.
 
-Current status is `BUILT-NOT-INSTALLED`. Before any USB write:
+Current status is `OBSERVED-MANUAL-QEMU; NOT-INSTALLED`. Before any USB write:
 
-1. reproduce the image under x86-64 QEMU with UEFI firmware;
-2. inspect the USB device read-only on the Mac and record its exact whole-disk identity;
-3. review the fact that this v0 image is unsigned and the Dell currently has Secure Boot
+1. inspect the USB device read-only on the Mac and record its exact whole-disk identity;
+2. review the fact that this v0 image is unsigned and the Dell currently has Secure Boot
    enabled;
-4. request explicit authorization that names the removable target;
-5. hash the artifact again immediately before and after the write.
+3. request explicit authorization that names the removable target;
+4. hash the artifact again immediately before and after the write.
 
 Removing the USB and powering off is the recovery path. Nothing in this experiment
 authorizes modifying an internal disk or firmware setting.

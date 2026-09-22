@@ -91,8 +91,9 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
 - U7 has begun with a pre-physical artifact: the unchanged semantic `HI` world lowers
   deterministically to a reviewed x86-64 PE32+ UEFI application at
   `EFI/BOOT/BOOTX64.EFI` inside a 64 MiB MBR/FAT32 image. Structural, identity,
-  tamper, policy, and repeat-build tests pass; QEMU/OVMF and physical execution remain
-  deliberately unclaimed.
+  tamper, policy, and repeat-build tests pass. QEMU 11.1.1 plus TianoCore EDK II on the
+  Apple Silicon Mac manually displayed `HI`; physical execution remains deliberately
+  unclaimed.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -272,14 +273,12 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Reproduce the built x86-64 UEFI artifact under QEMU/OVMF before touching removable
-   media.
-2. Inspect the purchased USB device read-only on the Mac and bind its exact identity and
+1. Inspect the purchased USB device read-only on the Mac and bind its exact identity and
    capacity into a fresh inventory/installation proposal.
-3. Review Secure Boot options separately; do not silently change firmware policy.
-4. Require explicit authorization naming the removable device before erasing or writing
+2. Review Secure Boot options separately; do not silently change firmware policy.
+3. Require explicit authorization naming the removable device before erasing or writing
    it, then verify the bytes after the write.
-5. Boot once via F12, record the observed display, and prove recovery by powering off
+4. Boot once via F12, record the observed display, and prove recovery by powering off
    and removing USB.
 
 ## U7 pre-physical artifact result
@@ -302,6 +301,13 @@ The binary image is generated into a disposable path and is not committed. The v
 checks the MBR, FAT32 path, PE32+ machine/subsystem/entry point, exact reviewed machine
 bytes and UTF-16 message, deterministic identities, no physical writes, and rejection
 of altered worlds, policy escalation, signing claims, and code tampering.
+
+On 2026-09-22 the owner ran QEMU 11.1.1 on the Apple Silicon Mac. TianoCore EDK II
+reported starting `UEFI QEMU HARDDISK QM00001`, the exact application displayed `HI`,
+and the runner returned to the shell. The owner-reviewed screenshot/transcript is bound
+to the world, target, EFI, and image hashes in
+`evidence/qemu-macos-arm64-observed.json`. This is manual emulator evidence, not an
+automated display oracle and not physical Dell evidence.
 
 ## Safety and honesty constraints
 

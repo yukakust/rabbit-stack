@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-macos-arm64-2026-09-22",
+  "status": "OBSERVED-MANUAL-QEMU",
+  "execution_environment": {
+    "host_architecture": "arm64",
+    "host_operating_system": "macos",
+    "emulator": "qemu-system-x86_64",
+    "emulator_version": "11.1.1",
+    "firmware": "edk2-x86_64-code.fd",
+    "firmware_implementation": "TianoCore EDK II",
+    "network_enabled": false
+  },
+  "bindings": {
+    "world_sha256": "18c0cc6b739378cce4544c5068ef01e9f4d1cf00f3b8b41e65caaa85ec1aef75",
+    "target_sha256": "59c85cbc83c8f42bec7c0f59763e86553e51abfe187d523a3c19d2756f6b2d1b",
+    "efi_sha256": "a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128",
+    "image_sha256": "806d4fef5a33c1bc7d0451bd06d4c665ef21612acd32bddea93fd3f9ca56a594"
+  },
+  "observation": {
+    "method": "owner-reviewed-screenshot-and-terminal-transcript",
+    "boot_entry_started": "UEFI QEMU HARDDISK QM00001",
+    "display_text": "HI",
+    "runner_returned_to_shell": true
+  },
+  "physical_execution_verified": false,
+  "physical_writes_performed": [],
+  "limitations": [
+    "display observation was reviewed manually rather than captured by an automated oracle",
+    "execution used QEMU and EDK2 hosted by macOS rather than the physical Dell",
+    "the purchased USB device was not selected or written"
+  ]
+}
