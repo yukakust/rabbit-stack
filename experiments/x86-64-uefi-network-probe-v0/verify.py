@@ -180,6 +180,24 @@ def main() -> int:
         require(qemu_v03["execution"]["physical_execution_verified"] is False, "v0.3 QEMU evidence claims physical execution")
         print("PASS: exact historical v0.3 QEMU evidence cannot approve ABI-corrected v0.4")
 
+        qemu_v04 = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(qemu_v04["status"] == "OBSERVED-MANUAL-QEMU-ABI-CORRECTED-NETWORK-PROBE", "v0.4 QEMU status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu_v04["bindings"][field] == report_a[field], f"v0.4 QEMU {field} binding changed")
+        require(qemu_v04["observation"]["visible_version"] == "v0.4", "v0.4 version marker changed")
+        require(
+            qemu_v04["observation"]["visible_stages"]
+            == ["STAGE 1: TEXT OK", "STAGE 2: PROTOCOL CHECKS", "STAGE 3: PCI HANDLES"],
+            "v0.4 stage evidence changed",
+        )
+        require(qemu_v04["observation"]["uefi_simple_network"] is True, "v0.4 SNP observation changed")
+        require(qemu_v04["observation"]["uefi_wifi_v1"] is False, "v0.4 Wi-Fi v1 observation changed")
+        require(qemu_v04["observation"]["uefi_wifi_v2"] is False, "v0.4 Wi-Fi v2 observation changed")
+        require(qemu_v04["observation"]["total"] == 1, "v0.4 PCI controller count changed")
+        require(qemu_v04["physical_dell_status"] == "NOT-OBSERVED-WITH-V0.4", "v0.4 evidence overclaims physical execution")
+        require(qemu_v04["execution"]["physical_execution_verified"] is False, "v0.4 QEMU evidence claims physical execution")
+        print("PASS: exact v0.4 QEMU evidence shows the ABI-corrected path and makes no physical claim")
+
         mutated = copy.deepcopy(probe)
         mutated["mutations"] = ["connect-wifi"]
         rejected("discovery that connects to Wi-Fi", lambda: validate_probe(mutated))
@@ -199,7 +217,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-QEMU ABI-corrected v0.4 read-only network discovery contract")
+    print("PASS: QEMU-observed ABI-corrected v0.4 read-only network discovery contract")
     return 0
 
 

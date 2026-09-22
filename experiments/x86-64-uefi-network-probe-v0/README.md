@@ -69,6 +69,10 @@ firmware from a nested helper without reserving the mandatory 32-byte shadow spa
 restoring 16-byte pre-call stack alignment. QEMU tolerated it; Dell firmware is allowed
 not to. V0.4 adds `sub rsp, 0x28` / `add rsp, 0x28` around that nested firmware call.
 This is a strong, testable cause hypothesis, not yet a confirmed physical diagnosis.
+The exact v0.4 image subsequently passed QEMU 11.1.1: its version marker, all three
+stages, Simple Network `YES`, Wi-Fi v1/v2 `NO`, and emulated `8086:10D3` controller were
+visible. This proves the ABI correction preserves the QEMU behavior; only the physical
+Dell run can confirm or reject it as the cause of the dark screen.
 
 Build the physical candidate without writing a device:
 
@@ -86,6 +90,5 @@ EFI SHA-256:     2ef0a4b872e9879769090195792de840fc8a7f53282fd5931f13b5ccf48edd2
 image SHA-256:   cef4a46e3e3c73445f480cab1f19efc195163831f2423fb3aa7e63ed325614b4
 ```
 
-Status: **V0.4-BUILT-NOT-INSTALLED**. It must pass a fresh QEMU gate because historical
-v0.3 evidence cannot approve changed machine bytes. Another physical USB rewrite still
-requires fresh device identification and explicit authorization.
+Status: **V0.4-QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. Another physical USB rewrite
+still requires fresh device identification and explicit authorization.
