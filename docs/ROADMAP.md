@@ -328,6 +328,11 @@ bounded. Deterministic build, byte identity, parser, PE/FAT, target-binding, bud
 tamper, and authority-escalation checks pass. QEMU must next demonstrate the unchanged
 fail-closed path before physical replacement is opened; no radio authority exists.
 
+The QEMU gate passed exactly on the Apple Silicon Mac: v0.1 reached Stage 1, rejected
+the emulated USB hardware, and reported that no HCI command was sent. Exact-bound
+evidence now opens the combined read-only physical-preparation command. Removable-media
+replacement remains a separate explicit authorization boundary.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

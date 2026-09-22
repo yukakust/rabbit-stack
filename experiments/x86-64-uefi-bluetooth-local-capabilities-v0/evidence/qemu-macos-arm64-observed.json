@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-bluetooth-local-capabilities-v0.1-macos-arm64-2026-09-23",
+  "status": "OBSERVED-MANUAL-QEMU-LOCAL-CAPABILITIES-FAIL-CLOSED",
+  "bindings": {
+    "probe_sha256": "00e209f0b457b5f52b8b076f806d4dd8636bf854765b4556903f2245d3c35d76",
+    "target_sha256": "92706f0913e5807c2639331f3d2f58cfaded58e195a9c3111da59d97b24eb9af",
+    "program_sha256": "4ad4b42f4a9805a4363d9f36f33e76a4f9ae658c68a2f2e5bdf64300ca80e142",
+    "efi_sha256": "23ffeb7474d03cec04d139fa18be5e91737c40d254e6411ac8f93a54a45e6b5e",
+    "image_sha256": "006ed8b12843b7d91712764cc4b42462c1e192924d8a1ddb6ae05fa3232336ea"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "emulated_usb_device": "qemu-usb-keyboard",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "visible_version": "v0.1",
+    "visible_stage": "STAGE 1: FIND 0CF3:E009 INTERFACE 00",
+    "result": "TARGET NOT FOUND; NO HCI COMMAND SENT",
+    "target_found": false,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0
+  },
+  "physical_dell_status": "NOT-OBSERVED-WITH-LOCAL-CAPABILITIES-V0.1",
+  "limitations": [
+    "QEMU does not model the physical Dell 0CF3:E009 controller",
+    "the observation proves fail-closed target matching, not physical capability responses",
+    "physical execution requires a separately authorized removable-media replacement"
+  ]
+}

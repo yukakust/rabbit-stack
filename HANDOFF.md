@@ -466,6 +466,13 @@ physically installed. QEMU must show the exact fail-closed result before evidenc
 physical preparation. Scan, advertising, pairing, connection, controller reset,
 firmware download, ACL data, radio traffic, and persistent writes remain forbidden.
 
+That QEMU gate now passes exactly. QEMU 11.1.1 on the Apple Silicon Mac displayed the
+v0.1 title, reached the exact-device match stage, and reported `TARGET NOT FOUND; NO HCI
+COMMAND SENT`. The owner-reviewed screen is bound to all five artifact identities in
+`evidence/qemu-macos-arm64-observed.json`; it claims no physical execution. The combined
+`prepare_physical.py` workflow is now open, while actual removable-media replacement
+still requires a fresh device identity and explicit owner authorization.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

@@ -11,7 +11,7 @@ from collections.abc import Callable
 from pathlib import Path
 
 from rabbit_hci_capabilities import (
-    BuildError, IMAGE_SIZE, PARTITION_LBA, PROGRAM_SHA256, PROGRAM_SIZE, PROBE_PATH,
+    BuildError, IMAGE_SIZE, PARTITION_LBA, PROGRAM_SHA256, PROGRAM_SIZE, PROBE_PATH, ROOT,
     SECTOR_SIZE, SOURCE_PATH, TARGET_PATH, build, load_json, load_program,
     parse_command_complete, validate_probe, validate_target,
 )
@@ -155,6 +155,19 @@ def main() -> int:
         rejected("a controller error status", lambda: parse_command_complete(features_event[:5] + b"\x01" + features_event[6:], 0x2003, 8))
         print("PASS: parsers enforce exact opcode, status, 64-byte command map, and 8-byte feature maps")
 
+        qemu = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(qemu["status"] == "OBSERVED-MANUAL-QEMU-LOCAL-CAPABILITIES-FAIL-CLOSED", "QEMU evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu["bindings"][field] == report_a[field], f"QEMU {field} binding changed")
+        require(qemu["observation"]["visible_version"] == "v0.1", "QEMU version marker changed")
+        require(qemu["observation"]["visible_stage"] == "STAGE 1: FIND 0CF3:E009 INTERFACE 00", "QEMU stage changed")
+        require(qemu["observation"]["result"] == "TARGET NOT FOUND; NO HCI COMMAND SENT", "QEMU fail-closed result changed")
+        require(qemu["observation"]["target_found"] is False, "QEMU claims exact target")
+        require(qemu["observation"]["hci_commands_sent"] == 0, "QEMU claims HCI commands")
+        require(qemu["observation"]["radio_operations_requested"] == 0, "QEMU claims radio activity")
+        require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
+        print("PASS: exact QEMU evidence proves all three local queries fail closed without 0CF3:E009")
+
         over_budget = copy.deepcopy(probe)
         over_budget["limits"]["max_hci_commands"] = 4
         rejected("four HCI commands", lambda: validate_probe(over_budget))
@@ -176,7 +189,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-QEMU three-command Bluetooth local-capability contract")
+    print("PASS: QEMU-observed three-command Bluetooth local-capability contract")
     return 0
 
 

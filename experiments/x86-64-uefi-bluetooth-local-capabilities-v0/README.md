@@ -42,9 +42,11 @@ QEMU has no `0CF3:E009`, so the required result is:
 TARGET NOT FOUND; NO HCI COMMAND SENT
 ```
 
-After that observation is exact-hash-bound, `prepare_physical.py` will verify, build,
-hash, and inspect removable media in one command. It will still stop before writing any
-device; a fresh exact-device review and explicit authorization remain required.
+On 2026-09-23 QEMU 11.1.1 on the Apple Silicon Mac displayed that exact fail-closed
+result. The owner-reviewed observation is bound to the exact probe, target, program,
+EFI, and image identities. `prepare_physical.py` is therefore open: it verifies, builds,
+hashes, and inspects removable media in one command, but still stops before writing any
+device. A fresh exact-device review and explicit authorization remain required.
 
 Reviewed identities:
 
@@ -54,4 +56,4 @@ EFI SHA-256:     23ffeb7474d03cec04d139fa18be5e91737c40d254e6411ac8f93a54a45e6b5
 image SHA-256:   006ed8b12843b7d91712764cc4b42462c1e192924d8a1ddb6ae05fa3232336ea
 ```
 
-Status: **PRE-QEMU; NOT PHYSICALLY INSTALLED**.
+Status: **QEMU-OBSERVED; NOT PHYSICALLY INSTALLED**.
