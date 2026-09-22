@@ -25,11 +25,12 @@ python3 verify.py
 python3 run_qemu.py
 ```
 
-`run_qemu.py` locates the x86-64 UEFI firmware bundled with QEMU, builds the image in a
-temporary directory, disables emulated networking, attaches the image read-only, and
-opens a QEMU display. The expected screen is exactly `HI`; press one key to let the UEFI
-application return, then close the QEMU window. This is still emulator evidence, not a
-physical Dell result.
+`run_qemu.py` locates the x86-64 EDK2 code and variable-store template bundled with
+QEMU. It attaches the code as read-only pflash, copies the mutable variable store into a
+temporary directory, builds the disk image there, disables emulated networking, and
+attaches the image read-only. The expected screen is exactly `HI`; press one key to let
+the UEFI application return, then close the QEMU window. This is still emulator
+evidence, not a physical Dell result.
 
 The builder may create `/tmp/rabbit-x86-64-uefi-v0.img`; it does **not** select or write
 a physical device. Generated binaries are intentionally excluded from Git.
