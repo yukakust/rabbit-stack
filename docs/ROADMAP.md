@@ -211,7 +211,10 @@ returns success. Its deterministic build, instruction checks, movement model, bo
 tests, and negative policy tests pass. QEMU 11.1.1 has now manually demonstrated all
 four directions, clean old-frame erasure, boundary clamping, and Escape; the observation
 is bound to exact world, target, EFI, and image identities. Physical Dell interaction is
-the next gate.
+the next gate. After a fresh removable-device check, explicit authorization, write, and
+EFI hash verification, the physical Dell reproduced that complete interaction with no OS
+or internal storage. The next qualitative capability is time: autonomous frame updates,
+velocity, and collision rules rather than movement only in direct response to a key.
 
 ### U8 — Transactional patches
 

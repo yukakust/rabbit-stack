@@ -282,8 +282,8 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Re-identify the external Kingston device, obtain explicit authorization, install the
-   QEMU-observed interactive image, verify its EFI hash, and test it on the Dell.
+1. Add a semantic time capability and a first autonomous rule: periodic movement with
+   boundary collision/reflection, while retaining input and direct framebuffer output.
 2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
    reconsider it if the machine stops being a dedicated lab target.
 3. Add a second dissimilar physical target when real inventory becomes available, then
@@ -301,7 +301,7 @@ to the base/effective worlds, patch, target, QEMU evidence, both EFI/image ident
 and both owner-reviewed physical observations. Secure Boot remained disabled under the
 explicit dedicated-lab policy, and no internal storage participated.
 
-The next pre-physical graphics artifact now exists in
+The first direct-framebuffer graphics artifact exists in
 `experiments/x86-64-uefi-framebuffer-v0/`. Its portable world requests one orange
 `256 x 256` rectangle at `(100,100)`. The x86-64 UEFI Target Pack binds that request to
 GOP's configured linear framebuffer. Reviewed machine bytes locate GOP, inspect
@@ -313,16 +313,17 @@ external Kingston device and receiving explicit authorization, the owner wrote t
 image, verified its EFI hash, and observed the orange square on the physical Dell with
 no OS or internal storage involved.
 
-`experiments/x86-64-uefi-interactive-v0/` is the next pre-physical artifact. It clears
+`experiments/x86-64-uefi-interactive-v0/` is the first interactive artifact. It clears
 the visible framebuffer, draws a `128 x 128` object, stores `(x,y)` in registers, reads
 UEFI arrow scan codes, erases the old position, moves by 16 pixels, clamps every edge,
 and redraws; Escape exits. The artifact comprises 542 reviewed x86-64 code/data bytes
 inside the same deterministic PE32+/FAT32 envelope. Static instruction checks, an
 independent movement model, boundary tests, policy rejection, and repeated builds pass.
 QEMU 11.1.1 then demonstrated all four directions, clean old-frame erasure, boundary
-clamping, and Escape; the owner-reviewed interaction is bound to exact identities. No
-USB write is authorized yet; fresh device identification and authorization remain the
-next gate.
+clamping, and Escape; the owner-reviewed interaction is bound to exact identities. A
+fresh device identification, explicit authorization, physical write, and exact EFI hash
+check followed. The physical Dell then reproduced four-way movement, clean erasure,
+boundary clamping, and Escape with no OS or internal storage involved.
 
 ## U7 pre-physical artifact result
 

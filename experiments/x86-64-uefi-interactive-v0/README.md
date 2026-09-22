@@ -35,8 +35,12 @@ all four arrow directions, 16-pixel movement, erasure without an orange trail, c
 at every screen edge, and successful return on Escape. The observation is bound to the
 exact world, target, EFI, and image in `evidence/qemu-macos-arm64-observed.json`.
 
-This remains physically `BUILT-NOT-INSTALLED`. USB installation requires another exact
-device check and explicit authorization.
+After a new removable-device check and explicit authorization, the exact image was
+written to the external Kingston device and its EFI payload hash was verified. The
+physical Dell OptiPlex 3060 then reproduced the interaction: all four directions,
+old-frame erasure, boundary clamping, and Escape. The physical evidence is recorded in
+`evidence/dell-optiplex-3060-physical-observed.json` with no OS or internal storage in
+the execution path.
 
 Reviewed identities:
 

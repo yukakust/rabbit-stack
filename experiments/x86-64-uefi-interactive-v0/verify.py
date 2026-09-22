@@ -148,12 +148,42 @@ def main() -> int:
         require(interaction["escape_returned_from_application"] is True, "Escape behavior was not observed")
         require(observed["execution"]["physical_execution_verified"] is False, "QEMU claimed physical execution")
         require(observed["execution"]["physical_writes_performed"] == [], "QEMU claimed physical writes")
+        physical = load_json(ROOT / "evidence" / "dell-optiplex-3060-physical-observed.json")
+        require(physical["status"] == "OBSERVED-MANUAL-PHYSICAL-INTERACTION", "physical evidence status changed")
+        require(
+            physical["bindings"] == {
+                "world_sha256": report_a["world_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "efi_sha256": report_a["efi_sha256"],
+                "image_sha256": report_a["image_sha256"],
+                "qemu_evidence_id": observed["evidence_id"],
+            },
+            "physical evidence is stale or bound to another interactive artifact",
+        )
+        require(physical["deployment"]["observed_boot_payload_sha256"] == report_a["efi_sha256"], "physical EFI differs")
+        require(
+            physical["observation"] == {
+                "method": "owner-reviewed-live-physical-interaction",
+                "initial_square_visible": interaction["initial_square_visible"],
+                "directions_observed": interaction["directions_observed"],
+                "step_pixels": interaction["step_pixels"],
+                "old_frame_erased_without_orange_trail": interaction["old_frame_erased_without_orange_trail"],
+                "screen_boundaries_clamped": interaction["screen_boundaries_clamped"],
+                "escape_returned_from_application": interaction["escape_returned_from_application"],
+            },
+            "physical interaction differs from the QEMU contract",
+        )
+        require(physical["execution"]["physical_processor_executed"] is True, "physical execution is unclaimed")
+        require(physical["execution"]["guest_or_host_operating_system_present"] is False, "physical evidence includes an OS")
+        require(physical["execution"]["secure_boot"] == "disabled-by-owner-dedicated-lab-policy", "boot policy hidden")
+        require(physical["internal_storage_writes_performed"] == [], "physical evidence reports internal writes")
         print("PASS: interactive world lowers deterministically to 542 reviewed x86-64 code/data bytes")
         print("PASS: code clears the framebuffer, draws, reads UEFI scan codes, erases, moves, and redraws")
         print("PASS: arrow model moves by 16 pixels, clamps all four edges, and preserves opposite-step identity")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
         print("PASS: artifact remains BUILT-NOT-INSTALLED with no physical writes")
         print("PASS: owner-reviewed QEMU interaction binds four-way movement, erasure, boundaries, and Escape to exact identities")
+        print("PASS: owner-reviewed Dell interaction binds the same live world to the exact physical artifact")
 
         wrong_step = copy.deepcopy(world)
         wrong_step["contract"]["movement_step_pixels"] = 32
@@ -177,7 +207,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-physical keyboard-controlled framebuffer contract")
+    print("PASS: physical keyboard-controlled framebuffer contract")
     return 0
 
 
