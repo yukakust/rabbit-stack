@@ -439,6 +439,12 @@ COMMAND SENT`. Physical preparation remains programmatically closed until that e
 is recorded. No scan, advertising, pairing, connection, firmware download, controller
 reset, bulk/ACL data, or radio-data authority exists.
 
+The owner then ran the combined QEMU gate. QEMU 11.1.1 reached Stage 1, did not find
+`0CF3:E009`, displayed `TARGET NOT FOUND; NO HCI COMMAND SENT`, and therefore exercised
+no HCI or radio authority. Exact evidence is now committed. This opens the combined
+read-only preparation workflow, but not physical-media replacement: a fresh external
+disk identity and explicit owner authorization are still required.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

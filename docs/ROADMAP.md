@@ -306,6 +306,11 @@ without the exact controller it must issue no HCI command. Only after this fail-
 result is evidence-bound may the separately authorized physical local-controller query
 occur. A successful identity response still does not authorize discovery or connection.
 
+That QEMU gate passed exactly: Stage 1 rejected the emulated hardware and explicitly
+reported that no HCI command was sent. Physical preparation may now proceed, while the
+removable-media write and first real controller command remain separate owner-authorized
+boundaries.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

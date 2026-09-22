@@ -50,6 +50,11 @@ EFI SHA-256:     b7da72b8fa450e047c9f6d69c0879c394aa7274ba28b8643813885186d9485f
 image SHA-256:   c5658d3edf41028089f72d2be324c12dddbaad1b3f0c037930a1d81bd91ec8de
 ```
 
-Status: **BUILT-PRE-QEMU**. `prepare_physical.py` remains locked until exact QEMU evidence
-is added. Physical USB replacement will still require a fresh removable-device identity
-and explicit owner authorization because this artifact introduces one real USB command.
+On 2026-09-23 QEMU 11.1.1 on the Apple Silicon Mac displayed the exact expected
+fail-closed result: it reached Stage 1, did not find `0CF3:E009`, and sent no HCI
+command. The owner-reviewed evidence is bound to the exact probe, target, program, EFI,
+and image identities and makes no physical claim.
+
+Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. `prepare_physical.py` is now open.
+Physical USB replacement still requires a fresh removable-device identity and explicit
+owner authorization because this artifact introduces one real USB command.
