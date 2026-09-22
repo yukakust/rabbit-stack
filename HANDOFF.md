@@ -455,6 +455,17 @@ SIG Assigned Numbers. The observation is exact-hash-bound in
 scan, advertising, pairing, connection, ACL data, radio data, or persistent write ran.
 The next boundary is one combined local-capability artifact, not yet a radio link.
 
+`experiments/x86-64-uefi-bluetooth-local-capabilities-v0/` now implements that next
+boundary in one boot. It permits exactly `0x1002`, `0x1003`, and `0x2003`, prints the
+64-byte supported-command bitmap and both 8-byte feature bitmaps, and raises the event
+buffer from 64 to a bounded 80 bytes because the first Command Complete packet is 70
+bytes. Its reviewed program is 2,808 bytes; the image identity is
+`006ed8b12843b7d91712764cc4b42462c1e192924d8a1ddb6ae05fa3232336ea`.
+All deterministic and negative checks pass. The current status is PRE-QEMU and not
+physically installed. QEMU must show the exact fail-closed result before evidence opens
+physical preparation. Scan, advertising, pairing, connection, controller reset,
+firmware download, ACL data, radio traffic, and persistent writes remain forbidden.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

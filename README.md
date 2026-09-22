@@ -72,13 +72,16 @@ every layer we would otherwise be tempted to hide.
   the next bounded boundary: one local informational HCI command to exact USB
   `0CF3:E009`, with no scan, advertising, pairing, connection, firmware download, or
   radio-data authority.
+- [`experiments/x86-64-uefi-bluetooth-local-capabilities-v0`](experiments/x86-64-uefi-bluetooth-local-capabilities-v0):
+  one bounded boot queries the controller's supported-command, BR/EDR-feature, and
+  BLE-feature maps without reset, discovery, connection, or radio traffic.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
 [`experiments/x86-64-uefi-bluetooth-probe-v0/README.md`](experiments/x86-64-uefi-bluetooth-probe-v0/README.md).
 The active next gate is
-[`experiments/x86-64-uefi-bluetooth-hci-identity-v0/README.md`](experiments/x86-64-uefi-bluetooth-hci-identity-v0/README.md).
+[`experiments/x86-64-uefi-bluetooth-local-capabilities-v0/README.md`](experiments/x86-64-uefi-bluetooth-local-capabilities-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

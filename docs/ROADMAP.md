@@ -319,6 +319,15 @@ No radio operation or persistent write occurred. The next artifact will combine 
 remaining bounded local capability queries in one boot before any separately authorized
 scan, advertising, pairing, or connection experiment.
 
+That combined artifact now exists as
+`x86-64-uefi-bluetooth-local-capabilities-v0`. A single boot permits exactly three
+local informational opcodes: Read Local Supported Commands (`0x1002`), Read Local
+Supported Features (`0x1003`), and LE Read Local Supported Features (`0x2003`). Its
+80-byte event budget accommodates the 64-byte supported-command map while remaining
+bounded. Deterministic build, byte identity, parser, PE/FAT, target-binding, budget,
+tamper, and authority-escalation checks pass. QEMU must next demonstrate the unchanged
+fail-closed path before physical replacement is opened; no radio authority exists.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve
