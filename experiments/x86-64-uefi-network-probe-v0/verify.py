@@ -9,7 +9,7 @@ import struct
 from collections.abc import Callable
 
 from rabbit_network_probe import (
-    BuildError, IMAGE_SIZE, PARTITION_LBA, PROGRAM_SHA256, PROGRAM_SIZE, PROBE_PATH,
+    BuildError, IMAGE_SIZE, PARTITION_LBA, PROGRAM_SHA256, PROGRAM_SIZE, PROBE_PATH, ROOT,
     SECTOR_SIZE, SOURCE_PATH, TARGET_PATH, build, load_json, load_program,
     validate_probe, validate_target,
 )
@@ -120,10 +120,34 @@ def main() -> int:
         inspect_program(program)
         inspect_efi(inspect_image(image_a), program)
         require(b"out dx, eax" in SOURCE_PATH.read_bytes(), "auditable source lost PCI selector operation")
+        observed = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(observed["status"] == "OBSERVED-MANUAL-QEMU-NETWORK-PROBE", "QEMU evidence status changed")
+        require(
+            observed["bindings"] == {
+                "probe_sha256": report_a["probe_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "program_sha256": report_a["program_sha256"],
+                "efi_sha256": report_a["efi_sha256"],
+                "image_sha256": report_a["image_sha256"],
+            },
+            "QEMU evidence is stale or bound to another probe",
+        )
+        observation = observed["observation"]
+        require(observation["uefi_simple_network"] is True, "QEMU did not expose Simple Network")
+        require(observation["uefi_wifi_v1"] is False and observation["uefi_wifi_v2"] is False, "QEMU Wi-Fi observation changed")
+        require(
+            observation["pci_network_controllers"] == [
+                {"bus": 0, "device": 2, "function": 0, "vendor_id": "8086", "device_id": "10D3", "subclass": "00"}
+            ] and observation["total"] == 1,
+            "QEMU PCI observation changed",
+        )
+        require(observed["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
+        require(observed["physical_dell_status"] == "NOT-OBSERVED-YET", "physical Dell status is overstated")
         print("PASS: deterministic UEFI image checks SNP, Wi-Fi v1/v2, and PCI network identities")
         print("PASS: reviewed code writes only the PCI address selector and reads PCI configuration data")
         print("PASS: probe sends and receives no network packets and performs no persistent machine writes")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
+        print("PASS: QEMU observed SNP=YES, Wi-Fi v1/v2=NO, and emulated 8086:10D3; Dell remains unobserved")
 
         mutated = copy.deepcopy(probe)
         mutated["mutations"] = ["connect-wifi"]
@@ -144,7 +168,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-physical read-only network discovery contract")
+    print("PASS: QEMU-gated read-only network discovery contract")
     return 0
 
 

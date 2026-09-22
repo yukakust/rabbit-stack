@@ -362,6 +362,13 @@ chipset is intentionally not guessed. Current image identity is
 `a6a34c676d6772cfd378397e312f4d99faf4a233b8a20307420503864fc35598`.
 The artifact is `BUILT-NOT-INSTALLED`; QEMU is the next observation gate.
 
+That QEMU gate is now complete. QEMU 11.1.1 exposed Simple Network, no Wireless MAC v1
+or v2 protocol, and one emulated Intel `8086:10D3` Ethernet controller at `00:02.0`.
+The owner-reviewed screen is bound to the exact probe, target, program, EFI, and image
+identities. These are deliberately emulator facts, not predictions about the Dell. The
+next gate is fresh Kingston device identification followed by explicit authorization to
+write the unchanged probe image for physical read-only observation.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

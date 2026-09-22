@@ -44,6 +44,11 @@ QEMU includes an emulated Intel `e1000e` controller so at least one PCI network 
 expected. UEFI protocol availability depends on the bundled TianoCore drivers. Press any
 key after recording the screen.
 
+On 2026-09-22 the owner observed `SIMPLE NETWORK: YES`, both UEFI Wi-Fi protocols as
+`NO`, and the single emulated controller `8086:10D3` at `00:02.0`. This proves that the
+probe and its formatting work under QEMU; it says nothing yet about the Dell's physical
+controllers. Exact-bound evidence is in `evidence/qemu-macos-arm64-observed.json`.
+
 Build the physical candidate without writing a device:
 
 ```sh
@@ -60,5 +65,5 @@ EFI SHA-256:     d48db92f82e10642f980906379d4dd11db20f51754d46886f3ca35cb9b8efd8
 image SHA-256:   a6a34c676d6772cfd378397e312f4d99faf4a233b8a20307420503864fc35598
 ```
 
-Status: **BUILT-NOT-INSTALLED**. QEMU observation comes next; a physical USB rewrite
-still requires fresh device identification and explicit authorization.
+Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. A physical USB rewrite still
+requires fresh device identification and explicit authorization.

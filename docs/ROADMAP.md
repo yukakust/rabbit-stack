@@ -258,6 +258,11 @@ configuration data. QEMU observation comes before a separately authorized physic
 probe. The observed Dell result will choose between firmware-provided Wi-Fi and a
 driver for the actual controller; no chipset is assumed in advance.
 
+QEMU 11.1.1 has now validated the probe path: TianoCore exposed Simple Network but not
+either standardized Wi-Fi protocol, and PCI enumeration reported the configured Intel
+`e1000e` identity `8086:10D3`. This is exact-bound emulator evidence only. Physical Dell
+inventory remains pending a fresh removable-device check and separately authorized write.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-network-probe-macos-arm64-2026-09-22",
+  "status": "OBSERVED-MANUAL-QEMU-NETWORK-PROBE",
+  "bindings": {
+    "probe_sha256": "532488524036c2f59fdb70d498ab017a144b5981501813bf58d5c49c553cd2af",
+    "target_sha256": "aa5951299999243680b62569cd62fbc74ddef6af53c1caf6c0f425a1cccca36f",
+    "program_sha256": "da81a6f725fcc259403e3658c6c4d1f6b5b7b6fecceebf6d88711cbad2add831",
+    "efi_sha256": "d48db92f82e10642f980906379d4dd11db20f51754d46886f3ca35cb9b8efd8f",
+    "image_sha256": "a6a34c676d6772cfd378397e312f4d99faf4a233b8a20307420503864fc35598"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "emulated_network_device": "e1000e",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "uefi_simple_network": true,
+    "uefi_wifi_v1": false,
+    "uefi_wifi_v2": false,
+    "pci_network_controllers": [
+      {"bus": 0, "device": 2, "function": 0, "vendor_id": "8086", "device_id": "10D3", "subclass": "00"}
+    ],
+    "total": 1,
+    "returned_after_key": true
+  },
+  "physical_dell_status": "NOT-OBSERVED-YET",
+  "limitations": [
+    "the result describes an emulated Intel e1000e controller, not the Dell hardware",
+    "manual screen review is not an automated protocol oracle"
+  ]
+}
