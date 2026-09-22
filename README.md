@@ -68,11 +68,17 @@ every layer we would otherwise be tempted to hide.
 - [`experiments/x86-64-uefi-bluetooth-probe-v0`](experiments/x86-64-uefi-bluetooth-probe-v0):
   a bounded read-only UEFI USB descriptor inventory that identifies standard Bluetooth
   class candidates without HCI commands, pairing, radio traffic, reset, or configuration.
+- [`experiments/x86-64-uefi-bluetooth-hci-identity-v0`](experiments/x86-64-uefi-bluetooth-hci-identity-v0):
+  the next bounded boundary: one local informational HCI command to exact USB
+  `0CF3:E009`, with no scan, advertising, pairing, connection, firmware download, or
+  radio-data authority.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
 [`experiments/x86-64-uefi-bluetooth-probe-v0/README.md`](experiments/x86-64-uefi-bluetooth-probe-v0/README.md).
+The active next gate is
+[`experiments/x86-64-uefi-bluetooth-hci-identity-v0/README.md`](experiments/x86-64-uefi-bluetooth-hci-identity-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

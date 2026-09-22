@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "target_id": "dell-optiplex-3060-qca-rome-hci-identity-v0",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "artifact": {
+    "format": "pe32+-efi-application",
+    "disk_envelope": "mbr-fat32-removable",
+    "default_boot_path": "EFI/BOOT/BOOTX64.EFI",
+    "image_size_bytes": 67108864
+  },
+  "device_binding": {
+    "usb_vendor_id": "0CF3",
+    "usb_product_id": "E009",
+    "interface_number": 0,
+    "class": "E0/01/01",
+    "linux_reference_classification": "BTUSB_QCA_ROME"
+  },
+  "authority": {
+    "usb_descriptor_reads": true,
+    "usb_endpoint_descriptor_reads": true,
+    "usb_control_out_transfers": 1,
+    "usb_interrupt_in_events": 8,
+    "allowed_hci_opcodes": [
+      "0x1001"
+    ],
+    "controller_reset": false,
+    "firmware_download": false,
+    "scan": false,
+    "advertise": false,
+    "pair": false,
+    "connect": false,
+    "radio_data": false,
+    "internal_storage_writes": false,
+    "firmware_writes": false
+  },
+  "recovery": "power-off-and-remove-usb"
+}

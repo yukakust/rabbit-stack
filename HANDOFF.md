@@ -426,6 +426,19 @@ classifies as QCA Rome. No HCI command, pairing, radio packet, port reset, USB d
 transfer, or persistent machine write occurred. The next boundary is a read-only HCI
 controller-identity experiment, not connection or pairing.
 
+`experiments/x86-64-uefi-bluetooth-hci-identity-v0/` now implements that boundary. It
+matches only `0CF3:E009` interface `00`, finds one bounded interrupt-IN endpoint, sends
+only HCI opcode `0x1001` (Read Local Version Information), and accepts only a matching
+Command Complete event within an eight-event/64-byte budget. The reviewed program is
+1,952 bytes and the image identity is
+`c5658d3edf41028089f72d2be324c12dddbaad1b3f0c037930a1d81bd91ec8de`.
+Deterministic build, PE/FAT, exact-byte, HCI parser, budget, device-substitution,
+authority-escalation, tamper, and ambiguous-JSON checks pass. `run_qemu.py` combines the
+verifier with the fail-closed emulator gate; QEMU must show `TARGET NOT FOUND; NO HCI
+COMMAND SENT`. Physical preparation remains programmatically closed until that evidence
+is recorded. No scan, advertising, pairing, connection, firmware download, controller
+reset, bulk/ACL data, or radio-data authority exists.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

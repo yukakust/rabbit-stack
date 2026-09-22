@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "probe_id": "x86-64-usb-bluetooth-hci-identity-v0",
+  "implementation_revision": 1,
+  "target_usb_id": "0CF3:E009",
+  "operations": [
+    "find-exact-usb-device-and-interface-00",
+    "find-bounded-interrupt-in-endpoint",
+    "send-hci-read-local-version-information-0x1001",
+    "receive-bounded-command-complete-events",
+    "display-local-controller-version"
+  ],
+  "limits": {
+    "max_usb_interfaces": 64,
+    "max_endpoints_per_interface": 8,
+    "max_hci_commands": 1,
+    "max_hci_events": 8,
+    "max_event_bytes": 64
+  },
+  "forbidden_operations": [
+    "controller-reset",
+    "firmware-download",
+    "scan",
+    "advertise",
+    "pair",
+    "connect",
+    "acl-data",
+    "radio-data"
+  ],
+  "contract": "display-bounded-local-hci-identity-and-wait-for-key"
+}

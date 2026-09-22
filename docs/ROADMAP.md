@@ -299,6 +299,13 @@ route is therefore selected. The next slice may issue only bounded controller-id
 HCI commands and must keep pairing, advertising, scanning, connection, user data, and
 radio transmission outside its authority.
 
+That bounded slice now exists as `x86-64-uefi-bluetooth-hci-identity-v0`. It is bound to
+the exact physical USB ID, permits only Read Local Version Information (`0x1001`), and
+waits for at most eight small interrupt events. Its QEMU gate is deliberately negative:
+without the exact controller it must issue no HCI command. Only after this fail-closed
+result is evidence-bound may the separately authorized physical local-controller query
+occur. A successful identity response still does not authorize discovery or connection.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve
