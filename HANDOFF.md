@@ -282,9 +282,10 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Build network-probe v0.3, freshly identify the removable device, and obtain explicit
-   authorization before writing it. Its exact QEMU evidence is already recorded.
-2. Run the same exact-bound v0.3 probe on the Dell and use its visible stage plus real protocol and PCI
+1. Run ABI-corrected network-probe v0.4 under QEMU and record exact evidence; historical
+   v0.3 evidence cannot approve the changed machine bytes.
+2. After a fresh removable-device check and explicit authorization, run exact v0.4 on
+   the Dell and use its visible stage plus real protocol and PCI
    vendor/device results to choose firmware-provided Wi-Fi or a concrete native driver.
 3. Implement receive-only framed `.rabbit` package transport over that selected path,
    then add authenticated transactional replacement and responses.
@@ -386,6 +387,14 @@ Apple Silicon Mac: all three stage markers were visible, Simple Network was `YES
 Wi-Fi protocols were `NO`, and the emulated controller was `8086:10D3`. The exact
 evidence makes no physical claim. V0.3 is now `QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED`;
 a fresh device check and explicit authorization remain mandatory before another write.
+The exact v0.3 image was subsequently written and verified, but the physical Dell again
+remained dark before `STAGE 1`, disproving `ClearScreen()` as the complete explanation.
+Code review then found a concrete ABI defect: the nested `print_ascii` helper called
+firmware without its own 32-byte Microsoft x64 shadow space and correct pre-call stack
+alignment. QEMU tolerated this undefined call frame. V0.4 repairs it with a reviewed
+`0x28`-byte adjustment around the nested firmware call. The new image identity is
+`cef4a46e3e3c73445f480cab1f19efc195163831f2423fb3aa7e63ed325614b4`.
+The diagnosis remains a hypothesis until v0.4 passes QEMU and then physical Dell.
 
 ## U7 pre-physical artifact result
 

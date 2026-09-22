@@ -62,6 +62,14 @@ controller was `8086:10D3`. This opens the separately authorized physical diagno
 gate; it does not yet identify the Dell controller or prove that `ClearScreen()` caused
 the earlier dark display.
 
+The exact v0.3 image was then written and verified, but the Dell again remained dark
+before `STAGE 1`. Removing `ClearScreen()` therefore did not fix the physical failure.
+Review exposed a concrete x86-64 UEFI ABI violation instead: `print_ascii` called the
+firmware from a nested helper without reserving the mandatory 32-byte shadow space and
+restoring 16-byte pre-call stack alignment. QEMU tolerated it; Dell firmware is allowed
+not to. V0.4 adds `sub rsp, 0x28` / `add rsp, 0x28` around that nested firmware call.
+This is a strong, testable cause hypothesis, not yet a confirmed physical diagnosis.
+
 Build the physical candidate without writing a device:
 
 ```sh
@@ -73,10 +81,11 @@ python3 build_image.py \
 Reviewed identities:
 
 ```text
-program SHA-256: eaf88bd663d5f51753bf31c559ed39887ccaf23825643cd4a327c9ca75787f67
-EFI SHA-256:     4547120eae006c8fcddb96f7a3956a9fa9ea19ee5ef63bd0dcd4bddad39b150d
-image SHA-256:   afac5e6d866fcb6e0e7bd770d37bc77b755837dd0bdb2a8553aabd07ef502a61
+program SHA-256: ab444601b3976fc39764d7e25b8c464676f294eb62b0c65d601fe52e893d98de
+EFI SHA-256:     2ef0a4b872e9879769090195792de840fc8a7f53282fd5931f13b5ccf48edd2c
+image SHA-256:   cef4a46e3e3c73445f480cab1f19efc195163831f2423fb3aa7e63ed325614b4
 ```
 
-Status: **V0.3-QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. Another physical USB rewrite
-still requires fresh device identification and explicit authorization.
+Status: **V0.4-BUILT-NOT-INSTALLED**. It must pass a fresh QEMU gate because historical
+v0.3 evidence cannot approve changed machine bytes. Another physical USB rewrite still
+requires fresh device identification and explicit authorization.

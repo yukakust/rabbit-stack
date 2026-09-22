@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-network-probe-v0.3-failed-2026-09-23",
+  "status": "FAILED-SAFE-BEFORE-FIRST-STAGE",
+  "bindings": {
+    "probe_sha256": "e48f50e41c9ecc134bbb64cefb936414c5a93862d29d169a8ed3756af587d8d5",
+    "target_sha256": "46a040fe8f929bff4dc190e5a4f9bb739861c2f96fe3cc94ecfbc03781f2237e",
+    "program_sha256": "eaf88bd663d5f51753bf31c559ed39887ccaf23825643cd4a327c9ca75787f67",
+    "efi_sha256": "4547120eae006c8fcddb96f7a3956a9fa9ea19ee5ef63bd0dcd4bddad39b150d",
+    "image_sha256": "afac5e6d866fcb6e0e7bd770d37bc77b755837dd0bdb2a8553aabd07ef502a61"
+  },
+  "observation": {
+    "machine": "Dell OptiPlex 3060",
+    "screen": "dark-after-selecting-uefi-usb",
+    "duration_seconds": 15,
+    "stage_1_visible": false,
+    "network_inventory_obtained": false,
+    "clear_screen_present_in_program": false,
+    "cause_hypothesis": "nested-output-helper-omitted-required-x86-64-uefi-shadow-space",
+    "cause_confirmed": false
+  },
+  "recovery": {
+    "action": "remove-usb-after-dark-screen",
+    "persistent_machine_changes": false
+  },
+  "superseded_by_image_sha256": "cef4a46e3e3c73445f480cab1f19efc195163831f2423fb3aa7e63ed325614b4"
+}

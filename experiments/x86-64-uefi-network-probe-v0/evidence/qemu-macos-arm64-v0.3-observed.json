@@ -43,6 +43,6 @@
   "limitations": [
     "the result describes an emulated Intel e1000e controller, not the Dell hardware",
     "the QEMU result does not prove why v0.2 failed on the physical Dell",
-    "a separately authorized physical v0.3 run is required to localize the Dell failure"
+    "the separately authorized physical v0.3 run did not reach visible stage output"
   ]
 }

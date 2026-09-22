@@ -218,7 +218,12 @@ convert_ascii:
     mov rcx, rbp
     mov rdx, r8
     mov rax, [rcx + 8]
+    # This helper is itself reached by CALL. Reserve the Microsoft x64 ABI's
+    # 32-byte shadow space plus 8 bytes for 16-byte pre-call alignment before
+    # entering firmware. Without this, firmware may overwrite our return address.
+    sub rsp, 0x28
     call rax
+    add rsp, 0x28
     ret
 
 # EAX=value, RDX=ASCII destination, R10D=hexadecimal digit count.
@@ -238,7 +243,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title:       .asciz "\r\nRABBIT NETWORK PROBE v0.3\r\n=========================\r\nSTAGE 1: TEXT OK\r\n"
+title:       .asciz "\r\nRABBIT NETWORK PROBE v0.4\r\n=========================\r\nSTAGE 1: TEXT OK\r\n"
 stage_protocols: .asciz "STAGE 2: PROTOCOL CHECKS\r\n"
 stage_pci:   .asciz "STAGE 3: PCI HANDLES\r\n"
 snp_yes:     .asciz "UEFI SIMPLE NETWORK: YES\r\n"

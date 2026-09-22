@@ -272,6 +272,11 @@ V0.3 therefore removes the early console clear and adds three visible stage mark
 turning the next run into a precise localization test. It repeated the QEMU gate:
 all stages appeared and the same emulated network result was observed. A fresh removable
 device check and explicit authorization are still required before the physical v0.3 run.
+That authorized run remained dark before `STAGE 1`, so removing the console clear was
+not sufficient. V0.4 fixes a subsequently discovered x86-64 UEFI ABI violation in the
+nested text-output helper: it now supplies the firmware call's mandatory shadow space
+and stack alignment. This is a precise hypothesis awaiting a fresh QEMU gate and then a
+separately authorized physical run.
 
 ### U10 — Universal installer
 
