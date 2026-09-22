@@ -419,8 +419,12 @@ class `03/01/01`), correctly classified it as non-Bluetooth, and reported zero
 Bluetooth candidates. Exact-bound evidence is committed and makes no physical Dell
 claim. `prepare_physical.py` now combines verification, building, hashing, and read-only
 external-media inspection into one command. It deliberately stops before unmounting or
-writing: exact-device review and explicit authorization remain separate. No HCI command,
-pairing, radio packet, port reset, USB data transfer, or persistent write is authorized.
+writing: exact-device review and explicit authorization remain separate. The owner then
+authorized the exact Kingston write and the physical Dell displayed five interfaces.
+Two Bluetooth-class interfaces belong to one device, `0CF3:E009`, which upstream Linux
+classifies as QCA Rome. No HCI command, pairing, radio packet, port reset, USB data
+transfer, or persistent machine write occurred. The next boundary is a read-only HCI
+controller-identity experiment, not connection or pairing.
 
 ## U7 pre-physical artifact result
 

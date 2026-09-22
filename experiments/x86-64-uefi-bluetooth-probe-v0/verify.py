@@ -178,6 +178,35 @@ def main() -> int:
         require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
         print("PASS: exact QEMU evidence classifies the USB keyboard as non-Bluetooth and makes no physical claim")
 
+        physical = load_json(ROOT / "evidence" / "dell-optiplex-3060-physical-observed.json")
+        require(physical["status"] == "OBSERVED-PHYSICAL-DELL-USB-BLUETOOTH-INVENTORY", "physical evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical["bindings"][field] == report_a[field], f"physical {field} binding changed")
+        require(physical["observation"]["visible_version"] == "v0.1", "physical version marker changed")
+        require(physical["observation"]["described_interfaces"] == 5, "physical interface count changed")
+        require(physical["observation"]["bluetooth_candidates"] == 2, "physical Bluetooth candidate count changed")
+        require(physical["observation"]["distinct_bluetooth_devices"] == ["0CF3:E009"], "physical Bluetooth device changed")
+        candidates = [
+            item for item in physical["observation"]["usb_interfaces"]
+            if item["bluetooth_candidate"]
+        ]
+        require(len(candidates) == 2, "physical Bluetooth interface evidence changed")
+        require({(item["vendor_id"], item["product_id"]) for item in candidates} == {("0CF3", "E009")}, "physical Bluetooth identity changed")
+        require({item["interface_number"] for item in candidates} == {"00", "01"}, "physical Bluetooth interfaces changed")
+        require(
+            physical["safety"]
+            == {
+                "usb_data_transfers": 0,
+                "usb_port_resets": 0,
+                "bluetooth_hci_commands": 0,
+                "bluetooth_pairing_attempts": 0,
+                "radio_packets_sent": 0,
+                "persistent_machine_changes": False,
+            },
+            "physical safety evidence changed",
+        )
+        print("PASS: exact physical evidence identifies one QCA Rome USB device with two Bluetooth interfaces")
+
         mutated = copy.deepcopy(probe)
         mutated["mutations"] = ["enable-bluetooth"]
         rejected("a probe that enables Bluetooth", lambda: validate_probe(mutated))
@@ -199,7 +228,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: QEMU-observed read-only UEFI USB/Bluetooth inventory contract")
+    print("PASS: physical-Dell-observed read-only UEFI USB/Bluetooth inventory contract")
     return 0
 
 

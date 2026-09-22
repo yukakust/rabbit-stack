@@ -292,6 +292,13 @@ positive physical result selects a staged BLE Rabbit bridge; no candidate select
 read-only QCA9377 planning path. HCI commands, pairing, firmware loading, association,
 credentials, receive, and transmit all remain outside this discovery step.
 
+The authorized physical Dell run was positive: five interfaces were described, and
+interfaces `00` and `01` of one USB device `0CF3:E009` carried Bluetooth class
+`E0/01/01`. Upstream Linux independently classifies this exact ID as QCA Rome. The BLE
+route is therefore selected. The next slice may issue only bounded controller-identity
+HCI commands and must keep pairing, advertising, scanning, connection, user data, and
+radio transmission outside its authority.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

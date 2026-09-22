@@ -63,8 +63,17 @@ EFI SHA-256:     9c143212037c6368187f4daecf09b360a8f6d1689146a1e2c7ef7ae9706c1c3
 image SHA-256:   15bc2c6e19236bbb0a1f2823eda0ab89f55a93b51b682d81e53e85db8e5d69a2
 ```
 
-Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. The combined preparation command may
-now be used, but physical writing still requires explicit authorization.
+On 2026-09-23 the exact image was written to the owner-confirmed removable Kingston USB
+and booted on the physical Dell. It described five interfaces and found two Bluetooth
+interfaces (`00` and `01`) on one physical USB device, `0CF3:E009`. The Linux `btusb`
+driver classifies that exact ID as `BTUSB_QCA_ROME`; this is useful independent reference
+evidence, not code imported into Rabbit:
 
-The result is a routing decision, not Bluetooth support. `BT=YES` opens a staged BLE
-bridge path; zero candidates sends the project back to the observed QCA9377 Wi-Fi path.
+- <https://github.com/torvalds/linux/blob/master/drivers/bluetooth/btusb.c>
+
+Status: **PHYSICAL-DELL-OBSERVED**. The result authorizes planning the next experiment;
+it does not authorize HCI commands, pairing, radio traffic, or a live bridge.
+
+The result is a routing decision, not Bluetooth support. The positive result opens a
+staged BLE bridge path. The next boundary is a controller-identity HCI experiment that
+still performs no pairing and transmits no radio packet.

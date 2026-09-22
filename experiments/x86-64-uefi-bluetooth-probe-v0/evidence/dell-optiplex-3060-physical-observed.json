@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-usb-bluetooth-probe-v0.1-physical-2026-09-23",
+  "status": "OBSERVED-PHYSICAL-DELL-USB-BLUETOOTH-INVENTORY",
+  "bindings": {
+    "probe_sha256": "69741ff58157e88b4f8b59a01cbd1e57979d7ae34ecee65385ca817cb7ab0e96",
+    "target_sha256": "af9b486ceca68af2fe65b808aaa37bcdce10aed7f292948b06eb851b1c7b6b64",
+    "program_sha256": "1a716bd0f4f7a9eeee3b2b5cdcca2b1ecc460933d02bc33c8802d04bc142a0ce",
+    "efi_sha256": "9c143212037c6368187f4daecf09b360a8f6d1689146a1e2c7ef7ae9706c1c34",
+    "image_sha256": "15bc2c6e19236bbb0a1f2823eda0ab89f55a93b51b682d81e53e85db8e5d69a2"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "processor": "Intel Core i5-8500T",
+    "firmware_interface": "UEFI",
+    "secure_boot": "disabled-by-owner-dedicated-lab-policy",
+    "boot_medium": "external-removable-usb",
+    "operating_system_present": false,
+    "internal_storage_used": false
+  },
+  "observation": {
+    "method": "owner-reviewed-photograph",
+    "visible_version": "v0.1",
+    "usb_interfaces": [
+      {
+        "vendor_id": "0951",
+        "product_id": "173C",
+        "device_class": "00/00/00",
+        "interface_number": "00",
+        "interface_class": "08/06/50",
+        "bluetooth_candidate": false
+      },
+      {
+        "vendor_id": "2A7A",
+        "product_id": "938F",
+        "device_class": "00/00/00",
+        "interface_number": "00",
+        "interface_class": "03/01/01",
+        "bluetooth_candidate": false
+      },
+      {
+        "vendor_id": "2A7A",
+        "product_id": "938F",
+        "device_class": "00/00/00",
+        "interface_number": "01",
+        "interface_class": "03/00/00",
+        "bluetooth_candidate": false
+      },
+      {
+        "vendor_id": "0CF3",
+        "product_id": "E009",
+        "device_class": "E0/01/01",
+        "interface_number": "00",
+        "interface_class": "E0/01/01",
+        "bluetooth_candidate": true
+      },
+      {
+        "vendor_id": "0CF3",
+        "product_id": "E009",
+        "device_class": "E0/01/01",
+        "interface_number": "01",
+        "interface_class": "E0/01/01",
+        "bluetooth_candidate": true
+      }
+    ],
+    "described_interfaces": 5,
+    "bluetooth_candidates": 2,
+    "distinct_bluetooth_devices": [
+      "0CF3:E009"
+    ]
+  },
+  "safety": {
+    "usb_data_transfers": 0,
+    "usb_port_resets": 0,
+    "bluetooth_hci_commands": 0,
+    "bluetooth_pairing_attempts": 0,
+    "radio_packets_sent": 0,
+    "persistent_machine_changes": false
+  },
+  "interpretation": {
+    "candidate_count_is_interface_count": true,
+    "two_candidates_belong_to_one_physical_usb_device": true,
+    "linux_btusb_classification": "BTUSB_QCA_ROME"
+  },
+  "next_boundary": "read-only-hci-controller-identity-without-pairing-or-radio-transmit"
+}
