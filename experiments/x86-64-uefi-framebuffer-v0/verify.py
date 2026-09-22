@@ -135,12 +135,31 @@ def main() -> int:
         require(observed["observation"]["rabbit_text_output_present"] is False, "QEMU evidence reports Rabbit text")
         require(observed["execution"]["physical_execution_verified"] is False, "QEMU claimed physical execution")
         require(observed["execution"]["physical_writes_performed"] == [], "QEMU claimed physical writes")
+        physical = load_json(ROOT / "evidence" / "dell-optiplex-3060-physical-observed.json")
+        require(physical["status"] == "OBSERVED-MANUAL-PHYSICAL", "physical evidence status changed")
+        require(
+            physical["bindings"] == {
+                "world_sha256": report_a["world_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "efi_sha256": report_a["efi_sha256"],
+                "image_sha256": report_a["image_sha256"],
+                "qemu_evidence_id": observed["evidence_id"],
+            },
+            "physical evidence is stale or bound to another framebuffer artifact",
+        )
+        require(physical["deployment"]["observed_boot_payload_sha256"] == report_a["efi_sha256"], "physical EFI differs")
+        require(physical["observation"]["visible_object"] == observed["observation"]["visible_object"], "physical visual differs")
+        require(physical["execution"]["physical_processor_executed"] is True, "physical execution is unclaimed")
+        require(physical["execution"]["guest_or_host_operating_system_present"] is False, "physical evidence includes an OS")
+        require(physical["execution"]["secure_boot"] == "disabled-by-owner-dedicated-lab-policy", "boot policy hidden")
+        require(physical["internal_storage_writes_performed"] == [], "physical evidence reports internal writes")
         print("PASS: semantic orange rectangle lowers deterministically to reviewed x86-64 machine bytes")
         print("PASS: code locates GOP, reads FrameBufferBase, handles RGB/BGR, and stores pixels directly")
         print("PASS: artifact contains no HI text payload or Simple Text Output call path")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
         print("PASS: artifact remains BUILT-NOT-INSTALLED with no physical writes")
         print("PASS: owner-reviewed QEMU screenshot binds the orange square to exact world, target, EFI, and image identities")
+        print("PASS: owner-reviewed Dell display binds the same framebuffer square to the exact physical artifact")
 
         wrong_color = copy.deepcopy(world)
         wrong_color["objects"][0]["color"] = "#00ff00"

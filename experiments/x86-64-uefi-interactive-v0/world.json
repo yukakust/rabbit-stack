@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "world_id": "first-interactive-object",
+  "capabilities": [
+    {
+      "capability": "display.scene",
+      "version": 1,
+      "required": true,
+      "constraints": {
+        "background": "#000000",
+        "object": "movable-solid-rectangle"
+      }
+    },
+    {
+      "capability": "input.direction",
+      "version": 1,
+      "required": true,
+      "constraints": {
+        "directions": ["up", "down", "left", "right"],
+        "step_pixels": 16
+      }
+    },
+    {
+      "capability": "machine.exit",
+      "version": 1,
+      "required": true,
+      "constraints": {
+        "trigger": "escape-key",
+        "status": 0
+      }
+    }
+  ],
+  "objects": [
+    {
+      "id": "rabbit",
+      "type": "movable-solid-rectangle",
+      "x": 100,
+      "y": 100,
+      "width": 128,
+      "height": 128,
+      "color": "#ff8000"
+    }
+  ],
+  "rules": [
+    {
+      "event": "direction-key",
+      "effect": "move-object-within-screen"
+    },
+    {
+      "event": "escape-key",
+      "effect": "exit-successfully"
+    }
+  ],
+  "contract": {
+    "initial_object": "rabbit",
+    "movement_step_pixels": 16,
+    "clamp_to_visible_screen": true,
+    "exit_status": 0
+  }
+}

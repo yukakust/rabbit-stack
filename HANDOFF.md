@@ -282,8 +282,8 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. After fresh removable-device identification and explicit authorization, install the
-   QEMU-observed framebuffer artifact on the Kingston USB and test it on the Dell.
+1. Run `experiments/x86-64-uefi-interactive-v0/` in QEMU and verify all four arrows,
+   boundary clamping, erasure/redraw, and Escape before any physical-media write.
 2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
    reconsider it if the machine stops being a dedicated lab target.
 3. Add a second dissimilar physical target when real inventory becomes available, then
@@ -308,9 +308,18 @@ GOP's configured linear framebuffer. Reviewed machine bytes locate GOP, inspect
 resolution/stride/pixel format, and directly write 65,536 pixels without calling Simple
 Text Output or embedding `HI`. Deterministic and negative tests pass. QEMU 11.1.1 with
 TianoCore EDK II displayed the expected square, and the owner-reviewed screenshot is
-bound to the exact world, target, EFI, and image identities. It remains physically
-`BUILT-NOT-INSTALLED`; a fresh removable-device check and authorization are the next
-gate.
+bound to the exact world, target, EFI, and image identities. After re-identifying the
+external Kingston device and receiving explicit authorization, the owner wrote the exact
+image, verified its EFI hash, and observed the orange square on the physical Dell with
+no OS or internal storage involved.
+
+`experiments/x86-64-uefi-interactive-v0/` is the next pre-physical artifact. It clears
+the visible framebuffer, draws a `128 x 128` object, stores `(x,y)` in registers, reads
+UEFI arrow scan codes, erases the old position, moves by 16 pixels, clamps every edge,
+and redraws; Escape exits. The artifact comprises 542 reviewed x86-64 code/data bytes
+inside the same deterministic PE32+/FAT32 envelope. Static instruction checks, an
+independent movement model, boundary tests, policy rejection, and repeated builds pass.
+QEMU interaction remains the next evidence gate; no USB write is authorized yet.
 
 ## U7 pre-physical artifact result
 

@@ -50,12 +50,15 @@ every layer we would otherwise be tempted to hide.
   `HI!`, and rolled back to exact `HI` on the Dell.
 - [`experiments/x86-64-uefi-framebuffer-v0`](experiments/x86-64-uefi-framebuffer-v0):
   the first semantic color object lowered to reviewed x86-64 instructions that obtain
-  the UEFI GOP framebuffer and write pixels directly, without firmware text output.
+  the UEFI GOP framebuffer and write pixels directly, observed in QEMU and on the Dell.
+- [`experiments/x86-64-uefi-interactive-v0`](experiments/x86-64-uefi-interactive-v0):
+  the first keyboard-controlled world candidate: arrow keys update persistent position,
+  erase the old rectangle, clamp it to the screen, and draw the next framebuffer frame.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
-[`experiments/x86-64-uefi-framebuffer-v0/README.md`](experiments/x86-64-uefi-framebuffer-v0/README.md).
+[`experiments/x86-64-uefi-interactive-v0/README.md`](experiments/x86-64-uefi-interactive-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

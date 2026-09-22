@@ -28,10 +28,15 @@ owner-reviewed screenshot is bound to the world, target, EFI, and image identiti
 rectangle while the rectangle replaced its exact framebuffer region, consistent with
 direct pixel stores rather than a text-output call.
 
-This remains a pre-physical artifact. The QEMU result does not authorize writing a USB
-device. UEFI still loads the PE32+ application and exposes the framebuffer; Rabbit owns
-the individual pixel writes but does not yet initialize the GPU or display controller
-from reset.
+The exact image was then written to the re-identified external Kingston device, and its
+EFI payload hash was verified before ejection. The physical Dell OptiPlex 3060 displayed
+the same orange square with no operating system or internal storage involved. Evidence
+is recorded in `evidence/dell-optiplex-3060-physical-observed.json` under the owner's
+documented Secure Boot-off dedicated-lab policy.
+
+UEFI still loads the PE32+ application and exposes the framebuffer; Rabbit owns the
+individual pixel writes but does not yet initialize the GPU or display controller from
+reset.
 
 Reviewed identities:
 

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-physical-framebuffer-2026-09-22",
+  "status": "OBSERVED-MANUAL-PHYSICAL",
+  "bindings": {
+    "world_sha256": "41ba583c46803a3cce864524b68fe553983db066d1f193720915f83ce7667b05",
+    "target_sha256": "4288e3f93f6a30ca6ec177e5683a3e0e4d2bce3523e1ec5fb8a0bb917d5bd474",
+    "efi_sha256": "e8806bf1f3f922c53125c24f2cab3c0a2c1df869983f4a1d0ff2cc3c10006836",
+    "image_sha256": "43e1998c7e60d49096d9980cbed77f8e4dc5a3abbc41dff48a5b94ee7ca50c77",
+    "qemu_evidence_id": "qemu-x86-64-uefi-framebuffer-macos-arm64-2026-09-22"
+  },
+  "deployment": {
+    "device": "Kingston DataTraveler Duo",
+    "bytes_written": 67108864,
+    "boot_payload_path": "EFI/BOOT/BOOTX64.EFI",
+    "observed_boot_payload_sha256": "e8806bf1f3f922c53125c24f2cab3c0a2c1df869983f4a1d0ff2cc3c10006836"
+  },
+  "observation": {
+    "method": "owner-reviewed-physical-display",
+    "visible_object": {
+      "type": "solid-rectangle",
+      "color": "#ff8000",
+      "width": 256,
+      "height": 256
+    },
+    "rabbit_text_output_present": false
+  },
+  "execution": {
+    "system": "Dell OptiPlex 3060",
+    "processor": "Intel Core i5-8500T",
+    "physical_processor_executed": true,
+    "guest_or_host_operating_system_present": false,
+    "secure_boot": "disabled-by-owner-dedicated-lab-policy"
+  },
+  "internal_storage_writes_performed": [],
+  "limitations": [
+    "the display was reviewed manually rather than captured by an automated physical framebuffer oracle",
+    "UEFI still configured the graphics mode and exposed the framebuffer"
+  ]
+}
