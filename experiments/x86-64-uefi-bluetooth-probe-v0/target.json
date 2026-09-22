@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "target_id": "x86-64-uefi-usb-bluetooth-probe-v0",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "artifact": {
+    "format": "pe32+-efi-application",
+    "disk_envelope": "mbr-fat32-removable",
+    "default_boot_path": "EFI/BOOT/BOOTX64.EFI",
+    "image_size_bytes": 67108864
+  },
+  "capability_bindings": {
+    "display.text": "uefi-simple-text-output",
+    "input.key": "uefi-simple-text-input",
+    "inventory.usb": "uefi-usb-io-descriptor-methods"
+  },
+  "probe_policy": {
+    "usb_descriptor_reads": true,
+    "usb_data_transfers": false,
+    "usb_port_reset": false,
+    "bluetooth_hci_commands": false,
+    "bluetooth_pairing": false,
+    "radio_transmit": false,
+    "configuration_writes": false
+  },
+  "boot_policy": {
+    "secure_boot": "disabled",
+    "signed": false
+  },
+  "installation_policy": {
+    "removable_media_only": true,
+    "internal_storage_writes": false,
+    "firmware_writes": false,
+    "recovery": "power-off-and-remove-usb"
+  }
+}

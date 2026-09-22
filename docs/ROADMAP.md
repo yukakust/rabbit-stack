@@ -280,9 +280,13 @@ the same emulated inventory visible. It now awaits a fresh device check and sepa
 authorized physical run.
 That run succeeded: the Dell displayed every stage and reported no firmware network
 protocols, Ethernet `10EC:8168`, and wireless-class controller `168C:0042`. The next
-step is a read-only QCA9377 planning probe for revision, subsystem, PCI capabilities,
-and BAR resources. Firmware loading, association, credentials, receive, and transmit
-remain outside that discovery step.
+transport must be wireless because no additional cable is available. Before committing
+to the substantially larger QCA9377 path, `x86-64-uefi-bluetooth-probe-v0` performs a
+bounded read-only UEFI USB inventory and identifies standard Bluetooth class
+`E0/01/01`. It is built but awaits QEMU. A positive physical result selects a staged BLE
+Rabbit bridge; no candidate selects the read-only QCA9377 planning path. HCI commands,
+pairing, firmware loading, association, credentials, receive, and transmit all remain
+outside this discovery step.
 
 ### U10 — Universal installer
 

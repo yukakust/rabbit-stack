@@ -1,6 +1,6 @@
 # Rabbit Stack handoff
 
-Updated: 2026-09-22
+Updated: 2026-09-23
 
 ## Mission
 
@@ -282,10 +282,10 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Build a read-only native-driver planning probe for the observed wireless controller
-   `168C:0042`: collect revision, subsystem, PCI capabilities, and BAR resource facts
-   without mapping MMIO, loading firmware, associating, or transmitting.
-2. Turn those exact facts into a reviewed QCA9377 Target Pack and staged bring-up plan.
+1. Run the new read-only USB/Bluetooth probe under QEMU and record exact evidence.
+2. After a fresh removable-device check and explicit authorization, run that exact image
+   on the Dell. If standard Bluetooth class `E0/01/01` is present, stage a local BLE
+   Rabbit bridge; otherwise return to native QCA9377 planning.
 3. Implement receive-only framed `.rabbit` package transport over that selected path,
    then add authenticated transactional replacement and responses.
 4. Put the package interpreter behind the UEFI framebuffer/input/network Target Pack so
@@ -404,6 +404,18 @@ configuration write occurred. The physical A/B result supports the corrected nes
 call frame as the earlier failure cause. Upstream ath10k maps device `0042` to QCA9377,
 so the next experiment is read-only driver planning for that exact device, not a generic
 or guessed Wi-Fi implementation.
+
+Because the owner has no additional cable and both computers share one room, Bluetooth
+is now tested as a potentially smaller first wireless bridge. The new
+`experiments/x86-64-uefi-bluetooth-probe-v0/` artifact uses bounded UEFI USB I/O handle
+enumeration and only the device/interface descriptor methods. It recognizes standard
+Bluetooth class triple `E0/01/01` at either level, reports exact USB VID/PID and class
+facts, and caps enumeration at 64 interfaces. Its reviewed program is 1,152 bytes; the
+image identity is
+`15bc2c6e19236bbb0a1f2823eda0ab89f55a93b51b682d81e53e85db8e5d69a2`.
+Deterministic, PE/FAT, ABI, classifier, budget, policy, tamper, and duplicate-JSON tests
+pass. It is `BUILT-NOT-INSTALLED`: QEMU evidence is the next gate. No HCI command,
+pairing, radio packet, port reset, USB data transfer, or persistent write is authorized.
 
 ## U7 pre-physical artifact result
 

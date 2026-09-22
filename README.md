@@ -65,11 +65,14 @@ every layer we would otherwise be tempted to hide.
   a read-only boot probe for selecting the Dell's real Wi-Fi path. It reports standardized
   UEFI network/Wi-Fi protocol availability and exact PCI network-controller identities
   without transmitting packets or changing device configuration.
+- [`experiments/x86-64-uefi-bluetooth-probe-v0`](experiments/x86-64-uefi-bluetooth-probe-v0):
+  a bounded read-only UEFI USB descriptor inventory that identifies standard Bluetooth
+  class candidates without HCI commands, pairing, radio traffic, reset, or configuration.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
-[`experiments/x86-64-uefi-network-probe-v0/README.md`](experiments/x86-64-uefi-network-probe-v0/README.md).
+[`experiments/x86-64-uefi-bluetooth-probe-v0/README.md`](experiments/x86-64-uefi-bluetooth-probe-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

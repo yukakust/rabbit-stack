@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "probe_id": "x86-64-usb-bluetooth-inventory-v0",
+  "implementation_revision": 1,
+  "operations": [
+    "enumerate-uefi-usb-io-interfaces",
+    "read-usb-device-descriptor",
+    "read-usb-interface-descriptor",
+    "classify-standard-bluetooth-usb-triple-e0-01-01"
+  ],
+  "limits": {
+    "max_usb_interfaces": 64
+  },
+  "observable": [
+    "usb-vendor-product",
+    "usb-device-class-triple",
+    "usb-interface-number-and-class-triple",
+    "standard-bluetooth-candidate-count"
+  ],
+  "mutations": [],
+  "contract": "display-read-only-usb-inventory-and-wait-for-key"
+}
