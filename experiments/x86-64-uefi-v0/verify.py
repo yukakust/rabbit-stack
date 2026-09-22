@@ -10,13 +10,15 @@ from collections.abc import Callable
 from pathlib import Path
 
 from build_image import (
-    BuildError, IMAGE_SIZE, PARTITION_LBA, ROOT, SECTOR_SIZE, TARGET_PATH,
+    BuildError, IMAGE_SIZE, PARTITION_LBA, PATCH_PATH, ROOT, SECTOR_SIZE, TARGET_PATH,
     WORLD_PATH, build, build_efi, load_json, machine_code, validate_target,
 )
 
 
 EXPECTED_EFI_SHA256 = "a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128"
 EXPECTED_IMAGE_SHA256 = "806d4fef5a33c1bc7d0451bd06d4c665ef21612acd32bddea93fd3f9ca56a594"
+EXPECTED_PATCHED_EFI_SHA256 = "b20888a358ddd69c42d249a76f128f4684dc460098db6863614d51b0d322c796"
+EXPECTED_PATCHED_IMAGE_SHA256 = "2099b5e4cd07551ecabda7262a6ae2b882bfe495dd32d45070e3d35d10fd26b5"
 
 
 def require(condition: bool, message: str) -> None:
@@ -158,6 +160,31 @@ def main() -> int:
         require(usb["physical_execution_verified"] is False, "USB write claimed physical execution")
         require(usb["internal_storage_writes_performed"] == [], "USB evidence claims an internal write")
         require(usb["firmware_writes_performed"] == [], "USB evidence claims a firmware write")
+        physical = load_json(ROOT / "evidence" / "dell-optiplex-3060-physical-observed.json")
+        require(physical["schema_version"] == 1, "physical evidence schema changed")
+        require(physical["status"] == "OBSERVED-MANUAL-PHYSICAL", "physical evidence status changed")
+        require(
+            physical["bindings"] == {
+                "world_sha256": report_a["world_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "efi_sha256": report_a["efi_sha256"],
+                "image_sha256": report_a["image_sha256"],
+                "removable_media_evidence_id": usb["evidence_id"],
+            },
+            "physical evidence is stale or bound to another artifact",
+        )
+        require(physical["observation"]["display_text"] == "HI", "physical display differs from contract")
+        require(physical["execution"]["physical_processor_executed"] is True, "physical execution is unclaimed")
+        require(
+            physical["execution"]["guest_or_host_operating_system_present"] is False,
+            "physical evidence unexpectedly includes an operating system",
+        )
+        policy = physical["firmware_policy"]
+        require(policy["secure_boot_during_execution"] == "disabled", "physical evidence hides boot policy")
+        require(policy["secure_boot_restored"] is False, "physical evidence falsely claims restoration")
+        require(policy["keys_deleted_or_replaced"] is False, "physical evidence reports key mutation")
+        require(policy["legacy_boot_enabled"] is False, "physical evidence reports legacy boot")
+        require(physical["internal_storage_writes_performed"] == [], "physical evidence reports internal writes")
         efi = inspect_image(image_a)
         inspect_efi(efi, "HI")
         require(report_a["efi_sha256"] == __import__("hashlib").sha256(efi).hexdigest(), "EFI hash mismatch")
@@ -167,6 +194,23 @@ def main() -> int:
         print("PASS: artifact is built but not installed, written, or physically verified")
         print("PASS: owner-reviewed QEMU screenshot is bound to the exact world, target, EFI, and image")
         print("PASS: authorized removable-media write preserves the exact EFI payload and records host metadata mutation")
+        print("PASS: owner-reviewed Dell display binds physical HI to the exact world, target, EFI, image, and USB evidence")
+
+        patch = load_json(PATCH_PATH)
+        patched_a, patched_report_a = build(world, target, patch)
+        patched_b, patched_report_b = build(copy.deepcopy(world), copy.deepcopy(target), copy.deepcopy(patch))
+        require(patched_a == patched_b and patched_report_a == patched_report_b, "patched builds differ")
+        require(patched_report_a["patch_id"] == "add-bang", "patched report lost patch identity")
+        require(patched_report_a["expected_display_text"] == "HI!", "patched display contract changed")
+        require(patched_report_a["efi_sha256"] == EXPECTED_PATCHED_EFI_SHA256, "patched EFI identity changed")
+        require(patched_report_a["image_sha256"] == EXPECTED_PATCHED_IMAGE_SHA256, "patched image identity changed")
+        require(patched_report_a["base_world_sha256"] == report_a["world_sha256"], "patch lost base identity")
+        patched_efi = inspect_image(patched_a)
+        inspect_efi(patched_efi, "HI!")
+        require(patched_a != image_a and patched_efi != efi, "patch did not change the artifact")
+        rolled_back, rolled_back_report = build(world, target)
+        require(rolled_back == image_a and rolled_back_report == report_a, "removing patch did not restore base")
+        print("PASS: immutable add-bang patch builds exact HI! UEFI identities and removal restores exact HI")
 
         wrong_text = copy.deepcopy(world)
         wrong_text["contract"]["stdout"] = "BYE"
@@ -177,6 +221,9 @@ def main() -> int:
         wrong_exit = copy.deepcopy(world)
         wrong_exit["contract"]["exit_status"] = 1
         rejected("a nonzero exit contract", lambda: build(wrong_exit, target))
+        stale_patch = copy.deepcopy(patch)
+        stale_patch["base_hash"] = "0" * 64
+        rejected("an add-bang patch bound to a stale base", lambda: build(world, target, stale_patch))
         signed = copy.deepcopy(target)
         signed["boot_policy"]["signed"] = True
         rejected("a false claim that the image is signed", lambda: validate_target(signed))
@@ -205,7 +252,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: U7 x86-64 UEFI artifact contract (pre-physical)")
+    print("PASS: U7 first physical x86-64 UEFI target contract")
     return 0
 
 

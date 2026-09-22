@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import struct
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -14,6 +15,10 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent
 WORLD_PATH = ROOT.parent / "capability-negotiation-v1" / "world.json"
 TARGET_PATH = ROOT / "target.json"
+CAPABILITY_ROOT = ROOT.parent / "capability-negotiation-v1"
+PATCH_PATH = CAPABILITY_ROOT / "patches" / "add-bang.json"
+sys.path.insert(0, str(CAPABILITY_ROOT))
+import rabbit_capabilities as capabilities  # noqa: E402
 SECTOR_SIZE = 512
 IMAGE_SIZE = 64 * 1024 * 1024
 TOTAL_SECTORS = IMAGE_SIZE // SECTOR_SIZE
@@ -54,13 +59,22 @@ def _unique_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return result
 
 
+def effective_world(base: dict[str, Any], patch: dict[str, Any] | None) -> dict[str, Any]:
+    if patch is None:
+        return base
+    try:
+        return capabilities.apply_patch(base, patch)
+    except capabilities.GraphError as error:
+        raise BuildError(f"invalid semantic patch: {error}") from error
+
+
 def reviewed_text(world: dict[str, Any]) -> str:
     contract = world.get("contract")
     if not isinstance(contract, dict) or set(contract) != {"stdout", "exit_status"}:
         raise BuildError("world contract is not the reviewed display/exit contract")
     text = contract["stdout"]
-    if text != "HI" or contract["exit_status"] != 0:
-        raise BuildError("UEFI v0 accepts only the reviewed exact HI/exit-0 world")
+    if text not in {"HI", "HI!"} or contract["exit_status"] != 0:
+        raise BuildError("UEFI v0 accepts only the reviewed exact HI or HI!/exit-0 world")
     capabilities = world.get("capabilities")
     if not isinstance(capabilities, list):
         raise BuildError("world capabilities are missing")
@@ -76,7 +90,8 @@ def reviewed_text(world: dict[str, Any]) -> str:
         for item in world.get("modules", [])
         if isinstance(item, dict) and item.get("type") == "console-byte"
     ]
-    if module_bytes != [72, 73] or bytes(module_bytes).decode("ascii") != text:
+    expected_bytes = [72, 73] if text == "HI" else [72, 73, 33]
+    if module_bytes != expected_bytes or bytes(module_bytes).decode("ascii") != text:
         raise BuildError("world graph bytes disagree with its observable contract")
     return text
 
@@ -299,15 +314,23 @@ def build_image(efi: bytes) -> bytes:
     return bytes(image)
 
 
-def build(world: dict[str, Any], target: dict[str, Any]) -> tuple[bytes, dict[str, Any]]:
-    text = reviewed_text(world)
+def build(
+    world: dict[str, Any],
+    target: dict[str, Any],
+    patch: dict[str, Any] | None = None,
+) -> tuple[bytes, dict[str, Any]]:
+    effective = effective_world(world, patch)
+    text = reviewed_text(effective)
     validate_target(target)
     efi = build_efi(text)
     image = build_image(efi)
     report = {
         "schema_version": 1,
         "status": "BUILT-NOT-INSTALLED",
-        "world_sha256": sha256(canonical_bytes(world)),
+        "world_sha256": sha256(canonical_bytes(effective)),
+        "base_world_sha256": sha256(canonical_bytes(world)),
+        "patch_id": patch["patch_id"] if patch else None,
+        "patch_sha256": sha256(canonical_bytes(patch)) if patch else None,
         "target_sha256": sha256(canonical_bytes(target)),
         "efi_sha256": sha256(efi),
         "image_sha256": sha256(image),
@@ -324,10 +347,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Build the reviewed Rabbit x86-64 UEFI USB image")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--report", type=Path)
+    parser.add_argument("--patch", choices=["add-bang"])
     args = parser.parse_args()
     try:
         world, target = load_json(WORLD_PATH), load_json(TARGET_PATH)
-        image, report = build(world, target)
+        patch = load_json(PATCH_PATH) if args.patch == "add-bang" else None
+        image, report = build(world, target, patch)
         args.output.write_bytes(image)
         if args.report:
             args.report.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-physical-hi-2026-09-22",
+  "status": "OBSERVED-MANUAL-PHYSICAL",
+  "hardware": {
+    "system": "Dell OptiPlex 3060",
+    "processor": "Intel Core i5-8500T",
+    "architecture": "x86-64",
+    "memory_mib": 8192,
+    "firmware_interface": "UEFI",
+    "firmware_version": "1.2.22",
+    "internal_storage_present": false
+  },
+  "bindings": {
+    "world_sha256": "18c0cc6b739378cce4544c5068ef01e9f4d1cf00f3b8b41e65caaa85ec1aef75",
+    "target_sha256": "59c85cbc83c8f42bec7c0f59763e86553e51abfe187d523a3c19d2756f6b2d1b",
+    "efi_sha256": "a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128",
+    "image_sha256": "806d4fef5a33c1bc7d0451bd06d4c665ef21612acd32bddea93fd3f9ca56a594",
+    "removable_media_evidence_id": "kingston-usb-write-macos-2026-09-22"
+  },
+  "observation": {
+    "method": "owner-reviewed-physical-display-photograph",
+    "boot_selection": "UEFI: KingstonDataTraveler Duo0000",
+    "display_text": "HI",
+    "waited_for_key": true
+  },
+  "execution": {
+    "physical_processor_executed": true,
+    "guest_or_host_operating_system_present": false,
+    "remaining_layers": [
+      "Dell UEFI firmware",
+      "UEFI PE/COFF loader",
+      "UEFI Simple Text Output protocol",
+      "device firmware"
+    ]
+  },
+  "firmware_policy": {
+    "secure_boot_before": "enabled",
+    "secure_boot_during_execution": "disabled",
+    "secure_boot_restored": false,
+    "owner_decision": "remain-disabled-on-dedicated-home-lab-machine",
+    "reversible": true,
+    "keys_deleted_or_replaced": false,
+    "legacy_boot_enabled": false
+  },
+  "internal_storage_writes_performed": [],
+  "recovery": [
+    "power off the machine",
+    "remove the USB device",
+    "re-enable Secure Boot if the machine leaves dedicated lab use"
+  ],
+  "limitations": [
+    "display evidence was reviewed manually rather than captured by an automated physical oracle",
+    "the program still depends on UEFI for loading and text output",
+    "this is the first physical target, not yet a two-device physical conformance proof"
+  ]
+}

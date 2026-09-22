@@ -1,8 +1,9 @@
-# x86-64 UEFI v0 — first pre-physical artifact
+# x86-64 UEFI v0 — first physical target
 
-This experiment begins U7 without touching the purchased USB device. It lowers the
-unchanged semantic `HI` world from `capability-negotiation-v1` into a deterministic
-x86-64 UEFI application and places it at the standard removable-media path:
+This experiment began U7 by lowering the unchanged semantic `HI` world from
+`capability-negotiation-v1` into a deterministic x86-64 UEFI application at the standard
+removable-media path. That artifact has now been observed in QEMU and on the physical
+Dell; the later sections preserve the complete evidence sequence.
 
 ```text
 64 MiB MBR disk image
@@ -24,6 +25,27 @@ python3 build_image.py --output /tmp/rabbit-x86-64-uefi-v0.img --report /tmp/rab
 python3 verify.py
 python3 run_qemu.py
 ```
+
+The existing immutable semantic patch can be built and exercised separately:
+
+```sh
+python3 build_image.py --patch add-bang --output /tmp/rabbit-x86-64-uefi-hi-bang.img --report /tmp/rabbit-x86-64-uefi-hi-bang.json
+python3 run_qemu.py --patch add-bang
+```
+
+Reviewed patched identities:
+
+```text
+effective world SHA-256: 3bdda867e932c39e1ed68079609463c53627914b7eca886a41f2b4bf68109586
+patch SHA-256:           43a0914a14d78dace32013ece24c45c92d66a52414c3aa7ff285a87d5d923868
+EFI SHA-256:             b20888a358ddd69c42d249a76f128f4684dc460098db6863614d51b0d322c796
+image SHA-256:           2099b5e4cd07551ecabda7262a6ae2b882bfe495dd32d45070e3d35d10fd26b5
+expected display:        HI!
+```
+
+The verifier also proves that removing `add-bang` rebuilds the exact original `HI`
+world, EFI application, and disk image. Neither variant is permitted to edit the base
+world in place.
 
 `run_qemu.py` locates the x86-64 EDK2 code and variable-store template bundled with
 QEMU. It attaches the code as read-only pflash, copies the mutable variable store into a
@@ -77,6 +99,30 @@ SHA-256: a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128
 ```
 
 `evidence/kingston-usb-write-observed.json` records both the successful payload check
-and the whole-image mismatch instead of hiding the host mutation. The USB is prepared,
-but physical execution is still unverified and the Dell's enabled Secure Boot remains a
-separate blocker.
+and the whole-image mismatch instead of hiding the host mutation. At that checkpoint the
+USB was prepared while physical execution and the Secure Boot decision still remained
+open; the following section records how those gates were resolved.
+
+## First physical execution
+
+On 2026-09-22 the owner selected `UEFI: KingstonDataTraveler Duo0000` on the physical
+Dell OptiPlex 3060. With Secure Boot enabled, the unsigned image did not reach `HI` and
+firmware fell through to the no-internal-drive path; the transient rejection text was
+not captured, so that result is recorded as inferred rather than direct display evidence.
+
+The owner then explicitly authorized disabling only `Secure Boot Enable`. No keys were
+deleted or replaced, Legacy mode was not enabled, and no BIOS update occurred. The same
+verified USB subsequently displayed `HI` on the physical monitor and waited for a key.
+There was no guest or host operating system and no internal storage; the physical
+i5-8500T executed the PE32+ application while Dell UEFI remained responsible for loading
+and text output.
+
+The owner chose to keep Secure Boot disabled because this is a dedicated home lab
+machine. That is an explicit policy decision, not a restoration claim. It remains
+reversible and should be reconsidered if the machine gains an everyday OS, untrusted
+users, untrusted boot media, or another role. Exact evidence is recorded in
+`evidence/dell-optiplex-3060-physical-observed.json`.
+
+This completes the first physical target slice of U7. Overall U7 remains open until the
+same meaning is shown on another dissimilar physical target. The immediate next slice is
+an immutable physical cold patch `HI -> HI!` followed by exact rollback to `HI`.

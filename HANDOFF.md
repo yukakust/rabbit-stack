@@ -88,17 +88,21 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
   inventory pass validation. The real snapshot is honestly `UNSUPPORTED` by the v0
   target because Secure Boot is enabled and no removable device was present during
   discovery; no firmware setting or storage was changed.
-- U7 has begun with a pre-physical artifact: the unchanged semantic `HI` world lowers
+- U7 began with a pre-physical artifact: the unchanged semantic `HI` world lowers
   deterministically to a reviewed x86-64 PE32+ UEFI application at
   `EFI/BOOT/BOOTX64.EFI` inside a 64 MiB MBR/FAT32 image. Structural, identity,
   tamper, policy, and repeat-build tests pass. QEMU 11.1.1 plus TianoCore EDK II on the
-  Apple Silicon Mac manually displayed `HI`; physical execution remains deliberately
-  unclaimed.
+  Apple Silicon Mac manually displayed `HI` before the physical gate was opened.
 - The owner authorized erasing a new external Kingston DataTraveler Duo. The 64 MiB
   image was written to the removable whole disk. macOS then auto-mounted FAT32 and added
   `.fseventsd`, so the whole-prefix hash changed; the actual `BOOTX64.EFI` hash remained
-  exactly reviewed. The USB payload is verified, while physical Dell execution and the
-  Secure Boot decision remain open.
+  exactly reviewed. That established the removable payload before physical execution.
+- The exact USB then displayed `HI` on the physical Dell OptiPlex 3060 after the owner
+  explicitly disabled only Secure Boot. No keys were deleted, Legacy mode remained off,
+  no OS or internal storage participated, and the physical i5-8500T executed the UEFI
+  application. The owner chose to keep Secure Boot off as a documented dedicated-home-
+  lab policy. This completes the first physical U7 target slice, not the future two-device
+  physical conformance goal.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -278,12 +282,18 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Safely eject the verified `RABBITBOOT` USB from the Mac.
-2. Review Secure Boot options separately; do not silently change firmware policy.
-3. Boot once via F12, record the observed display, and prove recovery by powering off
-   and removing USB.
-4. Restore the original Secure Boot state after the unsigned-image experiment unless a
-   separately reviewed policy explicitly replaces it.
+1. Run the newly built immutable `add-bang` UEFI artifact under QEMU and observe `HI!`.
+2. Reinstall the exact patched payload on the same removable device, observe physical
+   `HI!`, then remove the patch and prove exact rollback to physical `HI`.
+3. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
+   reconsider it if the machine stops being a dedicated lab target.
+4. Add a second dissimilar physical target when real inventory becomes available, then
+   proceed into the broader U8 transactional patch lifecycle.
+
+The first part of the patch slice is implemented: `build_image.py --patch add-bang`
+validates the existing immutable semantic patch, derives `HI!`, produces reviewed EFI
+and image hashes, and proves that removing the patch restores the exact base `HI` image.
+QEMU and physical patched observations remain open.
 
 ## U7 pre-physical artifact result
 

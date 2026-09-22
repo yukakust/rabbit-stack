@@ -175,8 +175,20 @@ evidence. It completed the emulator gate before any removable-media write.
 The owner subsequently authorized and completed a raw write to a newly identified
 external removable Kingston USB device. macOS auto-mounted FAT32 and added `.fseventsd`,
 so post-mount whole-image identity was correctly reported as changed; the boot payload
-`EFI/BOOT/BOOTX64.EFI` still matched its reviewed SHA-256 exactly. Physical Dell boot and
-the separate Secure Boot decision remain open.
+`EFI/BOOT/BOOTX64.EFI` still matched its reviewed SHA-256 exactly. That completed the
+removable-media gate before physical boot.
+
+The verified USB then displayed `HI` on the physical Dell OptiPlex 3060 after the owner
+explicitly disabled Secure Boot without deleting keys, enabling Legacy mode, or updating
+firmware. No OS or internal disk participated. The owner chose to retain Secure Boot-off
+as a documented policy for this dedicated home lab machine. This completes U7's first
+physical target slice; the two-dissimilar-device goal remains open. The next slice applies
+the existing immutable `HI -> HI!` patch physically and proves rollback to `HI`.
+
+The UEFI builder now accepts that exact hash-bound `add-bang` patch and deterministically
+produces a distinct `HI!` PE32+/FAT32 artifact. Structural verification passes and patch
+removal restores the exact original `HI` image. Patched QEMU observation, physical USB
+replacement, physical `HI!`, and physical rollback remain the next evidence gates.
 
 ### U8 — Transactional patches
 

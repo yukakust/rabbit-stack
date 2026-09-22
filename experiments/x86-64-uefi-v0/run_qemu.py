@@ -3,12 +3,13 @@
 
 from __future__ import annotations
 
+import argparse
 import shutil
 import subprocess
 import tempfile
 from pathlib import Path
 
-from build_image import TARGET_PATH, WORLD_PATH, build, load_json
+from build_image import PATCH_PATH, TARGET_PATH, WORLD_PATH, build, load_json
 
 
 def firmware_roots(qemu: Path) -> list[Path]:
@@ -34,6 +35,9 @@ def vars_candidates(qemu: Path) -> list[Path]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Run the reviewed Rabbit UEFI image in QEMU")
+    parser.add_argument("--patch", choices=["add-bang"])
+    args = parser.parse_args()
     executable = shutil.which("qemu-system-x86_64")
     if executable is None:
         print("FAIL: qemu-system-x86_64 is not on PATH")
@@ -49,7 +53,8 @@ def main() -> int:
         return 1
 
     world, target = load_json(WORLD_PATH), load_json(TARGET_PATH)
-    image, report = build(world, target)
+    patch = load_json(PATCH_PATH) if args.patch == "add-bang" else None
+    image, report = build(world, target, patch)
     with tempfile.TemporaryDirectory(prefix="rabbit-uefi-qemu-") as temp_dir:
         image_path = Path(temp_dir) / "rabbit-x86-64-uefi-v0.img"
         variables_path = Path(temp_dir) / "edk2-vars.fd"
@@ -72,7 +77,7 @@ def main() -> int:
         print(f"UEFI variables template: {variables} ({variables.stat().st_size} bytes)")
         print("UEFI variables working copy: temporary")
         print("Rabbit disk writes: temporary snapshot overlay")
-        print("Expected screen: exactly HI; press one key to return to firmware.")
+        print(f"Expected screen: exactly {report['expected_display_text']}; press one key to return to firmware.")
         print("Close the QEMU window after observing the result. No physical device is used.")
         try:
             completed = subprocess.run(command, check=False)
