@@ -9,7 +9,7 @@ import struct
 from collections.abc import Callable
 
 from rabbit_framebuffer import (
-    BuildError, GOP_GUID, IMAGE_SIZE, PARTITION_LBA, SECTOR_SIZE, TARGET_PATH, WORLD_PATH,
+    BuildError, GOP_GUID, IMAGE_SIZE, PARTITION_LBA, ROOT, SECTOR_SIZE, TARGET_PATH, WORLD_PATH,
     build, load_json, machine_code, validate_target, validate_world,
 )
 
@@ -112,11 +112,35 @@ def main() -> int:
         efi = inspect_image(image_a)
         inspect_efi(efi, code)
         require(hashlib.sha256(efi).hexdigest() == report_a["efi_sha256"], "embedded EFI hash differs")
+        observed = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(observed["status"] == "OBSERVED-MANUAL-QEMU", "QEMU evidence status changed")
+        require(
+            observed["bindings"] == {
+                "world_sha256": report_a["world_sha256"],
+                "target_sha256": report_a["target_sha256"],
+                "efi_sha256": report_a["efi_sha256"],
+                "image_sha256": report_a["image_sha256"],
+            },
+            "QEMU evidence is stale or bound to another framebuffer artifact",
+        )
+        require(
+            observed["observation"]["visible_object"] == {
+                "type": "solid-rectangle",
+                "color": "#ff8000",
+                "width": 256,
+                "height": 256,
+            },
+            "QEMU visual observation differs from the world contract",
+        )
+        require(observed["observation"]["rabbit_text_output_present"] is False, "QEMU evidence reports Rabbit text")
+        require(observed["execution"]["physical_execution_verified"] is False, "QEMU claimed physical execution")
+        require(observed["execution"]["physical_writes_performed"] == [], "QEMU claimed physical writes")
         print("PASS: semantic orange rectangle lowers deterministically to reviewed x86-64 machine bytes")
         print("PASS: code locates GOP, reads FrameBufferBase, handles RGB/BGR, and stores pixels directly")
         print("PASS: artifact contains no HI text payload or Simple Text Output call path")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
         print("PASS: artifact remains BUILT-NOT-INSTALLED with no physical writes")
+        print("PASS: owner-reviewed QEMU screenshot binds the orange square to exact world, target, EFI, and image identities")
 
         wrong_color = copy.deepcopy(world)
         wrong_color["objects"][0]["color"] = "#00ff00"

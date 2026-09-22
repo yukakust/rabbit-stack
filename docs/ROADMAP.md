@@ -197,8 +197,10 @@ The next U7 graphics slice is now built but not yet observed. A new portable wor
 for one orange rectangle rather than text. Its Target Pack binds `display.region` to the
 UEFI GOP linear framebuffer. Reviewed x86-64 bytes locate GOP, read the framebuffer base,
 resolution, stride, and packed RGB/BGR format, then directly store 65,536 pixels. The
-artifact contains no `HI` string and never calls Simple Text Output. QEMU observation is
-the next gate; no physical-media write is authorized by this pre-physical build.
+artifact contains no `HI` string and never calls Simple Text Output. QEMU 11.1.1 has now
+displayed the exact orange square; the owner-reviewed screenshot is hash-bound to the
+world, target, EFI, and image. No physical-media write is authorized by that emulator
+observation alone.
 
 ### U8 — Transactional patches
 

@@ -282,8 +282,8 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Run the new framebuffer artifact in QEMU and manually observe its orange square
-   before considering any physical-media write.
+1. After fresh removable-device identification and explicit authorization, install the
+   QEMU-observed framebuffer artifact on the Kingston USB and test it on the Dell.
 2. Keep the persistent Secure Boot-off state explicit in every physical evidence record;
    reconsider it if the machine stops being a dedicated lab target.
 3. Add a second dissimilar physical target when real inventory becomes available, then
@@ -306,8 +306,11 @@ The next pre-physical graphics artifact now exists in
 `256 x 256` rectangle at `(100,100)`. The x86-64 UEFI Target Pack binds that request to
 GOP's configured linear framebuffer. Reviewed machine bytes locate GOP, inspect
 resolution/stride/pixel format, and directly write 65,536 pixels without calling Simple
-Text Output or embedding `HI`. Deterministic and negative tests pass. It remains
-`BUILT-NOT-INSTALLED`; QEMU observation is the next evidence gate.
+Text Output or embedding `HI`. Deterministic and negative tests pass. QEMU 11.1.1 with
+TianoCore EDK II displayed the expected square, and the owner-reviewed screenshot is
+bound to the exact world, target, EFI, and image identities. It remains physically
+`BUILT-NOT-INSTALLED`; a fresh removable-device check and authorization are the next
+gate.
 
 ## U7 pre-physical artifact result
 

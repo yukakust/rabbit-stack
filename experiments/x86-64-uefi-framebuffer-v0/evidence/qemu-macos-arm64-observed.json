@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-framebuffer-macos-arm64-2026-09-22",
+  "status": "OBSERVED-MANUAL-QEMU",
+  "bindings": {
+    "world_sha256": "41ba583c46803a3cce864524b68fe553983db066d1f193720915f83ce7667b05",
+    "target_sha256": "4288e3f93f6a30ca6ec177e5683a3e0e4d2bce3523e1ec5fb8a0bb917d5bd474",
+    "efi_sha256": "e8806bf1f3f922c53125c24f2cab3c0a2c1df869983f4a1d0ff2cc3c10006836",
+    "image_sha256": "43e1998c7e60d49096d9980cbed77f8e4dc5a3abbc41dff48a5b94ee7ca50c77"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "firmware": "TianoCore EDK II",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-qemu-screenshot",
+    "visible_object": {
+      "type": "solid-rectangle",
+      "color": "#ff8000",
+      "width": 256,
+      "height": 256
+    },
+    "rabbit_text_output_present": false,
+    "screenshot_sha256": "c981f0843823e495fc761d77dee45576a24723144c5b619dab5b046455c408a9"
+  },
+  "limitations": [
+    "the screenshot was reviewed manually rather than by an automated framebuffer oracle",
+    "this is emulator evidence, not physical Dell execution",
+    "UEFI still configured the graphics mode and exposed the framebuffer"
+  ]
+}

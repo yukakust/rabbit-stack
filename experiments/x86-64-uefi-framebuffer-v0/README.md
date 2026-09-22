@@ -22,9 +22,16 @@ python3 run_qemu.py
 Expected QEMU screen: one solid orange square, 256 pixels wide and high, beginning 100
 pixels from the top and left. Press one key to return to firmware, then close QEMU.
 
-This is a pre-physical artifact. It does not authorize writing a USB device. UEFI still
-loads the PE32+ application and exposes the framebuffer; Rabbit owns the individual
-pixel writes but does not yet initialize the GPU or display controller from reset.
+On 2026-09-22 QEMU 11.1.1 with TianoCore EDK II displayed the exact orange square. The
+owner-reviewed screenshot is bound to the world, target, EFI, and image identities in
+`evidence/qemu-macos-arm64-observed.json`. Firmware text remained visible outside the
+rectangle while the rectangle replaced its exact framebuffer region, consistent with
+direct pixel stores rather than a text-output call.
+
+This remains a pre-physical artifact. The QEMU result does not authorize writing a USB
+device. UEFI still loads the PE32+ application and exposes the framebuffer; Rabbit owns
+the individual pixel writes but does not yet initialize the GPU or display controller
+from reset.
 
 Reviewed identities:
 
