@@ -282,9 +282,9 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Run network-probe v0.2 under QEMU and record the firmware-handle PCI result before
-   authorizing another physical-media write. Do not reuse v0.1 evidence.
-2. Run the same exact-bound probe on the Dell and use its real protocol and PCI
+1. Build network-probe v0.3, freshly identify the removable device, and obtain explicit
+   authorization before writing it. Its exact QEMU evidence is already recorded.
+2. Run the same exact-bound v0.3 probe on the Dell and use its visible stage plus real protocol and PCI
    vendor/device results to choose firmware-provided Wi-Fi or a concrete native driver.
 3. Implement receive-only framed `.rabbit` package transport over that selected path,
    then add authenticated transactional replacement and responses.
@@ -381,8 +381,11 @@ the claim that only brute-force PCI enumeration caused the visible failure. V0.3
 the early `ClearScreen()` call and prints `STAGE 1: TEXT OK`, `STAGE 2: PROTOCOL CHECKS`,
 and `STAGE 3: PCI HANDLES` before the corresponding work. Its current image identity is
 `afac5e6d866fcb6e0e7bd770d37bc77b755837dd0bdb2a8553aabd07ef502a61`.
-Both failed physical attempts remain exact-bound; v0.3 is `BUILT-NOT-INSTALLED` and must
-pass QEMU before any new USB write.
+Both failed physical attempts remain exact-bound. V0.3 passed QEMU 11.1.1 on the
+Apple Silicon Mac: all three stage markers were visible, Simple Network was `YES`, both
+Wi-Fi protocols were `NO`, and the emulated controller was `8086:10D3`. The exact
+evidence makes no physical claim. V0.3 is now `QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED`;
+a fresh device check and explicit authorization remain mandatory before another write.
 
 ## U7 pre-physical artifact result
 

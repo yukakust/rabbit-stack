@@ -9,7 +9,7 @@ come first without guessing:
 2. Does the Dell firmware already expose UEFI Simple Network or either standardized
    UEFI Wi-Fi protocol?
 
-The probe boots without Windows or Linux, clears the UEFI text screen, prints protocol
+The probe boots without Windows or Linux, preserves the existing UEFI text screen, prints protocol
 availability, asks firmware for the handles of PCI devices that actually exist, filters
 base class `02` (network controller), and displays
 lines such as:
@@ -56,6 +56,11 @@ algorithm with bounded firmware-handle enumeration. The owner then reproduced th
 On physical Dell, v0.2 still remained dark before even its title was visible. This moves
 the suspected failure earlier than PCI enumeration. V0.3 removes `ClearScreen()` and
 prints explicit `STAGE 1`, `STAGE 2`, and `STAGE 3` markers before each subsystem.
+On 2026-09-23 the owner observed the exact v0.3 image in QEMU: all three stages were
+visible, Simple Network was `YES`, both Wi-Fi protocols were `NO`, and the emulated
+controller was `8086:10D3`. This opens the separately authorized physical diagnostic
+gate; it does not yet identify the Dell controller or prove that `ClearScreen()` caused
+the earlier dark display.
 
 Build the physical candidate without writing a device:
 
@@ -73,5 +78,5 @@ EFI SHA-256:     4547120eae006c8fcddb96f7a3956a9fa9ea19ee5ef63bd0dcd4bddad39b150
 image SHA-256:   afac5e6d866fcb6e0e7bd770d37bc77b755837dd0bdb2a8553aabd07ef502a61
 ```
 
-Status: **V0.3-BUILT-NOT-INSTALLED**. It must pass QEMU before another physical USB
-rewrite, which still requires fresh device identification and explicit authorization.
+Status: **V0.3-QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. Another physical USB rewrite
+still requires fresh device identification and explicit authorization.

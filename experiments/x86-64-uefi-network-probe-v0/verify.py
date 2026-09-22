@@ -144,6 +144,26 @@ def main() -> int:
         require(failed_v02["superseded_by_image_sha256"] == report_a["image_sha256"], "v0.2 failure is not bound to v0.3")
         print("PASS: the dark physical v0.2 attempt is preserved and cannot approve staged-text v0.3")
 
+        qemu_v03 = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(qemu_v03["status"] == "OBSERVED-MANUAL-QEMU-STAGED-NETWORK-PROBE", "v0.3 QEMU status changed")
+        require(qemu_v03["bindings"]["probe_sha256"] == report_a["probe_sha256"], "v0.3 QEMU probe binding changed")
+        require(qemu_v03["bindings"]["target_sha256"] == report_a["target_sha256"], "v0.3 QEMU target binding changed")
+        require(qemu_v03["bindings"]["program_sha256"] == report_a["program_sha256"], "v0.3 QEMU program binding changed")
+        require(qemu_v03["bindings"]["efi_sha256"] == report_a["efi_sha256"], "v0.3 QEMU EFI binding changed")
+        require(qemu_v03["bindings"]["image_sha256"] == report_a["image_sha256"], "v0.3 QEMU image binding changed")
+        require(
+            qemu_v03["observation"]["visible_stages"]
+            == ["STAGE 1: TEXT OK", "STAGE 2: PROTOCOL CHECKS", "STAGE 3: PCI HANDLES"],
+            "v0.3 stage evidence changed",
+        )
+        require(qemu_v03["observation"]["uefi_simple_network"] is True, "v0.3 SNP observation changed")
+        require(qemu_v03["observation"]["uefi_wifi_v1"] is False, "v0.3 Wi-Fi v1 observation changed")
+        require(qemu_v03["observation"]["uefi_wifi_v2"] is False, "v0.3 Wi-Fi v2 observation changed")
+        require(qemu_v03["observation"]["total"] == 1, "v0.3 PCI controller count changed")
+        require(qemu_v03["physical_dell_status"] == "NOT-OBSERVED-WITH-V0.3", "v0.3 evidence overclaims physical execution")
+        require(qemu_v03["execution"]["physical_execution_verified"] is False, "v0.3 QEMU evidence claims physical execution")
+        print("PASS: exact v0.3 QEMU evidence shows all three diagnostic stages and no physical claim")
+
         mutated = copy.deepcopy(probe)
         mutated["mutations"] = ["connect-wifi"]
         rejected("discovery that connects to Wi-Fi", lambda: validate_probe(mutated))
@@ -163,7 +183,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-QEMU staged-text v0.3 read-only network discovery contract")
+    print("PASS: QEMU-observed staged-text v0.3 read-only network discovery contract")
     return 0
 
 

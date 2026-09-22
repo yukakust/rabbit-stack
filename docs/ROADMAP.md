@@ -269,8 +269,9 @@ passes quickly with the same expected emulated result and distinct exact identit
 physical USB replacement remained separately gated. The exact v0.2 image was then
 written and verified, but the physical Dell again remained dark before its first title.
 V0.3 therefore removes the early console clear and adds three visible stage markers,
-turning the next run into a precise localization test. It must repeat the QEMU gate
-before another physical write.
+turning the next run into a precise localization test. It repeated the QEMU gate:
+all stages appeared and the same emulated network result was observed. A fresh removable
+device check and explicit authorization are still required before the physical v0.3 run.
 
 ### U10 — Universal installer
 
