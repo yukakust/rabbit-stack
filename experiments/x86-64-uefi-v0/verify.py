@@ -133,6 +133,31 @@ def main() -> int:
         require(observed["observation"]["display_text"] == "HI", "manual evidence reports another display")
         require(observed["physical_execution_verified"] is False, "QEMU evidence claimed physical execution")
         require(observed["physical_writes_performed"] == [], "QEMU evidence claimed physical writes")
+        usb = load_json(ROOT / "evidence" / "kingston-usb-write-observed.json")
+        require(usb["schema_version"] == 1, "USB evidence schema changed")
+        require(
+            usb["status"] == "INSTALLED-REMOVABLE-PAYLOAD-VERIFIED",
+            "USB evidence status changed",
+        )
+        require(usb["authorization"]["given_by_owner"] is True, "USB write lacks owner authorization")
+        require(usb["device"]["whole_disk"] is True, "USB evidence does not name a whole disk")
+        require(usb["device"]["location"] == "External", "USB evidence does not name external media")
+        require(usb["device"]["removable"] is True, "USB evidence does not name removable media")
+        require(usb["device"]["virtual"] is False, "USB evidence names a virtual device")
+        require(usb["write"]["source_image_sha256"] == report_a["image_sha256"], "USB source image is stale")
+        require(usb["write"]["bytes_written"] == len(image_a), "USB write length changed")
+        post_write = usb["post_write_observation"]
+        require(post_write["exact_whole_image_match"] is False, "USB evidence hides the image mutation")
+        require(post_write["macos_automounted"] is True, "USB evidence hides the host mount")
+        require(
+            post_write["expected_boot_payload_sha256"]
+            == post_write["observed_boot_payload_sha256"]
+            == report_a["efi_sha256"],
+            "USB boot payload differs from the reviewed EFI application",
+        )
+        require(usb["physical_execution_verified"] is False, "USB write claimed physical execution")
+        require(usb["internal_storage_writes_performed"] == [], "USB evidence claims an internal write")
+        require(usb["firmware_writes_performed"] == [], "USB evidence claims a firmware write")
         efi = inspect_image(image_a)
         inspect_efi(efi, "HI")
         require(report_a["efi_sha256"] == __import__("hashlib").sha256(efi).hexdigest(), "EFI hash mismatch")
@@ -141,6 +166,7 @@ def main() -> int:
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
         print("PASS: artifact is built but not installed, written, or physically verified")
         print("PASS: owner-reviewed QEMU screenshot is bound to the exact world, target, EFI, and image")
+        print("PASS: authorized removable-media write preserves the exact EFI payload and records host metadata mutation")
 
         wrong_text = copy.deepcopy(world)
         wrong_text["contract"]["stdout"] = "BYE"

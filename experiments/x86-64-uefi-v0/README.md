@@ -59,3 +59,24 @@ Current status is `OBSERVED-MANUAL-QEMU; NOT-INSTALLED`. Before any USB write:
 
 Removing the USB and powering off is the recovery path. Nothing in this experiment
 authorizes modifying an internal disk or firmware setting.
+
+## Physical removable-media write
+
+On 2026-09-22 the owner explicitly authorized erasing a new external removable Kingston
+DataTraveler Duo. macOS identified the whole physical USB device as `/dev/disk4` at the
+time of the write, with size 123,983,626,240 bytes. Exactly 67,108,864 source bytes were
+written through `/dev/rdisk4`; no internal disk or firmware write was reported.
+
+The first post-write 64 MiB hash did not equal the source image. Investigation showed
+that macOS had automatically mounted `RABBITBOOT` and added
+`.fseventsd/fseventsd-uuid`. The exact boot payload remained byte-identical:
+
+```text
+EFI/BOOT/BOOTX64.EFI
+SHA-256: a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128
+```
+
+`evidence/kingston-usb-write-observed.json` records both the successful payload check
+and the whole-image mismatch instead of hiding the host mutation. The USB is prepared,
+but physical execution is still unverified and the Dell's enabled Secure Boot remains a
+separate blocker.

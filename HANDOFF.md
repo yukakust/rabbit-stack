@@ -94,6 +94,11 @@ What it did not remove: assembler, linker, Mach-O, macOS, `getchar`, and `puts`.
   tamper, policy, and repeat-build tests pass. QEMU 11.1.1 plus TianoCore EDK II on the
   Apple Silicon Mac manually displayed `HI`; physical execution remains deliberately
   unclaimed.
+- The owner authorized erasing a new external Kingston DataTraveler Duo. The 64 MiB
+  image was written to the removable whole disk. macOS then auto-mounted FAT32 and added
+  `.fseventsd`, so the whole-prefix hash changed; the actual `BOOTX64.EFI` hash remained
+  exactly reviewed. The USB payload is verified, while physical Dell execution and the
+  Secure Boot decision remain open.
 - E2 now covers universal intent and the Target Contract boundary.
 
 ## Day 01 verified result
@@ -273,13 +278,12 @@ Boot or authorize installation.
 
 ## Immediate implementation sequence
 
-1. Inspect the purchased USB device read-only on the Mac and bind its exact identity and
-   capacity into a fresh inventory/installation proposal.
+1. Safely eject the verified `RABBITBOOT` USB from the Mac.
 2. Review Secure Boot options separately; do not silently change firmware policy.
-3. Require explicit authorization naming the removable device before erasing or writing
-   it, then verify the bytes after the write.
-4. Boot once via F12, record the observed display, and prove recovery by powering off
+3. Boot once via F12, record the observed display, and prove recovery by powering off
    and removing USB.
+4. Restore the original Secure Boot state after the unsigned-image experiment unless a
+   separately reviewed policy explicitly replaces it.
 
 ## U7 pre-physical artifact result
 

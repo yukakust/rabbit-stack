@@ -170,7 +170,13 @@ convert an observation into physical evidence by themselves.
 The exact image has now also been observed manually under QEMU 11.1.1 with TianoCore
 EDK II on the Apple Silicon Mac: firmware started the removable-media application and
 the display showed `HI`. That evidence is hash-bound and explicitly remains emulator
-evidence. Exact USB identification, authorization, and physical Dell boot are still open.
+evidence. It completed the emulator gate before any removable-media write.
+
+The owner subsequently authorized and completed a raw write to a newly identified
+external removable Kingston USB device. macOS auto-mounted FAT32 and added `.fseventsd`,
+so post-mount whole-image identity was correctly reported as changed; the boot payload
+`EFI/BOOT/BOOTX64.EFI` still matched its reviewed SHA-256 exactly. Physical Dell boot and
+the separate Secure Boot decision remain open.
 
 ### U8 — Transactional patches
 

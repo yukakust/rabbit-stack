@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "evidence_id": "kingston-usb-write-macos-2026-09-22",
+  "status": "INSTALLED-REMOVABLE-PAYLOAD-VERIFIED",
+  "authorization": {
+    "scope": "erase-and-use-new-usb-device",
+    "given_by_owner": true
+  },
+  "device": {
+    "identifier_at_write": "/dev/disk4",
+    "raw_identifier_at_write": "/dev/rdisk4",
+    "media_name": "DataTraveler Duo",
+    "protocol": "USB",
+    "location": "External",
+    "removable": true,
+    "whole_disk": true,
+    "virtual": false,
+    "writable": true,
+    "size_bytes": 123983626240
+  },
+  "write": {
+    "source_image_sha256": "806d4fef5a33c1bc7d0451bd06d4c665ef21612acd32bddea93fd3f9ca56a594",
+    "bytes_written": 67108864,
+    "block_size_bytes": 4194304,
+    "complete_blocks_written": 16
+  },
+  "post_write_observation": {
+    "macos_automounted": true,
+    "volume_name": "RABBITBOOT",
+    "mount_point": "/Volumes/RABBITBOOT",
+    "first_64_mib_sha256": "5420bd607012640ed3d747530318f4bd961753325973f3e6348e92617c906f47",
+    "exact_whole_image_match": false,
+    "observed_host_metadata": [
+      ".fseventsd",
+      ".fseventsd/fseventsd-uuid"
+    ],
+    "boot_payload_path": "EFI/BOOT/BOOTX64.EFI",
+    "expected_boot_payload_sha256": "a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128",
+    "observed_boot_payload_sha256": "a82d77b43d636d63af9bfa76e0a998ed4b62746a0eab10ad0f6c1777dc8c6128"
+  },
+  "physical_execution_verified": false,
+  "internal_storage_writes_performed": [],
+  "firmware_writes_performed": [],
+  "limitations": [
+    "macOS mounted FAT32 and mutated host filesystem metadata after the raw write",
+    "the exact boot payload is verified but the post-mount 64 MiB prefix is not byte-identical to the source image",
+    "the USB device has not yet been booted by the physical Dell"
+  ]
+}
