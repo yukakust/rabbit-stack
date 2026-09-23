@@ -453,7 +453,8 @@ operations, and accepts unlimited alternation of the same exact `BLUE`/`YELLOW`
 vocabulary. Local `Esc` sends the reviewed scan-disable command before returning;
 power-off remains rollback. The command set, framebuffer region, receiver-only radio
 authority, and persistent-write prohibitions are unchanged. Deterministic pre-QEMU
-verification passes; a fresh mismatch gate is next.
+verification passes. The fresh v0.4 QEMU mismatch gate also passed without RAM,
+framebuffer, HCI, or radio effects. Physical candidate preparation is open.
 
 ### U10 — Universal installer
 

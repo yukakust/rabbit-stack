@@ -657,7 +657,8 @@ colors; each USB receive remains bounded to 200 ms so the local keyboard is poll
 fallback. Exact `BLUE`/`YELLOW`, the centered framebuffer region, passive-only Dell
 radio, and all persistent-write prohibitions are unchanged. The deterministic image
 SHA-256 is `1c42713850b25ede0f3064fdbfe2a6d09befd5e85f463a7eb25869bdb289b325`.
-A fresh exact QEMU mismatch gate is required before physical installation.
+Its fresh exact QEMU mismatch gate passed without RAM, framebuffer, HCI, or radio.
+Physical candidate preparation is open.
 
 ## U7 pre-physical artifact result
 
