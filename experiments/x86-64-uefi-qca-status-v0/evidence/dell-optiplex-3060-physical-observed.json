@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-qca-status-v0.1-physical-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-QCA-STATUS-MISSING-SETUP",
+  "bindings": {
+    "probe_sha256": "9de7842a95fea90b7efda0f0114209ec1101d5d2ebae5e0c0482dabbdace2c5f",
+    "target_sha256": "0f421a52791a69c24eba65b031dd544da8ff75f8123bd9ebf2276006febea413",
+    "program_sha256": "7746e8954e4a14daec9a494c730fcee7b6fe56c1e72ad02db5f1109cb16efcc0",
+    "efi_sha256": "aa1f1f9dbbd4ae92749ea6c7154066746c16bef2c3b56b4dc2ab69bad31b148d",
+    "image_sha256": "e7747dbd747ef9add8a5853d01f05e93ebaf20807399a0d697883b15fd235b1f"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "firmware": "UEFI 1.2.22",
+    "boot_media": "Kingston DataTraveler Duo removable USB",
+    "secure_boot": "off-by-owner-dedicated-lab-policy",
+    "internal_storage_present": false,
+    "physical_execution_verified": true
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "visible_version": "v0.1",
+    "target_found": true,
+    "rom_version": "00000302",
+    "patch_version": "00000111",
+    "ram_version": "00000000",
+    "chip_id": "07",
+    "platform_id": "00",
+    "flag": "0000",
+    "setup_status": "20",
+    "patch_updated": false,
+    "syscfg_updated": false
+  },
+  "safety": {
+    "firmware_download_performed": false,
+    "controller_reset_performed": false,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0,
+    "persistent_writes_performed": 0
+  },
+  "interpretation": [
+    "the exact QCA Rome 3.2 controller answered both read-only vendor requests",
+    "neither Linux QCA setup-complete bit was present",
+    "missing setup is a plausible cause of the zero-event scan but is not yet proven to be the only cause"
+  ]
+}

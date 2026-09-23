@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "source": {
+    "repository": "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git",
+    "commit": "797d34e622b2262ca0777e98fd40b1d29034169d",
+    "license": "LICENSE.QualcommAtheros_ath10k",
+    "notice": "qca/NOTICE.txt"
+  },
+  "files": [
+    {
+      "name": "rampatch_usb_00000302.bin",
+      "size": 68644,
+      "sha256": "f0d15f6d7c4ce17270c951287222699c0909bea9028ecb84d2e8be6fa364691e",
+      "url": "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/qca/rampatch_usb_00000302.bin?id=797d34e622b2262ca0777e98fd40b1d29034169d"
+    },
+    {
+      "name": "nvm_usb_00000302.bin",
+      "size": 1998,
+      "sha256": "9ee2cff5bd51523b65c941b72ecf05a8b5e7b9e280c79fa08c70ade7205088a5",
+      "url": "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/qca/nvm_usb_00000302.bin?id=797d34e622b2262ca0777e98fd40b1d29034169d"
+    }
+  ]
+}

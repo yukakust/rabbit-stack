@@ -183,6 +183,18 @@ def main() -> int:
         require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
         print("PASS: exact QEMU evidence proves both vendor reads fail closed without 0CF3:E009")
 
+        physical = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-physical-observed.json")
+        require(physical["status"] == "OBSERVED-MANUAL-PHYSICAL-QCA-STATUS-MISSING-SETUP", "physical evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical["bindings"][field] == report_a[field], f"physical {field} binding changed")
+        observation = physical["observation"]
+        require(observation["target_found"] is True and observation["rom_version"] == "00000302", "physical target identity changed")
+        require(observation["setup_status"] == "20", "physical setup status changed")
+        require(observation["patch_updated"] is False and observation["syscfg_updated"] is False, "physical setup-bit result changed")
+        require(physical["safety"]["firmware_download_performed"] is False, "physical read probe claims a download")
+        require(physical["safety"]["radio_operations_requested"] == 0, "physical read probe claims radio activity")
+        print("PASS: physical Dell evidence binds ROM 00000302 and missing patch/syscfg setup bits")
+
         wrong_device = copy.deepcopy(probe); wrong_device["target_usb_id"] = "FFFF:FFFF"
         rejected("a substituted USB device", lambda: validate_probe(wrong_device))
         extra_request = copy.deepcopy(probe); extra_request["limits"]["vendor_in_requests"] = 3
@@ -201,7 +213,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: QEMU-observed read-only QCA Rome setup-status contract")
+    print("PASS: physical-Dell-observed read-only QCA Rome setup-status contract")
     return 0
 
 

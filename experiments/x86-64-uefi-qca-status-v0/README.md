@@ -41,5 +41,9 @@ EFI SHA-256:     aa1f1f9dbbd4ae92749ea6c7154066746c16bef2c3b56b4dc2ab69bad31b148
 image SHA-256:   e7747dbd747ef9add8a5853d01f05e93ebaf20807399a0d697883b15fd235b1f
 ```
 
-Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. No physical-device write has been
-authorized or performed.
+The physical Dell then reported ROM `00000302`, patch `00000111`, RAM `00000000`, and
+status `20`. Both `PATCH_UPDATED` and `SYSCFG_UPDATED` were absent. The observation is
+bound to the exact artifact and performed no download, reset, HCI command, radio
+operation, or persistent write.
+
+Status: **PHYSICAL-DELL-OBSERVED-MISSING-SETUP**.

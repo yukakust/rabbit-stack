@@ -368,6 +368,14 @@ did not find `0CF3:E009`, and sent no vendor request. The observation is exact-b
 opens read-only physical preparation. Removable-media replacement remains a separate
 owner-authorized boundary.
 
+The physical status read found ROM `0x00000302`, patch `0x00000111`, RAM `0`, and
+status `0x20`; neither `PATCH_UPDATED` nor `SYSCFG_UPDATED` was set. The next artifact,
+`x86-64-uefi-qca-ram-load-v0`, pins the exact upstream Rome 3.2 rampatch/NVM by an
+immutable linux-firmware commit, size, and SHA-256. It permits only their documented
+headers plus bounded endpoint-02 bulk transfers into volatile controller RAM and then
+re-reads setup status. Reset, HCI, scanning, radio, controller flash, and persistent
+writes remain forbidden. A fresh QEMU mismatch gate precedes any physical run.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

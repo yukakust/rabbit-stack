@@ -546,6 +546,22 @@ download, HCI command, or radio operation occurred. Exact evidence is now commit
 so physical preparation is open; writing removable media remains a separate explicit
 authorization boundary.
 
+The physical Dell then returned ROM `00000302`, patch `00000111`, RAM `00000000`, and
+status `20`; both `PATCH_UPDATED` and `SYSCFG_UPDATED` were `NO`. This explains why the
+controller can answer local HCI queries while remaining a plausible source of the
+zero-event radio scan. It is evidence for missing QCA setup, not yet proof that setup is
+the only reception problem.
+
+`experiments/x86-64-uefi-qca-ram-load-v0/` implements the next bounded experiment. It
+fetches the exact unmodified Rome 3.2 rampatch and NVM from pinned linux-firmware commit
+`797d34e622b2262ca0777e98fd40b1d29034169d`, rejects any size/hash mismatch, requires
+exact USB `0CF3:E009` and ROM `0x00000302`, and permits only two vendor-OUT headers plus
+18 bounded endpoint-02 bulk transfers. Payload writes are to volatile controller RAM;
+full Dell power-off is rollback. No controller reset, HCI, scan, radio, controller
+flash, internal-storage write, or firmware-setting write exists. The post-load status
+read must show both setup bits. Status is PRE-QEMU; physical preparation remains closed
+until the exact mismatch gate is observed and committed.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

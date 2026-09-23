@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "probe_id": "x86-64-usb-qca-rome-transient-ram-load-v0",
+  "implementation_revision": 1,
+  "target_usb_id": "0CF3:E009",
+  "required_rom_version": "0x00000302",
+  "operations": [
+    "find-exact-usb-device-and-interface-00",
+    "read-target-version-and-setup-status",
+    "conditionally-load-exact-rampatch-to-controller-ram",
+    "read-target-version-again",
+    "conditionally-load-exact-nvm-to-controller-ram",
+    "read-and-display-final-setup-status"
+  ],
+  "limits": {
+    "max_usb_interfaces": 64,
+    "vendor_in_requests": 4,
+    "vendor_out_header_requests": 2,
+    "bulk_out_transfers": 18,
+    "bulk_chunk_bytes": 4096,
+    "total_payload_bytes": 70642,
+    "timeout_ms_per_transfer": 3000,
+    "header_to_bulk_delay_ms": 20
+  },
+  "forbidden_operations": [
+    "controller-reset",
+    "hci-command",
+    "scan",
+    "advertise",
+    "pair",
+    "connect",
+    "radio-receive",
+    "radio-transmit",
+    "internal-storage-write",
+    "controller-flash-write"
+  ],
+  "contract": "exact-qca-rome-3.2-transient-controller-ram-initialization"
+}
