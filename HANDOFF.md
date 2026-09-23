@@ -715,6 +715,13 @@ did not observe `ACK RECEIVED` and continued repeating its six frames. This is p
 as partial negative evidence. The Mac-only follow-up adds an explicit 1.8-second quiet
 receive window plus scanner-state and 128-bit UUID diagnostics; it does not require a
 new Dell image or USB write.
+That diagnostic sender then observed the exact UUID
+`52411100-23B7-3DE7-0000-000147313E40`: its checksum, program hash, and applied counter
+were valid, while its transfer id was `00` instead of expected `E7`. The cause was an
+exact v0.4 instruction that zeroed the four-byte transfer state before copying byte 1
+into the ACK. V0.5 moves that same clear until after the id is copied; no authority or
+image size changes. Its pre-QEMU image SHA-256 is
+`e3595bc3febf8d924cdb50f2685e41cc34b5f96016d7850596533ddc76d825e6`.
 
 ## U7 pre-physical artifact result
 

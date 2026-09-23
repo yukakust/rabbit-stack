@@ -7,8 +7,8 @@ import json, re, shutil, subprocess, sys
 from pathlib import Path
 from rabbit_qca_beacon import ROOT, build_fetched
 
-OUTPUT = Path("/tmp/rabbit-vm-loader-v04.img")
-REPORT = Path("/tmp/rabbit-vm-loader-v04.json")
+OUTPUT = Path("/tmp/rabbit-vm-loader-v05.img")
+REPORT = Path("/tmp/rabbit-vm-loader-v05.json")
 
 
 def show_external_disks() -> None:
@@ -33,8 +33,8 @@ def main() -> int:
             raise RuntimeError("verification failed; no candidate was prepared")
         if subprocess.run([sys.executable, str(ROOT / "verify_mac_sender.py")], check=False).returncode:
             raise RuntimeError("Mac sender compile gate failed; no candidate was prepared")
-        if not (ROOT / "evidence" / "qemu-macos-arm64-v04-observed.json").is_file():
-            raise RuntimeError("exact loader v0.4 QEMU mismatch gate is not recorded")
+        if not (ROOT / "evidence" / "qemu-macos-arm64-v05-observed.json").is_file():
+            raise RuntimeError("exact loader v0.5 QEMU mismatch gate is not recorded")
         image, report = build_fetched()
         OUTPUT.write_bytes(image)
         REPORT.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")

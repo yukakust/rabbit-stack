@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "probe_id": "x86-64-uefi-ble-program-loader-v0",
-  "implementation_revision": 4,
+  "implementation_revision": 5,
   "target_usb_id": "0CF3:E009",
   "required_rom_version": "0x00000302",
   "rabbit_vm": {
@@ -30,6 +30,7 @@
     "assemble-begin-chunk-commit-rabbit-vm-programs-in-ram",
     "validate-frame-and-program-checksums-version-opcodes-and-bounds",
     "atomically-activate-square-or-triangle-arrow-controlled-scene",
+    "bind-transfer-id-into-ack-before-clearing-transfer-state",
     "advertise-one-hash-bound-nonconnectable-ack-for-1500ms",
     "disable-ack-advertising-and-resume-passive-scan",
     "poll-local-escape-between-bounded-receives",

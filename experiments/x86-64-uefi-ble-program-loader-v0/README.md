@@ -38,9 +38,12 @@ is entered by `JMP`. V0.3 changes only that frame to `0x708`, preserving the lar
 workspace and restoring the proven 8-mod-16 pre-call relationship.
 
 The v0.3 physical loader proved complete program transfer, four-direction movement,
-and hot replacement. V0.4 adds the bounded Dell-to-Mac acknowledgement. Fresh
-v0.4 QEMU mismatch evidence is recorded, so `python3 prepare_physical.py` creates
-`/tmp/rabbit-vm-loader-v04.img` without writing any device.
+and hot replacement. V0.4 added the bounded Dell-to-Mac acknowledgement. Its first
+physical ACK was received by CoreBluetooth with the correct program hash and counter,
+but transfer id `00`: v0.4 had cleared transfer state too early. V0.5 preserves the
+transfer id until it is copied into the ACK. After fresh v0.5 QEMU evidence is recorded,
+`python3 prepare_physical.py` creates `/tmp/rabbit-vm-loader-v05.img` without writing
+any device.
 
 Once installed and booted on the Dell, arbitrary colors can be sent without
 moving the USB stick or rebooting:

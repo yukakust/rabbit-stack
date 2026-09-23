@@ -437,7 +437,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.4\r\n===================================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.5\r\n===================================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 target_found: .asciz "TARGET FOUND\r\nSTAGE 2: REQUIRE ROM=00000302\r\n"
 rom_ok: .asciz "ROM MATCH: OK\r\n"
 before_template: .ascii "STATUS BEFORE="
@@ -1085,7 +1085,6 @@ scan_program_hash_loop:
     mov dword ptr [rsp + 0x454], 1
     mov eax, dword ptr [rsp + 0x44c]
     mov dword ptr [rsp + 0x450], eax
-    mov dword ptr [rsp + 0x440], 0
     inc r15d
     mov eax, 1
     call scan_draw_square
@@ -1099,6 +1098,7 @@ scan_program_hash_loop:
     mov byte ptr [rsp + 0x482], 0x11
     mov al, byte ptr [rsp + 0x441]
     mov byte ptr [rsp + 0x483], al
+    mov dword ptr [rsp + 0x440], 0 # clear transfer only after binding its id into ACK
     mov eax, dword ptr [rsp + 0x44c]
     bswap eax
     mov dword ptr [rsp + 0x484], eax
@@ -1450,7 +1450,7 @@ scan_skip_pixel:
     pop rsi
     ret
 
-scan_title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.4\r\n===================================\r\nRABBIT VM v1; PASSIVE RX + BOUNDED ACK; ESC TO STOP\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+scan_title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.5\r\n===================================\r\nRABBIT VM v1; PASSIVE RX + BOUNDED ACK; ESC TO STOP\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 scan_found_template: .ascii "TARGET FOUND; EVENT ENDPOINT="
 scan_found_endpoint: .asciz "00\r\n"
 scan_graphics_bound: .asciz "DISPLAY FRAMEBUFFER BOUND\r\n"

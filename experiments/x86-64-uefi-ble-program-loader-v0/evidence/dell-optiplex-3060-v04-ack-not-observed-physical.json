@@ -33,6 +33,17 @@
     "usb_moved_after_boot": false,
     "persistent_writes": 0
   },
+  "diagnostic_follow_up": {
+    "mac_sender_source_sha256": "cbd358ec2e0a5056712310175aee1b396b7ccaf71b1b9a96ac0e3b05a5fb91ee",
+    "expected_transfer_id": "E7",
+    "expected_program_fnv1a32": "23B73DE7",
+    "observed_ack_uuid": "52411100-23B7-3DE7-0000-000147313E40",
+    "decoded_ack_transfer_id": "00",
+    "decoded_ack_program_fnv1a32": "23B73DE7",
+    "decoded_ack_applied_counter": 1,
+    "checksum_valid": true,
+    "diagnosis": "v0.4 cleared the in-RAM transfer state before copying its transfer id into the acknowledgement"
+  },
   "limitations": [
     "the Dell status proves successful completion of the reviewed controller command sequence, not independent over-air reception",
     "the old Mac sender did not expose scanner state or discovered service UUIDs",

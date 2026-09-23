@@ -484,6 +484,10 @@ transmit to one narrowly typed, bounded, non-connectable acknowledgement; arbitr
 transmit, active scan, pairing, connection, native code, and persistence remain rejected.
 The fresh QEMU mismatch gate is recorded; the physical receipt is still required. Sender authentication,
 anti-replay, key lifecycle, and encryption remain deliberately deferred in `debts.md`.
+The first physical v0.4 receipt exposed a narrower implementation bug: CoreBluetooth
+received a checksum-valid ACK with the right program hash and counter but transfer id
+`00`. V0.5 keeps the transfer id live until it has been bound into the ACK, then clears
+the transfer state. A fresh QEMU gate precedes replacement of the dedicated USB image.
 
 ### U10 — Universal installer
 

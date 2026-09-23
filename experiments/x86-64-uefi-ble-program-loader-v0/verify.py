@@ -17,13 +17,13 @@ from rabbit_vm_packet import (
 )
 
 EXPECTED = {
-    "probe_sha256": "95259cef1d95f92425f1ce910f327a335868d069080ce61dff36467929df008b",
+    "probe_sha256": "ae003a72f7ac078c594232bebcec24189275b4595fbc53b92ebf76bcc9599e13",
     "target_sha256": "59df2392ddd963429d85cfb9e79a699ae1535d35c1a46fb2f834286ff4aa250f",
-    "source_sha256": "b90dd30f3ebf23482a80d65712f5fbc0d1760168fd3d9da65c9cb74613bbd049",
+    "source_sha256": "95d968ccfcce55e98301fa76e18dc6080e72236988dd39a8dd11235ce2855da8",
     "program_template_sha256": PROGRAM_TEMPLATE_SHA256,
     "program_sha256": PROGRAM_SHA256,
-    "efi_sha256": "484cc5d420ed2691649412bf2651ee228e553cf38c15882143d548b55cbcabcc",
-    "image_sha256": "a56c358736c4122d0f9aeb8b69d862d306bbcc370e5ad29681d9d0be2de05077",
+    "efi_sha256": "d64a4340956163bdc0ce919762dcee8be8502a97df36ab7f9f4a70e10e1f18f2",
+    "image_sha256": "e3595bc3febf8d924cdb50f2685e41cc34b5f96016d7850596533ddc76d825e6",
 }
 
 V02_BINDINGS = {
@@ -42,12 +42,12 @@ V03_BINDINGS = {
 }
 
 V04_BINDINGS = {
-    "probe_sha256": EXPECTED["probe_sha256"],
-    "target_sha256": EXPECTED["target_sha256"],
+    "probe_sha256": "95259cef1d95f92425f1ce910f327a335868d069080ce61dff36467929df008b",
+    "target_sha256": "59df2392ddd963429d85cfb9e79a699ae1535d35c1a46fb2f834286ff4aa250f",
     "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
-    "program_sha256": EXPECTED["program_sha256"],
-    "efi_sha256": EXPECTED["efi_sha256"],
-    "image_sha256": EXPECTED["image_sha256"],
+    "program_sha256": "be2f07be0806d531fd436e2510379a379b4d41159f8996bb05ffdf611949abd9",
+    "efi_sha256": "484cc5d420ed2691649412bf2651ee228e553cf38c15882143d548b55cbcabcc",
+    "image_sha256": "a56c358736c4122d0f9aeb8b69d862d306bbcc370e5ad29681d9d0be2de05077",
 }
 
 SENDER_FILES = {
@@ -85,10 +85,14 @@ def main() -> int:
             and "ACK LISTEN WINDOW: transmitter quiet for 1800 ms" in sender_source
             and "SEEN 128-BIT UUID=" in sender_source,
             "Mac acknowledgement receiver is missing")
-    for marker in (b"RABBIT WIRELESS PROGRAM LOADER v0.4", b"PASSIVE RX + BOUNDED ACK; ESC TO STOP",
+    for marker in (b"RABBIT WIRELESS PROGRAM LOADER v0.5", b"PASSIVE RX + BOUNDED ACK; ESC TO STOP",
                    b"PROGRAM APPLIED", b"ACK ADVERTISED FOR 1500 MS", b"NO NATIVE CODE; NO PAIR; NO CONNECT"):
         require(marker in template, f"required marker missing: {marker!r}")
     require(b"RABBIT BLE COLOR COMMAND" not in template, "stale color-command identity remains")
+    assembly_source = (root / "program.S").read_text(encoding="utf-8")
+    require(assembly_source.index("mov byte ptr [rsp + 0x483], al")
+            < assembly_source.index("clear transfer only after binding its id into ACK"),
+            "transfer id is cleared before acknowledgement construction")
 
     square = encode_program(shape="square", red=255, green=190, blue=0, x=200, y=160, size=96, step=16)
     triangle = encode_program(shape="triangle", red=25, green=110, blue=255, x=420, y=220, size=80, step=12)
@@ -210,6 +214,10 @@ def main() -> int:
     require(ack_miss_observed["program_applied_on_dell"] and ack_miss_observed["triangle_visible"], "physical ACK-miss program evidence changed")
     require(ack_miss_observed["dell_visible_ack_status"] == "ACK ADVERTISED FOR 1500 MS; PASSIVE RECEIVE RESUMED", "physical ACK status changed")
     require(not ack_miss_observed["mac_ack_received_line_visible"] and ack_miss_observed["mac_sender_repeated_program_frames"], "physical ACK-miss boundary changed")
+    ack_diagnostic = ack_miss["diagnostic_follow_up"]
+    observed_ack = bytes.fromhex(ack_diagnostic["observed_ack_uuid"].replace("-", ""))
+    require(decode_ack(observed_ack) == {"transfer_id": 0, "program_hash": 0x23B73DE7, "applied_counter": 1}, "physical ACK diagnostic changed")
+    require(ack_diagnostic["expected_transfer_id"] == "E7" and ack_diagnostic["decoded_ack_transfer_id"] == "00", "physical ACK transfer-id diagnosis changed")
     print("PASS: deterministic UEFI image contains the transactional Rabbit VM loader")
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
