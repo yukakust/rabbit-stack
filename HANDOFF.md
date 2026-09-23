@@ -568,6 +568,14 @@ NO DEVICE WRITE SENT`. No controller RAM write, reset, HCI command, or radio ope
 occurred. Exact evidence is committed, so physical preparation is open; removable-media
 replacement remains a separate operation on the dedicated Rabbit test USB.
 
+The exact physical Dell run then succeeded. It matched ROM `00000302`, reported both
+`RAMPATCH TRANSFER: OK` and `NVM TRANSFER: OK`, and the post-load read returned
+`PATCH_UPDATED=YES; SYSCFG_UPDATED=YES`. This proves the two hash-pinned upstream
+payloads reached volatile QCA controller RAM and established the status expected by
+Linux's setup path. No reset, HCI command, scan, or radio operation occurred. The next
+artifact must initialize RAM and perform the bounded passive Rabbit-beacon receive in
+the same boot, since full power-off is rollback and clears this state.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

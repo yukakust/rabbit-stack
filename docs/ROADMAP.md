@@ -381,6 +381,12 @@ evidence is bound to the payload manifest and final embedded-program identity. P
 candidate preparation is now open while the actual Dell controller has not yet been
 modified by this experiment.
 
+The authorized physical Dell run then transferred both pinned payloads successfully and
+the controller reported both setup bits as ready. This establishes a verified transient
+initialization primitive without reset or radio. The next boundary composes that
+primitive with the already reviewed 20-second passive exact-UUID receiver in one boot;
+it still forbids active scanning, pairing, connection, and Dell radio transmission.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

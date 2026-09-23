@@ -162,6 +162,20 @@ def main() -> int:
         require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
         print("PASS: exact QEMU evidence proves RAM loading fails closed before device writes on a mismatch")
 
+        physical = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-physical-observed.json")
+        require(physical["status"] == "OBSERVED-MANUAL-PHYSICAL-QCA-TRANSIENT-RAM-READY", "physical evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical["bindings"][field] == report_a[field], f"physical {field} binding changed")
+        observation = physical["observation"]
+        require(observation["required_rom_matched"] == "00000302", "physical ROM binding changed")
+        require(observation["rampatch_transfer"] == observation["nvm_transfer"] == "OK", "physical transfer result changed")
+        require(observation["patch_updated"] is True and observation["syscfg_updated"] is True, "physical setup bits are not ready")
+        safety = physical["safety"]
+        require(safety["controller_ram_write_performed"] is True, "physical evidence hides the RAM write")
+        require(safety["controller_flash_write_performed"] is False and safety["controller_reset_performed"] is False, "physical evidence claims persistent/reset effects")
+        require(safety["hci_commands_sent"] == safety["radio_operations_requested"] == 0, "physical evidence claims HCI/radio activity")
+        print("PASS: physical Dell evidence proves both pinned payloads reached volatile RAM and both setup bits became ready")
+
         wrong_rom = copy.deepcopy(probe); wrong_rom["required_rom_version"] = "0x00000300"
         rejected("a substituted ROM version", lambda: validate_probe(wrong_rom))
         extra_bulk = copy.deepcopy(target); extra_bulk["authority"]["bulk_out_max_transfers"] = 19
@@ -184,7 +198,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: QEMU-observed exact QCA Rome 3.2 transient-RAM initialization contract")
+    print("PASS: physical-Dell-observed exact QCA Rome 3.2 transient-RAM initialization contract")
     return 0
 
 

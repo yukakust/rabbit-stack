@@ -59,5 +59,20 @@ EFI SHA-256:              3fa8eacf475d4c711d365f1712e8494dd2c18666de2e2d124f42c2
 image SHA-256:            2b4894f77181626cafd7369fd80f60ae3451e9d93ca8ee4ebf7f6cc696eccadd
 ```
 
-Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. No physical controller RAM write or
-removable-media replacement has been performed by this experiment.
+## Physical Dell result
+
+The exact image matched ROM `00000302`, transferred both pinned payloads, and displayed:
+
+```text
+RAMPATCH TRANSFER: OK
+NVM TRANSFER: OK
+PATCH_UPDATED=YES; SYSCFG_UPDATED=YES
+```
+
+No reset, HCI command, scan, or radio operation occurred. The controller RAM write is
+explicitly recorded, while controller flash, internal storage, and firmware settings
+remain untouched. Full power-off is the rollback.
+
+Status: **PHYSICAL-DELL-OBSERVED-TRANSIENT-RAM-READY**. The next boundary combines this
+initialization and the already reviewed bounded passive Rabbit-beacon receiver in one
+boot, because a full power-off discards the controller RAM state.
