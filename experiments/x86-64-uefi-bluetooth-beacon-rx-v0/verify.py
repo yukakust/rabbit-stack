@@ -24,7 +24,7 @@ EXPECTED_TARGET_SHA256 = "e122e120d12783ebec3dc5f9496576c04b333040db5694008d2956
 EXPECTED_SOURCE_SHA256 = "f712de757b8fd76d0955da9a6ca3fe32feca3c58a245adfb1cd12c376321e743"
 EXPECTED_EFI_SHA256 = "8b9df03b61e21319c1d0329d185b080d17962a1b3763424ddb0d6ddc98c62840"
 EXPECTED_IMAGE_SHA256 = "0fa4c4ce888d9a2ba916898f1ab43f579b92b52553d7f6a96b44fabddc2dd50c"
-EXPECTED_MAC_SOURCE_SHA256 = "f72103e7234b291c6c1733ad7cd64800a44834122d200571e2d3c26ea97e2c76"
+EXPECTED_MAC_SOURCE_SHA256 = "5bb9131f181fd74cf2dc554143ac9b9c9ede3b84e2af5aa33e89a1f2b13e57f5"
 EXPECTED_PLIST_SHA256 = "1312d38dbb8a06a36e97f01b9fea7558a709a6ad5a81d8a741798fcc0ef1f121"
 USB_IO_GUID = bytes.fromhex("d6 68 2f 2b d2 0c cf 44 8e 8b bb a2 0b 1b 5b 75")
 
@@ -162,12 +162,13 @@ def main() -> int:
         require(not contains_rabbit_uuid(b"\x0e\x04\x01\x0c\x20\x00" + RABBIT_UUID), "non-advertising event was accepted")
         print("PASS: event parser accepts only the Rabbit UUID inside an LE Advertising Report")
 
-        mac_source = ROOT / "mac_beacon.swift"
+        mac_source = ROOT / "mac_beacon.m"
         plist = ROOT / "RabbitBeacon-Info.plist"
         require(hashlib.sha256(mac_source.read_bytes()).hexdigest() == EXPECTED_MAC_SOURCE_SHA256, "Mac beacon source changed")
         require(hashlib.sha256(plist.read_bytes()).hexdigest() == EXPECTED_PLIST_SHA256, "Mac beacon permission manifest changed")
         require("52414242-4954-4C45-8000-000000000001" in mac_source.read_text(), "Mac Rabbit UUID changed")
         require("CBAdvertisementDataServiceUUIDsKey" in mac_source.read_text(), "Mac beacon no longer advertises a service UUID")
+        require("startAdvertising" in mac_source.read_text(), "Mac beacon no longer starts advertising")
         print("PASS: reviewed Mac CoreBluetooth sender advertises the exact same Rabbit UUID")
 
         qemu = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")

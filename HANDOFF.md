@@ -499,6 +499,16 @@ reported `TARGET NOT FOUND; NO HCI COMMAND SENT`. No passive scan or radio opera
 started. Exact evidence is committed, so `prepare_physical.py` is now open; physical
 media replacement still requires fresh device identity and explicit authorization.
 
+The owner then wrote the exact receiver image to the reviewed Kingston device and
+verified EFI identity
+`8b9df03b61e21319c1d0329d185b080d17962a1b3763424ddb0d6ddc98c62840`.
+The first Mac-sender launch failed before Bluetooth started because the installed Swift
+compiler and Command Line Tools SDK were patch-level incompatible and exposed duplicate
+`SwiftBridging` modules. This did not execute or alter the Dell receiver. The sender is
+now the same exact CoreBluetooth advertisement implemented in reviewed Objective-C and
+built temporarily with Apple `clang`, removing Swift toolchain compatibility from this
+experiment while preserving the UUID, permission manifest, and Dell EFI/image hashes.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

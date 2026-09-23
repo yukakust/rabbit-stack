@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import hashlib
+import os
 import shutil
 import subprocess
 import tempfile
@@ -11,7 +12,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-SOURCE = ROOT / "mac_beacon.swift"
+SOURCE = ROOT / "mac_beacon.m"
 PLIST = ROOT / "RabbitBeacon-Info.plist"
 UUID = "52414242-4954-4C45-8000-000000000001"
 
@@ -21,28 +22,35 @@ def sha256(path: Path) -> str:
 
 
 def main() -> int:
-    swiftc = shutil.which("swiftc")
-    if swiftc is None:
-        print("FAIL: swiftc is not installed or not on PATH")
+    xcrun = shutil.which("xcrun")
+    if xcrun is None:
+        print("FAIL: xcrun is not installed or not on PATH")
         return 1
     with tempfile.TemporaryDirectory(prefix="rabbit-beacon-sender-") as temp_dir:
         executable = Path(temp_dir) / "rabbit-beacon"
         command = [
-            swiftc,
+            xcrun,
+            "--sdk", "macosx",
+            "clang",
+            "-fobjc-arc",
             str(SOURCE),
             "-o", str(executable),
+            "-framework", "Foundation",
             "-framework", "CoreBluetooth",
             "-Xlinker", "-sectcreate",
             "-Xlinker", "__TEXT",
             "-Xlinker", "__info_plist",
             "-Xlinker", str(PLIST),
         ]
-        print(f"Swift source SHA256: {sha256(SOURCE)}")
+        print(f"Objective-C source SHA256: {sha256(SOURCE)}")
         print(f"Embedded plist SHA256: {sha256(PLIST)}")
         print(f"Rabbit UUID: {UUID}")
-        completed = subprocess.run(command, check=False)
+        compile_env = os.environ.copy()
+        for name in ("CPATH", "C_INCLUDE_PATH", "CPLUS_INCLUDE_PATH", "SDKROOT"):
+            compile_env.pop(name, None)
+        completed = subprocess.run(command, check=False, env=compile_env)
         if completed.returncode != 0:
-            print(f"FAIL: swiftc exited with status {completed.returncode}")
+            print(f"FAIL: Apple clang exited with status {completed.returncode}")
             return 1
         print("Starting the reviewed beacon. Press Ctrl-C only after the Dell result appears.")
         try:

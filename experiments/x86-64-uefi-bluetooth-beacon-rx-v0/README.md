@@ -47,9 +47,10 @@ inspects the removable target without writing it.
 
 ## Mac sender
 
-`run_mac_beacon.py` compiles the reviewed Swift source into a temporary executable with
-an embedded Bluetooth permission description, then advertises only the exact Rabbit
-service UUID through CoreBluetooth:
+`run_mac_beacon.py` compiles the reviewed Objective-C source with Apple `clang` into a
+temporary executable with an embedded Bluetooth permission description, then advertises
+only the exact Rabbit service UUID through CoreBluetooth. Objective-C deliberately
+avoids coupling this experiment to the separately versioned Swift compiler and SDK:
 
 ```sh
 python3 run_mac_beacon.py
