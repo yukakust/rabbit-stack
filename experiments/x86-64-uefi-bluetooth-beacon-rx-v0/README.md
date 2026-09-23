@@ -85,6 +85,14 @@ Reports. They are two-digit hexadecimal counters (`64` means 100). No packet con
 addresses, pairing, connection, or new radio authority are added. V0.2 requires its own
 QEMU fail-closed observation before physical preparation opens.
 
+The physical v0.2 run displayed `RX/LE/ADV (HEX)=00/00/00`. Thus no successful event
+arrived during the scan window; the Rabbit UUID parser never received an advertising
+report to inspect. This rules out UUID comparison as the cause of that run, but does not
+yet prove why the controller delivered no events. The next experiment is limited to the
+QCA vendor-IN target-version (`0x09`) and setup-status (`0x05`) reads used by Linux before
+it decides whether a Rome rampatch and NVM download are required. It will not download
+firmware, reset the controller, scan, pair, connect, or transmit.
+
 Reviewed identities:
 
 ```text
@@ -93,4 +101,4 @@ EFI SHA-256:     18a098c4168b1679c3d4d11a59d67c0d4ecb917a2f0720e21741bddbb62bc30
 image SHA-256:   bd15cc66ee6340bd0225a4394bd6d754f0b31115b52b4ee6d98a513ac8e90df2
 ```
 
-Status: **V0.2 QEMU-OBSERVED; NOT PHYSICALLY INSTALLED**.
+Status: **V0.2 PHYSICALLY OBSERVED WITH ZERO SCAN EVENTS**.

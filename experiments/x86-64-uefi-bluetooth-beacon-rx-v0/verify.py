@@ -212,6 +212,17 @@ def main() -> int:
         require(qemu_v02["observation"]["radio_operations_requested"] == 0, "v0.2 QEMU claims radio activity")
         print("PASS: exact v0.2 QEMU evidence fails closed before HCI and radio")
 
+        physical_v02 = load_json(ROOT / "evidence" / "dell-optiplex-3060-v02-zero-events-physical-observed.json")
+        require(physical_v02["status"] == "OBSERVED-MANUAL-PHYSICAL-BEACON-ZERO-SCAN-EVENTS", "v0.2 physical status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical_v02["bindings"][field] == report_a[field], f"v0.2 physical {field} binding changed")
+        require(physical_v02["observation"]["passive_scan_disabled"] is True, "v0.2 did not record scan cleanup")
+        require(physical_v02["observation"]["successful_scan_usb_events_hex"] == "00", "v0.2 RX count changed")
+        require(physical_v02["observation"]["le_meta_events_hex"] == "00", "v0.2 LE count changed")
+        require(physical_v02["observation"]["advertising_reports_hex"] == "00", "v0.2 ADV count changed")
+        require(physical_v02["observation"]["dell_radio_transmit_authorized"] is False, "v0.2 claims transmit authority")
+        print("PASS: physical v0.2 records zero scan events and mandatory scan cleanup")
+
         over_budget = copy.deepcopy(probe)
         over_budget["limits"]["max_scan_events"] = 101
         rejected("an unbounded scan extension", lambda: validate_probe(over_budget))

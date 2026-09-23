@@ -524,6 +524,14 @@ pending a separate fail-closed QEMU observation. The owner then ran
 that exact gate: QEMU displayed v0.2, the receive-only mode, Stage 1, and `TARGET NOT
 FOUND; NO HCI COMMAND SENT`. No HCI command, scan, or radio operation occurred. Exact
 v0.2 QEMU evidence is committed, so read-only physical preparation is now open.
+The exact v0.2 image was then written and verified. With the reviewed Mac sender active,
+the physical Dell again accepted the complete scan sequence and disabled scanning, while
+the new line reported `RX/LE/ADV (HEX)=00/00/00`. No scan-window USB event arrived, so
+UUID parsing was not the failure point. Linux identifies `0CF3:E009` as QCA Rome and
+runs `btusb_setup_qca`, reading vendor target-version/status and conditionally loading
+rampatch plus NVM before normal use. That makes a read-only QCA vendor-status probe the
+next boundary; firmware download, reset, scanning, pairing, connection, and transmission
+are not yet authorized.
 
 ## U7 pre-physical artifact result
 
