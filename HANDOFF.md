@@ -617,8 +617,8 @@ command repaints only that region; both commands close the receive window early,
 the hard ceiling is 120 seconds. Active scan, Dell transmit, pairing, connection,
 arbitrary-code commands, disk writes, and firmware writes remain forbidden. The exact
 pre-QEMU verifier passes with EFI SHA-256
-`732dbc41f27f28a6a5e06583e4d47c5191d8c61d39fb5cc2122090013bddbac1` and image
-SHA-256 `ebe4b6e3bdfb3cf081864de0237b70c76a3f3972ddeb01d47f404e252c770061`.
+`cfb0fc9dd6b6bc59514cf5181b09faa7c93022e62ba96b721d98ef054e78788e` and image
+SHA-256 `bce85e8c67d71f45c0c118c3616e9a62c1d4ee6228d0b29a1bbe6b4ed52aa00d`.
 The next gate is the QEMU exact-device mismatch observation, followed by one physical
 USB installation and the live yellow → blue → yellow test without moving the USB.
 

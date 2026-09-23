@@ -15,11 +15,11 @@ from rabbit_qca_beacon import (
 EXPECTED = {
     "probe_sha256": "96370f2a03d785068a50154104294ffa444fa21a795b7bc3b6bff627242ea15a",
     "target_sha256": "a90a9aa0d35cca26b5e0d612505fe60b2859aae549f427ae5078fe79b295e804",
-    "source_sha256": "aade26f1923d4093809764c1e9b896effa30bea9ce4f62f8ce4571495ec16756",
+    "source_sha256": "a42949b5bfb5d74ecbcf858ab475d8c5445fb02a3f4075d34fe32fc984b84e89",
     "program_template_sha256": PROGRAM_TEMPLATE_SHA256,
     "program_sha256": PROGRAM_SHA256,
-    "efi_sha256": "732dbc41f27f28a6a5e06583e4d47c5191d8c61d39fb5cc2122090013bddbac1",
-    "image_sha256": "ebe4b6e3bdfb3cf081864de0237b70c76a3f3972ddeb01d47f404e252c770061",
+    "efi_sha256": "cfb0fc9dd6b6bc59514cf5181b09faa7c93022e62ba96b721d98ef054e78788e",
+    "image_sha256": "bce85e8c67d71f45c0c118c3616e9a62c1d4ee6228d0b29a1bbe6b4ed52aa00d",
 }
 
 def require(condition: bool, message: str) -> None:
