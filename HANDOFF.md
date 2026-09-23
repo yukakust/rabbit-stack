@@ -683,7 +683,12 @@ and image SHA-256
 `3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548`.
 The fresh exact v0.3 QEMU mismatch observation passed: the corrected identity was
 visible and the emulated-device mismatch stopped before RAM, VM, HCI, radio, or
-framebuffer effects. Physical preparation is open for the corrected image.
+framebuffer effects. The corrected image then passed physically: Dell initialized QCA,
+bound the framebuffer, entered the long-lived runtime, received a complete six-frame
+Rabbit VM program from the Mac, atomically applied it, and displayed the requested blue
+triangle. No reboot, post-boot USB movement, or persistent write participated. Arrow
+movement for this triangle and replacement by a second complete program remain the next
+physical observations.
 
 ## U7 pre-physical artifact result
 

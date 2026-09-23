@@ -118,6 +118,20 @@ def main() -> int:
     require(not current_observed["target_found"] and all(current_observed[field] == 0 for field in (
         "controller_ram_writes", "vm_program_bytes_received", "hci_commands_sent",
         "radio_operations_requested", "framebuffer_writes_performed")), "current QEMU crossed a forbidden mismatch boundary")
+    physical_success = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-v03-triangle-program-physical-observed.json")
+    require(physical_success["status"] == "OBSERVED-MANUAL-PHYSICAL-RABBIT-VM-PROGRAM-APPLIED", "physical success status changed")
+    for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+        require(physical_success["bindings"][field] == report_a[field], f"physical success evidence is stale for {field}")
+    transferred = physical_success["transferred_program"]
+    transferred_bytes = bytes.fromhex(transferred["bytecode_hex"])
+    require(decode_program(transferred_bytes) == {
+        "vm_version": 1, "shape": "triangle", "rgb": [51, 102, 255], "size": 96,
+        "arrows": True, "step": 16, "x": 400, "y": 240,
+    }, "physical transferred program changed")
+    require(len(encode_transfer(transferred_bytes)) == transferred["transport_frame_count"] == 6, "physical transfer framing changed")
+    success_observed = physical_success["observation"]
+    require(success_observed["complete_program_applied"] and success_observed["triangle_visible"], "physical program application evidence changed")
+    require(not success_observed["usb_moved_after_boot"] and not success_observed["dell_rebooted_for_program"] and success_observed["persistent_writes"] == 0, "physical runtime boundary changed")
     print("PASS: deterministic UEFI image contains the transactional Rabbit VM loader")
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
@@ -126,6 +140,7 @@ def main() -> int:
     print("PASS: archived v0.2 QEMU mismatch evidence remains bound to its exact artifact")
     print("PASS: physical v0.2 failure is localized before the chained runtime's first UEFI call")
     print("PASS: exact v0.3 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
+    print("PASS: physical v0.3 accepted and displayed a complete six-frame triangle program without reboot or USB movement")
     print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
     return 0
 
