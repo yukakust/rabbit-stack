@@ -392,8 +392,9 @@ requires ROM `0x00000302`, installs only the two pinned upstream payloads into v
 controller RAM, requires both setup bits, and only then chains into the fixed five-HCI-
 command passive receiver. Mandatory scan-disable cleanup remains last. Deterministic
 build, payload, machine-byte, PE/FAT, command-sequence, budget, UUID, and authority-
-escalation tests pass. Its QEMU exact-device mismatch observation is the next gate;
-physical media has not yet been replaced with this image.
+escalation tests pass. Its QEMU exact-device mismatch gate passed without RAM writes,
+HCI, or radio and is exact-bound. Physical candidate preparation is now open; physical
+media has not yet been replaced with this image.
 
 ### U10 — Universal installer
 

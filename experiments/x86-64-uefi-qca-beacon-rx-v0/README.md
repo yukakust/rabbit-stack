@@ -37,8 +37,9 @@ QEMU has no exact `0CF3:E009` device. It must display:
 TARGET NOT FOUND; NO DEVICE WRITE SENT
 ```
 
-and must never reach `BEGIN BOUNDED PASSIVE RABBIT RECEIVE`. Physical installation is
-closed until this exact result is observed and evidence-bound.
+and must never reach `BEGIN BOUNDED PASSIVE RABBIT RECEIVE`. On 2026-09-23 QEMU 11.1.1
+on the owner's Apple Silicon Mac showed that exact result. The observation is bound to
+the artifact identities and physical candidate preparation is now open.
 
 Reviewed pre-QEMU identities:
 
@@ -49,5 +50,11 @@ EFI SHA-256:      4a25054ceb2acbb9806786028e1a601536531328a7396cecd7dc081d11f272
 image SHA-256:    50d5232d4914e33220d73bff53bd42f428244a96a96c9abbaa19b9766200ab7d
 ```
 
+Prepare and inspect the physical candidate without writing the USB:
+
+```sh
+python3 prepare_physical.py
+```
+
 Full power-off is rollback for controller RAM. Removing the USB is recovery for the
-boot application. Status: **PRE-QEMU; NOT INSTALLED**.
+boot application. Status: **QEMU-OBSERVED; NOT INSTALLED**.

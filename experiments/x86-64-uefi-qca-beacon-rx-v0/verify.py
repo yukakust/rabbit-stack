@@ -128,6 +128,17 @@ def main() -> int:
         print("PASS: active scan, transmit, advertise, pair, connect, reset, flash, and persistent writes remain forbidden")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
 
+        qemu = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-observed.json")
+        require(qemu["status"] == "OBSERVED-MANUAL-QEMU-COMBINED-QCA-RX-FAIL-CLOSED", "QEMU evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu["bindings"][field] == report_a[field], f"QEMU {field} binding changed")
+        observation = qemu["observation"]
+        require(observation["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT", "QEMU mismatch result changed")
+        require(observation["target_found"] is False and observation["controller_ram_writes"] == 0, "QEMU evidence claims device writes")
+        require(observation["receiver_chain_reached"] is False, "QEMU mismatch reached the receive chain")
+        require(observation["hci_commands_sent"] == observation["radio_operations_requested"] == 0, "QEMU evidence claims HCI/radio activity")
+        print("PASS: exact QEMU evidence fails closed before RAM writes, HCI, and radio")
+
         probe, target = load_json(PROBE_PATH), load_json(TARGET_PATH)
         wrong_rom = copy.deepcopy(probe); wrong_rom["required_rom_version"] = "0x00000300"
         rejected("a substituted ROM", lambda: validate_probe(wrong_rom))

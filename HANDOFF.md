@@ -584,8 +584,11 @@ advertising, pairing, connection, Dell radio transmit, controller reset/flash, i
 storage, and firmware-setting writes remain forbidden and rejected. Deterministic
 verification passes with image SHA-256
 `50d5232d4914e33220d73bff53bd42f428244a96a96c9abbaa19b9766200ab7d`.
-Status is PRE-QEMU and NOT INSTALLED: the next gate is the exact QEMU device-mismatch
-screen before the dedicated USB may be replaced.
+The exact QEMU gate passed on the owner's Apple Silicon Mac: the program displayed its
+combined v0.1 identity, rejected the emulated USB keyboard, reported `TARGET NOT FOUND;
+NO DEVICE WRITE SENT`, and did not reach the receiver chain. The evidence is bound to
+the exact artifact. Physical candidate preparation is open; the dedicated USB has not
+yet been replaced with this image.
 
 ## U7 pre-physical artifact result
 
