@@ -420,6 +420,14 @@ artifact identity was correct and execution stopped before RAM, framebuffer, HCI
 radio authority. Physical Dell evidence is the next gate. This is a live command
 vocabulary, not arbitrary wireless code.
 
+The first physical v0.1 color candidate reached exact QCA readiness and selected the
+interrupt endpoint, then stopped before `DISPLAY READY`. No HCI reset, scan, command,
+or framebuffer result was observed. The failure localized a Microsoft-x64 ABI error in
+the nested GOP `LocateProtocol` call: it lacked its own shadow-space/alignment frame.
+V0.2 adds that exact `0x28`-byte frame and changes no command or radio authority. Its
+new deterministic identities pass; a fresh exact QEMU mismatch gate is required before
+the dedicated USB is replaced again.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

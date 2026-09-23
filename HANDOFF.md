@@ -623,6 +623,15 @@ The exact QEMU mismatch gate passed with the corrected visible artifact identity
 stopped before RAM, framebuffer, HCI, or radio. The next gate is one physical USB
 installation and the live yellow → blue → yellow test without moving the USB.
 
+The first physical v0.1 run loaded both QCA payloads and reached the receiver's
+`TARGET FOUND; EVENT ENDPOINT=81`, but stopped before `DISPLAY READY`. Therefore no HCI
+reset, scan, or color command ran. The failure exposed a nested-call ABI bug: GOP
+`LocateProtocol` was called without a fresh Microsoft-x64 shadow-space/alignment frame.
+V0.2 reserves `0x28` bytes around that call and rebases its persistent stack slots.
+The corrected image SHA-256 is
+`669b11d4313a1cb0c0d26404ffbbc0c56dd5321361e309beebe1ac2df69a8107`;
+a fresh QEMU exact-device mismatch gate is now required.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

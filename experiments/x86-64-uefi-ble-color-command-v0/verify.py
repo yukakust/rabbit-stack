@@ -14,13 +14,13 @@ from rabbit_qca_beacon import (
 )
 
 EXPECTED = {
-    "probe_sha256": "96370f2a03d785068a50154104294ffa444fa21a795b7bc3b6bff627242ea15a",
+    "probe_sha256": "d43e7fcdda0ec3c2f83085663d078bd27f86763fbbd162f68642ddd851aab977",
     "target_sha256": "a90a9aa0d35cca26b5e0d612505fe60b2859aae549f427ae5078fe79b295e804",
-    "source_sha256": "a42949b5bfb5d74ecbcf858ab475d8c5445fb02a3f4075d34fe32fc984b84e89",
+    "source_sha256": "d99e3065a803d721b299a0ddf77290a6901984c4296cefbc957b6081bebf1a3e",
     "program_template_sha256": PROGRAM_TEMPLATE_SHA256,
     "program_sha256": PROGRAM_SHA256,
-    "efi_sha256": "cfb0fc9dd6b6bc59514cf5181b09faa7c93022e62ba96b721d98ef054e78788e",
-    "image_sha256": "bce85e8c67d71f45c0c118c3616e9a62c1d4ee6228d0b29a1bbe6b4ed52aa00d",
+    "efi_sha256": "972197a4938695f0b331a60b610102970b9bcf465dad1d1b707281b6d8208f72",
+    "image_sha256": "669b11d4313a1cb0c0d26404ffbbc0c56dd5321361e309beebe1ac2df69a8107",
 }
 
 def require(condition: bool, message: str) -> None:
@@ -45,7 +45,7 @@ def main() -> int:
         require(hashlib.sha256(template).hexdigest() == PROGRAM_TEMPLATE_SHA256, "template hash changed")
         require(hashlib.sha256(program).hexdigest() == PROGRAM_SHA256, "program hash changed")
         for text in (
-            b"RABBIT BLE COLOR COMMAND v0.1", b"INITIAL SQUARE=YELLOW",
+            b"RABBIT BLE COLOR COMMAND v0.2", b"INITIAL SQUARE=YELLOW",
             b"COMMAND BLUE RECEIVED; SQUARE=BLUE",
             b"COMMAND YELLOW RECEIVED; SQUARE=YELLOW",
             b"PASSIVE SCAN OFF", b"MAX 120 SECONDS",
@@ -77,16 +77,13 @@ def main() -> int:
         print("PASS: Dell transmit, active scan, pairing, connection, storage, and firmware writes remain forbidden")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
 
-        qemu = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-observed.json")
-        require(qemu["status"] == "OBSERVED-MANUAL-QEMU-BLE-COLOR-COMMAND-FAIL-CLOSED", "QEMU evidence status changed")
-        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
-            require(qemu["bindings"][field] == report_a[field], f"QEMU {field} binding changed")
-        observation = qemu["observation"]
-        require(observation["visible_identity"] == "RABBIT BLE COLOR COMMAND v0.1", "visible QEMU identity changed")
-        require(observation["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT", "QEMU mismatch result changed")
-        require(not observation["target_found"], "QEMU unexpectedly claims the physical controller")
-        require(observation["controller_ram_writes"] == observation["hci_commands_sent"] == observation["radio_operations_requested"] == observation["framebuffer_writes_performed"] == 0, "QEMU mismatch crossed an authority boundary")
-        print("PASS: exact QEMU mismatch evidence stops before RAM, graphics, HCI, and radio")
+        old_qemu = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v01-observed.json")
+        require(old_qemu["bindings"]["image_sha256"] == "bce85e8c67d71f45c0c118c3616e9a62c1d4ee6228d0b29a1bbe6b4ed52aa00d", "v0.1 QEMU evidence changed")
+        physical_failure = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-v01-gop-entry-stall-physical-observed.json")
+        require(physical_failure["status"] == "OBSERVED-MANUAL-PHYSICAL-GOP-ENTRY-STALL", "v0.1 failure evidence changed")
+        require(physical_failure["observation"]["last_visible_line"] == "TARGET FOUND; EVENT ENDPOINT=81", "v0.1 failure boundary changed")
+        require(physical_failure["observation"]["passive_scan_observed"] is False, "v0.1 failure incorrectly claims radio scan")
+        print("PASS: archived v0.1 evidence localizes the physical stop before GOP, HCI, and radio")
 
         probe, target = load_json(PROBE_PATH), load_json(TARGET_PATH)
         third = copy.deepcopy(probe); third["commands"]["red"] = "52414242-4954-4C45-8000-000000000004"
@@ -100,7 +97,7 @@ def main() -> int:
             rejected(f"target permitting {field}", lambda unsafe=unsafe: validate_target(unsafe))
     except (BuildError, OSError, RuntimeError) as error:
         print(f"FAIL: {error}"); return 1
-    print("PASS: QEMU-gated BLE color-command runtime contract")
+    print("PASS: corrected pre-QEMU BLE color-command v0.2 contract")
     return 0
 
 if __name__ == "__main__":

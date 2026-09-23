@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-ble-color-command-v0.1-gop-entry-stall-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-GOP-ENTRY-STALL",
+  "bindings": {
+    "probe_sha256": "96370f2a03d785068a50154104294ffa444fa21a795b7bc3b6bff627242ea15a",
+    "target_sha256": "a90a9aa0d35cca26b5e0d612505fe60b2859aae549f427ae5078fe79b295e804",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "6611f5bbeb494d0a0738444150aab7928bb1f5eeee952fedc3f8a6fdd372e595",
+    "efi_sha256": "cfb0fc9dd6b6bc59514cf5181b09faa7c93022e62ba96b721d98ef054e78788e",
+    "image_sha256": "bce85e8c67d71f45c0c118c3616e9a62c1d4ee6228d0b29a1bbe6b4ed52aa00d"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "boot": "UEFI removable USB",
+    "physical_execution_verified": true,
+    "persistent_machine_writes": 0
+  },
+  "observation": {
+    "visible_identity": "RABBIT BLE COLOR COMMAND v0.1",
+    "rom_match": true,
+    "rampatch_transfer": "OK",
+    "nvm_transfer": "OK",
+    "status_after": "E0",
+    "patch_updated": true,
+    "syscfg_updated": true,
+    "receiver_target_found": true,
+    "last_visible_line": "TARGET FOUND; EVENT ENDPOINT=81",
+    "display_ready_observed": false,
+    "hci_reset_observed": false,
+    "passive_scan_observed": false,
+    "color_command_observed": false
+  },
+  "diagnosis": {
+    "boundary": "nested UEFI GOP LocateProtocol call",
+    "cause": "missing nested Microsoft-x64 shadow-space and alignment frame",
+    "v0.2_change": "reserve 0x28 bytes around LocateProtocol and address persistent state relative to the nested frame"
+  },
+  "safety": {
+    "radio_scan_started": false,
+    "radio_transmit_performed_by_dell": false,
+    "pairing_performed": false,
+    "connection_performed": false,
+    "controller_flash_write_performed": false,
+    "internal_storage_writes": 0,
+    "firmware_setting_writes": 0,
+    "recovery": "power off; transient controller RAM is lost"
+  }
+}

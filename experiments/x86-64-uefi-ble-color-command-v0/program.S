@@ -436,7 +436,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.1\r\n=============================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.2\r\n=============================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 target_found: .asciz "TARGET FOUND\r\nSTAGE 2: REQUIRE ROM=00000302\r\n"
 rom_ok: .asciz "ROM MATCH: OK\r\n"
 before_template: .ascii "STATUS BEFORE="
@@ -938,14 +938,17 @@ scan_hex_loop:
 # Locate the UEFI Graphics Output Protocol and retain the current linear
 # framebuffer. Return EAX=0 on success, EAX=1 on an unsupported display.
 scan_init_graphics:
+    # This is a nested Microsoft-x64/UEFI call. Reserve its 32-byte shadow space
+    # plus alignment; scan_entry itself already owns the persistent state slots.
+    sub rsp, 0x28
     lea rcx, [rip + scan_gop_guid]
     xor edx, edx
-    lea r8, [rsp + 0x400]
+    lea r8, [rsp + 0x430]
     mov rax, [rdi + 0x140]      # BootServices->LocateProtocol
     call rax
     test rax, rax
     jnz scan_gop_bad
-    mov rax, [rsp + 0x400]
+    mov rax, [rsp + 0x430]
     test rax, rax
     jz scan_gop_bad
     mov rax, [rax + 0x18]       # GOP->Mode
@@ -967,19 +970,21 @@ scan_init_graphics:
     mov r11, [rax + 0x18]       # FrameBufferBase
     test r11, r11
     jz scan_gop_bad
-    mov [rsp + 0x408], r11
-    mov [rsp + 0x410], r10d
-    mov [rsp + 0x414], ecx
+    mov [rsp + 0x438], r11
+    mov [rsp + 0x440], r10d
+    mov [rsp + 0x444], ecx
     sub r8d, 128
     shr r8d, 1
-    mov [rsp + 0x41c], r8d
+    mov [rsp + 0x44c], r8d
     sub r9d, 128
     shr r9d, 1
-    mov [rsp + 0x420], r9d
+    mov [rsp + 0x450], r9d
     xor eax, eax
+    add rsp, 0x28
     ret
 scan_gop_bad:
     mov eax, 1
+    add rsp, 0x28
     ret
 
 # EAX=1 blue, EAX=2 yellow. Draw a centered 128x128 square directly into GOP.
@@ -1022,7 +1027,7 @@ scan_draw_pixel:
     pop rsi
     ret
 
-scan_title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.1\r\n================\r\nPASSIVE RX: BLUE OR YELLOW; NO PAIR OR CONNECT\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+scan_title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.2\r\n================\r\nPASSIVE RX: BLUE OR YELLOW; NO PAIR OR CONNECT\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 scan_found_template: .ascii "TARGET FOUND; EVENT ENDPOINT="
 scan_found_endpoint: .asciz "00\r\n"
 scan_graphics_ok: .asciz "DISPLAY READY; INITIAL SQUARE=YELLOW\r\n"
