@@ -107,6 +107,18 @@ def main() -> int:
         require(observation["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT" and not observation["target_found"], "v0.3 mismatch result changed")
         require(observation["controller_ram_writes"] == observation["hci_commands_sent"] == observation["radio_operations_requested"] == observation["framebuffer_writes_performed"] == 0, "v0.3 mismatch crossed an authority boundary")
         print("PASS: exact v0.3 QEMU mismatch stops before RAM, framebuffer, HCI, and radio")
+        physical_v03 = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-v03-blue-yellow-physical-observed.json")
+        require(physical_v03["status"] == "OBSERVED-MANUAL-PHYSICAL-BLE-BLUE-YELLOW-COMPLETE", "v0.3 physical evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical_v03["bindings"][field] == report_a[field], f"v0.3 physical {field} binding changed")
+        observed = physical_v03["observation"]
+        require(observed["initial_square_drawn"] == "yellow" and observed["square_after_blue"] == "blue" and observed["square_after_yellow"] == "yellow", "physical color sequence changed")
+        require(observed["blue_command_received"] and observed["yellow_command_received"] and observed["both_commands_verified"], "physical command result changed")
+        require(observed["scan_disabled_after_completion"], "physical cleanup result changed")
+        safety = physical_v03["safety"]
+        require(not any(safety[field] for field in ("active_scan_performed", "radio_transmit_performed_by_dell", "pairing_performed", "connection_performed", "controller_flash_write_performed")), "physical evidence claims a forbidden effect")
+        require(safety["internal_storage_writes"] == safety["firmware_setting_writes"] == 0, "physical evidence claims persistent writes")
+        print("PASS: physical Dell changed yellow -> blue -> yellow from two exact Mac commands without USB movement or reboot")
 
         probe, target = load_json(PROBE_PATH), load_json(TARGET_PATH)
         third = copy.deepcopy(probe); third["commands"]["red"] = "52414242-4954-4C45-8000-000000000004"

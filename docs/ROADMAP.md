@@ -439,6 +439,14 @@ DRAWN` stages around the first write. Its deterministic build passes; a fresh QE
 mismatch gate passed without RAM, framebuffer, HCI, or radio effects. Physical
 candidate preparation is open for the v0.3 Dell attempt.
 
+The v0.3 physical attempt succeeded. In one Dell boot the runtime bound the framebuffer,
+drew yellow, received exact `BLUE` from the Mac and drew blue, then received exact
+`YELLOW` and returned to yellow. The USB was not moved and the Dell was not rebooted
+between commands. It then disabled passive scanning as designed. This is the first
+physical Rabbit state changed repeatedly over a wireless channel while the target ran
+without an operating system. The next revision replaces the 120-second proof window
+with a long-lived receive loop and an explicit local exit/cleanup action.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

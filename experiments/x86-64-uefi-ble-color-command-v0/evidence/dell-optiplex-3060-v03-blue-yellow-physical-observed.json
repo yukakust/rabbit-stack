@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-ble-color-command-v0.3-blue-yellow-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-BLE-BLUE-YELLOW-COMPLETE",
+  "bindings": {
+    "probe_sha256": "4a26f0563f759b9670cea083fbb8b0d84826031131e0b449b57275075f678453",
+    "target_sha256": "a90a9aa0d35cca26b5e0d612505fe60b2859aae549f427ae5078fe79b295e804",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "494695dd016ce48ff40c3c84accb0a0db7214b011776be82ca3eddd25644429d",
+    "efi_sha256": "9aafb29440b31cd99303c4176c6d82f8b3f64589eeb5154241470bd5ba081056",
+    "image_sha256": "63ea281431ca09cce91d7bedf0ca9684f17f2020422fee17bfe42021bac34f1f"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "boot": "UEFI removable USB",
+    "sender": "Apple Silicon Mac CoreBluetooth",
+    "physical_execution_verified": true,
+    "usb_moved_between_commands": false,
+    "dell_rebooted_between_commands": false,
+    "persistent_machine_writes": 0
+  },
+  "observation": {
+    "visible_identity": "RABBIT BLE COLOR COMMAND v0.3",
+    "display_framebuffer_bound": true,
+    "initial_square_drawn": "yellow",
+    "post_load_hci_reset": "OK",
+    "passive_scan_started": true,
+    "blue_command_uuid": "52414242-4954-4C45-8000-000000000002",
+    "blue_command_received": true,
+    "square_after_blue": "blue",
+    "yellow_command_uuid": "52414242-4954-4C45-8000-000000000003",
+    "yellow_command_received": true,
+    "square_after_yellow": "yellow",
+    "both_commands_verified": true,
+    "scan_disabled_after_completion": true
+  },
+  "safety": {
+    "active_scan_performed": false,
+    "radio_transmit_performed_by_dell": false,
+    "pairing_performed": false,
+    "connection_performed": false,
+    "controller_flash_write_performed": false,
+    "internal_storage_writes": 0,
+    "firmware_setting_writes": 0,
+    "recovery": "power off; transient controller RAM is lost"
+  },
+  "meaning": "first physical state changes commanded wirelessly from the Mac to the OS-less Dell without moving boot media or rebooting between commands"
+}

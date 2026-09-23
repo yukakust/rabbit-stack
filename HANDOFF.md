@@ -643,6 +643,14 @@ Its image SHA-256 is
 its fresh QEMU mismatch gate passed without RAM, framebuffer, HCI, or radio effects.
 Physical candidate preparation is open for the v0.3 Dell attempt.
 
+The v0.3 physical attempt succeeded: one Dell boot drew yellow, accepted exact `BLUE`
+from the Mac and drew blue, then accepted exact `YELLOW` and returned to yellow. No USB
+movement or Dell reboot occurred between commands, and scan-disable cleanup completed.
+No pairing, connection, Dell transmit, disk write, or firmware write occurred. This is
+the first physical wireless command-to-state loop on the OS-less Dell. The next boundary
+is a long-lived passive runtime with explicit local exit, replacing the 120-second proof
+budget without expanding the two-command vocabulary.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk
