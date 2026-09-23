@@ -660,6 +660,20 @@ SHA-256 is `1c42713850b25ede0f3064fdbfe2a6d09befd5e85f463a7eb25869bdb289b325`.
 Its fresh exact QEMU mismatch gate passed without RAM, framebuffer, HCI, or radio.
 Physical candidate preparation is open.
 
+`experiments/x86-64-uefi-ble-program-loader-v0/` is now the active successor. It keeps
+the proven volatile QCA initialization, GOP boundary, passive BLE receive path, local
+`Esc` cleanup, and power-off recovery, but replaces the two fixed color UUIDs with a
+16-byte Rabbit VM v1 packet. Its only reviewed instruction is
+`SET_SQUARE_COLOR(red, green, blue)`, so arbitrary RGB is runtime data rather than a
+compiled-in choice. Packets must pass exact magic, version, opcode, reserved-byte, and
+FNV-1a checks. FNV is explicitly corruption detection, not authentication. Native-code
+execution, arbitrary memory access, pairing, connection, Dell transmission, disk writes,
+and firmware writes remain forbidden. The deterministic pre-QEMU verifier passes with
+EFI SHA-256 `c5586333b49fb263be17e0150fc850220fd00851f3bb69cb356a7f57a8c2f74e`
+and image SHA-256
+`99508f9af7339ff1143557b4544f384907e227718045d77190494926b647ba8c`.
+The next gate is a manual QEMU mismatch observation; it has not yet been installed.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

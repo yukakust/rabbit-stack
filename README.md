@@ -94,11 +94,15 @@ every layer we would otherwise be tempted to hide.
   the first bounded wireless command runtime. One boot draws a yellow square and accepts
   only exact `BLUE` and `YELLOW` BLE advertisements from the Mac, changing framebuffer
   pixels without moving the boot USB or rebooting the Dell.
+- [`experiments/x86-64-uefi-ble-program-loader-v0`](experiments/x86-64-uefi-ble-program-loader-v0):
+  the first persistent-on-boot wireless program loader. It validates 16-byte Rabbit VM
+  programs received through passive BLE and currently executes only the bounded
+  `SET_SQUARE_COLOR(R,G,B)` instruction; native code and persistent writes stay absent.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md). The active next gate is
-[`experiments/x86-64-uefi-ble-color-command-v0/README.md`](experiments/x86-64-uefi-ble-color-command-v0/README.md).
+[`experiments/x86-64-uefi-ble-program-loader-v0/README.md`](experiments/x86-64-uefi-ble-program-loader-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

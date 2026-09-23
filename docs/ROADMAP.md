@@ -456,6 +456,20 @@ authority, and persistent-write prohibitions are unchanged. Deterministic pre-QE
 verification passes. The fresh v0.4 QEMU mismatch gate also passed without RAM,
 framebuffer, HCI, or radio effects. Physical candidate preparation is open.
 
+The next candidate is `x86-64-uefi-ble-program-loader-v0`. It crosses the boundary from
+two compiled-in command UUIDs to a tiny versioned program format. A 16-byte Rabbit VM
+packet carries magic, version, opcode, arbitrary RGB operands, reserved bytes, and an
+FNV-1a corruption checksum inside one BLE service UUID. The long-lived Dell interpreter
+currently exposes exactly one instruction, `SET_SQUARE_COLOR`, and rejects unknown
+versions, opcodes, reserved fields, and damaged packets. It cannot jump to received
+native code or address arbitrary memory. This is the first extensible runtime seam:
+future reviewed VM instructions can be added without redesigning the transport, while
+authentication and multi-frame packages remain later gates. Deterministic verification
+passes with image SHA-256
+`99508f9af7339ff1143557b4544f384907e227718045d77190494926b647ba8c`.
+The next gate is its exact QEMU fail-closed observation, followed by one final physical
+USB installation and multiple arbitrary-color programs without moving the USB.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve
