@@ -640,7 +640,8 @@ GOP interface pointer as the framebuffer base. No HCI reset or scan was observed
 uses `+0x10` for all five reads and brackets the draw with two visible stage messages.
 Its image SHA-256 is
 `63ea281431ca09cce91d7bedf0ca9684f17f2020422fee17bfe42021bac34f1f`;
-a fresh QEMU mismatch gate is required.
+its fresh QEMU mismatch gate passed without RAM, framebuffer, HCI, or radio effects.
+Physical candidate preparation is open for the v0.3 Dell attempt.
 
 ## U7 pre-physical artifact result
 

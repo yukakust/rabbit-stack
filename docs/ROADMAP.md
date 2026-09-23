@@ -436,7 +436,8 @@ eight bytes early. In particular, the GOP interface pointer was treated as
 `FrameBufferBase`. No HCI reset or scan was observed. V0.3 changes those five offsets
 from `+0x08` to `+0x10` and prints separate `FRAMEBUFFER BOUND` and `INITIAL SQUARE
 DRAWN` stages around the first write. Its deterministic build passes; a fresh QEMU
-mismatch gate is required before another physical installation.
+mismatch gate passed without RAM, framebuffer, HCI, or radio effects. Physical
+candidate preparation is open for the v0.3 Dell attempt.
 
 ### U10 — Universal installer
 

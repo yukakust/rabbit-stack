@@ -98,6 +98,15 @@ def main() -> int:
         require(physical_v02["observation"]["last_visible_line"] == "TARGET FOUND; EVENT ENDPOINT=81", "v0.2 failure boundary changed")
         require(physical_v02["observation"]["passive_scan_observed"] is False, "v0.2 incorrectly claims a scan")
         print("PASS: archived v0.2 evidence localizes the blackout to the first framebuffer draw")
+        qemu_v03 = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v03-observed.json")
+        require(qemu_v03["status"] == "OBSERVED-MANUAL-QEMU-BLE-COLOR-COMMAND-V0.3-FAIL-CLOSED", "v0.3 QEMU status changed")
+        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu_v03["bindings"][field] == report_a[field], f"v0.3 QEMU {field} binding changed")
+        observation = qemu_v03["observation"]
+        require(observation["visible_identity"] == "RABBIT BLE COLOR COMMAND v0.3", "v0.3 visible identity changed")
+        require(observation["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT" and not observation["target_found"], "v0.3 mismatch result changed")
+        require(observation["controller_ram_writes"] == observation["hci_commands_sent"] == observation["radio_operations_requested"] == observation["framebuffer_writes_performed"] == 0, "v0.3 mismatch crossed an authority boundary")
+        print("PASS: exact v0.3 QEMU mismatch stops before RAM, framebuffer, HCI, and radio")
 
         probe, target = load_json(PROBE_PATH), load_json(TARGET_PATH)
         third = copy.deepcopy(probe); third["commands"]["red"] = "52414242-4954-4C45-8000-000000000004"
@@ -111,7 +120,7 @@ def main() -> int:
             rejected(f"target permitting {field}", lambda unsafe=unsafe: validate_target(unsafe))
     except (BuildError, OSError, RuntimeError) as error:
         print(f"FAIL: {error}"); return 1
-    print("PASS: corrected pre-QEMU BLE color-command v0.3 contract")
+    print("PASS: QEMU-gated BLE color-command v0.3 contract")
     return 0
 
 if __name__ == "__main__":
