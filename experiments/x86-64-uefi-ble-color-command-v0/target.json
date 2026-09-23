@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "target_id": "dell-optiplex-3060-qca-rome-ble-color-command-v0",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "artifact": {
+    "format": "pe32+-efi-application",
+    "disk_envelope": "mbr-fat32-removable",
+    "default_boot_path": "EFI/BOOT/BOOTX64.EFI",
+    "image_size_bytes": 67108864
+  },
+  "device_binding": {
+    "usb_vendor_id": "0CF3",
+    "usb_product_id": "E009",
+    "interface_number": 0,
+    "class": "E0/01/01",
+    "rom_version": "0x00000302",
+    "display_protocol": "UEFI-GOP"
+  },
+  "authority": {
+    "usb_descriptor_reads": true,
+    "usb_endpoint_descriptor_reads": true,
+    "vendor_in_requests": ["0x09:20", "0x05:1", "0x09:20", "0x05:1"],
+    "vendor_out_requests": ["0x01:28", "0x01:4"],
+    "bulk_out_endpoint": "0x02",
+    "bulk_out_max_transfers": 18,
+    "bulk_out_max_bytes": 70610,
+    "transient_controller_ram_write": true,
+    "allowed_hci_command_sequence": ["0x0C03-reset", "0x0C01", "0x2001", "0x200B", "0x200C-enable", "0x200C-disable"],
+    "post_load_reset_count": 1,
+    "post_load_reset_wait_ms": 100,
+    "passive_scan": true,
+    "radio_receive": true,
+    "gop_framebuffer_write": "centered-128x128-square-only",
+    "accepted_commands": ["blue", "yellow"],
+    "controller_flash_write": false,
+    "controller_reset": true,
+    "active_scan": false,
+    "radio_transmit": false,
+    "advertise": false,
+    "pair": false,
+    "connect": false,
+    "internal_storage_writes": false,
+    "firmware_writes": false
+  },
+  "recovery": "power-off-dell-and-remove-usb"
+}

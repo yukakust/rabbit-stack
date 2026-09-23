@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleIdentifier</key>
+  <string>org.rabbit-stack.beacon-v0</string>
+  <key>CFBundleName</key>
+  <string>Rabbit Beacon v0</string>
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>Advertise the reviewed Rabbit UUID to the nearby receive-only Dell experiment.</string>
+</dict>
+</plist>

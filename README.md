@@ -90,11 +90,15 @@ every layer we would otherwise be tempted to hide.
   one boot composes that transient initialization with the reviewed 20-second passive
   exact-UUID receiver; v0.2 tests one bounded post-load HCI Reset while active scan,
   transmission, pairing, connection, flash, and persistent machine writes stay forbidden.
+- [`experiments/x86-64-uefi-ble-color-command-v0`](experiments/x86-64-uefi-ble-color-command-v0):
+  the first bounded wireless command runtime. One boot draws a yellow square and accepts
+  only exact `BLUE` and `YELLOW` BLE advertisements from the Mac, changing framebuffer
+  pixels without moving the boot USB or rebooting the Dell.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md). The active next gate is
-[`experiments/x86-64-uefi-qca-beacon-rx-v0/README.md`](experiments/x86-64-uefi-qca-beacon-rx-v0/README.md).
+[`experiments/x86-64-uefi-ble-color-command-v0/README.md`](experiments/x86-64-uefi-ble-color-command-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

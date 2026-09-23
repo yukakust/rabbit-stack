@@ -407,8 +407,16 @@ pairing, connection, flash, storage, and firmware-setting prohibitions remain un
 That physical v0.2 hypothesis succeeded: after status `E0` and one HCI Reset, the Dell
 received twelve LE advertising reports and matched the exact Rabbit UUID sent by the
 Mac. This establishes a one-way wireless identity primitive on the OS-less target. The
-next slice will encode one bounded command vocabulary into reviewed advertisements and
-bind each command to an allowed physical effect; it will not accept arbitrary code.
+next slice encodes one bounded command vocabulary into reviewed advertisements and
+binds each command to an allowed physical effect; it does not accept arbitrary code.
+
+That candidate now exists as `x86-64-uefi-ble-color-command-v0`. One boot loads the
+same pinned volatile QCA inputs, performs the one required reset, binds a bounded GOP
+region, draws an initial yellow square, and listens passively for at most 120 seconds.
+Only exact `BLUE` and `YELLOW` service UUIDs can repaint that centered `128 x 128`
+region. Both commands end the window early and mandatory scan disable remains last.
+Deterministic pre-QEMU verification passes; QEMU fail-closed and physical Dell evidence
+are the next gates. This is a live command vocabulary, not arbitrary wireless code.
 
 ### U10 — Universal installer
 
