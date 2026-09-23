@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-to-mac-rabbit-vm-loader-v0.5-exact-ack-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-EXACT-PROGRAM-ACKNOWLEDGEMENT",
+  "bindings": {
+    "probe_sha256": "ae003a72f7ac078c594232bebcec24189275b4595fbc53b92ebf76bcc9599e13",
+    "target_sha256": "59df2392ddd963429d85cfb9e79a699ae1535d35c1a46fb2f834286ff4aa250f",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "db75b6c24d1d9967d49e609b10828d6ab3e78e7b55333090a5b2daf3578e1bc5",
+    "efi_sha256": "d64a4340956163bdc0ce919762dcee8be8502a97df36ab7f9f4a70e10e1f18f2",
+    "image_sha256": "e3595bc3febf8d924cdb50f2685e41cc34b5f96016d7850596533ddc76d825e6",
+    "mac_sender_source_sha256": "cbd358ec2e0a5056712310175aee1b396b7ccaf71b1b9a96ac0e3b05a5fb91ee"
+  },
+  "transferred_program": {
+    "shape": "triangle",
+    "rgb": [0, 255, 204],
+    "x": 500,
+    "y": 200,
+    "size": 64,
+    "step": 18,
+    "transfer_id": "38",
+    "fnv1a32": "BD38F838",
+    "transport_frame_count": 6
+  },
+  "acknowledgement": {
+    "observed_uuid": "52411138-BD38-F838-0000-00028BFDA39E",
+    "transfer_id": "38",
+    "program_fnv1a32": "BD38F838",
+    "applied_counter": 2,
+    "checksum_valid": true,
+    "rssi_dbm": -63
+  },
+  "observation": {
+    "method": "owner-reviewed-physical-terminal",
+    "mac_scanner_powered_on": true,
+    "exact_ack_received": true,
+    "mac_sender_exited_automatically": true,
+    "shell_prompt_returned": true,
+    "dell_rebooted_between_first_and_second_program": false,
+    "usb_moved_between_first_and_second_program": false,
+    "persistent_writes": 0
+  },
+  "limitations": [
+    "program application is established by the reviewed ACK contract and matching counter rather than a captured Dell screen in this evidence item",
+    "the acknowledgement uses an unkeyed corruption checksum and is not authentication",
+    "the first acknowledgement after boot was missed, so transport reliability still needs idempotent acknowledgement retries"
+  ]
+}

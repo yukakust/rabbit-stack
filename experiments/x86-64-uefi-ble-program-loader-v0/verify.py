@@ -237,6 +237,14 @@ def main() -> int:
     require(not qemu_v05_observed["target_found"] and all(qemu_v05_observed[field] == 0 for field in (
         "controller_ram_writes", "vm_program_bytes_received", "hci_commands_sent",
         "radio_operations_requested", "framebuffer_writes_performed")), "QEMU v0.5 crossed a forbidden mismatch boundary")
+    ack_success = load_json(Path(__file__).resolve().parent / "evidence" / "dell-mac-v05-exact-ack-physical-observed.json")
+    require(ack_success["status"] == "OBSERVED-MANUAL-PHYSICAL-EXACT-PROGRAM-ACKNOWLEDGEMENT", "physical v0.5 ACK status changed")
+    for field, expected in V05_BINDINGS.items():
+        require(ack_success["bindings"][field] == expected, f"physical v0.5 ACK binding changed for {field}")
+    exact_ack = bytes.fromhex(ack_success["acknowledgement"]["observed_uuid"].replace("-", ""))
+    require(decode_ack(exact_ack) == {"transfer_id": 0x38, "program_hash": 0xBD38F838, "applied_counter": 2}, "physical v0.5 exact ACK changed")
+    ack_success_observed = ack_success["observation"]
+    require(ack_success_observed["exact_ack_received"] and ack_success_observed["mac_sender_exited_automatically"] and ack_success_observed["shell_prompt_returned"], "physical v0.5 ACK completion changed")
     print("PASS: deterministic UEFI image contains the transactional Rabbit VM loader")
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
@@ -252,6 +260,7 @@ def main() -> int:
     print("PASS: exact v0.4 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
     print("PASS: physical v0.4 evidence preserves Dell ACK-command success without claiming Mac reception")
     print("PASS: exact v0.5 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
+    print("PASS: physical v0.5 exact ACK matches transfer, program hash, and applied counter and terminates the Mac sender")
     print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
     return 0
 

@@ -59,3 +59,8 @@ disable the passive scan and exit the loader.
 The Mac sender inserts a quiet 1.8-second receive window after every complete six-frame
 transfer. During diagnostics it prints the CoreBluetooth scanner state and every visible
 128-bit service UUID, so a missing receipt can be separated from a decoding mismatch.
+
+The physical v0.5 run closed the round trip. Mac sent a six-frame cyan-triangle program;
+Dell returned `52411138-BD38-F838-0000-00028BFDA39E`; Mac validated transfer `38`,
+program hash `BD38F838`, applied counter `2`, and exited automatically. The first ACK
+after boot had been missed, so idempotent ACK retry remains separate reliability work.

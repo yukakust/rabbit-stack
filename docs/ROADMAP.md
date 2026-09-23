@@ -489,6 +489,10 @@ received a checksum-valid ACK with the right program hash and counter but transf
 `00`. V0.5 keeps the transfer id live until it has been bound into the ACK, then clears
 the transfer state. A fresh QEMU gate precedes replacement of the dedicated USB image.
 That v0.5 QEMU mismatch gate now passes; the corrected physical receipt remains next.
+The physical v0.5 run then completed the exact round trip: Mac sent a six-frame program,
+Dell applied it and advertised a transfer/hash/counter-bound receipt, and Mac validated
+that receipt and exited automatically. Authentication and idempotent ACK retry remain
+the next distinct security and reliability boundaries.
 
 ### U10 — Universal installer
 

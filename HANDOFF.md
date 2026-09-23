@@ -725,6 +725,13 @@ image size changes. Its pre-QEMU image SHA-256 is
 The exact v0.5 image then passed its macOS ARM64 QEMU mismatch gate: the v0.5 identity
 was visible and execution stopped at `TARGET NOT FOUND; NO DEVICE WRITE SENT` before
 RAM, VM, HCI, radio, or framebuffer effects. The physical v0.5 candidate may be prepared.
+The exact v0.5 image was then written to the dedicated Kingston USB and booted on the
+Dell. A six-frame cyan-triangle transfer produced ACK UUID
+`52411138-BD38-F838-0000-00028BFDA39E`; CoreBluetooth observed it at RSSI -63, the Mac
+validated transfer `38`, program hash `BD38F838`, and applied counter `2`, then exited
+automatically. This completes the first physical Mac → Dell program → Mac receipt loop.
+It is delivery evidence, not authentication; the first post-boot ACK was missed, so
+idempotent retry also remains open.
 
 ## U7 pre-physical artifact result
 
