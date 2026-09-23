@@ -562,6 +562,12 @@ flash, internal-storage write, or firmware-setting write exists. The post-load s
 read must show both setup bits. Status is PRE-QEMU; physical preparation remains closed
 until the exact mismatch gate is observed and committed.
 
+That QEMU gate passed exactly: the v0.1 title and transient-RAM/radio-off mode appeared,
+Stage 1 rejected the emulated USB keyboard, and the program reported `TARGET NOT FOUND;
+NO DEVICE WRITE SENT`. No controller RAM write, reset, HCI command, or radio operation
+occurred. Exact evidence is committed, so physical preparation is open; removable-media
+replacement remains a separate operation on the dedicated Rabbit test USB.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

@@ -45,8 +45,10 @@ QEMU lacks the exact controller, so the required result is:
 TARGET NOT FOUND; NO DEVICE WRITE SENT
 ```
 
-Only after that exact observation is committed may `prepare_physical.py` produce a
-physical candidate. Removable-media replacement remains separately controlled.
+On 2026-09-23 QEMU 11.1.1 on the Apple Silicon Mac displayed that exact result. The
+observation is bound to the exact world inputs, payload manifest, program, EFI, and
+image identities. `prepare_physical.py` is now open; it still stops before writing a
+removable device.
 
 Reviewed identities:
 
@@ -57,5 +59,5 @@ EFI SHA-256:              3fa8eacf475d4c711d365f1712e8494dd2c18666de2e2d124f42c2
 image SHA-256:            2b4894f77181626cafd7369fd80f60ae3451e9d93ca8ee4ebf7f6cc696eccadd
 ```
 
-Status: **PRE-QEMU**. No physical controller RAM write or removable-media replacement
-has been performed by this experiment.
+Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. No physical controller RAM write or
+removable-media replacement has been performed by this experiment.

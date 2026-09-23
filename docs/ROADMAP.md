@@ -376,6 +376,11 @@ headers plus bounded endpoint-02 bulk transfers into volatile controller RAM and
 re-reads setup status. Reset, HCI, scanning, radio, controller flash, and persistent
 writes remain forbidden. A fresh QEMU mismatch gate precedes any physical run.
 
+The QEMU mismatch gate passed exactly and stopped before the first device write. Its
+evidence is bound to the payload manifest and final embedded-program identity. Physical
+candidate preparation is now open while the actual Dell controller has not yet been
+modified by this experiment.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

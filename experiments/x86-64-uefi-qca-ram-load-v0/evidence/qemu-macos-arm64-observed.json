@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-qca-ram-load-v0.1-macos-arm64-2026-09-23",
+  "status": "OBSERVED-MANUAL-QEMU-QCA-RAM-LOAD-FAIL-CLOSED",
+  "bindings": {
+    "probe_sha256": "3e27abe33295b0c3be75d0d807122cc2fb9062ae305255546326077dc655a41a",
+    "target_sha256": "57f57633569c28b637f5413758cf7db721d5faac0a2a9cab0b20e5124caff4aa",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "6cada945ae22c1e1a7494ad437fb93dbd6c9fd552b816eb36105ce43569250f4",
+    "efi_sha256": "3fa8eacf475d4c711d365f1712e8494dd2c18666de2e2d124f42c20daa101bb5",
+    "image_sha256": "2b4894f77181626cafd7369fd80f60ae3451e9d93ca8ee4ebf7f6cc696eccadd"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "emulated_usb_device": "qemu-usb-keyboard",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "visible_version": "v0.1",
+    "visible_mode": "TRANSIENT CONTROLLER RAM ONLY; RADIO OFF",
+    "visible_stage": "STAGE 1: FIND 0CF3:E009 INTERFACE 00",
+    "result": "TARGET NOT FOUND; NO DEVICE WRITE SENT",
+    "target_found": false,
+    "controller_ram_writes": 0,
+    "controller_reset_performed": false,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0
+  },
+  "physical_dell_status": "NOT-OBSERVED-WITH-QCA-RAM-LOAD-V0.1",
+  "limitations": [
+    "QEMU does not model the physical Dell 0CF3:E009 controller",
+    "the observation proves fail-closed target matching, not firmware transfer",
+    "physical execution requires a separately prepared removable-media replacement"
+  ]
+}
