@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-ble-color-command-v0.2-macos-arm64-2026-09-23",
+  "status": "OBSERVED-MANUAL-QEMU-BLE-COLOR-COMMAND-V0.2-FAIL-CLOSED",
+  "bindings": {
+    "probe_sha256": "d43e7fcdda0ec3c2f83085663d078bd27f86763fbbd162f68642ddd851aab977",
+    "target_sha256": "a90a9aa0d35cca26b5e0d612505fe60b2859aae549f427ae5078fe79b295e804",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "7e9a0490a95a3f3be8854678ce69d038985f1a9d69aa0d4333451aa458912372",
+    "efi_sha256": "972197a4938695f0b331a60b610102970b9bcf465dad1d1b707281b6d8208f72",
+    "image_sha256": "669b11d4313a1cb0c0d26404ffbbc0c56dd5321361e309beebe1ac2df69a8107"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "emulated_usb_device": "qemu-usb-keyboard",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "visible_identity": "RABBIT BLE COLOR COMMAND v0.2",
+    "visible_mode": "TRANSIENT RAM; ONE POST-LOAD HCI RESET",
+    "result": "TARGET NOT FOUND; NO DEVICE WRITE SENT",
+    "target_found": false,
+    "controller_ram_writes": 0,
+    "post_load_reset_performed": false,
+    "graphics_chain_reached": false,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0,
+    "framebuffer_writes_performed": 0
+  },
+  "limitations": [
+    "QEMU does not model the physical Dell 0CF3:E009 controller",
+    "the corrected GOP call path remains beyond the exact-device mismatch gate",
+    "physical execution requires replacing the dedicated removable-media image"
+  ]
+}

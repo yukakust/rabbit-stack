@@ -630,7 +630,8 @@ reset, scan, or color command ran. The failure exposed a nested-call ABI bug: GO
 V0.2 reserves `0x28` bytes around that call and rebases its persistent stack slots.
 The corrected image SHA-256 is
 `669b11d4313a1cb0c0d26404ffbbc0c56dd5321361e309beebe1ac2df69a8107`;
-a fresh QEMU exact-device mismatch gate is now required.
+its fresh QEMU exact-device mismatch gate passed without RAM, framebuffer, HCI, or radio.
+Physical candidate preparation is open for the second Dell attempt.
 
 ## U7 pre-physical artifact result
 

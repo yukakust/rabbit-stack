@@ -425,8 +425,9 @@ interrupt endpoint, then stopped before `DISPLAY READY`. No HCI reset, scan, com
 or framebuffer result was observed. The failure localized a Microsoft-x64 ABI error in
 the nested GOP `LocateProtocol` call: it lacked its own shadow-space/alignment frame.
 V0.2 adds that exact `0x28`-byte frame and changes no command or radio authority. Its
-new deterministic identities pass; a fresh exact QEMU mismatch gate is required before
-the dedicated USB is replaced again.
+new deterministic identities pass. Its fresh exact QEMU mismatch gate also passed
+without RAM, framebuffer, HCI, or radio effects. The dedicated USB may now be replaced
+for the second physical attempt.
 
 ### U10 — Universal installer
 
