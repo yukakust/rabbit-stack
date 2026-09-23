@@ -3,9 +3,10 @@
 .global rabbit_entry
 
 # One-boot composition: initialize exact QCA Rome 3.2 controller RAM, then chain
-# into a transactional receive-only Rabbit VM runtime. Exactly one reset is
-# used after the transient RAM load. No active scan, advertising, pairing,
-# connection, Dell radio transmit, or persistent write exists.
+# into a transactional Rabbit VM runtime. Exactly one reset is used after the
+# transient RAM load. Each accepted program gets one bounded, non-connectable
+# acknowledgement advertisement. No active scan, pairing, connection, arbitrary
+# Dell payload transmission, or persistent write exists.
 rabbit_entry:
     push rbx
     push rbp
@@ -436,7 +437,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.3\r\n===================================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.4\r\n===================================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 target_found: .asciz "TARGET FOUND\r\nSTAGE 2: REQUIRE ROM=00000302\r\n"
 rom_ok: .asciz "ROM MATCH: OK\r\n"
 before_template: .ascii "STATUS BEFORE="
@@ -474,9 +475,9 @@ nvm_blob:
     .zero 1998
 
 # ---- chained receiver; reached only after both QCA setup bits are ready ----
-# Chained bounded receive-only Bluetooth LE beacon probe for the observed 0CF3:E009.
-# It configures event masks, enables passive scan for at most 20 seconds, and
-# accepts only the exact Rabbit UUID. Passive scan transmits no radio packets.
+# Chained Bluetooth LE Rabbit runtime for the observed 0CF3:E009. It normally
+# remains in passive scan and accepts only valid Rabbit frames. A committed
+# program permits one bounded, non-connectable acknowledgement advertisement.
 scan_entry:
     push rbx
     push rbp
@@ -693,6 +694,61 @@ scan_handles_freed:
 .Lcommand_complete\@:
     .endm
 
+    # Same reviewed command path for a packet assembled in the local stack.
+    .macro send_hci_stack packet_offset, packet_size, opcode_lo, opcode_hi
+    mov byte ptr [rsp + 0x80], 0x20
+    mov byte ptr [rsp + 0x81], 0x00
+    mov word ptr [rsp + 0x82], 0x0000
+    mov word ptr [rsp + 0x84], 0x0000
+    mov word ptr [rsp + 0x86], \packet_size
+    mov dword ptr [rsp + 0x90], 0
+    mov rcx, r13
+    lea rdx, [rsp + 0x80]
+    mov r8d, 1
+    mov r9d, 1000
+    lea rax, [rsp + \packet_offset]
+    mov [rsp + 0x20], rax
+    mov qword ptr [rsp + 0x28], \packet_size
+    lea rax, [rsp + 0x90]
+    mov [rsp + 0x30], rax
+    mov rax, [r13 + 0x00]
+    call rax
+    test rax, rax
+    jnz scan_command_failed
+    xor r12d, r12d
+.Lstack_event_loop\@:
+    cmp r12d, 8
+    jae scan_response_not_found
+    mov qword ptr [rsp + 0x98], 80
+    mov dword ptr [rsp + 0x90], 0
+    mov rcx, r13
+    mov edx, r14d
+    lea r8, [rsp + 0xa0]
+    lea r9, [rsp + 0x98]
+    mov qword ptr [rsp + 0x20], 1000
+    lea rax, [rsp + 0x90]
+    mov [rsp + 0x28], rax
+    mov rax, [r13 + 0x18]
+    call rax
+    test rax, rax
+    jnz scan_response_not_found
+    cmp qword ptr [rsp + 0x98], 6
+    jb .Lstack_next_event\@
+    cmp byte ptr [rsp + 0xa0], 0x0e
+    jne .Lstack_next_event\@
+    cmp byte ptr [rsp + 0xa3], \opcode_lo
+    jne .Lstack_next_event\@
+    cmp byte ptr [rsp + 0xa4], \opcode_hi
+    jne .Lstack_next_event\@
+    cmp byte ptr [rsp + 0xa5], 0x00
+    jne scan_controller_error
+    jmp .Lstack_complete\@
+.Lstack_next_event\@:
+    inc r12d
+    jmp .Lstack_event_loop\@
+.Lstack_complete\@:
+    .endm
+
     # Apply the newly loaded transient firmware exactly once. Linux's generic HCI
     # initialization performs this reset after the QCA USB setup callback returns.
     send_hci_command scan_cmd_hci_reset, scan_cmd_hci_reset_end, 0x03, 0x0c
@@ -722,6 +778,8 @@ scan_handles_freed:
     mov dword ptr [rsp + 0x424], 0 # set only by local Escape cleanup
     mov dword ptr [rsp + 0x440], 0 # no transfer in progress
     mov dword ptr [rsp + 0x450], 0 # checksum of last applied program
+    mov dword ptr [rsp + 0x478], 0 # applied-program acknowledgement counter
+    mov dword ptr [rsp + 0x47c], 0 # acknowledgement advertising active
     mov dword ptr [rsp + 0xf0], 0 # successful scan transfers
     mov dword ptr [rsp + 0xf4], 0 # LE Meta events
     mov dword ptr [rsp + 0xf8], 0 # LE Advertising Reports
@@ -1033,6 +1091,73 @@ scan_program_hash_loop:
     call scan_draw_square
     lea rdx, [rip + scan_program_applied]
     call scan_print_ascii
+
+    # Build the canonical 16-byte acknowledgement:
+    # "RA" | v1/applied | transfer | program hash | applied counter | FNV-1a.
+    inc dword ptr [rsp + 0x478]
+    mov word ptr [rsp + 0x480], 0x4152
+    mov byte ptr [rsp + 0x482], 0x11
+    mov al, byte ptr [rsp + 0x441]
+    mov byte ptr [rsp + 0x483], al
+    mov eax, dword ptr [rsp + 0x44c]
+    bswap eax
+    mov dword ptr [rsp + 0x484], eax
+    mov eax, dword ptr [rsp + 0x478]
+    bswap eax
+    mov dword ptr [rsp + 0x488], eax
+    mov eax, 0x811c9dc5
+    xor ecx, ecx
+scan_ack_checksum_loop:
+    movzx edx, byte ptr [rsp + 0x480 + rcx]
+    xor eax, edx
+    imul eax, eax, 0x01000193
+    inc ecx
+    cmp ecx, 12
+    jb scan_ack_checksum_loop
+    bswap eax
+    mov dword ptr [rsp + 0x48c], eax
+
+    # LE Set Advertising Data carries the acknowledgement UUID in Bluetooth
+    # little-endian order. All remaining advertising bytes stay zero.
+    mov byte ptr [rsp + 0x500], 0x08
+    mov byte ptr [rsp + 0x501], 0x20
+    mov byte ptr [rsp + 0x502], 0x20
+    mov byte ptr [rsp + 0x503], 18
+    mov byte ptr [rsp + 0x504], 17
+    mov byte ptr [rsp + 0x505], 0x07
+    xor ecx, ecx
+scan_ack_reverse_loop:
+    mov edx, 15
+    sub edx, ecx
+    mov al, byte ptr [rsp + 0x480 + rdx]
+    mov byte ptr [rsp + 0x506 + rcx], al
+    inc ecx
+    cmp ecx, 16
+    jb scan_ack_reverse_loop
+    xor eax, eax
+scan_ack_zero_pad_loop:
+    mov byte ptr [rsp + 0x516 + rax], 0
+    inc eax
+    cmp eax, 13
+    jb scan_ack_zero_pad_loop
+
+    # One bounded acknowledgement transaction: pause passive receive, advertise
+    # only this receipt for 1.5 seconds, stop transmit, and resume receive.
+    send_hci_command scan_cmd_scan_disable, scan_cmd_scan_disable_end, 0x0c, 0x20
+    send_hci_command scan_cmd_adv_parameters, scan_cmd_adv_parameters_end, 0x06, 0x20
+    send_hci_stack 0x500, 35, 0x08, 0x20
+    send_hci_command scan_cmd_adv_enable, scan_cmd_adv_enable_end, 0x0a, 0x20
+    mov dword ptr [rsp + 0x47c], 1
+    mov ecx, 1500000
+    mov rax, [rdi + 0xf8]
+    call rax
+    test rax, rax
+    jnz scan_command_failed
+    send_hci_command scan_cmd_adv_disable, scan_cmd_adv_disable_end, 0x0a, 0x20
+    mov dword ptr [rsp + 0x47c], 0
+    send_hci_command scan_cmd_scan_enable, scan_cmd_scan_enable_end, 0x0c, 0x20
+    lea rdx, [rip + scan_ack_sent]
+    call scan_print_ascii
     jmp scan_scan_event_loop
 
 scan_stop_scan:
@@ -1076,18 +1201,22 @@ scan_target_not_found:
     call scan_print_ascii
     jmp scan_finish
 scan_command_failed:
+    call scan_radio_cleanup_best_effort
     lea rdx, [rip + scan_control_error]
     call scan_print_ascii
     jmp scan_finish
 scan_response_not_found:
+    call scan_radio_cleanup_best_effort
     lea rdx, [rip + scan_event_error]
     call scan_print_ascii
     jmp scan_finish
 scan_malformed_response:
+    call scan_radio_cleanup_best_effort
     lea rdx, [rip + scan_malformed]
     call scan_print_ascii
     jmp scan_finish
 scan_controller_error:
+    call scan_radio_cleanup_best_effort
     lea rsi, [rip + scan_status_template]
     lea rdx, [rsp + 0x100]
     call scan_copy_ascii
@@ -1119,6 +1248,46 @@ scan_return:
     pop rsi
     pop rbp
     pop rbx
+    ret
+
+# Error-only cleanup: request both acknowledgement advertising and passive scan off
+# without waiting for events. Power-off remains recovery if USB itself has failed.
+scan_radio_cleanup_best_effort:
+    test r13, r13
+    jz scan_radio_cleanup_return
+    sub rsp, 0x68
+    mov byte ptr [rsp + 0x40], 0x20
+    mov byte ptr [rsp + 0x41], 0x00
+    mov word ptr [rsp + 0x42], 0
+    mov word ptr [rsp + 0x44], 0
+    mov word ptr [rsp + 0x46], scan_cmd_adv_disable_end - scan_cmd_adv_disable
+    mov dword ptr [rsp + 0x50], 0
+    mov rcx, r13
+    lea rdx, [rsp + 0x40]
+    mov r8d, 1
+    mov r9d, 1000
+    lea rax, [rip + scan_cmd_adv_disable]
+    mov [rsp + 0x20], rax
+    mov qword ptr [rsp + 0x28], scan_cmd_adv_disable_end - scan_cmd_adv_disable
+    lea rax, [rsp + 0x50]
+    mov [rsp + 0x30], rax
+    mov rax, [r13]
+    call rax
+    mov word ptr [rsp + 0x46], scan_cmd_scan_disable_end - scan_cmd_scan_disable
+    mov dword ptr [rsp + 0x50], 0
+    mov rcx, r13
+    lea rdx, [rsp + 0x40]
+    mov r8d, 1
+    mov r9d, 1000
+    lea rax, [rip + scan_cmd_scan_disable]
+    mov [rsp + 0x20], rax
+    mov qword ptr [rsp + 0x28], scan_cmd_scan_disable_end - scan_cmd_scan_disable
+    lea rax, [rsp + 0x50]
+    mov [rsp + 0x30], rax
+    mov rax, [r13]
+    call rax
+    add rsp, 0x68
+scan_radio_cleanup_return:
     ret
 
 # RSI source, RDX destination. Includes the trailing NUL.
@@ -1281,7 +1450,7 @@ scan_skip_pixel:
     pop rsi
     ret
 
-scan_title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.3\r\n===================================\r\nRABBIT VM v1; PASSIVE RX; ESC TO STOP\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+scan_title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.4\r\n===================================\r\nRABBIT VM v1; PASSIVE RX + BOUNDED ACK; ESC TO STOP\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 scan_found_template: .ascii "TARGET FOUND; EVENT ENDPOINT="
 scan_found_endpoint: .asciz "00\r\n"
 scan_graphics_bound: .asciz "DISPLAY FRAMEBUFFER BOUND\r\n"
@@ -1297,8 +1466,9 @@ scan_rx_value: .ascii "00/"
 scan_le_value: .ascii "00/"
 scan_adv_value: .asciz "00\r\n"
 scan_program_applied: .asciz "PROGRAM APPLIED: SHAPE + POSITION + ARROW CONTROLS\r\n"
-scan_escape_message: .asciz "LOADER STOPPED BY ESC; FINAL VM STATE PRESERVED\r\nNO NATIVE CODE; NO PAIR; NO CONNECT; NO DELL RADIO TRANSMIT\r\n"
-scan_runtime_error_cleanup: .asciz "RUNTIME STOPPED AFTER CLEANUP ERROR PATH\r\nNO PAIR; NO CONNECT; NO DELL RADIO TRANSMIT\r\n"
+scan_ack_sent: .asciz "ACK ADVERTISED FOR 1500 MS; PASSIVE RECEIVE RESUMED\r\n"
+scan_escape_message: .asciz "LOADER STOPPED BY ESC; FINAL VM STATE PRESERVED\r\nNO NATIVE CODE; NO PAIR; NO CONNECT; ACK-ONLY DELL TRANSMIT\r\n"
+scan_runtime_error_cleanup: .asciz "RUNTIME STOPPED AFTER CLEANUP ERROR PATH\r\nNO PAIR; NO CONNECT; ACK TRANSMIT DISABLE ATTEMPTED\r\n"
 scan_graphics_error: .asciz "SUPPORTED GOP FRAMEBUFFER NOT FOUND; RADIO NOT ENABLED\r\n"
 scan_not_found: .asciz "TARGET NOT FOUND; NO HCI COMMAND SENT\r\n"
 scan_control_error: .asciz "HCI COMMAND USB TRANSFER FAILED\r\n"
@@ -1310,7 +1480,7 @@ scan_footer: .asciz "\r\nPHOTOGRAPH. PRESS ANY KEY.\r\n"
 scan_hex_digits: .ascii "0123456789ABCDEF"
 
 .balign 8
-# Apply the volatile QCA setup before configuring receive-only scanning.
+# Apply the volatile QCA setup before configuring passive scanning.
 scan_cmd_hci_reset: .byte 0x03,0x0c,0x00
 scan_cmd_hci_reset_end:
 # Event code 0x3E (LE Meta Event) is bit 61 of the general event mask.
@@ -1326,6 +1496,16 @@ scan_cmd_scan_enable: .byte 0x0c,0x20,0x02, 0x01,0x00
 scan_cmd_scan_enable_end:
 scan_cmd_scan_disable: .byte 0x0c,0x20,0x02, 0x00,0x00
 scan_cmd_scan_disable_end:
+
+# Non-connectable undirected advertising, 100 ms interval, all three channels.
+scan_cmd_adv_parameters:
+    .byte 0x06,0x20,0x0f, 0xa0,0x00, 0xa0,0x00, 0x03,0x00,0x00
+    .byte 0x00,0x00,0x00,0x00,0x00,0x00, 0x07,0x00
+scan_cmd_adv_parameters_end:
+scan_cmd_adv_enable: .byte 0x0a,0x20,0x01,0x01
+scan_cmd_adv_enable_end:
+scan_cmd_adv_disable: .byte 0x0a,0x20,0x01,0x00
+scan_cmd_adv_disable_end:
 
 .balign 8
 scan_gop_guid:

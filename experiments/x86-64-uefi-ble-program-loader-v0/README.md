@@ -1,7 +1,7 @@
 # Rabbit Wireless Program Loader v0
 
-This experiment turns the Dell OptiPlex 3060 USB image into a long-lived,
-receive-only loader for small bounded Rabbit VM programs. A complete scene program
+This experiment turns the Dell OptiPlex 3060 USB image into a long-lived loader for
+small bounded Rabbit VM programs. A complete scene program
 chooses a square or triangle, arbitrary RGB, position, size, movement step, and whether
 the arrow keys control it. These are runtime program bytes, not choices compiled into
 the USB image.
@@ -16,7 +16,9 @@ The Mac repeats `BEGIN`, four `CHUNK` frames, and `COMMIT`. Dell keeps the previ
 scene alive until all 24 bytecode bytes arrive in order and both frame and program
 checksums pass. FNV is only a corruption check, not authentication. This version
 remains bounded because its interpreter exposes no native-code execution, arbitrary
-memory write, storage write, pairing, connection, or Dell radio transmission.
+memory write, storage write, pairing, or connection. Dell transmission is limited to
+one non-connectable, hash-bound acknowledgement advertised for 1.5 seconds after a
+valid commit; passive receive resumes afterward.
 
 ## Pre-physical gate
 
@@ -35,8 +37,10 @@ expanded `0x700`-byte frame inverted Microsoft x64 stack alignment because the r
 is entered by `JMP`. V0.3 changes only that frame to `0x708`, preserving the larger
 workspace and restoring the proven 8-mod-16 pre-call relationship.
 
-Fresh v0.3 QEMU evidence is now recorded. `python3 prepare_physical.py` creates
-`/tmp/rabbit-vm-loader-v03.img` without writing any device.
+The v0.3 physical loader proved complete program transfer, four-direction movement,
+and hot replacement. V0.4 adds the bounded Dell-to-Mac acknowledgement. After fresh
+v0.4 QEMU evidence is recorded, `python3 prepare_physical.py` creates
+`/tmp/rabbit-vm-loader-v04.img` without writing any device.
 
 Once installed and booted on the Dell, arbitrary colors can be sent without
 moving the USB stick or rebooting:
@@ -45,6 +49,6 @@ moving the USB stick or rebooting:
 python3 send_program.py triangle --rgb 3366FF --x 400 --y 240 --size 96 --step 16
 ```
 
-Wait for `PROGRAM APPLIED` on the Dell, stop the Mac sender
-with `Ctrl-C`, and send another program. Press `Esc` on the Dell to disable the
-passive scan and exit the loader.
+Wait for `PROGRAM APPLIED` on the Dell. Dell then advertises the exact program receipt,
+the Mac prints `ACK RECEIVED` and exits automatically. Press `Esc` on the Dell to
+disable the passive scan and exit the loader.

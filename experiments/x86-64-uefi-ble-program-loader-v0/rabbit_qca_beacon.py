@@ -16,9 +16,9 @@ ROOT = Path(__file__).resolve().parent
 PROBE_PATH, TARGET_PATH = ROOT / "probe.json", ROOT / "target.json"
 PROGRAM_PATH, SOURCE_PATH = ROOT / "program.hex", ROOT / "program.S"
 MEDIA_BUILDER_PATH = ROOT.parent / "x86-64-uefi-v0" / "build_image.py"
-PROGRAM_TEMPLATE_SIZE = 79200
-PROGRAM_TEMPLATE_SHA256 = "e01198027645633c1c0d28fd4efe036b702701cba203b8d895550412c47d25f9"
-PROGRAM_SHA256 = "9304d59a6088c5513558a4b393b4943932df532055805b85f800e7c7a8f89a7c"
+PROGRAM_TEMPLATE_SIZE = 81528
+PROGRAM_TEMPLATE_SHA256 = "476090d4a885e1526d8750fe65b4cc1f53552088bb914e2e931ef6068364a92d"
+PROGRAM_SHA256 = "be2f07be0806d531fd436e2510379a379b4d41159f8996bb05ffdf611949abd9"
 RAMPATCH_MARKER, NVM_MARKER = b"RABBIT_RAMPATCH!", b"RABBIT_NVM_BLOB!"
 
 
@@ -82,19 +82,27 @@ def validate_target(target: dict[str, Any]) -> None:
         raise BuildError("QCA RAM header authority changed")
     if authority["bulk_out_endpoint"] != "0x02" or authority["bulk_out_max_transfers"] != 18:
         raise BuildError("QCA RAM bulk authority changed")
-    if authority["allowed_hci_command_sequence"] != ["0x0C03-reset", "0x0C01", "0x2001", "0x200B", "0x200C-enable", "0x200C-disable"]:
-        raise BuildError("passive receive command sequence changed")
+    if authority["allowed_hci_startup_sequence"] != ["0x0C03-reset", "0x0C01", "0x2001", "0x200B", "0x200C-enable"]:
+        raise BuildError("startup command sequence changed")
+    if authority["allowed_ack_sequence_per_commit"] != ["0x200C-disable-scan", "0x2006-set-nonconnectable-parameters", "0x2008-set-exact-ack-data", "0x200A-enable-advertising", "stall-1500ms", "0x200A-disable-advertising", "0x200C-enable-passive-scan"]:
+        raise BuildError("bounded acknowledgement sequence changed")
+    if authority["local_exit_sequence"] != ["0x200C-disable-scan"]:
+        raise BuildError("local exit cleanup changed")
     if authority["controller_reset"] is not True or authority["post_load_reset_count"] != 1 or authority["post_load_reset_wait_ms"] != 100:
         raise BuildError("bounded post-load reset authority changed")
     if authority["rabbit_vm_versions"] != [1] or authority["accepted_vm_opcodes"] != ["DEFINE_SHAPE", "SET_POSITION", "END"]:
         raise BuildError("bounded Rabbit VM instruction set changed")
     if authority["native_code_execution"] or authority["arbitrary_memory_write"]:
         raise BuildError("Rabbit VM escaped its reviewed authority")
+    if authority["radio_transmit"] != "exact-program-acknowledgement-only":
+        raise BuildError("Dell transmit authority is not exact-ack-only")
+    if authority["advertise"] != "nonconnectable-exact-ack-for-1500ms-per-valid-commit":
+        raise BuildError("Dell advertising authority changed")
     if authority["gop_framebuffer_write"] != "one-bounded-square-or-triangle-max-128px":
         raise BuildError("framebuffer authority changed")
     if authority["passive_runtime_termination"] != ["local-escape", "power-off"]:
         raise BuildError("runtime termination contract changed")
-    for field in ("controller_flash_write", "active_scan", "radio_transmit", "advertise", "pair", "connect", "internal_storage_writes", "firmware_writes"):
+    for field in ("controller_flash_write", "active_scan", "pair", "connect", "internal_storage_writes", "firmware_writes"):
         if authority[field]:
             raise BuildError(f"target permits forbidden authority: {field}")
 
@@ -132,7 +140,7 @@ def load_program(payloads: dict[str, bytes]) -> bytes:
 
 def build_efi(code: bytes) -> bytes:
     raw_size = (len(code) + SECTOR_SIZE - 1) // SECTOR_SIZE * SECTOR_SIZE
-    if raw_size != 0x13600:
+    if raw_size != 0x14000:
         raise BuildError("unexpected combined code size")
     dos = bytearray(0x80); dos[0:2] = b"MZ"; struct.pack_into("<I", dos, 0x3C, 0x80)
     coff = struct.pack("<HHIIIHH", 0x8664, 2, 0, 0, 0, 0xF0, 0x0022)
@@ -180,7 +188,9 @@ def build_fetched() -> tuple[bytes, dict[str, Any]]:
         "gop_framebuffer_write_authorized": "one-bounded-square-or-triangle-max-128px",
         "passive_runtime_termination": ["local-escape", "power-off"],
         "post_load_hci_reset_authorized": 1, "post_load_reset_wait_ms": 100,
-        "active_scan_authorized": False, "radio_transmit_authorized": False,
+        "active_scan_authorized": False,
+        "radio_transmit_authorized": "exact-program-acknowledgement-only",
+        "advertising_authorized": "nonconnectable-exact-ack-for-1500ms-per-valid-commit",
         "native_code_execution_authorized": False, "arbitrary_memory_write_authorized": False,
         "pairing_authorized": False, "connection_authorized": False,
         "persistent_writes_authorized": 0, "physical_execution_verified": False, "writes_performed": [],

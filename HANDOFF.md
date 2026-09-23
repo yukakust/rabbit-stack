@@ -692,7 +692,19 @@ six-frame program atomically removed the triangle and displayed an arrow-control
 green square with different position, size, color, and movement step. Neither USB
 movement nor Dell reboot occurred between programs. This completes the first physical
 hot-program-replacement slice; transport authentication and Dell-to-Mac acknowledgement
-are still absent.
+were still absent in v0.3.
+
+V0.4 is the pre-QEMU Dell-to-Mac acknowledgement candidate. After a valid `COMMIT`, Dell
+temporarily disables passive scan, advertises one non-connectable receipt for exactly
+1.5 seconds, disables advertising, and resumes passive scan. The 16-byte receipt binds
+the transfer id, exact program FNV, and an in-RAM applied counter; Mac scans concurrently
+and exits only after validating the matching receipt checksum and identity. Arbitrary
+advertising, arbitrary Dell transmission, active scan, pairing, connection, native code,
+and persistence remain forbidden. This acknowledgement gives the current sender a
+correlated application receipt; it does not cryptographically prove who sent it. Keyed authentication,
+anti-replay state, key lifecycle, and optional encryption are explicitly deferred in
+`debts.md`. The deterministic pre-QEMU v0.4 image SHA-256 is
+`a56c358736c4122d0f9aeb8b69d862d306bbcc370e5ad29681d9d0be2de05077`.
 
 ## U7 pre-physical artifact result
 

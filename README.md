@@ -98,6 +98,7 @@ every layer we would otherwise be tempted to hide.
   the first persistent-on-boot wireless program loader. It transactionally assembles
   multi-frame Rabbit VM programs in RAM; complete programs choose square or triangle,
   RGB, position, size, and arrow movement while native code and persistence stay absent.
+  The current candidate adds a bounded hash-bound Dell-to-Mac application receipt.
 
 ## Start here
 
@@ -107,6 +108,7 @@ Read [`HANDOFF.md`](HANDOFF.md). The active next gate is
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is
 in [`docs/INVITATION.md`](docs/INVITATION.md).
+Deferred security boundaries are explicit in [`debts.md`](debts.md).
 
 ## Project rule
 

@@ -476,7 +476,14 @@ framebuffer effects. The corrected physical installation then accepted and displ
 complete six-frame blue-triangle program without rebooting Dell or moving USB after
 boot. Arrow movement worked in all four directions, and a second six-frame program in
 the same runtime atomically replaced the triangle with an arrow-controlled green square.
-The next protocol gates are sender authentication and Dell-to-Mac acknowledgement.
+V0.4 now implements the Dell-to-Mac acknowledgement candidate. After each valid commit,
+Dell pauses receive, advertises only a transfer/hash/counter-bound receipt for 1.5
+seconds, stops advertising, and resumes passive receive. Mac concurrently scans for the
+exact receipt and exits only after validating it. This expands Dell authority from zero
+transmit to one narrowly typed, bounded, non-connectable acknowledgement; arbitrary
+transmit, active scan, pairing, connection, native code, and persistence remain rejected.
+The fresh QEMU gate and physical receipt are still required. Sender authentication,
+anti-replay, key lifecycle, and encryption remain deliberately deferred in `debts.md`.
 
 ### U10 — Universal installer
 

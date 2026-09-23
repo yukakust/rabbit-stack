@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 MAGIC = b"RP"
+ACK_MAGIC = b"RA"
 PROTOCOL_VERSION = 1
 FRAME_BEGIN, FRAME_CHUNK, FRAME_COMMIT = 1, 2, 3
+ACK_APPLIED = 1
 FRAME_SIZE, PAYLOAD_SIZE = 16, 7
 VM_VERSION = 1
 OP_DEFINE_SHAPE, OP_SET_POSITION, OP_END = 1, 2, 0xFF
@@ -129,5 +131,35 @@ def decode_transfer(frames: list[bytes]) -> bytes:
 
 def frame_to_uuid(frame: bytes) -> str:
     decode_frame(frame)
-    value = frame.hex().upper()
-    return f"{value[:8]}-{value[8:12]}-{value[12:16]}-{value[16:20]}-{value[20:]}"
+    return bytes_to_uuid(frame)
+
+
+def encode_ack(*, transfer_id: int, program_hash: int, applied_counter: int) -> bytes:
+    if not 0 <= transfer_id <= 255:
+        raise PacketError("ACK transfer id must fit one byte")
+    if not 0 <= program_hash <= 0xFFFFFFFF or not 1 <= applied_counter <= 0xFFFFFFFF:
+        raise PacketError("ACK hash or application counter is out of range")
+    body = (ACK_MAGIC + bytes(((PROTOCOL_VERSION << 4) | ACK_APPLIED, transfer_id))
+        + program_hash.to_bytes(4, "big") + applied_counter.to_bytes(4, "big"))
+    return body + fnv1a32(body).to_bytes(4, "big")
+
+
+def decode_ack(value: bytes) -> dict[str, int]:
+    if len(value) != FRAME_SIZE or value[:2] != ACK_MAGIC:
+        raise PacketError("invalid Rabbit acknowledgement")
+    if value[2] != (PROTOCOL_VERSION << 4) | ACK_APPLIED:
+        raise PacketError("unsupported Rabbit acknowledgement version or status")
+    if int.from_bytes(value[12:], "big") != fnv1a32(value[:12]):
+        raise PacketError("Rabbit acknowledgement checksum mismatch")
+    return {
+        "transfer_id": value[3],
+        "program_hash": int.from_bytes(value[4:8], "big"),
+        "applied_counter": int.from_bytes(value[8:12], "big"),
+    }
+
+
+def bytes_to_uuid(value: bytes) -> str:
+    if len(value) != FRAME_SIZE:
+        raise PacketError("Rabbit UUID payload must be exactly 16 bytes")
+    encoded = value.hex().upper()
+    return f"{encoded[:8]}-{encoded[8:12]}-{encoded[12:16]}-{encoded[16:20]}-{encoded[20:]}"

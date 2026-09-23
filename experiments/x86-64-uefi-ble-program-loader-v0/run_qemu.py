@@ -17,6 +17,8 @@ def main() -> int:
     root = Path(__file__).resolve().parent
     if subprocess.run([sys.executable, str(root / "verify.py")], check=False).returncode:
         print("FAIL: verification failed; QEMU was not started"); return 1
+    if subprocess.run([sys.executable, str(root / "verify_mac_sender.py")], check=False).returncode:
+        print("FAIL: Mac sender compile gate failed; QEMU was not started"); return 1
     executable = shutil.which("qemu-system-x86_64")
     if executable is None:
         print("FAIL: qemu-system-x86_64 is not on PATH"); return 1

@@ -7,6 +7,6 @@
   <key>CFBundleName</key>
   <string>Rabbit Beacon v0</string>
   <key>NSBluetoothAlwaysUsageDescription</key>
-  <string>Advertise the reviewed Rabbit UUID to the nearby receive-only Dell experiment.</string>
+  <string>Advertise a reviewed Rabbit program and receive its exact Dell acknowledgement.</string>
 </dict>
 </plist>

@@ -12,24 +12,41 @@ from rabbit_qca_beacon import (
     TARGET_PATH, build_fetched, load_json, load_program, load_template, validate_target,
 )
 from rabbit_vm_packet import (
-    PacketError, decode_frame, decode_program, decode_transfer, encode_program,
-    encode_transfer, frame_to_uuid,
+    PacketError, bytes_to_uuid, decode_ack, decode_frame, decode_program, decode_transfer,
+    encode_ack, encode_program, encode_transfer, fnv1a32, frame_to_uuid,
 )
 
 EXPECTED = {
-    "probe_sha256": "e4a09cc6b7550316fbc6a158a58eb8714789a09a147d9abaa39e9d02f1607a4a",
-    "target_sha256": "30be62d430fdc2e7ae9fb9e4b0576cc716e197aa1b582d17473f505c27e7fe54",
-    "source_sha256": "bf76c3e47673d24181275d453684925f4f7393b25190090bce2e8bf5e1b46ef1",
+    "probe_sha256": "95259cef1d95f92425f1ce910f327a335868d069080ce61dff36467929df008b",
+    "target_sha256": "59df2392ddd963429d85cfb9e79a699ae1535d35c1a46fb2f834286ff4aa250f",
+    "source_sha256": "b90dd30f3ebf23482a80d65712f5fbc0d1760168fd3d9da65c9cb74613bbd049",
     "program_template_sha256": PROGRAM_TEMPLATE_SHA256,
     "program_sha256": PROGRAM_SHA256,
-    "efi_sha256": "7bb3b4875eb331213ae5bd4de8e58da35f634cb7960178d0862de4232ce95f54",
-    "image_sha256": "3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548",
+    "efi_sha256": "484cc5d420ed2691649412bf2651ee228e553cf38c15882143d548b55cbcabcc",
+    "image_sha256": "a56c358736c4122d0f9aeb8b69d862d306bbcc370e5ad29681d9d0be2de05077",
 }
 
 V02_BINDINGS = {
     "program_sha256": "f25668c0211bd0e7d3aa07f869e8ea517a80df876d8bd990c225e5faf5cd39d3",
     "efi_sha256": "64c81e301cd552f42a3ee67743d6ebcf1a386215f5276fd27ce3de9412198c52",
     "image_sha256": "0d0b53b980bd4645b624aeb7489aa0d36fb93e302bd0edfa77e869e6cb161c9f",
+}
+
+V03_BINDINGS = {
+    "probe_sha256": "e4a09cc6b7550316fbc6a158a58eb8714789a09a147d9abaa39e9d02f1607a4a",
+    "target_sha256": "30be62d430fdc2e7ae9fb9e4b0576cc716e197aa1b582d17473f505c27e7fe54",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "9304d59a6088c5513558a4b393b4943932df532055805b85f800e7c7a8f89a7c",
+    "efi_sha256": "7bb3b4875eb331213ae5bd4de8e58da35f634cb7960178d0862de4232ce95f54",
+    "image_sha256": "3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548",
+}
+
+SENDER_FILES = {
+    "mac_vm_program.m": "815c0f82ba1a70cd3605f16e46502a1ce64ef09a43da14c6e137237d2d9942d1",
+    "send_program.py": "7be8e66e476bd1ee5aa84d6beb2815fa72914cc66399d2982954f5bfc6b49985",
+    "rabbit_vm_packet.py": "d54b2cea93eebd0053f86d1e6689024cbb73032caa5cdcc8045992129a49ac47",
+    "RabbitColorCommand-Info.plist": "b79c9db6d00c4767716e9f6eaa5e3b93ef1f2adcc589897ca49cefcf4f680b47",
+    "verify_mac_sender.py": "5312a71becef1bd5add58a8419922a06ed5a504b42cce0d67393a7fc31ed09b6",
 }
 
 
@@ -44,6 +61,7 @@ def rejected(label: str, action) -> None:
 
 
 def main() -> int:
+    root = Path(__file__).resolve().parent
     image_a, report_a = build_fetched(); image_b, report_b = build_fetched()
     require(image_a == image_b and report_a == report_b, "repeated builds differ")
     for field, expected in EXPECTED.items(): require(report_a[field] == expected, f"{field} changed")
@@ -51,8 +69,13 @@ def main() -> int:
     require(len(template) == PROGRAM_TEMPLATE_SIZE, "template size changed")
     require(hashlib.sha256(template).hexdigest() == PROGRAM_TEMPLATE_SHA256, "template changed")
     require(hashlib.sha256(program_bytes).hexdigest() == PROGRAM_SHA256, "program changed")
-    for marker in (b"RABBIT WIRELESS PROGRAM LOADER v0.3", b"RABBIT VM v1; PASSIVE RX; ESC TO STOP",
-                   b"PROGRAM APPLIED", b"NO NATIVE CODE; NO PAIR; NO CONNECT"):
+    for name, expected in SENDER_FILES.items():
+        require(hashlib.sha256((root / name).read_bytes()).hexdigest() == expected, f"sender file changed: {name}")
+    sender_source = (root / "mac_vm_program.m").read_text(encoding="utf-8")
+    require("ACK RECEIVED: TRANSFER=" in sender_source and "scanForPeripheralsWithServices:nil" in sender_source,
+            "Mac acknowledgement receiver is missing")
+    for marker in (b"RABBIT WIRELESS PROGRAM LOADER v0.4", b"PASSIVE RX + BOUNDED ACK; ESC TO STOP",
+                   b"PROGRAM APPLIED", b"ACK ADVERTISED FOR 1500 MS", b"NO NATIVE CODE; NO PAIR; NO CONNECT"):
         require(marker in template, f"required marker missing: {marker!r}")
     require(b"RABBIT BLE COLOR COMMAND" not in template, "stale color-command identity remains")
 
@@ -68,6 +91,11 @@ def main() -> int:
             decode_frame(frame)
 
     frames = encode_transfer(triangle)
+    ack = encode_ack(transfer_id=frames[0][3], program_hash=fnv1a32(triangle), applied_counter=1)
+    require(decode_ack(ack) == {"transfer_id": frames[0][3], "program_hash": fnv1a32(triangle), "applied_counter": 1}, "ACK round-trip changed")
+    require(len(bytes_to_uuid(ack)) == 36, "ACK UUID envelope changed")
+    damaged_ack = bytearray(ack); damaged_ack[8] ^= 1
+    rejected("a damaged acknowledgement", lambda: decode_ack(bytes(damaged_ack)))
     damaged = bytearray(frames[2]); damaged[7] ^= 1
     rejected("a frame with a damaged checksum", lambda: decode_frame(bytes(damaged)))
     rejected("a missing program chunk", lambda: decode_transfer(frames[:2] + frames[3:]))
@@ -82,13 +110,17 @@ def main() -> int:
 
     target = load_json(TARGET_PATH)
     for field in ("native_code_execution", "arbitrary_memory_write", "active_scan", "radio_transmit",
-                  "pair", "connect", "internal_storage_writes", "firmware_writes"):
+                  "advertise", "pair", "connect", "internal_storage_writes", "firmware_writes"):
         mutated = copy.deepcopy(target); mutated["authority"][field] = True
         rejected(f"target permitting {field}", lambda value=mutated: validate_target(value))
     expanded = copy.deepcopy(target); expanded["authority"]["accepted_vm_opcodes"].append("EXEC_NATIVE")
     rejected("an unreviewed native-code opcode", lambda: validate_target(expanded))
     require(report_a["persistent_writes_authorized"] == 0, "persistent write authority appeared")
     require(report_a["native_code_execution_authorized"] is False, "native execution appeared")
+    require(report_a["radio_transmit_authorized"] == "exact-program-acknowledgement-only",
+            "build report does not describe exact acknowledgement transmit authority")
+    require(report_a["advertising_authorized"] == "nonconnectable-exact-ack-for-1500ms-per-valid-commit",
+            "build report does not describe bounded acknowledgement advertising")
     evidence = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v02-observed.json")
     require(evidence["status"] == "OBSERVED-MANUAL-QEMU-RABBIT-VM-LOADER-V0.2-FAIL-CLOSED", "archived QEMU evidence status changed")
     for field, expected in V02_BINDINGS.items():
@@ -110,8 +142,8 @@ def main() -> int:
     require("0x700" in physical["diagnosis"] and "Microsoft-x64 call alignment" in physical["diagnosis"], "physical failure diagnosis changed")
     current = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v03-observed.json")
     require(current["status"] == "OBSERVED-MANUAL-QEMU-RABBIT-VM-LOADER-V0.3-FAIL-CLOSED", "current QEMU evidence status changed")
-    for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
-        require(current["bindings"][field] == report_a[field], f"current QEMU evidence is stale for {field}")
+    for field, expected in V03_BINDINGS.items():
+        require(current["bindings"][field] == expected, f"archived QEMU v0.3 evidence changed for {field}")
     current_observed = current["observation"]
     require(current_observed["visible_identity"] == "RABBIT WIRELESS PROGRAM LOADER v0.3", "current QEMU visible identity changed")
     require(current_observed["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT", "current QEMU mismatch result changed")
@@ -120,8 +152,8 @@ def main() -> int:
         "radio_operations_requested", "framebuffer_writes_performed")), "current QEMU crossed a forbidden mismatch boundary")
     physical_success = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-v03-triangle-program-physical-observed.json")
     require(physical_success["status"] == "OBSERVED-MANUAL-PHYSICAL-RABBIT-VM-PROGRAM-APPLIED", "physical success status changed")
-    for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
-        require(physical_success["bindings"][field] == report_a[field], f"physical success evidence is stale for {field}")
+    for field, expected in V03_BINDINGS.items():
+        require(physical_success["bindings"][field] == expected, f"physical v0.3 success evidence changed for {field}")
     transferred = physical_success["transferred_program"]
     transferred_bytes = bytes.fromhex(transferred["bytecode_hex"])
     require(decode_program(transferred_bytes) == {
@@ -134,8 +166,8 @@ def main() -> int:
     require(not success_observed["usb_moved_after_boot"] and not success_observed["dell_rebooted_for_program"] and success_observed["persistent_writes"] == 0, "physical runtime boundary changed")
     replacement = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-v03-hot-replacement-physical-observed.json")
     require(replacement["status"] == "OBSERVED-MANUAL-PHYSICAL-RABBIT-VM-HOT-REPLACEMENT", "physical replacement status changed")
-    for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
-        require(replacement["bindings"][field] == report_a[field], f"physical replacement evidence is stale for {field}")
+    for field, expected in V03_BINDINGS.items():
+        require(replacement["bindings"][field] == expected, f"physical v0.3 replacement evidence changed for {field}")
     first_bytes = bytes.fromhex(replacement["session"]["first_program"]["bytecode_hex"])
     replacement_bytes = bytes.fromhex(replacement["session"]["replacement_program"]["bytecode_hex"])
     require(decode_program(first_bytes)["shape"] == "triangle", "recorded first physical shape changed")
@@ -153,10 +185,12 @@ def main() -> int:
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
     print("PASS: old scene remains active until a complete bounded program validates and commits")
-    print("PASS: native code, arbitrary memory, transmit, pairing, connection, and persistence remain forbidden")
+    print("PASS: ACK binds transfer, hash, and counter; damaged acknowledgements are rejected")
+    print("PASS: Dell transmit is restricted to a 1500 ms nonconnectable exact-program acknowledgement")
+    print("PASS: native code, arbitrary memory, arbitrary transmit, pairing, connection, and persistence remain forbidden")
     print("PASS: archived v0.2 QEMU mismatch evidence remains bound to its exact artifact")
     print("PASS: physical v0.2 failure is localized before the chained runtime's first UEFI call")
-    print("PASS: exact v0.3 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
+    print("PASS: archived v0.3 QEMU mismatch evidence remains bound to its exact artifact")
     print("PASS: physical v0.3 accepted and displayed a complete six-frame triangle program without reboot or USB movement")
     print("PASS: one physical runtime moved the triangle and atomically replaced it with an arrow-controlled green square")
     print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")

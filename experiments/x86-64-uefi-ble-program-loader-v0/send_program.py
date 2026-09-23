@@ -29,9 +29,10 @@ def main() -> int:
     program = encode_program(shape=args.shape, red=red, green=green, blue=blue,
         x=args.x, y=args.y, size=args.size, step=args.step, arrows=not args.no_arrows)
     frames = encode_transfer(program); uuids = [frame_to_uuid(frame) for frame in frames]
+    program_hash = fnv1a32(program); transfer_id = frames[0][3]
     print(f"PROGRAM={decode_program(program)}")
     print(f"BYTECODE={program.hex(' ').upper()}")
-    print(f"PROGRAM_FNV1A32={fnv1a32(program):08X}")
+    print(f"PROGRAM_FNV1A32={program_hash:08X}")
     print(f"FRAMES={len(frames)}; each frame will repeat for 450 ms")
     for index, uuid in enumerate(uuids): print(f"FRAME[{index}]={uuid}")
     xcrun = shutil.which("xcrun")
@@ -46,7 +47,7 @@ def main() -> int:
         print(f"Source SHA256: {hashlib.sha256(SOURCE.read_bytes()).hexdigest()}")
         if subprocess.run(command, check=False, env=env).returncode: return 1
         try:
-            return subprocess.run([str(executable), *uuids], check=False).returncode
+            return subprocess.run([str(executable), f"{transfer_id:02X}", f"{program_hash:08X}", *uuids], check=False).returncode
         except KeyboardInterrupt:
             return 0
 
