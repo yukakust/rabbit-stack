@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "probe_id": "x86-64-usb-bluetooth-rabbit-beacon-rx-v0",
-  "implementation_revision": 1,
+  "implementation_revision": 2,
   "target_usb_id": "0CF3:E009",
   "rabbit_service_uuid": "52414242-4954-4C45-8000-000000000001",
   "operations": [
@@ -14,7 +14,7 @@
     "receive-bounded-advertising-reports",
     "match-exact-rabbit-service-uuid",
     "disable-passive-scan",
-    "display-received-or-timeout"
+    "display-bounded-receive-counters-and-result"
   ],
   "limits": {
     "max_usb_interfaces": 64,

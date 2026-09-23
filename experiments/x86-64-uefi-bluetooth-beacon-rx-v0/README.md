@@ -41,9 +41,9 @@ TARGET NOT FOUND; NO HCI COMMAND SENT
 ```
 
 No scan is started in QEMU. On 2026-09-23 QEMU 11.1.1 on the Apple Silicon Mac displayed
-that exact result. The owner-reviewed observation is bound to the exact probe, target,
-program, EFI, and image identities. `prepare_physical.py` is now open: it builds and
-inspects the removable target without writing it.
+that exact result for v0.1. The owner-reviewed observation remains bound to the exact
+v0.1 identities. V0.2 must independently reproduce this fail-closed result before its
+`prepare_physical.py` gate opens.
 
 ## Mac sender
 
@@ -67,12 +67,30 @@ UUID=52414242-4954-4C45-8000-000000000001
 NO PAIR; NO CONNECT; NO RADIO TRANSMIT
 ```
 
+## Physical v0.1 result and v0.2 diagnostic
+
+The physical Dell accepted the complete bounded passive-scan sequence and disabled the
+scan after 20 seconds, but did not match the Rabbit UUID. V0.1 did not expose whether
+zero advertisements arrived or advertisements arrived without the expected UUID, so it
+cannot distinguish sender visibility from parser mismatch.
+
+V0.2 preserves the same five-command authority and adds one bounded diagnostic line:
+
+```text
+RX/LE/ADV (HEX)=00/00/00
+```
+
+The fields count successful scan-window USB events, LE Meta events, and LE Advertising
+Reports. They are two-digit hexadecimal counters (`64` means 100). No packet contents,
+addresses, pairing, connection, or new radio authority are added. V0.2 requires its own
+QEMU fail-closed observation before physical preparation opens.
+
 Reviewed identities:
 
 ```text
-program SHA-256: 0aa77e83498e57bb3dc6554e9e5750ec9a12b42f5fa0a4d76f6c9c86ccf0465f
-EFI SHA-256:     8b9df03b61e21319c1d0329d185b080d17962a1b3763424ddb0d6ddc98c62840
-image SHA-256:   0fa4c4ce888d9a2ba916898f1ab43f579b92b52553d7f6a96b44fabddc2dd50c
+program SHA-256: 1df246ea4d9d269603e07510027b8ff0f1d2754fe88eb8fff8123359c5d13aed
+EFI SHA-256:     18a098c4168b1679c3d4d11a59d67c0d4ecb917a2f0720e21741bddbb62bc30d
+image SHA-256:   bd15cc66ee6340bd0225a4394bd6d754f0b31115b52b4ee6d98a513ac8e90df2
 ```
 
-Status: **QEMU-OBSERVED; NOT PHYSICALLY INSTALLED**.
+Status: **V0.2 PRE-QEMU; NOT PHYSICALLY INSTALLED**.

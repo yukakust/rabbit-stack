@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-bluetooth-beacon-rx-v0.1-timeout-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-BEACON-NOT-RECEIVED",
+  "bindings": {
+    "probe_sha256": "5af8faf2d75190d264a213235fce17a0e20c1674965ff00f1a2eb6ff86cce3e8",
+    "target_sha256": "e122e120d12783ebec3dc5f9496576c04b333040db5694008d2956b86df6d937",
+    "program_sha256": "0aa77e83498e57bb3dc6554e9e5750ec9a12b42f5fa0a4d76f6c9c86ccf0465f",
+    "efi_sha256": "8b9df03b61e21319c1d0329d185b080d17962a1b3763424ddb0d6ddc98c62840",
+    "image_sha256": "0fa4c4ce888d9a2ba916898f1ab43f579b92b52553d7f6a96b44fabddc2dd50c",
+    "mac_sender_source_sha256": "5bb9131f181fd74cf2dc554143ac9b9c9ede3b84e2af5aa33e89a1f2b13e57f5",
+    "mac_sender_plist_sha256": "1312d38dbb8a06a36e97f01b9fea7558a709a6ad5a81d8a741798fcc0ef1f121"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "firmware": "UEFI 1.2.22",
+    "boot_media": "Kingston DataTraveler Duo removable USB",
+    "secure_boot": "off-by-owner-dedicated-lab-policy",
+    "internal_storage_present": false,
+    "physical_execution_verified": true
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "visible_version": "v0.1",
+    "target_found": true,
+    "event_endpoint": "81",
+    "le_meta_event_mask": "OK",
+    "advertising_report_mask": "OK",
+    "passive_scan_parameters": "OK",
+    "passive_scan_started": true,
+    "passive_scan_budget_seconds": 20,
+    "passive_scan_disabled": true,
+    "result": "RABBIT BEACON NOT RECEIVED WITHIN BUDGET",
+    "pairing_performed": false,
+    "connection_performed": false,
+    "dell_radio_transmit_authorized": false
+  },
+  "interpretation": [
+    "the exact controller accepted all reviewed receive-only scan commands",
+    "the v0.1 screen did not expose whether any advertising reports arrived",
+    "the result does not distinguish sender visibility from UUID parser mismatch"
+  ]
+}

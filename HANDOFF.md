@@ -508,6 +508,19 @@ compiler and Command Line Tools SDK were patch-level incompatible and exposed du
 now the same exact CoreBluetooth advertisement implemented in reviewed Objective-C and
 built temporarily with Apple `clang`, removing Swift toolchain compatibility from this
 experiment while preserving the UUID, permission manifest, and Dell EFI/image hashes.
+The repaired CoreBluetooth sender reported `RABBIT BEACON ADVERTISING`, and the physical
+Dell accepted all four setup commands, listened passively for the bounded 20 seconds,
+issued the mandatory scan-disable command, but displayed `RABBIT BEACON NOT RECEIVED
+WITHIN BUDGET`. V0.1 did not count received events, so this result cannot yet distinguish
+no visible advertisements from an advertisement/parser mismatch. Exact failure evidence
+is preserved rather than presented as a successful wireless link.
+
+V0.2 keeps the same five-command receive-only authority and adds hexadecimal counters
+for successful scan-window USB events, LE Meta events, and LE Advertising Reports. Its
+new EFI identity is `18a098c4168b1679c3d4d11a59d67c0d4ecb917a2f0720e21741bddbb62bc30d`
+and image identity is `bd15cc66ee6340bd0225a4394bd6d754f0b31115b52b4ee6d98a513ac8e90df2`.
+All deterministic and negative checks pass. It is PRE-QEMU and physical preparation is
+closed until its separate fail-closed QEMU observation is recorded.
 
 ## U7 pre-physical artifact result
 

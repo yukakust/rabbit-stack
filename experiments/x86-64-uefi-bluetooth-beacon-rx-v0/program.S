@@ -213,6 +213,9 @@ handles_freed:
 
     xor r15d, r15d             # exact Rabbit beacon not seen yet
     xor r12d, r12d
+    mov dword ptr [rsp + 0xf0], 0 # successful scan transfers
+    mov dword ptr [rsp + 0xf4], 0 # LE Meta events
+    mov dword ptr [rsp + 0xf8], 0 # LE Advertising Reports
 scan_event_loop:
     cmp r12d, 100              # 100 * 200 ms = at most 20 seconds
     jae stop_scan
@@ -230,12 +233,17 @@ scan_event_loop:
     inc r12d
     test rax, rax
     jnz scan_event_loop        # bounded timeout or transient receive failure
-    cmp qword ptr [rsp + 0x98], 20
+    inc dword ptr [rsp + 0xf0]
+    cmp qword ptr [rsp + 0x98], 3
     jb scan_event_loop
     cmp byte ptr [rsp + 0xa0], 0x3e # LE Meta Event
     jne scan_event_loop
+    inc dword ptr [rsp + 0xf4]
     cmp byte ptr [rsp + 0xa2], 0x02 # LE Advertising Report
     jne scan_event_loop
+    inc dword ptr [rsp + 0xf8]
+    cmp qword ptr [rsp + 0x98], 20
+    jb scan_event_loop
 
     mov rcx, [rsp + 0x98]
     sub rcx, 15
@@ -266,6 +274,23 @@ rabbit_found:
 stop_scan:
     send_hci_command cmd_scan_disable, cmd_scan_disable_end, 0x0c, 0x20
     lea rdx, [rip + scan_off]
+    call print_ascii
+    lea rsi, [rip + rx_template]
+    lea rdx, [rsp + 0x100]
+    call copy_ascii
+    mov eax, dword ptr [rsp + 0xf0]
+    lea rdx, [rsp + 0x100 + rx_value - rx_template]
+    mov r10d, 2
+    call write_hex
+    mov eax, dword ptr [rsp + 0xf4]
+    lea rdx, [rsp + 0x100 + le_value - rx_template]
+    mov r10d, 2
+    call write_hex
+    mov eax, dword ptr [rsp + 0xf8]
+    lea rdx, [rsp + 0x100 + adv_value - rx_template]
+    mov r10d, 2
+    call write_hex
+    lea rdx, [rsp + 0x100]
     call print_ascii
     test r15d, r15d
     jz rabbit_not_received
@@ -372,14 +397,18 @@ hex_loop:
     jns hex_loop
     ret
 
-title: .asciz "\r\nRABBIT BLUETOOTH BEACON RX v0.1\r\n================================\r\nPASSIVE RECEIVE ONLY; NO PAIR OR CONNECT\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+title: .asciz "\r\nRABBIT BLUETOOTH BEACON RX v0.2\r\n================\r\nPASSIVE RX; NO PAIR OR CONNECT\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 found_template: .ascii "TARGET FOUND; EVENT ENDPOINT="
 found_endpoint: .asciz "00\r\n"
-event_mask_ok: .asciz "STAGE 2: LE META EVENT MASK: OK\r\n"
-le_event_mask_ok: .asciz "STAGE 3: ADVERTISING REPORT MASK: OK\r\n"
-scan_parameters_ok: .asciz "STAGE 4: PASSIVE SCAN PARAMETERS: OK\r\n"
-scan_on: .asciz "STAGE 5: PASSIVE SCAN ON; LISTENING 20 SECONDS\r\n"
+event_mask_ok: .asciz "STAGE 2: LE META MASK: OK\r\n"
+le_event_mask_ok: .asciz "STAGE 3: ADV REPORT MASK: OK\r\n"
+scan_parameters_ok: .asciz "STAGE 4: PASSIVE PARAMETERS: OK\r\n"
+scan_on: .asciz "STAGE 5: PASSIVE SCAN ON; 20 SECONDS\r\n"
 scan_off: .asciz "STAGE 6: PASSIVE SCAN OFF\r\n"
+rx_template: .ascii "RX/LE/ADV (HEX)="
+rx_value: .ascii "00/"
+le_value: .ascii "00/"
+adv_value: .asciz "00\r\n"
 rabbit_received: .asciz "RABBIT BEACON RECEIVED\r\nUUID=52414242-4954-4C45-8000-000000000001\r\nNO PAIR; NO CONNECT; NO RADIO TRANSMIT\r\n"
 rabbit_timeout: .asciz "RABBIT BEACON NOT RECEIVED WITHIN BUDGET\r\nNO PAIR; NO CONNECT; NO RADIO TRANSMIT\r\n"
 not_found: .asciz "TARGET NOT FOUND; NO HCI COMMAND SENT\r\n"
@@ -388,7 +417,7 @@ event_error: .asciz "MATCHING HCI EVENT NOT RECEIVED WITHIN BUDGET\r\n"
 malformed: .asciz "MATCHING HCI EVENT WAS TOO SHORT\r\n"
 status_template: .ascii "CONTROLLER RETURNED HCI STATUS="
 status_value: .asciz "00\r\n"
-footer: .asciz "\r\nPHOTOGRAPH THIS SCREEN. PRESS ANY KEY TO EXIT.\r\n"
+footer: .asciz "\r\nPHOTOGRAPH. PRESS ANY KEY.\r\n"
 hex_digits: .ascii "0123456789ABCDEF"
 
 .balign 8

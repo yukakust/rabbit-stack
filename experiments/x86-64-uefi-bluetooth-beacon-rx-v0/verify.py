@@ -19,11 +19,11 @@ from rabbit_beacon_rx import (
 
 
 ROOT = Path(__file__).resolve().parent
-EXPECTED_PROBE_SHA256 = "5af8faf2d75190d264a213235fce17a0e20c1674965ff00f1a2eb6ff86cce3e8"
+EXPECTED_PROBE_SHA256 = "134010a875df53638b18ef46c84d2507053cedfb24ceecca952d77cfafffca16"
 EXPECTED_TARGET_SHA256 = "e122e120d12783ebec3dc5f9496576c04b333040db5694008d2956b86df6d937"
-EXPECTED_SOURCE_SHA256 = "f712de757b8fd76d0955da9a6ca3fe32feca3c58a245adfb1cd12c376321e743"
-EXPECTED_EFI_SHA256 = "8b9df03b61e21319c1d0329d185b080d17962a1b3763424ddb0d6ddc98c62840"
-EXPECTED_IMAGE_SHA256 = "0fa4c4ce888d9a2ba916898f1ab43f579b92b52553d7f6a96b44fabddc2dd50c"
+EXPECTED_SOURCE_SHA256 = "7ce306288c40b5667d3dbf72fdc2782546a922ea108d7c06ed1f766b0bf7c7a5"
+EXPECTED_EFI_SHA256 = "18a098c4168b1679c3d4d11a59d67c0d4ecb917a2f0720e21741bddbb62bc30d"
+EXPECTED_IMAGE_SHA256 = "bd15cc66ee6340bd0225a4394bd6d754f0b31115b52b4ee6d98a513ac8e90df2"
 EXPECTED_MAC_SOURCE_SHA256 = "5bb9131f181fd74cf2dc554143ac9b9c9ede3b84e2af5aa33e89a1f2b13e57f5"
 EXPECTED_PLIST_SHA256 = "1312d38dbb8a06a36e97f01b9fea7558a709a6ad5a81d8a741798fcc0ef1f121"
 USB_IO_GUID = bytes.fromhex("d6 68 2f 2b d2 0c cf 44 8e 8b bb a2 0b 1b 5b 75")
@@ -107,7 +107,8 @@ def inspect_program(program: bytes) -> None:
     require(bytes.fromhex("0b 20 07 00 10 00 10 00 00 00") in program, "passive scan parameters changed")
     require(bytes.fromhex("0c 20 02 01 00") in program, "scan-enable packet changed")
     require(bytes.fromhex("0c 20 02 00 00") in program, "scan-disable packet changed")
-    require(b"PASSIVE RECEIVE ONLY; NO PAIR OR CONNECT" in program, "receive-only banner changed")
+    require(b"PASSIVE RX; NO PAIR OR CONNECT" in program, "receive-only banner changed")
+    require(b"RX/LE/ADV (HEX)=00/00/00" in program, "receive diagnostics changed")
     require(b"RABBIT BEACON RECEIVED" in program, "success marker changed")
     require(b"NO PAIR; NO CONNECT; NO RADIO TRANSMIT" in program, "safety marker changed")
     require(program.count(bytes.fromhex("48 83 ec 28 ff d0 48 83 c4 28 c3")) == 1, "nested output call ABI changed")
@@ -173,8 +174,14 @@ def main() -> int:
 
         qemu = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
         require(qemu["status"] == "OBSERVED-MANUAL-QEMU-BEACON-RX-FAIL-CLOSED", "QEMU evidence status changed")
-        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
-            require(qemu["bindings"][field] == report_a[field], f"QEMU {field} binding changed")
+        old_bindings = {
+            "probe_sha256": "5af8faf2d75190d264a213235fce17a0e20c1674965ff00f1a2eb6ff86cce3e8",
+            "target_sha256": EXPECTED_TARGET_SHA256,
+            "program_sha256": "0aa77e83498e57bb3dc6554e9e5750ec9a12b42f5fa0a4d76f6c9c86ccf0465f",
+            "efi_sha256": "8b9df03b61e21319c1d0329d185b080d17962a1b3763424ddb0d6ddc98c62840",
+            "image_sha256": "0fa4c4ce888d9a2ba916898f1ab43f579b92b52553d7f6a96b44fabddc2dd50c",
+        }
+        require(qemu["bindings"] == old_bindings, "archived v0.1 QEMU bindings changed")
         require(qemu["observation"]["visible_version"] == "v0.1", "QEMU version marker changed")
         require(qemu["observation"]["visible_mode"] == "PASSIVE RECEIVE ONLY; NO PAIR OR CONNECT", "QEMU mode marker changed")
         require(qemu["observation"]["visible_stage"] == "STAGE 1: FIND 0CF3:E009 INTERFACE 00", "QEMU stage changed")
@@ -183,7 +190,15 @@ def main() -> int:
         require(qemu["observation"]["passive_scan_started"] is False, "QEMU claims passive scanning")
         require(qemu["observation"]["radio_operations_requested"] == 0, "QEMU claims radio activity")
         require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
-        print("PASS: exact QEMU evidence proves the receiver fails closed before HCI and radio")
+        print("PASS: archived v0.1 QEMU evidence remains bound to its exact fail-closed artifact")
+
+        physical = load_json(ROOT / "evidence" / "dell-optiplex-3060-v01-timeout-physical-observed.json")
+        require(physical["status"] == "OBSERVED-MANUAL-PHYSICAL-BEACON-NOT-RECEIVED", "v0.1 physical status changed")
+        require(physical["bindings"]["program_sha256"] == old_bindings["program_sha256"], "v0.1 physical program binding changed")
+        require(physical["bindings"]["efi_sha256"] == old_bindings["efi_sha256"], "v0.1 physical EFI binding changed")
+        require(physical["observation"]["passive_scan_disabled"] is True, "v0.1 did not record scan cleanup")
+        require(physical["observation"]["result"] == "RABBIT BEACON NOT RECEIVED WITHIN BUDGET", "v0.1 physical result changed")
+        print("PASS: physical v0.1 timeout is preserved without claiming zero received advertisements")
 
         over_budget = copy.deepcopy(probe)
         over_budget["limits"]["max_scan_events"] = 101
@@ -209,7 +224,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: QEMU-observed receive-only Rabbit BLE beacon contract")
+    print("PASS: pre-QEMU v0.2 receive-counter Rabbit BLE diagnostic contract")
     return 0
 
 

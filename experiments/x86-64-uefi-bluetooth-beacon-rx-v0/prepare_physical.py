@@ -13,15 +13,15 @@ from pathlib import Path
 from rabbit_beacon_rx import PROBE_PATH, ROOT, TARGET_PATH, build, load_json
 
 
-OUTPUT = Path("/tmp/rabbit-bluetooth-beacon-rx-v01.img")
-REPORT = Path("/tmp/rabbit-bluetooth-beacon-rx-v01.json")
+OUTPUT = Path("/tmp/rabbit-bluetooth-beacon-rx-v02.img")
+REPORT = Path("/tmp/rabbit-bluetooth-beacon-rx-v02.json")
 
 
 def run_verifier() -> None:
     completed = subprocess.run([sys.executable, str(ROOT / "verify.py")], check=False)
     if completed.returncode != 0:
         raise RuntimeError("verification failed; no physical candidate was prepared")
-    evidence = ROOT / "evidence" / "qemu-macos-arm64-observed.json"
+    evidence = ROOT / "evidence" / "qemu-macos-arm64-v02-observed.json"
     if not evidence.is_file():
         raise RuntimeError("QEMU gate is not recorded yet; physical preparation remains closed")
 
