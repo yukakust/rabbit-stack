@@ -474,8 +474,9 @@ SHA-256 `3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548`.
 The fresh exact v0.3 QEMU mismatch observation passed without RAM, VM, HCI, radio, or
 framebuffer effects. The corrected physical installation then accepted and displayed a
 complete six-frame blue-triangle program without rebooting Dell or moving USB after
-boot. The next gate is arrow movement and replacement by a second complete program in
-the same runtime.
+boot. Arrow movement worked in all four directions, and a second six-frame program in
+the same runtime atomically replaced the triangle with an arrow-controlled green square.
+The next protocol gates are sender authentication and Dell-to-Mac acknowledgement.
 
 ### U10 — Universal installer
 

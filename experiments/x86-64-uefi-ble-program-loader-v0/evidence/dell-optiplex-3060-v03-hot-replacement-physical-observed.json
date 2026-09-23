@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-rabbit-vm-loader-v0.3-hot-replacement-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-RABBIT-VM-HOT-REPLACEMENT",
+  "bindings": {
+    "probe_sha256": "e4a09cc6b7550316fbc6a158a58eb8714789a09a147d9abaa39e9d02f1607a4a",
+    "target_sha256": "30be62d430fdc2e7ae9fb9e4b0576cc716e197aa1b582d17473f505c27e7fe54",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "9304d59a6088c5513558a4b393b4943932df532055805b85f800e7c7a8f89a7c",
+    "efi_sha256": "7bb3b4875eb331213ae5bd4de8e58da35f634cb7960178d0862de4232ce95f54",
+    "image_sha256": "3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548",
+    "sender_source_sha256": "11ee2b6e832d9cb5a101cc17f6663bcb8228c119859192bc02b4e19678f70ae5"
+  },
+  "session": {
+    "first_program": {
+      "shape": "triangle",
+      "rgb": [51, 102, 255],
+      "x": 400,
+      "y": 240,
+      "size": 96,
+      "step": 16,
+      "arrows": true,
+      "bytecode_hex": "01023366ff600110029001f000000000ff00000000000000",
+      "fnv1a32": "2860C505"
+    },
+    "replacement_program": {
+      "shape": "square",
+      "rgb": [34, 204, 102],
+      "x": 650,
+      "y": 350,
+      "size": 64,
+      "step": 24,
+      "arrows": true,
+      "bytecode_hex": "010122cc66400118028a025e01000000ff00000000000000",
+      "fnv1a32": "B10F7B1C"
+    }
+  },
+  "observation": {
+    "method": "owner-confirmed-expected-physical-checklist",
+    "triangle_moved_up": true,
+    "triangle_moved_down": true,
+    "triangle_moved_left": true,
+    "triangle_moved_right": true,
+    "replacement_program_applied": true,
+    "old_triangle_removed": true,
+    "green_square_visible": true,
+    "green_square_arrow_control_worked": true,
+    "same_loader_runtime": true,
+    "usb_moved_between_programs": false,
+    "dell_rebooted_between_programs": false,
+    "persistent_writes": 0
+  },
+  "recovery": "Esc disables passive scan and exits; power-off discards controller and VM RAM"
+}

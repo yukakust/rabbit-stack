@@ -132,6 +132,23 @@ def main() -> int:
     success_observed = physical_success["observation"]
     require(success_observed["complete_program_applied"] and success_observed["triangle_visible"], "physical program application evidence changed")
     require(not success_observed["usb_moved_after_boot"] and not success_observed["dell_rebooted_for_program"] and success_observed["persistent_writes"] == 0, "physical runtime boundary changed")
+    replacement = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-v03-hot-replacement-physical-observed.json")
+    require(replacement["status"] == "OBSERVED-MANUAL-PHYSICAL-RABBIT-VM-HOT-REPLACEMENT", "physical replacement status changed")
+    for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+        require(replacement["bindings"][field] == report_a[field], f"physical replacement evidence is stale for {field}")
+    first_bytes = bytes.fromhex(replacement["session"]["first_program"]["bytecode_hex"])
+    replacement_bytes = bytes.fromhex(replacement["session"]["replacement_program"]["bytecode_hex"])
+    require(decode_program(first_bytes)["shape"] == "triangle", "recorded first physical shape changed")
+    require(decode_program(replacement_bytes) == {
+        "vm_version": 1, "shape": "square", "rgb": [34, 204, 102], "size": 64,
+        "arrows": True, "step": 24, "x": 650, "y": 350,
+    }, "recorded replacement program changed")
+    replacement_observed = replacement["observation"]
+    require(all(replacement_observed[field] for field in (
+        "triangle_moved_up", "triangle_moved_down", "triangle_moved_left", "triangle_moved_right",
+        "replacement_program_applied", "old_triangle_removed", "green_square_visible",
+        "green_square_arrow_control_worked", "same_loader_runtime")), "physical hot-replacement observation changed")
+    require(not replacement_observed["usb_moved_between_programs"] and not replacement_observed["dell_rebooted_between_programs"] and replacement_observed["persistent_writes"] == 0, "physical hot-replacement boundary changed")
     print("PASS: deterministic UEFI image contains the transactional Rabbit VM loader")
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
@@ -141,6 +158,7 @@ def main() -> int:
     print("PASS: physical v0.2 failure is localized before the chained runtime's first UEFI call")
     print("PASS: exact v0.3 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
     print("PASS: physical v0.3 accepted and displayed a complete six-frame triangle program without reboot or USB movement")
+    print("PASS: one physical runtime moved the triangle and atomically replaced it with an arrow-controlled green square")
     print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
     return 0
 

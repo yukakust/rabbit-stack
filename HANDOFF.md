@@ -687,8 +687,12 @@ framebuffer effects. The corrected image then passed physically: Dell initialize
 bound the framebuffer, entered the long-lived runtime, received a complete six-frame
 Rabbit VM program from the Mac, atomically applied it, and displayed the requested blue
 triangle. No reboot, post-boot USB movement, or persistent write participated. Arrow
-movement for this triangle and replacement by a second complete program remain the next
-physical observations.
+movement then worked in all four directions. In the same runtime, a second complete
+six-frame program atomically removed the triangle and displayed an arrow-controlled
+green square with different position, size, color, and movement step. Neither USB
+movement nor Dell reboot occurred between programs. This completes the first physical
+hot-program-replacement slice; transport authentication and Dell-to-Mac acknowledgement
+are still absent.
 
 ## U7 pre-physical artifact result
 
