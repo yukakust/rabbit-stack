@@ -86,13 +86,15 @@ every layer we would otherwise be tempted to hide.
 - [`experiments/x86-64-uefi-qca-ram-load-v0`](experiments/x86-64-uefi-qca-ram-load-v0):
   exact hash-pinned Rome 3.2 rampatch and NVM payloads are bounded to volatile
   controller RAM; post-load status is observed without reset, HCI, or radio activity.
+- [`experiments/x86-64-uefi-qca-beacon-rx-v0`](experiments/x86-64-uefi-qca-beacon-rx-v0):
+  one boot composes that transient initialization with the reviewed 20-second passive
+  exact-UUID receiver; active scan, transmission, pairing, connection, reset, flash,
+  and persistent machine writes remain forbidden.
 
 ## Start here
 
-Read [`HANDOFF.md`](HANDOFF.md), then continue with
-[`experiments/x86-64-uefi-bluetooth-probe-v0/README.md`](experiments/x86-64-uefi-bluetooth-probe-v0/README.md).
-The active next gate is
-[`experiments/x86-64-uefi-qca-ram-load-v0/README.md`](experiments/x86-64-uefi-qca-ram-load-v0/README.md).
+Read [`HANDOFF.md`](HANDOFF.md). The active next gate is
+[`experiments/x86-64-uefi-qca-beacon-rx-v0/README.md`](experiments/x86-64-uefi-qca-beacon-rx-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

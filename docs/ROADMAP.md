@@ -387,6 +387,14 @@ initialization primitive without reset or radio. The next boundary composes that
 primitive with the already reviewed 20-second passive exact-UUID receiver in one boot;
 it still forbids active scanning, pairing, connection, and Dell radio transmission.
 
+That composition now exists as `x86-64-uefi-qca-beacon-rx-v0`. Its exact program first
+requires ROM `0x00000302`, installs only the two pinned upstream payloads into volatile
+controller RAM, requires both setup bits, and only then chains into the fixed five-HCI-
+command passive receiver. Mandatory scan-disable cleanup remains last. Deterministic
+build, payload, machine-byte, PE/FAT, command-sequence, budget, UUID, and authority-
+escalation tests pass. Its QEMU exact-device mismatch observation is the next gate;
+physical media has not yet been replaced with this image.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

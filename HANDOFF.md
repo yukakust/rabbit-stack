@@ -576,6 +576,17 @@ Linux's setup path. No reset, HCI command, scan, or radio operation occurred. Th
 artifact must initialize RAM and perform the bounded passive Rabbit-beacon receive in
 the same boot, since full power-off is rollback and clears this state.
 
+`experiments/x86-64-uefi-qca-beacon-rx-v0/` now implements that one-boot composition.
+It chains into the already reviewed passive receiver only after exact ROM matching,
+both pinned volatile payload transfers, and both ready bits. The exact five-command HCI
+sequence ends with mandatory scan disable after at most 20 seconds. Active scan,
+advertising, pairing, connection, Dell radio transmit, controller reset/flash, internal
+storage, and firmware-setting writes remain forbidden and rejected. Deterministic
+verification passes with image SHA-256
+`50d5232d4914e33220d73bff53bd42f428244a96a96c9abbaa19b9766200ab7d`.
+Status is PRE-QEMU and NOT INSTALLED: the next gate is the exact QEMU device-mismatch
+screen before the dedicated USB may be replaced.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk
