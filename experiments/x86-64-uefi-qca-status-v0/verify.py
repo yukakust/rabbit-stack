@@ -169,6 +169,20 @@ def main() -> int:
         rejected("a long setup-status response", lambda: parse_qca_status(b"\xC0\x00"))
         print("PASS: independent parsers decode ROM/PATCH/RAM and PATCH_UPDATED/SYSCFG_UPDATED bits")
 
+        qemu = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-observed.json")
+        require(qemu["status"] == "OBSERVED-MANUAL-QEMU-QCA-STATUS-FAIL-CLOSED", "QEMU evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu["bindings"][field] == report_a[field], f"QEMU {field} binding changed")
+        observation = qemu["observation"]
+        require(observation["visible_version"] == "v0.1", "QEMU version marker changed")
+        require(observation["result"] == "TARGET NOT FOUND; NO VENDOR REQUEST SENT", "QEMU fail-closed result changed")
+        require(observation["target_found"] is False, "QEMU evidence claims exact target")
+        require(observation["vendor_in_requests_sent"] == observation["vendor_out_requests_sent"] == 0, "QEMU evidence claims a vendor request")
+        require(observation["firmware_download_performed"] is False and observation["controller_reset_performed"] is False, "QEMU evidence claims mutation")
+        require(observation["radio_operations_requested"] == 0, "QEMU evidence claims radio activity")
+        require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
+        print("PASS: exact QEMU evidence proves both vendor reads fail closed without 0CF3:E009")
+
         wrong_device = copy.deepcopy(probe); wrong_device["target_usb_id"] = "FFFF:FFFF"
         rejected("a substituted USB device", lambda: validate_probe(wrong_device))
         extra_request = copy.deepcopy(probe); extra_request["limits"]["vendor_in_requests"] = 3
@@ -187,7 +201,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-QEMU read-only QCA Rome setup-status contract")
+    print("PASS: QEMU-observed read-only QCA Rome setup-status contract")
     return 0
 
 

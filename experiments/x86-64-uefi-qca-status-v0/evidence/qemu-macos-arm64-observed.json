@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-qca-status-v0.1-macos-arm64-2026-09-23",
+  "status": "OBSERVED-MANUAL-QEMU-QCA-STATUS-FAIL-CLOSED",
+  "bindings": {
+    "probe_sha256": "9de7842a95fea90b7efda0f0114209ec1101d5d2ebae5e0c0482dabbdace2c5f",
+    "target_sha256": "0f421a52791a69c24eba65b031dd544da8ff75f8123bd9ebf2276006febea413",
+    "program_sha256": "7746e8954e4a14daec9a494c730fcee7b6fe56c1e72ad02db5f1109cb16efcc0",
+    "efi_sha256": "aa1f1f9dbbd4ae92749ea6c7154066746c16bef2c3b56b4dc2ab69bad31b148d",
+    "image_sha256": "e7747dbd747ef9add8a5853d01f05e93ebaf20807399a0d697883b15fd235b1f"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "emulated_usb_device": "qemu-usb-keyboard",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "visible_version": "v0.1",
+    "visible_mode": "READ ONLY; NO DOWNLOAD OR RADIO",
+    "visible_stage": "STAGE 1: FIND 0CF3:E009 INTERFACE 00",
+    "result": "TARGET NOT FOUND; NO VENDOR REQUEST SENT",
+    "target_found": false,
+    "vendor_in_requests_sent": 0,
+    "vendor_out_requests_sent": 0,
+    "controller_reset_performed": false,
+    "firmware_download_performed": false,
+    "radio_operations_requested": 0
+  },
+  "physical_dell_status": "NOT-OBSERVED-WITH-QCA-STATUS-V0.1",
+  "limitations": [
+    "QEMU does not model the physical Dell 0CF3:E009 controller",
+    "the observation proves fail-closed target matching, not QCA status values",
+    "physical execution requires a separately authorized removable-media replacement"
+  ]
+}

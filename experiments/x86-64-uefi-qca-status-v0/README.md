@@ -28,8 +28,10 @@ QEMU does not contain the exact Qualcomm controller. The required result is:
 TARGET NOT FOUND; NO VENDOR REQUEST SENT
 ```
 
-Photograph the result and close QEMU. Physical preparation stays closed until that
-observation is recorded and bound to the exact hashes.
+On 2026-09-23 QEMU 11.1.1 on the Apple Silicon Mac displayed that exact result. The
+owner-reviewed observation is bound to all five artifact identities. Physical
+preparation is now open, but it still performs no device write and requires a separate
+exact-media review and explicit authorization.
 
 Reviewed identities:
 
@@ -39,4 +41,5 @@ EFI SHA-256:     aa1f1f9dbbd4ae92749ea6c7154066746c16bef2c3b56b4dc2ab69bad31b148
 image SHA-256:   e7747dbd747ef9add8a5853d01f05e93ebaf20807399a0d697883b15fd235b1f
 ```
 
-Status: **PRE-QEMU**. No physical-device write has been authorized or performed.
+Status: **QEMU-OBSERVED-NOT-PHYSICALLY-INSTALLED**. No physical-device write has been
+authorized or performed.

@@ -540,8 +540,11 @@ one-byte setup status. It displays `PATCH_UPDATED` (`0x80`) and `SYSCFG_UPDATED`
 (`0x40`) independently. Vendor OUT, firmware download, controller reset, HCI, radio,
 and persistent writes are absent and rejected by the verifier. The exact image identity
 is `e7747dbd747ef9add8a5853d01f05e93ebaf20807399a0d697883b15fd235b1f`.
-Status is PRE-QEMU: QEMU must show `TARGET NOT FOUND; NO VENDOR REQUEST SENT` before
-physical preparation can be opened.
+QEMU 11.1.1 on the Apple Silicon Mac showed the exact v0.1 title, read-only mode,
+Stage 1, and `TARGET NOT FOUND; NO VENDOR REQUEST SENT`. No vendor request, reset,
+download, HCI command, or radio operation occurred. Exact evidence is now committed,
+so physical preparation is open; writing removable media remains a separate explicit
+authorization boundary.
 
 ## U7 pre-physical artifact result
 

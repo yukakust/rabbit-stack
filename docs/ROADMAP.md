@@ -363,6 +363,11 @@ for ROM/patch/RAM identity and `PATCH_UPDATED`/`SYSCFG_UPDATED`. It cannot downl
 firmware, reset the controller, issue HCI commands, or operate the radio. Its QEMU
 fail-closed gate comes before any separately authorized physical run.
 
+That QEMU gate passed exactly on the Apple Silicon Mac: the artifact reached Stage 1,
+did not find `0CF3:E009`, and sent no vendor request. The observation is exact-bound and
+opens read-only physical preparation. Removable-media replacement remains a separate
+owner-authorized boundary.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve
