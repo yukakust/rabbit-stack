@@ -38,8 +38,8 @@ is entered by `JMP`. V0.3 changes only that frame to `0x708`, preserving the lar
 workspace and restoring the proven 8-mod-16 pre-call relationship.
 
 The v0.3 physical loader proved complete program transfer, four-direction movement,
-and hot replacement. V0.4 adds the bounded Dell-to-Mac acknowledgement. After fresh
-v0.4 QEMU evidence is recorded, `python3 prepare_physical.py` creates
+and hot replacement. V0.4 adds the bounded Dell-to-Mac acknowledgement. Fresh
+v0.4 QEMU mismatch evidence is recorded, so `python3 prepare_physical.py` creates
 `/tmp/rabbit-vm-loader-v04.img` without writing any device.
 
 Once installed and booted on the Dell, arbitrary colors can be sent without

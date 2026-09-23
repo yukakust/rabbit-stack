@@ -41,6 +41,15 @@ V03_BINDINGS = {
     "image_sha256": "3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548",
 }
 
+V04_BINDINGS = {
+    "probe_sha256": EXPECTED["probe_sha256"],
+    "target_sha256": EXPECTED["target_sha256"],
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": EXPECTED["program_sha256"],
+    "efi_sha256": EXPECTED["efi_sha256"],
+    "image_sha256": EXPECTED["image_sha256"],
+}
+
 SENDER_FILES = {
     "mac_vm_program.m": "815c0f82ba1a70cd3605f16e46502a1ce64ef09a43da14c6e137237d2d9942d1",
     "send_program.py": "7be8e66e476bd1ee5aa84d6beb2815fa72914cc66399d2982954f5bfc6b49985",
@@ -181,6 +190,16 @@ def main() -> int:
         "replacement_program_applied", "old_triangle_removed", "green_square_visible",
         "green_square_arrow_control_worked", "same_loader_runtime")), "physical hot-replacement observation changed")
     require(not replacement_observed["usb_moved_between_programs"] and not replacement_observed["dell_rebooted_between_programs"] and replacement_observed["persistent_writes"] == 0, "physical hot-replacement boundary changed")
+    qemu_v04 = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v04-observed.json")
+    require(qemu_v04["status"] == "OBSERVED-MANUAL-QEMU-RABBIT-VM-LOADER-V0.4-FAIL-CLOSED", "QEMU v0.4 evidence status changed")
+    for field, expected in V04_BINDINGS.items():
+        require(qemu_v04["bindings"][field] == expected, f"QEMU v0.4 evidence changed for {field}")
+    qemu_v04_observed = qemu_v04["observation"]
+    require(qemu_v04_observed["visible_identity"] == "RABBIT WIRELESS PROGRAM LOADER v0.4", "QEMU v0.4 visible identity changed")
+    require(qemu_v04_observed["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT", "QEMU v0.4 mismatch result changed")
+    require(not qemu_v04_observed["target_found"] and all(qemu_v04_observed[field] == 0 for field in (
+        "controller_ram_writes", "vm_program_bytes_received", "hci_commands_sent",
+        "radio_operations_requested", "framebuffer_writes_performed")), "QEMU v0.4 crossed a forbidden mismatch boundary")
     print("PASS: deterministic UEFI image contains the transactional Rabbit VM loader")
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
@@ -193,6 +212,7 @@ def main() -> int:
     print("PASS: archived v0.3 QEMU mismatch evidence remains bound to its exact artifact")
     print("PASS: physical v0.3 accepted and displayed a complete six-frame triangle program without reboot or USB movement")
     print("PASS: one physical runtime moved the triangle and atomically replaced it with an arrow-controlled green square")
+    print("PASS: exact v0.4 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
     print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
     return 0
 

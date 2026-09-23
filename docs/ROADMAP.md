@@ -482,7 +482,7 @@ seconds, stops advertising, and resumes passive receive. Mac concurrently scans 
 exact receipt and exits only after validating it. This expands Dell authority from zero
 transmit to one narrowly typed, bounded, non-connectable acknowledgement; arbitrary
 transmit, active scan, pairing, connection, native code, and persistence remain rejected.
-The fresh QEMU gate and physical receipt are still required. Sender authentication,
+The fresh QEMU mismatch gate is recorded; the physical receipt is still required. Sender authentication,
 anti-replay, key lifecycle, and encryption remain deliberately deferred in `debts.md`.
 
 ### U10 — Universal installer

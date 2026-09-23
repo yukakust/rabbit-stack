@@ -705,6 +705,10 @@ correlated application receipt; it does not cryptographically prove who sent it.
 anti-replay state, key lifecycle, and optional encryption are explicitly deferred in
 `debts.md`. The deterministic pre-QEMU v0.4 image SHA-256 is
 `a56c358736c4122d0f9aeb8b69d862d306bbcc370e5ad29681d9d0be2de05077`.
+The exact v0.4 image was then observed in QEMU on macOS ARM64. It displayed the
+v0.4 identity and stopped at `TARGET NOT FOUND; NO DEVICE WRITE SENT`; no controller
+RAM, VM, HCI, radio, or framebuffer effect was crossed. The dedicated physical USB
+may now be prepared for the acknowledgement test.
 
 ## U7 pre-physical artifact result
 
