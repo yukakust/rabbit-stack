@@ -35,7 +35,7 @@ expanded `0x700`-byte frame inverted Microsoft x64 stack alignment because the r
 is entered by `JMP`. V0.3 changes only that frame to `0x708`, preserving the larger
 workspace and restoring the proven 8-mod-16 pre-call relationship.
 
-After fresh v0.3 QEMU evidence is recorded, `python3 prepare_physical.py` creates
+Fresh v0.3 QEMU evidence is now recorded. `python3 prepare_physical.py` creates
 `/tmp/rabbit-vm-loader-v03.img` without writing any device.
 
 Once installed and booted on the Dell, arbitrary colors can be sent without

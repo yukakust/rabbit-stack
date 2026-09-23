@@ -681,7 +681,9 @@ passes with EFI SHA-256
 `7bb3b4875eb331213ae5bd4de8e58da35f634cb7960178d0862de4232ce95f54`
 and image SHA-256
 `3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548`.
-Fresh exact v0.3 QEMU evidence is required before physical preparation reopens.
+The fresh exact v0.3 QEMU mismatch observation passed: the corrected identity was
+visible and the emulated-device mismatch stopped before RAM, VM, HCI, radio, or
+framebuffer effects. Physical preparation is open for the corrected image.
 
 ## U7 pre-physical artifact result
 

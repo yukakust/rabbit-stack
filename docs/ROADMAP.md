@@ -471,8 +471,9 @@ runtime is reached by `JMP`, so its expanded frame must remain 8 mod 16 before M
 x64 UEFI calls. V0.3 changes the frame from `0x700` to `0x708` and records the failed
 v0.2 artifact as physical evidence. Deterministic verification passes with image
 SHA-256 `3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548`.
-The next gate is a fresh exact v0.3 QEMU mismatch observation, followed by one corrected
-physical USB installation and multiple scene programs without moving USB.
+The fresh exact v0.3 QEMU mismatch observation passed without RAM, VM, HCI, radio, or
+framebuffer effects. The next gate is one corrected physical USB installation and
+multiple scene programs without moving USB.
 
 ### U10 — Universal installer
 

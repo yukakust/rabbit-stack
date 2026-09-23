@@ -108,6 +108,16 @@ def main() -> int:
     require(physical_observed["rampatch_transfer"] == "OK" and physical_observed["nvm_transfer"] == "OK", "physical QCA initialization evidence changed")
     require(not physical_observed["chained_runtime_title_visible"] and not physical_observed["hci_reset_observed"] and not physical_observed["passive_scan_observed"], "physical v0.2 crossed the recorded boundary")
     require("0x700" in physical["diagnosis"] and "Microsoft-x64 call alignment" in physical["diagnosis"], "physical failure diagnosis changed")
+    current = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v03-observed.json")
+    require(current["status"] == "OBSERVED-MANUAL-QEMU-RABBIT-VM-LOADER-V0.3-FAIL-CLOSED", "current QEMU evidence status changed")
+    for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+        require(current["bindings"][field] == report_a[field], f"current QEMU evidence is stale for {field}")
+    current_observed = current["observation"]
+    require(current_observed["visible_identity"] == "RABBIT WIRELESS PROGRAM LOADER v0.3", "current QEMU visible identity changed")
+    require(current_observed["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT", "current QEMU mismatch result changed")
+    require(not current_observed["target_found"] and all(current_observed[field] == 0 for field in (
+        "controller_ram_writes", "vm_program_bytes_received", "hci_commands_sent",
+        "radio_operations_requested", "framebuffer_writes_performed")), "current QEMU crossed a forbidden mismatch boundary")
     print("PASS: deterministic UEFI image contains the transactional Rabbit VM loader")
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
@@ -115,6 +125,7 @@ def main() -> int:
     print("PASS: native code, arbitrary memory, transmit, pairing, connection, and persistence remain forbidden")
     print("PASS: archived v0.2 QEMU mismatch evidence remains bound to its exact artifact")
     print("PASS: physical v0.2 failure is localized before the chained runtime's first UEFI call")
+    print("PASS: exact v0.3 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
     print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
     return 0
 
