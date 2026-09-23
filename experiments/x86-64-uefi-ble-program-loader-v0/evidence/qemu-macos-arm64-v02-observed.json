@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-x86-64-uefi-rabbit-vm-loader-v0.2-macos-arm64-2026-09-23",
+  "status": "OBSERVED-MANUAL-QEMU-RABBIT-VM-LOADER-V0.2-FAIL-CLOSED",
+  "bindings": {
+    "probe_sha256": "e96f76339184995462ebc3fbf02f6e7fa89639cdef720cb68fda7e2a7ebadbf9",
+    "target_sha256": "30be62d430fdc2e7ae9fb9e4b0576cc716e197aa1b582d17473f505c27e7fe54",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "f25668c0211bd0e7d3aa07f869e8ea517a80df876d8bd990c225e5faf5cd39d3",
+    "efi_sha256": "64c81e301cd552f42a3ee67743d6ebcf1a386215f5276fd27ce3de9412198c52",
+    "image_sha256": "0d0b53b980bd4645b624aeb7489aa0d36fb93e302bd0edfa77e869e6cb161c9f"
+  },
+  "execution": {
+    "host_architecture": "arm64",
+    "runner": "qemu-system-x86_64",
+    "runner_version": "11.1.1",
+    "emulated_usb_device": "qemu-usb-keyboard",
+    "physical_execution_verified": false,
+    "physical_writes_performed": []
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "visible_identity": "RABBIT WIRELESS PROGRAM LOADER v0.2",
+    "visible_mode": "TRANSIENT RAM; ONE POST-LOAD HCI RESET",
+    "result": "TARGET NOT FOUND; NO DEVICE WRITE SENT",
+    "target_found": false,
+    "controller_ram_writes": 0,
+    "vm_program_bytes_received": 0,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0,
+    "framebuffer_writes_performed": 0
+  },
+  "limitations": [
+    "QEMU does not model the physical Dell 0CF3:E009 controller",
+    "transactional BLE transfer, VM execution, drawing, and arrow input remain beyond the mismatch gate",
+    "physical execution requires replacing the dedicated removable-media image"
+  ]
+}

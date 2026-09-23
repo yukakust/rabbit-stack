@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import copy, hashlib
+from pathlib import Path
 
 from fetch_firmware import fetch_all
 from rabbit_qca_beacon import (
@@ -82,11 +83,22 @@ def main() -> int:
     rejected("an unreviewed native-code opcode", lambda: validate_target(expanded))
     require(report_a["persistent_writes_authorized"] == 0, "persistent write authority appeared")
     require(report_a["native_code_execution_authorized"] is False, "native execution appeared")
+    evidence = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v02-observed.json")
+    require(evidence["status"] == "OBSERVED-MANUAL-QEMU-RABBIT-VM-LOADER-V0.2-FAIL-CLOSED", "QEMU evidence status changed")
+    for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+        require(evidence["bindings"][field] == report_a[field], f"QEMU evidence is stale for {field}")
+    observed = evidence["observation"]
+    require(observed["visible_identity"] == "RABBIT WIRELESS PROGRAM LOADER v0.2", "QEMU visible identity changed")
+    require(observed["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT", "QEMU mismatch result changed")
+    require(not observed["target_found"] and all(observed[field] == 0 for field in (
+        "controller_ram_writes", "vm_program_bytes_received", "hci_commands_sent",
+        "radio_operations_requested", "framebuffer_writes_performed")), "QEMU crossed a forbidden mismatch boundary")
     print("PASS: deterministic UEFI image contains the transactional Rabbit VM loader")
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
     print("PASS: old scene remains active until a complete bounded program validates and commits")
     print("PASS: native code, arbitrary memory, transmit, pairing, connection, and persistence remain forbidden")
+    print("PASS: exact QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
     print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
     return 0
 

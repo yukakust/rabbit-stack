@@ -674,7 +674,9 @@ firmware writes remain forbidden. The deterministic pre-QEMU verifier passes wit
 EFI SHA-256 `64c81e301cd552f42a3ee67743d6ebcf1a386215f5276fd27ce3de9412198c52`
 and image SHA-256
 `0d0b53b980bd4645b624aeb7489aa0d36fb93e302bd0edfa77e869e6cb161c9f`.
-The next gate is a manual QEMU mismatch observation; it has not yet been installed.
+The manual QEMU mismatch observation now passes with the exact v0.2 identity and stops
+before RAM, VM, HCI, radio, or framebuffer effects. Physical preparation is open; the
+loader has not yet been installed on the dedicated USB.
 
 ## U7 pre-physical artifact result
 
