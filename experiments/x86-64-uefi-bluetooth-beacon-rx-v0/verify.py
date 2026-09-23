@@ -200,6 +200,18 @@ def main() -> int:
         require(physical["observation"]["result"] == "RABBIT BEACON NOT RECEIVED WITHIN BUDGET", "v0.1 physical result changed")
         print("PASS: physical v0.1 timeout is preserved without claiming zero received advertisements")
 
+        qemu_v02 = load_json(ROOT / "evidence" / "qemu-macos-arm64-v02-observed.json")
+        require(qemu_v02["status"] == "OBSERVED-MANUAL-QEMU-BEACON-RX-V02-FAIL-CLOSED", "v0.2 QEMU status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu_v02["bindings"][field] == report_a[field], f"v0.2 QEMU {field} binding changed")
+        require(qemu_v02["observation"]["visible_version"] == "v0.2", "v0.2 QEMU version marker changed")
+        require(qemu_v02["observation"]["visible_mode"] == "PASSIVE RX; NO PAIR OR CONNECT", "v0.2 QEMU mode changed")
+        require(qemu_v02["observation"]["result"] == "TARGET NOT FOUND; NO HCI COMMAND SENT", "v0.2 QEMU result changed")
+        require(qemu_v02["observation"]["hci_commands_sent"] == 0, "v0.2 QEMU claims HCI commands")
+        require(qemu_v02["observation"]["passive_scan_started"] is False, "v0.2 QEMU claims scanning")
+        require(qemu_v02["observation"]["radio_operations_requested"] == 0, "v0.2 QEMU claims radio activity")
+        print("PASS: exact v0.2 QEMU evidence fails closed before HCI and radio")
+
         over_budget = copy.deepcopy(probe)
         over_budget["limits"]["max_scan_events"] = 101
         rejected("an unbounded scan extension", lambda: validate_probe(over_budget))
@@ -224,7 +236,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-QEMU v0.2 receive-counter Rabbit BLE diagnostic contract")
+    print("PASS: QEMU-observed v0.2 receive-counter Rabbit BLE diagnostic contract")
     return 0
 
 

@@ -42,8 +42,8 @@ TARGET NOT FOUND; NO HCI COMMAND SENT
 
 No scan is started in QEMU. On 2026-09-23 QEMU 11.1.1 on the Apple Silicon Mac displayed
 that exact result for v0.1. The owner-reviewed observation remains bound to the exact
-v0.1 identities. V0.2 must independently reproduce this fail-closed result before its
-`prepare_physical.py` gate opens.
+v0.1 identities. V0.2 independently reproduced the same fail-closed result, bound to
+its new identities, so `prepare_physical.py` is open for read-only media inspection.
 
 ## Mac sender
 
@@ -93,4 +93,4 @@ EFI SHA-256:     18a098c4168b1679c3d4d11a59d67c0d4ecb917a2f0720e21741bddbb62bc30
 image SHA-256:   bd15cc66ee6340bd0225a4394bd6d754f0b31115b52b4ee6d98a513ac8e90df2
 ```
 
-Status: **V0.2 PRE-QEMU; NOT PHYSICALLY INSTALLED**.
+Status: **V0.2 QEMU-OBSERVED; NOT PHYSICALLY INSTALLED**.

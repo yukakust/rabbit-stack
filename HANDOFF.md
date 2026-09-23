@@ -519,8 +519,11 @@ V0.2 keeps the same five-command receive-only authority and adds hexadecimal cou
 for successful scan-window USB events, LE Meta events, and LE Advertising Reports. Its
 new EFI identity is `18a098c4168b1679c3d4d11a59d67c0d4ecb917a2f0720e21741bddbb62bc30d`
 and image identity is `bd15cc66ee6340bd0225a4394bd6d754f0b31115b52b4ee6d98a513ac8e90df2`.
-All deterministic and negative checks pass. It is PRE-QEMU and physical preparation is
-closed until its separate fail-closed QEMU observation is recorded.
+All deterministic and negative checks pass. Physical preparation was initially closed
+pending a separate fail-closed QEMU observation. The owner then ran
+that exact gate: QEMU displayed v0.2, the receive-only mode, Stage 1, and `TARGET NOT
+FOUND; NO HCI COMMAND SENT`. No HCI command, scan, or radio operation occurred. Exact
+v0.2 QEMU evidence is committed, so read-only physical preparation is now open.
 
 ## U7 pre-physical artifact result
 
