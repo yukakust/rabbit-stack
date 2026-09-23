@@ -14,13 +14,13 @@ from rabbit_qca_beacon import (
 )
 
 EXPECTED = {
-    "probe_sha256": "4a26f0563f759b9670cea083fbb8b0d84826031131e0b449b57275075f678453",
-    "target_sha256": "a90a9aa0d35cca26b5e0d612505fe60b2859aae549f427ae5078fe79b295e804",
-    "source_sha256": "8363da22819d4db5cc7f421424345dc121149c4ae05e0271336359f634c37b7c",
+    "probe_sha256": "b06cbbb8d72e723de56ef2cafcbfa9912f6a1bd7744da44724f1604619c59efc",
+    "target_sha256": "6616a7956ad18ac7ba4182e33e5fc6f965026f297adba8b04c920be8937bc5f6",
+    "source_sha256": "f3a5ed6f68144179e4bfaba6c87c9b05b45ffc686cb33eb9af0b1800c46e9aee",
     "program_template_sha256": PROGRAM_TEMPLATE_SHA256,
     "program_sha256": PROGRAM_SHA256,
-    "efi_sha256": "9aafb29440b31cd99303c4176c6d82f8b3f64589eeb5154241470bd5ba081056",
-    "image_sha256": "63ea281431ca09cce91d7bedf0ca9684f17f2020422fee17bfe42021bac34f1f",
+    "efi_sha256": "1c5e920f9f4b620ed15a028792c26bcb9f41ea984968c6e38bd94e71320c1bc5",
+    "image_sha256": "1c42713850b25ede0f3064fdbfe2a6d09befd5e85f463a7eb25869bdb289b325",
 }
 
 def require(condition: bool, message: str) -> None:
@@ -45,10 +45,10 @@ def main() -> int:
         require(hashlib.sha256(template).hexdigest() == PROGRAM_TEMPLATE_SHA256, "template hash changed")
         require(hashlib.sha256(program).hexdigest() == PROGRAM_SHA256, "program hash changed")
         for text in (
-            b"RABBIT BLE COLOR COMMAND v0.3", b"INITIAL SQUARE DRAWN=YELLOW",
+            b"RABBIT BLE COLOR COMMAND v0.4", b"INITIAL SQUARE DRAWN=YELLOW",
             b"COMMAND BLUE RECEIVED; SQUARE=BLUE",
             b"COMMAND YELLOW RECEIVED; SQUARE=YELLOW",
-            b"PASSIVE SCAN OFF", b"MAX 120 SECONDS",
+            b"PASSIVE SCAN OFF", b"PASSIVE COMMAND RUNTIME ON; ESC TO STOP",
         ):
             require(text in template, f"required marker changed: {text!r}")
         blue = bytes.fromhex("02 00 00 00 00 00 00 80 45 4c 54 49 42 42 41 52")
@@ -73,7 +73,8 @@ def main() -> int:
             "pairing_authorized", "connection_authorized")), "forbidden radio authority appeared")
         print("PASS: one deterministic image loads exact QCA RAM and exposes only BLUE/YELLOW")
         print("PASS: initial yellow square and bounded centered framebuffer writes are pinned")
-        print("PASS: passive scan has a 120-second ceiling and mandatory disable cleanup")
+        require(report_a["passive_runtime_termination"] == ["local-escape", "power-off"], "runtime termination changed")
+        print("PASS: long-lived passive runtime polls local Escape and retains mandatory disable cleanup")
         print("PASS: Dell transmit, active scan, pairing, connection, storage, and firmware writes remain forbidden")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
 
@@ -100,8 +101,8 @@ def main() -> int:
         print("PASS: archived v0.2 evidence localizes the blackout to the first framebuffer draw")
         qemu_v03 = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v03-observed.json")
         require(qemu_v03["status"] == "OBSERVED-MANUAL-QEMU-BLE-COLOR-COMMAND-V0.3-FAIL-CLOSED", "v0.3 QEMU status changed")
-        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
-            require(qemu_v03["bindings"][field] == report_a[field], f"v0.3 QEMU {field} binding changed")
+        require(qemu_v03["bindings"]["program_sha256"] == "494695dd016ce48ff40c3c84accb0a0db7214b011776be82ca3eddd25644429d", "v0.3 QEMU program binding changed")
+        require(qemu_v03["bindings"]["image_sha256"] == "63ea281431ca09cce91d7bedf0ca9684f17f2020422fee17bfe42021bac34f1f", "v0.3 QEMU image binding changed")
         observation = qemu_v03["observation"]
         require(observation["visible_identity"] == "RABBIT BLE COLOR COMMAND v0.3", "v0.3 visible identity changed")
         require(observation["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT" and not observation["target_found"], "v0.3 mismatch result changed")
@@ -109,8 +110,8 @@ def main() -> int:
         print("PASS: exact v0.3 QEMU mismatch stops before RAM, framebuffer, HCI, and radio")
         physical_v03 = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-v03-blue-yellow-physical-observed.json")
         require(physical_v03["status"] == "OBSERVED-MANUAL-PHYSICAL-BLE-BLUE-YELLOW-COMPLETE", "v0.3 physical evidence status changed")
-        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
-            require(physical_v03["bindings"][field] == report_a[field], f"v0.3 physical {field} binding changed")
+        require(physical_v03["bindings"]["program_sha256"] == "494695dd016ce48ff40c3c84accb0a0db7214b011776be82ca3eddd25644429d", "v0.3 physical program binding changed")
+        require(physical_v03["bindings"]["image_sha256"] == "63ea281431ca09cce91d7bedf0ca9684f17f2020422fee17bfe42021bac34f1f", "v0.3 physical image binding changed")
         observed = physical_v03["observation"]
         require(observed["initial_square_drawn"] == "yellow" and observed["square_after_blue"] == "blue" and observed["square_after_yellow"] == "yellow", "physical color sequence changed")
         require(observed["blue_command_received"] and observed["yellow_command_received"] and observed["both_commands_verified"], "physical command result changed")
@@ -123,8 +124,8 @@ def main() -> int:
         probe, target = load_json(PROBE_PATH), load_json(TARGET_PATH)
         third = copy.deepcopy(probe); third["commands"]["red"] = "52414242-4954-4C45-8000-000000000004"
         rejected("a third command", lambda: validate_probe(third))
-        long_window = copy.deepcopy(probe); long_window["limits"]["max_scan_events"] = 601
-        rejected("a larger receive window", lambda: validate_probe(long_window))
+        timed = copy.deepcopy(probe); timed["limits"]["max_scan_duration_ms"] = 120000
+        rejected("reintroducing an undeclared automatic timeout", lambda: validate_probe(timed))
         broad_pixels = copy.deepcopy(target); broad_pixels["authority"]["gop_framebuffer_write"] = "unbounded"
         rejected("unbounded framebuffer writes", lambda: validate_target(broad_pixels))
         for field in ("active_scan", "radio_transmit", "advertise", "pair", "connect", "internal_storage_writes", "firmware_writes"):
@@ -132,7 +133,7 @@ def main() -> int:
             rejected(f"target permitting {field}", lambda unsafe=unsafe: validate_target(unsafe))
     except (BuildError, OSError, RuntimeError) as error:
         print(f"FAIL: {error}"); return 1
-    print("PASS: QEMU-gated BLE color-command v0.3 contract")
+    print("PASS: corrected pre-QEMU long-lived BLE color-command v0.4 contract")
     return 0
 
 if __name__ == "__main__":

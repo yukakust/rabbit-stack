@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "probe_id": "x86-64-uefi-ble-color-command-v0",
-  "implementation_revision": 3,
+  "implementation_revision": 4,
   "target_usb_id": "0CF3:E009",
   "required_rom_version": "0x00000302",
   "commands": {
@@ -18,19 +18,19 @@
     "issue-one-post-load-hci-reset-and-wait-100ms",
     "bind-current-gop-framebuffer",
     "draw-initial-yellow-square",
-    "configure-bounded-passive-scan",
+    "configure-long-lived-passive-scan",
     "apply-only-exact-blue-or-yellow-command",
-    "disable-passive-scan"
+    "poll-local-escape-between-bounded-receives",
+    "disable-passive-scan-on-local-exit"
   ],
   "limits": {
     "max_usb_interfaces_per_phase": 64,
     "max_hci_commands": 6,
     "max_command_events": 8,
-    "max_scan_events": 600,
     "event_timeout_ms": 200,
-    "max_scan_duration_ms": 120000,
     "max_event_bytes": 80,
-    "framebuffer_writes_per_command": 16384
+    "framebuffer_writes_per_command": 16384,
+    "runtime_duration": "until-local-escape-or-power-off"
   },
   "forbidden_operations": [
     "controller-flash-write",
@@ -44,5 +44,5 @@
     "firmware-setting-write",
     "arbitrary-code-command"
   ],
-  "contract": "one-boot-two-command-passive-ble-color-runtime"
+  "contract": "one-boot-long-lived-two-command-passive-ble-color-runtime"
 }

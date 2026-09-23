@@ -436,7 +436,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.3\r\n=============================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.4\r\n=============================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 target_found: .asciz "TARGET FOUND\r\nSTAGE 2: REQUIRE ROM=00000302\r\n"
 rom_ok: .asciz "ROM MATCH: OK\r\n"
 before_template: .ascii "STATUS BEFORE="
@@ -710,12 +710,24 @@ scan_handles_freed:
 
     xor r15d, r15d             # bit 0 BLUE seen; bit 1 YELLOW seen
     xor r12d, r12d
+    mov dword ptr [rsp + 0x424], 0 # set only by local Escape cleanup
     mov dword ptr [rsp + 0xf0], 0 # successful scan transfers
     mov dword ptr [rsp + 0xf4], 0 # LE Meta events
     mov dword ptr [rsp + 0xf8], 0 # LE Advertising Reports
 scan_scan_event_loop:
-    cmp r12d, 600              # 600 * 200 ms = at most 120 seconds
-    jae scan_stop_scan
+    # Long-lived runtime: poll local keyboard between bounded 200 ms USB reads.
+    # Escape is scan code 0x17 and is the only normal termination request.
+    mov rcx, rbx
+    lea rdx, [rsp + 0xc0]
+    mov rax, [rcx + 8]         # ConIn->ReadKeyStroke
+    call rax
+    test rax, rax
+    jnz scan_no_local_key
+    cmp word ptr [rsp + 0xc0], 0x17
+    jne scan_no_local_key
+    mov dword ptr [rsp + 0x424], 1
+    jmp scan_stop_scan
+scan_no_local_key:
     mov qword ptr [rsp + 0x98], 80
     mov dword ptr [rsp + 0x90], 0
     mov rcx, r13
@@ -802,8 +814,6 @@ scan_yellow_found:
     call scan_print_ascii
 
 scan_after_command:
-    cmp r15d, 3
-    je scan_stop_scan
     jmp scan_scan_event_loop
 
 scan_stop_scan:
@@ -827,13 +837,19 @@ scan_stop_scan:
     call scan_write_hex
     lea rdx, [rsp + 0x100]
     call scan_print_ascii
-    cmp r15d, 3
+    cmp dword ptr [rsp + 0x424], 1
     jne scan_commands_incomplete
-    lea rdx, [rip + scan_both_received]
+    cmp r15d, 3
+    jne scan_escape_partial
+    lea rdx, [rip + scan_escape_both]
     call scan_print_ascii
-    jmp scan_finish
+    jmp scan_return
+scan_escape_partial:
+    lea rdx, [rip + scan_escape_partial_message]
+    call scan_print_ascii
+    jmp scan_return
 scan_commands_incomplete:
-    lea rdx, [rip + scan_command_window_closed]
+    lea rdx, [rip + scan_runtime_error_cleanup]
     call scan_print_ascii
     jmp scan_finish
 
@@ -879,6 +895,7 @@ scan_wait_key:
     call rax
     test rax, rax
     jnz scan_wait_key
+scan_return:
     xor eax, eax
     add rsp, 0x498
     pop r15
@@ -1031,7 +1048,7 @@ scan_draw_pixel:
     pop rsi
     ret
 
-scan_title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.3\r\n================\r\nPASSIVE RX: BLUE OR YELLOW; NO PAIR OR CONNECT\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+scan_title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.4\r\n================\r\nLONG-LIVED PASSIVE RX; ESC TO STOP\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 scan_found_template: .ascii "TARGET FOUND; EVENT ENDPOINT="
 scan_found_endpoint: .asciz "00\r\n"
 scan_graphics_bound: .asciz "DISPLAY FRAMEBUFFER BOUND\r\n"
@@ -1040,7 +1057,7 @@ scan_reset_ok: .asciz "STAGE 2: POST-LOAD HCI RESET: OK\r\n"
 scan_event_mask_ok: .asciz "STAGE 2: LE META MASK: OK\r\n"
 scan_le_event_mask_ok: .asciz "STAGE 3: ADV REPORT MASK: OK\r\n"
 scan_scan_parameters_ok: .asciz "STAGE 4: PASSIVE PARAMETERS: OK\r\n"
-scan_scan_on: .asciz "STAGE 5: PASSIVE COMMAND WINDOW; MAX 120 SECONDS\r\n"
+scan_scan_on: .asciz "STAGE 5: PASSIVE COMMAND RUNTIME ON; ESC TO STOP\r\n"
 scan_scan_off: .asciz "STAGE 6: PASSIVE SCAN OFF\r\n"
 scan_rx_template: .ascii "RX/LE/ADV (HEX)="
 scan_rx_value: .ascii "00/"
@@ -1048,8 +1065,9 @@ scan_le_value: .ascii "00/"
 scan_adv_value: .asciz "00\r\n"
 scan_blue_received: .asciz "COMMAND BLUE RECEIVED; SQUARE=BLUE\r\n"
 scan_yellow_received: .asciz "COMMAND YELLOW RECEIVED; SQUARE=YELLOW\r\n"
-scan_both_received: .asciz "BLUE AND YELLOW VERIFIED; WINDOW CLOSED EARLY\r\nNO PAIR; NO CONNECT; NO DELL RADIO TRANSMIT\r\n"
-scan_command_window_closed: .asciz "COMMAND WINDOW CLOSED; FINAL COLOR PRESERVED\r\nNO PAIR; NO CONNECT; NO DELL RADIO TRANSMIT\r\n"
+scan_escape_both: .asciz "RUNTIME STOPPED BY ESC; BLUE AND YELLOW WERE RECEIVED\r\nNO PAIR; NO CONNECT; NO DELL RADIO TRANSMIT\r\n"
+scan_escape_partial_message: .asciz "RUNTIME STOPPED BY ESC; FINAL COLOR PRESERVED\r\nNO PAIR; NO CONNECT; NO DELL RADIO TRANSMIT\r\n"
+scan_runtime_error_cleanup: .asciz "RUNTIME STOPPED AFTER CLEANUP ERROR PATH\r\nNO PAIR; NO CONNECT; NO DELL RADIO TRANSMIT\r\n"
 scan_graphics_error: .asciz "SUPPORTED GOP FRAMEBUFFER NOT FOUND; RADIO NOT ENABLED\r\n"
 scan_not_found: .asciz "TARGET NOT FOUND; NO HCI COMMAND SENT\r\n"
 scan_control_error: .asciz "HCI COMMAND USB TRANSFER FAILED\r\n"

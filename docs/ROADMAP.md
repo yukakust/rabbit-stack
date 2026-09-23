@@ -447,6 +447,14 @@ physical Rabbit state changed repeatedly over a wireless channel while the targe
 without an operating system. The next revision replaces the 120-second proof window
 with a long-lived receive loop and an explicit local exit/cleanup action.
 
+That long-lived candidate now exists as v0.4. It removes the automatic deadline and
+early completion, polls the Dell keyboard between individually bounded 200 ms receive
+operations, and accepts unlimited alternation of the same exact `BLUE`/`YELLOW`
+vocabulary. Local `Esc` sends the reviewed scan-disable command before returning;
+power-off remains rollback. The command set, framebuffer region, receiver-only radio
+authority, and persistent-write prohibitions are unchanged. Deterministic pre-QEMU
+verification passes; a fresh mismatch gate is next.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

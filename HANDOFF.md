@@ -651,6 +651,14 @@ the first physical wireless command-to-state loop on the OS-less Dell. The next 
 is a long-lived passive runtime with explicit local exit, replacing the 120-second proof
 budget without expanding the two-command vocabulary.
 
+V0.4 now implements that runtime. It has no automatic deadline or early exit after both
+colors; each USB receive remains bounded to 200 ms so the local keyboard is polled.
+`Esc` sends mandatory scan-disable cleanup and returns, while power-off remains the
+fallback. Exact `BLUE`/`YELLOW`, the centered framebuffer region, passive-only Dell
+radio, and all persistent-write prohibitions are unchanged. The deterministic image
+SHA-256 is `1c42713850b25ede0f3064fdbfe2a6d09befd5e85f463a7eb25869bdb289b325`.
+A fresh exact QEMU mismatch gate is required before physical installation.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

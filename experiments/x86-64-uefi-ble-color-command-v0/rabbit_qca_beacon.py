@@ -16,9 +16,9 @@ ROOT = Path(__file__).resolve().parent
 PROBE_PATH, TARGET_PATH = ROOT / "probe.json", ROOT / "target.json"
 PROGRAM_PATH, SOURCE_PATH = ROOT / "program.hex", ROOT / "program.S"
 MEDIA_BUILDER_PATH = ROOT.parent / "x86-64-uefi-v0" / "build_image.py"
-PROGRAM_TEMPLATE_SIZE = 77968
-PROGRAM_TEMPLATE_SHA256 = "3ef414b4f29d31927315ad0585a594aeb176e787b2401f0e5fd06c3cb3502be5"
-PROGRAM_SHA256 = "494695dd016ce48ff40c3c84accb0a0db7214b011776be82ca3eddd25644429d"
+PROGRAM_TEMPLATE_SIZE = 78136
+PROGRAM_TEMPLATE_SHA256 = "e1d8fbc52361debdd8b2e7d83df4e21b8f56886d7e2773b61591e6332abb28c1"
+PROGRAM_SHA256 = "3dc4109cb35c6f7bb03ac2a51f85ce8f9c7aa0d20edb492eb063db08a91b5121"
 RAMPATCH_MARKER, NVM_MARKER = b"RABBIT_RAMPATCH!", b"RABBIT_NVM_BLOB!"
 
 
@@ -90,6 +90,8 @@ def validate_target(target: dict[str, Any]) -> None:
         raise BuildError("exact accepted command set changed")
     if authority["gop_framebuffer_write"] != "centered-128x128-square-only":
         raise BuildError("framebuffer authority changed")
+    if authority["passive_runtime_termination"] != ["local-escape", "power-off"]:
+        raise BuildError("runtime termination contract changed")
     for field in ("controller_flash_write", "active_scan", "radio_transmit", "advertise", "pair", "connect", "internal_storage_writes", "firmware_writes"):
         if authority[field]:
             raise BuildError(f"target permits forbidden authority: {field}")
@@ -171,6 +173,7 @@ def build_fetched() -> tuple[bytes, dict[str, Any]]:
         },
         "transient_controller_ram_write_authorized": True, "passive_radio_receive_authorized": True,
         "gop_framebuffer_write_authorized": "centered-128x128-square-only",
+        "passive_runtime_termination": ["local-escape", "power-off"],
         "post_load_hci_reset_authorized": 1, "post_load_reset_wait_ms": 100,
         "active_scan_authorized": False, "radio_transmit_authorized": False,
         "pairing_authorized": False, "connection_authorized": False,

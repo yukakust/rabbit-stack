@@ -31,6 +31,7 @@
     "post_load_reset_wait_ms": 100,
     "passive_scan": true,
     "radio_receive": true,
+    "passive_runtime_termination": ["local-escape", "power-off"],
     "gop_framebuffer_write": "centered-128x128-square-only",
     "accepted_commands": ["blue", "yellow"],
     "controller_flash_write": false,

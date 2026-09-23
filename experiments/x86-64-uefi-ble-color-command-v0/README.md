@@ -4,16 +4,16 @@ This is the first Rabbit runtime whose visible state can change from the Mac wit
 moving the boot USB or rebooting the OS-less Dell.
 
 The Dell boots once, initializes the exact QCA Rome `0CF3:E009` controller in volatile
-RAM, draws a centered yellow `128 x 128` square through UEFI GOP, and opens a bounded
-passive BLE receive window. It recognizes exactly two service UUIDs:
+RAM, draws a centered yellow `128 x 128` square through UEFI GOP, and opens a long-lived
+passive BLE command runtime. It recognizes exactly two service UUIDs:
 
 ```text
 BLUE   52414242-4954-4C45-8000-000000000002
 YELLOW 52414242-4954-4C45-8000-000000000003
 ```
 
-Everything else is ignored. The receive window lasts at most 120 seconds and closes
-early after both commands have been observed. Scan disable is mandatory. The Dell does
+Everything else is ignored. V0.4 listens until local `Esc` or power-off and accepts
+unlimited color changes. `Esc` performs mandatory scan disable. The Dell does
 not actively scan, advertise, pair, connect, or transmit radio data. It writes no disk
 or firmware state; QCA setup exists only in controller RAM until power-off.
 
@@ -35,7 +35,7 @@ candidate and inspect the exact external disk identity:
 python3 prepare_physical.py
 ```
 
-This creates `/tmp/rabbit-ble-color-command-v03.img` but does not write any device.
+This creates `/tmp/rabbit-ble-color-command-v04.img` but does not write any device.
 
 ## Physical interaction
 
@@ -53,6 +53,6 @@ the sender with `Ctrl-C` and immediately run:
 python3 run_mac_command.py yellow
 ```
 
-Expected physical result: the square changes yellow → blue → yellow, then the Dell
-reports that both commands were verified and disables scanning. No USB movement or Dell
-reboot occurs between the two commands.
+Expected physical result: the square changes yellow → blue → yellow and remains ready
+for more commands. Press `Esc` on the Dell to disable scanning and exit cleanly. No USB
+movement or Dell reboot occurs between commands.
