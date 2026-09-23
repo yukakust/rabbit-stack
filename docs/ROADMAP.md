@@ -354,6 +354,15 @@ rejected its USB keyboard, sent no HCI command, and never started passive scan. 
 screen observation is bound to the five exact artifact identities. Read-only physical
 preparation is now open; removable-media replacement remains separately authorized.
 
+The physical v0.2 scan then completed its exact setup/cleanup sequence but reported
+`RX/LE/ADV=00/00/00`: the controller delivered no USB event during the scan window.
+Linux's QCA Rome setup path reads target version and setup status before normal use and
+conditionally installs rampatch and NVM. The next diagnostic is therefore
+`x86-64-uefi-qca-status-v0`: exactly two device-to-host vendor reads (`0x09` and `0x05`)
+for ROM/patch/RAM identity and `PATCH_UPDATED`/`SYSCFG_UPDATED`. It cannot download
+firmware, reset the controller, issue HCI commands, or operate the radio. Its QEMU
+fail-closed gate comes before any separately authorized physical run.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

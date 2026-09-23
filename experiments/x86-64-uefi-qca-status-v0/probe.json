@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "probe_id": "x86-64-usb-qca-rome-status-v0",
+  "implementation_revision": 1,
+  "target_usb_id": "0CF3:E009",
+  "operations": [
+    "find-exact-usb-device-and-interface-00",
+    "vendor-in-get-target-version-0x09",
+    "vendor-in-check-status-0x05",
+    "display-version-and-status"
+  ],
+  "limits": {
+    "max_usb_interfaces": 64,
+    "vendor_in_requests": 2,
+    "target_version_bytes": 20,
+    "status_bytes": 1,
+    "timeout_ms_per_request": 1000
+  },
+  "forbidden_operations": [
+    "vendor-out",
+    "firmware-download",
+    "controller-reset",
+    "hci-command",
+    "scan",
+    "advertise",
+    "pair",
+    "connect",
+    "radio-receive",
+    "radio-transmit",
+    "persistent-write"
+  ],
+  "contract": "read-only-qca-target-version-and-setup-status"
+}

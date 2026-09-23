@@ -79,13 +79,17 @@ every layer we would otherwise be tempted to hide.
   the first intentional radio boundary: a reviewed Mac CoreBluetooth beacon and a
   20-second receive-only Dell passive scan match one exact Rabbit service UUID without
   active scanning, pairing, connection, or radio transmission from the Dell.
+- [`experiments/x86-64-uefi-qca-status-v0`](experiments/x86-64-uefi-qca-status-v0):
+  two read-only Qualcomm vendor-IN queries expose ROM/patch/RAM identity and the
+  `PATCH_UPDATED`/`SYSCFG_UPDATED` setup bits without firmware download, reset, HCI,
+  or radio authority.
 
 ## Start here
 
 Read [`HANDOFF.md`](HANDOFF.md), then continue with
 [`experiments/x86-64-uefi-bluetooth-probe-v0/README.md`](experiments/x86-64-uefi-bluetooth-probe-v0/README.md).
 The active next gate is
-[`experiments/x86-64-uefi-bluetooth-beacon-rx-v0/README.md`](experiments/x86-64-uefi-bluetooth-beacon-rx-v0/README.md).
+[`experiments/x86-64-uefi-qca-status-v0/README.md`](experiments/x86-64-uefi-qca-status-v0/README.md).
 
 The hardware-adaptive architecture and delivery sequence are in
 [`docs/ROADMAP.md`](docs/ROADMAP.md). A short invitation for researchers and builders is

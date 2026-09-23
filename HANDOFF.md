@@ -533,6 +533,16 @@ rampatch plus NVM before normal use. That makes a read-only QCA vendor-status pr
 next boundary; firmware download, reset, scanning, pairing, connection, and transmission
 are not yet authorized.
 
+`experiments/x86-64-uefi-qca-status-v0/` now implements that diagnostic. It binds to
+the exact Dell USB ID and interface and permits only two device-to-host USB vendor
+requests: `0x09` for the packed 20-byte ROM/patch/RAM identity and `0x05` for the
+one-byte setup status. It displays `PATCH_UPDATED` (`0x80`) and `SYSCFG_UPDATED`
+(`0x40`) independently. Vendor OUT, firmware download, controller reset, HCI, radio,
+and persistent writes are absent and rejected by the verifier. The exact image identity
+is `e7747dbd747ef9add8a5853d01f05e93ebaf20807399a0d697883b15fd235b1f`.
+Status is PRE-QEMU: QEMU must show `TARGET NOT FOUND; NO VENDOR REQUEST SENT` before
+physical preparation can be opened.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk
