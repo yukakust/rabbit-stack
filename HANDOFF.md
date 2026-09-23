@@ -671,9 +671,9 @@ square or triangle, arbitrary RGB, position, size, movement step, and arrow cont
 FNV is explicitly corruption detection, not authentication. Native-code execution,
 arbitrary memory access, pairing, connection, Dell transmission, disk writes, and
 firmware writes remain forbidden. The deterministic pre-QEMU verifier passes with
-EFI SHA-256 `82de8a8e8dc78771dc847c266668760e27e52210e0aaa2804bfafb01e4a0f082`
+EFI SHA-256 `64c81e301cd552f42a3ee67743d6ebcf1a386215f5276fd27ce3de9412198c52`
 and image SHA-256
-`8ef5dfea0a115f0cef5234887754490986bb0d94c75a99441df81189dd9007ec`.
+`0d0b53b980bd4645b624aeb7489aa0d36fb93e302bd0edfa77e869e6cb161c9f`.
 The next gate is a manual QEMU mismatch observation; it has not yet been installed.
 
 ## U7 pre-physical artifact result

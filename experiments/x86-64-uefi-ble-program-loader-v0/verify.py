@@ -18,11 +18,11 @@ from rabbit_vm_packet import (
 EXPECTED = {
     "probe_sha256": "e96f76339184995462ebc3fbf02f6e7fa89639cdef720cb68fda7e2a7ebadbf9",
     "target_sha256": "30be62d430fdc2e7ae9fb9e4b0576cc716e197aa1b582d17473f505c27e7fe54",
-    "source_sha256": "1eaf347bd91bfa3ec6b8f3a9449b590f2f53fc2037713f5a8a79ff278c16d4d5",
+    "source_sha256": "0be6ff418f4e0585c4969575325dcf375fa6e2a9c3c4857b5a676e1d9e473fcb",
     "program_template_sha256": PROGRAM_TEMPLATE_SHA256,
     "program_sha256": PROGRAM_SHA256,
-    "efi_sha256": "82de8a8e8dc78771dc847c266668760e27e52210e0aaa2804bfafb01e4a0f082",
-    "image_sha256": "8ef5dfea0a115f0cef5234887754490986bb0d94c75a99441df81189dd9007ec",
+    "efi_sha256": "64c81e301cd552f42a3ee67743d6ebcf1a386215f5276fd27ce3de9412198c52",
+    "image_sha256": "0d0b53b980bd4645b624aeb7489aa0d36fb93e302bd0edfa77e869e6cb161c9f",
 }
 
 
@@ -47,6 +47,7 @@ def main() -> int:
     for marker in (b"RABBIT WIRELESS PROGRAM LOADER v0.2", b"RABBIT VM v1; PASSIVE RX; ESC TO STOP",
                    b"PROGRAM APPLIED", b"NO NATIVE CODE; NO PAIR; NO CONNECT"):
         require(marker in template, f"required marker missing: {marker!r}")
+    require(b"RABBIT BLE COLOR COMMAND" not in template, "stale color-command identity remains")
 
     square = encode_program(shape="square", red=255, green=190, blue=0, x=200, y=160, size=96, step=16)
     triangle = encode_program(shape="triangle", red=25, green=110, blue=255, x=420, y=220, size=80, step=12)

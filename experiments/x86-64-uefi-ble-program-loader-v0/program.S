@@ -436,7 +436,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.4\r\n=============================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.2\r\n===================================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 target_found: .asciz "TARGET FOUND\r\nSTAGE 2: REQUIRE ROM=00000302\r\n"
 rom_ok: .asciz "ROM MATCH: OK\r\n"
 before_template: .ascii "STATUS BEFORE="
@@ -448,7 +448,7 @@ nvm_done: .asciz "NVM TRANSFER: OK\r\n"
 after_template: .ascii "STATUS AFTER="
 after_value: .asciz "00\r\n"
 success: .asciz "PATCH_UPDATED=YES; SYSCFG_UPDATED=YES\r\n"
-chain_message: .asciz "STAGE 5: BEGIN BOUNDED PASSIVE RABBIT RECEIVE\r\n"
+chain_message: .asciz "STAGE 5: BEGIN TRANSACTIONAL RABBIT VM RECEIVE\r\n"
 post_not_ready: .asciz "POST-LOAD STATUS NOT READY; STOPPED\r\n"
 not_found: .asciz "TARGET NOT FOUND; NO DEVICE WRITE SENT\r\n"
 version_error: .asciz "TARGET VERSION READ FAILED; STOPPED\r\n"

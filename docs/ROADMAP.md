@@ -465,7 +465,7 @@ use fixed-width `DEFINE_SHAPE`, `SET_POSITION`, and `END` instructions to choose
 or triangle, arbitrary RGB, position, size, and arrow movement. The interpreter cannot
 jump to received native code or address arbitrary memory. Authentication remains a
 later gate. Deterministic verification passes with image SHA-256
-`8ef5dfea0a115f0cef5234887754490986bb0d94c75a99441df81189dd9007ec`.
+`0d0b53b980bd4645b624aeb7489aa0d36fb93e302bd0edfa77e869e6cb161c9f`.
 The next gate is its exact QEMU fail-closed observation, followed by one final physical
 USB installation and multiple complete interactive scene programs without moving USB.
 
