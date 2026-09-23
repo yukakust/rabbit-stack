@@ -50,6 +50,15 @@ V04_BINDINGS = {
     "image_sha256": "a56c358736c4122d0f9aeb8b69d862d306bbcc370e5ad29681d9d0be2de05077",
 }
 
+V05_BINDINGS = {
+    "probe_sha256": EXPECTED["probe_sha256"],
+    "target_sha256": EXPECTED["target_sha256"],
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": EXPECTED["program_sha256"],
+    "efi_sha256": EXPECTED["efi_sha256"],
+    "image_sha256": EXPECTED["image_sha256"],
+}
+
 SENDER_FILES = {
     "mac_vm_program.m": "cbd358ec2e0a5056712310175aee1b396b7ccaf71b1b9a96ac0e3b05a5fb91ee",
     "send_program.py": "7be8e66e476bd1ee5aa84d6beb2815fa72914cc66399d2982954f5bfc6b49985",
@@ -218,6 +227,16 @@ def main() -> int:
     observed_ack = bytes.fromhex(ack_diagnostic["observed_ack_uuid"].replace("-", ""))
     require(decode_ack(observed_ack) == {"transfer_id": 0, "program_hash": 0x23B73DE7, "applied_counter": 1}, "physical ACK diagnostic changed")
     require(ack_diagnostic["expected_transfer_id"] == "E7" and ack_diagnostic["decoded_ack_transfer_id"] == "00", "physical ACK transfer-id diagnosis changed")
+    qemu_v05 = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v05-observed.json")
+    require(qemu_v05["status"] == "OBSERVED-MANUAL-QEMU-RABBIT-VM-LOADER-V0.5-FAIL-CLOSED", "QEMU v0.5 evidence status changed")
+    for field, expected in V05_BINDINGS.items():
+        require(qemu_v05["bindings"][field] == expected, f"QEMU v0.5 evidence changed for {field}")
+    qemu_v05_observed = qemu_v05["observation"]
+    require(qemu_v05_observed["visible_identity"] == "RABBIT WIRELESS PROGRAM LOADER v0.5", "QEMU v0.5 visible identity changed")
+    require(qemu_v05_observed["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT", "QEMU v0.5 mismatch result changed")
+    require(not qemu_v05_observed["target_found"] and all(qemu_v05_observed[field] == 0 for field in (
+        "controller_ram_writes", "vm_program_bytes_received", "hci_commands_sent",
+        "radio_operations_requested", "framebuffer_writes_performed")), "QEMU v0.5 crossed a forbidden mismatch boundary")
     print("PASS: deterministic UEFI image contains the transactional Rabbit VM loader")
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
@@ -232,6 +251,7 @@ def main() -> int:
     print("PASS: one physical runtime moved the triangle and atomically replaced it with an arrow-controlled green square")
     print("PASS: exact v0.4 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
     print("PASS: physical v0.4 evidence preserves Dell ACK-command success without claiming Mac reception")
+    print("PASS: exact v0.5 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
     print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
     return 0
 

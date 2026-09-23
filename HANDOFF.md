@@ -722,6 +722,9 @@ exact v0.4 instruction that zeroed the four-byte transfer state before copying b
 into the ACK. V0.5 moves that same clear until after the id is copied; no authority or
 image size changes. Its pre-QEMU image SHA-256 is
 `e3595bc3febf8d924cdb50f2685e41cc34b5f96016d7850596533ddc76d825e6`.
+The exact v0.5 image then passed its macOS ARM64 QEMU mismatch gate: the v0.5 identity
+was visible and execution stopped at `TARGET NOT FOUND; NO DEVICE WRITE SENT` before
+RAM, VM, HCI, radio, or framebuffer effects. The physical v0.5 candidate may be prepared.
 
 ## U7 pre-physical artifact result
 

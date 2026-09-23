@@ -488,6 +488,7 @@ The first physical v0.4 receipt exposed a narrower implementation bug: CoreBluet
 received a checksum-valid ACK with the right program hash and counter but transfer id
 `00`. V0.5 keeps the transfer id live until it has been bound into the ACK, then clears
 the transfer state. A fresh QEMU gate precedes replacement of the dedicated USB image.
+That v0.5 QEMU mismatch gate now passes; the corrected physical receipt remains next.
 
 ### U10 — Universal installer
 

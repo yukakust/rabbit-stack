@@ -41,8 +41,8 @@ The v0.3 physical loader proved complete program transfer, four-direction moveme
 and hot replacement. V0.4 added the bounded Dell-to-Mac acknowledgement. Its first
 physical ACK was received by CoreBluetooth with the correct program hash and counter,
 but transfer id `00`: v0.4 had cleared transfer state too early. V0.5 preserves the
-transfer id until it is copied into the ACK. After fresh v0.5 QEMU evidence is recorded,
-`python3 prepare_physical.py` creates `/tmp/rabbit-vm-loader-v05.img` without writing
+transfer id until it is copied into the ACK. Fresh v0.5 QEMU mismatch evidence is now
+recorded, so `python3 prepare_physical.py` creates `/tmp/rabbit-vm-loader-v05.img` without writing
 any device.
 
 Once installed and booted on the Dell, arbitrary colors can be sent without
