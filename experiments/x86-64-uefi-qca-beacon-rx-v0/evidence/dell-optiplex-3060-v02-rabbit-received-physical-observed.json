@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-qca-init-reset-rabbit-rx-v0.2-success-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-RABBIT-BLE-RECEIVED",
+  "bindings": {
+    "probe_sha256": "3aff095794b0e4e22b9d77010c284b4922efc1a7809b72c6405f17d850d4832d",
+    "target_sha256": "8c5aea30745e82600ffddcce9d08b0a65cdff6d7bedb9ffa51d355d97f4118bb",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "44702cdc7e96a8ba80ab8bfd92378b98a4d1f0169a0277fab4c07ccae194b3a9",
+    "efi_sha256": "b5572f8e6f23daea9568d2e07ffc684bbbe4b25e591e3ac61bc8c42354c862ba",
+    "image_sha256": "7460a9fce26fc8aea329f0c169492e0c76b60d5df88cfdd0f9901eb9ac56ae5f"
+  },
+  "execution": {
+    "receiver_machine": "Dell OptiPlex 3060",
+    "receiver_architecture": "x86-64",
+    "receiver_boot": "UEFI removable USB",
+    "sender_machine": "Apple Silicon Mac",
+    "sender_transport": "CoreBluetooth advertisement",
+    "physical_execution_verified": true
+  },
+  "observation": {
+    "rom_match": "00000302",
+    "status_before": "20",
+    "rampatch_transfer": "OK",
+    "nvm_transfer": "OK",
+    "status_after": "E0",
+    "patch_updated": true,
+    "syscfg_updated": true,
+    "post_load_hci_reset": "OK",
+    "passive_scan_parameters": "OK",
+    "passive_scan_enabled": true,
+    "passive_scan_disabled": true,
+    "rx_events_hex": "0C",
+    "le_meta_events_hex": "0C",
+    "advertising_reports_hex": "0C",
+    "rabbit_beacon_received": true,
+    "rabbit_service_uuid": "52414242-4954-4C45-8000-000000000001",
+    "result": "RABBIT BEACON RECEIVED"
+  },
+  "safety": {
+    "post_load_hci_reset_count": 1,
+    "active_scan_performed": false,
+    "radio_transmit_performed_by_dell": false,
+    "pairing_performed": false,
+    "connection_performed": false,
+    "controller_flash_write_performed": false,
+    "internal_storage_writes": 0,
+    "firmware_setting_writes": 0,
+    "power_off_rolls_back_controller_ram": true
+  },
+  "claim": "first physically observed one-way wireless Rabbit identity from the Mac to an OS-less Dell"
+}

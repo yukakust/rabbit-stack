@@ -404,6 +404,12 @@ required because reset authority is new; that v0.2 QEMU gate passed and the rese
 unreachable on the emulated-device mismatch. Physical preparation is open. Transmit,
 pairing, connection, flash, storage, and firmware-setting prohibitions remain unchanged.
 
+That physical v0.2 hypothesis succeeded: after status `E0` and one HCI Reset, the Dell
+received twelve LE advertising reports and matched the exact Rabbit UUID sent by the
+Mac. This establishes a one-way wireless identity primitive on the OS-less target. The
+next slice will encode one bounded command vocabulary into reviewed advertisements and
+bind each command to an allowed physical effect; it will not accept arbitrary code.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

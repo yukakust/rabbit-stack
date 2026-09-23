@@ -61,7 +61,22 @@ python3 prepare_physical.py
 ```
 
 Full power-off is rollback for controller RAM. Removing the USB is recovery for the
-boot application. Status: **V0.2 QEMU-OBSERVED; NOT INSTALLED**.
+boot application.
+
+## Physical v0.2 result
+
+The exact image physically booted on the Dell. It reached status `E0`, completed one
+post-load HCI Reset, enabled and disabled the bounded passive scan, and reported:
+
+```text
+RX/LE/ADV (HEX)=0C/0C/0C
+RABBIT BEACON RECEIVED
+UUID=52414242-4954-4C45-8000-000000000001
+```
+
+This is the first observed one-way wireless Rabbit identity from the Mac to the OS-less
+Dell. It is not yet an arbitrary command channel, acknowledgement, pairing, connection,
+network stack, or hot patch. Status: **PHYSICAL-DELL-OBSERVED-RABBIT-BLE-RECEIVED**.
 
 Primary references: Linux's
 [`btusb_setup_qca`](https://code.googlesource.com/linux/torvalds/linux/+/21e4675d9305f6ccd20b95d943882d607c8ae288/drivers/bluetooth/btusb.c)

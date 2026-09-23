@@ -601,6 +601,15 @@ reset, HCI, or radio. Physical preparation is open and installation is still pen
 Active scan, advertising, pairing, connection, Dell radio transmit, flash, internal
 storage, and firmware-setting writes remain absent.
 
+The physical v0.2 run succeeded. After transient setup status `E0` and exactly one
+post-load HCI Reset, the passive receiver reported `RX/LE/ADV=0C/0C/0C` and
+`RABBIT BEACON RECEIVED` for exact UUID
+`52414242-4954-4C45-8000-000000000001`. The Dell transmitted nothing, paired with
+nothing, connected to nothing, and performed no persistent machine write. This is the
+first observed one-way wireless Rabbit identity from the Mac to the OS-less Dell. The
+next boundary is a small exact-bound command vocabulary, not yet a general Bluetooth
+connection or arbitrary code delivery.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

@@ -148,6 +148,20 @@ def main() -> int:
         require(observation["hci_commands_sent"] == observation["radio_operations_requested"] == 0, "v0.2 QEMU claims HCI/radio activity")
         print("PASS: exact v0.2 QEMU evidence fails closed before RAM writes, reset, HCI, and radio")
 
+        physical_v02 = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-v02-rabbit-received-physical-observed.json")
+        require(physical_v02["status"] == "OBSERVED-MANUAL-PHYSICAL-RABBIT-BLE-RECEIVED", "v0.2 physical evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical_v02["bindings"][field] == report_a[field], f"v0.2 physical {field} binding changed")
+        physical_observation = physical_v02["observation"]
+        require(physical_observation["status_after"] == "E0" and physical_observation["post_load_hci_reset"] == "OK", "v0.2 physical activation changed")
+        require(physical_observation["rx_events_hex"] == physical_observation["le_meta_events_hex"] == physical_observation["advertising_reports_hex"] == "0C", "v0.2 physical counters changed")
+        require(physical_observation["rabbit_beacon_received"] is True and physical_observation["rabbit_service_uuid"] == report_a["rabbit_service_uuid"], "v0.2 Rabbit identity changed")
+        safety = physical_v02["safety"]
+        require(safety["post_load_hci_reset_count"] == 1, "v0.2 physical reset count changed")
+        require(not any(safety[field] for field in ("active_scan_performed", "radio_transmit_performed_by_dell", "pairing_performed", "connection_performed", "controller_flash_write_performed")), "v0.2 physical evidence claims forbidden effects")
+        require(safety["internal_storage_writes"] == safety["firmware_setting_writes"] == 0, "v0.2 physical evidence claims persistent writes")
+        print("PASS: physical Dell received the exact Rabbit UUID after one bounded post-load reset")
+
         probe, target = load_json(PROBE_PATH), load_json(TARGET_PATH)
         wrong_rom = copy.deepcopy(probe); wrong_rom["required_rom_version"] = "0x00000300"
         rejected("a substituted ROM", lambda: validate_probe(wrong_rom))
