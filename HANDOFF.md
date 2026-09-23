@@ -709,6 +709,12 @@ The exact v0.4 image was then observed in QEMU on macOS ARM64. It displayed the
 v0.4 identity and stopped at `TARGET NOT FOUND; NO DEVICE WRITE SENT`; no controller
 RAM, VM, HCI, radio, or framebuffer effect was crossed. The dedicated physical USB
 may now be prepared for the acknowledgement test.
+The first physical v0.4 run applied the exact blue-triangle program and displayed
+`ACK ADVERTISED FOR 1500 MS; PASSIVE RECEIVE RESUMED`, but the original Mac sender
+did not observe `ACK RECEIVED` and continued repeating its six frames. This is preserved
+as partial negative evidence. The Mac-only follow-up adds an explicit 1.8-second quiet
+receive window plus scanner-state and 128-bit UUID diagnostics; it does not require a
+new Dell image or USB write.
 
 ## U7 pre-physical artifact result
 

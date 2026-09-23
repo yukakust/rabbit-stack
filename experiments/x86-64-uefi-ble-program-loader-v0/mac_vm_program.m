@@ -52,10 +52,18 @@ static uint32_t RabbitFNV1a(const uint8_t *bytes, NSUInteger count) {
     self.index = (self.index + 1) % self.uuids.count;
 }
 
+- (void)scheduleAdvanceAfter:(NSTimeInterval)seconds {
+    [self.timer invalidate];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:seconds target:self
+        selector:@selector(advance:) userInfo:nil repeats:NO];
+}
+
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
+    fprintf(stdout, "ACK SCANNER STATE=%ld\n", (long)central.state); fflush(stdout);
     if (central.state == CBManagerStatePoweredOn) {
         [central scanForPeripheralsWithServices:nil
             options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
+        fprintf(stdout, "ACK SCANNER ACTIVE\n"); fflush(stdout);
     } else if (central.state == CBManagerStateUnauthorized) {
         fprintf(stderr, "FAIL: Bluetooth scan permission was not granted\n"); exit(2);
     } else if (central.state == CBManagerStateUnsupported) {
@@ -67,12 +75,20 @@ static uint32_t RabbitFNV1a(const uint8_t *bytes, NSUInteger count) {
  didDiscoverPeripheral:(CBPeripheral *)peripheral
      advertisementData:(NSDictionary<NSString *, id> *)advertisementData
                   RSSI:(NSNumber *)RSSI {
-    (void)peripheral; (void)RSSI;
-    NSArray<CBUUID *> *services = advertisementData[CBAdvertisementDataServiceUUIDsKey];
+    (void)peripheral;
+    NSMutableArray<CBUUID *> *services = [NSMutableArray array];
+    for (NSString *key in @[CBAdvertisementDataServiceUUIDsKey,
+                             CBAdvertisementDataOverflowServiceUUIDsKey,
+                             CBAdvertisementDataSolicitedServiceUUIDsKey]) {
+        NSArray<CBUUID *> *values = advertisementData[key];
+        if ([values isKindOfClass:[NSArray class]]) [services addObjectsFromArray:values];
+    }
     for (CBUUID *service in services) {
         NSString *compact = [[[service UUIDString]
             stringByReplacingOccurrencesOfString:@"-" withString:@""] uppercaseString];
         if (compact.length != 32) continue;
+        fprintf(stdout, "SEEN 128-BIT UUID=%s RSSI=%s\n",
+            service.UUIDString.UTF8String, RSSI.stringValue.UTF8String); fflush(stdout);
         uint8_t bytes[16]; BOOL valid = YES;
         for (NSUInteger index = 0; index < 16; ++index) {
             NSString *pair = [compact substringWithRange:NSMakeRange(index * 2, 2)];
@@ -80,7 +96,13 @@ static uint32_t RabbitFNV1a(const uint8_t *bytes, NSUInteger count) {
             if (end == pair.UTF8String || *end != '\0' || value > 255) { valid = NO; break; }
             bytes[index] = (uint8_t)value;
         }
-        if (!valid || bytes[0] != 'R' || bytes[1] != 'A' || bytes[2] != 0x11) continue;
+        if (!valid) continue;
+        if (bytes[0] != 'R' || bytes[1] != 'A' || bytes[2] != 0x11) {
+            for (NSUInteger left = 0, right = 15; left < right; ++left, --right) {
+                uint8_t temporary = bytes[left]; bytes[left] = bytes[right]; bytes[right] = temporary;
+            }
+        }
+        if (bytes[0] != 'R' || bytes[1] != 'A' || bytes[2] != 0x11) continue;
         uint32_t programHash = ((uint32_t)bytes[4] << 24) | ((uint32_t)bytes[5] << 16)
             | ((uint32_t)bytes[6] << 8) | bytes[7];
         uint32_t counter = ((uint32_t)bytes[8] << 24) | ((uint32_t)bytes[9] << 16)
@@ -96,13 +118,24 @@ static uint32_t RabbitFNV1a(const uint8_t *bytes, NSUInteger count) {
     }
 }
 
-- (void)advance:(NSTimer *)timer { (void)timer; [self advertiseCurrent]; }
+- (void)advance:(NSTimer *)timer {
+    (void)timer;
+    if (self.index == 0) {
+        [self.peripheral stopAdvertising];
+        fprintf(stdout, "ACK LISTEN WINDOW: transmitter quiet for 1800 ms\n"); fflush(stdout);
+        [self scheduleAdvanceAfter:1.8];
+        self.index = self.uuids.count; // sentinel: resume at frame one
+        return;
+    }
+    if (self.index == self.uuids.count) self.index = 0;
+    [self advertiseCurrent];
+    [self scheduleAdvanceAfter:0.45];
+}
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
     if (peripheral.state == CBManagerStatePoweredOn) {
         [self advertiseCurrent];
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.45 target:self
-            selector:@selector(advance:) userInfo:nil repeats:YES];
+        [self scheduleAdvanceAfter:0.45];
     } else if (peripheral.state == CBManagerStateUnauthorized) {
         fprintf(stderr, "FAIL: Bluetooth permission was not granted\n"); exit(2);
     } else if (peripheral.state == CBManagerStateUnsupported) {

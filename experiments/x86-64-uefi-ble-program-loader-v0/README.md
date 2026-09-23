@@ -52,3 +52,7 @@ python3 send_program.py triangle --rgb 3366FF --x 400 --y 240 --size 96 --step 1
 Wait for `PROGRAM APPLIED` on the Dell. Dell then advertises the exact program receipt,
 the Mac prints `ACK RECEIVED` and exits automatically. Press `Esc` on the Dell to
 disable the passive scan and exit the loader.
+
+The Mac sender inserts a quiet 1.8-second receive window after every complete six-frame
+transfer. During diagnostics it prints the CoreBluetooth scanner state and every visible
+128-bit service UUID, so a missing receipt can be separated from a decoding mismatch.

@@ -51,7 +51,7 @@ V04_BINDINGS = {
 }
 
 SENDER_FILES = {
-    "mac_vm_program.m": "815c0f82ba1a70cd3605f16e46502a1ce64ef09a43da14c6e137237d2d9942d1",
+    "mac_vm_program.m": "cbd358ec2e0a5056712310175aee1b396b7ccaf71b1b9a96ac0e3b05a5fb91ee",
     "send_program.py": "7be8e66e476bd1ee5aa84d6beb2815fa72914cc66399d2982954f5bfc6b49985",
     "rabbit_vm_packet.py": "d54b2cea93eebd0053f86d1e6689024cbb73032caa5cdcc8045992129a49ac47",
     "RabbitColorCommand-Info.plist": "b79c9db6d00c4767716e9f6eaa5e3b93ef1f2adcc589897ca49cefcf4f680b47",
@@ -81,7 +81,9 @@ def main() -> int:
     for name, expected in SENDER_FILES.items():
         require(hashlib.sha256((root / name).read_bytes()).hexdigest() == expected, f"sender file changed: {name}")
     sender_source = (root / "mac_vm_program.m").read_text(encoding="utf-8")
-    require("ACK RECEIVED: TRANSFER=" in sender_source and "scanForPeripheralsWithServices:nil" in sender_source,
+    require("ACK RECEIVED: TRANSFER=" in sender_source and "scanForPeripheralsWithServices:nil" in sender_source
+            and "ACK LISTEN WINDOW: transmitter quiet for 1800 ms" in sender_source
+            and "SEEN 128-BIT UUID=" in sender_source,
             "Mac acknowledgement receiver is missing")
     for marker in (b"RABBIT WIRELESS PROGRAM LOADER v0.4", b"PASSIVE RX + BOUNDED ACK; ESC TO STOP",
                    b"PROGRAM APPLIED", b"ACK ADVERTISED FOR 1500 MS", b"NO NATIVE CODE; NO PAIR; NO CONNECT"):
@@ -200,6 +202,14 @@ def main() -> int:
     require(not qemu_v04_observed["target_found"] and all(qemu_v04_observed[field] == 0 for field in (
         "controller_ram_writes", "vm_program_bytes_received", "hci_commands_sent",
         "radio_operations_requested", "framebuffer_writes_performed")), "QEMU v0.4 crossed a forbidden mismatch boundary")
+    ack_miss = load_json(Path(__file__).resolve().parent / "evidence" / "dell-optiplex-3060-v04-ack-not-observed-physical.json")
+    require(ack_miss["status"] == "OBSERVED-MANUAL-PHYSICAL-ACK-COMMANDED-NOT-OBSERVED-ON-MAC", "physical ACK-miss status changed")
+    for field, expected in V04_BINDINGS.items():
+        require(ack_miss["bindings"][field] == expected, f"physical ACK-miss binding changed for {field}")
+    ack_miss_observed = ack_miss["observation"]
+    require(ack_miss_observed["program_applied_on_dell"] and ack_miss_observed["triangle_visible"], "physical ACK-miss program evidence changed")
+    require(ack_miss_observed["dell_visible_ack_status"] == "ACK ADVERTISED FOR 1500 MS; PASSIVE RECEIVE RESUMED", "physical ACK status changed")
+    require(not ack_miss_observed["mac_ack_received_line_visible"] and ack_miss_observed["mac_sender_repeated_program_frames"], "physical ACK-miss boundary changed")
     print("PASS: deterministic UEFI image contains the transactional Rabbit VM loader")
     print("PASS: BEGIN + CHUNK + COMMIT transports exact programs and rejects loss, reorder, substitution, and corruption")
     print("PASS: complete square and triangle programs configure color, position, size, and arrow movement")
@@ -213,6 +223,7 @@ def main() -> int:
     print("PASS: physical v0.3 accepted and displayed a complete six-frame triangle program without reboot or USB movement")
     print("PASS: one physical runtime moved the triangle and atomically replaced it with an arrow-controlled green square")
     print("PASS: exact v0.4 QEMU mismatch evidence stops before RAM, VM, HCI, radio, and framebuffer effects")
+    print("PASS: physical v0.4 evidence preserves Dell ACK-command success without claiming Mac reception")
     print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
     return 0
 

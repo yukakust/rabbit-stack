@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-rabbit-vm-loader-v0.4-ack-not-observed-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-ACK-COMMANDED-NOT-OBSERVED-ON-MAC",
+  "bindings": {
+    "probe_sha256": "95259cef1d95f92425f1ce910f327a335868d069080ce61dff36467929df008b",
+    "target_sha256": "59df2392ddd963429d85cfb9e79a699ae1535d35c1a46fb2f834286ff4aa250f",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "be2f07be0806d531fd436e2510379a379b4d41159f8996bb05ffdf611949abd9",
+    "efi_sha256": "484cc5d420ed2691649412bf2651ee228e553cf38c15882143d548b55cbcabcc",
+    "image_sha256": "a56c358736c4122d0f9aeb8b69d862d306bbcc370e5ad29681d9d0be2de05077",
+    "mac_sender_source_sha256": "815c0f82ba1a70cd3605f16e46502a1ce64ef09a43da14c6e137237d2d9942d1"
+  },
+  "transferred_program": {
+    "shape": "triangle",
+    "rgb": [51, 102, 255],
+    "x": 400,
+    "y": 240,
+    "size": 96,
+    "step": 16,
+    "transfer_id": "05",
+    "fnv1a32": "2860C505"
+  },
+  "observation": {
+    "method": "owner-reviewed-physical-screen-and-terminal",
+    "program_applied_on_dell": true,
+    "triangle_visible": true,
+    "dell_visible_ack_status": "ACK ADVERTISED FOR 1500 MS; PASSIVE RECEIVE RESUMED",
+    "mac_ack_received_line_visible": false,
+    "mac_sender_repeated_program_frames": true,
+    "mac_sender_stopped_manually": true,
+    "dell_rebooted_for_program": false,
+    "usb_moved_after_boot": false,
+    "persistent_writes": 0
+  },
+  "limitations": [
+    "the Dell status proves successful completion of the reviewed controller command sequence, not independent over-air reception",
+    "the old Mac sender did not expose scanner state or discovered service UUIDs",
+    "the acknowledgement is not authenticated"
+  ]
+}
