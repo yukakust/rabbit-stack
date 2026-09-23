@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Encode and validate the first 16-byte Rabbit VM wireless program."""
+"""Rabbit VM bytecode and its 16-byte multi-frame BLE transport."""
 
 from __future__ import annotations
 
-MAGIC = b"RBVM"
-VERSION = 1
-OP_SET_SQUARE_COLOR = 1
-PACKET_SIZE = 16
+MAGIC = b"RP"
+PROTOCOL_VERSION = 1
+FRAME_BEGIN, FRAME_CHUNK, FRAME_COMMIT = 1, 2, 3
+FRAME_SIZE, PAYLOAD_SIZE = 16, 7
+VM_VERSION = 1
+OP_DEFINE_SHAPE, OP_SET_POSITION, OP_END = 1, 2, 0xFF
+SHAPES = {"square": 1, "triangle": 2}
+MAX_PROGRAM_SIZE = 224
 
 
 class PacketError(ValueError):
@@ -21,39 +25,109 @@ def fnv1a32(data: bytes) -> int:
     return value
 
 
-def encode_set_square_color(red: int, green: int, blue: int) -> bytes:
-    values = (red, green, blue)
-    if any(isinstance(value, bool) or not isinstance(value, int) or not 0 <= value <= 255 for value in values):
-        raise PacketError("RGB components must be integers from 0 through 255")
-    body = MAGIC + bytes((VERSION, OP_SET_SQUARE_COLOR, red, green, blue, 0, 0, 0))
+def _frame(frame_type: int, transfer_id: int, sequence: int, payload: bytes) -> bytes:
+    if len(payload) > PAYLOAD_SIZE:
+        raise PacketError("frame payload exceeds seven bytes")
+    head = MAGIC + bytes(((PROTOCOL_VERSION << 4) | frame_type, transfer_id, sequence))
+    body = head + payload.ljust(PAYLOAD_SIZE, b"\0")
     return body + fnv1a32(body).to_bytes(4, "big")
 
 
-def decode(packet: bytes) -> dict[str, object]:
-    if len(packet) != PACKET_SIZE:
-        raise PacketError("Rabbit VM packet must be exactly 16 bytes")
-    if packet[:4] != MAGIC:
-        raise PacketError("Rabbit VM magic mismatch")
-    if packet[4] != VERSION:
-        raise PacketError("unsupported Rabbit VM version")
-    if packet[5] != OP_SET_SQUARE_COLOR:
-        raise PacketError("unsupported Rabbit VM opcode")
-    if packet[9:12] != b"\0\0\0":
-        raise PacketError("reserved Rabbit VM bytes must be zero")
-    expected = fnv1a32(packet[:12])
-    observed = int.from_bytes(packet[12:16], "big")
-    if observed != expected:
-        raise PacketError("Rabbit VM checksum mismatch")
+def decode_frame(frame: bytes) -> dict[str, object]:
+    if len(frame) != FRAME_SIZE or frame[:2] != MAGIC:
+        raise PacketError("invalid Rabbit transport frame")
+    if frame[2] >> 4 != PROTOCOL_VERSION or frame[2] & 0x0F not in (1, 2, 3):
+        raise PacketError("unsupported Rabbit transport version or frame type")
+    if int.from_bytes(frame[12:], "big") != fnv1a32(frame[:12]):
+        raise PacketError("Rabbit transport checksum mismatch")
+    return {"type": frame[2] & 0x0F, "transfer_id": frame[3], "sequence": frame[4], "payload": frame[5:12]}
+
+
+def encode_program(*, shape: str, red: int, green: int, blue: int,
+                   x: int, y: int, size: int, step: int, arrows: bool = True) -> bytes:
+    if shape not in SHAPES:
+        raise PacketError("shape must be square or triangle")
+    values = (red, green, blue)
+    if any(isinstance(v, bool) or not isinstance(v, int) or not 0 <= v <= 255 for v in values):
+        raise PacketError("RGB components must be integers from 0 through 255")
+    if not 8 <= size <= 128:
+        raise PacketError("size must be from 8 through 128")
+    if not 1 <= step <= 64:
+        raise PacketError("step must be from 1 through 64")
+    if not 0 <= x <= 65535 or not 0 <= y <= 65535:
+        raise PacketError("position must fit unsigned 16-bit coordinates")
+    define = bytes((OP_DEFINE_SHAPE, SHAPES[shape], red, green, blue, size, int(arrows), step))
+    position = bytes((OP_SET_POSITION,)) + x.to_bytes(2, "little") + y.to_bytes(2, "little") + b"\0\0\0"
+    end = bytes((OP_END, 0, 0, 0, 0, 0, 0, 0))
+    return define + position + end
+
+
+def decode_program(program: bytes) -> dict[str, object]:
+    if len(program) != 24:
+        raise PacketError("Rabbit VM v1 scene program must be exactly 24 bytes")
+    define, position, end = program[:8], program[8:16], program[16:24]
+    if define[0] != OP_DEFINE_SHAPE or define[1] not in SHAPES.values():
+        raise PacketError("program must begin with DEFINE_SHAPE")
+    if not 8 <= define[5] <= 128 or define[6] & ~1 or not 1 <= define[7] <= 64:
+        raise PacketError("invalid shape size, control flags, or movement step")
+    if position[0] != OP_SET_POSITION or position[5:] != b"\0\0\0":
+        raise PacketError("program must contain a canonical SET_POSITION")
+    if end != bytes((OP_END, 0, 0, 0, 0, 0, 0, 0)):
+        raise PacketError("program must end canonically")
+    shape = next(name for name, value in SHAPES.items() if value == define[1])
     return {
-        "version": VERSION,
-        "opcode": "SET_SQUARE_COLOR",
-        "rgb": [packet[6], packet[7], packet[8]],
-        "checksum": f"{observed:08X}",
+        "vm_version": VM_VERSION, "shape": shape,
+        "rgb": list(define[2:5]), "size": define[5], "arrows": bool(define[6]),
+        "step": define[7], "x": int.from_bytes(position[1:3], "little"),
+        "y": int.from_bytes(position[3:5], "little"),
     }
 
 
-def packet_to_uuid(packet: bytes) -> str:
-    decode(packet)
-    value = packet.hex().upper()
-    return f"{value[:8]}-{value[8:12]}-{value[12:16]}-{value[16:20]}-{value[20:]}"
+def encode_transfer(program: bytes) -> list[bytes]:
+    decoded = decode_program(program)
+    del decoded
+    if len(program) > MAX_PROGRAM_SIZE:
+        raise PacketError("program exceeds the v1 RAM budget")
+    digest = fnv1a32(program)
+    transfer_id = digest & 0xFF or 1
+    begin_payload = len(program).to_bytes(2, "little") + digest.to_bytes(4, "big") + bytes((len(program) // 8,))
+    frames = [_frame(FRAME_BEGIN, transfer_id, 0, begin_payload)]
+    for sequence, offset in enumerate(range(0, len(program), PAYLOAD_SIZE)):
+        frames.append(_frame(FRAME_CHUNK, transfer_id, sequence, program[offset:offset + PAYLOAD_SIZE]))
+    commit_payload = digest.to_bytes(4, "big") + len(program).to_bytes(2, "little") + b"\0"
+    frames.append(_frame(FRAME_COMMIT, transfer_id, len(frames) - 1, commit_payload))
+    return frames
 
+
+def decode_transfer(frames: list[bytes]) -> bytes:
+    if len(frames) < 3:
+        raise PacketError("transfer is incomplete")
+    begin = decode_frame(frames[0])
+    if begin["type"] != FRAME_BEGIN or begin["sequence"] != 0:
+        raise PacketError("transfer does not begin canonically")
+    transfer_id = int(begin["transfer_id"]); payload = bytes(begin["payload"])
+    length = int.from_bytes(payload[:2], "little"); expected_hash = int.from_bytes(payload[2:6], "big")
+    if length <= 0 or length > MAX_PROGRAM_SIZE or payload[6] != length // 8:
+        raise PacketError("invalid declared program size")
+    chunks = bytearray(); expected_sequence = 0
+    for raw in frames[1:-1]:
+        frame = decode_frame(raw)
+        if frame["type"] != FRAME_CHUNK or frame["transfer_id"] != transfer_id or frame["sequence"] != expected_sequence:
+            raise PacketError("missing, reordered, or substituted program chunk")
+        chunks.extend(bytes(frame["payload"])); expected_sequence += 1
+    commit = decode_frame(frames[-1]); commit_payload = bytes(commit["payload"])
+    if commit["type"] != FRAME_COMMIT or commit["transfer_id"] != transfer_id or commit["sequence"] != expected_sequence:
+        raise PacketError("invalid transfer commit")
+    if int.from_bytes(commit_payload[:4], "big") != expected_hash or int.from_bytes(commit_payload[4:6], "little") != length or commit_payload[6] != 0:
+        raise PacketError("commit does not match begin")
+    program = bytes(chunks[:length])
+    if len(program) != length or fnv1a32(program) != expected_hash:
+        raise PacketError("assembled program hash mismatch")
+    decode_program(program)
+    return program
+
+
+def frame_to_uuid(frame: bytes) -> str:
+    decode_frame(frame)
+    value = frame.hex().upper()
+    return f"{value[:8]}-{value[8:12]}-{value[12:16]}-{value[16:20]}-{value[20:]}"

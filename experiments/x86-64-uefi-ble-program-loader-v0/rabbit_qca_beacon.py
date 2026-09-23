@@ -16,9 +16,9 @@ ROOT = Path(__file__).resolve().parent
 PROBE_PATH, TARGET_PATH = ROOT / "probe.json", ROOT / "target.json"
 PROGRAM_PATH, SOURCE_PATH = ROOT / "program.hex", ROOT / "program.S"
 MEDIA_BUILDER_PATH = ROOT.parent / "x86-64-uefi-v0" / "build_image.py"
-PROGRAM_TEMPLATE_SIZE = 78048
-PROGRAM_TEMPLATE_SHA256 = "001c3f0a186a9abca45d55240e7cd0fe98554bcf0acfe479e0e0a6d983ed2125"
-PROGRAM_SHA256 = "c608848a3079961dd21cfa7213d171d4891ff2a76a683648ccf16b8270c6fa62"
+PROGRAM_TEMPLATE_SIZE = 79184
+PROGRAM_TEMPLATE_SHA256 = "75ef900409436af9f10ddf28ce4f538c67c9d2cd2c890a70bf471d6f0b1aee3d"
+PROGRAM_SHA256 = "3adbbeed653d460102340c5c4ab093b73b90b2d54b14929298feb26d846ecbac"
 RAMPATCH_MARKER, NVM_MARKER = b"RABBIT_RAMPATCH!", b"RABBIT_NVM_BLOB!"
 
 
@@ -86,11 +86,11 @@ def validate_target(target: dict[str, Any]) -> None:
         raise BuildError("passive receive command sequence changed")
     if authority["controller_reset"] is not True or authority["post_load_reset_count"] != 1 or authority["post_load_reset_wait_ms"] != 100:
         raise BuildError("bounded post-load reset authority changed")
-    if authority["rabbit_vm_versions"] != [1] or authority["accepted_vm_opcodes"] != ["SET_SQUARE_COLOR"]:
+    if authority["rabbit_vm_versions"] != [1] or authority["accepted_vm_opcodes"] != ["DEFINE_SHAPE", "SET_POSITION", "END"]:
         raise BuildError("bounded Rabbit VM instruction set changed")
     if authority["native_code_execution"] or authority["arbitrary_memory_write"]:
         raise BuildError("Rabbit VM escaped its reviewed authority")
-    if authority["gop_framebuffer_write"] != "centered-128x128-square-only":
+    if authority["gop_framebuffer_write"] != "one-bounded-square-or-triangle-max-128px":
         raise BuildError("framebuffer authority changed")
     if authority["passive_runtime_termination"] != ["local-escape", "power-off"]:
         raise BuildError("runtime termination contract changed")
@@ -132,7 +132,7 @@ def load_program(payloads: dict[str, bytes]) -> bytes:
 
 def build_efi(code: bytes) -> bytes:
     raw_size = (len(code) + SECTOR_SIZE - 1) // SECTOR_SIZE * SECTOR_SIZE
-    if raw_size != 0x13200:
+    if raw_size != 0x13600:
         raise BuildError("unexpected combined code size")
     dos = bytearray(0x80); dos[0:2] = b"MZ"; struct.pack_into("<I", dos, 0x3C, 0x80)
     coff = struct.pack("<HHIIIHH", 0x8664, 2, 0, 0, 0, 0xF0, 0x0022)
@@ -170,13 +170,14 @@ def build_fetched() -> tuple[bytes, dict[str, Any]]:
         "boot_path": "EFI/BOOT/BOOTX64.EFI", "target_usb_id": "0CF3:E009",
         "required_rom_version": "0x00000302",
         "rabbit_vm": {
-            "version": 1, "packet_size_bytes": 16,
-            "accepted_opcodes": ["SET_SQUARE_COLOR"],
+            "version": 1, "frame_size_bytes": 16, "chunk_payload_bytes": 7,
+            "transport_max_program_bytes": 224, "accepted_program_bytes": 24,
+            "accepted_opcodes": ["DEFINE_SHAPE", "SET_POSITION", "END"],
             "checksum": "fnv1a32-corruption-check-not-authentication",
             "transport": "ble-128-bit-service-uuid",
         },
         "transient_controller_ram_write_authorized": True, "passive_radio_receive_authorized": True,
-        "gop_framebuffer_write_authorized": "centered-128x128-square-only",
+        "gop_framebuffer_write_authorized": "one-bounded-square-or-triangle-max-128px",
         "passive_runtime_termination": ["local-escape", "power-off"],
         "post_load_hci_reset_authorized": 1, "post_load_reset_wait_ms": 100,
         "active_scan_authorized": False, "radio_transmit_authorized": False,

@@ -1,66 +1,54 @@
 #!/usr/bin/env python3
-"""Encode and advertise one bounded Rabbit VM program from macOS."""
+"""Compile a Rabbit VM scene and advertise its transfer frames from macOS."""
 
 from __future__ import annotations
 
-import argparse
-import hashlib
-import os
-import shutil
-import subprocess
-import tempfile
+import argparse, hashlib, os, shutil, subprocess, tempfile
 from pathlib import Path
 
-from rabbit_vm_packet import decode, encode_set_square_color, packet_to_uuid
+from rabbit_vm_packet import decode_program, encode_program, encode_transfer, fnv1a32, frame_to_uuid
 
 ROOT = Path(__file__).resolve().parent
-SOURCE = ROOT / "mac_vm_program.m"
-PLIST = ROOT / "RabbitColorCommand-Info.plist"
+SOURCE, PLIST = ROOT / "mac_vm_program.m", ROOT / "RabbitColorCommand-Info.plist"
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("operation", choices=("set-square-color",))
-    parser.add_argument("--rgb", required=True, help="six hexadecimal RGB digits, for example FF0066")
+    parser.add_argument("shape", choices=("square", "triangle"))
+    parser.add_argument("--rgb", required=True, help="six RGB hexadecimal digits")
+    parser.add_argument("--x", type=int, default=300); parser.add_argument("--y", type=int, default=300)
+    parser.add_argument("--size", type=int, default=96); parser.add_argument("--step", type=int, default=16)
+    parser.add_argument("--no-arrows", action="store_true")
     args = parser.parse_args()
     value = args.rgb.removeprefix("#")
-    if len(value) != 6:
-        parser.error("--rgb must contain exactly six hexadecimal digits")
     try:
+        if len(value) != 6: raise ValueError
         red, green, blue = bytes.fromhex(value)
     except ValueError:
         parser.error("--rgb must contain exactly six hexadecimal digits")
-    packet = encode_set_square_color(red, green, blue)
-    uuid = packet_to_uuid(packet)
-    decoded = decode(packet)
-    print(f"PROGRAM={decoded['opcode']} RGB=#{value.upper()}")
-    print(f"BYTECODE={packet.hex(' ').upper()}")
-    print(f"CHECKSUM={decoded['checksum']} UUID={uuid}")
-
+    program = encode_program(shape=args.shape, red=red, green=green, blue=blue,
+        x=args.x, y=args.y, size=args.size, step=args.step, arrows=not args.no_arrows)
+    frames = encode_transfer(program); uuids = [frame_to_uuid(frame) for frame in frames]
+    print(f"PROGRAM={decode_program(program)}")
+    print(f"BYTECODE={program.hex(' ').upper()}")
+    print(f"PROGRAM_FNV1A32={fnv1a32(program):08X}")
+    print(f"FRAMES={len(frames)}; each frame will repeat for 450 ms")
+    for index, uuid in enumerate(uuids): print(f"FRAME[{index}]={uuid}")
     xcrun = shutil.which("xcrun")
-    if xcrun is None:
-        print("FAIL: xcrun is not installed or not on PATH")
-        return 1
-    with tempfile.TemporaryDirectory(prefix="rabbit-vm-program-") as temp_dir:
-        executable = Path(temp_dir) / "rabbit-vm-program"
-        command = [xcrun, "--sdk", "macosx", "clang", "-fobjc-arc", str(SOURCE),
-            "-o", str(executable), "-framework", "Foundation", "-framework", "CoreBluetooth",
-            "-Xlinker", "-sectcreate", "-Xlinker", "__TEXT", "-Xlinker", "__info_plist",
-            "-Xlinker", str(PLIST)]
+    if xcrun is None: print("FAIL: xcrun is not installed or not on PATH"); return 1
+    with tempfile.TemporaryDirectory(prefix="rabbit-vm-program-") as directory:
+        executable = Path(directory) / "rabbit-vm-program"
+        command = [xcrun, "--sdk", "macosx", "clang", "-fobjc-arc", str(SOURCE), "-o", str(executable),
+            "-framework", "Foundation", "-framework", "CoreBluetooth", "-Xlinker", "-sectcreate",
+            "-Xlinker", "__TEXT", "-Xlinker", "__info_plist", "-Xlinker", str(PLIST)]
         env = os.environ.copy()
-        for name in ("CPATH", "C_INCLUDE_PATH", "CPLUS_INCLUDE_PATH", "SDKROOT"):
-            env.pop(name, None)
+        for name in ("CPATH", "C_INCLUDE_PATH", "CPLUS_INCLUDE_PATH", "SDKROOT"): env.pop(name, None)
         print(f"Source SHA256: {hashlib.sha256(SOURCE.read_bytes()).hexdigest()}")
-        completed = subprocess.run(command, check=False, env=env)
-        if completed.returncode:
-            print(f"FAIL: Apple clang exited with status {completed.returncode}")
-            return 1
+        if subprocess.run(command, check=False, env=env).returncode: return 1
         try:
-            return subprocess.run([str(executable), uuid], check=False).returncode
+            return subprocess.run([str(executable), *uuids], check=False).returncode
         except KeyboardInterrupt:
             return 0
 
 
-if __name__ == "__main__":
-    raise SystemExit(main())
-
+if __name__ == "__main__": raise SystemExit(main())

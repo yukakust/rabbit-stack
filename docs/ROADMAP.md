@@ -457,18 +457,17 @@ verification passes. The fresh v0.4 QEMU mismatch gate also passed without RAM,
 framebuffer, HCI, or radio effects. Physical candidate preparation is open.
 
 The next candidate is `x86-64-uefi-ble-program-loader-v0`. It crosses the boundary from
-two compiled-in command UUIDs to a tiny versioned program format. A 16-byte Rabbit VM
-packet carries magic, version, opcode, arbitrary RGB operands, reserved bytes, and an
-FNV-1a corruption checksum inside one BLE service UUID. The long-lived Dell interpreter
-currently exposes exactly one instruction, `SET_SQUARE_COLOR`, and rejects unknown
-versions, opcodes, reserved fields, and damaged packets. It cannot jump to received
-native code or address arbitrary memory. This is the first extensible runtime seam:
-future reviewed VM instructions can be added without redesigning the transport, while
-authentication and multi-frame packages remain later gates. Deterministic verification
-passes with image SHA-256
-`99508f9af7339ff1143557b4544f384907e227718045d77190494926b647ba8c`.
+two compiled-in command UUIDs to a tiny versioned program format. BLE UUID frames carry
+`BEGIN`, sequenced seven-byte `CHUNK`s, and `COMMIT`, each with an FNV-1a corruption
+checksum. Dell stages the bytes in RAM and preserves the old scene until length, order,
+transfer identity, whole-program hash, and bytecode all validate. Rabbit VM v1 programs
+use fixed-width `DEFINE_SHAPE`, `SET_POSITION`, and `END` instructions to choose square
+or triangle, arbitrary RGB, position, size, and arrow movement. The interpreter cannot
+jump to received native code or address arbitrary memory. Authentication remains a
+later gate. Deterministic verification passes with image SHA-256
+`8ef5dfea0a115f0cef5234887754490986bb0d94c75a99441df81189dd9007ec`.
 The next gate is its exact QEMU fail-closed observation, followed by one final physical
-USB installation and multiple arbitrary-color programs without moving the USB.
+USB installation and multiple complete interactive scene programs without moving USB.
 
 ### U10 — Universal installer
 

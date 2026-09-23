@@ -95,9 +95,9 @@ every layer we would otherwise be tempted to hide.
   only exact `BLUE` and `YELLOW` BLE advertisements from the Mac, changing framebuffer
   pixels without moving the boot USB or rebooting the Dell.
 - [`experiments/x86-64-uefi-ble-program-loader-v0`](experiments/x86-64-uefi-ble-program-loader-v0):
-  the first persistent-on-boot wireless program loader. It validates 16-byte Rabbit VM
-  programs received through passive BLE and currently executes only the bounded
-  `SET_SQUARE_COLOR(R,G,B)` instruction; native code and persistent writes stay absent.
+  the first persistent-on-boot wireless program loader. It transactionally assembles
+  multi-frame Rabbit VM programs in RAM; complete programs choose square or triangle,
+  RGB, position, size, and arrow movement while native code and persistence stay absent.
 
 ## Start here
 

@@ -3,7 +3,7 @@
 .global rabbit_entry
 
 # One-boot composition: initialize exact QCA Rome 3.2 controller RAM, then chain
-# into a bounded receive-only BLUE/YELLOW command runtime. Exactly one reset is
+# into a transactional receive-only Rabbit VM runtime. Exactly one reset is
 # used after the transient RAM load. No active scan, advertising, pairing,
 # connection, Dell radio transmit, or persistent write exists.
 rabbit_entry:
@@ -486,7 +486,7 @@ scan_entry:
     push r13
     push r14
     push r15
-    sub rsp, 0x498
+    sub rsp, 0x700
 
     mov rbx, [rdx + 0x30]       # SystemTable->ConIn
     mov rbp, [rdx + 0x40]       # SystemTable->ConOut
@@ -620,9 +620,15 @@ scan_handles_freed:
     jnz scan_graphics_failed
     lea rdx, [rip + scan_graphics_bound]
     call scan_print_ascii
-    mov byte ptr [rsp + 0x436], 0xff # red
-    mov byte ptr [rsp + 0x437], 0xff # green
-    mov byte ptr [rsp + 0x438], 0x00 # blue
+    mov dword ptr [rsp + 0x454], 1   # active built-in scene
+    mov byte ptr [rsp + 0x458], 1    # square
+    mov byte ptr [rsp + 0x459], 0xff # red
+    mov byte ptr [rsp + 0x45a], 0xff # green
+    mov byte ptr [rsp + 0x45b], 0x00 # blue
+    mov byte ptr [rsp + 0x45c], 128  # size
+    mov byte ptr [rsp + 0x45d], 1    # arrow controls
+    mov byte ptr [rsp + 0x45e], 16   # movement step
+    mov eax, 1
     call scan_draw_square
     lea rdx, [rip + scan_graphics_ok]
     call scan_print_ascii
@@ -712,7 +718,8 @@ scan_handles_freed:
     xor r15d, r15d             # validated programs applied
     xor r12d, r12d
     mov dword ptr [rsp + 0x424], 0 # set only by local Escape cleanup
-    mov dword ptr [rsp + 0x428], 0 # checksum of last applied program
+    mov dword ptr [rsp + 0x440], 0 # no transfer in progress
+    mov dword ptr [rsp + 0x450], 0 # checksum of last applied program
     mov dword ptr [rsp + 0xf0], 0 # successful scan transfers
     mov dword ptr [rsp + 0xf4], 0 # LE Meta events
     mov dword ptr [rsp + 0xf8], 0 # LE Advertising Reports
@@ -724,12 +731,72 @@ scan_scan_event_loop:
     mov rax, [rcx + 8]         # ConIn->ReadKeyStroke
     call rax
     test rax, rax
-    jnz scan_no_local_key
+    jnz scan_receive_event
     cmp word ptr [rsp + 0xc0], 0x17
-    jne scan_no_local_key
+    jne scan_handle_local_key
     mov dword ptr [rsp + 0x424], 1
     jmp scan_stop_scan
-scan_no_local_key:
+scan_handle_local_key:
+    # Arrow scan codes are Up=1, Down=2, Right=3, Left=4.  They operate only
+    # when the active, validated program enabled the built-in arrow capability.
+    movzx eax, word ptr [rsp + 0xc0]
+    cmp eax, 1
+    jb scan_receive_event
+    cmp eax, 4
+    ja scan_receive_event
+    cmp dword ptr [rsp + 0x454], 1
+    jne scan_receive_event
+    test byte ptr [rsp + 0x45d], 1
+    jz scan_receive_event
+    mov byte ptr [rsp + 0x45f], al
+    xor eax, eax
+    call scan_draw_square            # erase the old shape
+    movzx eax, byte ptr [rsp + 0x45f]
+    movzx ecx, byte ptr [rsp + 0x45e]
+    cmp eax, 1
+    je scan_move_up
+    cmp eax, 2
+    je scan_move_down
+    cmp eax, 3
+    je scan_move_right
+scan_move_left:
+    cmp dword ptr [rsp + 0x41c], ecx
+    jb scan_move_left_zero
+    sub dword ptr [rsp + 0x41c], ecx
+    jmp scan_move_draw
+scan_move_left_zero:
+    mov dword ptr [rsp + 0x41c], 0
+    jmp scan_move_draw
+scan_move_up:
+    cmp dword ptr [rsp + 0x420], ecx
+    jb scan_move_up_zero
+    sub dword ptr [rsp + 0x420], ecx
+    jmp scan_move_draw
+scan_move_up_zero:
+    mov dword ptr [rsp + 0x420], 0
+    jmp scan_move_draw
+scan_move_right:
+    mov edx, dword ptr [rsp + 0x428]
+    movzx r8d, byte ptr [rsp + 0x45c]
+    sub edx, r8d
+    add dword ptr [rsp + 0x41c], ecx
+    cmp dword ptr [rsp + 0x41c], edx
+    jbe scan_move_draw
+    mov dword ptr [rsp + 0x41c], edx
+    jmp scan_move_draw
+scan_move_down:
+    mov edx, dword ptr [rsp + 0x42c]
+    movzx r8d, byte ptr [rsp + 0x45c]
+    sub edx, r8d
+    add dword ptr [rsp + 0x420], ecx
+    cmp dword ptr [rsp + 0x420], edx
+    jbe scan_move_draw
+    mov dword ptr [rsp + 0x420], edx
+scan_move_draw:
+    mov eax, 1
+    call scan_draw_square
+
+scan_receive_event:
     mov qword ptr [rsp + 0x98], 80
     mov dword ptr [rsp + 0x90], 0
     mov rcx, r13
@@ -761,69 +828,206 @@ scan_no_local_key:
     xor edx, edx
 scan_scan_uuid_search:
     lea rsi, [rsp + 0xa0 + rdx]
-    cmp dword ptr [rsi], 0x4d564252 # canonical bytes "RBVM"
-    je scan_copy_program_canonical
-    cmp dword ptr [rsi + 12], 0x5242564d # reversed UUID ends "M V B R"
-    je scan_copy_program_reversed
+    cmp word ptr [rsi], 0x5052      # canonical bytes "RP"
+    je scan_copy_frame_canonical
+    cmp word ptr [rsi + 14], 0x5250 # reversed UUID ends "P R"
+    je scan_copy_frame_reversed
 scan_scan_uuid_next:
     inc rdx
     cmp rdx, rcx
     jb scan_scan_uuid_search
     jmp scan_scan_event_loop
 
-scan_copy_program_canonical:
+scan_copy_frame_canonical:
     xor r8d, r8d
-scan_copy_program_canonical_loop:
+scan_copy_frame_canonical_loop:
     mov al, [rsi + r8]
     mov [rsp + 0x430 + r8], al
     inc r8d
     cmp r8d, 16
-    jb scan_copy_program_canonical_loop
-    jmp scan_validate_program
+    jb scan_copy_frame_canonical_loop
+    jmp scan_validate_frame
 
-scan_copy_program_reversed:
+scan_copy_frame_reversed:
     xor r8d, r8d
-scan_copy_program_reversed_loop:
+scan_copy_frame_reversed_loop:
     mov r9d, 15
     sub r9d, r8d
     mov al, [rsi + r9]
     mov [rsp + 0x430 + r8], al
     inc r8d
     cmp r8d, 16
-    jb scan_copy_program_reversed_loop
+    jb scan_copy_frame_reversed_loop
 
-scan_validate_program:
-    cmp dword ptr [rsp + 0x430], 0x4d564252 # RBVM
+scan_validate_frame:
+    cmp word ptr [rsp + 0x430], 0x5052 # RP
     jne scan_scan_event_loop
-    cmp byte ptr [rsp + 0x434], 1          # VM version 1
-    jne scan_scan_event_loop
-    cmp byte ptr [rsp + 0x435], 1          # SET_SQUARE_COLOR
-    jne scan_scan_event_loop
-    cmp byte ptr [rsp + 0x439], 0          # reserved must remain zero
-    jne scan_scan_event_loop
-    cmp byte ptr [rsp + 0x43a], 0
-    jne scan_scan_event_loop
-    cmp byte ptr [rsp + 0x43b], 0
+    movzx r8d, byte ptr [rsp + 0x432]
+    mov r9d, r8d
+    shr r9d, 4
+    cmp r9d, 1                         # transport version 1
     jne scan_scan_event_loop
 
-    # FNV-1a-32 over bytes 0..11.  The packet carries the result big-endian.
+    # FNV-1a-32 over frame bytes 0..11; result is carried big-endian.
     mov eax, 0x811c9dc5
     xor ecx, ecx
-scan_program_checksum_loop:
+scan_frame_checksum_loop:
     movzx edx, byte ptr [rsp + 0x430 + rcx]
     xor eax, edx
     imul eax, eax, 0x01000193
     inc ecx
     cmp ecx, 12
-    jb scan_program_checksum_loop
+    jb scan_frame_checksum_loop
     mov edx, dword ptr [rsp + 0x43c]
     bswap edx
     cmp eax, edx
     jne scan_scan_event_loop
-    cmp eax, dword ptr [rsp + 0x428]
-    je scan_scan_event_loop              # repeated BLE advertisements
-    mov dword ptr [rsp + 0x428], eax
+
+    and r8d, 0x0f
+    cmp r8d, 1
+    je scan_frame_begin
+    cmp r8d, 2
+    je scan_frame_chunk
+    cmp r8d, 3
+    je scan_frame_commit
+    jmp scan_scan_event_loop
+
+scan_frame_begin:
+    cmp word ptr [rsp + 0x435], 24     # VM v1 scene is three instructions
+    jne scan_scan_event_loop
+    cmp byte ptr [rsp + 0x43b], 3
+    jne scan_scan_event_loop
+    movzx eax, byte ptr [rsp + 0x433]
+    mov byte ptr [rsp + 0x440], 1
+    mov byte ptr [rsp + 0x441], al     # transfer id
+    mov byte ptr [rsp + 0x442], 0      # next chunk sequence
+    mov dword ptr [rsp + 0x444], 24
+    mov dword ptr [rsp + 0x448], 0
+    mov eax, dword ptr [rsp + 0x437]   # program hash, big-endian
+    bswap eax
+    mov dword ptr [rsp + 0x44c], eax
+    jmp scan_scan_event_loop
+
+scan_frame_chunk:
+    cmp byte ptr [rsp + 0x440], 1
+    jne scan_scan_event_loop
+    mov al, byte ptr [rsp + 0x433]
+    cmp al, byte ptr [rsp + 0x441]
+    jne scan_scan_event_loop
+    mov al, byte ptr [rsp + 0x434]
+    cmp al, byte ptr [rsp + 0x442]
+    jne scan_scan_event_loop
+    mov r9d, dword ptr [rsp + 0x448]   # received
+    mov r10d, dword ptr [rsp + 0x444]  # total
+    sub r10d, r9d                       # remaining
+    jbe scan_scan_event_loop
+    cmp r10d, 7
+    jbe scan_chunk_count_ready
+    mov r10d, 7
+scan_chunk_count_ready:
+    xor r8d, r8d
+scan_chunk_copy_loop:
+    mov al, byte ptr [rsp + 0x435 + r8]
+    mov byte ptr [rsp + 0x460 + r9], al
+    inc r8d
+    inc r9d
+    cmp r8d, r10d
+    jb scan_chunk_copy_loop
+    mov dword ptr [rsp + 0x448], r9d
+    inc byte ptr [rsp + 0x442]
+    jmp scan_scan_event_loop
+
+scan_frame_commit:
+    cmp byte ptr [rsp + 0x440], 1
+    jne scan_scan_event_loop
+    mov al, byte ptr [rsp + 0x433]
+    cmp al, byte ptr [rsp + 0x441]
+    jne scan_scan_event_loop
+    mov al, byte ptr [rsp + 0x434]
+    cmp al, byte ptr [rsp + 0x442]
+    jne scan_scan_event_loop
+    cmp word ptr [rsp + 0x439], 24
+    jne scan_scan_event_loop
+    cmp byte ptr [rsp + 0x43b], 0
+    jne scan_scan_event_loop
+    cmp dword ptr [rsp + 0x448], 24
+    jne scan_scan_event_loop
+    mov edx, dword ptr [rsp + 0x435]
+    bswap edx
+    cmp edx, dword ptr [rsp + 0x44c]
+    jne scan_scan_event_loop
+
+    mov eax, 0x811c9dc5
+    xor ecx, ecx
+scan_program_hash_loop:
+    movzx edx, byte ptr [rsp + 0x460 + rcx]
+    xor eax, edx
+    imul eax, eax, 0x01000193
+    inc ecx
+    cmp ecx, 24
+    jb scan_program_hash_loop
+    cmp eax, dword ptr [rsp + 0x44c]
+    jne scan_scan_event_loop
+    cmp eax, dword ptr [rsp + 0x450]
+    je scan_scan_event_loop
+
+    # Validate the three fixed-width Rabbit VM v1 instructions.
+    cmp byte ptr [rsp + 0x460], 1      # DEFINE_SHAPE
+    jne scan_scan_event_loop
+    movzx ecx, byte ptr [rsp + 0x461]
+    cmp ecx, 1
+    jb scan_scan_event_loop
+    cmp ecx, 2
+    ja scan_scan_event_loop
+    movzx ecx, byte ptr [rsp + 0x465] # size
+    cmp ecx, 8
+    jb scan_scan_event_loop
+    cmp ecx, 128
+    ja scan_scan_event_loop
+    cmp byte ptr [rsp + 0x466], 1     # flags: none or arrows
+    ja scan_scan_event_loop
+    movzx edx, byte ptr [rsp + 0x467] # step
+    cmp edx, 1
+    jb scan_scan_event_loop
+    cmp edx, 64
+    ja scan_scan_event_loop
+    cmp byte ptr [rsp + 0x468], 2     # SET_POSITION
+    jne scan_scan_event_loop
+    cmp word ptr [rsp + 0x46d], 0
+    jne scan_scan_event_loop
+    cmp byte ptr [rsp + 0x46f], 0
+    jne scan_scan_event_loop
+    cmp dword ptr [rsp + 0x470], 0xff # END + three zero bytes
+    jne scan_scan_event_loop
+    cmp dword ptr [rsp + 0x474], 0
+    jne scan_scan_event_loop
+    movzx edx, word ptr [rsp + 0x469] # x
+    add edx, ecx
+    cmp edx, dword ptr [rsp + 0x428]
+    ja scan_scan_event_loop
+    movzx edx, word ptr [rsp + 0x46b] # y
+    add edx, ecx
+    cmp edx, dword ptr [rsp + 0x42c]
+    ja scan_scan_event_loop
+
+    xor eax, eax
+    call scan_draw_square             # erase previous scene
+    movzx eax, byte ptr [rsp + 0x461]
+    mov byte ptr [rsp + 0x458], al
+    mov eax, dword ptr [rsp + 0x462]
+    mov dword ptr [rsp + 0x459], eax  # RGB, size
+    mov ax, word ptr [rsp + 0x466]
+    mov word ptr [rsp + 0x45d], ax    # flags, step
+    movzx eax, word ptr [rsp + 0x469]
+    mov dword ptr [rsp + 0x41c], eax
+    movzx eax, word ptr [rsp + 0x46b]
+    mov dword ptr [rsp + 0x420], eax
+    mov dword ptr [rsp + 0x454], 1
+    mov eax, dword ptr [rsp + 0x44c]
+    mov dword ptr [rsp + 0x450], eax
+    mov dword ptr [rsp + 0x440], 0
     inc r15d
+    mov eax, 1
     call scan_draw_square
     lea rdx, [rip + scan_program_applied]
     call scan_print_ascii
@@ -904,7 +1108,7 @@ scan_wait_key:
     jnz scan_wait_key
 scan_return:
     xor eax, eax
-    add rsp, 0x498
+    add rsp, 0x700
     pop r15
     pop r14
     pop r13
@@ -999,6 +1203,8 @@ scan_init_graphics:
     mov [rsp + 0x438], r11
     mov [rsp + 0x440], r10d
     mov [rsp + 0x444], ecx
+    mov [rsp + 0x458], r8d
+    mov [rsp + 0x45c], r9d
     sub r8d, 128
     shr r8d, 1
     mov [rsp + 0x44c], r8d
@@ -1013,16 +1219,19 @@ scan_gop_bad:
     add rsp, 0x28
     ret
 
-# Draw the RGB value at Rabbit VM packet bytes 6..8 into a centered 128x128
-# square.  This is the VM's complete v1 capability.
+# EAX=0 erases the old bounding box; EAX=1 draws the active VM shape.
 scan_draw_square:
     push rsi
-    # CALL pushed 8 bytes and PUSH RSI pushed another 8; address scan_entry's
-    # persistent slots with +0x10, not +0x08.
-    movzx eax, byte ptr [rsp + 0x436 + 0x10] # red
-    movzx edx, byte ptr [rsp + 0x437 + 0x10] # green
-    movzx esi, byte ptr [rsp + 0x438 + 0x10] # blue
-    mov ecx, [rsp + 0x414 + 0x10]
+    push r12
+    push rdi
+    mov edi, eax
+    xor esi, esi
+    test edi, edi
+    jz scan_color_ready
+    movzx eax, byte ptr [rsp + 0x459 + 0x20] # red
+    movzx edx, byte ptr [rsp + 0x45a + 0x20] # green
+    movzx esi, byte ptr [rsp + 0x45b + 0x20] # blue
+    mov ecx, [rsp + 0x414 + 0x20]
     test ecx, ecx
     jnz scan_color_bgr
     shl esi, 16                 # RGB pixel memory is R,G,B,0
@@ -1036,10 +1245,11 @@ scan_color_bgr:
     or esi, edx
     or esi, eax
 scan_color_ready:
-    mov r8, [rsp + 0x408 + 0x10]
-    mov r9d, [rsp + 0x410 + 0x10]
-    mov r10d, [rsp + 0x41c + 0x10]
-    mov r11d, [rsp + 0x420 + 0x10]
+    mov r8, [rsp + 0x408 + 0x20]
+    mov r9d, [rsp + 0x410 + 0x20]
+    mov r10d, [rsp + 0x41c + 0x20]
+    mov r11d, [rsp + 0x420 + 0x20]
+    movzx r12d, byte ptr [rsp + 0x45c + 0x20]
     xor ecx, ecx
 scan_draw_row:
     mov eax, r11d
@@ -1049,17 +1259,27 @@ scan_draw_row:
     lea rax, [r8 + rax * 4]
     xor edx, edx
 scan_draw_pixel:
+    test edi, edi
+    jz scan_write_pixel
+    cmp byte ptr [rsp + 0x458 + 0x20], 2
+    jne scan_write_pixel
+    cmp edx, ecx                  # simple right triangle: x <= row
+    ja scan_skip_pixel
+scan_write_pixel:
     mov [rax + rdx * 4], esi
+scan_skip_pixel:
     inc edx
-    cmp edx, 128
+    cmp edx, r12d
     jb scan_draw_pixel
     inc ecx
-    cmp ecx, 128
+    cmp ecx, r12d
     jb scan_draw_row
+    pop rdi
+    pop r12
     pop rsi
     ret
 
-scan_title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.1\r\n===================================\r\nRABBIT VM v1; PASSIVE RX; ESC TO STOP\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+scan_title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.2\r\n===================================\r\nRABBIT VM v1; PASSIVE RX; ESC TO STOP\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 scan_found_template: .ascii "TARGET FOUND; EVENT ENDPOINT="
 scan_found_endpoint: .asciz "00\r\n"
 scan_graphics_bound: .asciz "DISPLAY FRAMEBUFFER BOUND\r\n"
@@ -1074,7 +1294,7 @@ scan_rx_template: .ascii "RX/LE/ADV (HEX)="
 scan_rx_value: .ascii "00/"
 scan_le_value: .ascii "00/"
 scan_adv_value: .asciz "00\r\n"
-scan_program_applied: .asciz "PROGRAM APPLIED: SET_SQUARE_COLOR\r\n"
+scan_program_applied: .asciz "PROGRAM APPLIED: SHAPE + POSITION + ARROW CONTROLS\r\n"
 scan_escape_message: .asciz "LOADER STOPPED BY ESC; FINAL VM STATE PRESERVED\r\nNO NATIVE CODE; NO PAIR; NO CONNECT; NO DELL RADIO TRANSMIT\r\n"
 scan_runtime_error_cleanup: .asciz "RUNTIME STOPPED AFTER CLEANUP ERROR PATH\r\nNO PAIR; NO CONNECT; NO DELL RADIO TRANSMIT\r\n"
 scan_graphics_error: .asciz "SUPPORTED GOP FRAMEBUFFER NOT FOUND; RADIO NOT ENABLED\r\n"

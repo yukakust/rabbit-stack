@@ -1,14 +1,18 @@
 {
   "schema_version": 1,
   "probe_id": "x86-64-uefi-ble-program-loader-v0",
-  "implementation_revision": 1,
+  "implementation_revision": 2,
   "target_usb_id": "0CF3:E009",
   "required_rom_version": "0x00000302",
   "rabbit_vm": {
     "version": 1,
-    "packet_size_bytes": 16,
-    "magic_ascii": "RBVM",
-    "opcodes": {"1": "SET_SQUARE_COLOR"},
+    "frame_size_bytes": 16,
+    "chunk_payload_bytes": 7,
+    "transport_max_program_bytes": 224,
+    "accepted_program_bytes": 24,
+    "magic_ascii": "RP",
+    "frame_types": {"1": "BEGIN", "2": "CHUNK", "3": "COMMIT"},
+    "opcodes": {"1": "DEFINE_SHAPE", "2": "SET_POSITION", "255": "END"},
     "checksum": "fnv1a32-corruption-check-not-authentication",
     "transport": "ble-128-bit-service-uuid"
   },
@@ -23,9 +27,9 @@
     "bind-current-gop-framebuffer",
     "draw-initial-yellow-square",
     "configure-long-lived-passive-scan",
-    "receive-one-packet-rabbit-vm-programs",
-    "validate-magic-version-opcode-reserved-and-checksum",
-    "execute-only-set-square-color",
+    "assemble-begin-chunk-commit-rabbit-vm-programs-in-ram",
+    "validate-frame-and-program-checksums-version-opcodes-and-bounds",
+    "atomically-activate-square-or-triangle-arrow-controlled-scene",
     "poll-local-escape-between-bounded-receives",
     "disable-passive-scan-on-local-exit"
   ],
@@ -35,7 +39,8 @@
     "max_command_events": 8,
     "event_timeout_ms": 200,
     "max_event_bytes": 80,
-    "framebuffer_writes_per_program": 16384,
+    "max_program_bytes": 224,
+    "framebuffer_writes_per_draw": 16384,
     "runtime_duration": "until-local-escape-or-power-off"
   },
   "forbidden_operations": [
@@ -51,5 +56,5 @@
     "internal-storage-write",
     "firmware-setting-write"
   ],
-  "contract": "one-boot-long-lived-bounded-wireless-program-loader"
+  "contract": "one-boot-long-lived-transactional-wireless-program-loader"
 }
