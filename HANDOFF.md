@@ -596,8 +596,10 @@ V0.2 tests one narrow activation hypothesis: exactly one standard HCI Reset and 
 QCA USB setup returns into generic HCI initialization, while its QCA core path explicitly
 performs a post-download HCI Reset. The new deterministic image SHA-256 is
 `7460a9fce26fc8aea329f0c169492e0c76b60d5df88cfdd0f9901eb9ac56ae5f`.
-It is PRE-QEMU and NOT INSTALLED. Active scan, advertising, pairing, connection, Dell
-radio transmit, flash, internal storage, and firmware-setting writes remain absent.
+Its exact QEMU gate passed: v0.2 rejected the emulated USB keyboard before RAM writes,
+reset, HCI, or radio. Physical preparation is open and installation is still pending.
+Active scan, advertising, pairing, connection, Dell radio transmit, flash, internal
+storage, and firmware-setting writes remain absent.
 
 ## U7 pre-physical artifact result
 

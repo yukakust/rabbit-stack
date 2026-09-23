@@ -137,6 +137,17 @@ def main() -> int:
         require(archived["safety"]["controller_reset_performed"] is False, "v0.1 unexpectedly claims reset")
         print("PASS: archived physical v0.1 evidence motivates exactly one post-load reset after E0/zero events")
 
+        qemu_v02 = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-v02-observed.json")
+        require(qemu_v02["status"] == "OBSERVED-MANUAL-QEMU-COMBINED-QCA-RESET-RX-FAIL-CLOSED", "v0.2 QEMU evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu_v02["bindings"][field] == report_a[field], f"v0.2 QEMU {field} binding changed")
+        observation = qemu_v02["observation"]
+        require(observation["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT", "v0.2 QEMU mismatch result changed")
+        require(observation["target_found"] is False and observation["controller_ram_writes"] == 0, "v0.2 QEMU claims a write")
+        require(observation["post_load_reset_performed"] is False and observation["receiver_chain_reached"] is False, "v0.2 mismatch reached new authority")
+        require(observation["hci_commands_sent"] == observation["radio_operations_requested"] == 0, "v0.2 QEMU claims HCI/radio activity")
+        print("PASS: exact v0.2 QEMU evidence fails closed before RAM writes, reset, HCI, and radio")
+
         probe, target = load_json(PROBE_PATH), load_json(TARGET_PATH)
         wrong_rom = copy.deepcopy(probe); wrong_rom["required_rom_version"] = "0x00000300"
         rejected("a substituted ROM", lambda: validate_probe(wrong_rom))

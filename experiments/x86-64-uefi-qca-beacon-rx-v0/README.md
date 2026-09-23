@@ -41,8 +41,9 @@ TARGET NOT FOUND; NO DEVICE WRITE SENT
 
 and must never reach `BEGIN BOUNDED PASSIVE RABBIT RECEIVE`. V0.1 passed this gate and
 then ran physically: RAM setup reached status `E0`, but its scan reported
-`RX/LE/ADV=00/00/00`. V0.2 adds only the bounded post-load reset hypothesis and requires
-a fresh QEMU observation before physical preparation reopens.
+`RX/LE/ADV=00/00/00`. V0.2 adds only the bounded post-load reset hypothesis. Its fresh
+QEMU run displayed the exact v0.2 identity and failed closed at the device mismatch
+before RAM writes, reset, HCI, or radio. Physical preparation is now open.
 
 Reviewed pre-QEMU identities:
 
@@ -53,14 +54,14 @@ EFI SHA-256:      b5572f8e6f23daea9568d2e07ffc684bbbe4b25e591e3ac61bc8c42354c862
 image SHA-256:    7460a9fce26fc8aea329f0c169492e0c76b60d5df88cfdd0f9901eb9ac56ae5f
 ```
 
-After the fresh v0.2 QEMU result is evidence-bound, prepare the candidate with:
+Prepare the v0.2 candidate with:
 
 ```sh
 python3 prepare_physical.py
 ```
 
 Full power-off is rollback for controller RAM. Removing the USB is recovery for the
-boot application. Status: **V0.2 PRE-QEMU; NOT INSTALLED**.
+boot application. Status: **V0.2 QEMU-OBSERVED; NOT INSTALLED**.
 
 Primary references: Linux's
 [`btusb_setup_qca`](https://code.googlesource.com/linux/torvalds/linux/+/21e4675d9305f6ccd20b95d943882d607c8ae288/drivers/bluetooth/btusb.c)
