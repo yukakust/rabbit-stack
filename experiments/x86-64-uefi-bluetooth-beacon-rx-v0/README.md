@@ -40,8 +40,10 @@ QEMU has no `0CF3:E009`; it must display:
 TARGET NOT FOUND; NO HCI COMMAND SENT
 ```
 
-No scan is started in QEMU. After this observation is exact-hash-bound,
-`prepare_physical.py` will build and inspect the removable target without writing it.
+No scan is started in QEMU. On 2026-09-23 QEMU 11.1.1 on the Apple Silicon Mac displayed
+that exact result. The owner-reviewed observation is bound to the exact probe, target,
+program, EFI, and image identities. `prepare_physical.py` is now open: it builds and
+inspects the removable target without writing it.
 
 ## Mac sender
 
@@ -72,4 +74,4 @@ EFI SHA-256:     8b9df03b61e21319c1d0329d185b080d17962a1b3763424ddb0d6ddc98c6284
 image SHA-256:   0fa4c4ce888d9a2ba916898f1ab43f579b92b52553d7f6a96b44fabddc2dd50c
 ```
 
-Status: **PRE-QEMU; NOT PHYSICALLY INSTALLED**.
+Status: **QEMU-OBSERVED; NOT PHYSICALLY INSTALLED**.

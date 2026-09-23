@@ -493,6 +493,12 @@ download, or persistent writes. The program is 3,432 bytes; image identity is
 All deterministic and negative checks pass. Status is PRE-QEMU and NOT-PHYSICALLY-
 INSTALLED; the next action is the fail-closed QEMU gate on the owner's Mac.
 
+The owner completed that QEMU gate. QEMU 11.1.1 on the Apple Silicon Mac displayed the
+v0.1 receive-only title and mode, rejected the emulated USB keyboard at Stage 1, and
+reported `TARGET NOT FOUND; NO HCI COMMAND SENT`. No passive scan or radio operation
+started. Exact evidence is committed, so `prepare_physical.py` is now open; physical
+media replacement still requires fresh device identity and explicit authorization.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

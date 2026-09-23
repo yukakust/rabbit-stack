@@ -170,6 +170,20 @@ def main() -> int:
         require("CBAdvertisementDataServiceUUIDsKey" in mac_source.read_text(), "Mac beacon no longer advertises a service UUID")
         print("PASS: reviewed Mac CoreBluetooth sender advertises the exact same Rabbit UUID")
 
+        qemu = load_json(ROOT / "evidence" / "qemu-macos-arm64-observed.json")
+        require(qemu["status"] == "OBSERVED-MANUAL-QEMU-BEACON-RX-FAIL-CLOSED", "QEMU evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu["bindings"][field] == report_a[field], f"QEMU {field} binding changed")
+        require(qemu["observation"]["visible_version"] == "v0.1", "QEMU version marker changed")
+        require(qemu["observation"]["visible_mode"] == "PASSIVE RECEIVE ONLY; NO PAIR OR CONNECT", "QEMU mode marker changed")
+        require(qemu["observation"]["visible_stage"] == "STAGE 1: FIND 0CF3:E009 INTERFACE 00", "QEMU stage changed")
+        require(qemu["observation"]["result"] == "TARGET NOT FOUND; NO HCI COMMAND SENT", "QEMU fail-closed result changed")
+        require(qemu["observation"]["hci_commands_sent"] == 0, "QEMU claims HCI commands")
+        require(qemu["observation"]["passive_scan_started"] is False, "QEMU claims passive scanning")
+        require(qemu["observation"]["radio_operations_requested"] == 0, "QEMU claims radio activity")
+        require(qemu["execution"]["physical_execution_verified"] is False, "QEMU evidence claims physical execution")
+        print("PASS: exact QEMU evidence proves the receiver fails closed before HCI and radio")
+
         over_budget = copy.deepcopy(probe)
         over_budget["limits"]["max_scan_events"] = 101
         rejected("an unbounded scan extension", lambda: validate_probe(over_budget))
@@ -194,7 +208,7 @@ def main() -> int:
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
         return 1
-    print("PASS: pre-QEMU receive-only Rabbit BLE beacon contract")
+    print("PASS: QEMU-observed receive-only Rabbit BLE beacon contract")
     return 0
 
 

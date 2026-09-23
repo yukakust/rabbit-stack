@@ -349,6 +349,11 @@ machine bytes, UUID agreement, event parsing, timeout, cleanup, and rejection of
 scan, transmit, pairing, connection, reset, firmware, persistence, tamper, and ambiguity
 pass. QEMU fail-closed observation remains the next gate before physical replacement.
 
+That QEMU gate passed exactly: the emulated machine reached exact-device matching,
+rejected its USB keyboard, sent no HCI command, and never started passive scan. The
+screen observation is bound to the five exact artifact identities. Read-only physical
+preparation is now open; removable-media replacement remains separately authorized.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve
