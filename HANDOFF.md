@@ -633,6 +633,15 @@ The corrected image SHA-256 is
 its fresh QEMU exact-device mismatch gate passed without RAM, framebuffer, HCI, or radio.
 Physical candidate preparation is open for the second Dell attempt.
 
+The v0.2 Dell attempt passed GOP lookup but lost HDMI during the first draw. The draw
+helper had two stack additions (CALL return address and `PUSH RSI`) but compensated for
+only one, so it read every persistent framebuffer field eight bytes early and used the
+GOP interface pointer as the framebuffer base. No HCI reset or scan was observed. V0.3
+uses `+0x10` for all five reads and brackets the draw with two visible stage messages.
+Its image SHA-256 is
+`63ea281431ca09cce91d7bedf0ca9684f17f2020422fee17bfe42021bac34f1f`;
+a fresh QEMU mismatch gate is required.
+
 ## U7 pre-physical artifact result
 
 `experiments/x86-64-uefi-v0/` builds, but does not install, a deterministic 64 MiB disk

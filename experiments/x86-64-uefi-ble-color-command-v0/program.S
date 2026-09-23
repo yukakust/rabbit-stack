@@ -436,7 +436,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.2\r\n=============================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.3\r\n=============================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 target_found: .asciz "TARGET FOUND\r\nSTAGE 2: REQUIRE ROM=00000302\r\n"
 rom_ok: .asciz "ROM MATCH: OK\r\n"
 before_template: .ascii "STATUS BEFORE="
@@ -617,6 +617,8 @@ scan_handles_freed:
     call scan_init_graphics
     test eax, eax
     jnz scan_graphics_failed
+    lea rdx, [rip + scan_graphics_bound]
+    call scan_print_ascii
     xor eax, eax
     mov dword ptr [rsp + 0x418], eax # no wireless command applied yet
     mov eax, 2                       # yellow
@@ -990,7 +992,9 @@ scan_gop_bad:
 # EAX=1 blue, EAX=2 yellow. Draw a centered 128x128 square directly into GOP.
 scan_draw_square:
     push rsi
-    mov ecx, [rsp + 0x414 + 8]
+    # CALL pushed 8 bytes and PUSH RSI pushed another 8; address scan_entry's
+    # persistent slots with +0x10, not +0x08.
+    mov ecx, [rsp + 0x414 + 0x10]
     cmp eax, 1
     jne scan_color_yellow
     mov esi, 0x00ff0000         # RGB framebuffer: blue
@@ -1004,10 +1008,10 @@ scan_color_yellow:
     jz scan_color_ready
     mov esi, 0x00ffff00         # BGR framebuffer: yellow
 scan_color_ready:
-    mov r8, [rsp + 0x408 + 8]
-    mov r9d, [rsp + 0x410 + 8]
-    mov r10d, [rsp + 0x41c + 8]
-    mov r11d, [rsp + 0x420 + 8]
+    mov r8, [rsp + 0x408 + 0x10]
+    mov r9d, [rsp + 0x410 + 0x10]
+    mov r10d, [rsp + 0x41c + 0x10]
+    mov r11d, [rsp + 0x420 + 0x10]
     xor ecx, ecx
 scan_draw_row:
     mov eax, r11d
@@ -1027,10 +1031,11 @@ scan_draw_pixel:
     pop rsi
     ret
 
-scan_title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.2\r\n================\r\nPASSIVE RX: BLUE OR YELLOW; NO PAIR OR CONNECT\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+scan_title: .asciz "\r\nRABBIT BLE COLOR COMMAND v0.3\r\n================\r\nPASSIVE RX: BLUE OR YELLOW; NO PAIR OR CONNECT\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 scan_found_template: .ascii "TARGET FOUND; EVENT ENDPOINT="
 scan_found_endpoint: .asciz "00\r\n"
-scan_graphics_ok: .asciz "DISPLAY READY; INITIAL SQUARE=YELLOW\r\n"
+scan_graphics_bound: .asciz "DISPLAY FRAMEBUFFER BOUND\r\n"
+scan_graphics_ok: .asciz "INITIAL SQUARE DRAWN=YELLOW\r\n"
 scan_reset_ok: .asciz "STAGE 2: POST-LOAD HCI RESET: OK\r\n"
 scan_event_mask_ok: .asciz "STAGE 2: LE META MASK: OK\r\n"
 scan_le_event_mask_ok: .asciz "STAGE 3: ADV REPORT MASK: OK\r\n"

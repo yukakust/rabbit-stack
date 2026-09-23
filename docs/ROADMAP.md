@@ -429,6 +429,15 @@ new deterministic identities pass. Its fresh exact QEMU mismatch gate also passe
 without RAM, framebuffer, HCI, or radio effects. The dedicated USB may now be replaced
 for the second physical attempt.
 
+The v0.2 physical attempt passed the nested GOP call but lost HDMI at the first draw.
+Review found that the draw helper accounted for CALL's 8-byte return address but not
+its own additional `PUSH RSI`; all persistent framebuffer fields were therefore read
+eight bytes early. In particular, the GOP interface pointer was treated as
+`FrameBufferBase`. No HCI reset or scan was observed. V0.3 changes those five offsets
+from `+0x08` to `+0x10` and prints separate `FRAMEBUFFER BOUND` and `INITIAL SQUARE
+DRAWN` stages around the first write. Its deterministic build passes; a fresh QEMU
+mismatch gate is required before another physical installation.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

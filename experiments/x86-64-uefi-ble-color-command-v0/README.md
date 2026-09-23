@@ -35,7 +35,7 @@ candidate and inspect the exact external disk identity:
 python3 prepare_physical.py
 ```
 
-This creates `/tmp/rabbit-ble-color-command-v02.img` but does not write any device.
+This creates `/tmp/rabbit-ble-color-command-v03.img` but does not write any device.
 
 ## Physical interaction
 
