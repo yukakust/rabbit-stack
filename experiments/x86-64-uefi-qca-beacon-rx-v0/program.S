@@ -435,7 +435,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title: .asciz "\r\nRABBIT QCA INIT + BEACON RX v0.1\r\n=========================\r\nTRANSIENT CONTROLLER RAM ONLY; RADIO OFF\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+title: .asciz "\r\nRABBIT QCA INIT + BEACON RX v0.2\r\n=========================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 target_found: .asciz "TARGET FOUND\r\nSTAGE 2: REQUIRE ROM=00000302\r\n"
 rom_ok: .asciz "ROM MATCH: OK\r\n"
 before_template: .ascii "STATUS BEFORE="
@@ -669,6 +669,17 @@ scan_handles_freed:
 .Lcommand_complete\@:
     .endm
 
+    # Apply the newly loaded transient firmware exactly once. Linux's generic HCI
+    # initialization performs this reset after the QCA USB setup callback returns.
+    send_hci_command scan_cmd_hci_reset, scan_cmd_hci_reset_end, 0x03, 0x0c
+    mov ecx, 100000
+    mov rax, [rdi + 0xf8]
+    call rax
+    test rax, rax
+    jnz scan_command_failed
+    lea rdx, [rip + scan_reset_ok]
+    call scan_print_ascii
+
     send_hci_command scan_cmd_event_mask, scan_cmd_event_mask_end, 0x01, 0x0c
     lea rdx, [rip + scan_event_mask_ok]
     call scan_print_ascii
@@ -868,9 +879,10 @@ scan_hex_loop:
     jns scan_hex_loop
     ret
 
-scan_title: .asciz "\r\nRABBIT COMBINED PASSIVE RX v0.1\r\n================\r\nPASSIVE RX; NO PAIR OR CONNECT\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+scan_title: .asciz "\r\nRABBIT COMBINED PASSIVE RX v0.2\r\n================\r\nONE HCI RESET; THEN PASSIVE RX ONLY\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 scan_found_template: .ascii "TARGET FOUND; EVENT ENDPOINT="
 scan_found_endpoint: .asciz "00\r\n"
+scan_reset_ok: .asciz "STAGE 2: POST-LOAD HCI RESET: OK\r\n"
 scan_event_mask_ok: .asciz "STAGE 2: LE META MASK: OK\r\n"
 scan_le_event_mask_ok: .asciz "STAGE 3: ADV REPORT MASK: OK\r\n"
 scan_scan_parameters_ok: .asciz "STAGE 4: PASSIVE PARAMETERS: OK\r\n"
@@ -892,6 +904,9 @@ scan_footer: .asciz "\r\nPHOTOGRAPH. PRESS ANY KEY.\r\n"
 scan_hex_digits: .ascii "0123456789ABCDEF"
 
 .balign 8
+# Apply the volatile QCA setup before configuring receive-only scanning.
+scan_cmd_hci_reset: .byte 0x03,0x0c,0x00
+scan_cmd_hci_reset_end:
 # Event code 0x3E (LE Meta Event) is bit 61 of the general event mask.
 scan_cmd_event_mask: .byte 0x01,0x0c,0x08, 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x20
 scan_cmd_event_mask_end:

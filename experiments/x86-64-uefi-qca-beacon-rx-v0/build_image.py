@@ -13,4 +13,4 @@ args.report.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", enco
 print(f"BUILT: {args.output} ({len(image)} bytes)")
 print(f"EFI SHA256: {report['efi_sha256']}")
 print(f"IMAGE SHA256: {report['image_sha256']}")
-print("STATUS: BUILT-NOT-INSTALLED; QCA RAM init + bounded passive RX; persistent writes=0")
+print("STATUS: BUILT-NOT-INSTALLED; QCA RAM init + one HCI reset + bounded passive RX; persistent writes=0")

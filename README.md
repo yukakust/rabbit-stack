@@ -88,8 +88,8 @@ every layer we would otherwise be tempted to hide.
   controller RAM; post-load status is observed without reset, HCI, or radio activity.
 - [`experiments/x86-64-uefi-qca-beacon-rx-v0`](experiments/x86-64-uefi-qca-beacon-rx-v0):
   one boot composes that transient initialization with the reviewed 20-second passive
-  exact-UUID receiver; active scan, transmission, pairing, connection, reset, flash,
-  and persistent machine writes remain forbidden.
+  exact-UUID receiver; v0.2 tests one bounded post-load HCI Reset while active scan,
+  transmission, pairing, connection, flash, and persistent machine writes stay forbidden.
 
 ## Start here
 

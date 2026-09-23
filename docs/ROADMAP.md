@@ -396,6 +396,13 @@ escalation tests pass. Its QEMU exact-device mismatch gate passed without RAM wr
 HCI, or radio and is exact-bound. Physical candidate preparation is now open; physical
 media has not yet been replaced with this image.
 
+The physical v0.1 composition reached post-load status `E0` and completed scan cleanup,
+but its counters remained `RX/LE/ADV=00/00/00`. V0.2 therefore tests one narrow
+activation hypothesis: exactly one standard HCI Reset plus a 100 ms wait after the
+ready flags, followed by the unchanged passive receiver. A fresh mismatch gate is
+required because reset authority is new; transmit, pairing, connection, flash, storage,
+and firmware-setting prohibitions remain unchanged.
+
 ### U10 — Universal installer
 
 Given a world and a device, select among hosted, native, and bridge deployment; resolve

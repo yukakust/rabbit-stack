@@ -4,14 +4,16 @@ This is the first single-boot composition of two physically observed primitives:
 
 1. load exact hash-pinned QCA Rome 3.2 rampatch and NVM into volatile controller RAM;
 2. require `PATCH_UPDATED=YES` and `SYSCFG_UPDATED=YES`;
-3. run the already reviewed 20-second passive scan for exactly
+3. issue exactly one standard HCI Reset and wait 100 ms;
+4. run the already reviewed 20-second passive scan for exactly
    `52414242-4954-4C45-8000-000000000001`;
-4. always disable scanning before reporting the result.
+5. always disable scanning before reporting the result.
 
 The composition is necessary because a full Dell power-off clears the controller RAM.
 The Dell only receives radio advertisements. It never performs active scan, advertises,
-pairs, connects, sends ACL data, resets the controller, writes controller flash, or
-writes the Dell's internal storage or firmware settings.
+pairs, connects, sends ACL data, writes controller flash, or writes the Dell's internal
+storage or firmware settings. V0.2 permits exactly one post-load HCI Reset and rejects
+zero or multiple resets. This is not a USB-port reset or persistent firmware write.
 
 Pinned firmware inputs remain the unmodified files from linux-firmware commit
 `797d34e622b2262ca0777e98fd40b1d29034169d`:
@@ -37,24 +39,31 @@ QEMU has no exact `0CF3:E009` device. It must display:
 TARGET NOT FOUND; NO DEVICE WRITE SENT
 ```
 
-and must never reach `BEGIN BOUNDED PASSIVE RABBIT RECEIVE`. On 2026-09-23 QEMU 11.1.1
-on the owner's Apple Silicon Mac showed that exact result. The observation is bound to
-the artifact identities and physical candidate preparation is now open.
+and must never reach `BEGIN BOUNDED PASSIVE RABBIT RECEIVE`. V0.1 passed this gate and
+then ran physically: RAM setup reached status `E0`, but its scan reported
+`RX/LE/ADV=00/00/00`. V0.2 adds only the bounded post-load reset hypothesis and requires
+a fresh QEMU observation before physical preparation reopens.
 
 Reviewed pre-QEMU identities:
 
 ```text
-template SHA-256: 5996cd6f6a1af50ca5a255769af0a39c2146f958f5147d7fd261e2ba9ea2a6d3
-program SHA-256:  b5a672b9dad9624589f50f42f4ed55a44c29ba3b189e8f2e99e73275a329e236
-EFI SHA-256:      4a25054ceb2acbb9806786028e1a601536531328a7396cecd7dc081d11f272df
-image SHA-256:    50d5232d4914e33220d73bff53bd42f428244a96a96c9abbaa19b9766200ab7d
+template SHA-256: 384631ecf1d1011532aec4f700d1eb36639383ba740c3c4b6f49b6193db7d66d
+program SHA-256:  44702cdc7e96a8ba80ab8bfd92378b98a4d1f0169a0277fab4c07ccae194b3a9
+EFI SHA-256:      b5572f8e6f23daea9568d2e07ffc684bbbe4b25e591e3ac61bc8c42354c862ba
+image SHA-256:    7460a9fce26fc8aea329f0c169492e0c76b60d5df88cfdd0f9901eb9ac56ae5f
 ```
 
-Prepare and inspect the physical candidate without writing the USB:
+After the fresh v0.2 QEMU result is evidence-bound, prepare the candidate with:
 
 ```sh
 python3 prepare_physical.py
 ```
 
 Full power-off is rollback for controller RAM. Removing the USB is recovery for the
-boot application. Status: **QEMU-OBSERVED; NOT INSTALLED**.
+boot application. Status: **V0.2 PRE-QEMU; NOT INSTALLED**.
+
+Primary references: Linux's
+[`btusb_setup_qca`](https://code.googlesource.com/linux/torvalds/linux/+/21e4675d9305f6ccd20b95d943882d607c8ae288/drivers/bluetooth/btusb.c)
+downloads the USB payloads and returns to generic HCI initialization; QCA's core setup
+also documents a post-download HCI Reset in
+[`btqca.c`](https://github.com/torvalds/linux/blob/master/drivers/bluetooth/btqca.c).

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "probe_id": "x86-64-usb-qca-rome-init-rabbit-beacon-rx-v0",
-  "implementation_revision": 1,
+  "implementation_revision": 2,
   "target_usb_id": "0CF3:E009",
   "required_rom_version": "0x00000302",
   "rabbit_service_uuid": "52414242-4954-4C45-8000-000000000001",
@@ -9,6 +9,7 @@
     "initialize-exact-qca-controller-ram-from-hash-pinned-inputs",
     "require-patch-and-syscfg-updated",
     "find-bounded-interrupt-in-endpoint",
+    "issue-one-post-load-hci-reset-and-wait-100ms",
     "configure-bounded-passive-scan",
     "receive-and-match-exact-rabbit-uuid",
     "disable-passive-scan"
@@ -18,7 +19,7 @@
     "vendor_out_header_requests": 2,
     "bulk_out_transfers": 18,
     "bulk_chunk_bytes": 4096,
-    "max_hci_commands": 5,
+    "max_hci_commands": 6,
     "max_command_events": 8,
     "max_scan_events": 100,
     "event_timeout_ms": 200,
@@ -26,7 +27,6 @@
     "max_event_bytes": 80
   },
   "forbidden_operations": [
-    "controller-reset",
     "controller-flash-write",
     "active-scan",
     "advertise",

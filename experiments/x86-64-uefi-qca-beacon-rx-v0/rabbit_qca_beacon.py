@@ -16,9 +16,9 @@ ROOT = Path(__file__).resolve().parent
 PROBE_PATH, TARGET_PATH = ROOT / "probe.json", ROOT / "target.json"
 PROGRAM_PATH, SOURCE_PATH = ROOT / "program.hex", ROOT / "program.S"
 MEDIA_BUILDER_PATH = ROOT.parent / "x86-64-uefi-v0" / "build_image.py"
-PROGRAM_TEMPLATE_SIZE = 76800
-PROGRAM_TEMPLATE_SHA256 = "5996cd6f6a1af50ca5a255769af0a39c2146f958f5147d7fd261e2ba9ea2a6d3"
-PROGRAM_SHA256 = "b5a672b9dad9624589f50f42f4ed55a44c29ba3b189e8f2e99e73275a329e236"
+PROGRAM_TEMPLATE_SIZE = 77168
+PROGRAM_TEMPLATE_SHA256 = "384631ecf1d1011532aec4f700d1eb36639383ba740c3c4b6f49b6193db7d66d"
+PROGRAM_SHA256 = "44702cdc7e96a8ba80ab8bfd92378b98a4d1f0169a0277fab4c07ccae194b3a9"
 RAMPATCH_MARKER, NVM_MARKER = b"RABBIT_RAMPATCH!", b"RABBIT_NVM_BLOB!"
 
 
@@ -82,9 +82,11 @@ def validate_target(target: dict[str, Any]) -> None:
         raise BuildError("QCA RAM header authority changed")
     if authority["bulk_out_endpoint"] != "0x02" or authority["bulk_out_max_transfers"] != 18:
         raise BuildError("QCA RAM bulk authority changed")
-    if authority["allowed_hci_command_sequence"] != ["0x0C01", "0x2001", "0x200B", "0x200C-enable", "0x200C-disable"]:
+    if authority["allowed_hci_command_sequence"] != ["0x0C03-reset", "0x0C01", "0x2001", "0x200B", "0x200C-enable", "0x200C-disable"]:
         raise BuildError("passive receive command sequence changed")
-    for field in ("controller_flash_write", "controller_reset", "active_scan", "radio_transmit", "advertise", "pair", "connect", "internal_storage_writes", "firmware_writes"):
+    if authority["controller_reset"] is not True or authority["post_load_reset_count"] != 1 or authority["post_load_reset_wait_ms"] != 100:
+        raise BuildError("bounded post-load reset authority changed")
+    for field in ("controller_flash_write", "active_scan", "radio_transmit", "advertise", "pair", "connect", "internal_storage_writes", "firmware_writes"):
         if authority[field]:
             raise BuildError(f"target permits forbidden authority: {field}")
 
@@ -122,7 +124,7 @@ def load_program(payloads: dict[str, bytes]) -> bytes:
 
 def build_efi(code: bytes) -> bytes:
     raw_size = (len(code) + SECTOR_SIZE - 1) // SECTOR_SIZE * SECTOR_SIZE
-    if raw_size != 0x12C00:
+    if raw_size != 0x12E00:
         raise BuildError("unexpected combined code size")
     dos = bytearray(0x80); dos[0:2] = b"MZ"; struct.pack_into("<I", dos, 0x3C, 0x80)
     coff = struct.pack("<HHIIIHH", 0x8664, 2, 0, 0, 0, 0xF0, 0x0022)
@@ -160,6 +162,7 @@ def build_fetched() -> tuple[bytes, dict[str, Any]]:
         "boot_path": "EFI/BOOT/BOOTX64.EFI", "target_usb_id": "0CF3:E009",
         "required_rom_version": "0x00000302", "rabbit_service_uuid": "52414242-4954-4C45-8000-000000000001",
         "transient_controller_ram_write_authorized": True, "passive_radio_receive_authorized": True,
+        "post_load_hci_reset_authorized": 1, "post_load_reset_wait_ms": 100,
         "active_scan_authorized": False, "radio_transmit_authorized": False,
         "pairing_authorized": False, "connection_authorized": False,
         "persistent_writes_authorized": 0, "physical_execution_verified": False, "writes_performed": [],

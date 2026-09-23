@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-qca-init-beacon-rx-v0.1-zero-events-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-QCA-READY-PASSIVE-RX-ZERO-EVENTS",
+  "bindings": {
+    "probe_sha256": "8cd5d6816909566b7aa3ab6981c1d7acaa804d203822b479afcce70c5c9c165b",
+    "target_sha256": "fb8c155f73dd88dd8f4842ee17f5b75e2e4f5ba631489646e9d729b1f6cb42ff",
+    "firmware_manifest_sha256": "cabf8be8ee76815a03d1407fd635c983563303a9661f9419d82e9dbcb3e81dfc",
+    "program_sha256": "b5a672b9dad9624589f50f42f4ed55a44c29ba3b189e8f2e99e73275a329e236",
+    "efi_sha256": "4a25054ceb2acbb9806786028e1a601536531328a7396cecd7dc081d11f272df",
+    "image_sha256": "50d5232d4914e33220d73bff53bd42f428244a96a96c9abbaa19b9766200ab7d"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "architecture": "x86-64",
+    "boot": "UEFI removable USB",
+    "physical_execution_verified": true
+  },
+  "observation": {
+    "rom_match": "00000302",
+    "status_before": "20",
+    "rampatch_transfer": "OK",
+    "nvm_transfer": "OK",
+    "status_after": "E0",
+    "patch_updated": true,
+    "syscfg_updated": true,
+    "passive_scan_parameters": "OK",
+    "passive_scan_enabled": true,
+    "passive_scan_disabled": true,
+    "rx_events_hex": "00",
+    "le_meta_events_hex": "00",
+    "advertising_reports_hex": "00",
+    "rabbit_beacon_received": false,
+    "result": "RABBIT BEACON NOT RECEIVED WITHIN BUDGET"
+  },
+  "safety": {
+    "active_scan_performed": false,
+    "radio_transmit_performed_by_dell": false,
+    "pairing_performed": false,
+    "connection_performed": false,
+    "controller_reset_performed": false,
+    "persistent_machine_writes": 0,
+    "power_off_rolls_back_controller_ram": true
+  },
+  "inference": "firmware bytes and ready flags alone did not yield USB advertising events; test one bounded post-load HCI reset next"
+}
