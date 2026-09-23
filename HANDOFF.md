@@ -619,8 +619,9 @@ arbitrary-code commands, disk writes, and firmware writes remain forbidden. The 
 pre-QEMU verifier passes with EFI SHA-256
 `cfb0fc9dd6b6bc59514cf5181b09faa7c93022e62ba96b721d98ef054e78788e` and image
 SHA-256 `bce85e8c67d71f45c0c118c3616e9a62c1d4ee6228d0b29a1bbe6b4ed52aa00d`.
-The next gate is the QEMU exact-device mismatch observation, followed by one physical
-USB installation and the live yellow → blue → yellow test without moving the USB.
+The exact QEMU mismatch gate passed with the corrected visible artifact identity and
+stopped before RAM, framebuffer, HCI, or radio. The next gate is one physical USB
+installation and the live yellow → blue → yellow test without moving the USB.
 
 ## U7 pre-physical artifact result
 

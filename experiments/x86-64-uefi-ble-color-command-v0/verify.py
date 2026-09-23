@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import copy, hashlib
+from pathlib import Path
 
 from fetch_firmware import fetch_all
 from rabbit_qca_beacon import (
@@ -76,6 +77,17 @@ def main() -> int:
         print("PASS: Dell transmit, active scan, pairing, connection, storage, and firmware writes remain forbidden")
         print(f"PASS: efi={report_a['efi_sha256']}, image={report_a['image_sha256']}")
 
+        qemu = load_json(Path(__file__).resolve().parent / "evidence" / "qemu-macos-arm64-observed.json")
+        require(qemu["status"] == "OBSERVED-MANUAL-QEMU-BLE-COLOR-COMMAND-FAIL-CLOSED", "QEMU evidence status changed")
+        for field in ("probe_sha256", "target_sha256", "firmware_manifest_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(qemu["bindings"][field] == report_a[field], f"QEMU {field} binding changed")
+        observation = qemu["observation"]
+        require(observation["visible_identity"] == "RABBIT BLE COLOR COMMAND v0.1", "visible QEMU identity changed")
+        require(observation["result"] == "TARGET NOT FOUND; NO DEVICE WRITE SENT", "QEMU mismatch result changed")
+        require(not observation["target_found"], "QEMU unexpectedly claims the physical controller")
+        require(observation["controller_ram_writes"] == observation["hci_commands_sent"] == observation["radio_operations_requested"] == observation["framebuffer_writes_performed"] == 0, "QEMU mismatch crossed an authority boundary")
+        print("PASS: exact QEMU mismatch evidence stops before RAM, graphics, HCI, and radio")
+
         probe, target = load_json(PROBE_PATH), load_json(TARGET_PATH)
         third = copy.deepcopy(probe); third["commands"]["red"] = "52414242-4954-4C45-8000-000000000004"
         rejected("a third command", lambda: validate_probe(third))
@@ -88,7 +100,7 @@ def main() -> int:
             rejected(f"target permitting {field}", lambda unsafe=unsafe: validate_target(unsafe))
     except (BuildError, OSError, RuntimeError) as error:
         print(f"FAIL: {error}"); return 1
-    print("PASS: pre-QEMU BLE color-command runtime contract")
+    print("PASS: QEMU-gated BLE color-command runtime contract")
     return 0
 
 if __name__ == "__main__":

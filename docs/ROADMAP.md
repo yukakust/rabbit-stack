@@ -415,8 +415,10 @@ same pinned volatile QCA inputs, performs the one required reset, binds a bounde
 region, draws an initial yellow square, and listens passively for at most 120 seconds.
 Only exact `BLUE` and `YELLOW` service UUIDs can repaint that centered `128 x 128`
 region. Both commands end the window early and mandatory scan disable remains last.
-Deterministic pre-QEMU verification passes; QEMU fail-closed and physical Dell evidence
-are the next gates. This is a live command vocabulary, not arbitrary wireless code.
+Deterministic verification passes. The exact QEMU mismatch gate also passed: the visible
+artifact identity was correct and execution stopped before RAM, framebuffer, HCI, or
+radio authority. Physical Dell evidence is the next gate. This is a live command
+vocabulary, not arbitrary wireless code.
 
 ### U10 — Universal installer
 

@@ -31,6 +31,8 @@ def main() -> int:
     try:
         if subprocess.run([sys.executable, str(ROOT / "verify.py")], check=False).returncode:
             raise RuntimeError("verification failed; no candidate was prepared")
+        if not (ROOT / "evidence" / "qemu-macos-arm64-observed.json").is_file():
+            raise RuntimeError("exact QEMU mismatch gate is not recorded")
         image, report = build_fetched()
         OUTPUT.write_bytes(image)
         REPORT.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
