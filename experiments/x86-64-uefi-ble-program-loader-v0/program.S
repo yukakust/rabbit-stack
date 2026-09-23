@@ -436,7 +436,7 @@ hex_loop:
     jns hex_loop
     ret
 
-title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.2\r\n===================================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.3\r\n===================================\r\nTRANSIENT RAM; ONE POST-LOAD HCI RESET\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 target_found: .asciz "TARGET FOUND\r\nSTAGE 2: REQUIRE ROM=00000302\r\n"
 rom_ok: .asciz "ROM MATCH: OK\r\n"
 before_template: .ascii "STATUS BEFORE="
@@ -486,7 +486,9 @@ scan_entry:
     push r13
     push r14
     push r15
-    sub rsp, 0x700
+    # Keep the same 8-mod-16 frame size as the proven runtime.  scan_entry is
+    # reached by JMP, so 0x700 would invert Microsoft-x64 call alignment.
+    sub rsp, 0x708
 
     mov rbx, [rdx + 0x30]       # SystemTable->ConIn
     mov rbp, [rdx + 0x40]       # SystemTable->ConOut
@@ -1108,7 +1110,7 @@ scan_wait_key:
     jnz scan_wait_key
 scan_return:
     xor eax, eax
-    add rsp, 0x700
+    add rsp, 0x708
     pop r15
     pop r14
     pop r13
@@ -1279,7 +1281,7 @@ scan_skip_pixel:
     pop rsi
     ret
 
-scan_title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.2\r\n===================================\r\nRABBIT VM v1; PASSIVE RX; ESC TO STOP\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
+scan_title: .asciz "\r\nRABBIT WIRELESS PROGRAM LOADER v0.3\r\n===================================\r\nRABBIT VM v1; PASSIVE RX; ESC TO STOP\r\n\r\nSTAGE 1: FIND 0CF3:E009 INTERFACE 00\r\n"
 scan_found_template: .ascii "TARGET FOUND; EVENT ENDPOINT="
 scan_found_endpoint: .asciz "00\r\n"
 scan_graphics_bound: .asciz "DISPLAY FRAMEBUFFER BOUND\r\n"

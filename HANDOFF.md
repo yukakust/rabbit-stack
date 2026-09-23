@@ -670,13 +670,18 @@ Rabbit VM v1 accepts `DEFINE_SHAPE`, `SET_POSITION`, and `END`: a program can se
 square or triangle, arbitrary RGB, position, size, movement step, and arrow controls.
 FNV is explicitly corruption detection, not authentication. Native-code execution,
 arbitrary memory access, pairing, connection, Dell transmission, disk writes, and
-firmware writes remain forbidden. The deterministic pre-QEMU verifier passes with
-EFI SHA-256 `64c81e301cd552f42a3ee67743d6ebcf1a386215f5276fd27ce3de9412198c52`
+firmware writes remain forbidden. The exact v0.2 QEMU mismatch observation stopped
+before RAM, VM, HCI, radio, or framebuffer effects. The physical v0.2 image then loaded
+both pinned QCA payloads and reached `STAGE 5: BEGIN TRANSACTIONAL RABBIT VM RECEIVE`,
+but the chained runtime title did not appear. Because `scan_entry` is reached by `JMP`,
+expanding its frame from the proven `0x498` to `0x700` inverted Microsoft x64 call
+alignment before its first `OutputString`. V0.3 keeps the expanded workspace but uses
+`0x708`, restoring the 8-mod-16 frame relationship. Its deterministic pre-QEMU verifier
+passes with EFI SHA-256
+`7bb3b4875eb331213ae5bd4de8e58da35f634cb7960178d0862de4232ce95f54`
 and image SHA-256
-`0d0b53b980bd4645b624aeb7489aa0d36fb93e302bd0edfa77e869e6cb161c9f`.
-The manual QEMU mismatch observation now passes with the exact v0.2 identity and stops
-before RAM, VM, HCI, radio, or framebuffer effects. Physical preparation is open; the
-loader has not yet been installed on the dedicated USB.
+`3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548`.
+Fresh exact v0.3 QEMU evidence is required before physical preparation reopens.
 
 ## U7 pre-physical artifact result
 

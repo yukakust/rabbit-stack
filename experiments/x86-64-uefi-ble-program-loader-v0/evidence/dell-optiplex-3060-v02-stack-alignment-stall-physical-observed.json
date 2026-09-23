@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-rabbit-vm-loader-v0.2-stack-alignment-stall-2026-09-23",
+  "status": "OBSERVED-MANUAL-PHYSICAL-CHAIN-ENTRY-STACK-ALIGNMENT-STALL",
+  "bindings": {
+    "program_sha256": "f25668c0211bd0e7d3aa07f869e8ea517a80df876d8bd990c225e5faf5cd39d3",
+    "efi_sha256": "64c81e301cd552f42a3ee67743d6ebcf1a386215f5276fd27ce3de9412198c52",
+    "image_sha256": "0d0b53b980bd4645b624aeb7489aa0d36fb93e302bd0edfa77e869e6cb161c9f"
+  },
+  "observation": {
+    "method": "owner-reviewed-screen",
+    "visible_identity": "RABBIT WIRELESS PROGRAM LOADER v0.2",
+    "last_visible_line": "STAGE 5: BEGIN TRANSACTIONAL RABBIT VM RECEIVE",
+    "rom_match": true,
+    "rampatch_transfer": "OK",
+    "nvm_transfer": "OK",
+    "status_after": "E0",
+    "chained_runtime_title_visible": false,
+    "hci_reset_observed": false,
+    "passive_scan_observed": false,
+    "vm_program_received": false,
+    "persistent_writes": 0
+  },
+  "diagnosis": "scan_entry changed its frame size from 0x498 (8 mod 16) to 0x700 (0 mod 16) despite being reached by JMP; this inverted Microsoft-x64 call alignment before its first OutputString",
+  "recovery": "power-off or reboot; controller RAM changes are transient"
+}

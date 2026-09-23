@@ -464,12 +464,15 @@ transfer identity, whole-program hash, and bytecode all validate. Rabbit VM v1 p
 use fixed-width `DEFINE_SHAPE`, `SET_POSITION`, and `END` instructions to choose square
 or triangle, arbitrary RGB, position, size, and arrow movement. The interpreter cannot
 jump to received native code or address arbitrary memory. Authentication remains a
-later gate. Deterministic verification passes with image SHA-256
-`0d0b53b980bd4645b624aeb7489aa0d36fb93e302bd0edfa77e869e6cb161c9f`.
-Its exact QEMU fail-closed observation now passes: the loader identity is visible and
-the emulated-device mismatch stops before RAM, VM, HCI, radio, or framebuffer effects.
-The next gate is one final physical USB installation and multiple complete interactive
-scene programs without moving USB.
+later gate. The exact v0.2 QEMU fail-closed observation passed, then the physical Dell
+loaded the pinned QCA RAM payloads and stopped immediately after announcing the
+transactional VM handoff. This exposed a chain-entry stack-alignment regression: the
+runtime is reached by `JMP`, so its expanded frame must remain 8 mod 16 before Microsoft
+x64 UEFI calls. V0.3 changes the frame from `0x700` to `0x708` and records the failed
+v0.2 artifact as physical evidence. Deterministic verification passes with image
+SHA-256 `3a40d06832762b6436e9410766bc3db781ae0e01020c0024c32a82367322b548`.
+The next gate is a fresh exact v0.3 QEMU mismatch observation, followed by one corrected
+physical USB installation and multiple scene programs without moving USB.
 
 ### U10 — Universal installer
 
