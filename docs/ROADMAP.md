@@ -519,7 +519,7 @@ reference contract. `Cat Plays With Ball` resolves to thirteen cards, while a se
 `Bouncing Ball` Creation reuses ten exact component identities. Ed25519 package sharing
 and negative validation pass.
 
-### U13 — Scene/Anima v2 execution (hosted reference complete; physical pending)
+### U13 — Scene/Anima v2 execution (hosted complete; Dell candidate QEMU-observed)
 
 `experiments/scene-anima-v2-runner/` consumes the exact resolved Inventory v1 Creation
 and executes a deterministic integer-only scene. The cat visits look, chase, pounce,
@@ -527,9 +527,17 @@ bat, and wait states; the reusable sprite frames animate; the ball integrates ve
 receives cat contact, and reflects from scene edges. Repeated 240-tick runs produce the
 same canonical trace and final RGB raster. An offline HTML view visualizes that evidence.
 
-Status is `SCENE-ANIMA-V2-HOSTED-EXECUTED-NOT-PHYSICALLY-DEPLOYED`. The next boundary is
-a Dell Target Pack and bounded physical Scene/Anima runtime that preserve the same
-Creation identity and observable semantics without moving target facts into Inventory.
+`experiments/x86-64-uefi-scene-anima-v2/` adds that separate Dell Target Pack without
+changing the Creation or any reusable component. Its first bounded backend embeds the
+exact 241-frame canonical trace, draws the exact catalog sprites through UEFI GOP at
+30 ticks per second, and accepts Escape as its only input. Two reviewed QEMU frames
+show both entities at changed positions. Network, radio, internal-storage writes,
+firmware writes, and native extensions remain unavailable.
+
+Status is `QEMU-OBSERVED-PHYSICAL-CANDIDATE-NOT-INSTALLED`. The remaining U13 boundary
+is writing the dedicated Rabbit USB and observing the same animation on the physical
+Dell OptiPlex 3060. The AOT trace player can then grow into a general bounded physical
+Scene/Anima interpreter without changing portable component identities.
 
 ## Research track
 

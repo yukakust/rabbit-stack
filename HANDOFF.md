@@ -802,7 +802,9 @@ Creator public key. Verification rejects tampering, unknown signers, stale locks
 or unused authority, omitted dependencies, type mismatch, resource overflow, target
 leakage, unreviewed native code, malformed sprites, dependency cycles, and duplicate
 JSON fields. No package has been deployed or executed. The honest status is
-`INVENTORY-V1-BUILT-NOT-EXECUTED`; the next boundary is a hosted Scene/Anima v2 runner.
+The catalog itself stays target-independent. Its exact `Cat Plays With Ball` Creation
+is now executed by the hosted Scene/Anima v2 runner and lowered unchanged into the
+separate Dell physical candidate described below.
 
 ## Scene/Anima v2 hosted execution
 
@@ -818,7 +820,29 @@ edge contacts. A second execution yields the identical canonical trace and final
 raster. `run_hosted.py` writes `trace.json`, `report.json`, a final PPM, and an offline
 HTML visualization to a disposable directory. No generated artifact is committed.
 
-This is real hosted execution, not physical Dell evidence. Its status is
-`SCENE-ANIMA-V2-HOSTED-EXECUTED-NOT-PHYSICALLY-DEPLOYED`. The next physical boundary is
-a separately reviewed Dell Target Pack/runtime preserving the same Creation identity;
-do not put UEFI, QCA, x86-64, or display-address facts into the reusable components.
+This is real hosted execution. The exact accepted identities are Creation
+`c6e1def6497769bbaa3917a8dacba099b01676af459358d7e6551fb6fa82eab8`, runner contract
+`7e6bc4af52f21da5001ed9be6068347799b312fe16021babab94b938530dd2cb`, and trace
+`1cfa264a561935ffe591184400ddf66dc0482f94be16a5f188a8dd499b9d62ab`.
+
+## Dell Scene/Anima v2 physical candidate
+
+`experiments/x86-64-uefi-scene-anima-v2/` preserves that exact Creation, the same
+thirteen Inventory component identities, and the same trace semantics. Target-specific
+x86-64, UEFI GOP, timing, removable-media, and recovery facts live only in its Dell
+Target Pack. The first physical backend is a bounded AOT player for the canonical 241
+frames: 160-by-90 logical pixels scaled to a top-left 480-by-270 framebuffer region,
+30 ticks per second, two entities, and Escape-only exit.
+
+The deterministic candidate identities are program
+`1f33053936965726b66c92bf18fe929f6ea0244fbbf812faa6f51a3daecd40fe`, EFI
+`afe6bb29cfdb5cdfdcf7acb375b3bbacdb344360365007a8f6aba4e1f3f5b834`, and disk image
+`31d2dfb3cd8e8acdbf85893829022cf768f21c379b3bc4ea3409088cfa253480`.
+Two headless QEMU screendumps show the orange cat and blue ball at distinct positions;
+the first drawing bug that exposed only the cleared background was fixed by erasing
+only prior sprite rectangles between frames.
+
+Status is `QEMU-OBSERVED-PHYSICAL-CANDIDATE-NOT-INSTALLED`. No physical device was
+written and Dell execution is not yet claimed. Run `python3 prepare_physical.py`, review
+the exact external removable device, then install to the dedicated Rabbit USB and boot
+the Dell. Do not put UEFI, x86-64, or display-address facts into reusable components.

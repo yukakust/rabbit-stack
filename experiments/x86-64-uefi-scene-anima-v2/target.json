@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "target_id": "dell-optiplex-3060-uefi-scene-anima-v2-aot",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "artifact": {
+    "format": "pe32+-efi-application",
+    "disk_envelope": "mbr-fat32-removable",
+    "default_boot_path": "EFI/BOOT/BOOTX64.EFI",
+    "image_size_bytes": 67108864
+  },
+  "accepted_creation": {
+    "creation_id": "creation.cat-plays-with-ball",
+    "creation_sha256": "c6e1def6497769bbaa3917a8dacba099b01676af459358d7e6551fb6fa82eab8",
+    "runner_contract_sha256": "7e6bc4af52f21da5001ed9be6068347799b312fe16021babab94b938530dd2cb",
+    "trace_sha256": "1cfa264a561935ffe591184400ddf66dc0482f94be16a5f188a8dd499b9d62ab"
+  },
+  "lowering": {
+    "kind": "bounded-aot-trace-player",
+    "ticks": 241,
+    "tick_rate": 30,
+    "entities": 2,
+    "logical_size": [160, 90],
+    "pixel_scale": 3,
+    "physical_draw_size": [480, 270],
+    "loop": true
+  },
+  "capability_bindings": {
+    "display.draw": "uefi-gop-bounded-rgb",
+    "time.read": "uefi-boot-services-stall"
+  },
+  "authority": {
+    "gop_framebuffer_write": "top-left-480x270-only",
+    "stall_microseconds_per_tick": 33333,
+    "keyboard_read": "escape-only-exit",
+    "network": false,
+    "radio": false,
+    "usb_device_io": false,
+    "internal_storage_writes": false,
+    "firmware_writes": false,
+    "native_extension_loading": false
+  },
+  "recovery": "press-escape-or-power-off-dell-and-remove-usb"
+}

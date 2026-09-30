@@ -54,6 +54,6 @@ SCENE-ANIMA-V2-HOSTED-EXECUTED-NOT-PHYSICALLY-DEPLOYED
 ```
 
 The cat really executes in the hosted reference runner and can be viewed on the Mac.
-It has not yet executed on Dell bare UEFI hardware. The next boundary is a separately
-reviewed Dell Target Pack and lowering from this exact trace semantics to a bounded
-physical runtime; the portable Creation and its component identities must not change.
+`../x86-64-uefi-scene-anima-v2/` now supplies the separately reviewed Dell Target Pack
+and a QEMU-observed bounded AOT lowering of this exact trace. The portable Creation and
+its component identities did not change. Physical Dell observation remains pending.
