@@ -506,6 +506,21 @@ Translate natural-language intent into candidate worlds and patches. The model m
 propose new target support, but only deterministic validators and authorized installers
 may approve builds or physical effects.
 
+### U12 — Reusable Creation Inventory (v1 implemented, execution pending)
+
+Make assets, capabilities, Anima, policies, and finished Creations independently
+versioned, licensed, content-identified, and shareable. A Merge resolves exact component
+versions, typed ports, transitive dependencies, authorities, resource budgets, Creator
+provenance, and licenses into one canonical lock. Signed export/import must require an
+already trusted Creator key and must not grant hidden effects.
+
+`experiments/reusable-creation-inventory-v1/` implements the first target-independent
+reference contract. `Cat Plays With Ball` resolves to thirteen cards, while a separate
+`Bouncing Ball` Creation reuses ten exact component identities. Ed25519 package sharing
+and negative validation pass. Status is `INVENTORY-V1-BUILT-NOT-EXECUTED`: the next
+boundary is a hosted Scene/Anima v2 runner consuming the exact resolved Creation before
+native or physical execution is claimed.
+
 ## Research track
 
 ### E0 — ARM64 baseline (complete)

@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "catalog_id": "rabbit.reusable-foundation",
+  "components": [
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.anima.bouncing-ball",
+      "version": "1.0.0",
+      "kind": "anima",
+      "name": "Bouncing Ball",
+      "summary": "Moves one bounded ball from ticks, forces, and collision events.",
+      "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {
+        "inputs": [
+          {"name": "collisions", "type": "physics.collision-event"},
+          {"name": "tick", "type": "time.tick"}
+        ],
+        "outputs": [{"name": "force", "type": "physics.force"}]
+      },
+      "dependencies": [
+        {"component_id": "rabbit.capability.clock-tick", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.collision-circle", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.physics-2d", "version": "1.0.0"}
+      ],
+      "provides": ["behavior.bouncing-ball"],
+      "authorities": [],
+      "resources": {"memory_bytes": 1024, "persistent_bytes": 64, "objects": 1, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {
+        "format": "rabbit.state-machine.v1",
+        "initial_state": "rolling",
+        "states": ["rolling"],
+        "transitions": ["collision:reflect-velocity", "tick:integrate"]
+      }
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.anima.cat-chase-ball",
+      "version": "1.0.0",
+      "kind": "anima",
+      "name": "Cat Chases Ball",
+      "summary": "Chooses look, chase, pounce, bat, and wait states from a scene snapshot.",
+      "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {
+        "inputs": [
+          {"name": "collisions", "type": "physics.collision-event"},
+          {"name": "scene", "type": "scene.snapshot"},
+          {"name": "tick", "type": "time.tick"}
+        ],
+        "outputs": [
+          {"name": "animation", "type": "animation.command"},
+          {"name": "control", "type": "scene.entity-control"}
+        ]
+      },
+      "dependencies": [
+        {"component_id": "rabbit.capability.animation-frames", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.clock-tick", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.collision-circle", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.physics-2d", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.scene-graph", "version": "1.0.0"}
+      ],
+      "provides": ["behavior.cat-chase-ball"],
+      "authorities": [],
+      "resources": {"memory_bytes": 4096, "persistent_bytes": 128, "objects": 1, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {
+        "format": "rabbit.state-machine.v1",
+        "initial_state": "look",
+        "states": ["bat", "chase", "look", "pounce", "wait"],
+        "transitions": ["ball-far:chase", "ball-near:pounce", "contact:bat", "rest:look", "timeout:wait"]
+      }
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.asset.ball-pixel",
+      "version": "1.0.0",
+      "kind": "asset",
+      "name": "Pixel Ball",
+      "summary": "One reusable eight-by-eight blue ball sprite.",
+      "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+      "license": {"spdx": "CC0-1.0"},
+      "interfaces": {"inputs": [], "outputs": [{"name": "frame", "type": "sprite.frame"}]},
+      "dependencies": [],
+      "provides": ["asset.sprite.ball"],
+      "authorities": [],
+      "resources": {"memory_bytes": 256, "persistent_bytes": 256, "objects": 1, "pixels_per_frame": 64, "ticks_per_second": 0},
+      "implementation": {
+        "format": "rabbit.sprite.v1",
+        "width": 8,
+        "height": 8,
+        "palette": {".": "transparent", "B": "3388FF", "K": "111111", "W": "FFFFFF"},
+        "frames": [["...BB...", ".BBBBBB.", "BBBBBBBB", "BWWBBBKB", "BBBBBBBB", ".BBBBBB.", "..BBBB..", "...BB..."]]
+      }
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.asset.cat-pixel",
+      "version": "1.0.0",
+      "kind": "asset",
+      "name": "Pixel Cat",
+      "summary": "Two reusable eight-by-eight orange cat animation frames.",
+      "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+      "license": {"spdx": "CC0-1.0"},
+      "interfaces": {"inputs": [], "outputs": [{"name": "frames", "type": "sprite.frames"}]},
+      "dependencies": [],
+      "provides": ["asset.sprite.cat"],
+      "authorities": [],
+      "resources": {"memory_bytes": 512, "persistent_bytes": 512, "objects": 1, "pixels_per_frame": 64, "ticks_per_second": 0},
+      "implementation": {
+        "format": "rabbit.sprite.v1",
+        "width": 8,
+        "height": 8,
+        "palette": {".": "transparent", "K": "111111", "O": "FF9933", "W": "FFFFFF"},
+        "frames": [
+          ["..OOOO..", ".OOOOOO.", "OOKOOKOO", "OOOOOOOO", ".OWOOWO.", "..OOOO..", ".O.OO.O.", "O..OO..O"],
+          ["..OOOO..", ".OOOOOO.", "OOKOOKOO", "OOOOOOOO", ".OWOOWO.", "..OOOO..", "O..OO..O", ".O.OO.O."]
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.capability.animation-frames",
+      "version": "1.0.0",
+      "kind": "capability",
+      "name": "Frame Animation",
+      "summary": "Selects bounded sprite frames from an animation command and time ticks.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {
+        "inputs": [
+          {"name": "command", "type": "animation.command"},
+          {"name": "frames", "type": "sprite.frames"},
+          {"name": "tick", "type": "time.tick"}
+        ],
+        "outputs": [{"name": "sprite", "type": "sprite.frame"}]
+      },
+      "dependencies": [{"component_id": "rabbit.capability.clock-tick", "version": "1.0.0"}],
+      "provides": ["animation.frames"],
+      "authorities": [],
+      "resources": {"memory_bytes": 1024, "persistent_bytes": 0, "objects": 0, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {"format": "rabbit.capability-contract.v1", "contract": "bounded-frame-selection", "version": 1}
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.capability.clock-tick",
+      "version": "1.0.0",
+      "kind": "capability",
+      "name": "Clock Tick",
+      "summary": "Produces a bounded monotonic scene tick without exposing a target clock.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {"inputs": [], "outputs": [{"name": "tick", "type": "time.tick"}]},
+      "dependencies": [],
+      "provides": ["time.tick"],
+      "authorities": ["time.read"],
+      "resources": {"memory_bytes": 256, "persistent_bytes": 0, "objects": 0, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {"format": "rabbit.capability-contract.v1", "contract": "monotonic-scene-tick", "version": 1}
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.capability.collision-circle",
+      "version": "1.0.0",
+      "kind": "capability",
+      "name": "Circle Collision",
+      "summary": "Detects bounded circle contacts and scene-edge contacts.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {"inputs": [{"name": "bodies", "type": "physics.body-set"}], "outputs": [{"name": "collisions", "type": "physics.collision-event"}]},
+      "dependencies": [],
+      "provides": ["collision.circle"],
+      "authorities": [],
+      "resources": {"memory_bytes": 2048, "persistent_bytes": 0, "objects": 16, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {"format": "rabbit.capability-contract.v1", "contract": "bounded-circle-and-edge-collision", "version": 1}
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.capability.physics-2d",
+      "version": "1.0.0",
+      "kind": "capability",
+      "name": "Deterministic 2D Physics",
+      "summary": "Integrates bounded fixed-point position and velocity from ticks and forces.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {
+        "inputs": [{"name": "force", "type": "physics.force"}, {"name": "tick", "type": "time.tick"}],
+        "outputs": [{"name": "bodies", "type": "physics.body-set"}, {"name": "transform", "type": "scene.transform"}]
+      },
+      "dependencies": [{"component_id": "rabbit.capability.clock-tick", "version": "1.0.0"}],
+      "provides": ["physics.2d-fixed"],
+      "authorities": [],
+      "resources": {"memory_bytes": 4096, "persistent_bytes": 128, "objects": 16, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {"format": "rabbit.capability-contract.v1", "contract": "fixed-point-bounded-integration", "version": 1}
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.capability.scene-graph",
+      "version": "1.0.0",
+      "kind": "capability",
+      "name": "Scene Graph",
+      "summary": "Combines bounded entity sprites and transforms into a scene snapshot.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {
+        "inputs": [
+          {"name": "ball-sprite", "type": "sprite.frame"},
+          {"name": "cat-control", "type": "scene.entity-control"},
+          {"name": "cat-sprite", "type": "sprite.frame"},
+          {"name": "physics-transform", "type": "scene.transform"}
+        ],
+        "outputs": [{"name": "bodies", "type": "physics.body-set"}, {"name": "scene", "type": "scene.snapshot"}]
+      },
+      "dependencies": [],
+      "provides": ["scene.multi-object"],
+      "authorities": [],
+      "resources": {"memory_bytes": 8192, "persistent_bytes": 256, "objects": 16, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {"format": "rabbit.capability-contract.v1", "contract": "bounded-multi-object-scene", "version": 1}
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.capability.sprite-renderer",
+      "version": "1.0.0",
+      "kind": "capability",
+      "name": "Sprite Renderer",
+      "summary": "Draws a bounded scene snapshot through a negotiated display capability.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {"inputs": [{"name": "scene", "type": "scene.snapshot"}], "outputs": [{"name": "presented", "type": "display.presented"}]},
+      "dependencies": [{"component_id": "rabbit.capability.scene-graph", "version": "1.0.0"}],
+      "provides": ["render.sprite"],
+      "authorities": ["display.draw"],
+      "resources": {"memory_bytes": 16384, "persistent_bytes": 0, "objects": 0, "pixels_per_frame": 307200, "ticks_per_second": 30},
+      "implementation": {"format": "rabbit.capability-contract.v1", "contract": "bounded-sprite-composition", "version": 1}
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.policy.resource-budget",
+      "version": "1.0.0",
+      "kind": "policy",
+      "name": "Resource Budget",
+      "summary": "Requires every Merge to declare and satisfy bounded resources.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {"inputs": [], "outputs": []},
+      "dependencies": [],
+      "provides": ["policy.resource-budget"],
+      "authorities": [],
+      "resources": {"memory_bytes": 256, "persistent_bytes": 0, "objects": 0, "pixels_per_frame": 0, "ticks_per_second": 0},
+      "implementation": {"format": "rabbit.policy.v1", "policy": "reject-resource-overflow", "version": 1}
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.policy.signed-package",
+      "version": "1.0.0",
+      "kind": "policy",
+      "name": "Signed Sharing Package",
+      "summary": "Requires exported Inventory packages to bind one trusted Creator key.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {"inputs": [], "outputs": []},
+      "dependencies": [],
+      "provides": ["package.creator-signature"],
+      "authorities": [],
+      "resources": {"memory_bytes": 512, "persistent_bytes": 128, "objects": 0, "pixels_per_frame": 0, "ticks_per_second": 0},
+      "implementation": {"format": "rabbit.policy.v1", "policy": "ed25519-trusted-creator", "version": 1}
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.policy.transactional-rollback",
+      "version": "1.0.0",
+      "kind": "policy",
+      "name": "Transactional Activation and Rollback",
+      "summary": "Keeps the previous Creation active until a complete candidate validates and commits.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {"inputs": [], "outputs": []},
+      "dependencies": [{"component_id": "rabbit.policy.signed-package", "version": "1.0.0"}],
+      "provides": ["runtime.transactional-rollback"],
+      "authorities": [],
+      "resources": {"memory_bytes": 1024, "persistent_bytes": 4096, "objects": 0, "pixels_per_frame": 0, "ticks_per_second": 0},
+      "implementation": {"format": "rabbit.policy.v1", "policy": "stage-validate-commit-or-rollback", "version": 1}
+    }
+  ]
+}

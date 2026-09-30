@@ -786,3 +786,20 @@ U6 is complete only when:
 - planning and installation remain separate authorization boundaries;
 - removing the USB device is the documented recovery path;
 - inventory, match, plan, and negative conformance evidence pass reproducibly.
+
+## Reusable Creation Inventory v1
+
+`experiments/reusable-creation-inventory-v1/` is the first target-independent catalog
+and Merge contract for reusable Rabbit parts. It defines versioned assets, capabilities,
+Anima, policies, and Creations with typed ports, exact dependencies, authorities,
+resource budgets, Creator identity, SPDX license, and content identity. The first
+`Cat Plays With Ball` blueprint resolves thirteen components; a separate `Bouncing Ball`
+blueprint reuses ten of their exact identities. A canonical provenance lock records the
+resolved hashes and licenses.
+
+Sharing uses a deterministic Ed25519-signed package and requires an externally trusted
+Creator public key. Verification rejects tampering, unknown signers, stale locks, hidden
+or unused authority, omitted dependencies, type mismatch, resource overflow, target
+leakage, unreviewed native code, malformed sprites, dependency cycles, and duplicate
+JSON fields. No package has been deployed or executed. The honest status is
+`INVENTORY-V1-BUILT-NOT-EXECUTED`; the next boundary is a hosted Scene/Anima v2 runner.

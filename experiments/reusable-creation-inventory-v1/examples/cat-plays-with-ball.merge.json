@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "creation": {
+    "creation_id": "creation.cat-plays-with-ball",
+    "version": "1.0.0",
+    "name": "Cat Plays With Ball",
+    "summary": "A deterministic pixel cat looks, chases, pounces, bats one bouncing ball, and repeats.",
+    "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+    "license": {"spdx": "CC-BY-4.0"}
+  },
+  "members": [
+    {"component_id": "rabbit.anima.bouncing-ball", "version": "1.0.0"},
+    {"component_id": "rabbit.anima.cat-chase-ball", "version": "1.0.0"},
+    {"component_id": "rabbit.asset.ball-pixel", "version": "1.0.0"},
+    {"component_id": "rabbit.asset.cat-pixel", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.animation-frames", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.clock-tick", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.collision-circle", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.physics-2d", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.scene-graph", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.sprite-renderer", "version": "1.0.0"},
+    {"component_id": "rabbit.policy.resource-budget", "version": "1.0.0"},
+    {"component_id": "rabbit.policy.signed-package", "version": "1.0.0"},
+    {"component_id": "rabbit.policy.transactional-rollback", "version": "1.0.0"}
+  ],
+  "bindings": [
+    {"from": {"component_id": "rabbit.anima.bouncing-ball", "port": "force"}, "to": {"component_id": "rabbit.capability.physics-2d", "port": "force"}},
+    {"from": {"component_id": "rabbit.anima.cat-chase-ball", "port": "animation"}, "to": {"component_id": "rabbit.capability.animation-frames", "port": "command"}},
+    {"from": {"component_id": "rabbit.anima.cat-chase-ball", "port": "control"}, "to": {"component_id": "rabbit.capability.scene-graph", "port": "cat-control"}},
+    {"from": {"component_id": "rabbit.asset.ball-pixel", "port": "frame"}, "to": {"component_id": "rabbit.capability.scene-graph", "port": "ball-sprite"}},
+    {"from": {"component_id": "rabbit.asset.cat-pixel", "port": "frames"}, "to": {"component_id": "rabbit.capability.animation-frames", "port": "frames"}},
+    {"from": {"component_id": "rabbit.capability.animation-frames", "port": "sprite"}, "to": {"component_id": "rabbit.capability.scene-graph", "port": "cat-sprite"}},
+    {"from": {"component_id": "rabbit.capability.clock-tick", "port": "tick"}, "to": {"component_id": "rabbit.anima.bouncing-ball", "port": "tick"}},
+    {"from": {"component_id": "rabbit.capability.clock-tick", "port": "tick"}, "to": {"component_id": "rabbit.anima.cat-chase-ball", "port": "tick"}},
+    {"from": {"component_id": "rabbit.capability.clock-tick", "port": "tick"}, "to": {"component_id": "rabbit.capability.animation-frames", "port": "tick"}},
+    {"from": {"component_id": "rabbit.capability.clock-tick", "port": "tick"}, "to": {"component_id": "rabbit.capability.physics-2d", "port": "tick"}},
+    {"from": {"component_id": "rabbit.capability.collision-circle", "port": "collisions"}, "to": {"component_id": "rabbit.anima.bouncing-ball", "port": "collisions"}},
+    {"from": {"component_id": "rabbit.capability.collision-circle", "port": "collisions"}, "to": {"component_id": "rabbit.anima.cat-chase-ball", "port": "collisions"}},
+    {"from": {"component_id": "rabbit.capability.physics-2d", "port": "bodies"}, "to": {"component_id": "rabbit.capability.collision-circle", "port": "bodies"}},
+    {"from": {"component_id": "rabbit.capability.physics-2d", "port": "transform"}, "to": {"component_id": "rabbit.capability.scene-graph", "port": "physics-transform"}},
+    {"from": {"component_id": "rabbit.capability.scene-graph", "port": "scene"}, "to": {"component_id": "rabbit.anima.cat-chase-ball", "port": "scene"}},
+    {"from": {"component_id": "rabbit.capability.scene-graph", "port": "scene"}, "to": {"component_id": "rabbit.capability.sprite-renderer", "port": "scene"}}
+  ],
+  "grants": ["display.draw", "time.read"],
+  "budgets": {"memory_bytes": 65536, "persistent_bytes": 8192, "objects": 64, "pixels_per_frame": 400000, "ticks_per_second": 300}
+}
