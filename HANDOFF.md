@@ -1,6 +1,6 @@
 # Rabbit Stack handoff
 
-Updated: 2026-09-23
+Updated: 2026-09-30
 
 ## Mission
 
@@ -801,10 +801,9 @@ Sharing uses a deterministic Ed25519-signed package and requires an externally t
 Creator public key. Verification rejects tampering, unknown signers, stale locks, hidden
 or unused authority, omitted dependencies, type mismatch, resource overflow, target
 leakage, unreviewed native code, malformed sprites, dependency cycles, and duplicate
-JSON fields. No package has been deployed or executed. The honest status is
-The catalog itself stays target-independent. Its exact `Cat Plays With Ball` Creation
-is now executed by the hosted Scene/Anima v2 runner and lowered unchanged into the
-separate Dell physical candidate described below.
+JSON fields. The catalog stays target-independent. Its exact `Cat Plays With Ball`
+Creation is now executed by the hosted Scene/Anima v2 runner and lowered unchanged into
+the separate Dell physical runtime described below.
 
 ## Scene/Anima v2 hosted execution
 
@@ -825,7 +824,7 @@ This is real hosted execution. The exact accepted identities are Creation
 `7e6bc4af52f21da5001ed9be6068347799b312fe16021babab94b938530dd2cb`, and trace
 `1cfa264a561935ffe591184400ddf66dc0482f94be16a5f188a8dd499b9d62ab`.
 
-## Dell Scene/Anima v2 physical candidate
+## Dell Scene/Anima v2 physical execution
 
 `experiments/x86-64-uefi-scene-anima-v2/` preserves that exact Creation, the same
 thirteen Inventory component identities, and the same trace semantics. Target-specific
@@ -842,7 +841,36 @@ Two headless QEMU screendumps show the orange cat and blue ball at distinct posi
 the first drawing bug that exposed only the cleared background was fixed by erasing
 only prior sprite rectangles between frames.
 
-Status is `QEMU-OBSERVED-PHYSICAL-CANDIDATE-NOT-INSTALLED`. No physical device was
-written and Dell execution is not yet claimed. Run `python3 prepare_physical.py`, review
-the exact external removable device, then install to the dedicated Rabbit USB and boot
-the Dell. Do not put UEFI, x86-64, or display-address facts into reusable components.
+The exact image was written to the reviewed Kingston removable USB and booted on the
+physical Dell. The owner confirmed the orange cat and blue ball were both visible and
+moving. The new evidence binds this observation to the same Creation, trace, Target
+Pack, program, EFI, and image identities. No guest OS or internal storage participated.
+Status is `PHYSICAL-DELL-SCENE-ANIMA-V2-OBSERVED`.
+
+## Rabbit God Runtime v1 contract
+
+`experiments/rabbit-god-runtime-v1/` begins the stable runtime that will remove USB
+shuttling for ordinary world changes. It treats the physically observed Cat Creation as
+the fallback active slot. A new world must arrive through `BEGIN`, exact ordered chunks,
+and `COMMIT`; the runtime verifies complete length and SHA-256, authenticates the trusted
+Creator's Ed25519 signature, reruns Inventory graph validation, and enforces authority
+and resource ceilings before provisional activation. Health success commits and allows
+a receipt; health failure restores the exact prior world.
+
+The universal contract contains no machine facts. Its separate Dell Target Pack binds
+package receive to passive QCA Rome BLE advertisement bursts and receipts to bounded
+non-connectable advertising. The current signed Cat Inventory package is 20,329 bytes
+and fits 2,542 of the target's 4,096 eight-byte payload frames. This is deliberately a
+correctness-first path; a faster transport can replace the Target Pack later.
+
+Hosted verification rejects corrupted, missing and reordered data, an untrusted signer,
+stale in-boot counters, oversized packages, authority escalation, native package code,
+internal-disk writes, and ambiguous JSON. It also proves failed health restores the
+previous active slot. Runtime contract identity is
+`d59a36fd72c85732f1f5986ff61bd9b84a190ccaa5e3e9b1f83711b9ac617438` and Dell Target
+Pack identity is `821fc353b0d2ab19a44a735360998fcb66869a0ead570a26010bb7e175628141`.
+
+Status is `GOD-RUNTIME-V1-CONTRACT-HOSTED-VERIFIED-NOT-PHYSICALLY-INSTALLED`. The
+current Dell USB remains untouched. The next implementation must combine the bounded
+Scene/Anima interpreter, package staging/validation, BLE receive/receipt, health check,
+and rollback into one UEFI image, pass QEMU, and only then request one physical upgrade.

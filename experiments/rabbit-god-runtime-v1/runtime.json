@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "runtime_id": "rabbit.god-runtime",
+  "version": "1.0.0",
+  "accepted_package": {
+    "format": "rabbit-inventory-v1",
+    "trusted_creator_public_keys": [
+      "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8"
+    ],
+    "signature": "ed25519",
+    "content_hash": "sha256"
+  },
+  "transaction": {
+    "states": [
+      "active",
+      "receiving",
+      "validated",
+      "provisional",
+      "committed",
+      "rolled-back"
+    ],
+    "activation": "whole-package-only",
+    "health_check_required": true,
+    "failure_policy": "retain-or-restore-previous-active-slot",
+    "receipt_after": "health-check"
+  },
+  "limits": {
+    "package_bytes": 32768,
+    "components": 64,
+    "memory_bytes": 2097152,
+    "persistent_bytes": 65536,
+    "objects": 256,
+    "pixels_per_frame": 1048576,
+    "ticks_per_second": 240
+  },
+  "allowed_authorities": [
+    "display.draw",
+    "time.read"
+  ],
+  "forbidden_effects": [
+    "arbitrary-memory-write",
+    "firmware-write",
+    "internal-storage-write",
+    "native-code-execution",
+    "unreviewed-device-io"
+  ],
+  "security": {
+    "creator_authentication": "required",
+    "corruption_detection": "sha256",
+    "in_boot_monotonic_counter": "required",
+    "cross-reboot_replay_protection": "deferred-debt",
+    "transport_encryption": "deferred-debt"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "target_id": "dell-optiplex-3060-qca-ble-god-runtime-v1",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "runtime_envelope": "removable-usb-resident",
+  "bindings": {
+    "display.draw": "uefi-gop-bounded",
+    "time.read": "uefi-boot-services-stall",
+    "package.receive": "qca-rome-passive-ble-advertisement-burst-v2",
+    "receipt.emit": "qca-rome-nonconnectable-ble-advertisement-v1"
+  },
+  "transport": {
+    "mode": "transactional-begin-chunk-commit",
+    "frame_payload_bytes": 8,
+    "max_frames": 4096,
+    "receive": "passive",
+    "acknowledgement": "bounded-nonconnectable-advertisement",
+    "pairing": false,
+    "connection": false
+  },
+  "authority": {
+    "controller_ram_write": "hash-pinned-qca-rampatch-and-nvm-only",
+    "radio_receive": "bounded-reviewed-rabbit-frames-only",
+    "radio_transmit": "bounded-correlated-receipt-only",
+    "gop_framebuffer_write": "bounded-runtime-surface-only",
+    "keyboard_read": "escape-only-runtime-exit",
+    "internal_storage_writes": false,
+    "firmware_writes": false,
+    "native_code_from_package": false
+  },
+  "recovery": "retain-current-world-on-rejection; rollback-provisional-world-on-health-failure; Escape or power-off exits"
+}

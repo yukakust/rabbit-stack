@@ -38,11 +38,17 @@ This builds `/tmp/rabbit-scene-anima-v2-dell.img`, verifies it, and lists extern
 physical media read-only on macOS. It does not unmount or write a device. A fresh
 exact-device review is still required before replacing the dedicated Rabbit USB image.
 
+The exact image was subsequently written to the dedicated Rabbit USB. The owner booted
+it on the Dell OptiPlex 3060 and confirmed that the orange cat and blue ball were both
+visible and moving as in QEMU. The exact physical evidence is bound to all Creation,
+trace, target, program, EFI, and image identities.
+
 Current status:
 
 ```text
-QEMU-OBSERVED-PHYSICAL-CANDIDATE-NOT-INSTALLED
+PHYSICAL-DELL-SCENE-ANIMA-V2-OBSERVED
 ```
 
-Power-off or Escape is recovery. The next evidence boundary is observation of the same
-cat-and-ball animation on the Dell OptiPlex 3060.
+Power-off or Escape is recovery. The next boundary is Rabbit God Runtime v1: preserve
+this scene while accepting validated reusable Creation packages over a transactional
+wireless transport.

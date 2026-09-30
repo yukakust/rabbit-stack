@@ -519,7 +519,7 @@ reference contract. `Cat Plays With Ball` resolves to thirteen cards, while a se
 `Bouncing Ball` Creation reuses ten exact component identities. Ed25519 package sharing
 and negative validation pass.
 
-### U13 — Scene/Anima v2 execution (hosted complete; Dell candidate QEMU-observed)
+### U13 — Scene/Anima v2 execution (physical Dell slice complete)
 
 `experiments/scene-anima-v2-runner/` consumes the exact resolved Inventory v1 Creation
 and executes a deterministic integer-only scene. The cat visits look, chase, pounce,
@@ -534,10 +534,33 @@ exact 241-frame canonical trace, draws the exact catalog sprites through UEFI GO
 show both entities at changed positions. Network, radio, internal-storage writes,
 firmware writes, and native extensions remain unavailable.
 
-Status is `QEMU-OBSERVED-PHYSICAL-CANDIDATE-NOT-INSTALLED`. The remaining U13 boundary
-is writing the dedicated Rabbit USB and observing the same animation on the physical
-Dell OptiPlex 3060. The AOT trace player can then grow into a general bounded physical
-Scene/Anima interpreter without changing portable component identities.
+The exact image was written to the dedicated Rabbit USB and booted on the physical Dell
+OptiPlex 3060. The owner observed both the orange cat and blue ball moving as in QEMU.
+The evidence is bound to the same Creation, trace, Target Pack, program, EFI, and image
+identities, with no guest OS or internal storage participating. Status is
+`PHYSICAL-DELL-SCENE-ANIMA-V2-OBSERVED`.
+
+### U14 — Rabbit God Runtime v1 (hosted contract complete; physical implementation pending)
+
+`experiments/rabbit-god-runtime-v1/` defines the stable resident-runtime boundary. The
+current physical Cat Creation is its immutable fallback. A candidate world is received
+into staging, reconstructed in exact order, checked by SHA-256, authenticated as a
+trusted Creator's Ed25519-signed Inventory package, revalidated for component graph,
+authority and resources, and activated provisionally. A successful health check commits
+and permits a correlated receipt; failure restores the prior world.
+
+The portable runtime contains no Dell, Bluetooth, UEFI, or framebuffer facts. A separate
+Dell Target Pack binds package receive and receipt semantics to the proven QCA Rome BLE
+path. The exact 20,329-byte Cat package fits its reviewed correctness-first budget of
+2,542 eight-byte payload frames. Hosted verification rejects corruption, omission,
+reorder, untrusted signers, in-boot replay, overflow, authority escalation, native code,
+and disk-write escalation. Cross-reboot anti-replay and transport encryption remain
+explicit debt. Status is
+`GOD-RUNTIME-V1-CONTRACT-HOSTED-VERIFIED-NOT-PHYSICALLY-INSTALLED`.
+
+The next boundary is one combined Dell UEFI implementation: bounded Scene/Anima
+interpreter, staging validator, BLE receive/receipt, health check, and rollback. The
+existing physical cat image stays installed until that candidate passes QEMU.
 
 ## Research track
 

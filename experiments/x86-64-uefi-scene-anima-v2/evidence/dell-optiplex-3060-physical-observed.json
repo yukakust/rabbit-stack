@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-scene-anima-v2-2026-09-30",
+  "status": "OWNER-OBSERVED-PHYSICAL-SCENE-ANIMA-V2-MOTION",
+  "bindings": {
+    "creation_sha256": "c6e1def6497769bbaa3917a8dacba099b01676af459358d7e6551fb6fa82eab8",
+    "runner_contract_sha256": "7e6bc4af52f21da5001ed9be6068347799b312fe16021babab94b938530dd2cb",
+    "trace_sha256": "1cfa264a561935ffe591184400ddf66dc0482f94be16a5f188a8dd499b9d62ab",
+    "target_sha256": "64a872e45f151547f8a52592f1ebfc610a8172f44b7129a2f31caa69a5578d17",
+    "program_sha256": "1f33053936965726b66c92bf18fe929f6ea0244fbbf812faa6f51a3daecd40fe",
+    "efi_sha256": "afe6bb29cfdb5cdfdcf7acb375b3bbacdb344360365007a8f6aba4e1f3f5b834",
+    "image_sha256": "31d2dfb3cd8e8acdbf85893829022cf768f21c379b3bc4ea3409088cfa253480"
+  },
+  "execution": {
+    "machine": "Dell OptiPlex 3060",
+    "processor": "Intel Core i5-8500T",
+    "firmware": "UEFI 1.2.22",
+    "boot_medium": "Kingston DataTraveler Duo removable USB",
+    "guest_os_present": false,
+    "internal_storage_participated": false,
+    "secure_boot": "off-dedicated-home-lab-policy"
+  },
+  "observation": {
+    "method": "owner-confirmed-physical-screen",
+    "orange_cat_visible": true,
+    "blue_ball_visible": true,
+    "cat_motion_visible": true,
+    "ball_motion_visible": true,
+    "same_expected_scene_as_qemu": true,
+    "persistent_machine_writes": 0
+  },
+  "recovery": "Escape returns from the UEFI application; power-off and USB removal remain fallback recovery",
+  "limitations": [
+    "the physical runtime is the bounded canonical-trace player, not yet the general Rabbit God Runtime",
+    "this evidence is an owner observation rather than an automated framebuffer capture"
+  ]
+}

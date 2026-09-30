@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "slot": "active",
+  "source": "embedded-reviewed-creation",
+  "creation_id": "creation.cat-plays-with-ball",
+  "creation_sha256": "c6e1def6497769bbaa3917a8dacba099b01676af459358d7e6551fb6fa82eab8",
+  "inventory_package_sha256": "215172ec52a3eb9c79e6e6dfacc47811c3897d0bdd613286d1953072c05aa5f1",
+  "component_count": 13,
+  "physical_evidence_id": "dell-optiplex-3060-scene-anima-v2-2026-09-30",
+  "fallback": "always-available-until-a-new-world-passes-validation-and-health"
+}

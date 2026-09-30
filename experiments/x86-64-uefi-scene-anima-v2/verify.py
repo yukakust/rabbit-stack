@@ -20,6 +20,7 @@ EXPECTED_EFI_SHA256 = "afe6bb29cfdb5cdfdcf7acb375b3bbacdb344360365007a8f6aba4e1f
 EXPECTED_IMAGE_SHA256 = "31d2dfb3cd8e8acdbf85893829022cf768f21c379b3bc4ea3409088cfa253480"
 EXPECTED_SOURCE_SHA256 = "f2eb11ec7b0e26bb0348326b1b55c33e2f8047288a394123adfbd11f647094e5"
 EVIDENCE_PATH = ROOT / "evidence" / "qemu-linux-x86-64-observed.json"
+PHYSICAL_EVIDENCE_PATH = ROOT / "evidence" / "dell-optiplex-3060-physical-observed.json"
 
 
 def require(condition: bool, message: str) -> None:
@@ -118,6 +119,17 @@ def main() -> int:
         require(observation["ball_position_changed"] is True, "QEMU did not establish ball motion")
         require(evidence["execution"]["physical_execution_verified"] is False, "QEMU evidence claimed physical execution")
 
+        physical = load_json(PHYSICAL_EVIDENCE_PATH)
+        require(physical["status"] == "OWNER-OBSERVED-PHYSICAL-SCENE-ANIMA-V2-MOTION", "physical evidence status changed")
+        for field in ("creation_sha256", "trace_sha256", "target_sha256", "program_sha256", "efi_sha256", "image_sha256"):
+            require(physical["bindings"][field] == report_a[field], f"physical evidence {field} binding changed")
+        physical_observation = physical["observation"]
+        require(all(physical_observation[field] is True for field in (
+            "orange_cat_visible", "blue_ball_visible", "cat_motion_visible", "ball_motion_visible",
+            "same_expected_scene_as_qemu",
+        )), "physical evidence does not establish the complete moving scene")
+        require(physical_observation["persistent_machine_writes"] == 0, "physical evidence reports a persistent machine write")
+
         program = load_program(reference)
         require(sha256(program) == PROGRAM_SHA256, "program identity changed")
         require(program.endswith(trace_bytes(reference)), "canonical trace is not the final immutable data table")
@@ -148,8 +160,9 @@ def main() -> int:
         print("PASS: UEFI runtime is bounded to GOP 480x270, 33333-us Stall, and Escape input")
         print("PASS: disk contains the reviewed PE32+ application at EFI/BOOT/BOOTX64.EFI")
         print("PASS: two QEMU frames show the exact cat and ball at changed positions")
+        print("PASS: owner observed the exact moving cat-and-ball scene on the physical Dell")
         print(f"PASS: program={PROGRAM_SHA256}, efi={EXPECTED_EFI_SHA256}, image={EXPECTED_IMAGE_SHA256}")
-        print("PASS: QEMU-OBSERVED-PHYSICAL-CANDIDATE-NOT-INSTALLED")
+        print("PASS: PHYSICAL-DELL-SCENE-ANIMA-V2-OBSERVED")
         return 0
     except (BuildError, OSError, RuntimeError, struct.error) as error:
         print(f"FAIL: {error}")
