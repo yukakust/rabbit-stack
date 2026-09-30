@@ -540,7 +540,7 @@ The evidence is bound to the same Creation, trace, Target Pack, program, EFI, an
 identities, with no guest OS or internal storage participating. Status is
 `PHYSICAL-DELL-SCENE-ANIMA-V2-OBSERVED`.
 
-### U14 — Rabbit God Runtime v1 (hosted contract complete; physical implementation pending)
+### U14 — Rabbit God Runtime v1 (one-image UEFI candidate built; physical observation pending)
 
 `experiments/rabbit-god-runtime-v1/` defines the stable resident-runtime boundary. The
 current physical Cat Creation is its immutable fallback. A candidate world is received
@@ -558,9 +558,21 @@ and disk-write escalation. Cross-reboot anti-replay and transport encryption rem
 explicit debt. Status is
 `GOD-RUNTIME-V1-CONTRACT-HOSTED-VERIFIED-NOT-PHYSICALLY-INSTALLED`.
 
-The next boundary is one combined Dell UEFI implementation: bounded Scene/Anima
-interpreter, staging validator, BLE receive/receipt, health check, and rollback. The
-existing physical cat image stays installed until that candidate passes QEMU.
+`experiments/x86-64-uefi-god-runtime-v1/` now composes the physical boundary into one
+deterministic image. A trusted Inventory lowers to a fixed 192-byte Ed25519-signed
+capsule carried by 30 BLE frames. The Dell image independently verifies its signature,
+Creation, component-set identity, authority, budgets and in-boot counter, keeps received
+bytes in staging, activates provisionally, executes one health tick, and either commits
+with a correlated receipt or redraws the exact previous world. Its resident
+Scene/Anima core computes the cat/ball behavior rather than replaying the old trace.
+
+Host and freestanding-C verification pass, including signature tampering, untrusted
+Creator, frame reorder, replay and health-failure rollback. Headless QEMU booted the
+exact image and visibly failed closed because it lacks the Dell `0CF3:E009` controller;
+the artifact-bound zero-effect observation is archived under the experiment's
+`evidence/` directory. The existing physical cat image remains installed, so one final
+USB upgrade is now eligible after Mac reproduction and exact removable-media review.
+Status is `GOD-RUNTIME-V1-QEMU-OBSERVED-NOT-INSTALLED`.
 
 ## Research track
 

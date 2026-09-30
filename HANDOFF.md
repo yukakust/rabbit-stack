@@ -870,7 +870,25 @@ previous active slot. Runtime contract identity is
 `d59a36fd72c85732f1f5986ff61bd9b84a190ccaa5e3e9b1f83711b9ac617438` and Dell Target
 Pack identity is `821fc353b0d2ab19a44a735360998fcb66869a0ead570a26010bb7e175628141`.
 
-Status is `GOD-RUNTIME-V1-CONTRACT-HOSTED-VERIFIED-NOT-PHYSICALLY-INSTALLED`. The
-current Dell USB remains untouched. The next implementation must combine the bounded
-Scene/Anima interpreter, package staging/validation, BLE receive/receipt, health check,
-and rollback into one UEFI image, pass QEMU, and only then request one physical upgrade.
+`experiments/x86-64-uefi-god-runtime-v1/` now implements the Dell lowering as one UEFI
+image. The compiler validates the Inventory package and emits a fixed 192-byte capsule;
+the resident image independently performs Ed25519 verification, Creation/component/
+authority/budget checks, passive BLE staging, provisional activation, a health tick,
+commit-or-rollback, and a bounded correlated receipt. The Scene/Anima core advances the
+cat and ball from live integer state instead of replaying the old canonical trace.
+
+`python3 verify.py` passes the 30-frame round trip, negative signature/reorder/signer/
+replay cases, health rollback, the same freestanding C crypto verifier linked into EFI,
+and deterministic repeated image builds. Current disk image identity is
+`5c7705c210b7cbf377061e31b25e7c20c2803e3159f7ee987e1fca7b5b985dd4`.
+
+Headless QEMU booted the exact image and visibly reached `RABBIT GOD RUNTIME v1.0`, then
+failed closed at `TARGET NOT FOUND; NO DEVICE WRITE SENT`. The bound report is
+`experiments/x86-64-uefi-god-runtime-v1/evidence/qemu-linux-x86-64-observed.json`; it
+claims no physical Dell execution.
+
+Status is `GOD-RUNTIME-V1-QEMU-OBSERVED-NOT-INSTALLED`. The dedicated physical USB still
+contains the previously observed Cat image. Next: pull this commit on the Mac, reproduce
+the QEMU gate, run `python3 prepare_physical.py`, inspect the exact removable-media
+identity, and perform one final owner-authorized Runtime upgrade. Cross-reboot
+anti-replay and transport encryption remain debt.

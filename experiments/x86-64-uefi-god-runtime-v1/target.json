@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "target_id": "dell-optiplex-3060-qca-ble-god-runtime-v1",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "device_binding": {
+    "usb_id": "0CF3:E009",
+    "interface": "00/E0/01/01",
+    "rom": "0x00000302",
+    "display": "UEFI-GOP"
+  },
+  "capsule": {
+    "format": "rabbit-god-capsule-v1",
+    "bytes": 192,
+    "signature": "Ed25519",
+    "trusted_public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8",
+    "accepted_creation_sha256": "c6e1def6497769bbaa3917a8dacba099b01676af459358d7e6551fb6fa82eab8"
+  },
+  "transaction": {
+    "states": ["active", "receiving", "validated", "provisional", "committed", "rolled-back"],
+    "staging_bytes": 192,
+    "health_ticks": 1,
+    "receipt_after": "health-check"
+  },
+  "authority": {
+    "display_draw": "bounded-480x270-runtime-surface",
+    "time_read": "bounded-usb-receive-clock",
+    "controller_ram_write": "hash-pinned-qca-rampatch-and-nvm-only",
+    "radio_receive": "passive-reviewed-frames-only",
+    "radio_transmit": "bounded-correlated-receipt-only",
+    "native_code_from_capsule": false,
+    "arbitrary_memory_write": false,
+    "internal_storage_write": false,
+    "firmware_write": false,
+    "pair": false,
+    "connect": false
+  }
+}

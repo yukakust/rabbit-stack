@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-linux-x86-64-god-runtime-v1-2026-09-30",
+  "status": "OBSERVED-HEADLESS-QEMU-FAIL-CLOSED",
+  "environment": {
+    "qemu_version": "10.2.1",
+    "machine": "q35",
+    "firmware": "OVMF_CODE_4M.fd",
+    "guest_architecture": "x86-64",
+    "physical_device_used": false
+  },
+  "bindings": {
+    "generated_source_sha256": "b0427cdaa8426cce2c5b2514787f25a43680e8205c913b5a09b6fb8f4565610d",
+    "runtime_core_sha256": "dbf37a905ab3898d7a5f50a79704686366f65f74e6749f817906582513669f6c",
+    "target_sha256": "a6cd78a1ca271c4da6e17aac145a2420a1f69c972b514f294873db70f6bc379b",
+    "efi_sha256": "51bace6761c2e9237803bdac6aca0c1eacd7eba3badad058382d5f295ad9c37e",
+    "image_sha256": "5c7705c210b7cbf377061e31b25e7c20c2803e3159f7ee987e1fca7b5b985dd4",
+    "screendump_sha256": "41b4867f89642d8112e1d4b339210a108fe78150f7384a978f3df25e32166c12"
+  },
+  "observation": {
+    "visible_identity": "RABBIT GOD RUNTIME v1.0",
+    "result": "TARGET NOT FOUND; NO DEVICE WRITE SENT",
+    "cleanup_claim": "NO RESET; NO HCI; NO SCAN; NO RADIO; POWER-OFF ROLLBACK",
+    "target_found": false,
+    "controller_ram_writes": 0,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0,
+    "capsule_bytes_received": 0,
+    "framebuffer_writes_performed": 0
+  },
+  "scope": "This proves PE/UEFI boot and exact hardware-mismatch fail-closed behavior. It does not claim physical Dell execution."
+}
