@@ -24,6 +24,11 @@ lets the current Mac process correlate a receipt with the program it sent, but w
 authentication it does not prove that the receipt came from this Dell or from the
 authorized owner.
 
+God Runtime v2 now authenticates each complete Universal Package with Ed25519 and binds
+an in-boot monotonic counter. The remaining parts of this debt are production key
+provisioning/rotation, authenticated receipts, cross-reboot replay state, and optional
+confidentiality; the deterministic development key is not a production secret.
+
 ## Make acknowledgements retryable without repeating effects
 
 The first exact Dell-to-Mac acknowledgement proved that the physical round trip works,
@@ -72,3 +77,8 @@ rejected rather than guessed. Recovery after power loss, partial transport, fail
 migration, driver failure, or an unhealthy new module must be deterministic and tested.
 Rollback identity and evidence must bind the old world, patch, resulting world, target,
 runtime, state migration, and observed outcome.
+
+God Runtime v2 implements this transaction for data-only worlds: separate staging RAM,
+signature and graph/budget validation, one provisional health step, commit-or-retain,
+and a correlated ACK. Runtime/driver/native-code updates and crash/power-loss recovery
+remain outside that hot-world transaction and continue to be debt.

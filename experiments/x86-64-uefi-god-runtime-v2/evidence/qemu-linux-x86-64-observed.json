@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "evidence_id": "rabbit-god-runtime-v2-qemu-linux-x86-64-2026-09-30",
+  "status": "OBSERVED-HEADLESS-QEMU-FAIL-CLOSED",
+  "environment": {
+    "host": "linux-x86-64",
+    "qemu": "10.2.1",
+    "firmware": "OVMF_CODE_4M.fd",
+    "physical_device_used": false
+  },
+  "bindings": {
+    "generated_source_sha256": "6f1ea2f7c69092cea5f22f0c01546aefe3de98246ea399f6d67e1e10d976d3f8",
+    "runtime_core_sha256": "f1854f37564c4fbfa585392ef54fdf730d3ed8f9ad1c0303d8c09350a9a3cca3",
+    "target_sha256": "078d8d2b6aa353e441babe6972813f1699e4b4acd0d9ca8d4caa6b79e4a4e5dc",
+    "efi_sha256": "ae918f2e8641bc5a53ae0d3125b5bfa8f300df2b172a160118976da0ce4bc35d",
+    "image_sha256": "d9798fcea80993cf056c3146c993f42458d6c6d4922615c9ac7df81614c76613",
+    "screenshot_sha256": "3156b06436ed58dffce857ffe2321415515783bd34bc63bdca0dc8bb71a7ae46"
+  },
+  "observation": {
+    "visible_runtime": "RABBIT GOD RUNTIME v2.0",
+    "target_found": false,
+    "visible_result": "TARGET NOT FOUND; NO DEVICE WRITE SENT",
+    "controller_ram_writes": 0,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0,
+    "package_bytes_received": 0,
+    "framebuffer_writes_performed": 0
+  },
+  "claim": "The exact v2 image reached its Dell-controller identity gate in QEMU and failed closed before device, radio, package, or framebuffer effects."
+}

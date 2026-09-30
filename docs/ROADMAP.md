@@ -601,6 +601,23 @@ macOS ARM64 QEMU has also observed the v1.2 mismatch gate with exact local disk 
 remaining gate is the one-time physical Runtime replacement followed by the two signed
 world transfers without rebooting Dell.
 
+God Runtime v2 replaces the fixed 192-byte scene selector with a real bounded package
+ABI. A signed package now carries its own palette, indexed sprite frames, object table,
+initial state, and reviewed Rabbit VM programs. The first profile allows 4096 package
+bytes, 16 sprites, 16 objects, 16 behavior programs, and 16 animation frames per sprite.
+Transport v2 uses a 16-bit ordered chunk number, and its regression test crosses the
+old 255-frame ceiling with 301 frames. The physical UEFI Runtime stages the complete
+package in RAM, verifies Ed25519 and all references/budgets, performs a health step,
+then commits or retains the old world and emits the correlated receipt.
+
+The exact Linux QEMU candidate is image
+`d9798fcea80993cf056c3146c993f42458d6c6d4922615c9ac7df81614c76613`.
+It visibly reached `RABBIT GOD RUNTIME v2.0` and failed closed at the absent Dell
+controller before RAM staging, graphics, HCI, or radio effects. The remaining gates are
+macOS QEMU reproduction, one physical Runtime replacement, and at least two different
+full data-only worlds sent without moving USB or rebooting Dell. After that, ordinary
+worlds within the v2 ABI require Bluetooth only.
+
 ## Research track
 
 ### E0 — ARM64 baseline (complete)

@@ -931,3 +931,39 @@ macOS ARM64 QEMU has now reproduced that v1.2 gate. Its exact disk image is
 result was `TARGET NOT FOUND; NO DEVICE WRITE SENT` with the full zero-effect cleanup
 line. The screenshot-bound report is `qemu-macos-arm64-v12-observed.json`. v1.2 is now
 eligible for the dedicated removable-media replacement.
+
+## Rabbit God Runtime v2 universal package candidate
+
+The owner rejected another firmware-baked scene and approved the stable boundary:
+one Runtime image on USB, then complete data-only worlds over Bluetooth. The new
+`experiments/x86-64-uefi-god-runtime-v2/` implements that boundary rather than adding
+another trusted scene id to v1.
+
+Rabbit Universal Package v2 carries a palette, arbitrary indexed sprite frames within
+budget, multiple objects, initial state, and bounded Rabbit VM behavior bytecode. The
+first physical profile accepts up to 4096 signed bytes, 16 palette entries, 16 sprites,
+16 objects, 16 programs, 16 animation frames per sprite, and 32 VM bytes per program.
+It explicitly rejects native code, arbitrary memory access, unknown opcodes, invalid
+references, stale in-boot counters, signature changes, chunk loss/reorder, and budget
+overflow.
+
+BLE framing v2 changes the chunk sequence from 8 to 16 bits and carries six package
+bytes per UUID frame. The positive large-package regression uses 301 frames, proving
+that the old 255-frame ceiling is gone. Dell assembly delegates accepted frames to a
+static 4096-byte staging area in the freestanding C core. A complete package is checked,
+health-stepped, copied into the active RAM slot, rendered from its own resources, and
+acknowledged; failure leaves the prior active package untouched.
+
+The included `worlds/cat-chases-mouse.json` lowers to a 310-byte signed package and 54
+BLE frames. It contains two sprite assets, two objects, and two independent programs;
+the firmware contains only the generic decoder, renderer, VM, transport, and hardware
+bindings. The exact Linux artifact is EFI
+`ae918f2e8641bc5a53ae0d3125b5bfa8f300df2b172a160118976da0ce4bc35d`, image
+`d9798fcea80993cf056c3146c993f42458d6c6d4922615c9ac7df81614c76613`.
+QEMU 10.2.1 visibly showed `RABBIT GOD RUNTIME v2.0` and failed closed at the missing
+Dell controller with zero device, package, framebuffer, and radio effects.
+
+Next: reproduce the v2 QEMU gate on the owner's Mac, run `prepare_physical.py`, perform
+one reviewed replacement of the dedicated USB, then send counter 1 and counter 2 worlds
+with `send_package.py` without moving USB or rebooting Dell. A power cycle intentionally
+clears received worlds in v2 because persistent storage writes remain forbidden.

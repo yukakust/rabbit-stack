@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "target_id": "dell-optiplex-3060-qca-ble-universal-package-v2",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "runtime_envelope": "removable-usb-resident",
+  "transport": {
+    "protocol": "rabbit-ble-frames-v2",
+    "frame_payload_bytes": 6,
+    "sequence_bits": 16,
+    "max_package_bytes": 4096,
+    "receive": "passive",
+    "receipt": "bounded-nonconnectable-advertisement"
+  },
+  "runtime": {
+    "package": "rabbit-universal-package-v2",
+    "authentication": "ed25519",
+    "objects": 16,
+    "sprites": 16,
+    "programs": 16,
+    "sprite_geometry": "up-to-16x16-indexed",
+    "activation": "staging-health-commit-or-rollback"
+  },
+  "forbidden": [
+    "native-code-from-package",
+    "arbitrary-memory-write",
+    "pairing",
+    "connection",
+    "internal-storage-write",
+    "firmware-write"
+  ],
+  "recovery": "reject keeps active world; health failure keeps active world; Escape or power-off exits"
+}
