@@ -575,6 +575,12 @@ physical cat image remains installed, so one final USB upgrade is now eligible a
 exact removable-media review.
 Status is `GOD-RUNTIME-V1-QEMU-OBSERVED-NOT-INSTALLED`.
 
+The first physical v1.0 boot rendered the fallback world but exhausted an eight-event
+HCI Command Complete search before passive receive. v1.1 raises that exact bounded
+search to 32 to tolerate queued asynchronous QCA events created during Scene bootstrap;
+the fail-closed QEMU path is re-observed and no new authority is introduced. Status is
+`GOD-RUNTIME-V1.1-QEMU-OBSERVED-PHYSICAL-PENDING`.
+
 ## Research track
 
 ### E0 — ARM64 baseline (complete)

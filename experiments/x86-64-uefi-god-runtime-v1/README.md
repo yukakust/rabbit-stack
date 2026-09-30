@@ -1,4 +1,4 @@
-# Dell UEFI Rabbit God Runtime v1
+# Dell UEFI Rabbit God Runtime v1.1
 
 This experiment is the first single physical image containing all of these boundaries:
 
@@ -42,6 +42,12 @@ Linux x86-64 and macOS ARM64 QEMU runs were observed on 2026-09-30. Each report 
 `evidence/` is bound to its exact locally built disk image and the same generated source,
 Runtime Core and Target Pack. Different MinGW versions do not currently promise
 cross-toolchain PE/EFI byte identity; repeated builds with one toolchain remain exact.
+
+Physical v1.0 evidence found a fail-closed stop while matching the post-load HCI Reset:
+the Scene bootstrap can leave more than eight asynchronous controller events ahead of
+the Command Complete. Revision v1.1 keeps this search bounded but raises the exact
+per-command event budget from 8 to 32; no radio, persistence or capsule authority is
+added.
 
 ## Prepare, but do not install
 

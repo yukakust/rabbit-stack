@@ -879,7 +879,7 @@ cat and ball from live integer state instead of replaying the old canonical trac
 
 `python3 verify.py` passes the 30-frame round trip, negative signature/reorder/signer/
 replay cases, health rollback, the same freestanding C crypto verifier linked into EFI,
-and deterministic repeated image builds. Current disk image identity is
+and deterministic repeated image builds. v1.0 Linux disk identity was
 `5c7705c210b7cbf377061e31b25e7c20c2803e3159f7ee987e1fca7b5b985dd4`.
 
 QEMU on Linux x86-64 and macOS ARM64 visibly reached `RABBIT GOD RUNTIME v1.0`, then
@@ -890,8 +890,14 @@ versions produced different PE/EFI bytes, so cross-toolchain byte identity is no
 claimed; repeated builds under either individual toolchain are deterministic. Neither
 report claims physical Dell execution.
 
-Status is `GOD-RUNTIME-V1-QEMU-OBSERVED-NOT-INSTALLED`. The dedicated physical USB still
-contains the previously observed Cat image. Next: pull this commit on the Mac, reproduce
-the QEMU gate, run `python3 prepare_physical.py`, inspect the exact removable-media
-identity, and perform one final owner-authorized Runtime upgrade. Cross-reboot
-anti-replay and transport encryption remain debt.
+Physical v1.0 subsequently booted the Cat fallback but stopped fail-closed at
+`MATCHING HCI EVENT NOT RECEIVED WITHIN BUDGET` before passive receive. The Mac therefore
+repeated all 30 capsule frames without an ACK. Revision v1.1 retains a finite bound but
+raises both HCI Command Complete searches from 8 to 32 queued events; this accounts for
+asynchronous QCA events accumulated while the Scene bootstrap draws. No authority was
+added. Exact Linux v1.1 image identity is
+`6e43b77fd8efe702a5f2672743233311440b31124f27d7beff7f044a2abf8fb9`; its mismatch
+path is QEMU-observed. Status is `GOD-RUNTIME-V1.1-QEMU-OBSERVED-PHYSICAL-PENDING`.
+The dedicated USB currently contains v1.0. Next: reproduce v1.1 on macOS QEMU, prepare
+and inspect the toolchain-local image, then perform the owner-authorized replacement of
+v1.0. Cross-reboot anti-replay and transport encryption remain debt.

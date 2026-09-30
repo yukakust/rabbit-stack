@@ -34,7 +34,7 @@ def main() -> int:
         disk.write_bytes(image)
         shutil.copyfile(variables, vars_copy)
         print(f"IMAGE SHA256: {report['image_sha256']}")
-        print("Expected: RABBIT GOD RUNTIME v1.0, then TARGET NOT FOUND; NO HCI COMMAND SENT.")
+        print("Expected: RABBIT GOD RUNTIME v1.1, then TARGET NOT FOUND; NO HCI COMMAND SENT.")
         print("QEMU has no exact Dell 0CF3:E009 controller, so staging, graphics, crypto, and radio remain unreachable.")
         try:
             return subprocess.run([

@@ -41,6 +41,9 @@ def load_module(name: str, path: Path):
 
 def transformed_source() -> str:
     source = (BASE / "program.S").read_text(encoding="utf-8")
+    if source.count("cmp r12d, 8") != 2:
+        raise BuildError("reviewed HCI command event budgets changed upstream")
+    source = source.replace("cmp r12d, 8", "cmp r12d, 32")
     source = source.replace(
         "sub rsp, 0x708\n\n    mov rbx, [rdx + 0x30]",
         "sub rsp, 0x708\n    mov [rsp + 0x6f0], rdx       # SystemTable for Scene/Anima core\n\n    mov rbx, [rdx + 0x30]",
@@ -188,7 +191,7 @@ scan_capsule_accepted:
 '''
     source = source[:parser_start] + parser + source[ack_start:]
     source = source.replace("scan_graphics_failed:\n", "scan_health_failed:\n    lea rdx, [rip + scan_health_error]\n    call scan_print_ascii\n    jmp scan_finish\n\nscan_graphics_failed:\n", 1)
-    source = source.replace("RABBIT WIRELESS PROGRAM LOADER v0.5", "RABBIT GOD RUNTIME v1.0")
+    source = source.replace("RABBIT WIRELESS PROGRAM LOADER v0.5", "RABBIT GOD RUNTIME v1.1")
     source = source.replace("RABBIT VM v1; PASSIVE RX + BOUNDED ACK; ESC TO STOP", "SCENE/ANIMA v2 + SIGNED CAPSULE + ROLLBACK")
     source = source.replace("INITIAL SQUARE DRAWN=YELLOW; VM READY", "BOOTSTRAP CAT WORLD ACTIVE; RUNTIME READY")
     source = source.replace("PROGRAM APPLIED: SHAPE + POSITION + ARROW CONTROLS", "CAPSULE HEALTHY: PROVISIONAL WORLD COMMITTED")

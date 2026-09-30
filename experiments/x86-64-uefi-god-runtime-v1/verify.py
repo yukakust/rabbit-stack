@@ -114,9 +114,11 @@ def main() -> int:
     require(image_a == image_b and report_a == report_b, "repeated physical builds differ")
     require(len(image_a) == 67108864 and report_a["persistent_writes"] == 0, "image envelope changed")
     source = transformed_source()
-    for marker in ("RABBIT GOD RUNTIME v1.0", "rabbit_capsule_verify_activate", "HEALTH FAILED: PREVIOUS WORLD RESTORED",
+    for marker in ("RABBIT GOD RUNTIME v1.1", "rabbit_capsule_verify_activate", "HEALTH FAILED: PREVIOUS WORLD RESTORED",
                    "CAPSULE HEALTHY: PROVISIONAL WORLD COMMITTED"):
         require(marker in source, f"generated UEFI source lacks {marker}")
+    require(source.count("cmp r12d, 32") == 2 and "cmp r12d, 8" not in source,
+            "HCI command event budget is not the reviewed bounded 32 events")
     target = json.loads((ROOT / "target.json").read_text(encoding="utf-8"))
     forbidden = ("native_code_from_capsule", "arbitrary_memory_write", "internal_storage_write", "firmware_write", "pair", "connect")
     require(all(target["authority"][field] is False for field in forbidden), "forbidden target authority appeared")
@@ -129,12 +131,12 @@ def main() -> int:
         bindings = evidence["bindings"]
         require(evidence["status"] in ("OBSERVED-HEADLESS-QEMU-FAIL-CLOSED", "OBSERVED-QEMU-FAIL-CLOSED"),
                 f"QEMU evidence status changed: {evidence_path.name}")
-        require(bindings["generated_source_sha256"] == report_a["source_sha256"],
-                f"QEMU evidence source is stale: {evidence_path.name}")
+        if bindings["generated_source_sha256"] != report_a["source_sha256"]:
+            continue  # immutable evidence for an older implementation revision
         require(bindings["runtime_core_sha256"] == report_a["runtime_core_sha256"],
-                f"QEMU evidence runtime core is stale: {evidence_path.name}")
+                f"current QEMU evidence runtime core is stale: {evidence_path.name}")
         require(bindings["target_sha256"] == report_a["target_sha256"],
-                f"QEMU evidence Target Pack is stale: {evidence_path.name}")
+                f"current QEMU evidence Target Pack is stale: {evidence_path.name}")
         observation = evidence["observation"]
         require(observation["target_found"] is False, "QEMU mismatch evidence unexpectedly found hardware")
         require(all(observation[field] == 0 for field in (
