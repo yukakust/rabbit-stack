@@ -803,3 +803,22 @@ or unused authority, omitted dependencies, type mismatch, resource overflow, tar
 leakage, unreviewed native code, malformed sprites, dependency cycles, and duplicate
 JSON fields. No package has been deployed or executed. The honest status is
 `INVENTORY-V1-BUILT-NOT-EXECUTED`; the next boundary is a hosted Scene/Anima v2 runner.
+
+## Scene/Anima v2 hosted execution
+
+`experiments/scene-anima-v2-runner/` is the first executor for the exact Inventory v1
+`Cat Plays With Ball` identity. It rejects a changed Merge, substituted sprite, altered
+authority or runner budget before execution. The accepted scene uses only integer
+state, a fixed 30-tick semantic clock, two bounded entities, the catalog's exact sprite
+frames, and a 160-by-90 logical raster.
+
+In the 240-tick reference execution the cat visits `look`, `chase`, `pounce`, `bat`, and
+`wait`, bats the ball five times, animates both catalog frames, and observes twelve ball
+edge contacts. A second execution yields the identical canonical trace and final RGB
+raster. `run_hosted.py` writes `trace.json`, `report.json`, a final PPM, and an offline
+HTML visualization to a disposable directory. No generated artifact is committed.
+
+This is real hosted execution, not physical Dell evidence. Its status is
+`SCENE-ANIMA-V2-HOSTED-EXECUTED-NOT-PHYSICALLY-DEPLOYED`. The next physical boundary is
+a separately reviewed Dell Target Pack/runtime preserving the same Creation identity;
+do not put UEFI, QCA, x86-64, or display-address facts into the reusable components.

@@ -506,7 +506,7 @@ Translate natural-language intent into candidate worlds and patches. The model m
 propose new target support, but only deterministic validators and authorized installers
 may approve builds or physical effects.
 
-### U12 — Reusable Creation Inventory (v1 implemented, execution pending)
+### U12 — Reusable Creation Inventory (v1 complete)
 
 Make assets, capabilities, Anima, policies, and finished Creations independently
 versioned, licensed, content-identified, and shareable. A Merge resolves exact component
@@ -517,9 +517,19 @@ already trusted Creator key and must not grant hidden effects.
 `experiments/reusable-creation-inventory-v1/` implements the first target-independent
 reference contract. `Cat Plays With Ball` resolves to thirteen cards, while a separate
 `Bouncing Ball` Creation reuses ten exact component identities. Ed25519 package sharing
-and negative validation pass. Status is `INVENTORY-V1-BUILT-NOT-EXECUTED`: the next
-boundary is a hosted Scene/Anima v2 runner consuming the exact resolved Creation before
-native or physical execution is claimed.
+and negative validation pass.
+
+### U13 — Scene/Anima v2 execution (hosted reference complete; physical pending)
+
+`experiments/scene-anima-v2-runner/` consumes the exact resolved Inventory v1 Creation
+and executes a deterministic integer-only scene. The cat visits look, chase, pounce,
+bat, and wait states; the reusable sprite frames animate; the ball integrates velocity,
+receives cat contact, and reflects from scene edges. Repeated 240-tick runs produce the
+same canonical trace and final RGB raster. An offline HTML view visualizes that evidence.
+
+Status is `SCENE-ANIMA-V2-HOSTED-EXECUTED-NOT-PHYSICALLY-DEPLOYED`. The next boundary is
+a Dell Target Pack and bounded physical Scene/Anima runtime that preserve the same
+Creation identity and observable semantics without moving target facts into Inventory.
 
 ## Research track
 
