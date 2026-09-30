@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "creation": {
+    "creation_id": "creation.toon-cat-chases-mouse",
+    "version": "1.0.0",
+    "name": "Toon Cat Chases Mouse",
+    "summary": "An original blue-grey cartoon cat watches, chases, pounces, and swats at one quick brown mouse.",
+    "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+    "license": {"spdx": "CC-BY-4.0"}
+  },
+  "members": [
+    {"component_id": "rabbit.anima.cat-chases-mouse", "version": "1.0.0"},
+    {"component_id": "rabbit.anima.scurrying-mouse", "version": "1.0.0"},
+    {"component_id": "rabbit.asset.toon-cat-pixel", "version": "1.0.0"},
+    {"component_id": "rabbit.asset.toon-mouse-pixel", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.animation-frames", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.clock-tick", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.collision-circle", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.physics-2d", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.scene-graph-toon-chase", "version": "1.0.0"},
+    {"component_id": "rabbit.capability.sprite-renderer-toon-chase", "version": "1.0.0"},
+    {"component_id": "rabbit.policy.resource-budget", "version": "1.0.0"},
+    {"component_id": "rabbit.policy.signed-package", "version": "1.0.0"},
+    {"component_id": "rabbit.policy.transactional-rollback", "version": "1.0.0"}
+  ],
+  "bindings": [
+    {"from": {"component_id": "rabbit.anima.cat-chases-mouse", "port": "animation"}, "to": {"component_id": "rabbit.capability.animation-frames", "port": "command"}},
+    {"from": {"component_id": "rabbit.anima.cat-chases-mouse", "port": "control"}, "to": {"component_id": "rabbit.capability.scene-graph-toon-chase", "port": "cat-control"}},
+    {"from": {"component_id": "rabbit.anima.scurrying-mouse", "port": "force"}, "to": {"component_id": "rabbit.capability.physics-2d", "port": "force"}},
+    {"from": {"component_id": "rabbit.asset.toon-cat-pixel", "port": "frames"}, "to": {"component_id": "rabbit.capability.animation-frames", "port": "frames"}},
+    {"from": {"component_id": "rabbit.asset.toon-mouse-pixel", "port": "frame"}, "to": {"component_id": "rabbit.capability.scene-graph-toon-chase", "port": "mouse-sprite"}},
+    {"from": {"component_id": "rabbit.capability.animation-frames", "port": "sprite"}, "to": {"component_id": "rabbit.capability.scene-graph-toon-chase", "port": "cat-sprite"}},
+    {"from": {"component_id": "rabbit.capability.clock-tick", "port": "tick"}, "to": {"component_id": "rabbit.anima.cat-chases-mouse", "port": "tick"}},
+    {"from": {"component_id": "rabbit.capability.clock-tick", "port": "tick"}, "to": {"component_id": "rabbit.anima.scurrying-mouse", "port": "tick"}},
+    {"from": {"component_id": "rabbit.capability.clock-tick", "port": "tick"}, "to": {"component_id": "rabbit.capability.animation-frames", "port": "tick"}},
+    {"from": {"component_id": "rabbit.capability.clock-tick", "port": "tick"}, "to": {"component_id": "rabbit.capability.physics-2d", "port": "tick"}},
+    {"from": {"component_id": "rabbit.capability.collision-circle", "port": "collisions"}, "to": {"component_id": "rabbit.anima.cat-chases-mouse", "port": "collisions"}},
+    {"from": {"component_id": "rabbit.capability.collision-circle", "port": "collisions"}, "to": {"component_id": "rabbit.anima.scurrying-mouse", "port": "collisions"}},
+    {"from": {"component_id": "rabbit.capability.physics-2d", "port": "bodies"}, "to": {"component_id": "rabbit.capability.collision-circle", "port": "bodies"}},
+    {"from": {"component_id": "rabbit.capability.physics-2d", "port": "transform"}, "to": {"component_id": "rabbit.capability.scene-graph-toon-chase", "port": "physics-transform"}},
+    {"from": {"component_id": "rabbit.capability.scene-graph-toon-chase", "port": "scene"}, "to": {"component_id": "rabbit.anima.cat-chases-mouse", "port": "scene"}},
+    {"from": {"component_id": "rabbit.capability.scene-graph-toon-chase", "port": "scene"}, "to": {"component_id": "rabbit.capability.sprite-renderer-toon-chase", "port": "scene"}}
+  ],
+  "grants": ["display.draw", "time.read"],
+  "budgets": {"memory_bytes": 65536, "persistent_bytes": 8192, "objects": 64, "pixels_per_frame": 400000, "ticks_per_second": 300}
+}

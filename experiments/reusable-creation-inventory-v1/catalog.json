@@ -72,6 +72,74 @@
     },
     {
       "schema_version": 1,
+      "component_id": "rabbit.anima.cat-chases-mouse",
+      "version": "1.0.0",
+      "kind": "anima",
+      "name": "Cat Chases Mouse",
+      "summary": "Chooses watch, chase, pounce, swat, and pause states while a cat pursues one mouse.",
+      "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {
+        "inputs": [
+          {"name": "collisions", "type": "physics.collision-event"},
+          {"name": "scene", "type": "scene.snapshot"},
+          {"name": "tick", "type": "time.tick"}
+        ],
+        "outputs": [
+          {"name": "animation", "type": "animation.command"},
+          {"name": "control", "type": "scene.entity-control"}
+        ]
+      },
+      "dependencies": [
+        {"component_id": "rabbit.capability.animation-frames", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.clock-tick", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.collision-circle", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.physics-2d", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.scene-graph-toon-chase", "version": "1.0.0"}
+      ],
+      "provides": ["behavior.cat-chases-mouse"],
+      "authorities": [],
+      "resources": {"memory_bytes": 4096, "persistent_bytes": 128, "objects": 1, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {
+        "format": "rabbit.state-machine.v1",
+        "initial_state": "watch",
+        "states": ["chase", "pause", "pounce", "swat", "watch"],
+        "transitions": ["contact:swat", "mouse-far:chase", "mouse-near:pounce", "rest:watch", "timeout:pause"]
+      }
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.anima.scurrying-mouse",
+      "version": "1.0.0",
+      "kind": "anima",
+      "name": "Scurrying Mouse",
+      "summary": "Moves one bounded mouse, reflects at scene edges, and darts away after cat contact.",
+      "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {
+        "inputs": [
+          {"name": "collisions", "type": "physics.collision-event"},
+          {"name": "tick", "type": "time.tick"}
+        ],
+        "outputs": [{"name": "force", "type": "physics.force"}]
+      },
+      "dependencies": [
+        {"component_id": "rabbit.capability.clock-tick", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.collision-circle", "version": "1.0.0"},
+        {"component_id": "rabbit.capability.physics-2d", "version": "1.0.0"}
+      ],
+      "provides": ["behavior.scurrying-mouse"],
+      "authorities": [],
+      "resources": {"memory_bytes": 1024, "persistent_bytes": 64, "objects": 1, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {
+        "format": "rabbit.state-machine.v1",
+        "initial_state": "scurry",
+        "states": ["dart", "scurry"],
+        "transitions": ["cat-contact:dart", "edge:reflect-velocity", "tick:integrate"]
+      }
+    },
+    {
+      "schema_version": 1,
       "component_id": "rabbit.asset.ball-pixel",
       "version": "1.0.0",
       "kind": "asset",
@@ -114,6 +182,56 @@
         "frames": [
           ["..OOOO..", ".OOOOOO.", "OOKOOKOO", "OOOOOOOO", ".OWOOWO.", "..OOOO..", ".O.OO.O.", "O..OO..O"],
           ["..OOOO..", ".OOOOOO.", "OOKOOKOO", "OOOOOOOO", ".OWOOWO.", "..OOOO..", "O..OO..O", ".O.OO.O."]
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.asset.toon-cat-pixel",
+      "version": "1.0.0",
+      "kind": "asset",
+      "name": "Blue Grey Toon Cat",
+      "summary": "Two original eight-by-eight blue-grey cartoon cat chase frames.",
+      "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+      "license": {"spdx": "CC0-1.0"},
+      "interfaces": {"inputs": [], "outputs": [{"name": "frames", "type": "sprite.frames"}]},
+      "dependencies": [],
+      "provides": ["asset.sprite.toon-cat"],
+      "authorities": [],
+      "resources": {"memory_bytes": 512, "persistent_bytes": 512, "objects": 1, "pixels_per_frame": 64, "ticks_per_second": 0},
+      "implementation": {
+        "format": "rabbit.sprite.v1",
+        "width": 8,
+        "height": 8,
+        "palette": {".": "transparent", "B": "4E79A7", "D": "23364D", "P": "F2A6B3", "W": "F4F1E8"},
+        "frames": [
+          ["B......B", "BB.BB.BB", ".BBBBBB.", "BWBDBDWB", ".BBPBBB.", "..BBBB..", ".BB..BB.", "B......B"],
+          ["B......B", "BB.BB.BB", ".BBBBBB.", "BWBDBDWB", ".BBPBBB.", "..BBBB..", "B..BB..B", ".BB..BB."]
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.asset.toon-mouse-pixel",
+      "version": "1.0.0",
+      "kind": "asset",
+      "name": "Brown Toon Mouse",
+      "summary": "Two original eight-by-eight brown cartoon mouse scurry frames with large ears and a tail.",
+      "creator": {"id": "creator.yuka", "display_name": "Yuka"},
+      "license": {"spdx": "CC0-1.0"},
+      "interfaces": {"inputs": [], "outputs": [{"name": "frame", "type": "sprite.frame"}]},
+      "dependencies": [],
+      "provides": ["asset.sprite.toon-mouse"],
+      "authorities": [],
+      "resources": {"memory_bytes": 512, "persistent_bytes": 512, "objects": 1, "pixels_per_frame": 64, "ticks_per_second": 0},
+      "implementation": {
+        "format": "rabbit.sprite.v1",
+        "width": 8,
+        "height": 8,
+        "palette": {".": "transparent", "C": "A9683A", "D": "3B2418", "P": "F3A6A6", "W": "FFF2D6"},
+        "frames": [
+          [".CC..CC.", "CPCCCCPC", ".CCCCCC.", "..WCD...", ".CCCCC..", "..CCC.C.", ".C...C.C", "C......."],
+          [".CC..CC.", "CPCCCCPC", ".CCCCCC.", "..WCD...", ".CCCCC..", ".C.CCC..", "C.C...C.", ".......C"]
         ]
       }
     },
@@ -217,6 +335,30 @@
     },
     {
       "schema_version": 1,
+      "component_id": "rabbit.capability.scene-graph-toon-chase",
+      "version": "1.0.0",
+      "kind": "capability",
+      "name": "Toon Chase Scene Graph",
+      "summary": "Combines one toon cat and one toon mouse with bounded transforms into a scene snapshot.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {
+        "inputs": [
+          {"name": "cat-control", "type": "scene.entity-control"},
+          {"name": "cat-sprite", "type": "sprite.frame"},
+          {"name": "mouse-sprite", "type": "sprite.frame"},
+          {"name": "physics-transform", "type": "scene.transform"}
+        ],
+        "outputs": [{"name": "bodies", "type": "physics.body-set"}, {"name": "scene", "type": "scene.snapshot"}]
+      },
+      "dependencies": [],
+      "provides": ["scene.toon-chase"],
+      "authorities": [],
+      "resources": {"memory_bytes": 8192, "persistent_bytes": 256, "objects": 16, "pixels_per_frame": 0, "ticks_per_second": 30},
+      "implementation": {"format": "rabbit.capability-contract.v1", "contract": "bounded-toon-cat-mouse-scene", "version": 1}
+    },
+    {
+      "schema_version": 1,
       "component_id": "rabbit.capability.sprite-renderer",
       "version": "1.0.0",
       "kind": "capability",
@@ -230,6 +372,22 @@
       "authorities": ["display.draw"],
       "resources": {"memory_bytes": 16384, "persistent_bytes": 0, "objects": 0, "pixels_per_frame": 307200, "ticks_per_second": 30},
       "implementation": {"format": "rabbit.capability-contract.v1", "contract": "bounded-sprite-composition", "version": 1}
+    },
+    {
+      "schema_version": 1,
+      "component_id": "rabbit.capability.sprite-renderer-toon-chase",
+      "version": "1.0.0",
+      "kind": "capability",
+      "name": "Toon Chase Sprite Renderer",
+      "summary": "Draws a bounded toon chase scene through a negotiated display capability.",
+      "creator": {"id": "rabbit.foundation", "display_name": "Rabbit Foundation"},
+      "license": {"spdx": "MIT"},
+      "interfaces": {"inputs": [{"name": "scene", "type": "scene.snapshot"}], "outputs": [{"name": "presented", "type": "display.presented"}]},
+      "dependencies": [{"component_id": "rabbit.capability.scene-graph-toon-chase", "version": "1.0.0"}],
+      "provides": ["render.toon-chase-sprite"],
+      "authorities": ["display.draw"],
+      "resources": {"memory_bytes": 16384, "persistent_bytes": 0, "objects": 0, "pixels_per_frame": 307200, "ticks_per_second": 30},
+      "implementation": {"format": "rabbit.capability-contract.v1", "contract": "bounded-toon-chase-sprite-composition", "version": 1}
     },
     {
       "schema_version": 1,

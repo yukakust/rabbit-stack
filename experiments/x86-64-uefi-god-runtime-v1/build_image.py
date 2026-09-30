@@ -191,7 +191,7 @@ scan_capsule_accepted:
 '''
     source = source[:parser_start] + parser + source[ack_start:]
     source = source.replace("scan_graphics_failed:\n", "scan_health_failed:\n    lea rdx, [rip + scan_health_error]\n    call scan_print_ascii\n    jmp scan_finish\n\nscan_graphics_failed:\n", 1)
-    source = source.replace("RABBIT WIRELESS PROGRAM LOADER v0.5", "RABBIT GOD RUNTIME v1.1")
+    source = source.replace("RABBIT WIRELESS PROGRAM LOADER v0.5", "RABBIT GOD RUNTIME v1.2")
     source = source.replace("RABBIT VM v1; PASSIVE RX + BOUNDED ACK; ESC TO STOP", "SCENE/ANIMA v2 + SIGNED CAPSULE + ROLLBACK")
     source = source.replace("INITIAL SQUARE DRAWN=YELLOW; VM READY", "BOOTSTRAP CAT WORLD ACTIVE; RUNTIME READY")
     source = source.replace("PROGRAM APPLIED: SHAPE + POSITION + ARROW CONTROLS", "CAPSULE HEALTHY: PROVISIONAL WORLD COMMITTED")

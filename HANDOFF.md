@@ -915,3 +915,13 @@ and advertised its bounded receipt; Mac received the exact correlated result
 `TRANSFER=14 HASH=5B5A6C14 APPLIED_COUNTER=1` and exited normally. Evidence is
 `experiments/x86-64-uefi-god-runtime-v1/evidence/dell-optiplex-3060-v11-capsule-physical-observed.json`.
 Status is `GOD-RUNTIME-V1.1-PHYSICAL-SIGNED-CAPSULE-COMMITTED-ACKNOWLEDGED`.
+
+v1.2 is the next immutable candidate. Reusable Creation Inventory v1 now contains an
+original blue-grey toon cat, brown toon mouse, scurrying-mouse behavior, cat-chases-mouse
+behavior, dedicated scene graph, and renderer. Their exact Merge identity is
+`52c76a8592f5929e31af97e020325afa53f93a63c94bce06a1ba6159b6875609`.
+God Runtime v1.2 trusts both the already observed cat-and-ball world and this new world,
+without changing the 192-byte/30-frame signed transaction. Linux QEMU observed the
+exact v1.2 image fail closed before effects when the Dell controller is absent. Next:
+reproduce the v1.2 gate on macOS, perform one removable-media Runtime upgrade, then send
+cat-ball at counter 1 and toon-cat-mouse at counter 2 without rebooting Dell.

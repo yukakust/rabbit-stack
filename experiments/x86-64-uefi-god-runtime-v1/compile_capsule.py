@@ -10,7 +10,7 @@ from pathlib import Path
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
-from capsule import CAT_CREATION_SHA256, SceneConfig, encode
+from capsule import CAT_CREATION_SHA256, TOON_CREATION_SHA256, SceneConfig, encode
 
 ROOT = Path(__file__).resolve().parent
 INVENTORY = ROOT.parent / "reusable-creation-inventory-v1"
@@ -25,10 +25,12 @@ def compile_package(package: bytes, private_bytes: bytes, counter: int) -> bytes
     public = private.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)
     _, payload = InventoryPackage.decode_and_verify(package, public)
     lock = payload["lock"]
-    if lock["creation_sha256"] != CAT_CREATION_SHA256 or lock["grants"] != ["display.draw", "time.read"]:
-        raise InventoryError("Inventory package is not the reviewed Cat Scene/Anima Creation")
+    scenes = {CAT_CREATION_SHA256: "cat-ball", TOON_CREATION_SHA256: "toon-cat-mouse"}
+    if lock["creation_sha256"] not in scenes or lock["grants"] != ["display.draw", "time.read"]:
+        raise InventoryError("Inventory package is not a reviewed Cat Scene/Anima Creation")
     import hashlib
-    return encode(SceneConfig(counter=counter, inventory_package_sha256=hashlib.sha256(package).hexdigest()), private)
+    return encode(SceneConfig(counter=counter, inventory_package_sha256=hashlib.sha256(package).hexdigest(),
+                              scene=scenes[lock["creation_sha256"]]), private)
 
 
 def main() -> int:

@@ -27,6 +27,7 @@ from rabbit_inventory import (
 ROOT = Path(__file__).resolve().parent
 EXPECTED_CAT_IDENTITY = "c6e1def6497769bbaa3917a8dacba099b01676af459358d7e6551fb6fa82eab8"
 EXPECTED_BALL_IDENTITY = "1466de62fa8c841e020b5ff34e57abc28cea5bb59240426632418f3c325b2903"
+EXPECTED_TOON_IDENTITY = "52c76a8592f5929e31af97e020325afa53f93a63c94bce06a1ba6159b6875609"
 
 
 def require(condition: bool, message: str) -> None:
@@ -47,10 +48,13 @@ def main() -> int:
     catalog = load_json(ROOT / "catalog.json")
     cat_merge = load_json(ROOT / "examples" / "cat-plays-with-ball.merge.json")
     ball_merge = load_json(ROOT / "examples" / "bouncing-ball.merge.json")
+    toon_merge = load_json(ROOT / "examples" / "toon-cat-chases-mouse.merge.json")
     cat_lock = resolve_merge(catalog, cat_merge)
     ball_lock = resolve_merge(catalog, ball_merge)
+    toon_lock = resolve_merge(catalog, toon_merge)
     require(cat_lock["creation_sha256"] == EXPECTED_CAT_IDENTITY, "cat Creation identity changed")
     require(ball_lock["creation_sha256"] == EXPECTED_BALL_IDENTITY, "ball Creation identity changed")
+    require(toon_lock["creation_sha256"] == EXPECTED_TOON_IDENTITY, "toon chase Creation identity changed")
     require(cat_lock["grants"] == ["display.draw", "time.read"], "cat authority changed")
     require(cat_lock["resources"] == {
         "memory_bytes": 39680,
@@ -63,6 +67,14 @@ def main() -> int:
     ball_components = {(item["component_id"], item["version"], item["sha256"]) for item in ball_lock["components"]}
     require(len(cat_components) == 13 and len(ball_components) == 10, "resolved component counts changed")
     require(len(cat_components & ball_components) == 10, "bouncing-ball did not reuse exact component identities")
+    require(len(toon_lock["components"]) == 13, "toon chase component count changed")
+    require(toon_lock["resources"] == {
+        "memory_bytes": 39936,
+        "persistent_bytes": 5824,
+        "objects": 52,
+        "pixels_per_frame": 307328,
+        "ticks_per_second": 240,
+    }, "toon chase resources changed")
     require(not any(word in canonical_bytes(cat_lock).lower() for word in (b"uefi", b"x86", b"dell", b"qemu")), "cat lock leaked target facts")
 
     private = Ed25519PrivateKey.from_private_bytes(bytes(range(32)))
@@ -145,6 +157,7 @@ def main() -> int:
     print("PASS: exact component identities are shared across Cat and Bouncing Ball Creations")
     print("PASS: Merge resolves typed ports, exact dependencies, authorities, budgets, provenance, and licenses")
     print("PASS: Cat Plays With Ball resolves to 13 reusable components without target facts")
+    print("PASS: original toon cat, toon mouse, chase behavior, and scene resolve as 13 reusable components")
     print("PASS: Ed25519 package export/import binds one trusted Creator and the exact resolved lock")
     print(f"PASS: cat={EXPECTED_CAT_IDENTITY}, ball={EXPECTED_BALL_IDENTITY}, package={report['package_sha256']}")
     print("PASS: INVENTORY-V1-BUILT-NOT-EXECUTED")

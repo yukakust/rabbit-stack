@@ -588,6 +588,14 @@ bounded receipt, and Mac received the exact transfer/hash/counter acknowledgemen
 No post-boot persistent write participated. Status is
 `GOD-RUNTIME-V1.1-PHYSICAL-SIGNED-CAPSULE-COMMITTED-ACKNOWLEDGED`.
 
+God Runtime v1.2 extends the reusable trusted inventory with a second complete scene:
+an original toon cat chases a toon mouse. The old fallback remains valid. Both worlds
+use the same fixed signed capsule, passive BLE transport, staging, health gate, rollback,
+and correlated receipt. This is the first explicit test that adding reusable visual and
+behavior components does not require inventing a new deployment protocol. Linux QEMU
+has observed the exact v1.2 mismatch gate; macOS QEMU and physical Dell replacement are
+the remaining gates before the counter-1 to counter-2 no-reboot demonstration.
+
 ## Research track
 
 ### E0 — ARM64 baseline (complete)

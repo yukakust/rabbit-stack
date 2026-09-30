@@ -9,8 +9,10 @@ no Dell, UEFI, ISA, framebuffer, MMIO, or QEMU fact.
 `catalog.json` contains versioned cards for:
 
 - pixel cat and ball assets;
+- original blue-grey toon cat and brown toon mouse assets;
 - clock, scene, frame-animation, 2D-physics, collision, and sprite-rendering capabilities;
 - reusable cat-chase and bouncing-ball Anima;
+- reusable cat-chases-mouse and scurrying-mouse Anima;
 - resource-budget, signed-package, and transactional-rollback policies.
 
 Each card declares:
@@ -28,6 +30,11 @@ blueprint. `examples/bouncing-ball.merge.json` forms a second Creation and reuse
 of those exact component identities. Merge validation pins every component hash and
 license into a provenance lock, checks every connection type, sums resources, and
 requires authority grants to equal—not merely include—the requested effects.
+
+`examples/toon-cat-chases-mouse.merge.json` is a third Creation made from thirteen
+cards. Its characters are original reusable pixel assets inspired by the broad visual
+language of classic theatrical chase cartoons; they are not copies of named commercial
+characters or animation frames.
 
 ## Sharing
 

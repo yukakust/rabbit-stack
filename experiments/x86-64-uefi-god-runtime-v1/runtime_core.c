@@ -12,6 +12,7 @@ struct scene_state {
     int32_t cat_x, cat_y, cat_vx, cat_vy;
     int32_t ball_x, ball_y, ball_vx, ball_vy;
     uint32_t wait_ticks, bat_count;
+    uint32_t scene_kind;
 };
 
 static const uint8_t trusted_creator[32] = {
@@ -26,6 +27,14 @@ static const uint8_t trusted_components[32] = {
     0x4d,0x82,0xc2,0x13,0xd7,0x99,0xba,0xd7,0x12,0x25,0x74,0xbd,0x7f,0x13,0x73,0xb2,
     0x5b,0x00,0xbd,0x3b,0x2f,0x5a,0x60,0x3f,0xcc,0x89,0xaf,0xbe,0x6e,0xf8,0xd5,0xbf
 };
+static const uint8_t trusted_toon_creation[32] = {
+    0x52,0xc7,0x6a,0x85,0x92,0xf5,0x92,0x9e,0x31,0xaf,0x97,0xe0,0x20,0x32,0x5a,0xfa,
+    0x53,0xf9,0x3a,0x63,0xc9,0x4b,0xce,0x06,0xa1,0xba,0x61,0x59,0xb6,0x87,0x56,0x09
+};
+static const uint8_t trusted_toon_components[32] = {
+    0xb1,0x4c,0x75,0xfc,0xe5,0x6d,0x31,0x85,0x12,0xa6,0xef,0x0f,0x8d,0xb4,0x16,0x82,
+    0x9b,0xdf,0xa4,0xa7,0x6a,0x82,0xb8,0x6f,0x5f,0xea,0xc8,0xb4,0xe7,0x0b,0x22,0x4f
+};
 static const uint8_t gop_guid[16] = {0xde,0xa9,0x42,0x90,0xdc,0x23,0x38,0x4a,0x96,0xfb,0x7a,0xde,0xd0,0x80,0x51,0x6a};
 static const uint8_t cat0[64] = {
  0,0,1,1,1,1,0,0, 0,1,1,1,1,1,1,0, 1,1,2,1,1,2,1,1, 1,1,1,1,1,1,1,1,
@@ -36,6 +45,18 @@ static const uint8_t cat1[64] = {
 static const uint8_t ball[64] = {
  0,0,0,4,4,0,0,0, 0,4,4,4,4,4,4,0, 4,4,4,4,4,4,4,4, 4,3,3,4,4,4,2,4,
  4,4,4,4,4,4,4,4, 0,4,4,4,4,4,4,0, 0,0,4,4,4,4,0,0, 0,0,0,4,4,0,0,0};
+static const uint8_t toon_cat0[64] = {
+ 5,0,0,0,0,0,0,5, 5,5,0,5,5,0,5,5, 0,5,5,5,5,5,5,0, 5,3,5,2,5,2,3,5,
+ 0,5,5,6,5,5,5,0, 0,0,5,5,5,5,0,0, 0,5,5,0,0,5,5,0, 5,0,0,0,0,0,0,5};
+static const uint8_t toon_cat1[64] = {
+ 5,0,0,0,0,0,0,5, 5,5,0,5,5,0,5,5, 0,5,5,5,5,5,5,0, 5,3,5,2,5,2,3,5,
+ 0,5,5,6,5,5,5,0, 0,0,5,5,5,5,0,0, 5,0,0,5,5,0,0,5, 0,5,5,0,0,5,5,0};
+static const uint8_t toon_mouse0[64] = {
+ 0,8,8,0,0,8,8,0, 8,6,8,8,8,8,6,8, 0,8,8,8,8,8,8,0, 0,0,7,8,9,0,0,0,
+ 0,8,8,8,8,8,0,0, 0,0,8,8,8,0,8,0, 0,8,0,0,0,8,0,8, 8,0,0,0,0,0,0,0};
+static const uint8_t toon_mouse1[64] = {
+ 0,8,8,0,0,8,8,0, 8,6,8,8,8,8,6,8, 0,8,8,8,8,8,8,0, 0,0,7,8,9,0,0,0,
+ 0,8,8,8,8,8,0,0, 0,8,0,8,8,8,0,0, 8,0,8,0,0,0,8,0, 0,0,0,0,0,0,0,8};
 
 static struct scene_state active, previous;
 static uint32_t *framebuffer;
@@ -55,7 +76,7 @@ static void fill(uint32_t rgb){
     for(uint32_t y=0;y<h;y++)for(uint32_t x=0;x<w;x++)framebuffer[y*stride+x]=c;
 }
 static void sprite(const uint8_t *pixels,int x,int y){
-    static const uint32_t palette[5]={0x121826,0xff9933,0x111111,0xffffff,0x3388ff};
+    static const uint32_t palette[10]={0x121826,0xff9933,0x111111,0xffffff,0x3388ff,0x4e79a7,0xf2a6b3,0xfff2d6,0xa9683a,0x3b2418};
     for(int sy=0;sy<8;sy++)for(int sx=0;sx<8;sx++){
         uint8_t index=pixels[sy*8+sx]; if(index==0)continue;
         for(int yy=0;yy<3;yy++)for(int xx=0;xx<3;xx++){
@@ -75,7 +96,11 @@ static int bind_gop(void *system_table){
     if(width<480||height<270||pixel_format>1||!framebuffer)return -1;
     return 0;
 }
-static void draw(void){fill(0x121826);sprite(ball,active.ball_x,active.ball_y);sprite((active.tick/4)&1?cat1:cat0,active.cat_x,active.cat_y);}
+static void draw(void){
+    fill(active.scene_kind?0x182033:0x121826);
+    if(active.scene_kind){sprite((active.tick/3)&1?toon_mouse1:toon_mouse0,active.ball_x,active.ball_y);sprite((active.tick/3)&1?toon_cat1:toon_cat0,active.cat_x,active.cat_y);}
+    else{sprite(ball,active.ball_x,active.ball_y);sprite((active.tick/4)&1?cat1:cat0,active.cat_x,active.cat_y);}
+}
 static int healthy(const struct scene_state *s){return s->cat_x>=0&&s->cat_x<=152&&s->cat_y>=0&&s->cat_y<=82&&s->ball_x>=0&&s->ball_x<=152&&s->ball_y>=0&&s->ball_y<=82;}
 static void advance(void){
     active.tick++;active.ball_x+=active.ball_vx;active.ball_y+=active.ball_vy;
@@ -92,7 +117,7 @@ static void advance(void){
 
 int __attribute__((ms_abi)) rabbit_scene_bootstrap(void *system_table){
     if(bind_gop(system_table))return 1;
-    active=(struct scene_state){0,0,12,58,0,0,116,34,2,1,10,0};ready=1;draw();return 0;
+    active=(struct scene_state){0,0,12,58,0,0,116,34,2,1,10,0,0};ready=1;draw();return 0;
 }
 int __attribute__((ms_abi)) rabbit_scene_tick(void *system_table){
     (void)system_table;if(!ready)return 1;advance();if(!healthy(&active))return 1;draw();return 0;
@@ -100,7 +125,11 @@ int __attribute__((ms_abi)) rabbit_scene_tick(void *system_table){
 int rabbit_capsule_verify_only(const uint8_t *c,uint32_t length,uint32_t minimum_counter){
     if(length!=192||c[0]!='R'||c[1]!='G'||c[2]!='C'||c[3]!='1'||c[4]!=1||c[5]!=1||c[6]!=30)return 1;
     uint32_t counter=le32(c+8);if(counter<=minimum_counter)return 2;
-    if(!equal(c+44,trusted_creation,32)||!equal(c+92,trusted_components,32)||le32(c+124)!=3)return 3;
+    if(c[7]&0xfc)return 3;
+    uint8_t scene_kind=c[7]>>1;
+    const uint8_t *creation=scene_kind?trusted_toon_creation:trusted_creation;
+    const uint8_t *components=scene_kind?trusted_toon_components:trusted_components;
+    if(!equal(c+44,creation,32)||!equal(c+92,components,32)||le32(c+124)!=3)return 3;
     if(c[82]!=3||c[83]!=2||c[84]!=2||c[85]||c[86]!=160||c[87]||c[88]!=90||c[89]||c[90]!=88||c[91]!=2)return 4;
     if(crypto_ed25519_check(c+128,trusted_creator,c,128)!=0)return 5;
     return 0;
@@ -110,8 +139,8 @@ int __attribute__((ms_abi)) rabbit_capsule_verify_activate(const uint8_t *c,uint
     if(rabbit_capsule_verify_only(c,length,last_counter))return 1;
     uint32_t counter=le32(c+8);
     previous=active;
-    active=(struct scene_state){0,counter,c[76],c[77],0,0,c[78],c[79],(int8_t)c[80],(int8_t)c[81],10,0};
-    if(c[7]||!healthy(&active)){active=previous;draw();return 2;}
+    active=(struct scene_state){0,counter,c[76],c[77],0,0,c[78],c[79],(int8_t)c[80],(int8_t)c[81],10,0,c[7]>>1};
+    if((c[7]&1)||!healthy(&active)){active=previous;draw();return 2;}
     advance();
     if(!healthy(&active)){active=previous;draw();return 2;}
     draw();last_counter=counter;return 0;

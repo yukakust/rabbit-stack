@@ -29,7 +29,8 @@ def reviewed_capsule(config: SceneConfig) -> bytes:
 
     private = Ed25519PrivateKey.from_private_bytes(bytes(range(32)))
     catalog = load_json(INVENTORY / "catalog.json")
-    merge = load_json(INVENTORY / "examples" / "cat-plays-with-ball.merge.json")
+    merge_name = "toon-cat-chases-mouse.merge.json" if config.scene == "toon-cat-mouse" else "cat-plays-with-ball.merge.json"
+    merge = load_json(INVENTORY / "examples" / merge_name)
     package, _ = build_share_package(catalog, merge, private)
     package_digest = hashlib.sha256(package).hexdigest()
     if config.inventory_package_sha256 and config.inventory_package_sha256 != package_digest:
@@ -43,6 +44,8 @@ def reviewed_capsule(config: SceneConfig) -> bytes:
         ball_y=config.ball_y,
         ball_vx=config.ball_vx,
         ball_vy=config.ball_vy,
+        health_fault=config.health_fault,
+        scene=config.scene,
     ), private)
 
 
@@ -57,12 +60,13 @@ def sender_source() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Send one signed Scene/Anima capsule to the physical Dell")
     parser.add_argument("--counter", type=int, required=True, help="strictly increasing counter for this Dell boot")
+    parser.add_argument("--scene", choices=("cat-ball", "toon-cat-mouse"), default="toon-cat-mouse")
     parser.add_argument("--cat-x", type=int, default=28)
     parser.add_argument("--cat-y", type=int, default=62)
-    parser.add_argument("--ball-x", type=int, default=132)
-    parser.add_argument("--ball-y", type=int, default=24)
-    parser.add_argument("--ball-vx", type=int, default=-2)
-    parser.add_argument("--ball-vy", type=int, default=2)
+    parser.add_argument("--ball-x", "--mouse-x", dest="ball_x", type=int, default=132)
+    parser.add_argument("--ball-y", "--mouse-y", dest="ball_y", type=int, default=24)
+    parser.add_argument("--ball-vx", "--mouse-vx", dest="ball_vx", type=int, default=-2)
+    parser.add_argument("--ball-vy", "--mouse-vy", dest="ball_vy", type=int, default=2)
     args = parser.parse_args()
     try:
         capsule = reviewed_capsule(SceneConfig(
@@ -74,6 +78,7 @@ def main() -> int:
             ball_y=args.ball_y,
             ball_vx=args.ball_vx,
             ball_vy=args.ball_vy,
+            scene=args.scene,
         ))
         frames = encode_transfer(capsule)
     except (OSError, ValueError, KeyError) as error:
@@ -85,7 +90,8 @@ def main() -> int:
     transfer = frames[0][3]
     print(f"CAPSULE_SHA256={hashlib.sha256(capsule).hexdigest()}")
     print(f"CAPSULE_FNV1A32={capsule_hash:08X}; TRANSFER={transfer:02X}; COUNTER={args.counter}")
-    print(f"SCENE=cat({args.cat_x},{args.cat_y}) ball({args.ball_x},{args.ball_y}) velocity({args.ball_vx},{args.ball_vy})")
+    target_name = "mouse" if args.scene == "toon-cat-mouse" else "ball"
+    print(f"SCENE={args.scene} cat({args.cat_x},{args.cat_y}) {target_name}({args.ball_x},{args.ball_y}) velocity({args.ball_vx},{args.ball_vy})")
     print(f"FRAMES={len(frames)}; each frame repeats for 450 ms; exact ACK required")
 
     xcrun = shutil.which("xcrun")

@@ -17,6 +17,9 @@ SIGNATURE_SIZE = 64
 CAPSULE_SIZE = BODY_SIZE + SIGNATURE_SIZE
 CAT_CREATION_SHA256 = "c6e1def6497769bbaa3917a8dacba099b01676af459358d7e6551fb6fa82eab8"
 COMPONENT_SET_SHA256 = "4d82c213d799bad7122574bd7f1373b25b00bd3b2f5a603fcc89afbe6ef8d5bf"
+TOON_CREATION_SHA256 = "52c76a8592f5929e31af97e020325afa53f93a63c94bce06a1ba6159b6875609"
+TOON_COMPONENT_SET_SHA256 = "b14c75fce56d318512a6ef0f8db416829bdfa4a76a82b86f5feac8b4e70b224f"
+SCENES = {"cat-ball": 0, "toon-cat-mouse": 1}
 
 
 class CapsuleError(ValueError):
@@ -34,6 +37,7 @@ class SceneConfig:
     ball_vx: int = 2
     ball_vy: int = 1
     health_fault: bool = False
+    scene: str = "cat-ball"
 
 
 def _digest(value: str, label: str) -> bytes:
@@ -53,16 +57,21 @@ def body(config: SceneConfig) -> bytes:
     if any(isinstance(value, bool) or not 0 <= value <= 152 for value in coordinates):
         raise CapsuleError("scene coordinates exceed the reviewed 160x90 surface")
     if any(isinstance(value, bool) or not -3 <= value <= 3 or value == 0 for value in (config.ball_vx, config.ball_vy)):
-        raise CapsuleError("ball velocity must be nonzero and between -3 and 3")
+        raise CapsuleError("moving target velocity must be nonzero and between -3 and 3")
+    if config.scene not in SCENES:
+        raise CapsuleError("scene is not trusted by this Runtime")
+    scene_kind = SCENES[config.scene]
+    creation = CAT_CREATION_SHA256 if scene_kind == 0 else TOON_CREATION_SHA256
+    components = COMPONENT_SET_SHA256 if scene_kind == 0 else TOON_COMPONENT_SET_SHA256
     value = bytearray(BODY_SIZE)
     value[0:4] = MAGIC
-    value[4:8] = bytes((VERSION, 1, 30, int(config.health_fault)))
+    value[4:8] = bytes((VERSION, 1, 30, (scene_kind << 1) | int(config.health_fault)))
     struct.pack_into("<I", value, 8, config.counter)
     value[12:44] = _digest(config.inventory_package_sha256, "Inventory package digest")
-    value[44:76] = bytes.fromhex(CAT_CREATION_SHA256)
+    value[44:76] = bytes.fromhex(creation)
     value[76:84] = bytes((*coordinates, config.ball_vx & 0xFF, config.ball_vy & 0xFF, 3, 2))
     struct.pack_into("<HHHH", value, 84, 2, 160, 90, 600)
-    value[92:124] = bytes.fromhex(COMPONENT_SET_SHA256)
+    value[92:124] = bytes.fromhex(components)
     struct.pack_into("<I", value, 124, 3)  # display.draw | time.read
     return bytes(value)
 
@@ -88,20 +97,27 @@ def decode(encoded: bytes, public_key: bytes, last_counter: int = 0) -> dict[str
     counter = struct.unpack_from("<I", payload, 8)[0]
     if counter <= last_counter:
         raise CapsuleError("capsule counter is stale")
-    if payload[44:76].hex() != CAT_CREATION_SHA256:
+    flags = payload[7]
+    if flags & 0xFC:
+        raise CapsuleError("capsule scene flags are unsupported")
+    scene_kind = flags >> 1
+    creation = CAT_CREATION_SHA256 if scene_kind == 0 else TOON_CREATION_SHA256
+    components = COMPONENT_SET_SHA256 if scene_kind == 0 else TOON_COMPONENT_SET_SHA256
+    if payload[44:76].hex() != creation:
         raise CapsuleError("capsule Creation is not trusted")
     if payload[83] != 2 or struct.unpack_from("<HHHH", payload, 84) != (2, 160, 90, 600):
         raise CapsuleError("capsule budgets differ from Scene/Anima v2")
-    if payload[92:124].hex() != COMPONENT_SET_SHA256 or struct.unpack_from("<I", payload, 124)[0] != 3:
+    if payload[92:124].hex() != components or struct.unpack_from("<I", payload, 124)[0] != 3:
         raise CapsuleError("capsule components or authority differ from the reviewed world")
     return {
         "counter": counter,
         "inventory_package_sha256": payload[12:44].hex(),
         "creation_sha256": payload[44:76].hex(),
+        "scene": "cat-ball" if scene_kind == 0 else "toon-cat-mouse",
         "cat": [payload[76], payload[77]],
-        "ball": [payload[78], payload[79]],
-        "ball_velocity": [struct.unpack("b", payload[80:81])[0], struct.unpack("b", payload[81:82])[0]],
-        "health_fault": bool(payload[7]),
+        "target": [payload[78], payload[79]],
+        "target_velocity": [struct.unpack("b", payload[80:81])[0], struct.unpack("b", payload[81:82])[0]],
+        "health_fault": bool(flags & 1),
         "capsule_sha256": hashlib.sha256(encoded).hexdigest(),
     }
 

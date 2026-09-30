@@ -1,4 +1,4 @@
-# Dell UEFI Rabbit God Runtime v1.1
+# Dell UEFI Rabbit God Runtime v1.2
 
 This experiment is the first single physical image containing all of these boundaries:
 
@@ -15,8 +15,11 @@ reviewed Inventory package
 ```
 
 The resident Scene/Anima core is no longer the old fixed trace player. It advances the
-cat and ball with bounded integer state, collision behavior and two sprite frames. The
-physically observed Cat Creation remains the embedded fallback and starts immediately.
+active chase with bounded integer state, collision behavior and two sprite frames per
+character. The physically observed orange-cat-and-ball Creation remains the embedded
+fallback and starts immediately. v1.2 adds a second exact trusted Creation assembled
+from reusable original blue-grey toon-cat, brown toon-mouse, scurry, chase, scene and
+renderer components.
 Ordinary accepted world changes use Bluetooth and RAM; they do not write the USB,
 internal disk, controller flash, or firmware settings.
 
@@ -47,7 +50,8 @@ Physical v1.0 evidence found a fail-closed stop while matching the post-load HCI
 the Scene bootstrap can leave more than eight asynchronous controller events ahead of
 the Command Complete. Revision v1.1 keeps this search bounded but raises the exact
 per-command event budget from 8 to 32; no radio, persistence or capsule authority is
-added.
+added. v1.2 preserves that transport and transaction and only expands the exact trusted
+Creation inventory.
 
 ## Prepare, but do not install
 
@@ -60,7 +64,7 @@ It does not alter the current Cat USB. Physical status remains
 `BUILT-NOT-INSTALLED` until the owner explicitly performs the one final Runtime upgrade
 and reports the screen.
 
-## Send the first signed world
+## Send signed worlds without rebooting
 
 After the physical Runtime reports that it is listening, the Mac can send the complete
 reviewed Cat Scene as one signed transactional capsule:
@@ -75,13 +79,32 @@ the Dell must report `CAPSULE HEALTHY: PROVISIONAL WORLD COMMITTED`. Counters in
 within one boot (`2`, `3`, and so on). A Dell reboot resets this prototype counter to
 zero because cross-reboot replay protection remains explicit debt.
 
+After installing v1.2, prove hot replacement by first sending the original world and
+then the toon chase without rebooting Dell:
+
+```sh
+python3 send_capsule.py --counter 1 --scene cat-ball
+
+python3 send_capsule.py \
+  --counter 2 \
+  --scene toon-cat-mouse \
+  --cat-x 22 --cat-y 54 \
+  --mouse-x 136 --mouse-y 18 \
+  --mouse-vx -3 --mouse-vy 2
+```
+
+Both remain 192-byte signed capsules carried in 30 BLE frames. The second world uses
+the new exact Creation identity
+`52c76a8592f5929e31af97e020325afa53f93a63c94bce06a1ba6159b6875609`.
+
 The complete v1.1 transaction was physically observed on the Dell on 2026-09-30. A
 192-byte Ed25519-signed capsule arrived in 30 frames, committed only after its health
 tick, advertised a bounded receipt, and produced the exact correlated Mac result
 `TRANSFER=14 HASH=5B5A6C14 APPLIED_COUNTER=1`. The bound report is
 `evidence/dell-optiplex-3060-v11-capsule-physical-observed.json`.
 
-The current capsule accepts the exact Cat Scene/Anima component set. Adding new trusted
-component implementations expands this inventory without changing the transport or
-transaction protocol. Cross-reboot replay protection and encrypted transport remain
-recorded debt; the current monotonic counter lasts for one boot.
+The current capsule accepts exactly two reviewed Scene/Anima component sets. Adding
+further component implementations still requires a Runtime upgrade; positions,
+velocities, and selection between already trusted scenes travel over Bluetooth without
+USB shuttling. Cross-reboot replay protection and encrypted transport remain recorded
+debt; the current monotonic counter lasts for one boot.

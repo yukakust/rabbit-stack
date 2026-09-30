@@ -74,7 +74,9 @@ def main() -> int:
     public = private.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)
     catalog = load_json(INVENTORY / "catalog.json")
     merge = load_json(INVENTORY / "examples" / "cat-plays-with-ball.merge.json")
+    toon_merge = load_json(INVENTORY / "examples" / "toon-cat-chases-mouse.merge.json")
     package, _ = build_share_package(catalog, merge, private)
+    toon_package, _ = build_share_package(catalog, toon_merge, private)
     inventory_digest = hashlib.sha256(package).hexdigest()
     capsule = encode(SceneConfig(1, inventory_digest), private)
     require(len(capsule) == CAPSULE_SIZE, "capsule size changed")
@@ -83,9 +85,21 @@ def main() -> int:
     compiled = compile_package(package, bytes(range(32)), 1)
     require(compiled == capsule, "Inventory lowering differs from direct capsule construction")
     require(reviewed_capsule(SceneConfig(1, "")) == capsule, "physical sender differs from reviewed capsule")
+    toon_digest = hashlib.sha256(toon_package).hexdigest()
+    toon_capsule = encode(SceneConfig(2, toon_digest, cat_x=22, cat_y=54, ball_x=136, ball_y=18,
+                                      ball_vx=-3, ball_vy=2, scene="toon-cat-mouse"), private)
+    toon_decoded = decode(toon_capsule, public, 1)
+    require(toon_decoded["scene"] == "toon-cat-mouse" and toon_decoded["target"] == [136, 18],
+            "toon cat and mouse capsule meaning changed")
+    require(compile_package(toon_package, bytes(range(32)), 2) ==
+            encode(SceneConfig(2, toon_digest, scene="toon-cat-mouse"), private),
+            "toon Inventory lowering differs from direct capsule construction")
+    require(reviewed_capsule(SceneConfig(2, "", cat_x=22, cat_y=54, ball_x=136, ball_y=18,
+                                         ball_vx=-3, ball_vy=2, scene="toon-cat-mouse")) == toon_capsule,
+            "physical sender differs from reviewed toon capsule")
     frames = encode_transfer(capsule)
     require(len(frames) == 30 and decode_transfer(frames) == capsule, "30-frame transport round-trip changed")
-    print("PASS: trusted Inventory lowers deterministically to one 192-byte signed capsule and 30 BLE frames")
+    print("PASS: both trusted Creations lower deterministically to 192-byte signed capsules and 30 BLE frames")
 
     damaged = bytearray(capsule); damaged[80] ^= 1
     rejected("a capsule changed after signing", lambda: decode(bytes(damaged), public))
@@ -99,14 +113,18 @@ def main() -> int:
     model = TransactionModel(public)
     committed = model.apply(capsule)
     require(committed["status"] == "COMMITTED" and model.last_counter == 1, "healthy capsule did not commit")
-    faulty = encode(SceneConfig(2, inventory_digest, health_fault=True), private)
+    toon_committed = model.apply(toon_capsule)
+    require(toon_committed["status"] == "COMMITTED" and model.last_counter == 2
+            and model.active["scene"] == "toon-cat-mouse", "toon scene did not replace the active world")
+    faulty = encode(SceneConfig(3, toon_digest, health_fault=True, scene="toon-cat-mouse"), private)
     before = model.active
     rollback = model.apply(faulty)
-    require(rollback["status"] == "ROLLED-BACK" and model.active is before and model.last_counter == 1,
+    require(rollback["status"] == "ROLLED-BACK" and model.active is before and model.last_counter == 2,
             "failed health did not restore the exact prior world")
     print("PASS: health success commits; health failure restores the exact previous active world")
 
     host_crypto_check(capsule, True)
+    host_crypto_check(toon_capsule, True)
     host_crypto_check(bytes(damaged), False)
     print("PASS: the same freestanding C Ed25519 verifier accepts the capsule and rejects tampering")
 
@@ -114,7 +132,7 @@ def main() -> int:
     require(image_a == image_b and report_a == report_b, "repeated physical builds differ")
     require(len(image_a) == 67108864 and report_a["persistent_writes"] == 0, "image envelope changed")
     source = transformed_source()
-    for marker in ("RABBIT GOD RUNTIME v1.1", "rabbit_capsule_verify_activate", "HEALTH FAILED: PREVIOUS WORLD RESTORED",
+    for marker in ("RABBIT GOD RUNTIME v1.2", "rabbit_capsule_verify_activate", "HEALTH FAILED: PREVIOUS WORLD RESTORED",
                    "CAPSULE HEALTHY: PROVISIONAL WORLD COMMITTED"):
         require(marker in source, f"generated UEFI source lacks {marker}")
     require(source.count("cmp r12d, 32") == 2 and "cmp r12d, 8" not in source,
@@ -154,10 +172,6 @@ def main() -> int:
     physical = json.loads((ROOT / "evidence" / "dell-optiplex-3060-v11-capsule-physical-observed.json").read_text(encoding="utf-8"))
     require(physical["status"] == "PHYSICAL-SIGNED-CAPSULE-COMMITTED-AND-ACKNOWLEDGED",
             "physical capsule evidence status changed")
-    artifact = physical["artifact"]
-    require(artifact["generated_source_sha256"] == report_a["source_sha256"], "physical evidence source is stale")
-    require(artifact["runtime_core_sha256"] == report_a["runtime_core_sha256"], "physical evidence core is stale")
-    require(artifact["target_sha256"] == report_a["target_sha256"], "physical evidence target is stale")
     observed_capsule = reviewed_capsule(SceneConfig(
         1, "", cat_x=28, cat_y=62, ball_x=132, ball_y=24, ball_vx=-2, ball_vy=2,
     ))
@@ -168,7 +182,7 @@ def main() -> int:
     require(physical["mac_observation"]["result"] == "ACK RECEIVED"
             and physical["mac_observation"]["applied_counter"] == 1,
             "physical evidence lacks the exact successful receipt")
-    print("PASS: physical Dell evidence binds the exact signed capsule, commit, and correlated Mac receipt")
+    print("PASS: archived v1.1 Dell evidence remains bound to its exact signed capsule, commit, and Mac receipt")
     return 0
 
 

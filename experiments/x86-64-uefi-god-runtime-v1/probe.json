@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "probe_id": "x86-64-uefi-god-runtime-v1",
-  "implementation_revision": 2,
+  "implementation_revision": 3,
   "composition": [
     "QCA Rome transient RAM bootstrap",
     "passive BLE BEGIN-CHUNK-COMMIT receiver",
     "Ed25519 capsule verifier",
-    "Scene/Anima v2 integer runtime",
+    "Scene/Anima v2 integer runtime with trusted reusable scene selection",
     "provisional activation and health rollback",
     "bounded correlated receipt"
   ],

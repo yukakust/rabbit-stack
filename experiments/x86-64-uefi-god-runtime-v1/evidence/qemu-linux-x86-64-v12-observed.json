@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-linux-x86-64-god-runtime-v1.2-2026-09-30",
+  "status": "OBSERVED-HEADLESS-QEMU-FAIL-CLOSED",
+  "environment": {
+    "qemu_version": "10.2.1",
+    "machine": "q35",
+    "firmware": "OVMF_CODE_4M.fd",
+    "guest_architecture": "x86-64",
+    "physical_device_used": false
+  },
+  "bindings": {
+    "generated_source_sha256": "7ac8afb1c3336bdaeaf0875a2cee0b09096cb5d805ad53fa7903de107878126d",
+    "runtime_core_sha256": "e1ba7a4fd2523f916b08e8e17e91634c64f66c37c1a96a206911c8fbcd88d2aa",
+    "target_sha256": "1f1709db754860c7d8e00ac495c89f50c2139e58ab3e9dae921fc1e20166767e",
+    "efi_sha256": "8b98797dd83480e161eb9402e6dd01d316a22b30984d0f52f7322ba607ca6514",
+    "image_sha256": "388160b3a815962f2572ce7f340899f8d068f589ff9d5d248ef29e83f9bbdde1",
+    "screendump_sha256": "f02608aedf17923ee92a1b0c4e8a536537c26e80b51fff256418b5638a443d15"
+  },
+  "observation": {
+    "visible_identity": "RABBIT GOD RUNTIME v1.2",
+    "result": "TARGET NOT FOUND; NO DEVICE WRITE SENT",
+    "cleanup_claim": "NO RESET; NO HCI; NO SCAN; NO RADIO; POWER-OFF ROLLBACK",
+    "target_found": false,
+    "controller_ram_writes": 0,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0,
+    "capsule_bytes_received": 0,
+    "framebuffer_writes_performed": 0
+  },
+  "scope": "This proves v1.2 PE/UEFI boot and exact hardware-mismatch fail-closed behavior for the dual trusted scene runtime. It does not claim physical Dell execution or receipt of the toon cat-and-mouse capsule."
+}
