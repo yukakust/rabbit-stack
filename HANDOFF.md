@@ -901,3 +901,9 @@ path is QEMU-observed. Status is `GOD-RUNTIME-V1.1-QEMU-OBSERVED-PHYSICAL-PENDIN
 The dedicated USB currently contains v1.0. Next: reproduce v1.1 on macOS QEMU, prepare
 and inspect the toolchain-local image, then perform the owner-authorized replacement of
 v1.0. Cross-reboot anti-replay and transport encryption remain debt.
+
+macOS ARM64 QEMU has now reproduced the v1.1 gate. Exact Mac EFI identity is
+`f355f4e3dd88a572fcd81db2c09d5452cc63c7b6f822cce04c7e593aa3d4e6be` and disk image
+identity is `dce38fc1e478fa016d19964e07a070dc545a3cf751caea431eec67f6615220f9`.
+The report is archived as `qemu-macos-arm64-v11-observed.json`. v1.1 is eligible for
+the dedicated removable-media replacement after a fresh device-identity check.
