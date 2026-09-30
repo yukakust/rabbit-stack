@@ -37,6 +37,11 @@ python3 run_qemu.py
 QEMU must show `RABBIT GOD RUNTIME v2.0` and fail closed because it has no Dell
 `0CF3:E009` controller.
 
+The verifier accepts fail-closed evidence bound to the exact generated source,
+Runtime core, and Target Pack. EFI and disk-image hashes may legitimately differ
+between the Linux and macOS cross-toolchains; each host build must still be
+deterministic, and its own hashes are printed for physical review.
+
 ## Prepare, but do not write, the physical candidate
 
 ```sh
