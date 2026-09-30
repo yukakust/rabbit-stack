@@ -596,6 +596,11 @@ behavior components does not require inventing a new deployment protocol. Linux 
 has observed the exact v1.2 mismatch gate; macOS QEMU and physical Dell replacement are
 the remaining gates before the counter-1 to counter-2 no-reboot demonstration.
 
+macOS ARM64 QEMU has also observed the v1.2 mismatch gate with exact local disk identity
+`1bafa657b929c4a59ba6bb8e9136d61fbf5959a4622f77ef0c59061196dbd8e7`. The only
+remaining gate is the one-time physical Runtime replacement followed by the two signed
+world transfers without rebooting Dell.
+
 ## Research track
 
 ### E0 — ARM64 baseline (complete)

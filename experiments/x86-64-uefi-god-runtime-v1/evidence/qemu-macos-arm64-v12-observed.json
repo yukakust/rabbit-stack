@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-macos-arm64-god-runtime-v1.2-2026-09-30",
+  "status": "OBSERVED-QEMU-FAIL-CLOSED",
+  "environment": {
+    "qemu_version": "11.1.1",
+    "host_architecture": "arm64",
+    "guest_architecture": "x86-64",
+    "physical_device_used": false
+  },
+  "bindings": {
+    "generated_source_sha256": "7ac8afb1c3336bdaeaf0875a2cee0b09096cb5d805ad53fa7903de107878126d",
+    "runtime_core_sha256": "e1ba7a4fd2523f916b08e8e17e91634c64f66c37c1a96a206911c8fbcd88d2aa",
+    "target_sha256": "1f1709db754860c7d8e00ac495c89f50c2139e58ab3e9dae921fc1e20166767e",
+    "image_sha256": "1bafa657b929c4a59ba6bb8e9136d61fbf5959a4622f77ef0c59061196dbd8e7",
+    "screenshot_sha256": "933edf935a9543a867584f12c83f4daf96e4b451117f3efe49b863921c6a00dc"
+  },
+  "observation": {
+    "visible_identity": "RABBIT GOD RUNTIME v1.2",
+    "result": "TARGET NOT FOUND; NO DEVICE WRITE SENT",
+    "cleanup_claim": "NO RESET; NO HCI; NO SCAN; NO RADIO; POWER-OFF ROLLBACK",
+    "target_found": false,
+    "controller_ram_writes": 0,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0,
+    "capsule_bytes_received": 0,
+    "framebuffer_writes_performed": 0
+  },
+  "scope": "This binds the macOS ARM64 QEMU observation to the exact v1.2 locally built disk image. It proves the dual trusted scene Runtime reaches its hardware-mismatch gate without effects; it does not claim physical Dell execution."
+}

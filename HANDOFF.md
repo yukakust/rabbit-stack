@@ -925,3 +925,9 @@ without changing the 192-byte/30-frame signed transaction. Linux QEMU observed t
 exact v1.2 image fail closed before effects when the Dell controller is absent. Next:
 reproduce the v1.2 gate on macOS, perform one removable-media Runtime upgrade, then send
 cat-ball at counter 1 and toon-cat-mouse at counter 2 without rebooting Dell.
+
+macOS ARM64 QEMU has now reproduced that v1.2 gate. Its exact disk image is
+`1bafa657b929c4a59ba6bb8e9136d61fbf5959a4622f77ef0c59061196dbd8e7`; the visible
+result was `TARGET NOT FOUND; NO DEVICE WRITE SENT` with the full zero-effect cleanup
+line. The screenshot-bound report is `qemu-macos-arm64-v12-observed.json`. v1.2 is now
+eligible for the dedicated removable-media replacement.
