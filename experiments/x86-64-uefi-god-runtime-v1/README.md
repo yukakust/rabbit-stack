@@ -75,6 +75,12 @@ the Dell must report `CAPSULE HEALTHY: PROVISIONAL WORLD COMMITTED`. Counters in
 within one boot (`2`, `3`, and so on). A Dell reboot resets this prototype counter to
 zero because cross-reboot replay protection remains explicit debt.
 
+The complete v1.1 transaction was physically observed on the Dell on 2026-09-30. A
+192-byte Ed25519-signed capsule arrived in 30 frames, committed only after its health
+tick, advertised a bounded receipt, and produced the exact correlated Mac result
+`TRANSFER=14 HASH=5B5A6C14 APPLIED_COUNTER=1`. The bound report is
+`evidence/dell-optiplex-3060-v11-capsule-physical-observed.json`.
+
 The current capsule accepts the exact Cat Scene/Anima component set. Adding new trusted
 component implementations expands this inventory without changing the transport or
 transaction protocol. Cross-reboot replay protection and encrypted transport remain

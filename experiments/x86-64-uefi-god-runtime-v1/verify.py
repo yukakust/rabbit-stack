@@ -150,6 +150,25 @@ def main() -> int:
     require(len(exact_artifact_evidence) == 1,
             "this host-built image lacks one exact QEMU observation: " + report_a["image_sha256"])
     print(f"PASS: exact zero-effect QEMU evidence matches this toolchain artifact ({exact_artifact_evidence[0]})")
+
+    physical = json.loads((ROOT / "evidence" / "dell-optiplex-3060-v11-capsule-physical-observed.json").read_text(encoding="utf-8"))
+    require(physical["status"] == "PHYSICAL-SIGNED-CAPSULE-COMMITTED-AND-ACKNOWLEDGED",
+            "physical capsule evidence status changed")
+    artifact = physical["artifact"]
+    require(artifact["generated_source_sha256"] == report_a["source_sha256"], "physical evidence source is stale")
+    require(artifact["runtime_core_sha256"] == report_a["runtime_core_sha256"], "physical evidence core is stale")
+    require(artifact["target_sha256"] == report_a["target_sha256"], "physical evidence target is stale")
+    observed_capsule = reviewed_capsule(SceneConfig(
+        1, "", cat_x=28, cat_y=62, ball_x=132, ball_y=24, ball_vx=-2, ball_vy=2,
+    ))
+    require(hashlib.sha256(observed_capsule).hexdigest() == physical["capsule"]["sha256"],
+            "physical evidence capsule differs from the reviewed signed bytes")
+    require(f"{encode_transfer(observed_capsule)[0][3]:02X}" == physical["capsule"]["transfer_id"],
+            "physical evidence transfer id changed")
+    require(physical["mac_observation"]["result"] == "ACK RECEIVED"
+            and physical["mac_observation"]["applied_counter"] == 1,
+            "physical evidence lacks the exact successful receipt")
+    print("PASS: physical Dell evidence binds the exact signed capsule, commit, and correlated Mac receipt")
     return 0
 
 

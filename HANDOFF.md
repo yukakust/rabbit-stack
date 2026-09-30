@@ -907,3 +907,11 @@ macOS ARM64 QEMU has now reproduced the v1.1 gate. Exact Mac EFI identity is
 identity is `dce38fc1e478fa016d19964e07a070dc545a3cf751caea431eec67f6615220f9`.
 The report is archived as `qemu-macos-arm64-v11-observed.json`. v1.1 is eligible for
 the dedicated removable-media replacement after a fresh device-identity check.
+
+v1.1 was then installed on the dedicated removable USB and booted on the physical Dell.
+The first signed 192-byte capsule (`SHA-256 49b4d2a552f6080f5f8eafdf446db3f18be2700903414ef93f3930d332bf3198`)
+arrived in 30 BLE frames. Dell reported `CAPSULE HEALTHY: PROVISIONAL WORLD COMMITTED`
+and advertised its bounded receipt; Mac received the exact correlated result
+`TRANSFER=14 HASH=5B5A6C14 APPLIED_COUNTER=1` and exited normally. Evidence is
+`experiments/x86-64-uefi-god-runtime-v1/evidence/dell-optiplex-3060-v11-capsule-physical-observed.json`.
+Status is `GOD-RUNTIME-V1.1-PHYSICAL-SIGNED-CAPSULE-COMMITTED-ACKNOWLEDGED`.

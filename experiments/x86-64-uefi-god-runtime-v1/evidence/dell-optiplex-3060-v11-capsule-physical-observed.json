@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "evidence_id": "dell-optiplex-3060-god-runtime-v1.1-capsule-2026-09-30",
+  "status": "PHYSICAL-SIGNED-CAPSULE-COMMITTED-AND-ACKNOWLEDGED",
+  "target": {
+    "machine": "Dell OptiPlex 3060",
+    "firmware": "UEFI",
+    "bluetooth_controller": "0CF3:E009",
+    "internal_storage_used": false
+  },
+  "artifact": {
+    "host_toolchain": "macOS arm64",
+    "generated_source_sha256": "9f096539b277275470abd2b6cf0c871941e573a2c0620b6ea738d4bde8e5ac1b",
+    "runtime_core_sha256": "dbf37a905ab3898d7a5f50a79704686366f65f74e6749f817906582513669f6c",
+    "target_sha256": "1f1709db754860c7d8e00ac495c89f50c2139e58ab3e9dae921fc1e20166767e",
+    "efi_sha256": "f355f4e3dd88a572fcd81db2c09d5452cc63c7b6f822cce04c7e593aa3d4e6be",
+    "image_sha256": "dce38fc1e478fa016d19964e07a070dc545a3cf751caea431eec67f6615220f9"
+  },
+  "capsule": {
+    "sha256": "49b4d2a552f6080f5f8eafdf446db3f18be2700903414ef93f3930d332bf3198",
+    "fnv1a32": "5B5A6C14",
+    "transfer_id": "14",
+    "counter": 1,
+    "bytes": 192,
+    "frames": 30,
+    "scene": "cat(28,62) ball(132,24) velocity(-2,2)"
+  },
+  "dell_owner_observation": {
+    "commit_line": "CAPSULE HEALTHY: PROVISIONAL WORLD COMMITTED",
+    "receipt_line": "ACK ADVERTISED FOR 1500 MS",
+    "fallback_preserved_until_commit": true
+  },
+  "mac_observation": {
+    "result": "ACK RECEIVED",
+    "transfer_id": "14",
+    "capsule_hash": "5B5A6C14",
+    "applied_counter": 1,
+    "transcript_sha256": "15e3b8131dde5039c23fff025645214c10ffc72372ab21a4def30f1425e74de4"
+  },
+  "persistent_writes_after_boot": 0,
+  "scope": "Physical owner observation proves one complete signed capsule transaction through passive BLE staging, validation, provisional health, commit, bounded receipt, and exact Mac acknowledgement."
+}

@@ -581,6 +581,13 @@ search to 32 to tolerate queued asynchronous QCA events created during Scene boo
 the fail-closed QEMU path is re-observed and no new authority is introduced. Status is
 `GOD-RUNTIME-V1.1-QEMU-OBSERVED-PHYSICAL-PENDING`.
 
+v1.1 is now physically installed and its full transaction has completed: 30 passive BLE
+frames assembled one 192-byte signed capsule in staging, the Runtime verified and
+activated it provisionally, one health tick passed, the world committed, Dell emitted a
+bounded receipt, and Mac received the exact transfer/hash/counter acknowledgement.
+No post-boot persistent write participated. Status is
+`GOD-RUNTIME-V1.1-PHYSICAL-SIGNED-CAPSULE-COMMITTED-ACKNOWLEDGED`.
+
 ## Research track
 
 ### E0 — ARM64 baseline (complete)
