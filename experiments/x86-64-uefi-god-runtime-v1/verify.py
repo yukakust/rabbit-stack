@@ -17,6 +17,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from build_image import ROOT, build, fetch_crypto, transformed_source
 from capsule import CAPSULE_SIZE, CapsuleError, SceneConfig, TransactionModel, decode, encode
 from compile_capsule import compile_package
+from send_capsule import reviewed_capsule
 from transport import TransportError, decode_transfer, encode_transfer
 
 INVENTORY = ROOT.parent / "reusable-creation-inventory-v1"
@@ -81,6 +82,7 @@ def main() -> int:
     require(decoded["counter"] == 1 and decoded["inventory_package_sha256"] == inventory_digest, "capsule meaning changed")
     compiled = compile_package(package, bytes(range(32)), 1)
     require(compiled == capsule, "Inventory lowering differs from direct capsule construction")
+    require(reviewed_capsule(SceneConfig(1, "")) == capsule, "physical sender differs from reviewed capsule")
     frames = encode_transfer(capsule)
     require(len(frames) == 30 and decode_transfer(frames) == capsule, "30-frame transport round-trip changed")
     print("PASS: trusted Inventory lowers deterministically to one 192-byte signed capsule and 30 BLE frames")

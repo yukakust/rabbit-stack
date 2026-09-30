@@ -54,6 +54,21 @@ It does not alter the current Cat USB. Physical status remains
 `BUILT-NOT-INSTALLED` until the owner explicitly performs the one final Runtime upgrade
 and reports the screen.
 
+## Send the first signed world
+
+After the physical Runtime reports that it is listening, the Mac can send the complete
+reviewed Cat Scene as one signed transactional capsule:
+
+```sh
+python3 send_capsule.py --counter 1
+```
+
+The command advertises exactly 30 frames and remains active until it sees the receipt
+correlated to the same transfer and capsule hash. Success ends with `ACK RECEIVED`;
+the Dell must report `CAPSULE HEALTHY: PROVISIONAL WORLD COMMITTED`. Counters increase
+within one boot (`2`, `3`, and so on). A Dell reboot resets this prototype counter to
+zero because cross-reboot replay protection remains explicit debt.
+
 The current capsule accepts the exact Cat Scene/Anima component set. Adding new trusted
 component implementations expands this inventory without changing the transport or
 transaction protocol. Cross-reboot replay protection and encrypted transport remain
