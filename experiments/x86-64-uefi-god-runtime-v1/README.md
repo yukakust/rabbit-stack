@@ -38,8 +38,10 @@ QEMU must show the Runtime identity and fail closed at `TARGET NOT FOUND`, becau
 does not emulate the exact Dell Bluetooth controller. No controller RAM, radio,
 framebuffer or capsule effect is allowed on that mismatch path.
 
-The headless QEMU run was observed on 2026-09-30 and is bound to the exact EFI and disk
-identities in `evidence/qemu-linux-x86-64-observed.json`.
+Linux x86-64 and macOS ARM64 QEMU runs were observed on 2026-09-30. Each report under
+`evidence/` is bound to its exact locally built disk image and the same generated source,
+Runtime Core and Target Pack. Different MinGW versions do not currently promise
+cross-toolchain PE/EFI byte identity; repeated builds with one toolchain remain exact.
 
 ## Prepare, but do not install
 

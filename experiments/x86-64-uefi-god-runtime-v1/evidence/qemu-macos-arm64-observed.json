@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "evidence_id": "qemu-macos-arm64-god-runtime-v1-2026-09-30",
+  "status": "OBSERVED-QEMU-FAIL-CLOSED",
+  "environment": {
+    "qemu_version": "11.1.1",
+    "host_architecture": "arm64",
+    "guest_architecture": "x86-64",
+    "physical_device_used": false
+  },
+  "bindings": {
+    "generated_source_sha256": "b0427cdaa8426cce2c5b2514787f25a43680e8205c913b5a09b6fb8f4565610d",
+    "runtime_core_sha256": "dbf37a905ab3898d7a5f50a79704686366f65f74e6749f817906582513669f6c",
+    "target_sha256": "a6cd78a1ca271c4da6e17aac145a2420a1f69c972b514f294873db70f6bc379b",
+    "image_sha256": "ea2cec81984a64eeb3de7873563cc83e3142fd0a4d5fafc8a32062fa09f22f82",
+    "screenshot_sha256": "bed16277a7d4643fde2f868e7821c38065838a01631a64921bb9d043fa4d7da8"
+  },
+  "observation": {
+    "visible_identity": "RABBIT GOD RUNTIME v1.0",
+    "result": "TARGET NOT FOUND; NO DEVICE WRITE SENT",
+    "cleanup_claim": "NO RESET; NO HCI; NO SCAN; NO RADIO; POWER-OFF ROLLBACK",
+    "target_found": false,
+    "controller_ram_writes": 0,
+    "hci_commands_sent": 0,
+    "radio_operations_requested": 0,
+    "capsule_bytes_received": 0,
+    "framebuffer_writes_performed": 0
+  },
+  "scope": "This binds the macOS ARM64 QEMU observation to its exact locally built disk image. It does not claim cross-toolchain EFI byte identity or physical Dell execution."
+}

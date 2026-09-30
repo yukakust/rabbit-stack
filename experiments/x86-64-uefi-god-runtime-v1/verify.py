@@ -121,21 +121,31 @@ def main() -> int:
     print(f"PASS: deterministic one-image UEFI artifact {report_a['image_sha256']}")
     print("PASS: one image composes Scene/Anima, passive Bluetooth, staging, Ed25519, health, commit, rollback, and receipt")
 
-    evidence = json.loads((ROOT / "evidence" / "qemu-linux-x86-64-observed.json").read_text(encoding="utf-8"))
-    bindings = evidence["bindings"]
-    require(evidence["status"] == "OBSERVED-HEADLESS-QEMU-FAIL-CLOSED", "QEMU evidence status changed")
-    require(bindings["generated_source_sha256"] == report_a["source_sha256"], "QEMU evidence source is stale")
-    require(bindings["runtime_core_sha256"] == report_a["runtime_core_sha256"], "QEMU evidence runtime core is stale")
-    require(bindings["target_sha256"] == report_a["target_sha256"], "QEMU evidence Target Pack is stale")
-    require(bindings["efi_sha256"] == report_a["efi_sha256"], "QEMU evidence EFI is stale")
-    require(bindings["image_sha256"] == report_a["image_sha256"], "QEMU evidence image is stale")
-    observation = evidence["observation"]
-    require(observation["target_found"] is False, "QEMU mismatch evidence unexpectedly found hardware")
-    require(all(observation[field] == 0 for field in (
-        "controller_ram_writes", "hci_commands_sent", "radio_operations_requested",
-        "capsule_bytes_received", "framebuffer_writes_performed",
-    )), "QEMU mismatch evidence reports a forbidden effect")
-    print("PASS: exact headless QEMU evidence is bound to this artifact and its zero-effect mismatch path")
+    exact_artifact_evidence = []
+    for evidence_path in sorted((ROOT / "evidence").glob("qemu-*-observed.json")):
+        evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+        bindings = evidence["bindings"]
+        require(evidence["status"] in ("OBSERVED-HEADLESS-QEMU-FAIL-CLOSED", "OBSERVED-QEMU-FAIL-CLOSED"),
+                f"QEMU evidence status changed: {evidence_path.name}")
+        require(bindings["generated_source_sha256"] == report_a["source_sha256"],
+                f"QEMU evidence source is stale: {evidence_path.name}")
+        require(bindings["runtime_core_sha256"] == report_a["runtime_core_sha256"],
+                f"QEMU evidence runtime core is stale: {evidence_path.name}")
+        require(bindings["target_sha256"] == report_a["target_sha256"],
+                f"QEMU evidence Target Pack is stale: {evidence_path.name}")
+        observation = evidence["observation"]
+        require(observation["target_found"] is False, "QEMU mismatch evidence unexpectedly found hardware")
+        require(all(observation[field] == 0 for field in (
+            "controller_ram_writes", "hci_commands_sent", "radio_operations_requested",
+            "capsule_bytes_received", "framebuffer_writes_performed",
+        )), "QEMU mismatch evidence reports a forbidden effect")
+        if bindings["image_sha256"] == report_a["image_sha256"]:
+            if "efi_sha256" in bindings:
+                require(bindings["efi_sha256"] == report_a["efi_sha256"], "QEMU evidence EFI is stale")
+            exact_artifact_evidence.append(evidence_path.name)
+    require(len(exact_artifact_evidence) == 1,
+            "this host-built image lacks one exact QEMU observation: " + report_a["image_sha256"])
+    print(f"PASS: exact zero-effect QEMU evidence matches this toolchain artifact ({exact_artifact_evidence[0]})")
     return 0
 
 

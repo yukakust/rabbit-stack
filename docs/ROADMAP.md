@@ -567,11 +567,12 @@ with a correlated receipt or redraws the exact previous world. Its resident
 Scene/Anima core computes the cat/ball behavior rather than replaying the old trace.
 
 Host and freestanding-C verification pass, including signature tampering, untrusted
-Creator, frame reorder, replay and health-failure rollback. Headless QEMU booted the
-exact image and visibly failed closed because it lacks the Dell `0CF3:E009` controller;
-the artifact-bound zero-effect observation is archived under the experiment's
-`evidence/` directory. The existing physical cat image remains installed, so one final
-USB upgrade is now eligible after Mac reproduction and exact removable-media review.
+Creator, frame reorder, replay and health-failure rollback. QEMU on Linux x86-64 and
+macOS ARM64 booted their exact toolchain-local images and visibly failed closed because
+it lacks the Dell `0CF3:E009` controller. Both zero-effect observations are archived
+under `evidence/`; cross-toolchain PE byte identity is not claimed. The existing
+physical cat image remains installed, so one final USB upgrade is now eligible after
+exact removable-media review.
 Status is `GOD-RUNTIME-V1-QEMU-OBSERVED-NOT-INSTALLED`.
 
 ## Research track

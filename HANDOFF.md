@@ -882,10 +882,13 @@ replay cases, health rollback, the same freestanding C crypto verifier linked in
 and deterministic repeated image builds. Current disk image identity is
 `5c7705c210b7cbf377061e31b25e7c20c2803e3159f7ee987e1fca7b5b985dd4`.
 
-Headless QEMU booted the exact image and visibly reached `RABBIT GOD RUNTIME v1.0`, then
-failed closed at `TARGET NOT FOUND; NO DEVICE WRITE SENT`. The bound report is
-`experiments/x86-64-uefi-god-runtime-v1/evidence/qemu-linux-x86-64-observed.json`; it
-claims no physical Dell execution.
+QEMU on Linux x86-64 and macOS ARM64 visibly reached `RABBIT GOD RUNTIME v1.0`, then
+failed closed at `TARGET NOT FOUND; NO DEVICE WRITE SENT`. Each report under
+`experiments/x86-64-uefi-god-runtime-v1/evidence/` binds the unchanged generated source,
+Runtime Core and Target Pack to its exact toolchain-local disk image. Different MinGW
+versions produced different PE/EFI bytes, so cross-toolchain byte identity is not
+claimed; repeated builds under either individual toolchain are deterministic. Neither
+report claims physical Dell execution.
 
 Status is `GOD-RUNTIME-V1-QEMU-OBSERVED-NOT-INSTALLED`. The dedicated physical USB still
 contains the previously observed Cat image. Next: pull this commit on the Mac, reproduce
