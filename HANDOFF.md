@@ -1012,3 +1012,33 @@ boundaries, invalid output, no-fallback, and send gating. No live Codex request 
 physical world is claimed. Next on Mac: install/update CLI if needed, `codex login`
 using the subscribed ChatGPT account, then ask for a pink/faster cat with a counter
 greater than the last accepted one in this Dell boot. No USB move or rewrite is needed.
+
+## Detailed mouse graphics v3 candidate — 2026-10-01
+
+The owner approved a recognizable smooth mouse preview, then one graphics Runtime
+upgrade. `experiments/x86-64-uefi-god-runtime-v3/` is separate from working v2.
+Built-in imagegen produced a transparent original brown mouse; exact prompt/source
+hash/import recipe are preserved. The reference carries a 128x128 frame, 256 RGBA
+palette entries, bounded RLE, alpha blending and 32x32 logical display size. Existing
+VM motion is preserved; a multi-pose walk cycle is not claimed. Optional PNG import
+against the owner's latest v2 world preserves their pink cat. Art is reusable data,
+not embedded in EFI; publishing license/Inventory v1 integration remain unclaimed.
+
+v3 accepts unchanged v2 packages and signed RUP3 packages up to 65535 bytes, 262144
+decoded pixels, 16 sprites/objects/programs, 128x128 source and 64x64 display geometry.
+Thirty-two-chunk prefix receipts make retries local; exact repeated final COMMITs
+re-advertise without applying twice. Prefix ACK means staging only, not authenticated
+application. The 8979-byte reference takes about 13 minutes at the inherited six-byte/
+450ms advertisement rate; this is a calculation, not a live performance observation.
+
+Ten host tests cover exact Python/C acceptance, alpha and bounded 240-tick rendering,
+legacy byte identity, signatures/replays, invalid RLE/decoded limits/JSON/VM, rollback,
+and idempotent block/final-ACK retries. Repeat UEFI builds match. Linux QEMU visibly
+reached v3.0 and failed closed at the missing device; screenshot/source/artifact bound
+evidence is archived. Exact Linux EFI is
+`b619505ae1f8e05815842217d8682aeef882f21e9bd2a658b39720fea56d14d6`, image
+`2750397e9cfdb6efaa5b3e2f7a0d72c2be3d5be0632e183761059fe8a0db1618`.
+No physical write occurred. Mac sender compilation, real checkpoint ACKs and physical
+detailed mouse remain pending. Next: preview on Mac, exact local QEMU gate, read-only
+preparation and fresh USB identity before one installation. Existing Codex builder
+still targets v2; resource-reference editing and faster transport are future work.

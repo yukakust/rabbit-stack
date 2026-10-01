@@ -1,0 +1,11 @@
+{
+  "schema_version": 3,
+  "target_id": "dell-optiplex-3060-qca-ble-graphics-v3",
+  "architecture": "x86-64",
+  "firmware": "uefi",
+  "runtime_envelope": "removable-usb-resident",
+  "transport": {"protocol": "rabbit-ble-frames-v2", "frame_payload_bytes": 6, "sequence_bits": 16, "max_package_bytes": 65535, "receive": "passive", "receipt": "bounded-nonconnectable-advertisement", "frame_repeat_ms": 450},
+  "runtime": {"package": ["rabbit-universal-package-v2", "rabbit-universal-package-v3"], "authentication": "ed25519", "objects": 16, "sprites": 16, "programs": 16, "palette_rgba_entries": 256, "sprite_geometry": "up-to-128x128-rle-indexed8", "display_geometry_logical": "up-to-64x64", "decoded_pixel_budget": 262144, "activation": "staging-health-commit-or-retain-active"},
+  "forbidden": ["native-code-from-package", "arbitrary-memory-write", "active-scan", "pairing", "connection", "internal-storage-write", "firmware-write"],
+  "recovery": "invalid package keeps prior active world; Escape or power-off exits; received worlds are volatile"
+}

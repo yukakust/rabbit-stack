@@ -1,0 +1,14 @@
+{
+  "asset_id": "rabbit.mouse.smooth-brown.v1",
+  "asset_type": "transparent-raster-source",
+  "source": "mouse-source-v1.png",
+  "source_sha256": "bf34cff954ebf41866a6578555c03302ee975fc7c586570eba1e19bda224e2e7",
+  "generation": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: game sprite concept preview for Rabbit runtime. Create one recognizably mouse-like, high-quality cartoon mouse with smooth antialiased edges, not pixel art. A small brown mouse, large round pink inner ears, pointed snout, visible whiskers, expressive black eyes, four small paws and a long slender curling tail. Full body in side/three-quarter view facing right, alert running pose, friendly classic hand-painted cartoon feel, warm brown fur shading and cream belly. Entire character and tail fit comfortably within the image with transparent padding. Single isolated character on genuinely transparent background. No cat, no ball, no text, no labels, no shadows outside character, no checkerboard baked into background. Intended eventually for a 128x128 sprite, silhouette should stay clear at small scale. This is original character art, not pixelated and not a sprite sheet.",
+  "importer": "../import_mouse.py",
+  "prepared_resource": "../worlds/cat-chases-smooth-mouse.json",
+  "import_toolchain": "Pillow 12.3.0; RGBA Lanczos contain 128x128; FASTOCTREE quantization; palette zero transparent",
+  "animation": "one artwork frame; existing VM moves it; not an anatomical walk cycle",
+  "reuse": "Source PNG and portable indexed resource can be reused without baking art into UEFI. Full Inventory v1 catalog integration is not claimed.",
+  "license": "not-assigned; owner review required before publishing a licensed shared component"
+}

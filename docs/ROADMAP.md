@@ -500,19 +500,27 @@ Given a world and a device, select among hosted, native, and bridge deployment; 
 compatible Target Packs; refuse unsafe or unsupported operations; and preserve a tested
 recovery route.
 
-### U11 — LLM World Builder (text pipeline implemented; live API test pending)
+### U11 — LLM World Builder (v2 Codex-to-Dell observed; voice/dialogue pending)
 
 Translate natural-language intent into candidate worlds and patches. The model may
 propose new target support, but only deterministic validators and authorized installers
 may approve builds or physical effects.
 
 God Runtime v2 now includes `ask_world.py`: a Russian request and explicit base world
-go through a Responses API structured proposal, independent local schema validation,
+go through a Codex CLI structured proposal (Responses API is explicit opt-in), independent local schema validation,
 signed package validation/transport round trip, then the existing BLE sender with ACK.
 Offline tests reject malformed/refused/incomplete proposals and ensure invalid worlds
-never reach the sender. One model call requires local API credentials; live model
-generation and end-to-end physical interpretation remain unclaimed until observed.
+never reach the sender. The owner observed Codex changing the cat to pink/faster and
+the mouse to green on Dell with correlated receipts; a repeat send restored visible
+motion after an initially ambiguous display observation. This uses the existing Codex
+subscription login, not a separate API key by default.
 Microphone/speech transcription is the next input layer above this text path.
+
+Graphics v3 now has a detailed transparent 128x128 mouse resource, 256 RGBA palette,
+bounded RLE, alpha renderer, larger signed RAM packages, legacy package compatibility
+and block receipts. Host C/Python and Linux QEMU gates pass; Mac sender/physical graphics
+remain pending. See `experiments/x86-64-uefi-god-runtime-v3/`. Faster transfer and
+Codex-to-v3 resource references are not yet implemented.
 
 ### U12 — Reusable Creation Inventory (v1 complete)
 

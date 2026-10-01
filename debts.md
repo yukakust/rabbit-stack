@@ -82,3 +82,21 @@ God Runtime v2 implements this transaction for data-only worlds: separate stagin
 signature and graph/budget validation, one provisional health step, commit-or-retain,
 and a correlated ACK. Runtime/driver/native-code updates and crash/power-loss recovery
 remain outside that hot-world transaction and continue to be debt.
+
+## Detailed graphics transport and resource-reference editing
+
+Graphics v3 has a 256-RGBA/128x128 data path and host-tested block receipts. These
+receipts and idempotent final ACK still need Mac/Dell physical conformance; they do
+not close the older general retry/security debt by themselves. The current smooth
+mouse is about 9KB and needs roughly 13 minutes at 6 bytes/450ms per advertisement.
+Replace or safely optimize this correctness-first transport only with a reviewed
+Target Pack, measured throughput/loss behavior and an unchanged signing/staging/rollback
+boundary. Do not silently enable connections, active scan or arbitrary radio effects.
+
+Add immutable asset references to LLM world edits, so the model changes palette/state/
+behavior without regenerating large pixel arrays. Extend trusted Inventory schemas to
+high-resolution assets and decide publishing licenses explicitly. Add genuinely authored
+animation poses, frame/tick raster tests, full-frame buffering where useful, and visible
+health checks. Existing text builder still emits v2 worlds and cannot preserve a v3
+asset automatically. Runtime/driver/ABI upgrades still require a reviewed image update;
+only data changes within that ABI can avoid USB movement.

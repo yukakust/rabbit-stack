@@ -1,0 +1,22 @@
+{
+  "schema_version": 3,
+  "status": "OBSERVED-HEADLESS-QEMU-FAIL-CLOSED",
+  "observed_on": "2026-10-01",
+  "qemu": "10.2.1",
+  "host": "linux-x86-64",
+  "bindings": {
+    "generated_source_sha256": "8d1836e0fde860d4547f6e41f3ead6f07649bced5f9d95c46af2da7122647be9",
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "target_sha256": "f4e26d81d90d2f57cc6a63f4f690db469f7ee5e1e7c4b562f59ad72367ae5242",
+    "efi_sha256": "b619505ae1f8e05815842217d8682aeef882f21e9bd2a658b39720fea56d14d6",
+    "image_sha256": "2750397e9cfdb6efaa5b3e2f7a0d72c2be3d5be0632e183761059fe8a0db1618",
+    "screendump_ppm_sha256": "5d80578bea8c932660beed0c0106501377ff0755d79974b873e109f748961291"
+  },
+  "observation": {
+    "visible_lines": ["RABBIT GOD RUNTIME v3.0", "TARGET NOT FOUND; NO DEVICE WRITE SENT", "NO RESET; NO HCI; NO SCAN; NO RADIO; POWER-OFF ROLLBACK"],
+    "screen": "qemu-linux-x86-64-screen.png",
+    "target_found": false,
+    "effects": "Missing-device guard stops before RAM, staging, framebuffer, HCI and radio calls; derived from reviewed control flow, not separate hardware instrumentation.",
+    "physical_execution_verified": false
+  }
+}
