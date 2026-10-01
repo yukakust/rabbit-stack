@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "status": "OWNER-OBSERVED-WORLD-AND-CORRELATED-ACK",
+  "observed_on": "2026-10-01",
+  "device": "Dell OptiPlex 3060",
+  "runtime": "Rabbit God Runtime v2.0",
+  "bindings": {
+    "efi_sha256": "f0c9622195477487786e11ca1468236ddb21e36c69c1233341dfc621083b2d8e",
+    "image_sha256": "533883793a17d70b1d133f8fec2c03441c52ec8be3ba2880e3f18278242ed26c",
+    "package_sha256": "ccd9a10ad43e96c2bddcc58a3b2c2ce1643e250d944df241ece3aefa9ec210bb",
+    "world": "worlds/cat-chases-mouse.json",
+    "package_bytes": 310,
+    "frames": 54,
+    "counter": 1
+  },
+  "mac_receipt": {
+    "transfer": "AB",
+    "hash_fnv1a32": "E1DEA1AB",
+    "applied_counter": 1,
+    "rssi": -69,
+    "uuid": "524111AB-E1DE-A1AB-0000-000189C2D254"
+  },
+  "owner_observation": "The cat chases the mouse on Dell.",
+  "source": "Owner-provided Mac terminal transcript and subsequent visual confirmation in chat.",
+  "limitations": [
+    "The receipt is correlated, not cryptographically authenticated Dell attestation.",
+    "No automated pixel oracle or live LLM-generated world is claimed."
+  ]
+}

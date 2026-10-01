@@ -967,3 +967,31 @@ Next: reproduce the v2 QEMU gate on the owner's Mac, run `prepare_physical.py`, 
 one reviewed replacement of the dedicated USB, then send counter 1 and counter 2 worlds
 with `send_package.py` without moving USB or rebooting Dell. A power cycle intentionally
 clears received worlds in v2 because persistent storage writes remain forbidden.
+
+## God Runtime v2 physical receipt and text builder — 2026-10-01
+
+The owner installed the Mac-built v2 image (EFI
+`f0c9622195477487786e11ca1468236ddb21e36c69c1233341dfc621083b2d8e`, disk
+`533883793a17d70b1d133f8fec2c03441c52ec8be3ba2880e3f18278242ed26c`) and booted
+it on Dell. The first 310-byte world arrived in 54 frames without moving USB again.
+Mac reported `ACK RECEIVED: TRANSFER=AB HASH=E1DEA1AB APPLIED_COUNTER=1`; the owner
+then confirmed that the cat chases the mouse. The exact compiled package SHA-256 is
+`ccd9a10ad43e96c2bddcc58a3b2c2ce1643e250d944df241ece3aefa9ec210bb`.
+This is owner-observed physical behavior plus a correlated receipt, not authenticated
+Dell attestation. The next package in that boot must have counter greater than 1.
+
+The new text path is `experiments/x86-64-uefi-god-runtime-v2/ask_world.py`.
+It calls OpenAI Responses with strict structured output, using `OPENAI_API_KEY` and
+default `gpt-4.1-mini` (configurable). The key never enters model input or saved reports.
+The proposal is locally schema-checked, compiled/signed, independently decoded, and
+transport-roundtripped before optional `--send` invokes the proven sender. Saved
+candidate mode allows any external LLM output to enter the same checks. Unsupported
+requests fail explicitly. Runs are archived locally in ignored `runs/`; use explicit
+`--base` for iterative edits, and explicit `--counter` for the current Dell boot.
+
+`verify_llm_world.py` passes offline tests for API request shape, refusals/incomplete
+outputs, invalid opcodes, references, geometry, booleans, budgets, unknown effects,
+send gating, receipt status, and missing credentials. No live API call or new physical
+LLM-generated world has been tested here because this environment has no API key.
+Next: set the key locally on Mac and run a visible pink/faster-cat request at counter 2.
+No Runtime upgrade or USB rewrite is needed for this text-builder step.

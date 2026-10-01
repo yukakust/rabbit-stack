@@ -500,11 +500,19 @@ Given a world and a device, select among hosted, native, and bridge deployment; 
 compatible Target Packs; refuse unsafe or unsupported operations; and preserve a tested
 recovery route.
 
-### U11 — LLM World Builder
+### U11 — LLM World Builder (text pipeline implemented; live API test pending)
 
 Translate natural-language intent into candidate worlds and patches. The model may
 propose new target support, but only deterministic validators and authorized installers
 may approve builds or physical effects.
+
+God Runtime v2 now includes `ask_world.py`: a Russian request and explicit base world
+go through a Responses API structured proposal, independent local schema validation,
+signed package validation/transport round trip, then the existing BLE sender with ACK.
+Offline tests reject malformed/refused/incomplete proposals and ensure invalid worlds
+never reach the sender. One model call requires local API credentials; live model
+generation and end-to-end physical interpretation remain unclaimed until observed.
+Microphone/speech transcription is the next input layer above this text path.
 
 ### U12 — Reusable Creation Inventory (v1 complete)
 
