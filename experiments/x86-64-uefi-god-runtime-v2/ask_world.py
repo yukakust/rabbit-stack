@@ -16,6 +16,7 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
 from compile_world import compile_world
+from codex_world import propose_codex
 from llm_world import WORLD_SCHEMA, parse_proposal, propose, strict_json, validate_schema
 from package import PackageError, decode_package
 from transport import decode_transfer, encode_transfer, fnv1a32
@@ -57,7 +58,9 @@ def main(argv=None) -> int:
     parser.add_argument("intent", help="what should change, in Russian or another language")
     parser.add_argument("--counter", type=int, required=True, help="greater than last accepted counter this Dell boot")
     parser.add_argument("--base", type=Path, default=ROOT / "worlds/cat-chases-mouse.json")
-    parser.add_argument("--model", default=os.environ.get("RABBIT_LLM_MODEL", "gpt-4.1-mini"))
+    parser.add_argument("--provider", choices=("codex", "api"), default="codex")
+    parser.add_argument("--model", default=os.environ.get("RABBIT_LLM_MODEL"),
+                        help="model override; otherwise Codex default, or gpt-4.1-mini for API")
     parser.add_argument("--candidate", type=Path, help="use a saved proposal instead of calling the API")
     parser.add_argument("--send", action="store_true", help="transmit validated world and await Dell ACK")
     parser.add_argument("--runs-dir", type=Path, default=ROOT / "runs")
@@ -72,7 +75,12 @@ def main(argv=None) -> int:
             proposal = parse_proposal(args.candidate.read_text(encoding="utf-8"))
             response_id = None
             provider = "saved-candidate"
+        elif args.provider == "codex":
+            print("CODEX: creating a candidate using your ChatGPT login...", flush=True)
+            proposal, response_id = propose_codex(args.intent, base, model=args.model)
+            provider = "codex-chatgpt"
         else:
+            args.model = args.model or "gpt-4.1-mini"
             print("LLM: creating a candidate world...", flush=True)
             proposal, response_id = propose(args.intent, base, model=args.model,
                                            api_key=os.environ.get("OPENAI_API_KEY", ""))
@@ -91,7 +99,7 @@ def main(argv=None) -> int:
         _, package, frames = validate_world(world_path, args.counter)
         digest = hashlib.sha256(package).hexdigest()
         report = {"schema_version": 1, "status": "VALIDATED-NOT-SENT", "provider": provider,
-                  "model": args.model if provider == "openai-responses" else None,
+                  "model": args.model if provider != "saved-candidate" else None,
                   "response_id": response_id, "counter": args.counter,
                   "base_sha256": hashlib.sha256(json.dumps(base, sort_keys=True).encode()).hexdigest(),
                   "world_sha256": hashlib.sha256(world_path.read_bytes()).hexdigest(),

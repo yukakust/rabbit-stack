@@ -1,4 +1,4 @@
-"""Untrusted text-to-world proposals through the OpenAI Responses API."""
+"""Shared untrusted proposal schema/checks and explicit Responses API provider."""
 
 from __future__ import annotations
 

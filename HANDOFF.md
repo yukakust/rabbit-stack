@@ -995,3 +995,20 @@ send gating, receipt status, and missing credentials. No live API call or new ph
 LLM-generated world has been tested here because this environment has no API key.
 Next: set the key locally on Mac and run a visible pink/faster-cat request at counter 2.
 No Runtime upgrade or USB rewrite is needed for this text-builder step.
+
+## Codex subscription text provider — 2026-10-01
+
+The owner requested existing Codex subscription access instead of a separately billed
+API. `ask_world.py` now defaults to `--provider codex`; the API remains explicit opt-in
+with `--provider api`. `codex_world.py` calls local `codex exec` with ChatGPT-only auth,
+ignored user config, read-only sandbox, disabled shell tool, ephemeral session, JSON
+schema and final-output file in a disposable directory. No auth token is read/copied,
+API key environment variables are removed, and there is no API fallback. Timeout,
+CLI failure, missing/oversize/malformed output stop before signing/transmission.
+The existing deterministic validation/signing/send/ACK path and Dell artifact are unchanged.
+
+All 15 offline text-builder tests pass, including provider selection, CLI auth/command
+boundaries, invalid output, no-fallback, and send gating. No live Codex request or new
+physical world is claimed. Next on Mac: install/update CLI if needed, `codex login`
+using the subscribed ChatGPT account, then ask for a pink/faster cat with a counter
+greater than the last accepted one in this Dell boot. No USB move or rewrite is needed.

@@ -6,12 +6,14 @@ import hashlib
 import io
 import json
 import tempfile
+import subprocess
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
 import ask_world
+import codex_world
 from llm_world import PackageError, parse_proposal, propose, response_text
 from transport import fnv1a32
 
@@ -132,6 +134,75 @@ class TextWorldTests(unittest.TestCase):
         self.assertEqual(f"{fnv1a32(package):08X}", evidence["mac_receipt"]["hash_fnv1a32"])
         self.assertEqual(f"{frames[0][3]:02X}", evidence["mac_receipt"]["transfer"])
         self.assertEqual(len(frames), evidence["bindings"]["frames"])
+
+    def test_codex_subscription_invocation_and_strict_output(self):
+        def run(command, **kwargs):
+            self.assertIn("--ignore-user-config", command)
+            self.assertIn("--ephemeral", command)
+            self.assertIn('forced_login_method="chatgpt"', command)
+            self.assertIn('features.shell_tool=false', command)
+            self.assertEqual(command[command.index("--sandbox") + 1], "read-only")
+            self.assertEqual(command[-1], "-")
+            self.assertNotIn("--model", command)
+            self.assertNotIn("OPENAI_API_KEY", kwargs["env"])
+            self.assertNotIn("CODEX_API_KEY", kwargs["env"])
+            self.assertNotIn("CODEX_ACCESS_TOKEN", kwargs["env"])
+            self.assertIn("Розовый кот", kwargs["input"])
+            self.assertEqual(kwargs["timeout"], 180)
+            schema = Path(command[command.index("--output-schema") + 1])
+            self.assertEqual(json.loads(schema.read_text()), codex_world.PROPOSAL_SCHEMA)
+            output = Path(command[command.index("--output-last-message") + 1])
+            output.write_text(json.dumps(self.proposal))
+            return subprocess.CompletedProcess(command, 0)
+        with patch("codex_world.shutil.which", return_value="/test/codex"), \
+             patch.dict("os.environ", {"OPENAI_API_KEY": "secret", "CODEX_API_KEY": "secret", "CODEX_ACCESS_TOKEN": "secret"}), \
+             patch("codex_world.subprocess.run", side_effect=run):
+            proposal, response_id = codex_world.propose_codex("Розовый кот", self.base)
+        self.assertEqual(proposal, self.proposal)
+        self.assertIsNone(response_id)
+
+    def test_codex_failures_do_not_accept_or_fallback(self):
+        for failure in ("missing", "exit", "timeout", "no-output", "malformed", "oversize"):
+            def run(command, **kwargs):
+                if failure == "timeout":
+                    raise subprocess.TimeoutExpired(command, 180)
+                output = Path(command[command.index("--output-last-message") + 1])
+                if failure == "malformed":
+                    output.write_text('{"status":"ready"}')
+                elif failure == "oversize":
+                    output.write_text(" " * (codex_world.MAX_JSON_BYTES + 1))
+                return subprocess.CompletedProcess(command, 1 if failure == "exit" else 0)
+            with self.subTest(failure=failure), \
+                 patch("codex_world.shutil.which", return_value=None if failure == "missing" else "/test/codex"), \
+                 patch("codex_world.subprocess.run", side_effect=run), \
+                 self.assertRaises(PackageError):
+                codex_world.propose_codex("Кот", self.base, model="test-model")
+
+    def test_default_provider_codex_uses_same_send_gate(self):
+        with patch.object(ask_world, "propose_codex", return_value=(self.proposal, None)) as codex, \
+             patch.object(ask_world, "propose") as api, \
+             patch.object(ask_world.subprocess, "run") as sender, redirect_stdout(io.StringIO()):
+            result = ask_world.main(["Розовый кот", "--counter", "2", "--runs-dir", str(self.directory / "runs")])
+        self.assertEqual(result, 0)
+        codex.assert_called_once(); api.assert_not_called(); sender.assert_not_called()
+        report = json.loads(next((self.directory / "runs").glob("*/report.json")).read_text())
+        self.assertEqual(report["provider"], "codex-chatgpt")
+        self.assertEqual(report["status"], "VALIDATED-NOT-SENT")
+
+    def test_codex_failure_never_calls_api_or_sender(self):
+        with patch.object(ask_world, "propose_codex", side_effect=PackageError("login required")), \
+             patch.object(ask_world, "propose") as api, \
+             patch.object(ask_world.subprocess, "run") as sender, redirect_stdout(io.StringIO()):
+            result = ask_world.main(["Кот", "--counter", "2", "--send"])
+        self.assertEqual(result, 1); api.assert_not_called(); sender.assert_not_called()
+
+    def test_api_is_explicit_opt_in(self):
+        with patch.object(ask_world, "propose", return_value=(self.proposal, "test")) as api, \
+             patch.object(ask_world, "propose_codex") as codex, redirect_stdout(io.StringIO()):
+            result = ask_world.main(["Кот", "--provider", "api", "--counter", "2",
+                                     "--runs-dir", str(self.directory / "runs")])
+        self.assertEqual(result, 0); codex.assert_not_called(); api.assert_called_once()
+        self.assertEqual(api.call_args.kwargs["model"], "gpt-4.1-mini")
 
 
 if __name__ == "__main__":

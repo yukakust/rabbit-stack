@@ -71,18 +71,19 @@ dynamic-program boundary used by mature systems, made explicit and testable here
 
 ## Text -> model -> validated world -> Dell
 
-`ask_world.py` uses the OpenAI Responses API with a strict JSON schema. The model
+`ask_world.py` defaults to local Codex CLI with ChatGPT subscription login and a strict JSON schema. The model
 receives your request, a base world, and the current VM instructions/budgets. It
 returns a candidate, or an explicit unsupported result. A local independent schema
 check, the existing package compiler, Ed25519 decoder, and transport round trip must
 all accept the world before `--send` can start the existing Mac BLE sender.
 
-Set `OPENAI_API_KEY` locally on the Mac (never paste it into chat or commit it).
-For zsh, read it without showing or saving it in command history:
+Install/update Codex CLI if needed, then sign in on the Mac with the ChatGPT account
+that has Codex access. These commands belong in the Mac terminal:
 
 ```sh
-read -s "OPENAI_API_KEY?OpenAI API key: "
-export OPENAI_API_KEY
+npm install -g @openai/codex
+codex login
+codex login status
 ```
 
 Then, with the current v2 Runtime still running on Dell:
@@ -92,10 +93,30 @@ cd ~/rabbit-stack/experiments/x86-64-uefi-god-runtime-v2
 python3 ask_world.py "Сделай кота розовым, пусть он бегает быстрее, мышку оставь прежней" --counter 2 --send
 ```
 
-The default model is `gpt-4.1-mini`; override with `--model` or
-`RABBIT_LLM_MODEL`. This makes one paid API request, with `store=false`, a 120-second
-network timeout, and an 8000-output-token ceiling. Model credentials/access are
-separate from this repository. No live API claim is made by the offline tests.
+The Codex provider uses the CLI's default model; override with `--model` or
+`RABBIT_LLM_MODEL` (unset a previous API-only model override when using Codex).
+It consumes the account's Codex allowance, not an unlimited API entitlement.
+The adapter forces ChatGPT login, strips API/access-token environment variables,
+and never silently falls back to a paid API. It does not read or copy login tokens.
+It runs `codex exec` in a disposable directory, with read-only sandbox, shell tool
+disabled, ignored user config, ephemeral session, schema-bound final output, and
+a 180-second timeout. The request/base world are passed via stdin, not shell code.
+CLI stderr is not printed or archived; failures instruct you to check login, quota,
+and CLI version. Read-only sandbox is not a guarantee of complete read isolation;
+this path is for the owner's local trusted usage, not a public agent service.
+Offline tests do not claim a live Codex response or physical LLM-generated world.
+
+The separately billed Responses API remains explicit opt-in via `--provider api`.
+Set `OPENAI_API_KEY` locally (never paste it into chat or commit it):
+
+```sh
+read -s "OPENAI_API_KEY?OpenAI API key: "
+export OPENAI_API_KEY
+python3 ask_world.py "Сделай кота розовым" --provider api --counter 2 --send
+```
+
+That provider defaults to `gpt-4.1-mini`, uses `store=false`, a 120-second network
+timeout, and an 8000-output-token ceiling. Both providers pass the same independent checks.
 
 Without `--send`, the candidate is checked and saved without radio activity. Each
 run saves intent, proposal, validated world, and a hash-bound report under ignored
@@ -127,3 +148,5 @@ the existing fixed `121826` background rather than promising a palette-only chan
 to the background that this Runtime does not render.
 
 API format reference: [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs).
+Codex references: [non-interactive structured output](https://developers.openai.com/codex/noninteractive),
+[ChatGPT versus API authentication](https://developers.openai.com/codex/auth).
