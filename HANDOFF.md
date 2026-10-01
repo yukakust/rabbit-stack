@@ -1235,3 +1235,32 @@ current world counter remains 1. No reboot or flash movement is needed.
 Current VM lacks velocity-dependent sprite facing: right-facing cat walks backward
 on the return leg. Preview/docs explicitly disclose this; natural turns need an
 additional engine capability, which can now be delivered through the native channel.
+
+## Connected file channel — host core, integration BLOCKED — 2026-10-02
+
+Owner requested a real Bluetooth file connection instead of 48-minute advertising
+transfer. `experiments/ble-connected-file-transfer-v1/` adds a bounded C file receiver
+and ATT/GATT subset plus Mac central source and a preparation-only adapter. Twelve
+host tests exercise the ACTUAL existing C Ed25519/world bounds/health/renderer,
+including detailed cat, corruption/reorder, reconnect offsets, duplicate writes,
+lost final reply, rollback-by-retaining-old-world, replay and malformed PDUs.
+Signature/health commit is separate from ATT acknowledged writes. Connected worlds
+only; no native execution authority inferred from the world development key.
+
+Status is NOT INSTALLED / NO PHYSICAL FAST LINK / MAC COMPILE UNVERIFIED. Neither
+ACL/L2CAP nor a live USB adapter is implemented here. No throughput result claimed.
+No bootstrap/native image or owner key changed, no packet transmitted.
+
+Important correction to the prior proposed wireless rollout: the installed Scene
+ABI supplies no exclusive HCI event ownership. Immutable legacy assembly still
+reads the USB interrupt endpoint and ignores connection/disconnection/credit events.
+Two independent readers are unsafe; a privileged Scene module's UEFI access does
+not itself provide a checked handoff/rollback/callback-cleanup mechanism. The native
+updater swaps Scene drivers, NOT this supervisor/radio loop. Do not promise that a
+connected receiver can be safely deployed by merely swapping a Scene module.
+
+Next owner decision: approve a reviewed supervisor/radio-handoff design, with a
+possible separate bootstrap installation, or restrict progress to proving a
+no-bootstrap-rewrite takeover mechanism. No physical rewrite is authorized by this
+request; do not instruct another flash replacement silently. Old Dell/world/slow
+channel remain unchanged and working. Cat art has not been sent this turn.
