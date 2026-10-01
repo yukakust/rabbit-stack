@@ -25,6 +25,16 @@ def encode_segments(data,block_chunks=32):
         segments.append([str(uuid.UUID(bytes=f)).upper() for f in block]);hashes.append(f'{hash:08X}')
     return {'segments':segments,'hashes':hashes}
 
+def advertising_bundle(bundle,order):
+    """Change ONLY CBUUID byte representation; reconstructed RPv3 bytes stay exact."""
+    if order not in ('standard','reversed'):raise ValueError('unsupported advertising UUID order')
+    converted=dict(bundle)
+    converted['segments']=[[str(uuid.UUID(bytes=uuid.UUID(value).bytes[::-1])).upper()
+                           if order=='reversed' else value for value in block]
+                          for block in bundle['segments']]
+    converted['uuid_order']=order
+    return converted
+
 def sender_source():
     # Import the original bounded world sender in a fresh process, so its legacy
     # package/transport module names cannot collide with runtime envelope helpers.
@@ -55,6 +65,8 @@ def main():
     mode.add_argument('--restart-after-reboot',action='store_true',help='discard local progress after an explicitly confirmed Dell reboot')
     parser.add_argument('--frame-ms',type=int,default=450,help='advertisement duration, 450..2000 ms')
     parser.add_argument('--max-block-attempts',type=int,default=8,help='1..100 attempts, then stop with saved progress')
+    parser.add_argument('--uuid-order',choices=('standard','reversed'),default='standard',
+                        help='CBUUID byte order only; reversed works around installed RP/PR scanner ambiguity')
     args=parser.parse_args()
     if not 450<=args.frame_ms<=2000 or not 1<=args.max_block_attempts<=100:
         parser.error('frame-ms must be 450..2000; max-block-attempts must be 1..100')
@@ -87,6 +99,8 @@ def main():
         if journal.complete:
             print('ALREADY RECEIPTED: local cached result, NOT a fresh Dell observation. No packet sent.');return 0
         journal.configure(bundle,args.frame_ms,args.max_block_attempts)
+        print('ADVERTISEMENT UUID ORDER: '+args.uuid_order+'; signed release/frame bytes unchanged',flush=True)
+        bundle=advertising_bundle(bundle,args.uuid_order)
         return transmit(xcrun,bundle,transfer,hash,journal,minimum*(args.max_block_attempts+1)+120)
 
 def transmit(xcrun,bundle,transfer,hash,journal,timeout):

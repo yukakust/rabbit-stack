@@ -191,6 +191,37 @@ lost checkpoint/final ACK, receiver reboot, Ctrl-C, atomic write failure and bin
 mismatch. New Objective-C compilation and live recovery remain Mac/Dell test pending.
 No bootstrap/module/ABI change or USB rewrite is needed for this sender change.
 
+### Installed scanner ambiguity: Mac-only UUID-order workaround
+
+The owner's exact 25,344-byte signed release was signature/hash/policy checked.
+Direct unchanged C assembly accepts all 132 blocks. The extracted installed assembly
+scanner, however, rejects the 32nd frame of block 58:
+`52503293-3F07-488D-5250-4881F9520AE8`. It scans every 16-byte window for RP/PR and
+exits the entire HCI event after an invalid first match. The payload's `52 50` marker
+in a little-endian UUID creates an earlier false reversed candidate, hiding the true
+UUID. Old transport-only tests skipped this HCI extraction boundary. Doubling frame
+dwell cannot repair this content-dependent extraction failure.
+
+Use `--uuid-order reversed --resume` on the SAME signed release and existing journal.
+Only the UUID bytes passed to CBUUID are reversed; its expected little-endian radio
+encoding then carries the canonical RP frame. Installed extraction already accepts
+both directions. RP bytes, signature, transfer id, prefix hashes, world/base/counter
+and journal binding do not change. ACK scanner/families remain unchanged. Probe and
+payload UUIDs are both transformed. Default `standard` preserves the original behavior.
+
+`python3 verify_uuid_order.py` checks the fixed public blocker frame, unchanged hashes,
+and journal compatibility. On Linux x86-64 it executes the extracted assembly scanner;
+on other hosts it tests its independent model. Optional
+`--release /tmp/rabbit-scene-revision-2.rrt` additionally tests this exact owner release:
+4,357 synthetic HCI frames (including block checkpoints), one original-order failure,
+zero reversed-order failures, exact C assembly and recovery of partially staged block
+58. The attached native PE is NOT executed. Firmware/radio are not involved.
+
+This is a workaround for this exact release/packet layout, not a universal UUID parser
+repair: arbitrary HCI address/data can contain other false markers. Proper bounded AD
+record parsing/continuing after invalid candidates belongs to a future supervisor fix.
+Actual CoreBluetooth/QCA success still requires the owner's live resumed transfer.
+
 Still pending: actual Mac Objective-C compilation, live QCA assembly/checkpoint/
 application/rejection receipts, two engine swaps preserving a moving Dell world,
 Esc cleanup, Dell watchdog recovery, and physically verified owner provisioning.

@@ -1182,3 +1182,27 @@ be resumed by this mechanism. Default dwell remains 450ms, with explicit 450..20
 tuning (not a proven physical fix). Next: compile on Mac, fresh native transfer with
 confirmed clean receiver state, Ctrl-C/same-boot resume, final receipt and two live
 replacements. No USB rewrite is required. Dell watchdog recovery remains unobserved.
+
+## Block 58 parser diagnosis and Mac-only workaround — 2026-10-02
+
+The owner supplied the exact signed RRT2 release SHA256
+`d16b740da692ab45e680cb0a91304ffd9559e129026865889a0c76b6c33b01db` (25,344 bytes).
+Owner public fingerprint, signature, payload/world/target/base/counter verified.
+The unchanged C assembler accepts all 132 blocks, but the extracted installed assembly
+UUID scanner rejects block 58/frame 32
+`52503293-3F07-488D-5250-4881F9520AE8` in a synthetic legacy HCI report. Payload RP
+bytes create an earlier false reversed-window match; failed validation exits the event
+instead of searching onward. This reproduces the exact observed stopping point. Radio
+capture is absent, so live explanation confirmation remains the resumed physical test.
+
+Sender `--uuid-order reversed` reverses only advertised CBUUID octets, not signed native
+bytes or transport hashes. Resume keeps the existing 57-block journal, probes/replays
+block 58 and uses the already supported alternate UUID order. The exact release's
+4,357 synthetic HCI frames all pass the extracted x86 assembly in this mode; standard
+order rejects just that blocker. The partially staged receiver resumes past it without
+reset/BEGIN and reconstructs exact bytes. No native payload execution occurs in these
+diagnostics. `verify_uuid_order.py` preserves this boundary regression; non-x86 hosts
+use an independent scanner model. This is an exact-package/layout workaround, NOT a
+general repair of the blind HCI window search. Robust AD parsing remains future
+supervisor work. Live workaround success/final native application remain unobserved.
+No supervisor/module source, firmware image, key or signature changes; no USB rewrite.
