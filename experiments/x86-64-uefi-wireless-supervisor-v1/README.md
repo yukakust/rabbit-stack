@@ -156,6 +156,41 @@ the same world/target/base and `--minimum-counter`; default is **verified-not-se
 Only explicit `--send` compiles CoreBluetooth on Mac and advertises. Runtime and
 world counters are independent. Key bytes never enter advertising.
 
+### Mac-local native transfer recovery
+
+`send_runtime.py --send` saves correlated native checkpoints atomically in
+`runs/transfer-<release-SHA256>.json` (0600), with adjacent `.log` and exclusive
+`.lock`. `--progress PATH.json` selects a journal. It binds the full signed release,
+owner public key, active world, target, base, counter and exact transport block hashes.
+No private keys enter it. ACKs remain unauthenticated: this is not Dell attestation.
+
+After Ctrl-C, repeat the same verified command with `--resume`, without rebooting
+Dell or changing the world/base. Resume probes the NEXT unconfirmed checkpoint once
+(recovering a lost ACK without payload replay), then replays that unconfirmed block
+if necessary, including exact already-buffered chunks. Its receipt checks the whole
+prefix. Probing the previous checkpoint is incorrect after partial later assembly:
+the installed receiver only acknowledges a checkpoint at its current sequence.
+
+If Dell lost staging RAM, resumed noninitial blocks get no ACK and the sender stops.
+After a confirmed Dell reboot, reload the exact world and use
+`--restart-after-reboot` to reset the journal and send BEGIN. This flag does NOT reboot
+Dell. Old sessions without journals cannot be retroactively resumed. Completed journals
+print `ALREADY RECEIPTED` as a cached local result, not a fresh receiver observation.
+
+Eight unacknowledged payload attempts stop each block by default;
+`--max-block-attempts 1..100` changes the limit. Logs include global `BLOCK ATTEMPT`,
+expected prefix hash, `ACK IGNORED` mismatch reasons, scanner/UUID/RSSI and quiet windows.
+`--frame-ms 450..2000` changes Mac advertisement dwell (default 450ms); longer dwell
+costs throughput and is not a physically proven fix. Retry-only logs cannot distinguish
+a missing ordered chunk from a missed ACK. Ctrl-C/timeout stops the child advertiser;
+confirmed progress survives. A second sender cannot own the same journal concurrently.
+
+Run `python3 verify_send_progress.py` for offline journal/source/process tests and
+regressions against unchanged receiver C code: partial assembly, missing ordered frame,
+lost checkpoint/final ACK, receiver reboot, Ctrl-C, atomic write failure and binding
+mismatch. New Objective-C compilation and live recovery remain Mac/Dell test pending.
+No bootstrap/module/ABI change or USB rewrite is needed for this sender change.
+
 Still pending: actual Mac Objective-C compilation, live QCA assembly/checkpoint/
 application/rejection receipts, two engine swaps preserving a moving Dell world,
 Esc cleanup, Dell watchdog recovery, and physically verified owner provisioning.

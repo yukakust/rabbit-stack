@@ -1147,3 +1147,38 @@ this Scene ABI; changing them still needs a bootstrap release. No last-ever USB
 promise. RAM updates/worlds disappear at power-off; authenticated ACKs and cross-boot
 freshness remain debts. The reviewed Linux module is ~25KiB and takes ~35 minutes
 minimum through the inherited six-byte/450ms advertising transport.
+
+## Physical wireless supervisor and interrupted native transfer — 2026-10-01
+
+The owner generated a local key (public SHA256
+`58744820acd038de35d01eaf6afbad2aa4bb4e4022c8078d4e665270d41f36b4`), observed the
+owner-provisioned Mac bootstrap fail closed in QEMU, and explicitly approved fresh
+external DataTraveler Duo `/dev/disk4` replacement. Mac image SHA256 was
+`996e4414e1a3fd2f752a8fdf1bea1f39f52ebc03e07ec6b7b5aef5d9446f1ba0`, EFI
+`7c89a1f32d40f9322e784d0eb8fdce8af6bce42b5635d01a0a843661dbef2746`. Dell photo
+shows supervisor/QCA/passive receive ready. Unchanged cat/mouse world counter 1 gave
+`TRANSFER=AB HASH=E1DEA1AB APPLIED_COUNTER=1`; the owner confirmed moving objects.
+This is owner-observed behavior/correlated receipt, not attestation.
+
+Mac Scene revision 2 SHA256 is
+`e1faf6f5de1d2eb18305bf4a1e66b300e9005e69fb72ac89be1c7e2d330f72eb`, baseline
+`04a43128cf923697e495e213205f03259b1e01ea5ecda00b4437c64f19e644e0`, target
+`254bd9b5e7b127651217e1206ac992b49326fb89b6627fa1062ea4373429609b`. Native
+transfer repeated chunks 0x0720..0x073f/checkpoint 0x0740 (block 58), transfer 93,
+without a matching ACK in the supplied tail. Owner stopped it; the world kept moving.
+No native application is claimed. Later world replay gave the exact counter-1 ACK
+again. Reboot completion was not independently observed. Missing payload versus
+missed ACK remain hypotheses, not a diagnosed physical cause.
+
+Mac sender now journals exact confirmed progress/full logs, limits per-block attempts,
+and implements explicit same-boot `--resume` / confirmed-reboot
+`--restart-after-reboot`. Resume probes the NEXT unconfirmed checkpoint then replays
+that block; unchanged receiver C rejects a previous checkpoint after partial later
+assembly. Ctrl-C/timeout stops child advertising, retaining progress. Atomic journals
+bind release/world/owner/target/base/counter/transport and refuse mismatches or silent
+restart. ACKs are unauthenticated. Only Mac adapter/helpers/tests/docs changed;
+installed supervisor and Scene PE remain unchanged. Old non-journaled sessions cannot
+be resumed by this mechanism. Default dwell remains 450ms, with explicit 450..2000ms
+tuning (not a proven physical fix). Next: compile on Mac, fresh native transfer with
+confirmed clean receiver state, Ctrl-C/same-boot resume, final receipt and two live
+replacements. No USB rewrite is required. Dell watchdog recovery remains unobserved.
