@@ -251,6 +251,18 @@ re-execution and observes watchdog reset to bootstrap in QEMU. Its public-test-k
 Target Pack forbids physical installation. Bluetooth adapter, Scene/Anima module ABI,
 owner key provisioning and Dell conformance remain unfinished; U8 is not complete.
 
+`x86-64-uefi-wireless-supervisor-v1` now implements the actual QCA frame-dispatch
+adapter and Mac native sender alongside a resident Scene/Anima ABI. RRT2 signs the
+immutable world revision; the supervisor imports the exact live scene snapshot
+locally before one health tick. QEMU observes two signed Scene engine replacements
+without reboot, animation during staging, receipt-only retry, unhealthy retention
+and tamper rejection. Separate real-bootstrap QEMU absence gating and host tests
+pass; radio is substituted in the integration harness, not physically verified.
+Installed Dell remains v2. Owner key provisioning, exact Mac gate, approved bootstrap
+installation, Mac compilation, live BLE and Dell recovery are still required.
+The immutable supervisor/hardware bootstrap/root key are not wirelessly replaceable;
+RAM native Scene engines are. Do not mark U8 complete or promise last-ever USB use.
+
 ### U9 — Rabbit runtime and kernel (current prototype boundary)
 
 Add only the substrate required by native targets: traps, interrupts, memory,

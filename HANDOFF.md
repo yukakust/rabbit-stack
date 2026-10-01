@@ -1097,3 +1097,53 @@ The working physical Dell remains God Runtime v2. Next: resident Scene/Anima ABI
 actual Mac/QCA streaming/result adapter with explicit quiesce/state export, then owner
 key provisioning and separately gated bootstrap/physical tests. The six-byte/450ms
 transport remains slow (~128 minutes per 100KiB); RAM updates vanish at power-off.
+
+## Resident Scene and wireless native dispatcher — 2026-10-01
+
+The owner requested connecting Bluetooth and Scene/Anima to the native loader.
+`experiments/x86-64-uefi-wireless-supervisor-v1/` implements the real QCA assembly
+adapter for world RPv2 / native RPv3, separate staged/applied/rejected native ACK
+families, Mac checkpoint sender and explicitly reviewed owner-local signing.
+The hardware controller, physical GOP and Esc/radio cleanup remain in an immutable
+supervisor. A real resident UEFI boot-services Scene driver reuses unchanged v3
+world validation, RGBA/RLE graphics and VM. Its reviewed ABI renders offscreen.
+
+RRT2 is a distinct signature domain/profile, not a silent weakening of RRT1. It
+signs the immutable active world revision while the world continues moving during
+assembly; the cooperative swap locally exports/imports exact canonical RSS2 state
+(package, positions/velocities/frames, tick and world counter) before one health
+tick and driver swap. A changed world rejects the release. Failed authorized trials
+consume their native counter, retain the old scene/pixels and cache their status.
+Exact latest final retries advertise status without re-execution. Candidate native
+code is privileged, not isolated; callback/unload watchdogs cannot guarantee recovery
+from memory corruption or disabled interrupts/watchdog. Dell recovery is unobserved.
+
+Host checks cover signature/profile/key/counter/PE gates, canonical live snapshots,
+unchanged RUP2 and full RUP3 graphics with framebuffer canaries, failed trial, chunk
+checkpoint retries, sender family separation and explicit create-only signing/dry-run.
+Ten legacy model and nine prior native tests remain passing. QEMU integration loads
+two replacement Scene drivers in one boot, observes moving state during staging,
+exact retry idempotence, failed health retaining the old live world, and tamper
+rejection. That harness uses embedded canonical frames instead of physical radio;
+it is NOT linked into the real receiver. Repeat image/module builds match. Exact
+test artifacts and source/firmware bindings/logs are archived in the new evidence.
+The actual QCA receiver separately fails closed in QEMU before device effects.
+
+Early real-bootstrap captures showed only firmware text while an instrumented image
+displayed the expected stop. Timing alone was not a sufficient explanation. Legacy
+caller-frame string conversion was replaced with bounded supervisor-owned ConOut
+for initialization (the prior receiver helper is retained); the unmodified selected receiver visibly reaches the
+expected title and no-device/no-reset/no-HCI/no-scan/no-radio stop. Capture remains
+manual visual confirmation, not automatic OCR. Native modules use a smaller stripped
+driver-only linker profile; mixed assembly bootstrap retains the prior normal profile.
+
+No owner production key was generated and no physical medium was changed. Public
+fixture keys cannot build a production candidate or be sent to physical devices.
+Installed Dell remains v2. Next: owner-local key generation/provisioning, exact Mac
+bootstrap gate, separately approved bootstrap installation, real Mac compilation,
+live staged/applied/rejected ACKs, two native engine swaps and Esc/watchdog Dell
+checks. The immutable supervisor/QCA bootstrap/root key remain non-updatable via
+this Scene ABI; changing them still needs a bootstrap release. No last-ever USB
+promise. RAM updates/worlds disappear at power-off; authenticated ACKs and cross-boot
+freshness remain debts. The reviewed Linux module is ~25KiB and takes ~35 minutes
+minimum through the inherited six-byte/450ms advertising transport.
