@@ -3,4 +3,3 @@ Use case: stylized-concept. Asset type: production game walk-cycle sprite sheet,
 
 Built-in image_gen. Transparency refinement prompt:
 Edit target: the supplied four-frame cat walk-cycle sheet. Change ONLY the background: remove the entire brown/tan blurred background and make it genuinely transparent alpha (zero opacity), also between legs, under the belly, around the fur and in all margins. Preserve exactly the four cats, all their colored fur, facial details, poses, size, positions and original 2-by-2 animation cell arrangement. No replacement background, no white background, no painted checkerboard, no shadows. Deliver a clean game sprite-sheet PNG with actual RGBA transparency.
-
