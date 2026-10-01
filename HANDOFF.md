@@ -1206,3 +1206,32 @@ use an independent scanner model. This is an exact-package/layout workaround, NO
 general repair of the blind HCI window search. Robust AD parsing remains future
 supervisor work. Live workaround success/final native application remain unobserved.
 No supervisor/module source, firmware image, key or signature changes; no USB rewrite.
+
+## Owner-confirmed native swap and walking-cat art — 2026-10-02
+
+The supplied Mac log reached native checkpoint 132/132 and final applied receipt
+`TRANSFER=93 HASH=70E75893 APPLIED_COUNTER=1`. The owner confirms the preserved
+cat/mouse world moves. This supersedes the preceding pending native-application
+status, but is an owner-observed correlated receipt, not attestation or a watchdog
+recovery test. No Dell reboot since that successful swap is reported.
+
+Requested one higher-quality cat, not a mouse. Built-in imagegen generated a
+four-pose ginger-tabby sheet with actual RGBA alpha. V3 `import_cat.py` performs
+only cell extraction/resizing/shared-palette export, not hand-painted substitute
+art. Source PNG, both exact prompts, provenance, exact-pixel local GIF and portable
+world are under `experiments/x86-64-uefi-god-runtime-v3/`. Four source poses are
+128x85, displayed at 64x43 logical / 192x129 surface pixels, using the existing
+MOVE/BOUNCE/ANIMATE program. No native/supervisor image change is required.
+
+Twelve graphics/import Python/C tests pass, including exact re-import, actual C VM
+240 ticks/framebuffer guards/replay rejection. All segmented frames pass extracted
+installed assembly in synthetic legacy HCI reports in standard UUID order. No
+radio capture is claimed. Counter-2 package: 33,349 bytes, 5,561 ordinary frames,
+174 checkpoint blocks, minimum 48.2 minutes at 450ms dwell, before losses.
+
+**Art is NOT SENT / physical appearance pending.** Show the preview and obtain
+owner approval before the long live send. Same-boot world counter 2 assumes the
+current world counter remains 1. No reboot or flash movement is needed.
+Current VM lacks velocity-dependent sprite facing: right-facing cat walks backward
+on the return leg. Preview/docs explicitly disclose this; natural turns need an
+additional engine capability, which can now be delivered through the native channel.

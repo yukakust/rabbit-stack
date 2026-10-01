@@ -1,5 +1,43 @@
 # Detailed mouse / Graphics Runtime v3 candidate
 
+## One detailed walking cat — data-only addition
+
+`worlds/ginger-cat-walk-v1.json` replaces the whole scene with one ginger cat,
+four generated walk poses and a MOVE/BOUNCE/ANIMATE loop. No mouse, native module,
+bootstrap or USB rewrite is needed on the installed wireless supervisor/Scene v3.
+Source art, exact built-in imagegen prompts, provenance and a local animated preview
+are in `assets/cat-walk-*`. The source is 128x85 per pose with a shared 256-entry
+RGBA palette; display is 64x43 logical / 192x129 surface pixels.
+
+Limit: the installed VM cannot flip sprites based on velocity. The cat steps but
+still faces right on its return leg. The preview shows this honestly; it does not
+invent a new VM capability. It is not physical evidence. Same freestanding C checks
+pass 240 ticks, framebuffer guards and replay rejection for this world.
+
+Re-export (Pillow is needed for import/preview only):
+
+```sh
+python3 import_cat.py --output worlds/ginger-cat-walk-v1.json \
+  --preview assets/cat-walk-preview-v1.gif
+python3 verify_graphics.py
+```
+
+**Not sent yet: review the preview before running the sender.** Same-boot world
+counter 2 is appropriate only if Dell's accepted world counter is still 1:
+
+```sh
+python3 send_package.py worlds/ginger-cat-walk-v1.json --counter 2
+```
+
+The 33,349-byte package has 174 blocks and needs **at least 48.2 minutes** at the
+existing 450ms dwell, plus retries. Keep Dell running; do not reboot mid-transfer.
+The old world remains active while staging. ACK is correlated, not attestation.
+Standard UUID order passes the installed assembly's synthetic HCI extraction for
+every frame of this exact package. Actual radio delivery remains to be tested.
+
+The historical candidate status below describes the original graphics bring-up,
+not the subsequently installed owner-provisioned wireless supervisor.
+
 Status: 10 host Python/C tests PASS, repeat UEFI builds match, Linux QEMU exact
 missing-device gate observed. **Not physically installed.** Mac sender compilation,
 physical BLE checkpoints and detailed Dell graphics remain untested. Working v2 stays

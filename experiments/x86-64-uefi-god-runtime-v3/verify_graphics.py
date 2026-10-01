@@ -96,6 +96,32 @@ int main(int argc,char**argv){
         self.assertEqual(hashlib.sha256(legacy).hexdigest(),"ccd9a10ad43e96c2bddcc58a3b2c2ce1643e250d944df241ece3aefa9ec210bb")
         decode_package(legacy,self.public);self.assertTrue(self.c_accepts(legacy))
 
+    def test_single_cat_four_pose_world_in_actual_c_runtime(self):
+        world=ROOT/'worlds/ginger-cat-walk-v1.json'
+        packet=compile_world(world,2,self.private)
+        decoded=decode_package(packet,self.public)
+        self.assertEqual(len(decoded['objects']),1)
+        self.assertEqual(len(decoded['sprites']),1)
+        sprite=decoded['sprites'][0]
+        self.assertEqual((sprite['width'],sprite['height']),(128,85))
+        self.assertEqual((sprite['display_width'],sprite['display_height']),(64,43))
+        n=128*85
+        self.assertEqual(len(sprite['pixels']),4*n)
+        self.assertEqual(len({bytes(sprite['pixels'][i*n:(i+1)*n]) for i in range(4)}),4)
+        self.assertEqual(decoded['programs'][0]['code'],bytes([1,2,5,4,0]))
+        self.assertEqual(decode_transfer(encode_transfer(packet)),packet)
+        (ROOT/'runs').mkdir(exist_ok=True)
+        self.assertTrue(self.c_accepts(packet,render=ROOT/'runs/cat-c-frame.ppm'))
+
+    def test_cat_import_is_reproducible_with_shared_palette(self):
+        try:
+            import PIL
+        except ImportError:
+            self.skipTest('optional PNG import requires Pillow')
+        from import_cat import import_cat
+        expected=json.loads((ROOT/'worlds/ginger-cat-walk-v1.json').read_text())
+        self.assertEqual(import_cat(ROOT/'assets/cat-walk-source-v1.png'),expected)
+
     def test_c_scene_240_ticks_stays_in_framebuffer_and_rejects_replay(self):
         output=ROOT/"runs"/"mouse-c-frame.ppm";output.parent.mkdir(exist_ok=True)
         self.assertTrue(self.c_accepts(self.package,render=output))
