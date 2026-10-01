@@ -1,6 +1,6 @@
 # Rabbit Stack handoff
 
-Updated: 2026-09-30
+Updated: 2026-10-01
 
 ## Mission
 
@@ -1042,3 +1042,58 @@ No physical write occurred. Mac sender compilation, real checkpoint ACKs and phy
 detailed mouse remain pending. Next: preview on Mac, exact local QEMU gate, read-only
 preparation and fresh USB identity before one installation. Existing Codex builder
 still targets v2; resource-reference editing and faster transport are future work.
+
+## Wireless runtime updates prioritized — 2026-10-01
+
+The owner paused graphics v3 installation and requested runtime updates over Bluetooth
+first. Installed Dell remains v2. Do not call another candidate the final flash image;
+current v2 cannot acquire an updater through its bounded data-only VM.
+
+`experiments/runtime-update-contract-v1/` implements a NON-EXECUTING host reference:
+domain-separated RRT1 Ed25519 envelopes, target/base/state/ABI bindings, separate owner
+authority rejecting the known world development key, ordered 256KiB RP v3 transport,
+and trial/commit/retain-old/duplicate-receipt/reboot model. Ten tests use non-executable
+opaque fixtures. No native code, Bluetooth, UEFI loader, real health observation or
+automatic watchdog runs. No completed wireless runtime updater is claimed.
+
+Next decision is privileged owner-reviewed native modules versus isolated portable
+modules. A signature and saved RAM copy do not sandbox native code or recover a hang.
+Remaining gates: key lifecycle, real supervisor ABI, QCA ownership, quiescent state,
+stream/checkpoint I/O and throughput, execution/isolation, observed fault recovery,
+then exact bootstrap/QEMU/physical tests. No USB write occurred. Persistence remains
+forbidden; future RAM updates revert to bootstrap on power-off.
+
+## Owner-approved native supervisor execution — 2026-10-01
+
+The owner selected separately reviewed privileged machine-code updates, rather than
+isolated VM modules. This expands runtime-release authority only; ordinary data worlds
+remain under their prior no-native-code boundary. No production private key or physical
+installation was requested/performed. Do not treat signatures as native-code isolation.
+
+`experiments/x86-64-uefi-runtime-supervisor-v1/` now executes actual signed PE32+ UEFI
+boot-services drivers loaded from bounded assembled RP v3 RAM frames. The resident
+supervisor verifies domain-separated Ed25519, SHA-256, target/base/state/ABI and in-boot
+counter, validates PE and callback addresses, runs init/one tick on copied state and
+commits or retains the exact old driver/state. Successful swap unloads the prior driver;
+exact latest completed retries return a cached result without re-execution. No payload
+allowlist is baked into the loader: the separately trusted owner's signed envelope
+authorizes the exact release. `owner_key.py` supports random owner-local 0600 raw keys,
+no-overwrite and explicit reviewed-hash signing; keys are unencrypted, never sent, and
+rotation/authenticated receipts remain pending.
+
+Ten previous model tests and nine native host tests pass (C/Python signatures, SHA
+differential boundaries, PE rejection, key/signing safeguards, streamed lost/reordered/
+corrupt chunks, checkpoint retries and >65535-byte assembly). Automated QEMU repeats
+identical builds and observes two native replacements in one boot, receipt-only retry,
+failed init retaining B's exact state/identity/handle, signature/counter/ABI rejection,
+then a marked infinite native init loop triggering the firmware watchdog. QEMU reboots
+into the unchanged bootstrap without relaunching volatile candidates. Exact report/log
+are under the probe's `evidence/`; this is emulator-only evidence. Recovery covers the
+reviewed interrupts-enabled loop, NOT memory corruption or disabled interrupts/watchdog.
+
+The probe forbids physical installation and uses public test fixtures. It has no live
+Bluetooth adapter, no full Scene/Anima module ABI and no Dell watchdog observation.
+The working physical Dell remains God Runtime v2. Next: resident Scene/Anima ABI and
+actual Mac/QCA streaming/result adapter with explicit quiesce/state export, then owner
+key provisioning and separately gated bootstrap/physical tests. The six-byte/450ms
+transport remains slow (~128 minutes per 100KiB); RAM updates vanish at power-off.

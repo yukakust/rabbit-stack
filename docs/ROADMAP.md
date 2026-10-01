@@ -238,6 +238,19 @@ Apply cold, warm, and hot patches through prepare, validation, staging, health c
 commit, and automatic rollback. State migration and unsupported transitions must be
 explicit.
 
+Wireless runtime updates are now prioritized before graphics v3 installation.
+`experiments/runtime-update-contract-v1/` has a tested signed envelope, ordered
+256KiB transport and NON-EXECUTING host transaction model; it is not a Dell updater.
+Native-versus-isolated module authority, the real supervisor ABI, recovery/throughput
+and bootstrap installation remain gates. No last-ever USB replacement is promised.
+
+The owner subsequently chose privileged reviewed native modules. The new
+`x86-64-uefi-runtime-supervisor-v1` actually loads two signed native drivers from
+assembled RAM frames, retains old state on failed init, handles exact retry without
+re-execution and observes watchdog reset to bootstrap in QEMU. Its public-test-key
+Target Pack forbids physical installation. Bluetooth adapter, Scene/Anima module ABI,
+owner key provisioning and Dell conformance remain unfinished; U8 is not complete.
+
 ### U9 — Rabbit runtime and kernel (current prototype boundary)
 
 Add only the substrate required by native targets: traps, interrupts, memory,

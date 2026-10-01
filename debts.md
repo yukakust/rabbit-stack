@@ -100,3 +100,30 @@ animation poses, frame/tick raster tests, full-frame buffering where useful, and
 health checks. Existing text builder still emits v2 worlds and cannot preserve a v3
 asset automatically. Runtime/driver/ABI upgrades still require a reviewed image update;
 only data changes within that ABI can avoid USB movement.
+
+## Wireless runtime supervisor (prioritized before graphics v3 installation)
+
+The owner requested updating the runtime over Bluetooth before another graphics-only
+USB upgrade. `runtime-update-contract-v1` tests a separately authorized signed envelope,
+256KiB ordered framing and NON-EXECUTING transaction model. It does not close this debt.
+
+The owner chose privileged owner-reviewed native modules on 2026-10-01.
+Provision an owner-local update key distinct from the public world development key.
+Implement supervisor/module ABI, QCA ownership, state export, real trial/health/recovery,
+streaming receipts and measured throughput. Signed native code can still corrupt memory
+or access firmware/storage; signature and RAM backup do not enforce isolation or recover
+a hang. Observe the actual fault/fallback boundary before physical installation.
+
+No updater image is ready or installed. Installed v2 has no update entry point; adding
+one needs a separately gated bootstrap installation. Initial updates are RAM-only.
+Persistent removable-media slots and cross-reboot counters need separate authorization.
+
+Native execution is now QEMU-observed in `x86-64-uefi-runtime-supervisor-v1`: independent
+C signature/PE checks, two signed driver swaps, ordinary health-failure retention,
+receipt-only retry and watchdog reset from a marked interrupts-enabled infinite init
+loop. Owner-local key generation/reviewed signing is implemented, but no real owner key
+is provisioned. This is a public-test-key, physical-installation-forbidden probe, not
+a Bluetooth updater. Actual Mac/QCA handover, Scene/Anima ABI/state export, physical
+watchdog conformance and bootstrap installation remain open. Signature/PE/backup do
+not isolate native corruption; key encryption/rotation and authenticated receipts remain
+debt. No embedded per-payload release allowlist is needed in the native loader.

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "target_id": "qemu-x86-64-ovmf-native-runtime-update-probe-v1",
+  "physical_installation_allowed": false,
+  "architecture": "x86-64",
+  "firmware": "uefi-boot-services-retained",
+  "module_format": "pe32-plus-efi-boot-services-driver",
+  "supervisor_abi": 1,
+  "state_abi": 1,
+  "max_signed_update_bytes": 262144,
+  "max_loaded_image_bytes": 4194304,
+  "trial_watchdog_seconds": 5,
+  "authority": "explicit-owner-reviewed-privileged-native-code-not-sandboxed",
+  "key_mode": "public-test-fixture-key-never-install",
+  "transport": "embedded-signed-fixtures-in-RAM-not-Bluetooth",
+  "debug_output": "qemu-debugcon-io-port-e9",
+  "forbidden": ["physical-installation", "persistent-writes", "internal-storage-writes", "firmware-setting-writes", "ExitBootServices", "radio-operations", "LLM-native-release-approval"],
+  "recovery": "watchdog-reset-restarts-immutable-bootstrap; RAM updates discarded; firmware watchdog is not native isolation"
+}

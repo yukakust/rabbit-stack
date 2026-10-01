@@ -1,0 +1,72 @@
+{
+  "bindings": {
+    "bluetooth_implemented": false,
+    "contract_hashes": {
+      "transport.py": "26a4d3c7941a7a3f3a3d22bf0ca4d9e3e0b8fc18abb64492b1aa32b18017a520",
+      "update.py": "70479f9401fa4a63f430fc97185087aeb73c7dca1a7a1649651510a886a87879"
+    },
+    "efi_sha256": "a52094c427eb24ccd924978012ca584e88ff13d5719751a5b30282c9c71d8828",
+    "image_sha256": "0bca5ca5dd7ad4e71f522d66ec6b8976d53c722188d6ee936922b5f25fa569fa",
+    "module_hashes": {
+      "1": "e94e0e8882c40731471b3e82dfcc2a5e6ed33fd256c7e1cc535d2a103b76b6a9",
+      "2": "cb3799eb4d8b46196da964a5f968899129b7e37261538c1e6f94fe3fc1cbf9f4",
+      "3": "51d5871cb784c44bfe0c1e091bc2723b360b18a66cada2ec372858717827ea26",
+      "4": "7565b863ab6fbf44445c76602f47172613a230c180b1af4f66f17c8a7169030b",
+      "5": "1ce6f1d8596f4b367f4b83a35e49cf4e7e959ea062472399e72542dd90b8526c"
+    },
+    "persistent_writes": 0,
+    "physical_installation_allowed": false,
+    "schema_version": 1,
+    "source_hashes": {
+      "abi.h": "a337006b799f4d974997952fa7bb1b31a522b49880a1966410db7400bb73ffb4",
+      "build_image.py": "5f3a13041c8ace49fdec36d297233b731e5861220a4f88d5b6681cf4df4a8c2d",
+      "module.c": "25f051f35d5f092dbaea082e4a1a5d6ca629b7d222f68be89fe5701e7adcd211",
+      "sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+      "sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+      "supervisor.c": "7a07ec09764762de5a6016bed8f6cbc65f7fec9f18c49bd02bb7cebfc4abcbf5",
+      "target.json": "4b9f23d53ffb5c4e0d2d502ff65346671bc1b751642a6746784e54693166faf1",
+      "transport_core.c": "b57f0604bee8747af3389a8d7bd96601090969c8443637a0ae5bab9ecef532eb",
+      "transport_core.h": "87affbd7aeb00bbb342f6ba2c47686f1dea29405b33f6aa194c499ae74588142",
+      "verify_core.c": "8efd5bcb2b07fb83af4ca5113c652fc2d995aa77e4ddddf2576a3d8673307df4",
+      "verify_core.h": "26dc794c8d40f28f87b8a6f18d5f5ec491b04f57f61aaa987cc56173dc3924e6"
+    },
+    "status": "QEMU-ONLY-NATIVE-RAM-UPDATE-PROBE-NOT-INSTALLED",
+    "target_sha256": "7dd6608777f865158f482e24b19492bf0d8c5d30646b2e17c0ebe9151dede3ee",
+    "test_key_only": true,
+    "update_hashes": {
+      "a": "fdc0bef0db4efb22e24f173961f3e762da2b0f144cf37c64c4e6d5b28c46bae3",
+      "abi": "c7f4a018c0803c26f8e3d4792a56fbec538fe04bc286e29fd3bd29c5aba5531e",
+      "b": "0c2edfa1be8b4c723a5c657013a9f8f8e1c0614fcef21328644b553cc0036fee",
+      "hang": "ce3b770f8443d20f866b2fb62ee5ebec481374838b63e70038e651ea3cfe917f",
+      "tampered": "c0e405916eceddc6a6179491b0b6a975eb5ba18a158205dd6bab9f671814b881",
+      "unhealthy": "d131134bae354078db90981d2a9bbc075dcca377eaff047e82b3f8a6caa1c7f5"
+    }
+  },
+  "bluetooth_verified": false,
+  "committed_screenshot_sha256": "6753be183812075cff88fcbf3104581e7c126e60fce1d1e0f1b3f218b2fa53f7",
+  "debug_log_sha256": "321713918408820f56acf5cd5265a4a0bfce7bc80fb954ff2b0ece5f10446153",
+  "fallback_screenshot_sha256": "2be6a33061beed08227086704996c1b3dd2e3fdcc174304ff2bdcd481a3245cd",
+  "guest_persistent_writes": 0,
+  "host_mutations": "generated images, ephemeral OVMF variable store, logs and screenshots only",
+  "host_verifier_sha256": "548545229170b4c075f1f7b244fd5421b3d75f5257d01571c9f81219184a35b1",
+  "hung_init_to_bootstrap_seconds": 6.966,
+  "native_memory_isolation": false,
+  "observed_markers": [
+    "NATIVE A COMMITTED",
+    "NATIVE B COMMITTED",
+    "EXACT RETRY REPEATED RECEIPT ONLY",
+    "FAILED NATIVE HEALTH RETAINED EXACT B AND STATE",
+    "TAMPERED SIGNATURE REJECTED BEFORE LOADIMAGE",
+    "STALE RUNTIME COUNTER REJECTED BEFORE LOADIMAGE",
+    "INCOMPATIBLE SIGNED MODULE ABI RETAINED B",
+    "NATIVE HUNG INIT ENTERED"
+  ],
+  "observer_sha256": "7e9a846bcf4a504103df59211ca9c7d4d8c4ec0f5f25341d2f0e85add96e56a9",
+  "ovmf_code_sha256": "50a48d30e35dd0bbba8e78838313ea5b8c9201408ce7fc50495f2f61bc5f12bf",
+  "ovmf_initial_vars_sha256": "5d2ac383371b408398accee7ec27c8c09ea5b74a0de0ceea6513388b15be5d1e",
+  "physical_verified": false,
+  "qemu_version": "QEMU emulator version 10.2.1 (Debian 1:10.2.1+ds-1ubuntu3.2)",
+  "recovery_scope": "reviewed infinite init loop with interrupts enabled; not arbitrary native corruption/disabled watchdog",
+  "schema_version": 1,
+  "status": "OBSERVED-QEMU-NATIVE-RAM-SWAPS-AND-WATCHDOG-FALLBACK"
+}
