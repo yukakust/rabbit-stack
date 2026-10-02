@@ -15,7 +15,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @property(nonatomic,strong) CBCentralManager *central;
 @property(nonatomic,strong) CBPeripheral *peer;
 @property(nonatomic,strong) CBCharacteristic *control,*data,*status;
-@property(nonatomic,strong) NSData *stream,*nonce,*hash;
+@property(nonatomic,strong) NSData *stream,*nonce,*expectedDigest;
 @property NSUInteger offset,pending;
 @property uint32_t counter;
 @property int phase;
@@ -80,7 +80,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  const uint8_t*b=c.value.bytes;
  if(memcmp(b,"RFS\1",4)||memcmp(b+4,self.nonce.bytes,8)||le32(b+16)!=self.stream.length||b[22]||b[23]){[self fail:@"receipt session/length mismatch"];return;}
  if(b[20]==2){
-  if(b[21]||le32(b+12)!=self.stream.length||le32(b+24)!=self.counter||memcmp(b+28,self.hash.bytes,32)){[self fail:@"applied receipt identity mismatch"];return;}
+  if(b[21]||le32(b+12)!=self.stream.length||le32(b+24)!=self.counter||memcmp(b+28,self.expectedDigest.bytes,32)){[self fail:@"applied receipt identity mismatch"];return;}
   self.finished=YES;puts("FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched");[self.central cancelPeripheralConnection:self.peer];exit(0);
  }
  if(b[20]==4&&!b[21]){
@@ -100,7 +100,7 @@ int main(int argc,char**argv){@autoreleasepool{
  Sender*s=[Sender new];s.stream=[[NSData alloc]initWithBase64EncodedString:b[@"stream_base64"] options:0];s.nonce=[[NSData alloc]initWithBase64EncodedString:b[@"session_base64"] options:0];s.counter=[b[@"counter"] unsignedIntValue];s.kind=kind?[kind unsignedIntValue]:1;
  if((s.kind!=1&&s.kind!=2)||s.stream.length<=32||s.stream.length>(s.kind==1?65567u:262176u)||s.nonce.length!=8||!s.counter)return 2;
  unsigned char hash[32];CC_SHA256((const uint8_t*)s.stream.bytes+32,(CC_LONG)s.stream.length-32,hash);
- if(memcmp(hash,s.stream.bytes,32))return 2;s.hash=[NSData dataWithBytes:hash length:32];
+ if(memcmp(hash,s.stream.bytes,32))return 2;s.expectedDigest=[NSData dataWithBytes:hash length:32];
  s.central=[[CBCentralManager alloc]initWithDelegate:s queue:nil];
  [NSTimer scheduledTimerWithTimeInterval:300 repeats:NO block:^(NSTimer*t){(void)t;[s fail:@"300-second bounded timeout"];}];
  [[NSRunLoop currentRunLoop]run];

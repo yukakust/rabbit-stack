@@ -15,6 +15,16 @@ class Policy(C.Structure):
     _fields_=[('target',C.c_ubyte*32),('owner',C.c_ubyte*32),('base',C.c_ubyte*32),('state',C.c_ubyte*32),('counter',C.c_uint64)]
 
 class Tests(unittest.TestCase):
+    def test_mac_digest_property_does_not_override_NSObject_hash(self):
+        source=(LINK/'mac_file_sender.m').read_text()
+        self.assertIn('NSData *stream,*nonce,*expectedDigest;',source)
+        self.assertNotIn('self.hash',source)
+        self.assertNotIn('s.hash=',source)
+        self.assertIn('self.expectedDigest.bytes',source)
+        compiler=(ROOT/'send_file.py').read_text()
+        self.assertIn('-Werror=incompatible-property-type',compiler)
+        self.assertIn('-Werror=objc-property-synthesis',compiler)
+
     @classmethod
     def setUpClass(cls):
         ROOT.joinpath('runs').mkdir(exist_ok=True)

@@ -36,7 +36,8 @@ def main():
     for name in ('CPATH','C_INCLUDE_PATH','CPLUS_INCLUDE_PATH','SDKROOT'):env.pop(name,None)
     with tempfile.TemporaryDirectory(prefix='rabbit-connected-sender-') as temporary:
         executable=Path(temporary)/'rabbit-file'
-        subprocess.run([xcrun,'--sdk','macosx','clang','-fobjc-arc',str(SOURCE),'-o',str(executable),
+        subprocess.run([xcrun,'--sdk','macosx','clang','-fobjc-arc',
+            '-Werror=incompatible-property-type','-Werror=objc-property-synthesis',str(SOURCE),'-o',str(executable),
             '-framework','Foundation','-framework','CoreBluetooth','-Xlinker','-sectcreate',
             '-Xlinker','__TEXT','-Xlinker','__info_plist','-Xlinker',str(ROOT/'FileSender-Info.plist')],env=env,check=True,timeout=60)
         print('MAC SENDER COMPILED; SOURCE SHA256='+hashlib.sha256(SOURCE.read_bytes()).hexdigest(),flush=True)

@@ -1362,3 +1362,21 @@ unmount, erase or device write. After checking expected missing-device lines, cl
 QEMU and answer YES. Then inspect its image/report plus FRESH external-medium info
 before the separately approved write. Installed Dell/walking cat are untouched;
 do not reboot it or move USB during the Mac-only preflight.
+
+## Mac preflight interrupted and sender property repair — 2026-10-02
+
+Owner Mac passed 42 host checks, mock-USB native swaps/watchdog and actual root
+loop Esc QEMU checks. Compile-only sender exposed an Objective-C `hash` property
+conflict with NSObject: NSData storage/setter synthesis was not reliable. Renamed
+it `expectedDigest` at declaration, initialization and exact final receipt check;
+the two related compiler warning classes now fail compilation. A source regression
+checks this fix, but Apple SDK recompilation remains owner-side pending.
+
+Owner screenshot shows connected v1.0 fail-closed no-device gate for Mac candidate
+image `1627487b491dd1c4b496a936075c9dc6b0bfab6f0a5405b2ba485b699f9cc855`.
+Ctrl-C interrupted the Python parent before YES/report save. This is not an
+observed physical Bluetooth failure and does not open installation. Rerun updated
+preflight, close QEMU using its window close control (not terminal Ctrl-C), answer
+YES and supply report plus fresh device identity. Sender-only change does not
+change runtime C, but source bindings change, so obtain a fresh complete report.
+No media or physical radio was changed.
