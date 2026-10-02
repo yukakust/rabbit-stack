@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "status": "LOCAL-PREVIEW-AND-C-TESTED-NOT-SENT",
+  "status": "LOCAL-VALIDATED-OWNER-REPORTS-PHYSICAL-APPEARANCE",
+  "physical_evidence": "../evidence/dell-cat-walk-owner-observed.json",
   "generation_mode": "built-in image_gen",
   "source": "cat-walk-source-v1.png",
   "source_sha256": "5f350927335750fb5e3a3564ffcad8c9486d54ccaab33ed8bf48082e02b6e4fd",
@@ -19,6 +20,6 @@
   "preview_scope": "Exact exported indexed pixels; MOVE/BOUNCE/ANIMATE host model, not hardware evidence. No direction-dependent sprite flip.",
   "c_checks": "Same freestanding C VM and renderer: signature acceptance, 240 ticks, framebuffer guards, replay rejection",
   "transport_check": "All segmented frames pass extracted installed assembly in a synthetic legacy HCI report, standard UUID order. Not a radio capture.",
-  "limitations": ["Right-facing art stays right-facing on return leg; current VM has no facing operation", "No physical observation for this cat package yet"],
+  "limitations": ["Right-facing art stays right-facing on return leg; current VM has no facing operation", "Owner reports appearance and walking; exact payload/receipt not independently observed"],
   "sharing_license": "NOT-ASSIGNED; no public inventory license inferred"
 }

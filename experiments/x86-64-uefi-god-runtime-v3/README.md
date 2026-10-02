@@ -22,7 +22,10 @@ python3 import_cat.py --output worlds/ginger-cat-walk-v1.json \
 python3 verify_graphics.py
 ```
 
-**Not sent yet: review the preview before running the sender.** Same-boot world
+**Owner reports the detailed cat walking on Dell (2026-10-02).** No photo or exact
+ACK supplied; see `evidence/dell-cat-walk-owner-observed.json`. This is not attestation
+or an independently observed binding to package bytes. Do not resend merely to
+repeat this observation. For reproduction only, same-boot world
 counter 2 is appropriate only if Dell's accepted world counter is still 1:
 
 ```sh
@@ -33,7 +36,8 @@ The 33,349-byte package has 174 blocks and needs **at least 48.2 minutes** at th
 existing 450ms dwell, plus retries. Keep Dell running; do not reboot mid-transfer.
 The old world remains active while staging. ACK is correlated, not attestation.
 Standard UUID order passes the installed assembly's synthetic HCI extraction for
-every frame of this exact package. Actual radio delivery remains to be tested.
+every frame of this exact package. Exact radio receipt and delivery timing remain
+unobserved despite the owner's appearance/movement report.
 
 The historical candidate status below describes the original graphics bring-up,
 not the subsequently installed owner-provisioned wireless supervisor.

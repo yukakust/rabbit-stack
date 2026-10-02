@@ -28,10 +28,12 @@ class Tests(unittest.TestCase):
         (d/'harness.c').write_text('''
 #include <string.h>
 #include "gatt_core.h"
+#include "hci_link.h"
 #include "runtime_core.c"
 static RgServer server;
 static uint32_t screen[480*270+2];
 static unsigned commits;
+static RlLink link;
 static int apply(const uint8_t*p,uint32_t n,uint32_t*counter){
  int result=activate(p,n);if(result!=1)return 1;
  last_hash=fnv(active_package,active_length);*counter=last_counter;commits++;return 0;
@@ -47,10 +49,18 @@ unsigned host_commits(void){return commits;}
 unsigned host_hash(void){return fnv(active_package,active_length);}
 unsigned host_tick(void){return rabbit_scene_tick(0)||screen[0]!=0xfeedface||screen[480*270+1]!=0xfeedface;}
 void host_disconnect(void){rg_disconnected(&server);}
+void host_link_init(void){rl_init(&link,apply);}
+void host_event(const uint8_t*p,size_t n){rl_event(&link,p,n);}
+void host_acl(const uint8_t*p,size_t n){rl_acl(&link,p,n);}
+void host_bulk(const uint8_t*p,size_t n){rl_bulk(&link,p,n);}
+size_t host_take(uint8_t*p,uint8_t*kind){return rl_take(&link,p,255,kind);}
+unsigned host_link_state(void){return link.state;}
+void host_elapsed(uint32_t ms){rl_elapsed(&link,ms);}
+void host_stop(void){rl_stop(&link);}
 ''')
         subprocess.run(['cc','-std=c11','-O2','-shared','-fPIC','-Wall','-Wextra','-Werror','-Wno-attributes',
             '-I',str(ROOT),'-I',str(V3),'-I',str(NATIVE),'-I',str(d),str(d/'harness.c'),
-            str(ROOT/'file_core.c'),str(ROOT/'gatt_core.c'),str(NATIVE/'sha256.c'),
+            str(ROOT/'file_core.c'),str(ROOT/'gatt_core.c'),str(ROOT/'hci_link.c'),str(NATIVE/'sha256.c'),
             str(d/'monocypher.c'),str(d/'monocypher-ed25519.c'),'-o',str(d/'check.so')],check=True)
         cls.lib=C.CDLL(str(d/'check.so'))
         cls.lib.host_att.argtypes=[C.c_char_p,C.c_size_t,C.c_void_p];cls.lib.host_att.restype=C.c_size_t

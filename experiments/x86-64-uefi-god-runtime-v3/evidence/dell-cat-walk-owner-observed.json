@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "status": "OWNER-REPORTED-PHYSICAL-APPEARANCE-AND-MOTION",
+  "observed_date": "2026-10-02",
+  "target": "Dell with owner-provisioned wireless supervisor and Scene revision 2",
+  "owner_statement": "котик уже ходит по экрану:)",
+  "transport_context": "Owner reports sending the detailed cat through the existing slow Bluetooth procedure",
+  "candidate_world": "worlds/ginger-cat-walk-v1.json",
+  "candidate_counter": 2,
+  "candidate_package_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
+  "candidate_binding_independently_observed": false,
+  "photo_available": false,
+  "exact_ack_log_available": false,
+  "measured_delivery_seconds": null,
+  "attestation": false,
+  "limitations": "Appearance and movement reported by owner; no photo, exact receipt, packet identity or throughput measurement supplied. Candidate binding is contextual, not independently verified."
+}

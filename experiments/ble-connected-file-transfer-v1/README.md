@@ -24,7 +24,45 @@ signature and health rejection preserving the previous world, replay, disconnect
 idempotence, 3,000 deterministic malformed ATT PDUs and output/framebuffer guards.
 These are host tests, NOT QEMU Bluetooth evidence or measured throughput.
 
-## Blocking hardware integration boundary
+## Lower link layer added — still not an installable supervisor
+
+`hci_link.c` now implements sequential controller setup, connectable service
+advertising, connection/disconnection events, real controller buffer queries
+(including shared-buffer fallback), outbound ACL credits, bounded fragmentation,
+inbound L2CAP reassembly and USB byte-stream deframing. ATT is routed through the
+existing GATT/file core. Pairing is explicitly rejected, not silently enabled.
+Host tests carry the exact 33,349-byte signed cat through simulated connected ACL
+traffic into the actual C signature/health/renderer. No 450ms dwell is used.
+
+`usb_port.c` is a candidate UEFI adapter: read-only exact USB identity/interface and
+endpoint discovery, finite control/interrupt/bulk transfers, bounded output batches,
+and shutdown requiring matching advertising-off/disconnection events. Failed
+cleanup retains an unknown/bound state, never claims OFF. No asynchronous USB
+callbacks are installed. Its MinGW object compiles; four mock-UEFI tests check
+identity rejection, endpoint/ambiguity failures, handle release and cleanup proof.
+The adapter must be called by the NEW sole-owner supervisor, with a monotonic clock
+feeding `rl_elapsed`. It MUST NOT be launched alongside the old loop.
+
+```sh
+python3 verify_link.py  # 21 cases, including the 12 prior file/GATT tests
+python3 verify_usb.py   # 4 mock-UEFI cases, no real USB
+```
+
+Owner approved one future bootstrap installation, NOT a write to an unidentified
+disk. Do not install a fixed GATT-only image just to go fast: it would recreate the
+current update boundary. Release gates required before that migration:
+
+1. Sole-owner supervisor loop with validated module event/ACL/tx callbacks.
+2. Owner-authenticated updates for combined engine/radio drivers, distinct from the
+   public world signer; unhealthy trials retain old world and driver.
+3. Callback quiescence, confirmed radio cleanup before unload, watchdog/Esc handling.
+4. Two tested driver swaps, recovery baseline, deterministic owner-local build and
+   exact local QEMU gate before any physical installation.
+5. Mac compilation, Dell interoperability and measured throughput.
+
+No bootstrap/native image is built by these tests, no measured speed is claimed.
+
+## Installed supervisor integration boundary
 
 The installed supervisor's assembly independently consumes USB HCI interrupt events.
 Scene ABI 2 exposes only init/tick/frame/snapshot/receipt/counter and a pixel surface,
@@ -38,13 +76,13 @@ This experiment deliberately supplies no such live adapter or send command. A
 privileged module can access UEFI services, but this is not evidence that concurrent
 ownership is safe or that rollback removes every callback or radio side effect.
 
-Remaining: exclusive HCI-owner lifecycle, USB descriptor/endpoint validation, LE
-connection events and controller credits, ACL fragmentation/reassembly, L2CAP
-signalling, timeout/disconnect recovery, Esc cleanup, real Mac compilation and Dell
-interop. The existing owner-native updater replaces Scene drivers, not the immutable
+The previously missing link/USB layers now have candidate code and synthetic tests,
+NOT hardware evidence. Remaining: exclusive supervisor integration, complete
+timeout/disconnect/Esc recovery, Mac compilation and Dell interoperability.
+The existing owner-native updater replaces Scene drivers, not the immutable
 supervisor/radio loop. A supervisor ABI change may require a separately approved
-bootstrap installation; no "last USB ever" promise and no media writes authorized
-by this experiment. Resolve this boundary with the owner before installing anything.
+bootstrap installation; no "last USB ever" promise. Fresh medium identity, exact
+owner build/QEMU/recovery gates and explicit write approval remain mandatory.
 
 ## Protocol
 

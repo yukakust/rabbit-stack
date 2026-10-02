@@ -1264,3 +1264,34 @@ possible separate bootstrap installation, or restrict progress to proving a
 no-bootstrap-rewrite takeover mechanism. No physical rewrite is authorized by this
 request; do not instruct another flash replacement silently. Old Dell/world/slow
 channel remain unchanged and working. Cat art has not been sent this turn.
+
+## Cat owner observation and connected lower layers — 2026-10-02
+
+Owner reports "котик уже ходит по экрану:)" and asks to record success without a
+photo. V3 `evidence/dell-cat-walk-owner-observed.json` records appearance and motion
+only. No exact ACK, packet identity, independently verified counter, photo or
+measured time was supplied. Candidate world/hash/counter bindings are contextual,
+not observed/attested. Pending-appearance status is superseded; facing limitation
+remains. Owner permits one future bootstrap installation, with the intent of
+updating both engine AND Bluetooth driver wirelessly thereafter. This is NOT
+approval to write an unidentified current disk.
+
+Connected experiment now has a C HCI/ACL/L2CAP layer: sequential command-complete
+setup; controller/shared buffer queries; connectable advertising; exact connection
+handle; credits; bounded fragmentation/reassembly; arbitrary USB bulk stream
+splits/coalescing; reconnection retaining RAM staging; pairing rejection. Twenty-one
+link/file/GATT tests pass, including exact signed cat data carried through simulated
+connected ACL into existing C Ed25519/health/renderer.
+
+Candidate UEFI `usb_port.c` binds read-only exact VID/PID/interface/endpoints,
+releases handle lists, polls as sole reader, submits bounded control/bulk output,
+and confirms advertising-off/disconnection before declaring shutdown. Four mock
+UEFI tests pass. MinGW object compilation passes. No real USB, BLE connection,
+asynchronous callbacks or throughput result. No bootstrap image/native release
+has been built or sent in this increment; installed Dell and keys are untouched.
+
+Still NOT INSTALLABLE: exclusive supervisor dispatcher, owner-authenticated
+combined radio/Scene driver updates and unload/rollback/watchdog/Esc gates must be
+completed together. Do not ship a fast but fixed radio bootstrap recreating the
+current trap. Mac compilation and physical interop remain pending. See connected
+README migration gates. No Mac action or flash movement required yet.
