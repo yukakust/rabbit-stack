@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "OWNER-REPORTED-PHYSICAL-CONNECTED-WORLD-APPLIED",
+  "observation_source": "Owner-pasted Mac transcript and explicit confirmation that cat walks on Dell",
+  "photo_provided": false,
+  "image_sha256": "d9561b29d983a9ec09fe48e99c99c726597ec31d069f944c288f52ec2746a9a9",
+  "installed_efi_sha256": "1736818811292d6af54e3f77cefee37b610b7a661a033fabd87283695d210378",
+  "mac_sender_source_sha256": "d0bc4837cc377b3d2dd73b758bab8b59bcfad76402ea0560d318ab729705ad2b",
+  "package_sha256": "f2dedcd16ad2987aa5740748af88873fc048f23b761aa01f995c159cb7651113",
+  "world": "ginger-cat-walk-v1",
+  "counter": 1,
+  "stream_bytes": 33381,
+  "first_connection": {"resume_offset": 0, "disconnect_sender_offset": 17040, "error_domain": "CBErrorDomain", "error_code": 6},
+  "second_connection": {"resume_offset": 0, "receipt": "FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched"},
+  "cat_walking_confirmed_by_owner": true,
+  "authenticated_device_attestation": false,
+  "measured_elapsed_seconds": null,
+  "retained_nonzero_resume_physically_verified": false,
+  "staging_reset_cause": "UNKNOWN: second connection started at zero; no corresponding Dell fault trace provided",
+  "limitations": "Delivery and visible behavior reported by owner, not independently observed by agent. UUID and receipt correlation are not device authentication. No reliability or speed benchmark claim."
+}

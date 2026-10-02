@@ -1547,3 +1547,20 @@ disagree. All three observers now hash/archive one immutable byte snapshot; sour
 regression added and QEMU gates rerun. This fixes evidence recording, not Bluetooth.
 The captured no-device artifact is unchanged by observer/test-only edits; its source
 bindings are updated only after confirming byte-identical candidate hashes.
+
+## Connected delivery observed; Mac-only controlled resume follow-up
+
+Owner confirmed exact connected receipt and walking ginger cat. Evidence:
+`experiments/x86-64-uefi-connected-supervisor-v1/evidence/dell-connected-cat-owner-observed.json`.
+Owner image d9561b29..., installed EFI17368188..., package f2dedcd1..., counter1.
+First connection timed out at sender17040; second receiver offset0 completed.
+Reset cause UNKNOWN; no elapsed measurement or authenticated attestation.
+
+Mac sender adds receiver-authoritative checkpoints, regression warning, strict
+shared C status validation, elapsed measurement, stale timer guard, and explicit
+`--stage-only-bytes` stop WITHOUT COMMIT. No receiver/EFI change or flash required.
+Host test reproduces actual C/GATT17040-byte retained prefix, resumes and applies
+once; reset fixture returns zero. Owner must compile on Mac and run controlled
+counter2 staging-stop/same-session-resume experiment in README before claiming
+physical nonzero resume. Keep Dell powered; never regenerate the saved session
+after an interruption. Existing unrelated network-runtime work is not in scope.

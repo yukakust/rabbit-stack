@@ -36,6 +36,13 @@ class Tests(unittest.TestCase):
         compiler=(ROOT/'send_file.py').read_text()
         self.assertIn('-Werror=incompatible-property-type',compiler)
         self.assertIn('-Werror=objc-property-synthesis',compiler)
+        for marker in ('rs_status(', 'STAGING CHECKPOINT=', 'RECEIVER STAGING REGRESSED:',
+                       'STAGED-NOT-APPLIED:', 'self.status==waitingStatus'):
+            self.assertIn(marker,source)
+        self.assertIn("command.append(str(a.stage_only_bytes))",compiler)
+        # Deliberate staging stop must exit before next() can submit COMMIT.
+        pause=source.index('if(self.pauseAfter&&received>=self.pauseAfter)')
+        self.assertLess(source.index('exit(0);',pause),source.index('[self next];',pause))
 
     @classmethod
     def setUpClass(cls):
@@ -130,5 +137,19 @@ unsigned host_status(uint8_t*out){return rg_att(&driver,(const uint8_t*)"\\x0a\\
         wrong=dict(good);raw=bytearray(base64.b64decode(wrong['stream_base64']));raw[-1]^=1
         wrong['stream_base64']=base64.b64encode(raw).decode()
         with self.assertRaises(ValueError):validate(wrong)
+
+    def test_stage_stop_cli_rejects_invalid_limits_before_mac_or_radio(self):
+        import json,sys
+        from prepare_file import bundle
+        path=Path(self.temp.name)/'stage-check.json'
+        path.write_text(json.dumps(bundle(self.release(),2,1,b'12345678')))
+        for args in (['--stage-only-bytes','1'],
+                     [str(path),'--send','--stage-only-bytes','0'],
+                     [str(path),'--send','--stage-only-bytes','-1'],
+                     [str(path),'--send','--stage-only-bytes','999999']):
+            result=subprocess.run([sys.executable,str(ROOT/'send_file.py'),*args],capture_output=True,text=True)
+            self.assertEqual(result.returncode,2,result.stderr)
+            self.assertIn('--stage-only-bytes',result.stderr)
+            self.assertNotIn('MAC SENDER COMPILED',result.stdout)
 
 if __name__=='__main__':unittest.main(verbosity=2)

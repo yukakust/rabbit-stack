@@ -229,5 +229,46 @@ After fresh owner preflight and separately approved exact-image installation:
    fix. Preserve Mac log/Dell photo; inspect controller suppression/USB behavior
    next, rather than repeat blind sends or change GATT/graphics.
 
-Physical connected delivery remains PENDING. No media-write authorization is
+At the time of that candidate, physical connected delivery remained PENDING. No media-write authorization is
 inferred from building/testing this candidate; never reuse an old gate or disk id.
+
+### Owner-observed connected delivery and Mac-only resume check
+
+The owner installed the exact gated image, received the exact file receipt and
+confirmed the ginger cat walking. See `evidence/dell-connected-cat-owner-observed.json`.
+The first link timed out at sender offset17040; the second reported offset0 and
+completed. This proves reported delivery, NOT retained nonzero resume. The cause
+of staging reset is unknown; elapsed time was not recorded.
+
+The Mac-only sender now queries receiver staging every approximately4096 bytes,
+reports regression of confirmed offsets, and measures elapsed time including
+reconnects. The receiver's status remains authoritative, never a guessed client
+offset. A strict shared C validator requires exact session/length and final
+SHA256/counter; a staging checkpoint is NOT application. Pending receipt timers
+cannot query a disconnected peer's old characteristic. No Dell image change.
+
+For a controlled experiment, keep Dell powered and use a NEW saved counter2 cat
+session (counter1 is already applied). First run `python3 send_file.py` on Mac:
+this only compiles, without starting Bluetooth. Then prepare without sending:
+
+```sh
+python3 ../x86-64-uefi-wireless-supervisor-v1/save_world.py ../x86-64-uefi-god-runtime-v3/worlds/ginger-cat-walk-v1.json --counter 2 --output /tmp/connected-cat-world-2.rup
+python3 prepare_file.py /tmp/connected-cat-world-2.rup --kind world --counter 2 --output /tmp/connected-cat-session-2.json
+```
+
+Both commands refuse to overwrite existing outputs. If they exist, preserve and
+reuse the existing matching session rather than regenerate its nonce. Prediction:
+ordinary disconnect retains the receiver-confirmed prefix in the same boot.
+
+```sh
+python3 send_file.py /tmp/connected-cat-session-2.json --send --stage-only-bytes 8192
+python3 send_file.py /tmp/connected-cat-session-2.json --send
+```
+
+Run the second command only after `STAGED-NOT-APPLIED`; keep Dell powered between
+them. The stop threshold may round up to the next write boundary. First command
+does NOT COMMIT and keeps the previous cat active. Second must show a nonzero
+`RESUME OFFSET` matching the confirmed prefix, then an exact final receipt. If
+it returns zero, preserve Mac/Dell diagnostics: this falsifies retained resume
+for that run. Do not silently label a full restart as resume. Power loss still
+loses all RAM. Mac compilation and this physical interruption test remain pending.

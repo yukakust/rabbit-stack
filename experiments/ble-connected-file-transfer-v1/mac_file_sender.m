@@ -1,5 +1,5 @@
 /* Mac central: acknowledged GATT writes, final application receipt required.
- * Candidate only: Dell does not yet expose this service. No pairing is requested.
+ * Physical world delivery observed; interruption/resume still under test. No pairing.
  * UUID match is discovery, NOT authentication or confidential transport. */
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include "sender_status.h"
 static NSString *const Service=@"52414242-4954-4649-8000-000000000001";
-static uint32_t le32(const uint8_t*p){return p[0]|((uint32_t)p[1]<<8)|((uint32_t)p[2]<<16)|((uint32_t)p[3]<<24);}
 static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @interface Sender:NSObject<CBCentralManagerDelegate,CBPeripheralDelegate>
 @property(nonatomic,strong) CBCentralManager *central;
@@ -17,6 +17,8 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @property(nonatomic,strong) CBCharacteristic *control,*data,*status;
 @property(nonatomic,strong) NSData *stream,*nonce,*expectedDigest;
 @property NSUInteger offset,pending;
+@property NSUInteger confirmed,pauseAfter;
+@property NSTimeInterval startedAt;
 @property uint32_t counter;
 @property int phase;
 @property unsigned kind,reconnects;
@@ -75,30 +77,51 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 }
 - (void)peripheral:(CBPeripheral*)p didWriteValueForCharacteristic:(CBCharacteristic*)c error:(NSError*)e {
  if(p!=self.peer)return;
- (void)c;if(e){[self fail:e.localizedDescription];return;}
+ if((self.phase==2&&c!=self.data)||((self.phase==1||self.phase==3)&&c!=self.control)){
+  [self fail:@"write callback characteristic/phase mismatch"];return;
+ }
+ if(e){[self fail:e.localizedDescription];return;}
  if(self.phase==1||self.phase==3){printf("CONTROL ACK: phase=%d; reading application status\n",self.phase);[p readValueForCharacteristic:self.status];return;}
  if(self.phase!=2){[self fail:@"unexpected write response"];return;}
- self.offset+=self.pending;[self next];
+ self.offset+=self.pending;
+ if(self.offset-self.confirmed>=4096||(self.pauseAfter&&self.offset>=self.pauseAfter)){
+  self.phase=4;[p readValueForCharacteristic:self.status];return;
+ }
+ [self next];
 }
 - (void)peripheral:(CBPeripheral*)p didUpdateValueForCharacteristic:(CBCharacteristic*)c error:(NSError*)e {
  if(p!=self.peer)return;
  if(e||c!=self.status||c.value.length!=60){[self fail:@"invalid application status"];return;}
- const uint8_t*b=c.value.bytes;
- if(memcmp(b,"RFS\1",4)||memcmp(b+4,self.nonce.bytes,8)||le32(b+16)!=self.stream.length||b[22]||b[23]){[self fail:@"receipt session/length mismatch"];return;}
- if(b[20]==2){
-  if(b[21]||le32(b+12)!=self.stream.length||le32(b+24)!=self.counter||memcmp(b+28,self.expectedDigest.bytes,32)){[self fail:@"applied receipt identity mismatch"];return;}
-  self.finished=YES;puts("FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched");[self.central cancelPeripheralConnection:self.peer];exit(0);
+ uint32_t received=0;int outcome=rs_status(c.value.bytes,c.value.length,self.nonce.bytes,
+  self.expectedDigest.bytes,self.counter,(uint32_t)self.stream.length,&received);
+ if(outcome==RS_INVALID){[self fail:@"receipt session/length/state/identity mismatch"];return;}
+ if(outcome==RS_APPLIED){
+  self.finished=YES;puts("FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched");
+  printf("TRANSFER ELAPSED=%.3f seconds (including reconnects)\n",NSProcessInfo.processInfo.systemUptime-self.startedAt);
+  [self.central cancelPeripheralConnection:self.peer];exit(0);
  }
- if(b[20]==4&&!b[21]){
-  self.phase=3;[NSTimer scheduledTimerWithTimeInterval:0.2 repeats:NO block:^(NSTimer*t){(void)t;if(self.peer&&self.status)[self.peer readValueForCharacteristic:self.status];}];return;
+ if(outcome==RS_PENDING){
+  CBPeripheral*waitingPeer=self.peer;CBCharacteristic*waitingStatus=self.status;
+  self.phase=3;[NSTimer scheduledTimerWithTimeInterval:0.2 repeats:NO block:^(NSTimer*t){
+   (void)t;if(self.phase==3&&self.peer==waitingPeer&&self.status==waitingStatus)
+    [waitingPeer readValueForCharacteristic:waitingStatus];}];return;
  }
- if(self.phase==3||b[20]!=1||b[21]||le32(b+12)>self.stream.length){[self fail:@"file rejected or final receipt absent"];return;}
- self.offset=le32(b+12);printf("RESUME OFFSET=%lu/%lu\n",(unsigned long)self.offset,(unsigned long)self.stream.length);[self next];
+ if(self.phase!=1&&self.phase!=4){[self fail:@"final receipt absent or unexpected status phase"];return;}
+ if(received<self.confirmed){
+  printf("RECEIVER STAGING REGRESSED: previously confirmed=%lu now=%u; receiver reset/loss possible, NOT same-boot resume\n",(unsigned long)self.confirmed,received);
+ }
+ self.offset=self.confirmed=received;
+ printf(self.phase==4?"STAGING CHECKPOINT=%lu/%lu (not applied)\n":"RESUME OFFSET=%lu/%lu\n",(unsigned long)self.offset,(unsigned long)self.stream.length);
+ if(self.pauseAfter&&received>=self.pauseAfter){
+  self.finished=YES;puts("STAGED-NOT-APPLIED: deliberate stop; keep Dell powered and rerun SAME saved session without --stage-only-bytes");
+  [self.central cancelPeripheralConnection:self.peer];exit(0);
+ }
+ [self next];
 }
 @end
 int main(int argc,char**argv){@autoreleasepool{
  setvbuf(stdout,NULL,_IONBF,0);
- if(argc!=2)return 2;
+ if(argc!=2&&argc!=3)return 2;
  NSData*raw=[NSData dataWithContentsOfFile:[NSString stringWithUTF8String:argv[1]]];
  NSDictionary*b=raw?[NSJSONSerialization JSONObjectWithData:raw options:0 error:nil]:nil;
  if(![b isKindOfClass:NSDictionary.class]||![b[@"stream_base64"] isKindOfClass:NSString.class]||![b[@"session_base64"] isKindOfClass:NSString.class]||![b[@"counter"] isKindOfClass:NSNumber.class])return 2;
@@ -106,8 +129,11 @@ int main(int argc,char**argv){@autoreleasepool{
  id kind=b[@"kind"];if(kind&&![kind isKindOfClass:NSNumber.class])return 2;
  Sender*s=[Sender new];s.stream=[[NSData alloc]initWithBase64EncodedString:b[@"stream_base64"] options:0];s.nonce=[[NSData alloc]initWithBase64EncodedString:b[@"session_base64"] options:0];s.counter=[b[@"counter"] unsignedIntValue];s.kind=kind?[kind unsignedIntValue]:1;
  if((s.kind!=1&&s.kind!=2)||s.stream.length<=32||s.stream.length>(s.kind==1?65567u:262176u)||s.nonce.length!=8||!s.counter)return 2;
+ if(argc==3){char*end=0;unsigned long value=strtoul(argv[2],&end,10);
+  if(!argv[2][0]||*end||!value||value>=s.stream.length)return 2;s.pauseAfter=value;}
  unsigned char hash[32];CC_SHA256((const uint8_t*)s.stream.bytes+32,(CC_LONG)s.stream.length-32,hash);
  if(memcmp(hash,s.stream.bytes,32))return 2;s.expectedDigest=[NSData dataWithBytes:hash length:32];
+ s.startedAt=NSProcessInfo.processInfo.systemUptime;
  s.central=[[CBCentralManager alloc]initWithDelegate:s queue:nil];
  [NSTimer scheduledTimerWithTimeInterval:300 repeats:NO block:^(NSTimer*t){(void)t;[s fail:@"300-second bounded timeout"];}];
  [[NSRunLoop currentRunLoop]run];

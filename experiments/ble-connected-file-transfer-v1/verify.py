@@ -29,6 +29,7 @@ class Tests(unittest.TestCase):
 #include <string.h>
 #include "gatt_core.h"
 #include "hci_link.h"
+#include "sender_status.h"
 #include "runtime_core.c"
 static RgServer server;
 static uint32_t screen[480*270+2];
@@ -49,6 +50,9 @@ unsigned host_commits(void){return commits;}
 unsigned host_hash(void){return fnv(active_package,active_length);}
 unsigned host_tick(void){return rabbit_scene_tick(0)||screen[0]!=0xfeedface||screen[480*270+1]!=0xfeedface;}
 void host_disconnect(void){rg_disconnected(&server);}
+int host_status_check(const uint8_t*p,size_t n,const uint8_t*nonce,const uint8_t*digest,uint32_t counter,uint32_t length){
+ uint32_t received;return rs_status(p,n,nonce,digest,counter,length,&received);
+}
 void host_link_init(void){rl_init(&link,apply);}
 void host_event(const uint8_t*p,size_t n){rl_event(&link,p,n);}
 void host_acl(const uint8_t*p,size_t n){rl_acl(&link,p,n);}
@@ -64,6 +68,7 @@ void host_stop(void){rl_stop(&link);}
             str(d/'monocypher.c'),str(d/'monocypher-ed25519.c'),'-o',str(d/'check.so')],check=True)
         cls.lib=C.CDLL(str(d/'check.so'))
         cls.lib.host_att.argtypes=[C.c_char_p,C.c_size_t,C.c_void_p];cls.lib.host_att.restype=C.c_size_t
+        cls.lib.host_status_check.argtypes=[C.c_char_p,C.c_size_t,C.c_char_p,C.c_char_p,C.c_uint32,C.c_uint32]
         cls.cat=compile_packet(V3/'worlds/ginger-cat-walk-v1.json',2)
         cls.old=compile_packet(ROOT.parent/'x86-64-uefi-god-runtime-v2/worlds/cat-chases-mouse.json',1)
 
@@ -120,6 +125,29 @@ void host_stop(void){rl_stop(&link);}
         self.lib.host_disconnect();self.assertEqual(self.begin(self.cat),b'\x13')
         self.assertEqual(struct.unpack_from('<I',self.status(),12)[0],16)
         self.stream(self.cat,start=16);self.commit();self.assertEqual(self.lib.host_counter(),2)
+
+    def test_physical_sized_prefix_resume_and_exact_sender_receipt(self):
+        self.att(b'\x02\xf7\x00')
+        self.begin(self.cat);data=hashlib.sha256(self.cat).digest()+self.cat
+        for offset in range(0,17040,240):
+            self.assertEqual(self.write(5,struct.pack('<I',offset)+data[offset:offset+240]),b'\x13')
+        self.assertEqual(self.lib.host_commits(),0)
+        self.lib.host_disconnect();self.att(b'\x02\xf7\x00');self.begin(self.cat)
+        status=self.status();self.assertEqual(struct.unpack_from('<I',status,12)[0],17040)
+        def check(s):return self.lib.host_status_check(s,len(s),self.session,data[:32],2,len(data))
+        self.assertEqual(check(status),1)
+        self.stream(self.cat,start=17040,chunk=240);self.commit()
+        status=self.status();self.assertEqual(check(status),2)
+        for index in (0,4,12,16,20,21,22,23,24,28,59):
+            bad=bytearray(status);bad[index]^=1;self.assertEqual(check(bytes(bad)),0,index)
+        self.assertEqual(check(status[:-1]),0)
+        self.commit();self.assertEqual(self.lib.host_commits(),1)
+
+    def test_receiver_restart_is_zero_not_retained_resume(self):
+        self.begin(self.cat);data=hashlib.sha256(self.cat).digest()+self.cat
+        self.write(5,struct.pack('<I',0)+data[:16]);self.lib.host_reset();self.begin(self.cat)
+        self.assertEqual(struct.unpack_from('<I',self.status(),12)[0],0)
+        self.assertEqual(self.lib.host_commits(),0)
 
     def test_reorder_and_conflicting_duplicate_reject(self):
         self.begin(self.cat);data=hashlib.sha256(self.cat).digest()+self.cat
