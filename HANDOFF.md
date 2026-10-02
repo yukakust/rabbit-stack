@@ -1601,3 +1601,18 @@ Mac paths, pending operations, evidence/recovery limits and scope live in
 Linux agents do not inherit Mac/private-key/radio access. No SSH or remote access
 has been provided. Private bytes must never enter conversation/Git/Linux.
 No further flash rewrite/reboot/world change. Preserve same current boot and plan.
+
+
+## Mac-operated first connected native receipt — 2026-10-03
+
+Actual owner Mac agent verified and signed the exact reviewed trial, delivered
+native counter1 over Bluetooth, reconnected after COMMIT and received exact
+SHA256/session/counter application receipt (exit0, 27.261s including reconnect).
+Release SHA256 d7f19e81d91c27f1a35f7f53aaf7e6dfcc1a70280e1a559cb2de00fa497a1def.
+Owner confirmed pre-send same powered boot, walking cat and no intervening update.
+Post-send physical screen observation is PENDING; no QEMU/attestation claim.
+See connected evidence/dell-connected-native-trial-1.json and sender log, and
+updated docs/CONNECTED-NATIVE-MAC-HANDOFF.md. Native counter1 has an applied receipt;
+do not assume driver1 remains active or repeat the initial plan as a new trial.
+Second transition/failed-health physical tests remain pending. No flash/reboot or
+private-key output; owner-local saved session preserved.

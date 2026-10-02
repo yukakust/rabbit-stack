@@ -167,3 +167,26 @@ still PENDING: no signed release/session/final native receipt reported yet.
 Preserve unrelated Linux edits: `.gitignore`, root `README.md`, `BIB10.md`,
 `experiments/x86-64-uefi-qca9377-network-runtime-v0/`. Do not commit them as part
 of this takeover. Mac may have its own unrelated changes: inspect first.
+
+
+## Mac-executed first native trial — 2026-10-03
+
+Agent pulled main at 7e32a47 on the actual owner Mac. Owner confirmed same Dell
+boot, walking cat and no intervening world/native update. Exact reviewed plan and
+saved installed artifacts passed checks; 4.2 GiB free. Reviewed local helper signed
+once, independently verified RRT3, and created the saved native counter1 session.
+Private key contents were not printed or copied; no USB/reboot/storage operation.
+
+Release SHA256: `d7f19e81d91c27f1a35f7f53aaf7e6dfcc1a70280e1a559cb2de00fa497a1def`.
+Mac sender delivered 36640 stream bytes, disconnected after COMMIT, reconnected
+and obtained exact SHA256/session/counter FILE APPLIED receipt. Exit0; elapsed
+27.261 seconds including discovery/reconnect. This is actual Mac Bluetooth sender
+evidence, not QEMU or authenticated device attestation. Physical screen confirmation
+(cat motion, blue bottom line and committed diagnostic) is still PENDING.
+
+Evidence: `experiments/x86-64-uefi-connected-supervisor-v1/evidence/dell-connected-native-trial-1.json`
+and adjacent `dell-connected-native-trial-1-sender.log`. Preserve
+`/tmp/connected-native-trial-1.session.json`; do not re-sign/re-send as a new trial.
+Native counter1 now has an exact applied receipt; do NOT assume baseline driver1
+or reuse the initial plan for another release. Second compatible transition and
+separately reviewed failed-health physical test remain PENDING.
