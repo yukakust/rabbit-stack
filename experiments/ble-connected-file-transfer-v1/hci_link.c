@@ -54,12 +54,12 @@ void rl_event(RlLink*l,const uint8_t*p,size_t n){
    l->acl_size=u16(p+6)>RL_ACL_MAX?RL_ACL_MAX:u16(p+6);l->buffers=l->credits=u16(p+9);
   }
   l->pending=0;l->step++;
-  if(l->step==7)l->state=RL_ADVERTISING;
+  if(l->step==7)l->state=l->connected?RL_CONNECTED:RL_ADVERTISING;
   return;
  }
  if(p[0]==0x0f){if(n==6){l->command_credits=p[3];if(l->pending&&u16(p+4)==l->pending&&p[2])fault(l);}return;}
  if(p[0]==0x3e&&n==21&&p[2]==1){
-  if(l->state!=RL_ADVERTISING)return;
+  if(l->state!=RL_ADVERTISING&&!(l->state==RL_CONFIGURING&&l->step==6&&l->pending==0x200a))return;
   if(p[3]||p[6]!=1||u16(p+4)>0x0eff){fault(l);return;}
   l->handle=u16(p+4);l->connected=1;l->state=RL_CONNECTED;l->inflight=0;l->credits=l->buffers;l->head=l->count=0;
   l->rx_used=l->rx_goal=l->wire_used=0;rg_disconnected(&l->gatt);return;

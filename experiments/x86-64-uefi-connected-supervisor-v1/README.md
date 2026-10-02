@@ -1,0 +1,137 @@
+# Connected owner supervisor v1 — emulator-tested candidate
+
+This successor exists to migrate once from the installed immutable passive-radio
+loop. Ordinary worlds AND combined Scene/radio native drivers can then be delivered
+through a connected file service without USB shuttling. It is **not physically
+installed or Bluetooth-interoperability verified**. No measured throughput claim.
+
+The baseline contains generic RUP2/RUP3 RGBA/RLE assets/VM, not baked-in cat art.
+It boots into an empty safe world. RAM worlds and downloaded drivers are volatile;
+power-off/reboot restores that baseline, not the last downloaded cat.
+
+## Boundary
+
+- Immutable supervisor: owner root, loader/verification, root-owned file staging
+  and receipts, framebuffer, synchronous timers, watchdog, cooperative dispatch.
+- One resident privileged driver: Scene/Anima renderer/VM **and** HCI/ACL/L2CAP,
+  ATT/GATT and UEFI USB adapter. No old interrupt reader is running alongside it.
+- ABI3 extends RSS2 Scene state with attach/poll/close/command/world callbacks;
+  every returned callback address must lie in the loaded PE's executable section.
+- RRT3 has a new Ed25519 domain, ABI3/state2, exact target/base/payload/world hashes
+  and in-boot native counter. RRT1/RRT2 cannot silently become this new profile.
+- World authority remains distinct: the public development Creator can authorize
+  data-only bounded worlds, **never owner-native drivers**.
+- Native updates are privileged reviewed code, not a sandbox. Neither signature
+  nor watchdog guarantees recovery from corrupt memory or disabled interrupts.
+
+Driver entry/init/health do not attach the radio. A trial imports the exact live
+RSS2 state on a separate surface, exports it identically, and runs one health tick.
+Failed trials retain the prior world/driver. Successful trials require old-driver
+radio cleanup before unload; attaching the replacement happens in the root loop,
+never during an ATT callback still on the old driver's stack. Attach failure
+reattaches the old driver. Uncertain cleanup/unload remains under watchdog instead
+of claiming success. No asynchronous driver-owned callbacks are registered.
+
+Cleanup confirms advertising-off, known-handle Disconnection Complete, then a
+controller-wide HCI Reset completion barrier for delayed events. Setup uses a
+fresh Reset too. These reset volatile controller state, not controller flash.
+See [Bluetooth HCI Reset semantics](https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host-controller-interface/host-controller-interface-functional-specification.html).
+QCA RAM-patch survival through the existing post-load reset was previously
+observed; this new repeated-close/reattach sequence remains Dell-test pending.
+
+## File transfer
+
+The connected experiment's UUID/MTU/offset protocol is retained. Kind1 accepts up
+to 65,535 signed world bytes; kind2 up to 262,144 owner-native release bytes.
+The root, not the unloadable driver, owns staging and the final 60-byte receipt.
+State4 is pending: SHA256 transport is complete but application is NOT confirmed.
+Only the root's deferred result changes it to applied/rejected. Pending state
+rejects abort/substitution/writes; retries cannot queue execution twice.
+
+Successful native replacement intentionally closes the connection. The Mac sender
+reconnects (three attempts, overall 300s), queries the SAME saved nonce/session,
+and requires exact SHA256/counter/application status. A normal ATT Write Response
+is never a final receipt. Lost final response can be queried without a second swap.
+Receipts are correlated, not authenticated Dell attestation. No pairing/encryption
+is implemented; untrusted peers can still cause denial of service.
+
+Native receipts use uint32 counters; C and Python reject larger values instead
+of truncating. Native/world counters are separate, in-boot only. Authorized failed
+health trials consume their native counter. Reboot loses anti-replay state.
+
+## Tests and remaining physical gate
+
+```sh
+python3 verify.py
+python3 ../ble-connected-file-transfer-v1/verify_link.py
+python3 ../ble-connected-file-transfer-v1/verify_usb.py
+python3 run_qemu.py
+python3 run_qemu.py --loop-test
+```
+
+Host checks cover C/Python signatures, profiles, owner/world-key separation,
+counter/PE gates, pending/deferred/idempotent root receipts and transport limits.
+Existing actual C renderer/GATT/link tests carry the detailed cat and reject bad
+worlds, including targeted 128-bit service discovery at default MTU. Mock UEFI
+USB tests cover identity, close acceptance/completion distinction,
+connection-during-close and unknown final Reset.
+
+The QEMU integration uses real UEFI LoadImage/StartImage/unload, real compiled
+drivers and a MOCK USB controller. File bytes traverse its bulk ACL/L2CAP/ATT path
+into the supervisor-owned receiver, not a radio shortcut. It observes two combined
+driver swaps in one boot, receipt-only retry, failed health/tamper retaining the
+exact previous live state, then a signed interrupts-enabled hung init triggering
+firmware watchdog return to the immutable baseline. A separate QEMU run exercises
+the **actual root loop**, timers and confirmed Esc cleanup. These are not QCA
+emulation, real Bluetooth measurements, or proof of Dell watchdog behavior.
+
+`preflight.py` runs these checks, compiles the real Mac sender **without starting
+Bluetooth**, repeatedly builds an owner-public provisioned image, then opens that
+exact image in Mac QEMU. Missing 0CF3:E009 must show:
+
+```text
+RABBIT CONNECTED SUPERVISOR v1.0
+TARGET NOT FOUND; NO DEVICE WRITE SENT
+NO RESET; NO HCI; NO SCAN; NO RADIO; POWER-OFF ROLLBACK
+```
+
+On Mac, in this directory:
+
+```sh
+python3 preflight.py --owner-public "$HOME/.rabbit-owner/runtime.pub"
+```
+
+After visually checking the lines, close QEMU and type `YES` when asked. Artifacts
+are create-only in ignored `runs/owner-gate-*`; the image/report paths and hashes
+are printed. The private key is not accessed. The command performs read-only
+`diskutil list external physical` and **never unmounts/erases/writes a medium**.
+Fresh `diskutil info` identity and review remain separate before installation;
+historical disk4/disk10 are stale. Do not reboot the working Dell for these checks.
+If a check fails, preserve its log and stop before media replacement.
+
+`--test-key-only --headless` is a non-installable Linux capture path. It produces
+a screenshot requiring visual review; it cannot claim an owner Mac observation.
+Fixture public keys are explicitly forbidden for production images.
+
+## After separately approved installation (not now)
+
+Compile/sign data-only worlds with the unchanged V3 compiler/save-world tools,
+then prepare a stable connected session:
+
+```sh
+python3 prepare_file.py /tmp/active-world.rup --kind world --counter 1 --output /tmp/cat-file-session.json
+python3 send_file.py /tmp/cat-file-session.json --send
+```
+
+Native releases require explicit owner-local `sign_runtime.py` with a reviewed
+payload SHA256, new target/base hashes, exact active signed world and native
+counter. Old RRT2 artifacts will not work. Wrap the result with `prepare_file.py
+--kind runtime`, then the same `send_file.py --send`. Private key never enters
+the packet. Do not send fixture keys/modules to physical devices. Unknown delivery
+means rerun the SAME saved session while Dell remains powered, not create a new
+nonce or reset it. Faster writes have no artificial 450ms UUID dwell, but actual
+Mac/Dell speed and interoperability must still be measured.
+
+Future ordinary graphics, VM and radio-driver changes fit this owner-updateable
+boundary. Owner-root/immutable loader/ABI or incompatible hardware changes may
+still require a bootstrap migration; this is not a last-USB-ever guarantee.

@@ -1,5 +1,20 @@
 # Connected file transport v1 — host-verified core, NOT installed
 
+The integrated successor now exists in
+`../x86-64-uefi-connected-supervisor-v1/`: one root loop, combined owner-updateable
+Scene/radio driver, root-owned pending/final file receipts and real UEFI QEMU swaps,
+watchdog fallback and Esc tests with MOCK USB. Mac compile and physical Bluetooth
+remain pending. Historical "no image" notes below describe this component-only
+experiment before that successor, not the current repository as a whole.
+
+Default `rf_init` remains world-only (65,535 bytes). Explicit `rf_init_owner` adds
+kind2 bounded native staging (262,144 bytes) and deferred state4, but grants no
+execution authority: the successor's separate RRT3 owner verifier decides that.
+`rg_init_shared` lets an unloadable GATT driver use root-owned staging/receipt.
+Cleanup now ends with confirmed controller Reset after advertising-off/known-handle
+disconnect, including connection-during-close tracking. Ten USB and 23 link/file
+tests cover these paths; the actual root loop uses a firmware timer command deadline.
+
 This experiment is the connected-channel replacement for six-byte advertising
 frames. It is NOT a working end-to-end Dell Bluetooth implementation yet. No image
 or owner-native release is generated and no physical/radio action is performed.

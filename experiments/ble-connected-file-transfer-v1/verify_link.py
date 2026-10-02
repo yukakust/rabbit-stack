@@ -63,12 +63,31 @@ class LinkTests(Base):
         self.assertEqual(self.request(b'\x02\xf7\x00',split=4),b'\x03\xf7\x00')
         self.assertEqual(self.request(b'\x0a\x07\x00')[0],11)
 
+    def test_connection_before_advertising_complete_is_not_lost(self):
+        for opcode in [0x0c03,0x0c01,0x2001,0x2002,0x2006,0x2008]:
+            self.assertEqual(struct.unpack_from('<H',self.take()[1])[0],opcode)
+            returned=b'\0'+(struct.pack('<HB',251,4) if opcode==0x2002 else b'')
+            self.event(b'\x0e'+bytes([3+len(returned)])+b'\x01'+struct.pack('<H',opcode)+returned)
+        self.assertEqual(self.take()[1],b'\x0a\x20\x01\x01')
+        self.connected()  # Asynchronous connection arrives before enable CC.
+        self.event(b'\x0e\x04\x01\x0a\x20\0')
+        self.assertEqual(self.lib.host_link_state(),2)
+        self.assertEqual(self.request(b'\x02\xf7\0'),b'\x03\xf7\0')
+
     def test_link_credit_exhaustion_and_replenishment(self):
         self.configured();self.connected()
         req=struct.pack('<HH',3,4)+b'\x02\xf7\x00'
         self.acl(struct.pack('<HH',0x2040,len(req))+req)
         self.assertTrue(self.take()[1]);self.assertEqual(self.take()[1],b'')
         self.completed(2);self.assertEqual(self.lib.host_link_state(),3)
+
+    def test_targeted_service_discovery_at_default_mtu(self):
+        self.configured();self.connected()
+        value=bytes.fromhex('01000000000000804946544942424152')
+        request=b'\x06\x01\x00\xff\xff\x00\x28'+value
+        self.assertEqual(self.request(request),b'\x07\x01\x00\x07\x00')
+        self.assertEqual(self.request(request[:-1]+b'\0'),b'\x01\x06\x01\x00\x0a')
+        self.assertEqual(self.request(request[:-1]),b'\x01\x06\x01\x00\x04')
 
     def test_link_config_timeout_failure_and_stop(self):
         self.take();self.lib.host_elapsed(10000);self.assertEqual(self.lib.host_link_state(),3)

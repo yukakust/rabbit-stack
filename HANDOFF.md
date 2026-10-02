@@ -1312,3 +1312,53 @@ Four regression cases added; eight mock-UEFI tests plus 21 link/file/GATT tests 
 MinGW freestanding USB object compiles with -Wall -Wextra -Werror. No real USB/radio,
 owner keys, image installation or current Dell world touched. Do not give a dd
 command using historical disk4/disk10 or install an old fixed-radio image instead.
+
+## Connected combined-driver supervisor candidate — 2026-10-02
+
+Owner requested finishing the unified image before the approved one bootstrap
+migration. `experiments/x86-64-uefi-connected-supervisor-v1/` now builds an actual
+deterministic EFI/FAT candidate, not merely USB object files. The QCA RAM prefix
+chains directly to a new C root loop, NOT the old assembly interrupt reader.
+ABI3 owner-updateable driver includes Scene/VM AND HCI/ACL/ATT/USB code. The root
+owns file staging/final receipt, dispatch, watchdog/timers, signature/loader and
+framebuffer. Baseline world is EMPTY; old/new downloaded worlds/drivers remain
+RAM-only. No last-ever-USB promise for immutable root/ABI/hardware changes.
+
+RRT3 is a distinct ABI3/state2/domain-separated owner envelope bound to target,
+base, payload and active signed world. Public world Creator cannot authorize
+native modules. Trial imports/exports exact RSS2 state on copied pixels, health
+ticks without radio attach, retains old driver on failure. Native commit is
+deferred until the ATT/poll callback returns, so the old module is not unloaded
+with code on its stack. Old radio close must be confirmed before unload; candidate
+attach failure reattaches old. Unknown cleanup/unload fails under watchdog.
+
+Root-owned file kind1 world (65,535), kind2 native (262,144), state4 pending.
+Pending forbids abort/substitution/data and repeats no apply; explicit root finish
+produces final receipt. Native/world counters remain separate, uint32-receipt
+bound, in-boot only. Authorized failed trials consume native counter. Mac source
+adds bounded reconnect/query of the SAME session after deliberate swap disconnect;
+no actual Mac SDK compilation yet. `send_file.py` compiles only by default, explicit
+--send needed to start Bluetooth; private signing remains owner-local/create-only.
+
+Nine owner/deferred/bundle host tests, 23 actual C world/GATT/HCI tests and ten mock
+UEFI USB tests pass. Connection-before-enable-complete is preserved. Shutdown
+tracks connection-during-close, requires actual disconnection and a final confirmed
+HCI Reset barrier. New repeated Reset/reattach behavior still requires Dell testing.
+
+QEMU with actual compiled resident UEFI drivers and MOCK USB carried signed world
+and owner files through ACL/L2CAP/ATT into root staging, performed TWO combined
+driver swaps in one boot, receipt-only retry, exact failed-health/tamper state
+retention, then firmware watchdog recovery from reviewed interrupts-enabled hung
+init to baseline. Separate actual root loop test exercised timers and Esc with
+confirmed close/unload. These are emulator/mock-USB tests, not physical Bluetooth,
+speed, arbitrary-native isolation or Dell watchdog proof. Linux exact no-QCA
+bootstrap screenshot was visually inspected with title and all fail-closed lines.
+
+Next on Mac: git pull; run `python3 preflight.py --owner-public
+"$HOME/.rabbit-owner/runtime.pub"` in the new experiment. It runs host/QEMU gates,
+compile-only Mac sender, repeated owner-public build, exact interactive Mac QEMU
+observation, and read-only external disk listing. No private key read, radio send,
+unmount, erase or device write. After checking expected missing-device lines, close
+QEMU and answer YES. Then inspect its image/report plus FRESH external-medium info
+before the separately approved write. Installed Dell/walking cat are untouched;
+do not reboot it or move USB during the Mac-only preflight.

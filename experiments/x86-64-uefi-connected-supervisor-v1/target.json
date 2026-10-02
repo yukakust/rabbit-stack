@@ -1,0 +1,17 @@
+{
+ "schema_version": 1,
+ "target": "dell-optiplex-3060-connected-owner-supervisor",
+ "isa": "x86_64",
+ "controller": {"vid":"0CF3","pid":"E009","interface":0,"rom":"00000302"},
+ "supervisor_abi": 3,
+ "state_abi": "RSS2-canonical-scene-snapshot",
+ "runtime_envelope": "RRT3-owner-world-bound-combined-scene-radio",
+ "transport": "connected-ATT-acknowledged-file-offsets",
+ "native_max_bytes": 262144,
+ "world_max_bytes": 65535,
+ "presentation": {"width":480,"height":270,"format":1},
+ "owner_key_required": true,
+ "persistent_writes": false,
+ "native_isolation": false,
+ "physical_execution_verified": false
+}

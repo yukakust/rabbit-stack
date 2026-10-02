@@ -64,13 +64,24 @@ int rl_usb_poll(RlUsb*p,RlLink*l){
  }
  return l->state==RL_FAULT;
 }
-static int completed(RlUsb*p,uint16_t opcode,uint16_t handle,int disconnect){
- for(unsigned tries=0;tries<16;tries++){
+static int completed(RlUsb*p,RlLink*l,uint16_t opcode,uint16_t handle,int disconnect){
+ for(unsigned tries=0;tries<128;tries++){
   uint8_t event[260];size_t n=sizeof(event);uint32_t result=0;
   Status status=((Transfer)fn(p->io,24))(p->io,p->events,event,&n,1,&result);
   if(status==EFI_ERROR(18)||status==EFI_ERROR(6))continue;
   if(status||result||n<2||n>sizeof(event)||n!=event[1]+2u)return 1;
-  if(disconnect&&event[0]==5&&n==6&&read16(event+3)==handle)return event[2]!=0;
+  /* A connection can finish while advertising-off is pending. Preserve that
+   * handle so it is disconnected too; never silently discard the race. */
+  if(event[0]==0x3e&&n==21&&event[2]==1&&!event[3]){
+   uint16_t incoming=read16(event+4);
+   if(incoming>0x0eff||event[6]!=1||(l->connected&&incoming!=l->handle))return 1;
+   l->connected=1;l->handle=incoming;
+  }
+  if(event[0]==5&&n==6&&read16(event+3)==l->handle){
+   if(event[2])return 1;
+   l->connected=0;
+   if(disconnect&&read16(event+3)==handle)return 0;
+  }
   /* Acceptance is not completion. In particular, a successful Command Status
    * or unexpected Command Complete for Disconnect does not prove that the
    * connection is gone. Never unload the old driver on that evidence. All of
@@ -86,12 +97,17 @@ static int completed(RlUsb*p,uint16_t opcode,uint16_t handle,int disconnect){
 }
 int rl_usb_close(RlUsb*p,RlLink*l){
  if(!p||!p->bound||!l)return 1;
- if(l->pending&&completed(p,l->pending,0,0))return 1;
+ if(l->pending&&completed(p,l,l->pending,0,0))return 1;
  uint8_t off[4]={0x0a,0x20,1,0};
- if(command(p,off,4)||completed(p,0x200a,0,0))return 1;
+ if(command(p,off,4)||completed(p,l,0x200a,0,0))return 1;
  if(l->connected){
   uint8_t disconnect[6]={6,4,3,(uint8_t)l->handle,(uint8_t)(l->handle>>8),0x13};
-  if(command(p,disconnect,6)||completed(p,0x0406,l->handle,1))return 1;
+  if(command(p,disconnect,6)||completed(p,l,0x0406,l->handle,1))return 1;
  }
+ /* A confirmed final Reset provides a controller-wide quiescence barrier,
+  * including any delayed connection/ACL event not yet observed by the host.
+  * The QCA setup already uses standard post-RAM Reset; no flash write. */
+ uint8_t reset[3]={3,12,0};
+ if(command(p,reset,3)||completed(p,l,0x0c03,0,0))return 1;
  rl_stop(l);p->bound=0;return 0;
 }
