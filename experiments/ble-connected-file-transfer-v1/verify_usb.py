@@ -13,7 +13,7 @@ SOURCE=r'''
 #include "usb_port.h"
 static SystemTable st;static void*boot[48],*io[13],*handles[2];
 static RlUsb port;static RlLink link;
-static int wrong,duplicate,bad_endpoint,timeout,free_count,writes,unrelated;
+static int wrong,duplicate,bad_endpoint,timeout,free_count,writes,unrelated,accept_only,wrong_handle,status_only,disconnect_complete_only;
 static uint16_t last_command;
 static Status EFIAPI descriptor(void*this,void*out){(void)this;uint8_t*p=out;memset(p,0,18);p[0]=18;p[1]=1;p[8]=0xf3;p[9]=0x0c;p[10]=wrong?0:9;p[11]=0xe0;return 0;}
 static Status EFIAPI interface(void*this,void*out){(void)this;uint8_t*p=out;memset(p,0,9);p[0]=9;p[1]=4;p[4]=3;p[5]=0xe0;p[6]=p[7]=1;return 0;}
@@ -30,13 +30,17 @@ static Status EFIAPI interrupt(void*this,uint8_t ep,void*out,size_t*n,size_t ms,
  if(timeout)return EFI_ERROR(18);
  uint8_t*p=out;
  if(unrelated){p[0]=0x13;p[1]=1;p[2]=0;*n=3;return 0;}
- if(last_command==0x0406){uint8_t e[6]={5,4,0,0x40,0,0x13};memcpy(p,e,6);*n=6;return 0;}
+ if(status_only||(accept_only&&last_command==0x0406)){
+  uint8_t e[6]={0x0f,4,0,1,(uint8_t)last_command,(uint8_t)(last_command>>8)};memcpy(p,e,6);*n=6;return 0;
+ }
+ if(last_command==0x0406&&!accept_only&&!disconnect_complete_only){uint8_t e[6]={5,4,0,wrong_handle?0x41:0x40,0,0x13};memcpy(p,e,6);*n=6;return 0;}
  uint8_t e[6]={0x0e,4,1,(uint8_t)last_command,(uint8_t)(last_command>>8),0};memcpy(p,e,6);*n=6;return 0;
 }
 static Status EFIAPI bulk(void*this,uint8_t ep,void*data,size_t*n,size_t ms,uint32_t*result){(void)this;(void)ep;(void)data;(void)n;(void)ms;*result=0;return EFI_ERROR(18);}
 void host_setup(int flags){
  memset(&st,0,sizeof(st));memset(boot,0,sizeof(boot));memset(io,0,sizeof(io));memset(&link,0,sizeof(link));
- wrong=flags&1;duplicate=flags&2;bad_endpoint=flags&4;timeout=flags&8;unrelated=flags&16;writes=free_count=0;
+ wrong=flags&1;duplicate=flags&2;bad_endpoint=flags&4;timeout=flags&8;unrelated=flags&16;
+ accept_only=flags&32;wrong_handle=flags&64;status_only=flags&128;disconnect_complete_only=flags&256;writes=free_count=0;
  boot[312/8]=(void*)locate;boot[152/8]=(void*)handle;boot[72/8]=(void*)release;st.boot=boot;
  io[0]=(void*)control;io[1]=(void*)bulk;io[3]=(void*)interrupt;io[6]=(void*)descriptor;io[8]=(void*)interface;io[9]=(void*)endpoint;
  handles[0]=io;handles[1]=io;link.state=RL_CONNECTED;link.connected=1;link.handle=0x40;
@@ -79,6 +83,28 @@ class UsbTests(unittest.TestCase):
         for flags in (8,16):
             self.lib.host_setup(flags);self.lib.host_bind();self.assertEqual(self.lib.host_close(),1)
             self.assertEqual(self.lib.host_bound(),1)
+
+    def test_command_acceptance_does_not_prove_disconnection(self):
+        self.lib.host_setup(32);self.lib.host_bind()
+        self.assertEqual(self.lib.host_close(),1)
+        self.assertEqual(self.lib.host_writes(),2)
+        self.assertEqual(self.lib.host_bound(),1)
+
+    def test_wrong_connection_handle_does_not_prove_disconnection(self):
+        self.lib.host_setup(64);self.lib.host_bind()
+        self.assertEqual(self.lib.host_close(),1)
+        self.assertEqual(self.lib.host_bound(),1)
+
+    def test_disconnect_command_complete_does_not_prove_disconnection(self):
+        self.lib.host_setup(256);self.lib.host_bind()
+        self.assertEqual(self.lib.host_close(),1)
+        self.assertEqual(self.lib.host_bound(),1)
+
+    def test_adv_off_status_without_complete_does_not_prove_shutdown(self):
+        self.lib.host_setup(128);self.lib.host_bind()
+        self.assertEqual(self.lib.host_close(),1)
+        self.assertEqual(self.lib.host_writes(),1)
+        self.assertEqual(self.lib.host_bound(),1)
 
 
 if __name__=='__main__':unittest.main(verbosity=2)

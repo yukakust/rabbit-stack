@@ -38,14 +38,14 @@ traffic into the actual C signature/health/renderer. No 450ms dwell is used.
 endpoint discovery, finite control/interrupt/bulk transfers, bounded output batches,
 and shutdown requiring matching advertising-off/disconnection events. Failed
 cleanup retains an unknown/bound state, never claims OFF. No asynchronous USB
-callbacks are installed. Its MinGW object compiles; four mock-UEFI tests check
+callbacks are installed. Its MinGW object compiles; eight mock-UEFI tests check
 identity rejection, endpoint/ambiguity failures, handle release and cleanup proof.
 The adapter must be called by the NEW sole-owner supervisor, with a monotonic clock
 feeding `rl_elapsed`. It MUST NOT be launched alongside the old loop.
 
 ```sh
 python3 verify_link.py  # 21 cases, including the 12 prior file/GATT tests
-python3 verify_usb.py   # 4 mock-UEFI cases, no real USB
+python3 verify_usb.py   # 8 mock-UEFI cases, no real USB
 ```
 
 Owner approved one future bootstrap installation, NOT a write to an unidentified
@@ -61,6 +61,27 @@ current update boundary. Release gates required before that migration:
 5. Mac compilation, Dell interoperability and measured throughput.
 
 No bootstrap/native image is built by these tests, no measured speed is claimed.
+
+### Pre-installation review, 2026-10-02
+
+Result: **NOT READY FOR INSTALLATION**. Owner approved checking the new supervisor
+and one bootstrap rewrite, but no integrated new supervisor image exists yet.
+The 21 link/file/GATT tests and eight mock-UEFI tests pass; the USB adapter also
+cross-compiles with MinGW warnings treated as errors. These are component checks,
+not an integrated supervisor/QEMU recovery test or physical Bluetooth evidence.
+
+Review found and fixed an unsafe cleanup criterion: successful Command Status
+means accepted, not finished; even an unexpected successful Command Complete for
+Disconnect cannot substitute for Disconnection Complete for the exact handle.
+Advertising-off likewise requires Command Complete. Four added negative tests
+cover acceptance-only replies, wrong handles, unexpected disconnect completion,
+and status-only advertising-off. Unknown outcomes retain the bound state so a
+future supervisor cannot infer permission to unload a live driver.
+
+Do not flash the old supervisor or graphics-only image as a substitute. Migration
+gates 1–4 above remain open. No owner secret, device, radio or installed world was
+changed by this review. A fresh Mac medium identity is required when an actual
+reviewed candidate becomes available; historical disk4/disk10 are not authority.
 
 ## Installed supervisor integration boundary
 

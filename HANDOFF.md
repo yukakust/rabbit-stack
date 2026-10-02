@@ -1295,3 +1295,20 @@ combined radio/Scene driver updates and unload/rollback/watchdog/Esc gates must 
 completed together. Do not ship a fast but fixed radio bootstrap recreating the
 current trap. Mac compilation and physical interop remain pending. See connected
 README migration gates. No Mac action or flash movement required yet.
+
+## Connected supervisor pre-installation review — 2026-10-02
+
+Owner requested checking the new supervisor and permits one bootstrap rewrite.
+Review result is NOT READY FOR INSTALLATION: there is no integrated new supervisor
+EFI/image yet. Do not imply the existing component tests constitute that artifact.
+Sole-reader dispatcher plus owner-authenticated combined radio/Scene driver
+updates, unload/rollback/watchdog/Esc and two driver swaps/recovery QEMU gates
+remain outstanding. No fresh Mac disk identity was supplied this turn.
+
+Fixed USB shutdown false-positive: Command Status acceptance does not prove
+advertising-off; neither Status nor unexpected Command Complete for Disconnect
+proves Disconnection Complete for the exact handle. Hardware Error fails closed.
+Four regression cases added; eight mock-UEFI tests plus 21 link/file/GATT tests pass.
+MinGW freestanding USB object compiles with -Wall -Wextra -Werror. No real USB/radio,
+owner keys, image installation or current Dell world touched. Do not give a dd
+command using historical disk4/disk10 or install an old fixed-radio image instead.

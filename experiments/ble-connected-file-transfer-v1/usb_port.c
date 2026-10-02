@@ -71,8 +71,16 @@ static int completed(RlUsb*p,uint16_t opcode,uint16_t handle,int disconnect){
   if(status==EFI_ERROR(18)||status==EFI_ERROR(6))continue;
   if(status||result||n<2||n>sizeof(event)||n!=event[1]+2u)return 1;
   if(disconnect&&event[0]==5&&n==6&&read16(event+3)==handle)return event[2]!=0;
-  if(event[0]==0x0e&&n>=6&&read16(event+3)==opcode)return event[5]!=0;
-  if(event[0]==0x0f&&n==6&&read16(event+4)==opcode){if(event[2])return 1;if(!disconnect)return 0;}
+  /* Acceptance is not completion. In particular, a successful Command Status
+   * or unexpected Command Complete for Disconnect does not prove that the
+   * connection is gone. Never unload the old driver on that evidence. All of
+   * this adapter's setup/off commands require Command Complete. */
+  if(event[0]==0x0e&&n>=6&&read16(event+3)==opcode){
+   if(event[5])return 1;
+   if(!disconnect)return 0;
+  }
+  if(event[0]==0x0f&&n==6&&read16(event+4)==opcode&&event[2])return 1;
+  if(event[0]==0x10)return 1; /* Controller hardware error: outcome unknown. */
  }
  return 1; /* Unknown shutdown outcome, NEVER claim radio OFF. */
 }
