@@ -82,8 +82,9 @@ def main():
                 if marker not in text:raise RuntimeError('missing real ConOut diagnostic: '+marker)
             monitor.execute('screendump',{'filename':str(out/'diagnostics.ppm')})
             text=observer.wait_for(log,'ACTUAL ROOT LOOP FAULT TEST',process,count=2)
+            observed_log=log.read_bytes()  # One immutable snapshot while QEMU is still writing.
             result={'status':'OBSERVED-QEMU-ROOT-LOOP-USB-FAILURE-DIAGNOSTICS-WATCHDOG',
-              'fixture':bindings,'candidate_bindings':report,'log_sha256':digest(log.read_bytes()).hex(),
+              'fixture':bindings,'candidate_bindings':report,'log_sha256':digest(observed_log).hex(),
               'observer_sha256':digest(Path(__file__).read_bytes()).hex(),
               'harness_sha256':digest((ROOT/'qemu_test.c').read_bytes()).hex(),
               'screenshot_sha256':digest((out/'diagnostics.ppm').read_bytes()).hex(),
@@ -95,14 +96,15 @@ def main():
             if a.archive:
                 (ROOT/'evidence').mkdir(exist_ok=True)
                 (ROOT/'evidence/qemu-fault-observed.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
-                (ROOT/'evidence/qemu-fault-observed.log').write_bytes(log.read_bytes())
+                (ROOT/'evidence/qemu-fault-observed.log').write_bytes(observed_log)
             print(text);print('SCREENSHOT: '+str(out/'diagnostics.ppm'));print('OBSERVED: '+str(out/'report.json'));return
         if a.loop_test:
             observer.wait_for(log,'ACTUAL ROOT LOOP STARTING',process)
             time.sleep(2);monitor.key('esc')
             text=observer.wait_for(log,'ACTUAL ROOT LOOP ESC CLEANUP PASS',process)
+            observed_log=log.read_bytes()
             result={'status':'OBSERVED-QEMU-ROOT-LOOP-ESC-CLEANUP','fixture':bindings,
-              'candidate_bindings':report,'log_sha256':digest(log.read_bytes()).hex(),
+              'candidate_bindings':report,'log_sha256':digest(observed_log).hex(),
               'observer_sha256':digest(Path(__file__).read_bytes()).hex(),
               'harness_sha256':digest((ROOT/'qemu_test.c').read_bytes()).hex(),
               'physical_verified':False,'bluetooth_verified':False,
@@ -112,7 +114,7 @@ def main():
             if a.archive:
                 (ROOT/'evidence').mkdir(exist_ok=True)
                 (ROOT/'evidence/qemu-loop-observed.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
-                (ROOT/'evidence/qemu-loop-observed.log').write_bytes(log.read_bytes())
+                (ROOT/'evidence/qemu-loop-observed.log').write_bytes(observed_log)
             print(text);print('OBSERVED: '+str(out/'report.json'));return
         observer.wait_for(log,'CONNECTED BOOTSTRAP FALLBACK ACTIVE',process)
         monitor.key('t');text=observer.wait_for(log,'CONNECTED NATIVE INTEGRATION PASS',process,timeout=45)
@@ -124,6 +126,7 @@ def main():
         tail=text.split('CONNECTED HUNG INIT ENTERED',1)[1]
         if 'DRIVER A COMMITTED' in tail:raise RuntimeError('volatile driver was relaunched after watchdog')
         monitor.execute('screendump',{'filename':str(out/'fallback.ppm')})
+        observed_log=log.read_bytes()
         observation={'schema_version':1,'status':'OBSERVED-QEMU-CONNECTED-DRIVER-SWAPS-WATCHDOG',
           'fixture':bindings,'candidate_bindings':report,'physical_verified':False,'bluetooth_verified':False,
           'controller':'mock USB descriptors/control/events; no QCA hardware emulation',
@@ -131,7 +134,7 @@ def main():
           'recovery_scope':'reviewed interrupts-enabled hang only; no native isolation guarantee',
           'observer_sha256':digest(Path(__file__).read_bytes()).hex(),
           'harness_sha256':digest((ROOT/'qemu_test.c').read_bytes()).hex(),
-          'log_sha256':digest(log.read_bytes()).hex(),
+          'log_sha256':digest(observed_log).hex(),
           'qemu_version':subprocess.check_output([qemu,'--version'],text=True).splitlines()[0],
           'ovmf_code_sha256':digest(a.ovmf_code.read_bytes()).hex(),
           'ovmf_initial_vars_sha256':digest(a.ovmf_vars.read_bytes()).hex()}
@@ -139,7 +142,7 @@ def main():
         if a.archive:
             (ROOT/'evidence').mkdir(exist_ok=True)
             (ROOT/'evidence/qemu-observed.json').write_text(json.dumps(observation,indent=2,sort_keys=True)+'\n')
-            (ROOT/'evidence/qemu-observed.log').write_bytes(log.read_bytes())
+            (ROOT/'evidence/qemu-observed.log').write_bytes(observed_log)
         print(text);print('OBSERVED: '+str(out/'report.json'))
     finally:
         if monitor:

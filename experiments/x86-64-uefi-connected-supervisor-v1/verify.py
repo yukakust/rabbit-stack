@@ -15,6 +15,14 @@ class Policy(C.Structure):
     _fields_=[('target',C.c_ubyte*32),('owner',C.c_ubyte*32),('base',C.c_ubyte*32),('state',C.c_ubyte*32),('counter',C.c_uint64)]
 
 class Tests(unittest.TestCase):
+    def test_qemu_log_hash_and_archive_use_one_immutable_snapshot(self):
+        source=(ROOT/'run_qemu.py').read_text()
+        self.assertEqual(source.count('observed_log=log.read_bytes()'),3)
+        self.assertEqual(source.count('digest(observed_log).hex()'),3)
+        self.assertEqual(source.count('.write_bytes(observed_log)'),3)
+        self.assertNotIn('digest(log.read_bytes())',source)
+        self.assertNotIn('.write_bytes(log.read_bytes())',source)
+
     def test_mac_digest_property_does_not_override_NSObject_hash(self):
         source=(LINK/'mac_file_sender.m').read_text()
         self.assertIn('NSData *stream,*nonce,*expectedDigest;',source)

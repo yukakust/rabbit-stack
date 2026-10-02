@@ -1519,7 +1519,7 @@ control submission. Driver prints these once per attach/submission, with20ms sho
 as hex00000014. No second reader or asynchronous callback; same unknown-cleanup
 and watchdog gates. Console traces may affect timing; no throughput claim.
 
-54 host checks pass (10 owner/deferred,26 actual link/world/GATT,18 mockUSB).
+55 host checks pass (11 owner/deferred/observer,26 actual link/world/GATT,18 mockUSB).
 Independent mask bits, observed123-byte/16-buffer profile, synthetic full21-byte
 handle1 connection, timeout ambiguity, descriptor provenance and actual submitted
 mask observations are covered. Mock timing threshold2ms is deliberately synthetic,
@@ -1540,3 +1540,10 @@ reuse owner-gate-jf9qj9iy or an old disk id for this new candidate. After instal
 run SAME saved cat session once, record raw events, exact final receipt/appearance
 and time. If only disconnect remains,20ms is not a sufficient fix; do not repeat
 blind sends or report completion. Current physical fast-channel outcome is PENDING.
+
+Evidence cross-check exposed a QEMU observer archive race: fault-loop log continues
+growing after watchdog reboot, so separate reads for hashing and copying could
+disagree. All three observers now hash/archive one immutable byte snapshot; source
+regression added and QEMU gates rerun. This fixes evidence recording, not Bluetooth.
+The captured no-device artifact is unchanged by observer/test-only edits; its source
+bindings are updated only after confirming byte-identical candidate hashes.
