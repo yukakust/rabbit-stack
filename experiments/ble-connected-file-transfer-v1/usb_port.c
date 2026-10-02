@@ -28,7 +28,7 @@ int rl_usb_bind(RlUsb*p,SystemTable*st){
    uint8_t endpoint[7];if(((Endpoint)fn(io,72))(io,j,endpoint)||endpoint[0]!=7||endpoint[1]!=5){bad=1;break;}
    uint8_t address=endpoint[2],type=endpoint[3]&3;uint16_t packet=read16(endpoint+4)&0x7ff;
    if(!(address&15)||!packet||packet>1024){bad=1;break;}
-   if(type==3&&(address&0x80)){if(candidate.events){bad=1;break;}candidate.events=address;}
+   if(type==3&&(address&0x80)){if(candidate.events){bad=1;break;}candidate.events=address;candidate.event_packet=packet;candidate.event_interval=endpoint[6];}
    if(type==2&&(address&0x80)){if(candidate.in){bad=1;break;}candidate.in=address;}
    if(type==2&&!(address&0x80)){if(candidate.out){bad=1;break;}candidate.out=address;}
   }
@@ -42,7 +42,15 @@ int rl_usb_bind(RlUsb*p,SystemTable*st){
 static int command(RlUsb*p,const uint8_t*data,size_t n){
  if(n<3||n>258||data[2]+3u!=n)return 1;
  uint8_t request[8]={0x20,0,0,0,0,0,(uint8_t)n,(uint8_t)(n>>8)};uint32_t result=0;
- return ((Control)fn(p->io,0))(p->io,request,1,200,(void*)data,n,&result)!=0||result!=0;
+ if(((Control)fn(p->io,0))(p->io,request,1,200,(void*)data,n,&result)||result)return 1;
+ /* Record exact bytes accepted by the existing control-transfer call. A USB
+  * success is not a claim that a controller event or connection occurred. */
+ if(n==11&&(read16(data)==0x0c01||read16(data)==0x2001)){
+  uint8_t*mask=read16(data)==0x0c01?p->event_mask:p->le_mask;
+  for(unsigned i=0;i<8;i++)mask[i]=data[3+i];
+  p->mask_seen|=read16(data)==0x0c01?1:2;
+ }
+ return 0;
 }
 static void increment(uint32_t*p){if(*p!=0xffffffffu)(*p)++;}
 static void observe_event(RlUsb*p,Status status,uint32_t result,size_t n,const uint8_t*buffer,size_t capacity){
@@ -67,7 +75,7 @@ static void observe_event(RlUsb*p,Status status,uint32_t result,size_t n,const u
 int rl_usb_poll(RlUsb*p,RlLink*l){
  if(!p||!p->bound||!l)return RL_USB_ARGUMENT;
  uint8_t buffer[260],kind=0;size_t n=sizeof(buffer);uint32_t result=0;
- Status status=((Transfer)fn(p->io,24))(p->io,p->events,buffer,&n,1,&result);
+ Status status=((Transfer)fn(p->io,24))(p->io,p->events,buffer,&n,RL_EVENT_TIMEOUT_MS,&result);
  observe_event(p,status,result,n,buffer,sizeof(buffer));
  if(!status&&!result){if(n>sizeof(buffer))return RL_USB_EVENT_SIZE;rl_event(l,buffer,n);}
  else if(status!=EFI_ERROR(18)&&status!=EFI_ERROR(6))return RL_USB_EVENT_TRANSFER; /* timeout/not ready */
@@ -88,7 +96,7 @@ int rl_usb_poll(RlUsb*p,RlLink*l){
 static int completed(RlUsb*p,RlLink*l,uint16_t opcode,uint16_t handle,int disconnect){
  for(unsigned tries=0;tries<128;tries++){
   uint8_t event[260];size_t n=sizeof(event);uint32_t result=0;
-  Status status=((Transfer)fn(p->io,24))(p->io,p->events,event,&n,1,&result);
+  Status status=((Transfer)fn(p->io,24))(p->io,p->events,event,&n,RL_EVENT_TIMEOUT_MS,&result);
   if(status==EFI_ERROR(18)||status==EFI_ERROR(6))continue;
   if(status||result||n<2||n>sizeof(event)||n!=event[1]+2u)return 1;
   /* A connection can finish while advertising-off is pending. Preserve that

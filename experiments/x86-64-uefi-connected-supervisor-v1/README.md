@@ -193,3 +193,41 @@ Mac/Dell speed and interoperability must still be measured.
 Future ordinary graphics, VM and radio-driver changes fit this owner-updateable
 boundary. Owner-root/immutable loader/ABI or incompatible hardware changes may
 still require a bootstrap migration; this is not a last-USB-ever guarantee.
+
+## Missing connection event: controlled 20ms candidate
+
+The owner-installed 1ms baseline received seven setup command completions, then
+only `05 04 00 01 00 13` (disconnect, remote termination). The Mac disconnected
+during service discovery at offset0. Neither a successful file nor a physical
+cause is established. Host tests verify the general/LE mask bit positions and
+acceptance of a complete21-byte connection event with the observed handle/buffers.
+
+This candidate changes only synchronous **interrupt-IN** waiting from1ms to20ms
+(including bounded close searches). Bulk-IN waiting, masks, GATT protocol, file
+signatures and world contents are unchanged. It records descriptor max-packet and
+raw bInterval at attach, and prints the exact two masks after successful USB control
+submission. Raw bInterval is NOT labelled milliseconds: its units depend on speed.
+All reads remain synchronous, exclusively owned, finite; no unloadable callback.
+Each close search retains its128-attempt bound (at most2.56s requested USB waits
+per search, excluding firmware/command overhead); watchdog/unknown-outcome gates
+remain required. Idle polls may be slower; no throughput/animation benchmark claim.
+
+Synthetic mockUSB/QEMU timing fixture requires at least2ms for a connection event.
+It tests the policy, **not** Dell's actual timing or a recovered physical packet.
+An unchanged-length timeout still cannot safely be treated as received bytes.
+
+After fresh owner preflight and separately approved exact-image installation:
+
+1. Photograph `USB EVENT MAX_PACKET`, `BINTERVAL RAW`, `TIMEOUT MS=00000014`
+   (hex14 is decimal20), submitted masks and `READY TO CONNECT`.
+2. Send the SAME saved `/tmp/connected-cat-session-1.json` once. Do not rebuild it
+   or increase its counter merely because transport failed.
+3. A new `HCI RAW: 3E 13 01 ...` plus `BLE CONNECTED` supports progress at the
+   event boundary; it does not yet prove file application. Require exact final
+   receipt AND a visibly walking cat for that milestone; record elapsed time.
+4. If only disconnect arrives again, reject timeout increase as a sufficient
+   fix. Preserve Mac log/Dell photo; inspect controller suppression/USB behavior
+   next, rather than repeat blind sends or change GATT/graphics.
+
+Physical connected delivery remains PENDING. No media-write authorization is
+inferred from building/testing this candidate; never reuse an old gate or disk id.

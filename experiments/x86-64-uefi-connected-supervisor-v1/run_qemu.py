@@ -73,7 +73,12 @@ def main():
                            'CONNECTED FAILURE: ','RADIO POLL; SEE BLE ERROR CODE',
                            'HCI RAW: 3E 13 01 00 40 00 01',
                            'HCI INPUT IGNORED: EVENT LENGTH MISMATCH',
-                           'HCI LE META: SUBEVENT NOT HANDLED BY THIS DRIVER'):
+                           'HCI LE META: SUBEVENT NOT HANDLED BY THIS DRIVER',
+                           'USB EVENT MAX_PACKET=00000010',
+                           'USB EVENT BINTERVAL RAW=00000001',
+                           'USB EVENT TIMEOUT MS=00000014',
+                           'HCI GENERAL MASK SUBMITTED: 10 E0 04 00 00 00 00 20',
+                           'HCI LE MASK SUBMITTED: 1F 00 00 00 00 00 00 00'):
                 if marker not in text:raise RuntimeError('missing real ConOut diagnostic: '+marker)
             monitor.execute('screendump',{'filename':str(out/'diagnostics.ppm')})
             text=observer.wait_for(log,'ACTUAL ROOT LOOP FAULT TEST',process,count=2)

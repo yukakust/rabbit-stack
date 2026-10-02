@@ -16,10 +16,11 @@ static RlUsb port;static RlLink link;
 static int wrong,duplicate,bad_endpoint,timeout,free_count,writes,unrelated,accept_only,wrong_handle,status_only,disconnect_complete_only,connect_race,reset_timeout;
 static uint16_t last_command;
 static unsigned poll_flags;
+static size_t interrupt_budget;
 static uint8_t injected[260];static size_t injected_length;static Status injected_status;static uint32_t injected_result;
 static Status EFIAPI descriptor(void*this,void*out){(void)this;uint8_t*p=out;memset(p,0,18);p[0]=18;p[1]=1;p[8]=0xf3;p[9]=0x0c;p[10]=wrong?0:9;p[11]=0xe0;return 0;}
 static Status EFIAPI interface(void*this,void*out){(void)this;uint8_t*p=out;memset(p,0,9);p[0]=9;p[1]=4;p[4]=3;p[5]=0xe0;p[6]=p[7]=1;return 0;}
-static Status EFIAPI endpoint(void*this,uint8_t index,void*out){(void)this;uint8_t*p=out;memset(p,0,7);p[0]=7;p[1]=5;p[2]=index==0?0x81:index==1?0x82:2;p[3]=index==0?3:2;p[4]=64;if(bad_endpoint)p[2]=0;return 0;}
+static Status EFIAPI endpoint(void*this,uint8_t index,void*out){(void)this;uint8_t*p=out;memset(p,0,7);p[0]=7;p[1]=5;p[2]=index==0?0x81:index==1?0x82:2;p[3]=index==0?3:2;p[4]=index==0?16:64;p[6]=index==0?1:0;if(bad_endpoint)p[2]=0;return 0;}
 static Status EFIAPI locate(uint32_t type,const Guid*guid,void*key,size_t*n,void***list){(void)guid;(void)key;if(type!=2)return EFI_ERROR(2);*n=duplicate?2:1;*list=handles;return 0;}
 static Status EFIAPI handle(void*h,const Guid*g,void**out){(void)h;(void)g;*out=io;return 0;}
 static Status EFIAPI release(void*p){(void)p;free_count++;return 0;}
@@ -28,7 +29,9 @@ static Status EFIAPI control(void*this,void*request,uint32_t direction,uint32_t 
  uint8_t*p=data;last_command=p[0]|((uint16_t)p[1]<<8);writes++;*result=0;return 0;
 }
 static Status EFIAPI interrupt(void*this,uint8_t ep,void*out,size_t*n,size_t ms,uint32_t*result){
- (void)this;(void)ms;if(ep!=0x81)return EFI_ERROR(2);*result=0;
+ (void)this;interrupt_budget=ms;if(ep!=0x81)return EFI_ERROR(2);*result=0;
+ /* Synthetic multi-transaction fixture, NOT a Dell timing measurement. */
+ if((poll_flags&16)&&ms<2){*result=0x40;return EFI_ERROR(18);}
  if(poll_flags&1)return EFI_ERROR(7);
  if(poll_flags&4){uint8_t e[3]={0x10,1,1};memcpy(out,e,3);*n=3;return 0;}
  if(poll_flags&8){size_t count=injected_length<260?injected_length:260;memcpy(out,injected,count);*n=injected_length;*result=injected_result;return injected_status;}
@@ -71,6 +74,13 @@ unsigned host_obs_prefix(uint8_t*out){memcpy(out,port.observation.prefix,port.ob
 unsigned host_event_reads(void){return port.event_reads;}
 unsigned host_event_timeouts(void){return port.event_timeouts;}
 unsigned host_polls(void){return port.polls;}
+unsigned host_interrupt_budget(void){return (unsigned)interrupt_budget;}
+unsigned host_link_state(void){return link.state;}
+void host_advertising(void){rl_init(&link,0);link.state=RL_ADVERTISING;link.step=7;link.acl_size=123;link.buffers=link.credits=16;}
+void host_configuring(void){rl_init(&link,0);}
+unsigned host_event_packet(void){return port.event_packet;}
+unsigned host_event_interval(void){return port.event_interval;}
+unsigned host_masks(uint8_t*out){memcpy(out,port.event_mask,8);memcpy(out+8,port.le_mask,8);return port.mask_seen;}
 '''
 
 
@@ -91,6 +101,55 @@ class UsbTests(unittest.TestCase):
     def test_exact_target_bind_is_read_only_and_releases_handles(self):
         self.lib.host_setup(0);self.assertEqual(self.lib.host_bind(),0)
         self.assertEqual(self.lib.host_writes(),0);self.assertEqual(self.lib.host_frees(),1)
+
+    def test_complete_21_byte_connection_passes_the_actual_usb_adapter(self):
+        self.lib.host_setup(8);self.lib.host_bind();self.lib.host_advertising()
+        raw=bytes.fromhex('3E1301000100010000000000000018000000C80000')
+        self.lib.host_inject(raw,len(raw),0,0)
+        self.assertEqual(self.lib.host_poll(8),0)
+        self.assertEqual(self.lib.host_interrupt_budget(),20)
+        self.assertEqual(self.lib.host_link_state(),2)
+        prefix=C.create_string_buffer(24)
+        self.assertEqual(self.lib.host_obs_prefix(prefix),21)
+        self.assertEqual(prefix.raw[:21],raw)
+
+    def test_finite_budget_handles_synthetic_multi_transaction_event(self):
+        self.lib.host_setup(8);self.lib.host_bind();self.lib.host_advertising()
+        raw=bytes.fromhex('3E1301000100010000000000000018000000C80000')
+        self.lib.host_inject(raw,len(raw),0,0)
+        self.assertEqual(self.lib.host_poll(8|16),0)
+        self.assertEqual(self.lib.host_link_state(),2)
+        self.assertEqual(self.lib.host_event_packet(),16)
+        self.assertEqual(self.lib.host_event_interval(),1)
+        self.assertEqual(self.lib.host_interrupt_budget(),20)
+
+    def test_mask_observations_are_actual_submitted_control_bytes(self):
+        self.lib.host_setup(8);self.lib.host_bind();self.lib.host_configuring()
+        output=C.create_string_buffer(16)
+        self.assertEqual(self.lib.host_masks(output),0)
+        self.lib.host_poll(0)  # Submit Reset; input is a timeout.
+        for opcode in (0x0c03,0x0c01):
+            event=b'\x0e\x04\x01'+opcode.to_bytes(2,'little')+b'\0'
+            self.lib.host_inject(event,len(event),0,0)
+            self.assertEqual(self.lib.host_poll(8),0)
+        self.assertEqual(self.lib.host_masks(output),3)
+        self.assertEqual(output.raw,bytes.fromhex('10E00400000000201F00000000000000'))
+
+    def test_unreported_timeout_cannot_distinguish_idle_from_lost_connection(self):
+        # Deliberately model a firmware timeout that does NOT report received
+        # bytes. This reproduces diagnostic ambiguity, not Dell firmware behavior.
+        self.lib.host_setup(8);self.lib.host_bind();self.lib.host_advertising()
+        raw=bytes.fromhex('3E1301000100010000000000000018000000C80000')
+        self.lib.host_inject(raw+bytes(260-len(raw)),260,0x8000000000000012,0x40)
+        self.assertEqual(self.lib.host_poll(8),0)
+        self.assertEqual(self.lib.host_obs_sequence(),0)
+        self.assertEqual(self.lib.host_event_timeouts(),1)
+        self.assertEqual(self.lib.host_link_state(),1)
+        # Later disconnect is visible, but cannot establish the missing handle.
+        self.lib.host_inject(b'\x05\x04\x00\x01\x00\x13',6,0,0)
+        self.assertEqual(self.lib.host_poll(8),0)
+        self.assertEqual(self.lib.host_event_reads(),1)
+        self.assertEqual(self.lib.host_link_state(),1)
 
     def test_poll_diagnostic_codes_keep_unknown_radio_bound(self):
         for flags,code in ((1,3),(2,5),(4,9)):

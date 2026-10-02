@@ -1470,3 +1470,73 @@ and root-loop Esc QEMU gates pass with this diagnostic driver too. No owner key,
 physical packet capture, radio operation or medium write performed here. Next:
 fresh Mac preflight; diagnostic installation is a new physical write and still
 requires separate explicit owner approval and fresh identity/hash checks.
+
+## Physical missing-connection event investigation — 2026-10-03
+
+Owner installed the separately approved raw diagnostic image from Mac
+owner-gate-jf9qj9iy: image b9a041cf2d019c6ed14f03fde4f818bd3d5e6b8d96894336a431d1776297622d,
+verified EFI 124574956747813909cc35d5c8a541b427559961e2a4229fe56327588fde9149.
+Baseline photo shows seven successful command completions and advertising ready;
+LE buffer query reports 123 bytes/16 buffers. SAME saved cat session then logs
+Mac connected/disconnected at phase0 offset0/33381. Follow-up Dell photo shows
+exact successful input 05 04 00 01 00 13, reads8 and timeouts0000FFF8, but no
+connection event, no parser warning, and no application. Reason13 indicates remote
+termination, not its underlying cause. Likely peer Mac is contextual, not identity
+authentication. The interrupted read/firmware behavior remains unobserved.
+
+Added tests only; production C, masks, timeouts, sender and installed image are
+UNCHANGED. Actual C-generated general mask 10 E0 04 00 00 00 00 20 independently
+matches spec bits4/13/14/15/18/61; LE mask1F enables legacy connection complete.
+Actual adapter accepts a synthetic full21-byte connection with handle1, and link
+accepts the observed controller buffer sizes. 26 link/world/GATT plus16 mockUSB
+checks pass. A deliberately synthetic timeout with unchanged requested length
+shows the diagnostic ambiguity: no valid-byte observation, then only disconnect.
+That fixture does NOT establish Dell losing bytes or validate a timeout repair.
+
+Current interrupt timeout is1ms with a260-byte requested buffer. Bluetooth USB
+permits an HCI event to span multiple USB transactions; actual Dell interrupt max
+packet/interval have not been recorded here. EDK2 Xhci.c XhcTransfer cancels timed
+out requests; this is reference implementation behavior, NOT proof of Dell firmware
+implementation. Suspected timing/USB loss versus controller event suppression
+cannot be distinguished from the current photos. Do not blame GATT or report a fix.
+
+Proposed next controlled diagnostic candidate: record actual interrupt descriptor
+packet/interval and submitted masks; compare bounded20ms read timeout to baseline1ms
+while retaining sole-reader ownership and cleanup gates. No such candidate or
+physical installation is authorized/performed by this diagnosis turn. Stop Mac
+sender; retain powered Dell/session. New installation requires separate approval.
+Primary references: Bluetooth Core HCI Set Event Mask / LE Set Event Mask,
+USB Transport Layer, UEFI USB synchronous interrupt transfer, and upstream
+https://github.com/tianocore/edk2/blob/master/MdeModulePkg/Bus/Pci/XhciDxe/Xhci.c.
+
+## Bounded20ms connected candidate — 2026-10-03
+
+Owner requested implementing progress toward the fast channel. Candidate changes
+interrupt-IN timeout1->20ms in polling and confirmed-close searches; bulk waiting,
+event masks, GATT/file/signature/world semantics are unchanged. RlUsb retains actual
+interrupt descriptor max-packet/raw bInterval and exact mask bytes after successful
+control submission. Driver prints these once per attach/submission, with20ms shown
+as hex00000014. No second reader or asynchronous callback; same unknown-cleanup
+and watchdog gates. Console traces may affect timing; no throughput claim.
+
+54 host checks pass (10 owner/deferred,26 actual link/world/GATT,18 mockUSB).
+Independent mask bits, observed123-byte/16-buffer profile, synthetic full21-byte
+handle1 connection, timeout ambiguity, descriptor provenance and actual submitted
+mask observations are covered. Mock timing threshold2ms is deliberately synthetic,
+NOT a Dell measurement; it rejects the old1ms policy in the fixture.
+
+All three QEMU gates pass with actual compiled UEFI drivers and MOCK USB: two
+combined swaps/receipt-only retries/state retention/hung-init watchdog, actual
+root-loop Esc close, and real-ConOut raw/mask/endpoint diagnostics followed by
+deliberate bulk failure/watchdog. Diagnostic screenshot visually inspected;
+current public-fixture candidate image40780501139236284fe30725d27e1d10404e1f02f0b2111378658733d4f63abe.
+These are emulator checks, not QCA interop or a proven physical timeout repair.
+
+Next owner step: pull and run fresh Mac preflight with owner PUBLIC key; close
+QEMU after checking exact fail-closed lines and answerYES. No private key, packet
+or medium write required. Then separately review new report/fresh USB identity and
+authorize installation. Keep current Dell/session powered while preparing; never
+reuse owner-gate-jf9qj9iy or an old disk id for this new candidate. After installation,
+run SAME saved cat session once, record raw events, exact final receipt/appearance
+and time. If only disconnect remains,20ms is not a sufficient fix; do not repeat
+blind sends or report completion. Current physical fast-channel outcome is PENDING.

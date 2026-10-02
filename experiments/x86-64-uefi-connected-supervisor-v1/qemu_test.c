@@ -44,7 +44,7 @@ static Status EFIAPI iface(void*this,void*out){
 }
 static Status EFIAPI endpoint(void*this,uint8_t i,void*out){
  (void)this;uint8_t*p=out;for(unsigned j=0;j<7;j++)p[j]=0;
- p[0]=7;p[1]=5;p[2]=i==0?0x81:i==1?0x82:2;p[3]=i==0?3:2;p[4]=64;return i>2?EFI_ERROR(2):0;
+ p[0]=7;p[1]=5;p[2]=i==0?0x81:i==1?0x82:2;p[3]=i==0?3:2;p[4]=i==0?16:64;p[6]=i==0?1:0;return i>2?EFI_ERROR(2):0;
 }
 static Status EFIAPI control(void*this,void*request,uint32_t dir,uint32_t ms,void*data,size_t n,uint32_t*result){
  (void)this;(void)request;(void)ms;if(dir!=1||n<3||pending)return EFI_ERROR(2);
@@ -69,7 +69,10 @@ static Status EFIAPI interrupt(void*this,uint8_t ep,void*out,size_t*n,size_t ms,
  if(conn_event&&raw_probe<2){uint8_t e[4]={0x3e,raw_probe?2:19,raw_probe?10:1,0};
   copy(p,e,4);*n=4;raw_probe++;return 0;}
 #endif
- if(conn_event){uint8_t e[21]={0x3e,19,1,0,0x40,0,1,0,0,0,0,0,0,0,24,0,0,0,200,0,0};copy(p,e,21);*n=21;conn_event=0;connected=1;advertising=0;return 0;}
+ if(conn_event){
+  /* Synthetic latency threshold, not measured Dell firmware behavior. */
+  if(ms<2){violations++;return EFI_ERROR(18);}
+  uint8_t e[21]={0x3e,19,1,0,0x40,0,1,0,0,0,0,0,0,0,24,0,0,0,200,0,0};copy(p,e,21);*n=21;conn_event=0;connected=1;advertising=0;return 0;}
  if(completed_packets){uint8_t e[7]={0x13,5,1,0x40,0,(uint8_t)completed_packets,(uint8_t)(completed_packets>>8)};copy(p,e,7);*n=7;completed_packets=0;return 0;}
  return EFI_ERROR(18);
 }

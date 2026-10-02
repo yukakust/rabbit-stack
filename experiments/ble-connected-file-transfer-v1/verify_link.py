@@ -69,6 +69,30 @@ class LinkTests(Base):
         self.assertEqual(self.request(b'\x02\xf7\x00',split=4),b'\x03\xf7\x00')
         self.assertEqual(self.request(b'\x0a\x07\x00')[0],11)
 
+    def test_exact_event_masks_enable_connection_disconnect_and_acl_credits(self):
+        self.assertEqual(self.take(),(1,b'\x03\x0c\x00'))
+        self.event(b'\x0e\x04\x01\x03\x0c\x00')
+        kind,command=self.take()
+        self.assertEqual((kind,command[:3]),(1,b'\x01\x0c\x08'))
+        # Independent spec bit positions, not an echo of the byte constants:
+        # disconnect=4, CC=13, CS=14, hardware error=15,
+        # completed ACL packets=18, LE Meta=61.
+        self.assertEqual(int.from_bytes(command[3:],'little'),
+                         sum(1<<bit for bit in (4,13,14,15,18,61)))
+        self.event(b'\x0e\x04\x01\x01\x0c\x00')
+        kind,command=self.take()
+        self.assertEqual((kind,command[:3]),(1,b'\x01\x20\x08'))
+        self.assertEqual(int.from_bytes(command[3:],'little'),0x1f)
+        self.assertTrue(command[3]&1,'legacy LE Connection Complete must be enabled')
+
+    def test_physical_controller_sizes_and_handle_one_accept_connection(self):
+        # Owner photo: LE buffers 7B 00 10 and disconnected handle 01 00.
+        # Synthetic connection input is NOT an observation from that Dell.
+        self.configured(buffers=16,acl_size=123)
+        self.connected(handle=1)
+        self.event(b'\x05\x04\x00\x01\x00\x13')
+        self.assertEqual(self.take(),(1,b'\x0a\x20\x01\x01'))
+
     def test_le_reply_flags_in_both_single_and_fragmented_packets(self):
         self.configured(acl_size=8);self.connected()
         self.assertEqual(self.request(b'\x02\x17\0'),b'\x03\xf7\0')

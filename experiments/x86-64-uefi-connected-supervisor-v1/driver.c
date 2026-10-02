@@ -7,7 +7,7 @@
 static RlUsb radio_port;
 static RlLink radio_link;
 static SystemTable*diagnostic_system;
-static unsigned traces_printed;
+static unsigned traces_printed,masks_printed;
 static void diagnostic(const char*text){
  typedef Status(EFIAPI *Output)(void*,const uint16_t*);
  uint16_t line[160];unsigned i=0;
@@ -24,6 +24,12 @@ static void diagnostic_value(const char*label,uint32_t value){
 static unsigned hex(char*out,unsigned at,uint64_t value,unsigned digits){
  for(unsigned j=0;j<digits;j++)out[at++]="0123456789ABCDEF"[(value>>(4*(digits-1-j)))&15];
  return at;
+}
+static void mask_diagnostic(const char*label,const uint8_t*mask){
+ char text[100];unsigned at=0;
+ while(*label&&at<60)text[at++]=*label++;
+ for(unsigned j=0;j<8;j++){text[at++]=' ';at=hex(text,at,mask[j],2);}
+ text[at++]='\r';text[at++]='\n';text[at]=0;diagnostic(text);
 }
 static void event_diagnostic(void){
  const RlEventObservation*e=&radio_port.observation;char text[128];unsigned at=0;
@@ -54,12 +60,21 @@ static int EFIAPI driver_init(const uint8_t*p,uint32_t n,Surface*s){
 static int EFIAPI attach(SystemTable*st,RfFile*file){
  diagnostic_system=st;
  if(radio_port.bound||!file||rl_usb_bind(&radio_port,st))return 1;
- traces_printed=0;
+ traces_printed=masks_printed=0;
+ diagnostic_value("USB EVENT ENDPOINT=",radio_port.events);
+ diagnostic_value("USB EVENT MAX_PACKET=",radio_port.event_packet);
+ /* Raw bInterval: units depend on USB speed, NOT a millisecond claim. */
+ diagnostic_value("USB EVENT BINTERVAL RAW=",radio_port.event_interval);
+ diagnostic_value("USB EVENT TIMEOUT MS=",RL_EVENT_TIMEOUT_MS);
  rl_init(&radio_link,0);rg_init_shared(&radio_link.gatt,file);return 0;
 }
 static int EFIAPI poll_radio(void){
  unsigned previous=radio_link.state;uint32_t serial=radio_port.observation_sequence;
  int result=rl_usb_poll(&radio_port,&radio_link);
+ if((radio_port.mask_seen&1)&&!(masks_printed&1)){
+  mask_diagnostic("HCI GENERAL MASK SUBMITTED:",radio_port.event_mask);masks_printed|=1;}
+ if((radio_port.mask_seen&2)&&!(masks_printed&2)){
+  mask_diagnostic("HCI LE MASK SUBMITTED:",radio_port.le_mask);masks_printed|=2;}
  if(serial!=radio_port.observation_sequence&&traces_printed<48){event_diagnostic();traces_printed++;
   if(traces_printed==48)diagnostic("HCI RAW TRACE LIMIT REACHED (48 READS)\r\n");}
  /* Four bounded heartbeat samples, in poll counts, NOT elapsed-time claims. */
