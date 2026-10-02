@@ -21,7 +21,7 @@ def main():
     # Tests use public fixtures; no owner private key is requested or accessed.
     for path in (ROOT/'verify.py',LINK/'verify_link.py',LINK/'verify_usb.py'):
         subprocess.run([sys.executable,str(path)],cwd=path.parent,check=True)
-    for arguments in ([],['--loop-test']):
+    for arguments in ([],['--loop-test'],['--fault-test']):
         if a.ovmf_code:arguments+=['--ovmf-code',str(a.ovmf_code)]
         if a.ovmf_vars:arguments+=['--ovmf-vars',str(a.ovmf_vars)]
         subprocess.run([sys.executable,str(ROOT/'run_qemu.py'),*arguments],cwd=ROOT,check=True)

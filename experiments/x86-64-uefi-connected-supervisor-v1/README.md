@@ -2,8 +2,35 @@
 
 This successor exists to migrate once from the installed immutable passive-radio
 loop. Ordinary worlds AND combined Scene/radio native drivers can then be delivered
-through a connected file service without USB shuttling. It is **not physically
-installed or Bluetooth-interoperability verified**. No measured throughput claim.
+through a connected file service without USB shuttling. The owner installed the
+first candidate, but its first Mac connection disconnected during service discovery
+before any file bytes; Bluetooth interoperability is **not verified**. The corrected
+candidate below is not physically installed. No measured throughput claim.
+
+## LE packet-boundary repair and diagnostics (2026-10-02)
+
+Actual C replies used first-fragment PB=10, forbidden for LE Host -> Controller.
+They now use PB=00, with PB=01 for continuations and BC=00. Controller -> Host
+receive parsing still accepts its direction's PB=10. The defect is independently
+reproduced, but its responsibility for the physical disconnect is not yet proven.
+See [Bluetooth Core, HCI ACL packet boundary flags, section 5.4.2](https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-60/out/en/host-controller-interface/host-controller-interface-functional-specification.html).
+Host tests assert EVERY outgoing reply header, including fragmented reads. The
+real UEFI QEMU mock now rejects invalid LE outgoing flags instead of silently
+accepting the defect.
+
+Driver ConOut prints advertising ready, connection and disconnect transitions.
+Poll errors print hexadecimal code, link state and pending HCI opcode. Root fatal
+paths print the failed stage before existing watchdog recovery; unknown outcome
+still forbids unloading or claiming radio off. Poll codes: 1 arguments, 2 event
+size, 3 interrupt transfer, 4 bulk size, 5 bulk IN transfer, 6 command transfer,
+7 ACL OUT transfer, 8 packet kind, 9 controller/parser link fault. These are small
+diagnostic codes, not raw USB status or a complete trace.
+
+`run_qemu.py --fault-test` injects mock USB bulk-IN failure into the actual root
+loop, records the real driver/root ConOut calls (forwarded to firmware), checks
+code 5/state 2 and root stage, captures the visible screen, then observes watchdog
+reboot. This fixture-only fault/proxy cannot enter production images. New physical
+installation is NOT authorized by the request to fix and test this candidate.
 
 The baseline contains generic RUP2/RUP3 RGBA/RLE assets/VM, not baked-in cat art.
 It boots into an empty safe world. RAM worlds and downloaded drivers are volatile;
@@ -67,6 +94,7 @@ python3 ../ble-connected-file-transfer-v1/verify_link.py
 python3 ../ble-connected-file-transfer-v1/verify_usb.py
 python3 run_qemu.py
 python3 run_qemu.py --loop-test
+python3 run_qemu.py --fault-test
 ```
 
 Host checks cover C/Python signatures, profiles, owner/world-key separation,

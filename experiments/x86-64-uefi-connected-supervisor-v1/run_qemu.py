@@ -13,7 +13,7 @@ from cryptography.hazmat.primitives.serialization import Encoding,PublicFormat
 from build_image import ROOT,OLD,LINK,NATIVE,V3,old,load,build,prepare,compile_efi,supervisor_source,c_bytes,digest
 from release import pack
 
-def fixture_build(owner,key,loop_test=False):
+def fixture_build(owner,key,loop_test=False,fault_test=False):
     ROOT.joinpath('runs').mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='fixture-',dir=ROOT/'runs') as temp:
         d=Path(temp);target,modules,crypto=prepare(d,owner)
@@ -32,7 +32,7 @@ def fixture_build(owner,key,loop_test=False):
         header=''.join(c_bytes(name+'_stream',digest(data)+data) for name,data in releases.items())
         header+=c_bytes('base_hash',digest(modules[1]))+c_bytes('a_hash',digest(modules[2]))
         (d/'test_data.h').write_text(header);(d/'supervisor.c').write_text(supervisor_source())
-        definitions=('RABBIT_INTEGRATION_TEST',)+(('RABBIT_LOOP_TEST',) if loop_test else ())
+        definitions=('RABBIT_INTEGRATION_TEST',)+(('RABBIT_LOOP_TEST',) if loop_test else ())+(('RABBIT_FAULT_TEST',) if fault_test else ())
         efi=compile_efi(d,'fixture',[ROOT/'qemu_test.c',d/'supervisor.c',d/'native_verify.c',
             NATIVE/'transport_core.c',NATIVE/'sha256.c',LINK/'file_core.c',*crypto],definitions=definitions)
     image=old.load('connected_fixture_media',ROOT.parent/'x86-64-uefi-v0/build_image.py').build_image(efi)
@@ -42,13 +42,15 @@ def fixture_build(owner,key,loop_test=False):
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--archive',action='store_true')
     p.add_argument('--loop-test',action='store_true')
+    p.add_argument('--fault-test',action='store_true',help='actual root-loop screen diagnostics and watchdog under mock USB failure')
     p.add_argument('--ovmf-code',type=Path)
     p.add_argument('--ovmf-vars',type=Path);a=p.parse_args()
     a.ovmf_code,a.ovmf_vars=firmware(a.ovmf_code,a.ovmf_vars)
     observer=load('connected_qmp',NATIVE/'run_qemu.py')
     key=Ed25519PrivateKey.from_private_bytes(bytes(range(32,64)))
     owner=key.public_key().public_bytes(Encoding.Raw,PublicFormat.Raw)
-    image,bindings=fixture_build(owner,key,a.loop_test);image2,bindings2=fixture_build(owner,key,a.loop_test)
+    if a.loop_test and a.fault_test:p.error('select only one root loop test')
+    image,bindings=fixture_build(owner,key,a.loop_test,a.fault_test);image2,bindings2=fixture_build(owner,key,a.loop_test,a.fault_test)
     if image!=image2 or bindings!=bindings2:raise RuntimeError('fixture build nondeterministic')
     candidate,report,_=build(owner,True);candidate2,report2,_=build(owner,True)
     if candidate!=candidate2 or report!=report2:raise RuntimeError('bootstrap build nondeterministic')
@@ -64,6 +66,29 @@ def main():
     process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=err);monitor=None
     try:
         monitor=observer.QMP(Path(sockets.name)/'qmp.sock',process)
+        if a.fault_test:
+            observer.wait_for(log,'RADIO OUTCOME UNKNOWN; WATCHDOG RECOVERY',process)
+            text=log.read_text()
+            for marker in ('BLE POLL ERROR CODE=00000005','BLE LINK STATE=00000002',
+                           'CONNECTED FAILURE: ','RADIO POLL; SEE BLE ERROR CODE'):
+                if marker not in text:raise RuntimeError('missing real ConOut diagnostic: '+marker)
+            monitor.execute('screendump',{'filename':str(out/'diagnostics.ppm')})
+            text=observer.wait_for(log,'ACTUAL ROOT LOOP FAULT TEST',process,count=2)
+            result={'status':'OBSERVED-QEMU-ROOT-LOOP-USB-FAILURE-DIAGNOSTICS-WATCHDOG',
+              'fixture':bindings,'candidate_bindings':report,'log_sha256':digest(log.read_bytes()).hex(),
+              'observer_sha256':digest(Path(__file__).read_bytes()).hex(),
+              'harness_sha256':digest((ROOT/'qemu_test.c').read_bytes()).hex(),
+              'screenshot_sha256':digest((out/'diagnostics.ppm').read_bytes()).hex(),
+              'physical_verified':False,'bluetooth_verified':False,
+              'fault':'mock USB bulk IN EFI_DEVICE_ERROR; actual driver ConOut forwarded to firmware',
+              'ovmf_code_sha256':digest(a.ovmf_code.read_bytes()).hex(),
+              'ovmf_initial_vars_sha256':digest(a.ovmf_vars.read_bytes()).hex()}
+            (out/'report.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
+            if a.archive:
+                (ROOT/'evidence').mkdir(exist_ok=True)
+                (ROOT/'evidence/qemu-fault-observed.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
+                (ROOT/'evidence/qemu-fault-observed.log').write_bytes(log.read_bytes())
+            print(text);print('SCREENSHOT: '+str(out/'diagnostics.ppm'));print('OBSERVED: '+str(out/'report.json'));return
         if a.loop_test:
             observer.wait_for(log,'ACTUAL ROOT LOOP STARTING',process)
             time.sleep(2);monitor.key('esc')

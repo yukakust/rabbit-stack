@@ -20,7 +20,9 @@ static int finish_native(void){
  if(fault||r!=4)return 1;
  return rf_finish(&file_session,receipt[2]!=0x21,(uint32_t)policy.counter);
 }
-static void fatal(void){
+static void fatal(const char*stage){
+ rabbit_supervisor_print_ascii("CONNECTED FAILURE: ");
+ rabbit_supervisor_print_ascii(stage);rabbit_supervisor_print_ascii("\r\n");
  rabbit_supervisor_print_ascii("RADIO OUTCOME UNKNOWN; WATCHDOG RECOVERY\r\n");
  /* Never unload a potentially live driver, never claim OFF. */
  if(guard(5))for(;;)__asm__ volatile("pause");
@@ -32,33 +34,34 @@ Status EFIAPI rabbit_connected_run(void*unused,SystemTable*st){
  if(rabbit_scene_bootstrap(st))return EFI_ERROR(7);
  if(((CreateEvent)service(st,80))(0x80000000u,0,0,0,&frame_event)||
     ((CreateEvent)service(st,80))(0x80000000u,0,0,0,&deadline)||
-    ((SetTimer)service(st,88))(frame_event,1,333333)||guard(5)||attach_active())fatal();
+    ((SetTimer)service(st,88))(frame_event,1,333333)||guard(5)||attach_active())fatal("INITIALIZATION OR DRIVER ATTACH");
  rabbit_supervisor_print_ascii("CONNECTED FILE SERVICE STARTING; ESC TO STOP\r\n");
  for(;;){
-  if(guard(5)||active.poll())fatal();
+  if(guard(5))fatal("ARM POLL WATCHDOG");
+  if(active.poll())fatal("RADIO POLL; SEE BLE ERROR CODE");
   uint32_t command=active.command();
   if(command!=awaited){
-   if(((SetTimer)service(st,88))(deadline,command?2:0,100000000))fatal();
+   if(((SetTimer)service(st,88))(deadline,command?2:0,100000000))fatal("SET HCI DEADLINE");
    awaited=command;
   }
-  if(awaited&&((EventCall)service(st,120))(deadline)==0)fatal();
+  if(awaited&&((EventCall)service(st,120))(deadline)==0)fatal("HCI COMMAND DEADLINE");
   if(native_pending){
-   if(finish_native())fatal();
-   awaited=0;if(((SetTimer)service(st,88))(deadline,0,0))fatal();
+   if(finish_native())fatal("NATIVE UPDATE FINALIZATION");
+   awaited=0;if(((SetTimer)service(st,88))(deadline,0,0))fatal("CANCEL HCI DEADLINE");
    rabbit_supervisor_print_ascii(file_session.state==RF_APPLIED?
     "OWNER DRIVER COMMITTED; RECEIPT RETAINED FOR RECONNECT\r\n":
     "OWNER DRIVER REJECTED; PREVIOUS WORLD RETAINED\r\n");
   }
-  if(((EventCall)service(st,120))(frame_event)==0&&rabbit_scene_tick(st))fatal();
+  if(((EventCall)service(st,120))(frame_event)==0&&rabbit_scene_tick(st))fatal("SCENE TICK OR FRAME");
   typedef Status(EFIAPI *ReadKey)(void*,void*);
   uint16_t key[2]={0,0};
   if(system->input&&!((ReadKey)*(void**)((uint8_t*)system->input+8))(system->input,key)&&key[0]==23){
-   if(active.close())fatal();
+   if(active.close())fatal("ESC RADIO CLOSE UNCONFIRMED");
    rabbit_scene_shutdown();
-   if(((EventCall)service(st,112))(frame_event)||((EventCall)service(st,112))(deadline))fatal();
+   if(((EventCall)service(st,112))(frame_event)||((EventCall)service(st,112))(deadline))fatal("ESC TIMER CLEANUP");
    rabbit_supervisor_print_ascii("CONNECTION CLOSED; DRIVER UNLOADED\r\n");return 0;
   }
-  if(guard(0))fatal();
+  if(guard(0))fatal("DISARM POLL WATCHDOG");
   ((Stall)service(st,248))(1000);
  }
 }

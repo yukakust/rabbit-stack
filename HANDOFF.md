@@ -1392,10 +1392,46 @@ f2dedcd16ad2987aa5740748af88873fc048f23b761aa01f995c159cb7651113 was prepared
 in /tmp/connected-cat-world-1.rup with saved /tmp/connected-cat-session-1.json.
 Mac logged reconnect then 300-second timeout; owner says Dell screen unchanged.
 No cat application, live throughput or cause of disconnect established. Unchanged
-screen alone does not prove receiver is alive or frozen (fatal path is silent).
+screen alone does not prove receiver is alive or frozen. Correction: the original
+root fatal path already printed a generic watchdog warning; it did not identify
+the failed stage, and driver poll did not print state/error diagnostics.
 
 Mac-only diagnostics now log discovered peripheral/RSSI, successful connection,
 service/characteristic discovery, BEGIN/write limit/control ACK and disconnect
 phase/offset/NSError domain/code/reason. stdout unbuffered. This changes neither
 installed EFI nor protocol or saved session. Next rerun SAME bundle once to locate
 failure; no bootstrap rewrite, owner key change or new radio action performed here.
+
+## LE outgoing flag repair and Dell-visible diagnostics — 2026-10-02
+
+Fresh owner attempt after reboot discovered Dell RSSI -63, connected, then
+disconnected during service discovery with phase0/offset0, NSError absent. No
+successful world application or physical cause is established. Review reproduced
+an actual C reply header 40 20 with PB=10, forbidden for LE Host -> Controller
+by Bluetooth HCI section 5.4.2. PB=00 first/PB=01 continuation now replaces it;
+incoming Controller -> Host PB=10 remains supported. Prior tests reconstructed
+payloads while missing the direction-specific header violation: admitted test gap.
+
+Owner explicitly requested fix, regression, visible Dell diagnostics and QEMU
+verification, NOT another physical write. All outgoing headers are asserted in
+host request helper; explicit small-controller fragmentation test added. QEMU
+mock bulk-OUT rejects wrong first PB/BC/handle. 24 actual C link/world tests,
+11 mock-UEFI USB tests and 10 owner/deferred checks pass. Poll error categories
+preserve bound/unknown-outcome state. Driver logs advertising/connection changes,
+error code/state/HCI opcode; root logs fatal stage before existing watchdog.
+No second endpoint reader or module-owned async callback was introduced.
+
+Actual UEFI QEMU strict-header integration again observed two driver swaps,
+receipt-only retries, failed health/signature retention and hung-init watchdog
+return; actual root loop Esc cleanup passed. New fault fixture injects bulk-IN
+EFI_DEVICE_ERROR, captures/forwards real ConOut messages: error5/linkstate2,
+RADIO POLL fatal stage and watchdog recovery, then reboot. Screenshot visually
+checked with readable exact messages. Fixture fault/proxy absent from real image.
+Reports/logs under connected evidence bind corrected sources and exact test
+artifacts; these remain mock-USB/emulator observations, not a physical fix proof.
+
+New Mac preflight includes the fault test. Corrected owner-key image must be
+built/observed on Mac again, and corrective USB installation requires new explicit
+owner approval plus fresh device identity. Installed old connected candidate,
+owner key and physical medium untouched by this repair turn. Do not reuse old
+Mac image/report approval or imply a working wireless delivery of this repair.

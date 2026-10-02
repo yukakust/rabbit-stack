@@ -67,17 +67,19 @@
     "test_key_only": true,
     "verifier_sha256": "679934d1dab9aa57377ea25d6205e3b3b357720918387468f9b43050af6cb07f"
   },
+  "fault": "mock USB bulk IN EFI_DEVICE_ERROR; actual driver ConOut forwarded to firmware",
   "fixture": {
-    "efi_sha256": "259a107af57fa119cf92947edecfa3dbf6d291f376706b34efc9effafc25b05b",
+    "efi_sha256": "34fa2a3a0289754cbf9ce838391f808c1df5ad627ecebd15438f0e0a90ca473a",
     "fixture_sha256": "758398393d94c940c71f30fef52694557a4a41ad4888e21cae223f02290cbc61",
-    "image_sha256": "5232887897a37bcfee3dbbeaff33a09d4c6f89a2ae9ad637f95a92b21bc55e3f",
+    "image_sha256": "f0e68e64562661c7731afee747af9dde9edc0394eedc300dc275705292fb553c",
     "world_sha256": "ccd9a10ad43e96c2bddcc58a3b2c2ce1643e250d944df241ece3aefa9ec210bb"
   },
   "harness_sha256": "74e2aebb21ce149abfcd6bfa2a1c050c3e87ee17d67a5c9c4ecccd9faeffac65",
-  "log_sha256": "b8cccc3273547f9a6895bf5e9e07931e21e39a3b55ca603405ed5ab739898cfb",
+  "log_sha256": "d2ffa607be628fd7547adbacd43fea0f0d211b2e0c03c165068f07ad3a5f7414",
   "observer_sha256": "737172c5978bdaeb3558ec52b4f0754df849f34ff5f991a6761bdc689ade43f1",
   "ovmf_code_sha256": "50a48d30e35dd0bbba8e78838313ea5b8c9201408ce7fc50495f2f61bc5f12bf",
   "ovmf_initial_vars_sha256": "5d2ac383371b408398accee7ec27c8c09ea5b74a0de0ceea6513388b15be5d1e",
   "physical_verified": false,
-  "status": "OBSERVED-QEMU-ROOT-LOOP-ESC-CLEANUP"
+  "screenshot_sha256": "80ad35cd3b72ec22b0374b33a2ec4403ad0d3a64e3380bb4dc70e8ae3d0a40f3",
+  "status": "OBSERVED-QEMU-ROOT-LOOP-USB-FAILURE-DIAGNOSTICS-WATCHDOG"
 }

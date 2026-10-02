@@ -45,24 +45,24 @@ static int command(RlUsb*p,const uint8_t*data,size_t n){
  return ((Control)fn(p->io,0))(p->io,request,1,200,(void*)data,n,&result)!=0||result!=0;
 }
 int rl_usb_poll(RlUsb*p,RlLink*l){
- if(!p||!p->bound||!l)return 1;
+ if(!p||!p->bound||!l)return RL_USB_ARGUMENT;
  uint8_t buffer[260],kind=0;size_t n=sizeof(buffer);uint32_t result=0;
  Status status=((Transfer)fn(p->io,24))(p->io,p->events,buffer,&n,1,&result);
- if(!status&&!result){if(n>sizeof(buffer))return 1;rl_event(l,buffer,n);}
- else if(status!=EFI_ERROR(18)&&status!=EFI_ERROR(6))return 1; /* timeout/not ready */
+ if(!status&&!result){if(n>sizeof(buffer))return RL_USB_EVENT_SIZE;rl_event(l,buffer,n);}
+ else if(status!=EFI_ERROR(18)&&status!=EFI_ERROR(6))return RL_USB_EVENT_TRANSFER; /* timeout/not ready */
  if(l->state==RL_CONNECTED){
   n=sizeof(buffer);result=0;status=((Transfer)fn(p->io,8))(p->io,p->in,buffer,&n,1,&result);
-  if(!status&&!result){if(n>sizeof(buffer))return 1;rl_bulk(l,buffer,n);}
-  else if(status!=EFI_ERROR(18)&&status!=EFI_ERROR(6))return 1;
+  if(!status&&!result){if(n>sizeof(buffer))return RL_USB_BULK_SIZE;rl_bulk(l,buffer,n);}
+  else if(status!=EFI_ERROR(18)&&status!=EFI_ERROR(6))return RL_USB_BULK_TRANSFER;
  }
  /* Bounded batch, never an unbounded drain that starves animation/Esc. */
  for(unsigned i=0;i<16;i++){
   n=rl_take(l,buffer,sizeof(buffer),&kind);if(!n)break;
-  if(kind==1){if(command(p,buffer,n))return 1;}
-  else if(kind==2){size_t sent=n;result=0;status=((Transfer)fn(p->io,8))(p->io,p->out,buffer,&sent,200,&result);if(status||result||sent!=n)return 1;}
-  else return 1;
+  if(kind==1){if(command(p,buffer,n))return RL_USB_COMMAND_TRANSFER;}
+  else if(kind==2){size_t sent=n;result=0;status=((Transfer)fn(p->io,8))(p->io,p->out,buffer,&sent,200,&result);if(status||result||sent!=n)return RL_USB_ACL_TRANSFER;}
+  else return RL_USB_PACKET_KIND;
  }
- return l->state==RL_FAULT;
+ return l->state==RL_FAULT?RL_USB_LINK_FAULT:0;
 }
 static int completed(RlUsb*p,RlLink*l,uint16_t opcode,uint16_t handle,int disconnect){
  for(unsigned tries=0;tries<128;tries++){

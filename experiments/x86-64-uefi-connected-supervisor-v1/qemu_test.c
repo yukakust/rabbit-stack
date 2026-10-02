@@ -23,6 +23,17 @@ static void put32(uint8_t*p,uint32_t v){for(unsigned i=0;i<4;i++)p[i]=v>>(8*i);}
 static int same(const uint8_t*a,const uint8_t*b,size_t n){uint8_t x=0;for(size_t i=0;i<n;i++)x|=a[i]^b[i];return !x;}
 static uint32_t le32(const uint8_t*p){return p[0]|((uint32_t)p[1]<<8)|((uint32_t)p[2]<<16)|((uint32_t)p[3]<<24);}
 static void say(const char*s){for(unsigned i=0;s[i];i++)__asm__ volatile("outb %0,%1"::"a"((uint8_t)s[i]),"Nd"((uint16_t)0xe9));__asm__ volatile("outb %0,%1"::"a"((uint8_t)'\n'),"Nd"((uint16_t)0xe9));}
+#ifdef RABBIT_FAULT_TEST
+/* Fixture-only forwarding ConOut proxy records actual screen diagnostics.
+ * This is never compiled into the physical candidate. */
+static void*diagnostic_io[10],*original_output;
+typedef Status(EFIAPI *TextOutput)(void*,const uint16_t*);
+static Status EFIAPI record_output(void*io,const uint16_t*text){
+ (void)io;char ascii[160];unsigned i=0;
+ while(text[i]&&i<159){ascii[i]=(char)text[i];i++;}ascii[i]=0;say(ascii);
+ return ((TextOutput)*(void**)((uint8_t*)original_output+8))(original_output,text);
+}
+#endif
 static Status EFIAPI descriptor(void*this,void*out){
  (void)this;uint8_t*p=out;for(unsigned i=0;i<18;i++)p[i]=0;
  p[0]=18;p[1]=1;p[8]=0xf3;p[9]=0x0c;p[10]=9;p[11]=0xe0;return 0;
@@ -57,7 +68,12 @@ static Status EFIAPI interrupt(void*this,uint8_t ep,void*out,size_t*n,size_t ms,
 }
 static Status EFIAPI bulk(void*this,uint8_t ep,void*out,size_t*n,size_t ms,uint32_t*result){
  (void)this;(void)ms;*result=0;
- if(ep==2){uint8_t*p=out;if(*n<9||p[6]!=4||p[7])return EFI_ERROR(2);last_att=p[8];completed_packets++;return 0;}
+#ifdef RABBIT_FAULT_TEST
+ if(ep==0x82&&connected)return EFI_ERROR(7); /* Deliberate read failure. */
+#endif
+ /* These fixture replies fit one ACL packet: strict LE H->C first PB=00,
+  * BC=00, exact connection handle. Never accept PB=10 like the old mock. */
+ if(ep==2){uint8_t*p=out;if(*n<9||p[0]!=0x40||p[1]!=0||p[6]!=4||p[7])return EFI_ERROR(2);last_att=p[8];completed_packets++;return 0;}
  if(ep!=0x82||!incoming_length)return EFI_ERROR(18);
  if(*n<incoming_length)return EFI_ERROR(2);
  copy(out,incoming,incoming_length);*n=incoming_length;incoming_length=0;return 0;
@@ -119,6 +135,12 @@ static int test(SystemTable*st){
 Status EFIAPI rabbit_entry(void*h,SystemTable*st){
  rabbit_supervisor_entry(h,st);
  if(install_mock(st)){say("FAIL MOCK INSTALL");return EFI_ERROR(2);}
+#ifdef RABBIT_FAULT_TEST
+ original_output=st->output;copy((uint8_t*)diagnostic_io,original_output,sizeof(diagnostic_io));
+ diagnostic_io[1]=(void*)record_output;st->output=diagnostic_io;
+ say("ACTUAL ROOT LOOP FAULT TEST; MOCK USB ONLY");
+ rabbit_connected_run(h,st);say("FAIL FAULT LOOP RETURNED");return EFI_ERROR(2);
+#endif
 #ifdef RABBIT_LOOP_TEST
  say("ACTUAL ROOT LOOP STARTING; MOCK USB ONLY");
  if(rabbit_connected_run(h,st)||connected||advertising||violations){say("FAIL ROOT LOOP CLEANUP");return EFI_ERROR(2);}

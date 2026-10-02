@@ -51,7 +51,13 @@ class LinkTests(Base):
         while True:
             kind,p=self.take()
             if not p:break
-            self.assertEqual(kind,2);fragments.append(p[4:]);self.completed()
+            self.assertEqual(kind,2)
+            tag,length=struct.unpack_from('<HH',p)
+            self.assertEqual(tag&0x0fff,0x40)
+            self.assertEqual(tag>>12,1 if fragments else 0,
+                             'LE replies require PB=00 first, PB=01 continuation; BC=00')
+            self.assertEqual(length,len(p)-4)
+            fragments.append(p[4:]);self.completed()
         combined=b''.join(fragments)
         if combined:
             self.assertEqual(struct.unpack_from('<H',combined)[0],len(combined)-4)
@@ -62,6 +68,13 @@ class LinkTests(Base):
         self.configured();self.connected()
         self.assertEqual(self.request(b'\x02\xf7\x00',split=4),b'\x03\xf7\x00')
         self.assertEqual(self.request(b'\x0a\x07\x00')[0],11)
+
+    def test_le_reply_flags_in_both_single_and_fragmented_packets(self):
+        self.configured(acl_size=8);self.connected()
+        self.assertEqual(self.request(b'\x02\x17\0'),b'\x03\xf7\0')
+        # Status response exceeds one controller packet. request() checks every
+        # actual C header, not just its reconstructed ATT payload.
+        self.assertEqual(len(self.request(b'\x0a\x07\0')),23)
 
     def test_connection_before_advertising_complete_is_not_lost(self):
         for opcode in [0x0c03,0x0c01,0x2001,0x2002,0x2006,0x2008]:

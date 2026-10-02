@@ -86,7 +86,9 @@ static void reply(RlLink*l,uint16_t cid,const uint8_t*p,size_t n){
  for(size_t offset=0;offset<n;){
   size_t count=n-offset;if(count>l->acl_size)count=l->acl_size;
   uint8_t slot=(uint8_t)((l->head+l->count)%RL_TX_SLOTS);uint8_t*out=l->queue[slot];
-  w16(out,(uint16_t)(l->handle|(offset?0x1000:0x2000)));w16(out+2,(uint16_t)count);copy(out+4,data+offset,count);
+  /* LE Host -> Controller: first fragment PB=00 (non-flushable), then 01.
+   * PB=10 is permitted in the opposite direction, NOT for our LE replies. */
+  w16(out,(uint16_t)(l->handle|(offset?0x1000:0)));w16(out+2,(uint16_t)count);copy(out+4,data+offset,count);
   l->qlen[slot]=(uint16_t)(count+4);l->count++;offset+=count;
  }
 }
