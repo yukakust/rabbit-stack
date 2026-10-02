@@ -13,7 +13,7 @@ static uint16_t read16(const uint8_t*p){return (uint16_t)(p[0]|((unsigned)p[1]<<
 static void *fn(void*io,size_t offset){return *(void**)((uint8_t*)io+offset);}
 int rl_usb_bind(RlUsb*p,SystemTable*st){
  if(!p||!st||!st->boot)return 1;
- *p=(RlUsb){0,0,0,0,0};size_t count=0;void**handles=0;
+ *p=(RlUsb){0};size_t count=0;void**handles=0;
  if(((Locate)service(st,312))(2,&usb_guid,0,&count,&handles)||!handles)return 1;
  int bad=count>64;unsigned matches=0;
  for(size_t i=0;!bad&&i<count;i++){
@@ -23,7 +23,7 @@ int rl_usb_bind(RlUsb*p,SystemTable*st){
   if(device[0]!=18||device[1]!=1||interface[0]!=9||interface[1]!=4)continue;
   if(read16(device+8)!=0x0cf3||read16(device+10)!=0xe009||interface[2]!=0||interface[3]!=0||interface[5]!=0xe0||interface[6]!=1||interface[7]!=1)continue;
   if(++matches!=1||interface[4]>16){bad=1;break;}
-  RlUsb candidate={io,0,0,0,1};
+  RlUsb candidate={0};candidate.io=io;candidate.bound=1;
   for(uint8_t j=0;j<interface[4];j++){
    uint8_t endpoint[7];if(((Endpoint)fn(io,72))(io,j,endpoint)||endpoint[0]!=7||endpoint[1]!=5){bad=1;break;}
    uint8_t address=endpoint[2],type=endpoint[3]&3;uint16_t packet=read16(endpoint+4)&0x7ff;
@@ -36,7 +36,7 @@ int rl_usb_bind(RlUsb*p,SystemTable*st){
   if(!bad)*p=candidate;
  }
  Status freed=((Free)service(st,72))(handles);
- if(bad||matches!=1||freed){*p=(RlUsb){0,0,0,0,0};return 1;}
+ if(bad||matches!=1||freed){*p=(RlUsb){0};return 1;}
  return 0;
 }
 static int command(RlUsb*p,const uint8_t*data,size_t n){
@@ -44,10 +44,31 @@ static int command(RlUsb*p,const uint8_t*data,size_t n){
  uint8_t request[8]={0x20,0,0,0,0,0,(uint8_t)n,(uint8_t)(n>>8)};uint32_t result=0;
  return ((Control)fn(p->io,0))(p->io,request,1,200,(void*)data,n,&result)!=0||result!=0;
 }
+static void increment(uint32_t*p){if(*p!=0xffffffffu)(*p)++;}
+static void observe_event(RlUsb*p,Status status,uint32_t result,size_t n,const uint8_t*buffer,size_t capacity){
+ increment(&p->polls);
+ if(status==EFI_ERROR(18)||status==EFI_ERROR(6)){
+  increment(&p->event_timeouts);
+  /* Firmware may leave DataLength at the requested length on timeout. That
+   * is NOT received data. Only a changed positive length is worth recording;
+   * no bytes from unsuccessful reads are labelled as valid HCI input. */
+  if(!n||n==capacity)return;
+ }
+ if(!status&&!result)increment(&p->event_reads);
+ increment(&p->observation_sequence);p->observation=(RlEventObservation){0};
+ p->observation.status=status;p->observation.result=result;
+ p->observation.reported_length=n>0xffffffffu?0xffffffffu:(uint32_t)n;
+ if(!status&&!result&&n<=capacity){
+  size_t count=n<RL_EVENT_PREFIX?n:RL_EVENT_PREFIX;
+  for(size_t i=0;i<count;i++)p->observation.prefix[i]=buffer[i];
+  p->observation.copied=(uint8_t)count;
+ }
+}
 int rl_usb_poll(RlUsb*p,RlLink*l){
  if(!p||!p->bound||!l)return RL_USB_ARGUMENT;
  uint8_t buffer[260],kind=0;size_t n=sizeof(buffer);uint32_t result=0;
  Status status=((Transfer)fn(p->io,24))(p->io,p->events,buffer,&n,1,&result);
+ observe_event(p,status,result,n,buffer,sizeof(buffer));
  if(!status&&!result){if(n>sizeof(buffer))return RL_USB_EVENT_SIZE;rl_event(l,buffer,n);}
  else if(status!=EFI_ERROR(18)&&status!=EFI_ERROR(6))return RL_USB_EVENT_TRANSFER; /* timeout/not ready */
  if(l->state==RL_CONNECTED){

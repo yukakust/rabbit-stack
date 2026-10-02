@@ -36,6 +36,36 @@ The baseline contains generic RUP2/RUP3 RGBA/RLE assets/VM, not baked-in cat art
 It boots into an empty safe world. RAM worlds and downloaded drivers are volatile;
 power-off/reboot restores that baseline, not the last downloaded cat.
 
+## Raw HCI diagnostic candidate (2026-10-02)
+
+The owner installed the PB-fixed candidate, but Mac still disconnected during
+service discovery at phase0/offset0. Dell photo remained at advertising-ready,
+without connection/error messages. Esc returned to UEFI's missing-disk notice;
+owner then powered off. No successful radio cleanup or physical cause is proven.
+
+This diagnostic build observes the **existing sole interrupt read** before its
+bytes reach the parser. `USB EVENT LEN=... STATUS=... RESULT=...` and `HCI RAW:`
+show reported length, full 64-bit EFI status, USB result and up to 24 valid bytes.
+Numbers are hexadecimal. Standard LE Connection Complete is 21 bytes and fits.
+Up to 48 observations per driver attach are printed; larger events are explicitly
+prefix-only. Normal unchanged-length timeouts are counted, not printed as data.
+Failed/oversized reads show metadata only, never uninitialized buffer bytes.
+Four bounded heartbeat samples show successful event reads and timeout counts,
+at poll counts 1024/4096/16384/65536 (not a claimed number of seconds).
+
+Mismatched HCI lengths and unhandled LE subevents get explicit labels, but the
+parser/protocol is NOT changed to accept them. No extra USB reader, HCI command,
+radio authority, async callback or persistent write is introduced. Console output
+can affect timing; this is diagnosis, not a throughput benchmark.
+
+Mock-USB tests cover rejected input visibility, prefix bounds, oversized lengths
+and timeout/partial-read metadata. QEMU fault fixture supplies malformed and
+unsupported events followed by a valid connection and injected USB failure;
+actual driver ConOut output must contain the raw bytes and classification before
+watchdog recovery. This is not a capture from the physical Dell. The installed
+image remains unchanged until separately approved installation of the diagnostic
+candidate after a fresh owner-public Mac gate and device-identity check.
+
 ## Boundary
 
 - Immutable supervisor: owner root, loader/verification, root-owned file staging

@@ -70,7 +70,10 @@ def main():
             observer.wait_for(log,'RADIO OUTCOME UNKNOWN; WATCHDOG RECOVERY',process)
             text=log.read_text()
             for marker in ('BLE POLL ERROR CODE=00000005','BLE LINK STATE=00000002',
-                           'CONNECTED FAILURE: ','RADIO POLL; SEE BLE ERROR CODE'):
+                           'CONNECTED FAILURE: ','RADIO POLL; SEE BLE ERROR CODE',
+                           'HCI RAW: 3E 13 01 00 40 00 01',
+                           'HCI INPUT IGNORED: EVENT LENGTH MISMATCH',
+                           'HCI LE META: SUBEVENT NOT HANDLED BY THIS DRIVER'):
                 if marker not in text:raise RuntimeError('missing real ConOut diagnostic: '+marker)
             monitor.execute('screendump',{'filename':str(out/'diagnostics.ppm')})
             text=observer.wait_for(log,'ACTUAL ROOT LOOP FAULT TEST',process,count=2)
@@ -80,7 +83,7 @@ def main():
               'harness_sha256':digest((ROOT/'qemu_test.c').read_bytes()).hex(),
               'screenshot_sha256':digest((out/'diagnostics.ppm').read_bytes()).hex(),
               'physical_verified':False,'bluetooth_verified':False,
-              'fault':'mock USB bulk IN EFI_DEVICE_ERROR; actual driver ConOut forwarded to firmware',
+              'fault':'malformed/unsupported mock HCI events then bulk IN EFI_DEVICE_ERROR; actual driver ConOut forwarded to firmware',
               'ovmf_code_sha256':digest(a.ovmf_code.read_bytes()).hex(),
               'ovmf_initial_vars_sha256':digest(a.ovmf_vars.read_bytes()).hex()}
             (out/'report.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')

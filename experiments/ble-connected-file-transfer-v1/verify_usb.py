@@ -16,6 +16,7 @@ static RlUsb port;static RlLink link;
 static int wrong,duplicate,bad_endpoint,timeout,free_count,writes,unrelated,accept_only,wrong_handle,status_only,disconnect_complete_only,connect_race,reset_timeout;
 static uint16_t last_command;
 static unsigned poll_flags;
+static uint8_t injected[260];static size_t injected_length;static Status injected_status;static uint32_t injected_result;
 static Status EFIAPI descriptor(void*this,void*out){(void)this;uint8_t*p=out;memset(p,0,18);p[0]=18;p[1]=1;p[8]=0xf3;p[9]=0x0c;p[10]=wrong?0:9;p[11]=0xe0;return 0;}
 static Status EFIAPI interface(void*this,void*out){(void)this;uint8_t*p=out;memset(p,0,9);p[0]=9;p[1]=4;p[4]=3;p[5]=0xe0;p[6]=p[7]=1;return 0;}
 static Status EFIAPI endpoint(void*this,uint8_t index,void*out){(void)this;uint8_t*p=out;memset(p,0,7);p[0]=7;p[1]=5;p[2]=index==0?0x81:index==1?0x82:2;p[3]=index==0?3:2;p[4]=64;if(bad_endpoint)p[2]=0;return 0;}
@@ -30,6 +31,7 @@ static Status EFIAPI interrupt(void*this,uint8_t ep,void*out,size_t*n,size_t ms,
  (void)this;(void)ms;if(ep!=0x81)return EFI_ERROR(2);*result=0;
  if(poll_flags&1)return EFI_ERROR(7);
  if(poll_flags&4){uint8_t e[3]={0x10,1,1};memcpy(out,e,3);*n=3;return 0;}
+ if(poll_flags&8){size_t count=injected_length<260?injected_length:260;memcpy(out,injected,count);*n=injected_length;*result=injected_result;return injected_status;}
  if(timeout)return EFI_ERROR(18);
  if(reset_timeout&&last_command==0x0c03)return EFI_ERROR(18);
  uint8_t*p=out;
@@ -60,6 +62,15 @@ int host_bound(void){return port.bound;}
 int host_writes(void){return writes;}
 int host_frees(void){return free_count;}
 int host_poll(unsigned flags){poll_flags=flags;return rl_usb_poll(&port,&link);}
+void host_inject(const uint8_t*p,size_t n,Status status,uint32_t result){memset(injected,0,sizeof(injected));memcpy(injected,p,n<260?n:260);injected_length=n;injected_status=status;injected_result=result;}
+unsigned host_obs_sequence(void){return port.observation_sequence;}
+unsigned host_obs_length(void){return port.observation.reported_length;}
+unsigned host_obs_result(void){return port.observation.result;}
+Status host_obs_status(void){return port.observation.status;}
+unsigned host_obs_prefix(uint8_t*out){memcpy(out,port.observation.prefix,port.observation.copied);return port.observation.copied;}
+unsigned host_event_reads(void){return port.event_reads;}
+unsigned host_event_timeouts(void){return port.event_timeouts;}
+unsigned host_polls(void){return port.polls;}
 '''
 
 
@@ -71,6 +82,8 @@ class UsbTests(unittest.TestCase):
         subprocess.run(['cc','-std=c11','-O2','-Wall','-Wextra','-Werror','-Wno-attributes','-fPIC','-shared','-I',str(ROOT),'-I',str(NATIVE),
             str(d/'mock.c'),str(ROOT/'usb_port.c'),str(ROOT/'hci_link.c'),str(ROOT/'gatt_core.c'),str(ROOT/'file_core.c'),str(NATIVE/'sha256.c'),'-o',str(d/'mock.so')],check=True)
         cls.lib=C.CDLL(str(d/'mock.so'))
+        cls.lib.host_inject.argtypes=[C.c_char_p,C.c_size_t,C.c_uint64,C.c_uint32]
+        cls.lib.host_obs_status.restype=C.c_uint64
 
     @classmethod
     def tearDownClass(cls):cls.temp.cleanup()
@@ -84,6 +97,43 @@ class UsbTests(unittest.TestCase):
             self.lib.host_setup(8);self.assertEqual(self.lib.host_bind(),0)
             self.assertEqual(self.lib.host_poll(flags),code)
             self.assertEqual(self.lib.host_bound(),1)
+
+    def test_raw_event_observation_precedes_parser_rejection(self):
+        self.lib.host_setup(8);self.lib.host_bind()
+        # Deliberately mismatched HCI length: parser ignores it, observation
+        # must still preserve exactly the successful USB bytes and length.
+        raw=b'\x3e\x13\x01\x00'+bytes(range(4,12))
+        self.lib.host_inject(raw,len(raw),0,0)
+        self.assertEqual(self.lib.host_poll(8),0)
+        self.assertEqual(self.lib.host_obs_sequence(),1)
+        self.assertEqual(self.lib.host_obs_length(),len(raw))
+        prefix=C.create_string_buffer(24);self.assertEqual(self.lib.host_obs_prefix(prefix),len(raw))
+        self.assertEqual(prefix.raw[:len(raw)],raw)
+        self.assertEqual(self.lib.host_event_reads(),1)
+
+    def test_timeout_is_not_reported_as_valid_hci_bytes(self):
+        self.lib.host_setup(8);self.lib.host_bind()
+        self.assertEqual(self.lib.host_poll(0),0)
+        self.assertEqual(self.lib.host_obs_sequence(),0)
+        self.assertEqual(self.lib.host_event_timeouts(),1)
+        self.assertEqual(self.lib.host_polls(),1)
+        self.lib.host_inject(bytes(4),4,0x8000000000000012,0x40)
+        self.lib.host_poll(8)
+        self.assertEqual(self.lib.host_obs_sequence(),1)
+        self.assertEqual(self.lib.host_obs_length(),4)
+        self.assertEqual(self.lib.host_obs_status(),0x8000000000000012)
+        self.assertEqual(self.lib.host_obs_result(),0x40)
+        self.assertEqual(self.lib.host_obs_prefix(C.create_string_buffer(24)),0)
+
+    def test_event_prefix_bound_and_oversized_length_have_no_unsafe_copy(self):
+        self.lib.host_setup(8);self.lib.host_bind()
+        raw=bytes(range(40));self.lib.host_inject(raw,40,0,0);self.lib.host_poll(8)
+        prefix=C.create_string_buffer(24);self.assertEqual(self.lib.host_obs_prefix(prefix),24)
+        self.assertEqual(prefix.raw,raw[:24])
+        self.lib.host_inject(bytes(300),300,0,0)
+        self.assertEqual(self.lib.host_poll(8),2)
+        self.assertEqual(self.lib.host_obs_length(),300)
+        self.assertEqual(self.lib.host_obs_prefix(prefix),0)
 
     def test_wrong_duplicate_and_invalid_endpoints_fail_closed(self):
         for flags in (1,2,4):

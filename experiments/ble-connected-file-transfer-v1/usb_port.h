@@ -2,7 +2,17 @@
 #define RABBIT_USB_PORT_H
 #include "abi.h"
 #include "hci_link.h"
-typedef struct {void *io;uint8_t events,in,out;uint8_t bound;} RlUsb;
+#define RL_EVENT_PREFIX 24u
+typedef struct {
+ Status status;uint32_t result,reported_length;
+ uint8_t prefix[RL_EVENT_PREFIX],copied;
+} RlEventObservation;
+typedef struct {
+ void *io;uint8_t events,in,out;uint8_t bound;
+ /* Passive observations from the EXISTING sole read, no new USB operation. */
+ uint32_t polls,event_reads,event_timeouts,observation_sequence;
+ RlEventObservation observation;
+} RlUsb;
 /* Nonzero poll result is fatal/unknown outcome, never a safe-to-unload claim.
  * Stable small codes for bounded Dell diagnostics, not a public module ABI. */
 enum { RL_USB_ARGUMENT=1,RL_USB_EVENT_SIZE,RL_USB_EVENT_TRANSFER,

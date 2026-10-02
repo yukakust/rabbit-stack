@@ -1435,3 +1435,38 @@ built/observed on Mac again, and corrective USB installation requires new explic
 owner approval plus fresh device identity. Installed old connected candidate,
 owner key and physical medium untouched by this repair turn. Do not reuse old
 Mac image/report approval or imply a working wireless delivery of this repair.
+
+## PB-fixed physical retry and raw-event diagnostic candidate — 2026-10-02
+
+Owner Mac preflight passed 45 host checks, all QEMU gates and exact no-device
+screen; corrected owner image SHA256
+62922e4c5dfec4df9c7f9661c8691159fe44761b9075dee46cbc404f83ecfb2e.
+Owner separately authorized corrective USB replacement, fresh disk4 DataTraveler
+Duo identity matched, 64MiB dd succeeded, installed EFI verification returned
+359fa04010a510a558890f6a92c0f58e7bc777127b9cbe3b5ac8ce41abd77a9a.
+Dell showed BLE FILE SERVICE ADVERTISING; READY TO CONNECT. Same saved cat session
+still connected then disconnected at phase0/offset0 with no NSError. Photo shows
+no BLE CONNECTED or error line. PB defect correction did NOT establish interop or
+the actual physical cause. Esc produced an unread line then UEFI no-disk alert;
+owner confirms manually powering off afterward. This proves key response, NOT
+confirmed radio cleanup. Dell has RAM but no internal storage; do not confuse them.
+
+Owner requested raw Bluetooth event diagnosis. Candidate RlUsb observes the
+existing sole interrupt read BEFORE parser validation: status/result/reported
+length, successful-byte prefix24, saturating read/timeout/poll counters. Driver
+prints max48 observations per attach, actual bytes only after successful bounded
+reads, and four bounded poll-count heartbeat samples. Unchanged-length timeout
+is NOT data; failed/oversized reads never expose uninitialized bytes. Malformed
+length/unhandled LE subevent labels are diagnostic, NOT parser fixes. No event
+acceptance, extra reader, command, async callback or radio authority change.
+Console output may perturb timing; no throughput claim.
+
+Three new actual mock-USB tests cover parser-ignored raw bytes, timeout versus
+partial read metadata, prefix bounds and oversized lengths. New QEMU fixture
+injects malformed length and unknown LE subevent, then valid connection and
+USB bulk-IN failure. Observer checks actual ConOut raw bytes/classifications;
+visible screenshot inspected. Existing driver-swap/idempotence/rollback/hung-init
+and root-loop Esc QEMU gates pass with this diagnostic driver too. No owner key,
+physical packet capture, radio operation or medium write performed here. Next:
+fresh Mac preflight; diagnostic installation is a new physical write and still
+requires separate explicit owner approval and fresh identity/hash checks.

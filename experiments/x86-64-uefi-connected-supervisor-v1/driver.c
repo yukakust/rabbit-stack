@@ -7,6 +7,7 @@
 static RlUsb radio_port;
 static RlLink radio_link;
 static SystemTable*diagnostic_system;
+static unsigned traces_printed;
 static void diagnostic(const char*text){
  typedef Status(EFIAPI *Output)(void*,const uint16_t*);
  uint16_t line[160];unsigned i=0;
@@ -20,6 +21,27 @@ static void diagnostic_value(const char*label,uint32_t value){
  for(unsigned j=0;j<8;j++)line[i++]="0123456789ABCDEF"[(value>>(28-4*j))&15];
  line[i++]='\r';line[i++]='\n';line[i]=0;diagnostic(line);
 }
+static unsigned hex(char*out,unsigned at,uint64_t value,unsigned digits){
+ for(unsigned j=0;j<digits;j++)out[at++]="0123456789ABCDEF"[(value>>(4*(digits-1-j)))&15];
+ return at;
+}
+static void event_diagnostic(void){
+ const RlEventObservation*e=&radio_port.observation;char text[128];unsigned at=0;
+ const char*label="USB EVENT LEN=";for(unsigned j=0;label[j];j++)text[at++]=label[j];
+ at=hex(text,at,e->reported_length,8);
+ label=" STATUS=";for(unsigned j=0;label[j];j++)text[at++]=label[j];at=hex(text,at,e->status,16);
+ label=" RESULT=";for(unsigned j=0;label[j];j++)text[at++]=label[j];at=hex(text,at,e->result,8);
+ text[at++]='\r';text[at++]='\n';text[at]=0;diagnostic(text);
+ if(e->copied){
+  at=0;label="HCI RAW:";for(unsigned j=0;label[j];j++)text[at++]=label[j];
+  for(unsigned j=0;j<e->copied;j++){text[at++]=' ';at=hex(text,at,e->prefix[j],2);}
+  text[at++]='\r';text[at++]='\n';text[at]=0;diagnostic(text);
+  if(e->copied>=2&&e->reported_length!=e->prefix[1]+2u)
+   diagnostic("HCI INPUT IGNORED: EVENT LENGTH MISMATCH\r\n");
+  else if(e->copied>=3&&e->prefix[0]==0x3e&&e->prefix[2]!=1)
+   diagnostic("HCI LE META: SUBEVENT NOT HANDLED BY THIS DRIVER\r\n");
+ }
+}
 static int EFIAPI driver_init(const uint8_t*p,uint32_t n,Surface*s){
  int r=scene_init(p,n,s);
 #if SCENE_REVISION == 4
@@ -32,10 +54,19 @@ static int EFIAPI driver_init(const uint8_t*p,uint32_t n,Surface*s){
 static int EFIAPI attach(SystemTable*st,RfFile*file){
  diagnostic_system=st;
  if(radio_port.bound||!file||rl_usb_bind(&radio_port,st))return 1;
+ traces_printed=0;
  rl_init(&radio_link,0);rg_init_shared(&radio_link.gatt,file);return 0;
 }
 static int EFIAPI poll_radio(void){
- unsigned previous=radio_link.state;int result=rl_usb_poll(&radio_port,&radio_link);
+ unsigned previous=radio_link.state;uint32_t serial=radio_port.observation_sequence;
+ int result=rl_usb_poll(&radio_port,&radio_link);
+ if(serial!=radio_port.observation_sequence&&traces_printed<48){event_diagnostic();traces_printed++;
+  if(traces_printed==48)diagnostic("HCI RAW TRACE LIMIT REACHED (48 READS)\r\n");}
+ /* Four bounded heartbeat samples, in poll counts, NOT elapsed-time claims. */
+ if(radio_port.polls==1024||radio_port.polls==4096||radio_port.polls==16384||radio_port.polls==65536){
+  diagnostic_value("USB EVENT READS=",radio_port.event_reads);
+  diagnostic_value("USB EVENT TIMEOUTS=",radio_port.event_timeouts);
+ }
  if(radio_link.state!=previous){
   if(radio_link.state==RL_ADVERTISING)diagnostic("BLE FILE SERVICE ADVERTISING; READY TO CONNECT\r\n");
   if(radio_link.state==RL_CONNECTED)diagnostic("BLE CONNECTED; GATT DISCOVERY READY\r\n");

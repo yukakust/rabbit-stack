@@ -62,6 +62,13 @@ static Status EFIAPI interrupt(void*this,uint8_t ep,void*out,size_t*n,size_t ms,
   copy(p,e,*n);pending=0;return 0;
  }
  if(disconn_event){uint8_t e[6]={5,4,0,0x40,0,0x13};copy(p,e,6);*n=6;disconn_event=0;connected=0;disconnects++;return 0;}
+#ifdef RABBIT_FAULT_TEST
+ /* Fixture-only malformed and unsupported events must remain visible even
+  * though the existing parser ignores them. Do not "repair" parsing here. */
+ static unsigned raw_probe;
+ if(conn_event&&raw_probe<2){uint8_t e[4]={0x3e,raw_probe?2:19,raw_probe?10:1,0};
+  copy(p,e,4);*n=4;raw_probe++;return 0;}
+#endif
  if(conn_event){uint8_t e[21]={0x3e,19,1,0,0x40,0,1,0,0,0,0,0,0,0,24,0,0,0,200,0,0};copy(p,e,21);*n=21;conn_event=0;connected=1;advertising=0;return 0;}
  if(completed_packets){uint8_t e[7]={0x13,5,1,0x40,0,(uint8_t)completed_packets,(uint8_t)(completed_packets>>8)};copy(p,e,7);*n=7;completed_packets=0;return 0;}
  return EFI_ERROR(18);
