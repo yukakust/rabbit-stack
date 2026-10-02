@@ -31,12 +31,15 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  else if(central.state==CBManagerStatePoweredOff||central.state==CBManagerStateUnauthorized||central.state==CBManagerStateUnsupported)[self fail:@"Bluetooth unavailable"];
 }
 - (void)centralManager:(CBCentralManager*)c didDiscoverPeripheral:(CBPeripheral*)p advertisementData:(NSDictionary*)ad RSSI:(NSNumber*)rssi {
- (void)ad;(void)rssi;if(self.peer)return;self.peer=p;p.delegate=self;[c stopScan];[c connectPeripheral:p options:nil];
+ if(self.peer)return;
+ printf("DISCOVERED: %s RSSI=%ld; connecting\n",p.identifier.UUIDString.UTF8String,(long)rssi.integerValue);
+ (void)ad;self.peer=p;p.delegate=self;[c stopScan];[c connectPeripheral:p options:nil];
 }
-- (void)centralManager:(CBCentralManager*)c didConnectPeripheral:(CBPeripheral*)p {(void)c;[p discoverServices:@[[CBUUID UUIDWithString:Service]]];}
+- (void)centralManager:(CBCentralManager*)c didConnectPeripheral:(CBPeripheral*)p {(void)c;puts("CONNECTED: discovering file service");[p discoverServices:@[[CBUUID UUIDWithString:Service]]];}
 - (void)centralManager:(CBCentralManager*)c didFailToConnectPeripheral:(CBPeripheral*)p error:(NSError*)e {(void)c;(void)p;[self fail:e.localizedDescription?:@"connect failed"];}
 - (void)centralManager:(CBCentralManager*)c didDisconnectPeripheral:(CBPeripheral*)p error:(NSError*)e {
- (void)e;if(self.finished||p!=self.peer)return;
+ if(self.finished||p!=self.peer)return;
+ fprintf(stderr,"DISCONNECTED: phase=%d offset=%lu/%lu domain=%s code=%ld reason=%s\n",self.phase,(unsigned long)self.offset,(unsigned long)self.stream.length,e?e.domain.UTF8String:"none",e?(long)e.code:0,e?e.localizedDescription.UTF8String:"none");
  if(++self.reconnects>3){[self fail:@"bounded reconnect limit; rerun SAME saved session to query outcome"];return;}
  puts("RECONNECT: delivery unknown; querying retained session, not assuming application");
  self.peer=nil;self.control=nil;self.data=nil;self.status=nil;self.phase=0;
@@ -44,12 +47,14 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 }
 - (void)peripheral:(CBPeripheral*)p didDiscoverServices:(NSError*)e {
  if(p!=self.peer)return;
+ printf("SERVICE DISCOVERY: count=%lu error=%s\n",(unsigned long)p.services.count,e?e.localizedDescription.UTF8String:"none");
  if(e||p.services.count!=1){[self fail:@"service discovery failed"];return;}
  [p discoverCharacteristics:nil forService:p.services[0]];
 }
 - (void)peripheral:(CBPeripheral*)p didDiscoverCharacteristicsForService:(CBService*)service error:(NSError*)e {
  if(p!=self.peer)return;
  if(e){[self fail:e.localizedDescription];return;}
+ printf("CHARACTERISTIC DISCOVERY: count=%lu\n",(unsigned long)service.characteristics.count);
  for(CBCharacteristic*c in service.characteristics){NSString*u=c.UUID.UUIDString;
   if([u isEqualToString:@"52414242-4954-4649-8000-000000000002"])self.control=c;
   if([u isEqualToString:@"52414242-4954-4649-8000-000000000003"])self.data=c;
@@ -57,6 +62,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  }
  if(!self.control||!self.data||!self.status||!(self.control.properties&CBCharacteristicPropertyWrite)||!(self.data.properties&CBCharacteristicPropertyWrite)||!(self.status.properties&CBCharacteristicPropertyRead)){[self fail:@"incompatible file service"];return;}
  uint8_t begin[16]={1,1,(uint8_t)self.kind,0};memcpy(begin+4,self.nonce.bytes,8);put32(begin+12,(uint32_t)self.stream.length);
+ printf("BEGIN: acknowledged write; maximum value bytes=%lu\n",(unsigned long)[p maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse]);
  self.phase=1;[p writeValue:[NSData dataWithBytes:begin length:16] forCharacteristic:self.control type:CBCharacteristicWriteWithResponse];
 }
 - (void)next {
@@ -70,7 +76,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 - (void)peripheral:(CBPeripheral*)p didWriteValueForCharacteristic:(CBCharacteristic*)c error:(NSError*)e {
  if(p!=self.peer)return;
  (void)c;if(e){[self fail:e.localizedDescription];return;}
- if(self.phase==1||self.phase==3){[p readValueForCharacteristic:self.status];return;}
+ if(self.phase==1||self.phase==3){printf("CONTROL ACK: phase=%d; reading application status\n",self.phase);[p readValueForCharacteristic:self.status];return;}
  if(self.phase!=2){[self fail:@"unexpected write response"];return;}
  self.offset+=self.pending;[self next];
 }
@@ -91,6 +97,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 }
 @end
 int main(int argc,char**argv){@autoreleasepool{
+ setvbuf(stdout,NULL,_IONBF,0);
  if(argc!=2)return 2;
  NSData*raw=[NSData dataWithContentsOfFile:[NSString stringWithUTF8String:argv[1]]];
  NSDictionary*b=raw?[NSJSONSerialization JSONObjectWithData:raw options:0 error:nil]:nil;

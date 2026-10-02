@@ -21,6 +21,10 @@ class Tests(unittest.TestCase):
         self.assertNotIn('self.hash',source)
         self.assertNotIn('s.hash=',source)
         self.assertIn('self.expectedDigest.bytes',source)
+        for marker in ('DISCOVERED:', 'CONNECTED:', 'SERVICE DISCOVERY:',
+                       'CHARACTERISTIC DISCOVERY:', 'BEGIN:', 'CONTROL ACK:',
+                       'DISCONNECTED: phase=', 'setvbuf(stdout,NULL,_IONBF,0)'):
+            self.assertIn(marker,source)
         compiler=(ROOT/'send_file.py').read_text()
         self.assertIn('-Werror=incompatible-property-type',compiler)
         self.assertIn('-Werror=objc-property-synthesis',compiler)

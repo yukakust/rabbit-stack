@@ -1380,3 +1380,22 @@ preflight, close QEMU using its window close control (not terminal Ctrl-C), answ
 YES and supply report plus fresh device identity. Sender-only change does not
 change runtime C, but source bindings change, so obtain a fresh complete report.
 No media or physical radio was changed.
+
+## First physical connected attempt — 2026-10-02
+
+Owner verified fresh external DataTraveler Duo disk4 and owner Mac candidate image
+1627487b491dd1c4b496a936075c9dc6b0bfab6f0a5405b2ba485b699f9cc855, then
+reported exact installed EFI e9ce08113bdd3a2824ecd59203994e7a2c2932b0e58a8a9e5978ee408ceb1da1.
+Dell displayed CONNECTED FILE SERVICE STARTING; ESC TO STOP. New sender compiled
+without property warnings. Cat world counter1 package SHA256
+f2dedcd16ad2987aa5740748af88873fc048f23b761aa01f995c159cb7651113 was prepared
+in /tmp/connected-cat-world-1.rup with saved /tmp/connected-cat-session-1.json.
+Mac logged reconnect then 300-second timeout; owner says Dell screen unchanged.
+No cat application, live throughput or cause of disconnect established. Unchanged
+screen alone does not prove receiver is alive or frozen (fatal path is silent).
+
+Mac-only diagnostics now log discovered peripheral/RSSI, successful connection,
+service/characteristic discovery, BEGIN/write limit/control ACK and disconnect
+phase/offset/NSError domain/code/reason. stdout unbuffered. This changes neither
+installed EFI nor protocol or saved session. Next rerun SAME bundle once to locate
+failure; no bootstrap rewrite, owner key change or new radio action performed here.
