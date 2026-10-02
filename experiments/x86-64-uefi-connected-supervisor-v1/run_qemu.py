@@ -13,7 +13,7 @@ from cryptography.hazmat.primitives.serialization import Encoding,PublicFormat
 from build_image import ROOT,OLD,LINK,NATIVE,V3,old,load,build,prepare,compile_efi,supervisor_source,c_bytes,digest
 from release import pack
 
-def fixture_build(owner,key,loop_test=False,fault_test=False):
+def fixture_build(owner,key,loop_test=False,fault_test=False,graphics_world=False):
     ROOT.joinpath('runs').mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='fixture-',dir=ROOT/'runs') as temp:
         d=Path(temp);target,modules,crypto=prepare(d,owner)
@@ -21,7 +21,8 @@ def fixture_build(owner,key,loop_test=False,fault_test=False):
             LINK/'file_core.c',NATIVE/'sha256.c',*crypto],driver=True,definitions=('SCENE_REVISION=4',))
         sys.path.insert(0,str(V3))
         compiler=load('connected_fixture_compiler',V3/'compile_world.py')
-        world=compiler.compile_world(ROOT.parent/'x86-64-uefi-god-runtime-v2/worlds/cat-chases-mouse.json',1,
+        world_path=V3/'worlds/ginger-cat-walk-v1.json' if graphics_world else ROOT.parent/'x86-64-uefi-god-runtime-v2/worlds/cat-chases-mouse.json'
+        world=compiler.compile_world(world_path,2 if graphics_world else 1,
             Ed25519PrivateKey.from_private_bytes(bytes(range(32))))
         def release(payload,base,counter):return pack(payload,private=key,target=target,
             base_runtime=digest(base),world=world,counter=counter)
@@ -42,6 +43,7 @@ def fixture_build(owner,key,loop_test=False,fault_test=False):
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--archive',action='store_true')
     p.add_argument('--loop-test',action='store_true')
+    p.add_argument('--graphics-world',action='store_true',help='native swap/rollback with full ginger cat counter2, mock USB only')
     p.add_argument('--fault-test',action='store_true',help='actual root-loop screen diagnostics and watchdog under mock USB failure')
     p.add_argument('--ovmf-code',type=Path)
     p.add_argument('--ovmf-vars',type=Path);a=p.parse_args()
@@ -50,7 +52,7 @@ def main():
     key=Ed25519PrivateKey.from_private_bytes(bytes(range(32,64)))
     owner=key.public_key().public_bytes(Encoding.Raw,PublicFormat.Raw)
     if a.loop_test and a.fault_test:p.error('select only one root loop test')
-    image,bindings=fixture_build(owner,key,a.loop_test,a.fault_test);image2,bindings2=fixture_build(owner,key,a.loop_test,a.fault_test)
+    image,bindings=fixture_build(owner,key,a.loop_test,a.fault_test,a.graphics_world);image2,bindings2=fixture_build(owner,key,a.loop_test,a.fault_test,a.graphics_world)
     if image!=image2 or bindings!=bindings2:raise RuntimeError('fixture build nondeterministic')
     candidate,report,_=build(owner,True);candidate2,report2,_=build(owner,True)
     if candidate!=candidate2 or report!=report2:raise RuntimeError('bootstrap build nondeterministic')

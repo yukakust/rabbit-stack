@@ -152,4 +152,38 @@ unsigned host_status(uint8_t*out){return rg_att(&driver,(const uint8_t*)"\\x0a\\
             self.assertIn('--stage-only-bytes',result.stderr)
             self.assertNotIn('MAC SENDER COMPILED',result.stdout)
 
+    def test_native_trial_exact_gate_plan_and_owner_signing(self):
+        import json,os,sys
+        from prepare_native_trial import prepare_plan,sign_plan,checked_inputs
+        from send_file import validate
+        key=Ed25519PrivateKey.from_private_bytes(bytes(range(64,96)))
+        owner=key.public_key().public_bytes(Encoding.Raw,PublicFormat.Raw)
+        image,report,modules=build(owner)
+        # Synthetic gate for helper validation, NOT an owner/QEMU observation.
+        report.update(status='OWNER-OBSERVED-EXACT-MAC-QEMU-NO-DEVICE',qemu_verified=True,mac_sender_compile_verified=True)
+        d=Path(self.temp.name)/'trial';d.mkdir()
+        installed=d/'report.json';installed.write_text(json.dumps(report))
+        (d/'connected-supervisor.img').write_bytes(image)
+        payload=d/'driver-revision-2.efi';payload.write_bytes(modules[2])
+        public=d/'owner.pub';public.write_bytes(owner)
+        from build_image import V3
+        sys.path.insert(0,str(V3))
+        compiler=old.load('trial_world_compiler',V3/'compile_world.py')
+        world=d/'world.rup';world.write_bytes(compiler.compile_world(V3/'worlds/ginger-cat-walk-v1.json',2,Ed25519PrivateKey.from_private_bytes(bytes(range(32)))))
+        world_sha=digest(world.read_bytes()).hex();plan_path=d/'plan.json'
+        plan=prepare_plan(installed,world,world_sha,public,plan_path)
+        self.assertEqual(plan['native_counter'],1)
+        with tempfile.TemporaryDirectory(prefix='rabbit-fixture-key-') as external:
+            private=Path(external)/'owner.key';private.write_bytes(bytes(range(64,96)));os.chmod(private,0o600)
+            with self.assertRaises(UpdateError):sign_plan(plan_path,private,'00'*32)
+            self.assertFalse(plan_path.with_suffix('.rrt').exists())
+            sign_plan(plan_path,private,digest(plan_path.read_bytes()).hex())
+            validate(json.loads(plan_path.with_suffix('.session.json').read_text()))
+            with self.assertRaises(UpdateError):sign_plan(plan_path,private,digest(plan_path.read_bytes()).hex())
+        with self.assertRaises(UpdateError):checked_inputs(installed,world,'00'*32,public)
+        payload.write_bytes(modules[1])
+        with self.assertRaises(UpdateError):checked_inputs(installed,world,world_sha,public)
+        payload.write_bytes(modules[2]);public.write_bytes(self.owner)
+        with self.assertRaises(UpdateError):checked_inputs(installed,world,world_sha,public)
+
 if __name__=='__main__':unittest.main(verbosity=2)

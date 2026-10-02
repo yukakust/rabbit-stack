@@ -3,9 +3,11 @@
 This successor exists to migrate once from the installed immutable passive-radio
 loop. Ordinary worlds AND combined Scene/radio native drivers can then be delivered
 through a connected file service without USB shuttling. The owner installed the
-first candidate, but its first Mac connection disconnected during service discovery
-before any file bytes; Bluetooth interoperability is **not verified**. The corrected
-candidate below is not physically installed. No measured throughput claim.
+first candidate initially failed during discovery. The subsequent owner-installed
+20ms candidate delivered the walking cat and resumed a deliberately interrupted
+counter2 world at offset8400. Native connected replacement remains physical-test
+pending. See the owner evidence files; no authenticated attestation or full-file
+speed benchmark is claimed. Earlier candidate sections below are historical.
 
 ## LE packet-boundary repair and diagnostics (2026-10-02)
 
@@ -272,3 +274,56 @@ does NOT COMMIT and keeps the previous cat active. Second must show a nonzero
 it returns zero, preserve Mac/Dell diagnostics: this falsifies retained resume
 for that run. Do not silently label a full restart as resume. Power loss still
 loses all RAM. Mac compilation and this physical interruption test remain pending.
+
+That pending status is now superseded: owner Mac compiled successfully, stopped
+at8400, then a new process resumed at8400 and received the exact counter2 receipt.
+The remaining transfer took15.525s, NOT a measured full-file transfer time. See
+`evidence/dell-connected-resume-owner-observed.json`. Unexpected link failures and
+watchdog recovery remain separate checks.
+
+### First owner-native trial through the connected channel (no USB)
+
+Use the existing owner-gated `driver-revision-2.efi`, not a freshly rebuilt image.
+This reviewed engine revision adds a blue bottom line while preserving the exact
+cat package, live positions, frames, tick and world counter through RSS2 import.
+The full ginger-cat counter2 QEMU/mock-USB scenario is now available:
+
+```sh
+python3 run_qemu.py --graphics-world
+python3 prepare_native_trial.py --installed-report runs/owner-gate-s0bxi9d8/report.json --world-package /tmp/connected-cat-world-2.rup --world-sha256 cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645 --owner-public "$HOME/.rabbit-owner/runtime.pub" --output /tmp/connected-native-trial-1.json
+```
+
+Preparation reads only the public key. It checks the existing saved image, gated
+production sources, exact gated module2 and currently applied world bytes. It
+requires a production owner-observed gate and refuses overwrite. It does not build
+or install a bootstrap, sign, start Bluetooth, or touch a private key.
+Assumptions: same Dell boot, baseline driver1 still active, no native trial yet.
+Native counter1 is separate from current world counter2.
+
+Review the resulting plan and its printed SHA256 before explicit signing:
+
+```sh
+python3 prepare_native_trial.py --sign-plan /tmp/connected-native-trial-1.json --private "$HOME/.rabbit-owner/runtime.key" --reviewed-plan-sha256 REPLACE_WITH_REVIEWED_PLAN_SHA256
+```
+
+This rechecks all bindings, verifies the private key matches the provisioned public
+key, signs and independently verifies RRT3, then saves create-only `.rrt` and
+`.session.json` files. Private bytes are never printed/sent. The placeholder is
+NOT a literal shell command. Only after review/signing, send the saved session:
+
+```sh
+python3 send_file.py /tmp/connected-native-trial-1.session.json --send
+```
+
+Expected: an intentional disconnect, re-advertising/reconnection, exact applied
+receipt, Dell `OWNER DRIVER COMMITTED; RECEIPT RETAINED FOR RECONNECT`, the same
+walking cat and a blue bottom line. A disconnect alone is NOT application. Retry
+only the SAME saved session to query a lost receipt, never create another nonce
+or re-sign to hide an unknown result. Collect both Mac and Dell output.
+
+On failed health, previous live world/driver must be retained. This is QEMU-tested,
+NOT physically proven yet. Uncertain radio cleanup invokes watchdog and may lose
+RAM world/state on reboot. Privileged native code is not isolated; no guaranteed
+recovery from arbitrary memory corruption/disabled interrupts. Do NOT send the
+deliberately unhealthy/hung test modules to Dell in the initial trial. Keep the
+working bootstrap USB in place; no new media write is required.

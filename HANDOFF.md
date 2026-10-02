@@ -1564,3 +1564,23 @@ once; reset fixture returns zero. Owner must compile on Mac and run controlled
 counter2 staging-stop/same-session-resume experiment in README before claiming
 physical nonzero resume. Keep Dell powered; never regenerate the saved session
 after an interruption. Existing unrelated network-runtime work is not in scope.
+
+## Connected resume observed; first native connected trial prepared
+
+Owner Mac compiled sender d2a89f16.../status validator9bf98c86..., deliberately
+stopped world counter2 at receiver8400, then resumed SAME saved session at8400.
+Exact receipt matched cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645.
+Remaining transfer15.525s, NOT full-file speed. Evidence records controlled
+same-boot resume only, not unexpected fault/power-loss retention or attestation.
+
+Owner requests native engine update over fast channel. New prepare_native_trial.py
+uses EXISTING owner-gate-s0bxi9d8 driver-revision-2, verifies installed report/image,
+unchanged production source hashes, public key and exact active counter2 world.
+No new receiver C, driver, root, key or flash change. Default prepares a create-only
+review plan without private access/sign/send; explicit reviewed-plan-hash sign mode
+rechecks inputs, requires owner private/public match, signs/verifies RRT3 and saves
+one kind2/nativecounter1 session. First visible effect: blue bottom line with same
+cat world/live state. Native/world counters independent; assume same powered boot,
+baseline driver1 and no prior connected native trial. Owner review/sign/send and
+physical commit/state preservation remain PENDING. Failed-health rollback and
+watchdog are emulator tests, not guarantees for arbitrary privileged native code.

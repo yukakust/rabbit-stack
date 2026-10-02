@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "OBSERVED-QEMU-CONNECTED-DRIVER-SWAPS-WATCHDOG-WITH-GINGER-CAT",
+  "physical_verified": false,
+  "bluetooth_verified": false,
+  "controller": "Mock USB ACL/L2CAP/ATT, actual UEFI root/driver loader",
+  "command": "python3 run_qemu.py --graphics-world",
+  "world_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
+  "world_counter": 2,
+  "fixture_image_sha256": "b6492d9aba390b517b60bc7473236fa602c7555996010eb3e81341d32851c0d3",
+  "fixture_efi_sha256": "631cc69dfc0d87e0faefbdae84058b3a78bbdaf27122d745934c14bf0c1fe725",
+  "driver_1_sha256": "9bd49a503b4e1ae6526766c474a5aa769ff88cfa5bbff9066564cb163fcfb194",
+  "driver_2_sha256": "9ee8c0732c3230b63288c4536e8f9e419c8681345ca4a23d197f37f7d2052473",
+  "observer_sha256": "c51b83ec4b810854bf2018694ada69aed593472fb0c486fae9e332517e2360e6",
+  "harness_sha256": "9cf6c055f2bf38df9fb8c2e36619d6731f34b0f8801f72108120bbc617cc15ed",
+  "observed_log_sha256": "1f2bd203168e424da3064cee4f64c8c39069a417037de37583c89d3e0e0f6395",
+  "observations": ["two swaps in one boot", "receipt-only exact retry", "failed health and bad signature retain exact world/driver", "reviewed interrupts-enabled hung-init watchdog returns to bootstrap"],
+  "limitations": "Linux public-fixture artifacts are NOT owner Mac artifacts. Log/report kept in ignored local runs/q-tzouf7ab; this is a summary, not an archived full trace. Native code is privileged, recovery is not guaranteed for arbitrary faults."
+}
