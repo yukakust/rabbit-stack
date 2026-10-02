@@ -1584,3 +1584,20 @@ cat world/live state. Native/world counters independent; assume same powered boo
 baseline driver1 and no prior connected native trial. Owner review/sign/send and
 physical commit/state preservation remain PENDING. Failed-health rollback and
 watchdog are emulator tests, not guarantees for arbitrary privileged native code.
+
+## Owner Mac exact native plan and agent takeover
+
+Owner pulled1cd1752, passed full-ginger Mac QEMU (`runs/q-aqcn0ciu/report.json`),
+and prepared `/tmp/connected-native-trial-1.json`, SHA256
+2b483eb704db585f5d3e841d4fcc787826b78465e8c4c3609c075abd43290835.
+Plan binds owner public fingerprint58744820..., installed EFI17368188...,
+baseline02e3a839..., payload0954cba9..., active counter2 worldcc545d03...;
+nativecounter1. NOT SIGNED OR SENT, no native commit claimed.
+
+Owner now requests commit/push and full agent handoff because they do not want
+to paste terminal commands. Complete takeover instructions, exact full hashes,
+Mac paths, pending operations, evidence/recovery limits and scope live in
+`docs/CONNECTED-NATIVE-MAC-HANDOFF.md`. Next agent must execute on the ACTUAL Mac;
+Linux agents do not inherit Mac/private-key/radio access. No SSH or remote access
+has been provided. Private bytes must never enter conversation/Git/Linux.
+No further flash rewrite/reboot/world change. Preserve same current boot and plan.
