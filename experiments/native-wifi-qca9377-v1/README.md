@@ -469,3 +469,47 @@ native profile, bind DMA/ring/bus lifetimes to its stop/unload gate, pass exact
 normal+EMPTY city/BT and rebuild gates, then owner-sign/send and obtain physical
 telemetry. Firmware chunk upload, radio/WMI/HTT, scan/WPA, DHCP/two-way traffic and
 reconnect remain incomplete. Original full Wi-Fi goal remains active.
+
+
+## 2026-10-04 — cooperative ROM readiness and first BMI exchange
+
+Added rom_ready.c/h and bmi_transport.c/h, BMI target facts, integration tests
+and verify_bmi.py. ROM wait reads only validated PCI IO firmware indicator at
+0x3a028, at10ms intervals with3s deadline; all-ones is never interpreted as ready,
+crash bit takes priority over initialized bit. Handle clock reversal, near-UINT64
+clock overflow, protocol release and PCI IO errors without blocking a city tick.
+Caller must first complete reset and fresh PCI/D0/wake validation.
+
+First transport query is ONLY BMI_GET_TARGET_INFO (LE32 command8), with12byte
+reply length/version/type retained. CE0 source and CE1 destination use actual
+ring/CE/bus/PCI IO production components. Verify empty seeded rings match live
+hardware base/size and registered descriptor memory; refuse unmapped/closing
+buffers, descriptor/data aliasing, parallel exchanges and clock overflow. Post
+response before request, use BMI transfer metadata0x3fff, and require both TX
+and RX completion. RX hardware-index-before-length race remains WAIT. Bad length,
+address, cookie/index or zero/all-ones identity faults retain rings/mappings for
+explicit bus stop. Ring close callback requires fresh all-engine halt/zero rings,
+bus-master-off AND successful PCI IO Flush before zeroing descriptors. Actual
+DMA close still owns Unmap/Free ordering. No firmware-write/execute/done command.
+
+11 integration scenarios pass ASan/UBSan on Yukabox, each also exercising ROM
+ready/all-ones/crash/timeout/clock/IO/lifetime gates. Includes nonzero seeded
+indices, RX-before-TX publication order, delayed descriptor update, invalid reply
+length/oversize/address/index/version, failed RX doorbell, close only after stop,
+rejected descriptor aliases and unmapped input. Freestanding x86 COFF for both
+new production components passes. Exact source/log and pinned reference hashes
+in evidence/2026-10-04/bmi; tests use synthetic target version/type, NOT Dell data
+or firmware-compatibility proof. Native profile integration/physical ROM ready/
+physical BMI response are explicitly false in report. Saved native12 unchanged,
+no Bluetooth send/signing/new physical observation in this turn.
+
+NEXT: integrate this first query into reset profile with4 coherent DMA pages
+(TX descriptors, RX descriptors, request, response), fresh PCI/D0/reset/ROM gates,
+all-eight bus stop/start and unload retention. Allocate1page at a time, register
+all4 buffers, initialize8entry rings before configure, seed from hardware, then
+start bus and query. On success/error/cancel cooperatively stop all engines,
+close both rings, close all buffers, then port/wake; any uncertain allocation or
+failed stop/unmap retains native ownership and blocks unload. Include telemetry
+for ROM/BMI raw reply/error and resource cleanup, preserve city/BT normal+EMPTY
+QEMU gates and exact reproducible owner-bound package before physical delivery.
+Full firmware RAM chunks/radio/scan/WPA/DHCP/reconnect goal remains incomplete.
