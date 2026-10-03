@@ -3,12 +3,12 @@
   "id": "cd702b0ef80843c08fe54836c160f87b",
   "intent": "Кот идёт вдвое быстрее. Шапку и фон сохрани.",
   "source": "text",
-  "status": "PENDING",
+  "status": "APPLIED",
   "base_world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
   "engine_done": true,
-  "world_done": false,
+  "world_done": true,
   "explanation": "Кот движется вдвое быстрее. Красная шапка, анимация и фон сохранены.",
-  "error": "Связь или результат применения пока не подтверждены. Сохранённую операцию можно продолжить без нового пакета.",
+  "error": null,
   "background": "121826",
   "candidate_sha256": "cf4c5e7695a567cdde11bfc01f57d850035abd409d0f204f8d45a98f8660a8f4",
   "provenance": [],
@@ -18,5 +18,8 @@
     "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
     "host_ticks": 240,
     "physical_execution_verified": false
-  }
+  },
+  "world_counter": 6,
+  "native_counter": 5,
+  "receiver_reported_applied": true
 }

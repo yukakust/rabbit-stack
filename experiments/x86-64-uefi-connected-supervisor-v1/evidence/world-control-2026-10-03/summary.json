@@ -31,6 +31,12 @@
       "report": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/gui-pending-world6/report.json",
       "report_sha256": "6878843ae7430a4dd7169af0d9507d1371e962168ebe7aeae2f0bb58adb700e3",
       "receiver_reported_applied": false
+    },
+    {
+      "trial": "GUI-request-world6-applied-via-authorized-terminal-resume",
+      "report": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/gui-world6-applied/report.json",
+      "report_sha256": "0f004789f8339596f0dce05bb7d7c2aee7285b4e968324497fc1b913eacb6a38",
+      "receiver_reported_applied": true
     }
   ],
   "source_hashes": {
@@ -70,14 +76,21 @@
   },
   "gui": {
     "text_request_saved": true,
-    "world_counter6_applied": false,
+    "world_counter6_applied": true,
     "pending_session_replaced": false,
-    "tcc_diagnosis": "Initial abort missing NSBluetoothAlwaysUsageDescription, fixed bundle. Later tccd AUTHREQ_PROMPTING for Rabbit World BluetoothAlways; read-only queries time out before DATA; user permission pending."
+    "tcc_diagnosis": "Initial abort missing NSBluetoothAlwaysUsageDescription, fixed bundle. Later tccd AUTHREQ_PROMPTING for Rabbit World BluetoothAlways; read-only queries time out before DATA; user permission pending.",
+    "delivery_context": "Same GUI-created pending request resumed using common CLI from already-authorized Codex terminal; app Bluetooth permission not yet proven. App refreshed to Мир6/готов к изменениям and Применено."
   },
   "limitations": [
     "Correlated receipt is not authenticated device attestation or independent screen observation.",
     "Historical RF/reset root cause unproven.",
     "Native route only reviewed fixed-background family; arbitrary engine generation unsupported.",
     "V3 high-resolution assets LicenseRef-Not-Assigned, not V1 shareable cards."
-  ]
+  ],
+  "current_confirmed": {
+    "world_counter": 6,
+    "native_counter": 5,
+    "world_sha256": "cf4c5e7695a567cdde11bfc01f57d850035abd409d0f204f8d45a98f8660a8f4",
+    "background": "121826"
+  }
 }

@@ -607,3 +607,19 @@ authority still public development Creator; native uses owner key never logged.
 Historical radio reset root cause and sustained reliability unproven. V1 inventory
 exists; local V3 highres assets LicenseRef-Not-Assigned not shareable V1 cards.
 Updated roadmap: docs/CONNECTED-WORLD-CONTROL-PLAN.md.
+
+
+## GUI-created request world6 reconciled and applied — 2026-10-03
+
+App service verified idle, exact pending request/session retained. Common CLI
+resumed it from already Bluetooth-authorized Codex terminal, without replacing
+package/session/nonce/counter. Physical exact APPLIED worldcounter6 package
+b616a128f37e96add5478cb8196879ed9bc44d69d64df823bb7eaf2c9daf1d4e;
+session SHAa817c934b65a11c957fe1105dc0e9f0f0242d0d2c5b6bb6b95be5f484a9c25c6.
+World canonical SHAcf4c5e7695a567cdde11bfc01f57d850035abd409d0f204f8d45a98f8660a8f4,
+catvx2, original hat/background retained in checked data. Nativecounter5 unchanged.
+App AX shows Мир6/готов к изменениям and Применено; pending cleared. This proves
+GUI-generated request plus common transport, not yet app's own Bluetooth access.
+OS app Bluetooth/speech/mic permission and actual live voice/owner Dell observation
+remain pending. User no longer needs to press resume. Evidence adds gui-world6-
+applied/report.json preserving earlier pending reports separately. Goal active.
