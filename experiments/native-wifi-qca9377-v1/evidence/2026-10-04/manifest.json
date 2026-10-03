@@ -1,0 +1,23 @@
+{
+  "physical_dell": false,
+  "phase": "host-preflight and UEFI PCI negative-branch test",
+  "source_sha256": {
+    "pci_identity.h": "e54f5afb1559068a867bb12637172b5dab4865d698e67373f43b36ffd4079741",
+    "pci_identity_test.c": "03e3be7a380f95a6a8264077136325c0210c9c917ae0e10948d15ebeb9d7a697",
+    "firmware_preflight.py": "f5857aa4e985dc91507cefb8c8892f31f11d29af964adb56b81c2825a2f75505",
+    "pci_identity.c": "6165711757f55b5bb9be9a1df11abbf4af406ee7dc29298d98ab587ce46b5611",
+    "fetch_materials.py": "7218dfd627ac1cbbd367a3663bdb5e8d0b5f4a646f8fbaf752142fa1a1679f8d",
+    "pci_probe.c": "77865fe62fe09298fa8c17988f3b34fa71cbc08de895ceccef01263a212bb86e",
+    "verify_preflight.py": "5a6355d7d66c1ca7386001dddf5461a599370d8b8ee6651850b038d9276cd1d3",
+    "verify_pci.py": "9fbc47c442d6b6c447e3c38540245866452649ef701375dc017450618595d824"
+  },
+  "evidence_sha256": {
+    "pci-serial.log": "5c762c98e0566b78f195f04387e005996119b817e43b8bb2cebef6ec41e4b12e",
+    "pci-host.log": "6256f4ce10999b03b611b7266199bd38a2c9f79a412b01391b7f6a2127958f9e",
+    "pci-report.json": "28e5b5e5e90370e2413f4ac46735a1f7a5387795a23529786bba3db8aa3892c2",
+    "materials.json": "169a2d12f0a2b42b0832594972355ef81bee17058f77a6346527f44bc4750041",
+    "preflight.json": "63bd08eba9cc317a847d4c4b193ae89a9dd464aec3a8b5dbfa9fc7d8b6b05a05"
+  },
+  "serial_log_raw_sha256": "9d2bfcafb7d6838c22abc67405d64400a59716f3284a478f8f46366040fdafee",
+  "serial_log_normalization": "ANSI controls removed; CRLF normalized; raw retained on Yukabox"
+}

@@ -807,3 +807,47 @@ loading/recovery prerequisites and dependency source/licence pins.
 No Dell reboot, USB/disk/firmware write, physical radio transmission, owner key
 access/output/copy. Mac state remains native7/world12, no pending operation; city
 map and snapshots retained. Loopback-only fixture stopped after verification.
+
+## 2026-10-04 — owner chooses internal Wi-Fi, no Ethernet cable
+
+Owner explicitly requested internal Wi-Fi after confirming no cable. Do not keep
+waiting for Ethernet or infer an OS/disk installation. Current requested network
+work supersedes the old unrelated-network warning scoped to the earlier trial.
+New source: experiments/native-wifi-qca9377-v1. No working driver is claimed.
+
+iPXE source has no ath10k/QCA9377 implementation; simply changing Ethernet PCI ID
+cannot work. Pinned Linux ath10k PCI/CE/BMI/WMI/HTT reference sources and official
+linux-firmware were downloaded on Yukabox; hashes/licence/notice provenance saved.
+Implemented bounded host firmware/board TLV preflight and fail-closed exact board
+selection.179 tests passed including real firmware/container database. Firmware
+candidate751436bytes, WLAN.TF.2.1-00021-QCARMSWP-1, WMI-TLV4/HTT-TLV3, code swap
+absent. Its compatibility with this physical revision remains unknown. Multiple
+board calibrations include Dell1028:1810; never infer this Dell's subsystem from
+the presence of that entry. Without exact physical identity selection rejects.
+
+Next: read-only fresh PCI subsystem/revision/BAR inventory inside a separately
+reviewed native profile, preserving city/Bluetooth. Then bounded PCI/DMA/CE/BMI
+port, physical target identity, firmware RAM startup/WMI/HTT, scan/security/DHCP.
+Mock tests and host container checks are not QCA9377 hardware emulation. Prove DMA
+stop/callback cancellation/detach/rollback before owner-native gate. Existing4MiB
+image bound needs explicit memory/asset-delivery design; don't append751KB to
+native7 or modify immutable root limits silently. Reuse authenticated frame core
+after a real packet interface exists, and separately establish WAN endpoint.
+
+SSID/security-mode question pending; do not request password in chat. Future local
+credential input, no credentials in LLM/evidence/Git. No credential consumer yet.
+No firmware upload/execute, PCI/MMIO/DMA action, physical scan/association or new
+native signature/transfer performed. Native7/world12 and old city remain unchanged.
+Evidence: native-wifi-qca9377-v1/evidence/2026-10-04. Future native loading remains
+subject to exact current-identity/normal+EMPTY QEMU/code/lifecycle gates; no USB,
+disk, reboot, owner-key-copy or persistent-firmware changes implied.
+
+Also implemented pure `pci_identity.c` decoding exact target/class/subsystem/
+revision/32-or64bit BAR0, with unchanged output on rejection; positive fixtures
+pass actual ASan/UBSan on Yukabox. Standalone typed UEFI PCI Read/GetLocation probe
+was compiled and run in OVMF QEMU:6PCI handles, correct TARGET COUNT0 (RTL8139 VM).
+No PCI write/MMIO/DMA/radio. This is an ABI/negative-branch test, NOT physical
+identity evidence or a QCA hardware model. New pci-report/serial/host logs saved.
+Before active city integration remove VM serial/poweroff harness; keep only the
+bounded read routine and deterministic decode. Native identity/data lifecycle/
+size gates are still required, and no physical profile has been signed or sent.

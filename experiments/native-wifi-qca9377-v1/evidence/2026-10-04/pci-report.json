@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "physical_dell": false,
+  "uefi": "OVMF QEMU RTL8139, target absent",
+  "positive_device_identity_test": "host fixtures only, not physical",
+  "efi_sha256": "9db53e3c933df621003b89a0cba8bc917365bd770fbc742b904c0c92faf0bc53",
+  "source_sha256": {
+    "pci_probe.c": "77865fe62fe09298fa8c17988f3b34fa71cbc08de895ceccef01263a212bb86e",
+    "pci_identity.c": "6165711757f55b5bb9be9a1df11abbf4af406ee7dc29298d98ab587ce46b5611",
+    "pci_identity.h": "e54f5afb1559068a867bb12637172b5dab4865d698e67373f43b36ffd4079741",
+    "pci_identity_test.c": "03e3be7a380f95a6a8264077136325c0210c9c917ae0e10948d15ebeb9d7a697",
+    "verify_pci.py": "9fbc47c442d6b6c447e3c38540245866452649ef701375dc017450618595d824"
+  },
+  "host_sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "pci_writes": 0,
+  "mmio": 0,
+  "dma": 0,
+  "radio": 0
+}

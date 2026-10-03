@@ -1,0 +1,72 @@
+{
+  "physical_dell": false,
+  "upload_performed": false,
+  "sources": {
+    "linux": {
+      "repository": "https://kernel.googlesource.com/pub/scm/linux/kernel/git/netdev/net",
+      "commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206"
+    },
+    "firmware": {
+      "repository": "https://kernel.googlesource.com/pub/scm/linux/kernel/git/firmware/linux-firmware",
+      "commit": "f9b926a6e1d67e09e54adc329c4e76be5f24a895"
+    }
+  },
+  "files": {
+    "linux/drivers/net/wireless/ath/ath10k/hw.h": {
+      "bytes": 39573,
+      "sha256": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13"
+    },
+    "linux/drivers/net/wireless/ath/ath10k/pci.c": {
+      "bytes": 98009,
+      "sha256": "e5c8f5aec5312eb83bef7372706cdb7c979fcf81e423bb4fced3f18591e994fd"
+    },
+    "linux/drivers/net/wireless/ath/ath10k/core.c": {
+      "bytes": 101342,
+      "sha256": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2"
+    },
+    "linux/drivers/net/wireless/ath/ath10k/bmi.c": {
+      "bytes": 12514,
+      "sha256": "f14c60e89f1e4a9c4105e5f7dcf0571717b79a7825c44aceb9fd665e03917aa1"
+    },
+    "linux/drivers/net/wireless/ath/ath10k/bmi.h": {
+      "bytes": 7090,
+      "sha256": "8924f6fbf6ca4cfa494e7b6f38240ec44fa554e8850315b7442f3a534be30344"
+    },
+    "linux/drivers/net/wireless/ath/ath10k/ce.c": {
+      "bytes": 56058,
+      "sha256": "254411318440a6e3c7da76c0bf78e9ae764945abf04e91e1dce410cd6a75d6c8"
+    },
+    "linux/drivers/net/wireless/ath/ath10k/ce.h": {
+      "bytes": 13090,
+      "sha256": "53dfddb64dd54b61add0b14d36bc7fad016c3fc4ab63b8bff5f7b25fc93538b1"
+    },
+    "linux/drivers/net/wireless/ath/ath10k/wmi.h": {
+      "bytes": 220588,
+      "sha256": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c"
+    },
+    "linux/drivers/net/wireless/ath/ath10k/htt.h": {
+      "bytes": 75373,
+      "sha256": "0cbb9326399ac9685f2a863edfcd5e4ed3ee58885dfdb5053f536386311220f7"
+    },
+    "firmware/ath10k/QCA9377/hw1.0/firmware-6.bin": {
+      "bytes": 751436,
+      "sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01"
+    },
+    "firmware/ath10k/QCA9377/hw1.0/board-2.bin": {
+      "bytes": 304308,
+      "sha256": "0fdcc7838f478da81704de88f7b33e28862110c6d5decf7818543f8e37e6cd98"
+    },
+    "firmware/ath10k/QCA9377/hw1.0/notice_ath10k_firmware-6.txt": {
+      "bytes": 53425,
+      "sha256": "8ce5c6ea0542bf4aac31fc3ae16a39792ad22d0eae4543063fac56fb3380f021"
+    },
+    "firmware/LICENSE.QualcommAtheros_ath10k": {
+      "bytes": 2713,
+      "sha256": "337a55102138d7baa143ee4a4c6c91693e0113fece35d380b2a12109e8c23b3f"
+    },
+    "firmware/WHENCE": {
+      "bytes": 333311,
+      "sha256": "05d569a9121b3f80679f577051b09e1197748754aca42d3153af6580a1816f46"
+    }
+  }
+}

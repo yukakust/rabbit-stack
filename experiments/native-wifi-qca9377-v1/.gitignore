@@ -1,0 +1,5 @@
+vendor/
+runs/
+*.obj
+*.efi
+*.so
