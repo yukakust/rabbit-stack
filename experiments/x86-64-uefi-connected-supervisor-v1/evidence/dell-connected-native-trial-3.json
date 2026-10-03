@@ -147,7 +147,7 @@
     "transfer_elapsed_seconds": 58.173
   },
   "later_final_outcome": {
-    "status": "PHYSICAL-EXACT-NATIVE-3-REJECTED-RECEIPT-RETAINED-SCREEN-PENDING",
+    "status": "PHYSICAL-EXACT-NATIVE-3-REJECTION-OWNER-SCENE-RETAINED",
     "evidence": "evidence/dell-connected-native-trial-3-rejected.json",
     "history_preserved": true
   }

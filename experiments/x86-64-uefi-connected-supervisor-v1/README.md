@@ -4,8 +4,8 @@ This connected file service delivers ordinary worlds and owner-signed combined
 Scene/radio native drivers without USB shuttling. Physical Dell evidence now
 includes driver1->2 (walking cat/blue line), driver2->1 (blue line removed), and an
 exact rejected nativecounter3 receipt for the reviewed unhealthy module. A new
-connection confirms the rejection receipt is retained. Owner post-rejection
-scene/motion confirmation is still pending; nativecounter3 is consumed, so any
+connection confirms the rejection receipt is retained. Owner confirms the cat still walks and the blue line is absent after rejection;
+nativecounter3 is consumed, so any
 fresh native release must use at least4 with a refreshed review.
 
 Radio reliability remains under investigation: long unpaced staging lost root

@@ -1774,3 +1774,15 @@ Evidence: connected evidence/dell-connected-native-trial-3-rejected.json plus
 three archived final query/finish/requery logs; earlier failed attempts preserved.
 Paced staging followed by small unpaced tail succeeded, but radio reset cause
 and general reliability remain unproven. Sender source unchanged this turn.
+
+
+## Owner confirms post-rejection scene — 2026-10-03
+
+Owner: «ходит и линии нет». After exact native3 rejection and retained receipt,
+cat continues walking and blue line absent. Physical rejection/scene preservation
+trial complete; exact live frame/tick continuity unmeasured. Nativecounter3 consumed,
+worldcounter2/current driver1 retained; next fresh native>=4. Evidence updated.
+Next work: data-only text intent -> checked V3 candidate -> existing world authority
+-> saved connected session -> paced staging/tail -> exact receipt -> current world.
+World development authority remains distinct from owner-native key; do not silently
+claim worlds are owner-authorized or change installed bootstrap.

@@ -139,6 +139,6 @@
     "exact_rejected_receipt": true,
     "counter_consumed": 3,
     "evidence": "evidence/dell-connected-native-trial-3-rejected.json",
-    "owner_post_trial_observation": "PENDING"
+    "owner_post_trial_observation": "Owner: ходит и линии нет"
   }
 }

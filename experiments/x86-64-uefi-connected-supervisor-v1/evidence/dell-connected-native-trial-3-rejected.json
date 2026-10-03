@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "PHYSICAL-EXACT-NATIVE-3-REJECTED-RECEIPT-RETAINED-SCREEN-PENDING",
+  "status": "PHYSICAL-EXACT-NATIVE-3-REJECTION-OWNER-SCENE-RETAINED",
   "source": "Agent-operated owner Mac terminal/CoreBluetooth; physical Dell",
   "release_sha256": "606594a7de56a8252eccf8759d45048851a4c79936a64f4eb7faf3662a0b62d6",
   "payload_sha256": "dd22921330b2f3f577c858b37a67b7bdf4f0930bcfc379611d5f7de3a46c4bc0",
@@ -32,9 +32,13 @@
     "receipt_counter": 3
   },
   "owner_before_trial": "кот ходит",
-  "owner_after_trial": null,
+  "owner_after_trial": {
+    "verbatim": "ходит и линии нет",
+    "walking_cat": true,
+    "blue_line": false
+  },
   "expected_fixture_behavior": "SCENE_REVISION3 scene_init returns1; authenticated counter consumed, previous driver/world retained by reviewed root",
-  "limitations": "Device receipt exposes generic error2, not exact failing callback/load stage or authenticated device attestation. Owner post-trial scene/motion observation still pending. Earlier failures were pre-COMMIT and remain in historical evidence.",
+  "limitations": "Device receipt exposes generic error2, not exact failing callback/load stage or authenticated device attestation. Owner confirms walking cat/no blue line after trial; exact frame/tick/position continuity is not measured. Earlier failures were pre-COMMIT and remain in historical evidence.",
   "key_loaded": false,
   "new_signature_or_nonce": false,
   "manual_reboot": false,
