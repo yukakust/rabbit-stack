@@ -373,3 +373,50 @@ Then bounded ROM-ready wait and BMI get-target-info on physical Dell. Current
 ring core alone does NOT implement DMA mapping, CE MMIO, BMI, firmware loading,
 scan/association, DHCP or reconnect. Full original goal remains active/incomplete.
 SSID/security and city/tail observation pending; no password in chat/LLM/evidence.
+
+
+## 2026-10-04 — UEFI DMA lifetime adapter implemented, host/ABI gates only
+
+Previous goal turn was progress (CE ring code and tested bounds/lifetimes).
+Current native12/world12 evidence and current sources revalidated before work.
+Added `dma_buffer.c/h`, adversarial tests and `verify_dma.py`. PCI IO
+AllocateBuffer(any pages/BootServicesData/attributes0), Map(CommonBuffer2), Unmap,
+FreeBuffer and Flush typed method offsets verified against pinned UEFI headers.
+Full mapped length, page alignment and32bit device-address/end bounds required;
+no physical address truncation. Successful Map with NULL token still records a
+mapping and passes the returned token to Unmap. EDK2 Map can fail after returning
+a token (IOMMU SetAttribute failure); retain/unmap that token before free.
+No bus-master enable or CE MMIO is implemented by this adapter.
+
+`dma_users` now guards PCI close/reopen until buffers are released. Exposure is
+marked before any future CE/doorbell/BM write. Close starts irreversible-to-reuse
+closing state: no new exposure after a failed close. For exposed buffers, adapter
+stop callback must verify CE engines stopped; then actual PCI Command must show
+bus master off, Flush succeeds, Unmap succeeds, then FreeBuffer. Errors retain
+remaining resources/claim; no free-after-failed-Unmap or early protocol close.
+Ambiguous allocation error with nonnull output is quarantined, never guessed
+safe to free. Limits16pages/buffer and64buffers are explicit Rabbit policy.
+
+18 ASan/UBSan scenarios passed: full success/order, allocation failure/ambiguous
+allocation, failed Map with/without token, short/above32bit/misaligned/overflow
+mapping, successful NULL-token mapping, failed stop/still-enabled BM/Flush/
+Unmap/Free/config read, invalid host alignment and multiple-buffer ownership.
+Freestanding x86 COFF and ABI Map72/Unmap80/Allocate88/Free96/Flush104 checks pass.
+Existing port tests reran after dma_users guard changes. Source-bound evidence
+under evidence/2026-10-04/dma. All builds/tests Yukabox; no physical DMA activation,
+owner signing or new Bluetooth native transfer this continuation.
+
+NEXT: actual CE MMIO setup/stop adapter (halt verification, interrupt masking,
+ring base/size/indices, doorbell ordering) and real bus-master lifecycle. Bind
+CE ring+DMA lifetime to that adapter, then ROM-ready wait and BMI get-target-info.
+Stop callback is MOCK ONLY at this stage; it does not prove physical CE quiescence.
+Do not physically enable bus master until the complete stop/recovery/native gate
+exists. Native12 remains physically installed; firmware upload/WMI/HTT/scan/WPA/
+DHCP/reconnect remain incomplete. Full original Wi-Fi goal stays active. Pending
+SSID/security mode and city/tail observation do not block independent port work;
+no password in chat/LLM/logs. EDK2 references are technical implementation context,
+not evidence of this Dell's actual Map behavior.
+
+Reference: https://raw.githubusercontent.com/tianocore/edk2/master/MdeModulePkg/Bus/Pci/PciBusDxe/PciIo.c
+(PciIoMap/Unmap/AllocateBuffer/FreeBuffer/Flush); pinned iPXE headers remain the ABI
+reference, and actual physical mapping still needs separate evidence.
