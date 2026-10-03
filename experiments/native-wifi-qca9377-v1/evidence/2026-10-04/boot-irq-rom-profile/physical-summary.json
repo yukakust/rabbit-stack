@@ -6,7 +6,7 @@
   "physical_execution_verified": false,
   "wifi_connection_verified": false,
   "note": "Native14 last installed. Do not interpret host or QEMU boot tests as QCA hardware success. Exact pending Bluetooth session preserved.",
-  "read_only_query_timeouts": 2,
+  "read_only_query_timeouts": 3,
   "mac_bluetooth_controller_on": true,
   "data_or_commit_attempted": false,
   "last_confirmed_native_counter": 14
