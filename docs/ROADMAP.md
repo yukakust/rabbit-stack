@@ -35,6 +35,20 @@ unsupported      -> explicit missing-capability rejection
 Rabbit must never silently substitute a different physical effect. It may reject the
 world or propose an explicit alternative for human approval.
 
+## Evolution city direction — owner decision2026-10-03
+
+Preserve existing worlds and engine versions as districts or working historical
+exhibits. New capabilities grow adjacent districts instead of replacing the whole
+city. Add visible portals and shared composition across different executors; the
+ultimate target is a coherent large city whose owners can attach their own worlds
+as neighbouring districts under explicit compatibility and authority contracts.
+
+The phased plan and acceptance criteria are in
+[CONNECTED-WORLD-CONTROL-PLAN.md](CONNECTED-WORLD-CONTROL-PLAN.md#общий-город-из-сохраняемых-и-подключаемых-районов--план-от2026-10-03).
+District map/persistence, live legacy exhibits, cross-engine portals, shared
+rendering, owner-authorized federation and budgeted streaming are planned work,
+not capabilities proved by the current native7/world12 receipts.
+
 ## Architectural boundary
 
 ### Universal layer

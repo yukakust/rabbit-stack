@@ -2058,3 +2058,17 @@ Same saved request resumed via agent CLI without new packet or receiver reset.
 No USB/disk/firmware writes, agent reboot or owner key output. Exact normal/EMPTY
 UEFI QEMU gates + host sanitizer/timer/controller/recovery checks passed; QEMU mock
 USB is not physical evidence. Current saved world12/native7, no pending operation.
+
+### 2026-10-03: owner roadmap decision — evolution city
+
+Owner explicitly requested preserving old cities/engines and building new districts
+next to them, with the first square and2D cat as historical/live paintings. Visible
+portals and coherent shared composition across executors are now required roadmap
+items. Other owners should eventually attach their worlds as neighbouring districts
+in a large city. Added phased district/persistence/exhibit/portal/composition/owner
+authority/streaming plan and acceptance criteria to
+`docs/CONNECTED-WORLD-CONTROL-PLAN.md`; linked from `docs/ROADMAP.md`. These are planned,
+not implemented. Next executor experiment must preserve the old district. No new
+Dell packet, OS/engine installation or remote-world import authorized by this plan
+edit. Current physical receipt state remains native7/world12; visual/TCC pending
+observations have not been inferred from this conversation.
