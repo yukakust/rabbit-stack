@@ -1409,3 +1409,33 @@ nonce, clear staging or increment the counter. Observe current sender process
 before retrying. City/tail and proximity question is pending. No USB/bootstrap,
 reboot, firmware upload or Wi-Fi connection performed or inferred. Full original
 goal remains active, including firmware RAM chunks, radio/WPA/DHCP/reconnect.
+
+## 2026-10-04 — signed firmware RAM assembly core, host/COFF only
+
+Added firmware_chunks.c/h, pure firmware_chunk_format.py, sanitizer harness and
+verify_firmware_chunks.py; contract in FIRMWARE-CHUNKS-CONTRACT.md. Independent
+of the frozen native15 candidate and its saved signed session. No Dell update,
+production owner signing, firmware upload or identity/compatibility inference.
+
+Packets have224byte signed/hash-bound headers and up to65536byte bodies, fitting
+the262144byte transport budget. Reviewed external policy binds owner, target,
+whole hash/length, exact generation, physical BMI type/version and asset kind.
+Accepts shuffled chunks/exact retries; rejects context/owner/signature/hash/bounds
+errors before RAM writes. Full assembly hash and a second hash before consumer
+pin are required. Pin blocks replacement/cancel; unpin requires stopped consumer
+and DMA. Cancel zeroes the asset. Maximum2MiB/32chunks, caller-owned RAM.
+
+Yukabox final ASan/UBSan and x86-64 UEFI COFF gates pass for1,65535,65536,65537,
+2097152bytes and the exact reviewed751436byte official firmware container
+(12chunks, max packet65760bytes). Tests cover all truncated headers, tampering,
+real Ed25519 checks, valid signatures under wrong key/context, shuffled/retried
+delivery, pin/cancel lifetime and corruption before/after complete assembly.
+Evidence: native-wifi-qca9377-v1/evidence/2026-10-04/firmware-ram-chunks.
+Signatures are TEST FIXTURES with synthetic BMI identity, never owner uploads.
+
+NEXT: retain pending native15 and obtain its physical boot/BMI evidence first.
+Integrate this RAM core into a separately framed native-owned Bluetooth asset
+service with exact receipts, validated UEFI allocations and unload guards;
+preserve existing file-service handles and native/world update meanings.
+Actual firmware compatibility, extraction/calibration, BMI memory writes,
+firmware startup, radio/scan/WPA/DHCP and reconnect remain incomplete.
