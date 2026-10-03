@@ -1439,3 +1439,34 @@ service with exact receipts, validated UEFI allocations and unload guards;
 preserve existing file-service handles and native/world update meanings.
 Actual firmware compatibility, extraction/calibration, BMI memory writes,
 firmware startup, radio/scan/WPA/DHCP and reconnect remain incomplete.
+
+## 2026-10-04 — secondary signed-asset ATT channel, host/COFF gates
+
+Added firmware_channel.c/h and firmware_gatt.c, preserving file handles1..7 and
+diagnostic handles8..10 by explicit delegation. Secondary service suffix7 owns
+11..17; control13/data15/status17. Existing server owns MTU/disconnect handling.
+Channel receives one bounded signed chunk packet into caller-owned workspace;
+BEGIN/resume binds exact packet SHA/length, DATA accepts only contiguous bytes or
+exact prefix retries, COMMIT verifies transport hash then signed RAM acceptance.
+Foreign BEGIN cannot erase active staging. Final receipts are idempotent; abort
+does not clear accepted firmware chunks. Read/ReadBlob gives exact64byte receipts
+even at MTU23, separating RAM acceptance/complete asset from hardware startup.
+Pin guards reject channel writes/close until stopped consumer unpins. No owner
+key, PCI/MMIO, allocation or hardware operation in this component.
+
+Final Yukabox ASan/UBSan and both x86-64 UEFI COFF objects pass with all6 existing
+RAM datasets, including exact751436byte official container/12chunks and2MiB/
+32chunks. Tests exercise service/characteristic discovery, legacy delegation and
+MTU ownership, long status/bad-offset rejection, foreign active session, abort,
+gaps/UINT32_MAX offsets, truncated transfer, changed retry, lost ACK with exact
+retry, matching BEGIN resume, repeated COMMIT, pinned close, and transport versus
+signature rejection. Gate source/log hashes and underlying RAM gate hash match
+the Mac source/evidence. Evidence under native-wifi-qca9377-v1/evidence/2026-10-04/
+firmware-att-channel. This is NOT actual UEFI ATT execution or physical transfer.
+
+Current native15 payload/source/session remains frozen and pending, native14
+last confirmed installed. NEXT: obtain physical boot/BMI response, integrate
+owner/target-bound RAM policy and allocation into an asset-capable native driver,
+wire the ATT hook into its existing handler, add exact Mac receipt/resume sender,
+then actual normal+EMPTY UEFI/current-world/owner gates before any physical send.
+No chip firmware compatibility/upload/startup, radio/WPA/DHCP/reconnect proof yet.

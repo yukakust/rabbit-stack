@@ -66,6 +66,37 @@ matching live state/receipts, never an assumption from a saved Mac bitmap.
 
 ## Remaining integration
 
+The standalone `firmware_channel.c` and `firmware_gatt.c` implement the secondary
+ATT channel. They are not wired into the current native driver. Service UUID is
+52414242-4954-4649-8000-000000000007, handles11..17. Control13, data15 and status17
+have UUID suffixes8,9,10. Existing file handles1..7 and diagnostics8..10 delegate
+unchanged; legacy server owns MTU negotiation and reconnect resets only its MTU.
+An adapter calls `qca_fc_att` before the legacy handler and delegates SIZE_MAX.
+Do not initialize or replace asset/channel policy from an incoming BEGIN packet.
+
+Control messages are44bytes: RFC1 magic, operation byte1=BEGIN/2=COMMIT/3=ABORT,
+three zero bytes, LE32 packet length, SHA256 of the entire signed chunk packet.
+DATA is LE32 packet offset followed by1..240bytes. Exact duplicate DATA is allowed
+only inside the confirmed prefix; gaps, partial overlaps, changed retries and
+out-of-bounds offsets fail without advancing it. Foreign BEGIN cannot replace
+active staging. COMMIT requires complete bytes and matching transport hash, then
+invokes the signed RAM core. Repeated matching final BEGIN/COMMIT returns the same
+terminal receipt. ABORT clears staging without altering accepted asset chunks;
+an explicit subsequent BEGIN can restart an aborted packet. Disconnect alone
+must not reinitialize either channel or asset. Module replacement/reboot can
+lose RAM state; the Mac must query, compare hashes and detect prefix regression.
+
+Status is64bytes, readable with ATT Read/ReadBlob even at MTU23:
+RFCS0001[8], state/error/length/received[4bytes each], packet SHA256[32], accepted
+asset bitmap[4], ready/pinned/poisoned/reserved[1byte each]. States0=idle,1=staging,
+2=accepted into RAM,3=rejected,4=aborted. Error20=transport hash failure; errors1..7
+come from the signed RAM core. Status is an observable receipt, not attestation
+or firmware startup proof. No World/native counter is advanced by this channel.
+Only write requests with ACK are supported; write commands do not modify state.
+Channel close clears workspace state, but does not release the asset buffer;
+adapter closes the channel before cancelling/freeing the asset, after stopping
+its consumer/DMA. Pin blocks control/DATA/close until the consumer unpins.
+
 Add owner-bound target policy, separately framed Bluetooth RAM-asset service,
 read-only progress/hash receipts, same-session recovery, bounded UEFI allocation
 and native unload guards. Gate actual normal/EMPTY UEFI city/BT preservation and
