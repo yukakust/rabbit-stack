@@ -251,3 +251,39 @@ probe sent merely to repeat the same zero chip-ID. Native11 confirmed MEM0102,
 so preserve the actual starting command rather than claim historic0100 restored.
 Full Wi-Fi goal remains active and incomplete. SSID/security and post-update
 city/tail observation questions are pending; password stays out of chat.
+
+
+## 2026-10-04 — cooperative cold-reset core host gates passed
+
+Previous goal turn was concrete progress: physical native11 D0/ASPM evidence
+changed the next action and actual PCI command cleanup was corrected/tested.
+Current continuation revalidated native11/evidence/current sources. Added
+`reset_core.c/h`, `reset-target.json`, adversarial `reset_test.c` and
+`verify_reset.py`. Based on pinned ath10k PCIe-local GLOBAL_RESET0x80008,
+assert and deassert each require20ms without accesses to the claimed Wi-Fi
+PCI device. Target minimum extent is0x8000c, not wake-only0x80008.
+
+Errors on reset writes are ambiguous: ownership starts before assertion and is
+not released until deassert readback confirms clear after settling. Poll has
+bounded3-attempt recovery; a stuck asserted bit, error/all-ones readback, or
+ineffective clear retains ownership. Explicit recovery retries deassert/verify,
+never another assertion. Reverse-clock and expired-deadline cases still require
+safe cleanup. Host mocks test no early access, ambiguous assert/clear, stuck bit,
+read failure/all-ones, retries, repeated poll and invalid inputs. ASan/UBSan and
+freestanding x86 COFF passed on Yukabox with source-bound evidence/reset-core.
+A successful write is NOT proof that reset asserted; current component proves
+ordering/recovery in mocks, not physical reset or useful post-reset identity.
+
+NEXT concrete implementation: native reset adapter/profile. Fresh exclusive
+PCI/D0/BAR identity and actual Command checks first; safely wake without treating
+zero chip-ID as already verified. Gate allowlisted GLOBAL_RESET RMW, retain the
+PCI claim through reset settling and recovery. After reset revalidate actual
+PCI configuration/resources/memory-only state before further MMIO; do not trust
+pre-reset cached flags. Observe FW indicator and repeated chip-ID. Integrate
+reset lifetime into close/unload and candidate rollback, preserve city/BT, run
+normal+EMPTY/current-world/source/native size gates before signing. Include the
+command lifecycle correction; hardware-free candidate health/init stays so.
+Native11/world12 remains physically installed; NO reset profile has been signed,
+sent or executed yet. No DMA, firmware RAM upload, scan/association/DHCP yet.
+Full original Wi-Fi/reconnect goal stays active. SSID/security-mode and post-
+update city/tail observation pending; they do not block independent port work.
