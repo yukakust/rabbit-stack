@@ -1,0 +1,35 @@
+{
+  "status": "ready",
+  "explanation": "Кот движется вдвое быстрее. Красная шапка, анимация и фон сохранены.",
+  "base_world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+  "objects": [
+    {
+      "id": 1,
+      "sprite": 1,
+      "program": 1,
+      "x": 8,
+      "y": 40,
+      "vx": 2,
+      "vy": 0,
+      "target": 1
+    }
+  ],
+  "programs": [
+    {
+      "id": 1,
+      "name": "walk-bounce-four-pose-loop",
+      "code": [
+        1,
+        2,
+        5,
+        4,
+        0
+      ]
+    }
+  ],
+  "inventory_assets": [],
+  "created_sprites": [],
+  "background": null,
+  "restore_version": null,
+  "missing_capabilities": []
+}

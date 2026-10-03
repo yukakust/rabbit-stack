@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "status": "EXACT-APPLIED-RECEIPT",
+  "kind": "native-background",
+  "counter": 4,
+  "background": "203050",
+  "base_runtime_sha256": "02e3a839f5c4320754a7afa6fecc6ca626475d36c360f3ed66cdd6db30e7b4c3",
+  "base_world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+  "world_package_sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+  "payload_sha256": "b5ece667f82d2290571054a66f6a75d364095bfa27d7a4453a4923b1eb47d2aa",
+  "package_sha256": "6846e817c6b87238318807b8da4f07252e5e4663fa0412c0f169ed0ebe8f6afc",
+  "session_sha256": "fcd90b6bcda57cd15a2261e984721c1094002ddd72d3fad20ac0ff1d7a74c1ab",
+  "host_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "qemu_gate": {
+    "status": "EXACT-CANDIDATE-QEMU-LOAD-SWAP-RESTORE-REJECTION-PASS",
+    "payload_sha256": "b5ece667f82d2290571054a66f6a75d364095bfa27d7a4453a4923b1eb47d2aa",
+    "background": "203050",
+    "observed_log_sha256": "e0211be14c552df2788546fb5e4fb34e24f603d6e75b911863a0c8de4d15bc94",
+    "physical_verified": false,
+    "bluetooth_verified": false,
+    "controller": "mock USB only",
+    "fixture_image_sha256": "1614c43023232337fbfc2fd98624d196509263801f04e99910c6feea980dda2a"
+  },
+  "receiver_reported_applied": true,
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/background-native4/query-0.log",
+      "log_sha256": "e3ef788075351a96e64a0bc2c4b86ddf2eca4f62a3ff860c8044e41ff88d254a"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/background-native4/paced-stage-1.log",
+      "log_sha256": "f6f7927fc1992e3bcc96cce7551fd7ba0965d08289db357a547bf598427d741a"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/background-native4/commit-2.log",
+      "log_sha256": "6c17f6db5760918e2ae18c4271990199adb214b78469d1bdbe696ea8d337b2aa"
+    }
+  ],
+  "confirmed_received": 36640,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 35049,
+    "length": 35049,
+    "counter": 3,
+    "sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+    "session_matches": false,
+    "raw_hex": "524653015a3c0d4b4a73bc86e9880000e988000002000000030000008761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+    "device_attestation": false
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status": "EXACT-CANDIDATE-QEMU-LOAD-SWAP-RESTORE-REJECTION-PASS",
+  "payload_sha256": "b5ece667f82d2290571054a66f6a75d364095bfa27d7a4453a4923b1eb47d2aa",
+  "background": "203050",
+  "observed_log_sha256": "e0211be14c552df2788546fb5e4fb34e24f603d6e75b911863a0c8de4d15bc94",
+  "physical_verified": false,
+  "bluetooth_verified": false,
+  "controller": "mock USB only",
+  "fixture_image_sha256": "1614c43023232337fbfc2fd98624d196509263801f04e99910c6feea980dda2a"
+}

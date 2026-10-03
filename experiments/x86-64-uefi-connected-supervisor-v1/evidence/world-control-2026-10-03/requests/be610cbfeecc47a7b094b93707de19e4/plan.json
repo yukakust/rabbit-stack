@@ -1,0 +1,12 @@
+{
+  "status": "ready",
+  "explanation": "Возвращаю сохранённую версию новым пакетом.",
+  "base_world_sha256": "d6d7a6df8152617c1d3fae013999355edec0ec8a2642b1d25aaf5f1123959460",
+  "objects": null,
+  "programs": null,
+  "inventory_assets": [],
+  "created_sprites": [],
+  "background": null,
+  "restore_version": "initial",
+  "missing_capabilities": []
+}

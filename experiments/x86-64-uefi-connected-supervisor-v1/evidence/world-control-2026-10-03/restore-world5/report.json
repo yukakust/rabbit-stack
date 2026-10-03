@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 5,
+  "base_world_sha256": "d6d7a6df8152617c1d3fae013999355edec0ec8a2642b1d25aaf5f1123959460",
+  "world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+  "package_sha256": "b27d1c33d7a3b60d9ac92095b498905dedc802ea17473aa6265d9fdff28ef3b2",
+  "session_sha256": "5768219abad04bf5ae1305790bd53f28f985b75c736e0ab3dc1b36b67759f134",
+  "authority": "installed-public-development-world-creator-NOT-owner-native",
+  "host_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "physical_execution_verified": false,
+  "receiver_reported_applied": true,
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/restore-world5/query-0.log",
+      "log_sha256": "7952cfb91b178248fabe6c08d241d8d3d7f843b22df62c79ac8c04930ca61778"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/restore-world5/paced-stage-1.log",
+      "log_sha256": "632fe050578f709cbdbf643142d5e926b789aae77b8d6340a6862533fadb7893"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/restore-world5/commit-2.log",
+      "log_sha256": "d4249a1643ba9479dce6249c8209c39536448886de20e72f92a985d932b8505f"
+    }
+  ],
+  "confirmed_received": 35049,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 35202,
+    "length": 35202,
+    "counter": 4,
+    "sha256": "6156cd3385b8a064f8307e00ae547ef733337fc1ede8bc03bc729f84c24d4c73",
+    "session_matches": false,
+    "raw_hex": "52465301c47f6aba89153e95828900008289000002000000040000006156cd3385b8a064f8307e00ae547ef733337fc1ede8bc03bc729f84c24d4c73",
+    "device_attestation": false
+  }
+}

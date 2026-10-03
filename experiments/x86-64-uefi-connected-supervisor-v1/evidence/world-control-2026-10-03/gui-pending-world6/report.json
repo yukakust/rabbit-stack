@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "status": "DELIVERY-NOT-CONFIRMED",
+  "counter": 6,
+  "base_world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+  "world_sha256": "cf4c5e7695a567cdde11bfc01f57d850035abd409d0f204f8d45a98f8660a8f4",
+  "package_sha256": "b616a128f37e96add5478cb8196879ed9bc44d69d64df823bb7eaf2c9daf1d4e",
+  "session_sha256": "a817c934b65a11c957fe1105dc0e9f0f0242d0d2c5b6bb6b95be5f484a9c25c6",
+  "authority": "installed-public-development-world-creator-NOT-owner-native",
+  "host_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "physical_execution_verified": false,
+  "receiver_reported_applied": false,
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 250,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/gui-pending-world6/query-0.log",
+      "log_sha256": "e99f5c9142028cf3e551ea8009b313282c98861b4015591e4d268bfebcae94c0"
+    },
+    {
+      "name": "query",
+      "exit_code": 1,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/gui-pending-world6/query-1.log",
+      "log_sha256": "e70470ff6f1a4d03be1d36ef30e09d93910e7a4f1c53e78e160af8338eb33399"
+    },
+    {
+      "name": "query",
+      "exit_code": 1,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/gui-pending-world6/query-2.log",
+      "log_sha256": "e70470ff6f1a4d03be1d36ef30e09d93910e7a4f1c53e78e160af8338eb33399"
+    }
+  ],
+  "confirmed_received": 0
+}

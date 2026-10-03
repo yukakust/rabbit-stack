@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-03",
+  "trials": [
+    {
+      "trial": "background-native4",
+      "report": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/background-native4/report.json",
+      "report_sha256": "71a67908fdb8c8690d511c79ad57c0809cd79c6f934599d00a6ca054e4da7f5d",
+      "receiver_reported_applied": true
+    },
+    {
+      "trial": "restore-native5",
+      "report": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/restore-native5/report.json",
+      "report_sha256": "508d0762d073682948cd84363fe55c5f0f5b241d690d38e64a5765606df07f2e",
+      "receiver_reported_applied": true
+    },
+    {
+      "trial": "controlled-stop-resume-world4",
+      "report": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/controlled-stop-resume-world4/report.json",
+      "report_sha256": "24dc141e41dcd20a5b82cdf2ca940b1ea64e1d5438e520f0e418dd7c94308b08",
+      "receiver_reported_applied": true
+    },
+    {
+      "trial": "restore-world5",
+      "report": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/restore-world5/report.json",
+      "report_sha256": "99eabfa6332c5419260f3c7e8777b8e16e6ecd174bc9fe635bf13128f109de3a",
+      "receiver_reported_applied": true
+    },
+    {
+      "trial": "gui-pending-world6",
+      "report": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/gui-pending-world6/report.json",
+      "report_sha256": "6878843ae7430a4dd7169af0d9507d1371e962168ebe7aeae2f0bb58adb700e3",
+      "receiver_reported_applied": false
+    }
+  ],
+  "source_hashes": {
+    "experiments/x86-64-uefi-connected-supervisor-v1/world_control_server.py": "0d48ae3ecbef8bdd9aa511eccdc91b3ac712b1967b3e0595271ba37e12945030",
+    "experiments/x86-64-uefi-connected-supervisor-v1/engine_route.py": "e067e524835c2af152420fe25f9cf53202e5a699fba4d2c4b018a3645cfefac8",
+    "experiments/x86-64-uefi-connected-supervisor-v1/run_control_interruption_trial.py": "9b59dc87d734944df71424df6dc031fcbf6ecfea37246911195d8775668758c8",
+    "experiments/x86-64-uefi-connected-supervisor-v1/build_control_app.py": "b55a45257ad8fded2fd21365ffe1e62f30f91d7a00948a881de328ef8e2c0b91",
+    "experiments/x86-64-uefi-connected-supervisor-v1/ask_connected_world.py": "5b3879e916914e2a3d6700c5e78f1b830a9c767eca1f4e457138e7f99cfafd21",
+    "experiments/x86-64-uefi-connected-supervisor-v1/world_control.py": "dbd6ac83f9be06b2c9740ee71d1566f0651465cda4afa5cb5b2203fc474d9872",
+    "experiments/x86-64-uefi-connected-supervisor-v1/verify_world_control.py": "c483a88e41f9bdec1896928a086c80306926559db0333af866ba4fd974ee9e35",
+    "experiments/x86-64-uefi-connected-supervisor-v1/world_planner.py": "6c79f0942874266488ed61b2e856a9c1823a7807a300c5cfa6bc9f84984e8b40",
+    "experiments/x86-64-uefi-connected-supervisor-v1/RabbitWorld.swift": "b3e0e3707d5d5b08686e7050b12ea788a0c7e1b80f1794f7f9904e18416125e8"
+  },
+  "request_records": [
+    "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/requests/2ecaf0169622463cb365cc76e08018f2/request.json",
+    "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/requests/4123b5ab48144e9aa09f22060e7e2830/request.json",
+    "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/requests/9ee3a9ca93b746fab50a15af8c50cad6/request.json",
+    "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/requests/be610cbfeecc47a7b094b93707de19e4/request.json",
+    "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/requests/cd702b0ef80843c08fe54836c160f87b/request.json"
+  ],
+  "host_tests_passed": 12,
+  "transport_tests_passed": 16,
+  "physical_trial_notes": {
+    "controlled_stop": "World4 intentionally stages3000 bytes without COMMIT, disconnects, reads3000, resumes SAMEsession to35202, then exactAPPLIED. Physical controlled stop, not unexpected RF loss.",
+    "screen_observation": "Pending owner observation after new trials. Earlier hat appearance was confirmed.",
+    "hardware_changes": "No media writes or Dell reboot."
+  },
+  "authorities": {
+    "native": "installed owner-key match, private bytes never logged",
+    "world": "installed public development Creator, not owner authenticated"
+  },
+  "voice": {
+    "implemented": true,
+    "live_microphone_end_to_end_verified": false,
+    "russian_on_device_available_in_cli_diagnostic": false,
+    "fallback": "Apple Speech service; OS permissions and live phrase pending"
+  },
+  "gui": {
+    "text_request_saved": true,
+    "world_counter6_applied": false,
+    "pending_session_replaced": false,
+    "tcc_diagnosis": "Initial abort missing NSBluetoothAlwaysUsageDescription, fixed bundle. Later tccd AUTHREQ_PROMPTING for Rabbit World BluetoothAlways; read-only queries time out before DATA; user permission pending."
+  },
+  "limitations": [
+    "Correlated receipt is not authenticated device attestation or independent screen observation.",
+    "Historical RF/reset root cause unproven.",
+    "Native route only reviewed fixed-background family; arbitrary engine generation unsupported.",
+    "V3 high-resolution assets LicenseRef-Not-Assigned, not V1 shareable cards."
+  ]
+}

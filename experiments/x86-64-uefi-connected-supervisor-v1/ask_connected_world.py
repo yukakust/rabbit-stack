@@ -148,7 +148,7 @@ def prepare(state_path, state, intent, proposal):
 
 
 def prepare_world(state_path, state, intent, world, proposal):
-    if state['pending']: raise ValueError('pending delivery exists; resume SAME saved session first')
+    if state['pending'] or state.get('native_pending'): raise ValueError('pending delivery exists; resume SAME saved session first')
     current(state)
     if world.get('schema_version') != 3: raise ValueError('asset candidate must retain the V3 world contract')
     if state['counter'] >= 0xffffffff: raise ValueError('world counter exhausted')
@@ -237,10 +237,17 @@ def advance(state_path, state, directory, report, session):
 def deliver(state_path, state):
     directory, report, session, packet = pending_world(state)
     report['host_checks'] = check_world(directory / 'world.rup', state_path.parent / 'host-check')
+    return deliver_session(directory, report, session,
+                           lambda: advance(state_path, state, directory, report, session))
+
+
+def deliver_session(directory, report, session, on_applied):
+    """Shared world/native transport; caller verifies authority, package and health first."""
+    import base64
     # Finish a local crash between durable receipt and durable current-state promotion.
     if report.get('receiver_reported_applied') and report['status'] == 'EXACT-APPLIED-RECEIPT':
-        return advance(state_path, state, directory, report, session)
-    length = len(packet) + 32
+        return on_applied()
+    length = len(base64.b64decode(session['stream_base64']))
     floor = report.get('confirmed_received', 0)
     attempted = False
     for step in report['sender_steps']:
@@ -264,7 +271,7 @@ def deliver(state_path, state):
             report['status'] = 'INVALID-RECEIVER-STATUS'; save(directory / 'report.json', report); return 1
         report['last_receiver_status'] = observed
         outcome = observed['outcome']
-        if outcome == 'applied': return advance(state_path, state, directory, report, session)
+        if outcome == 'applied': return on_applied()
         if outcome == 'rejected':
             report['status'] = 'EXACT-REJECTED-RECEIPT'; save(directory / 'report.json', report); return 2
         if outcome == 'pending':
@@ -289,7 +296,7 @@ def deliver(state_path, state):
                 report['receiver_loss_detected'] = True
                 report['status'] = 'RECOVERY-REQUIRED-RECEIVER-LOSS'; save(directory / 'report.json', report); return 1
             if code == 0 and 'FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched' in text:
-                return advance(state_path, state, directory, report, session)
+                return on_applied()
             if code == 2 and 'FILE REJECTED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched' in text:
                 report['status'] = 'EXACT-REJECTED-RECEIPT'; save(directory / 'report.json', report); return 2
             if code or name == 'commit' or 'STAGED-NOT-APPLIED:' not in text or floor != length:

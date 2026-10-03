@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "id": "2ecaf0169622463cb365cc76e08018f2",
+  "intent": "Сделай фон тёмно-синим 203050. Кота, шапку и движение не меняй.",
+  "source": "text",
+  "status": "APPLIED",
+  "base_world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+  "engine_done": true,
+  "world_done": true,
+  "explanation": "Фон станет тёмно-синим #203050 через проверенный нативный механизм движка. Кот, шапка и движение сохранятся без изменений.",
+  "error": null,
+  "background": "203050",
+  "candidate_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+  "provenance": [],
+  "candidate_checked": true,
+  "candidate_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "world_counter": 3,
+  "native_counter": 4,
+  "receiver_reported_applied": true
+}

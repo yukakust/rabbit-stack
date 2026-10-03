@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 4,
+  "base_world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+  "world_sha256": "d6d7a6df8152617c1d3fae013999355edec0ec8a2642b1d25aaf5f1123959460",
+  "package_sha256": "6156cd3385b8a064f8307e00ae547ef733337fc1ede8bc03bc729f84c24d4c73",
+  "session_sha256": "7badd057866a41b62f929cdcb23e7bb87a5fc4490d846144a37bafe3b4c9c15c",
+  "authority": "installed-public-development-world-creator-NOT-owner-native",
+  "host_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "physical_execution_verified": false,
+  "receiver_reported_applied": true,
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/controlled-stop-resume-world4/query-0.log",
+      "log_sha256": "8289bf536153ec556040e8f2468304717adea18feb13b94179c54b8cd8e230ec"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/controlled-stop-resume-world4/paced-stage-1.log",
+      "log_sha256": "bc842999cd076e2143e24c432f46d44d8d9dfce0d1bc1bf5f011d73763e60752"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/controlled-stop-resume-world4/query-2.log",
+      "log_sha256": "4a9b64d1fab3e15b625cf26c91b54dada524291f16e60efa95bf83098f7e424d"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/controlled-stop-resume-world4/paced-stage-3.log",
+      "log_sha256": "72333391efa5bd04c919c5776967fd29127a4d644c3e84aa484116633250bd07"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/world-control-2026-10-03/controlled-stop-resume-world4/commit-4.log",
+      "log_sha256": "d1492e1ebd6dafb8fb5ea2460ffcf6605fd3ef5f78d8ea95c87f3fdbf4ceb1eb"
+    }
+  ],
+  "confirmed_received": 35202,
+  "last_receiver_status": {
+    "outcome": "staging",
+    "state": 1,
+    "error": 0,
+    "received": 3000,
+    "length": 35202,
+    "counter": 5,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": true,
+    "raw_hex": "52465301c47f6aba89153e95b80b00008289000001000000050000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  }
+}

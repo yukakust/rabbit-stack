@@ -563,3 +563,47 @@ Next global milestones and acceptance criteria: docs/CONNECTED-WORLD-CONTROL-PLA
 Nativecounter3 separate/consumed; next new native>=4 bound to active hat signedworld.
 Owner hat appearance confirmation supersedes older pending observation; movement
 after hat update was not explicitly reconfirmed.
+
+
+## Unified controller, Mac app and new physical trials — 2026-10-03
+
+Owner expanded authorization to finish all five global steps, collecting required
+human actions into one batch; USB rewrites authorized but no media write or Dell
+reboot performed. New world_control.py/world_planner.py/engine_route.py combine
+structured LLM plans, bounded original sprites, checked existing inventory/assets,
+persistent journal/history, reviewed native background family and shared receipt
+transport. Entire world candidate C gate precedes native private signing. Engine
+source binds installed gate; exact payload deterministic PE/QEMU gate precedes
+owner-key match/signing. Arbitrary generated native code remains unsupported.
+
+Actual physical exact APPLIED: native4 background203050 payloadb5ece667..., native5
+restored driver1 background121826 payload02e3a839..., world4 cat+mouse intentionally
+stopped staging3000/35202 and resumed SAMEsession to application, world5 restored
+initial hat. This is controlled physical staging stop, not unexpected RF failure.
+Owner screen observation after these new trials pending. Current confirmed state
+world5/native5. QEMU uses mock USB and is recorded separately from physical logs.
+
+RabbitWorld.swift/build_control_app.py produce ignored local Rabbit World.app:
+text, voice, resume, version restore and separate OS permission setup. Loopback
+server requires ephemeral Bearer token0600; text/voice share same checked path.
+12 new controller tests and16 transport checks pass, including actual C asset
+checks, invalid-world-before-native, no-op, crash-after-receipt history recovery,
+idempotency/pending session and authenticated loopback source routing. GUI built
+and codesign verified. No tests masquerade as live microphone verification.
+
+GUI text speed request saved checked world6; exact APPLIED still pending. Initial
+child sender TCC abort due missing Bluetooth purpose fixed in Info.plist. Later
+tccd AUTHREQ_PROMPTING for org.rabbit.world-control BluetoothAlways; read-only
+queries time out before DATA. Pending exact sessiona817c934... retained; no new
+nonce/counter/reboot used. Voice implemented but OS speech/mic permissions and
+live utterance-to-receipt require owner. Russian recognizer on-device unavailable
+in CLI diagnostic, falls back to Apple Speech service after permission.
+
+One owner batch: allow app Bluetooth/speech/mic; resume saved text operation;
+then speak a mouse request and observe physical scene. Do not mark full goal
+complete before actual voice delivery and owner observation. Full hashes/reports/
+logs/plans: connected evidence/world-control-2026-10-03/summary.json. Current world
+authority still public development Creator; native uses owner key never logged.
+Historical radio reset root cause and sustained reliability unproven. V1 inventory
+exists; local V3 highres assets LicenseRef-Not-Assigned not shareable V1 cards.
+Updated roadmap: docs/CONNECTED-WORLD-CONTROL-PLAN.md.

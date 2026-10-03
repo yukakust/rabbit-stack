@@ -1,0 +1,12 @@
+{
+  "status": "ready",
+  "explanation": "Фон станет тёмно-синим #203050 через проверенный нативный механизм движка. Кот, шапка и движение сохранятся без изменений.",
+  "base_world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+  "objects": null,
+  "programs": null,
+  "inventory_assets": [],
+  "created_sprites": [],
+  "background": "203050",
+  "restore_version": null,
+  "missing_capabilities": []
+}
