@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "a83860a9190a4117b0c274b7527e8e19",
+  "intent": "пусть котик сидит на крыше одного из домов, свесив хвост и болтая этим самым хвостом и раз в 10 секунд улыбался, а через 1 секунду улыбка пропадала. Сохрани все дома, улицу, цвета и камеру.",
+  "source": "text",
+  "status": "APPLIED",
+  "base_world_sha256": "320cf795fd7ea99fc6d5779e034301cbda7b4f90a3a4b73b8c559bd76b59c17e",
+  "engine_done": true,
+  "world_done": true,
+  "explanation": "Рыжий кот сядет на переднем краю крыши дома 2 лицом к камере, свесит хвост и будет им покачивать. Каждые 10 секунд улыбка будет появляться на 1 секунду. Все дома, улица, цвета и камера сохранятся.",
+  "error": null,
+  "background": "121826",
+  "candidate_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "provenance": [
+    {
+      "kind": "checked-3d-actor",
+      "component_id": "rabbit.actor.roof-cat-v1",
+      "sha256": "63adf5da0d074fa01243dad8dd6eb2f289e9356eb21032fe15ade89ef3bef219"
+    },
+    {
+      "kind": "bounded-procedural-city",
+      "schema_version": 5
+    }
+  ],
+  "candidate_checked": true,
+  "candidate_checks": {
+    "city_core_sha256": "87118d150ae88002e5851410bbf1cb56c130f9f8b6933d70111cb80fe5504005",
+    "harness_sha256": "1465f80cac0e90c40a2104a974d7022c8f82a1928030074653dd77e90557c6ab",
+    "host_ticks": 120,
+    "roof_cat_timing": false,
+    "adversarial_camera_frames": 16,
+    "sanitizers": false,
+    "physical_execution_verified": false
+  },
+  "world_counter": 12,
+  "native_counter": 7,
+  "receiver_reported_applied": true
+}

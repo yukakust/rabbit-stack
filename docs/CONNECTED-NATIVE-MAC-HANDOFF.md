@@ -705,3 +705,61 @@ QEMU uses mock USB and public fixture keys; never physical Bluetooth evidence.
 Source verifier experiments/x86-64-uefi-city-v1/verify_city.py (NO SIGN/SEND).
 Evidence: experiments/x86-64-uefi-city-v1/evidence/2026-10-03; README there describes
 loading/recovery and limitations. Binaries ignored runs, owner key stays local.
+
+## 2026-10-03 — generic 3D actors, roof cat, physical native7/world12
+
+Owner confirmed houses visible on Dell and requested a sitting roof cat with a
+waving dangling tail and a1-second smile every10 seconds. Former city4 correctly
+rejected this. Added separate reviewed `x86-64-uefi-city-v2` profile: portable
+signed RUP5 actors, ellipsoid/box/cone parts, per-part sine translation and timed
+visibility. Roof cat is checked reusable data (36 parts), not a renderer opcode.
+Planner supports either checked actor_assets or complete bounded schema5 data.
+Max4 actors/48 parts each/96 total; max6816-byte packet. Existing buildings/camera/
+colors and actor data are preserved on unrelated edits; V3/city4 histories restore
+with increasing counters. No arbitrary mesh/texture/physics support yet.
+
+Native7 exact APPLIED payload:
+2c1bebad9394f3c46427767c063135980b599a7279a84a77dc68697097ab3a0c.
+Mapped PE image3887104 bytes fits immutable4MiB bound. First960x540 prototype
+exceeded that bound and failed QEMU BEFORE signing/sending; accepted version renders
+800x450 and enlarges to checked GOP, returning coherent old-surface crop.
+Target-only TSC clock calibrated by two50ms UEFI Stall samples on attach; candidate
+init/trial do not access clock/display. Animation phase restarts on world/native
+installation. Actual native/city4/city5 snapshots, clock motion, fullscreen/crop,
+V3 data/engine rollback and unhealthy/bad-signature rejection passed actual UEFI
+QEMU for both legacy-world and EMPTY bootstrap. Mock USB, never physical radio.
+
+Native7 owner signing followed installed identity/source gate, current-world C
+check, exact QEMU payload evidence and two matching fresh rebuilds. Immutable
+production sources, USB, Dell disk/firmware and reboot untouched; no key output.
+
+Normal app + real LLM request a83860a9190a4117b0c274b7527e8e19 composed schema5 with
+roof-cat actor at620,510,600 yaw0 on house2 facing camera. Buildings/camera/sky/
+ground exactly equal world11. Physical world12 exact APPLIED, app AX World12 ready.
+World SHA fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74.
+Receiver receipt confirms application, not display appearance/timing. Owner visual
+cat/tail/smile question pending; do NOT claim those observations from host/QEMU.
+
+Mac app-launched helper initially waited for TCC and timed out before scanning:
+existing Rabbit World Bluetooth toggle ON, but old granted cdhash8a40566... differs
+from rebuilt city UI a5c5c74... . Same saved GUI request/session resumed through
+agent CLI, exact receipts obtained; no new plan/package or reset. The existing
+permission renewal in System Settings asks Touch ID; user action question pending.
+App's own Bluetooth setup now reports available, but app-child helper revalidation
+still needs checking after the pending system-auth sheet is resolved. Do not reset
+TCC, weaken security, request/print a password, or infer that the toggle alone
+proves the rebuilt app's helper can access Bluetooth. App binary not rebuilt here.
+
+21 controller checks passed (existing19 plus actor add/history/preservation and
+city5 two-stage recovery).6 actor codec/planner/actual C checks passed; ASan/UBSan
+120 frames+16 adversarial camera/geometry frames. Isolated C smile boundaries
+9999/10000/10999/11000/20000ms and tail frames250/850ms checked. Physical animation
+accuracy and reboot/recovery NOT exercised. Recovery dispatches saved actor profile,
+requires exact EMPTY fixture + explicit owner reboot + fresh zero receiver BEFORE
+signing, and retains two-stage sessions. Current authoritative state Mac world12,
+native7, no pending operation. Evidence: city-v2/evidence/2026-10-03. Profile runs
+ignored; owner key remains local. Service was safely restarted after idle to load the final legacy-city-plan actor
+preservation fallback. It currently runs from the already-authorized Codex agent
+context; Rabbit World reconnected and AX shows world12 ready with full history.
+App auto-launch after this service exits still requires completing/checking the
+pending Rabbit World TCC renewal. No TCC reset or security bypass was performed.

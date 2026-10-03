@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "payload_sha256": "2c1bebad9394f3c46427767c063135980b599a7279a84a77dc68697097ab3a0c",
+  "mapped_image_bytes": 3887104,
+  "source_hashes": {
+    "city_core.c": "87118d150ae88002e5851410bbf1cb56c130f9f8b6933d70111cb80fe5504005",
+    "city_core.h": "32a5c95574bd3a022df954b4af57a56ee27e20d372085efc31a77a5297aabbf8",
+    "city_display.c": "8928cef0b0d6b752a92ed0ad8cfc6d868057d0f2538b5ed6bb876c49c531c181",
+    "actor_clock.c": "3314b5dbf5dadb87094af8cb656869ee0c5b8f2ddab85f98bb4c170f9c436c6a",
+    "actors_build.py": "a0d960c3f311af756b4dbbabc48b3dc25a1788ce8026f29246571b4030e7fdaf",
+    "actors_gate.py": "ec61f5583663238ee62612c7f02fe7ebff8ad4c2d7251f645f712b50c9d2ebc5",
+    "actors_native.py": "cfc235c361ce0d5fd1037b968fba506234de49477cd458c313d7c0d24407ff6e",
+    "scene5.py": "21462f7b52dfadb83b2137a3fd7c006b8786638419fcee762a514f9fa2cb277e",
+    "actors_check.py": "37dfd6b2d56e275b35c36390fac653a9000426a0cadc485d5a1e2d9268358675",
+    "models/roof-cat.json": "d37af5e0258a625420354889384f2dd9204f4d43a0a7711186cb469d1778d99a"
+  },
+  "owner_private_key_included": false,
+  "qemu_mock_usb_only": true,
+  "tests": {
+    "existing_controller": 19,
+    "new_actor_lifecycle": 1,
+    "actor_recovery": 1,
+    "actor_codec_planner_C": 6,
+    "sanitizers": [
+      "address",
+      "undefined"
+    ],
+    "smile_boundaries_ms": [
+      9999,
+      10000,
+      10999,
+      11000,
+      20000
+    ],
+    "tail_frames_ms": [
+      250,
+      850
+    ]
+  },
+  "physical": {
+    "status": "NATIVE7-WORLD12-EXACT-APPLIED",
+    "world_counter": 12,
+    "native_counter": 7,
+    "appearance_verified": false,
+    "native_receipt_verified": true,
+    "world_receipt_verified": true,
+    "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+    "package_sha256": "6414d1bae588acfef261d8c6befc8fc1edb96fb76892a33c47f8d3b2c05bb180",
+    "animation_observed": false,
+    "buildings_camera_sky_ground_preserved": true,
+    "gui_plan_real_llm": true,
+    "resume": "same saved GUI request through CLI after app TCC cdhash mismatch"
+  },
+  "mac_permission": {
+    "existing_rabbit_world_toggle": "on",
+    "tcc": "old code requirement does not match rebuilt city UI",
+    "renewal": "Touch ID required; user question pending",
+    "current_service": "restarted from existing authorized Codex context, final planner loaded; app reconnected world12 ready"
+  }
+}

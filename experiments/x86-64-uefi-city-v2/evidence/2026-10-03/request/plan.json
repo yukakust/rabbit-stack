@@ -1,0 +1,27 @@
+{
+  "status": "ready",
+  "explanation": "Рыжий кот сядет на переднем краю крыши дома 2 лицом к камере, свесит хвост и будет им покачивать. Каждые 10 секунд улыбка будет появляться на 1 секунду. Все дома, улица, цвета и камера сохранятся.",
+  "base_world_sha256": "320cf795fd7ea99fc6d5779e034301cbda7b4f90a3a4b73b8c559bd76b59c17e",
+  "objects": null,
+  "programs": null,
+  "inventory_assets": [],
+  "created_sprites": [],
+  "created_drawings": [],
+  "city_world": null,
+  "actor_assets": [
+    {
+      "component_id": "rabbit.actor.roof-cat-v1",
+      "actor_id": 1,
+      "name": "Кот на крыше дома 2",
+      "position": {
+        "x": 620,
+        "y": 510,
+        "z": 600
+      },
+      "yaw": 0
+    }
+  ],
+  "background": null,
+  "restore_version": null,
+  "missing_capabilities": []
+}

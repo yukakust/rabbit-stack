@@ -12,16 +12,19 @@ engine=city_native.engine
 def recover(state_path,private_path,dell_rebooted=False,resume=False):
     with flow.state_lock(state_path):
         state=flow.read_json(state_path); saved=state.get('recovery_pending')
+        profile=flow.actors_module('actors_native') if state['engine'].get('family')=='reviewed-city-v2' else city_native
+        boot_folder='actors-empty-boot-qemu' if profile is not city_native else 'empty-boot-qemu'
+        boot_status='EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS' if profile is not city_native else 'EXACT-CITY-QEMU-LOAD-FULLSCREEN-DATA-RESTORE-REJECTION-PASS'
         if not saved:
             if resume or not dell_rebooted:raise ValueError('owner must explicitly confirm Dell reboot; RF loss is insufficient')
             world=flow.current(state)
-            if world['schema_version']!=4 or state['pending'] or state.get('native_pending'):
+            if world['schema_version'] not in (4,5) or state['pending'] or state.get('native_pending'):
                 raise ValueError('idle saved city required; preserve any existing pending session')
             journal=flow.read_json(Path(state_path).parent/'control/journal.json',2*1024*1024)
             if journal['active']:raise ValueError('finish existing request first')
             directory=Path(tempfile.mkdtemp(prefix='city-recovery-',dir=Path(state_path).parent))
             flow.save(directory/'before-state.json',copy.deepcopy(state));flow.save(directory/'world.json',world)
-            record={'schema_version':1,'status':'CHECKING-BOOT','owner_confirmed_reboot':True,
+            record={'engine_family':state['engine'].get('family'),'schema_version':1,'status':'CHECKING-BOOT','owner_confirmed_reboot':True,
                     'world_sha256':state['world_sha256'],'old_world_counter':state['counter'],
                     'old_native_counter':state['engine']['native_counter'],'engine_done':False,'world_done':False,'sender_steps':[]}
             # Read-only probe BEFORE signing or sending anything with owner authority.
@@ -36,14 +39,14 @@ def recover(state_path,private_path,dell_rebooted=False,resume=False):
                 raise ValueError('installed gate changed')
             previous=flow.read_json(state['engine']['last_release_report'])
             checked=Path(previous['checked_directory']);payload=(checked/'payload.efi').read_bytes()
-            city_native.gates(checked,payload)
-            boot=flow.read_json(checked/'empty-boot-qemu/report.json')
-            if not boot.get('empty_boot') or boot['payload_sha256']!=flow.sha(payload) or boot['status']!='EXACT-CITY-QEMU-LOAD-FULLSCREEN-DATA-RESTORE-REJECTION-PASS' or flow.sha((checked/'empty-boot-qemu/observed.log').read_bytes())!=boot['observed_log_sha256']:
+            profile.gates(checked,payload)
+            boot=flow.read_json(checked/boot_folder/'report.json')
+            if not boot.get('empty_boot') or boot['payload_sha256']!=flow.sha(payload) or boot['status']!=boot_status or flow.sha((checked/boot_folder/'observed.log').read_bytes())!=boot['observed_log_sha256']:
                 raise ValueError('exact empty-boot recovery gate required')
             public=Path(private_path).with_suffix('.pub').read_bytes()
             if flow.sha(public)!=installed['owner_public_sha256']:raise ValueError('owner public identity differs')
             _,_,crypto=engine.prepare(directory,public)
-            if city_native.build_city.compile_city_driver(directory,crypto)!=payload or city_native.build_city.compile_city_driver(directory,crypto)!=payload:
+            if profile.build_city.compile_city_driver(directory,crypto)!=payload or profile.build_city.compile_city_driver(directory,crypto)!=payload:
                 raise ValueError('current city sources differ from gated payload')
             checks=flow.check_world(Path(state['package']),directory/'host')
             private=engine.load_private(private_path)
@@ -51,14 +54,15 @@ def recover(state_path,private_path,dell_rebooted=False,resume=False):
             packet=engine.pack(payload,private=private,target=bytes.fromhex(installed['target_sha256']),
                                base_runtime=bytes.fromhex(installed['module_hashes']['1']),world=b'',counter=state['engine']['native_counter']+1)
             (directory/'native.rrt').write_bytes(packet);flow.save(directory/'session.json',flow.bundle(packet,2,state['engine']['native_counter']+1))
-            record.update(status='CHECKED-NOT-SENT',profile_sources=city_native.source_hashes(),payload_sha256=flow.sha(payload),
+            record.update(status='CHECKED-NOT-SENT',profile_sources=profile.source_hashes(),payload_sha256=flow.sha(payload),
                           packet_sha256=flow.sha(packet),session_sha256=flow.sha((directory/'session.json').read_bytes()),
                           checked_directory=str(checked),boot_gate=boot,host_checks=checks,sender_steps=[])
             flow.save(directory/'report.json',record);state['recovery_pending']=str(directory);flow.save(state_path,state)
         else:
             directory=Path(saved);record=flow.read_json(directory/'report.json')
+        if record.get('engine_family', 'reviewed-city-v1')!=state['engine'].get('family'):raise ValueError('recovery engine family changed')
         if record.get('status')=='REJECTED':raise ValueError('recovery rejected; inspect Dell, do not replay consumed counter')
-        if record['profile_sources']!=city_native.source_hashes():raise ValueError('recovery profile source changed')
+        if record['profile_sources']!=profile.source_hashes():raise ValueError('recovery profile source changed')
         if record['world_sha256']!=state['world_sha256']:raise ValueError('saved city changed during recovery')
         if not record['engine_done']:
             installed=engine.gate_check(Path(state['engine']['installed_gate']))

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "kind": "native-actors",
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 7,
+  "base_runtime_sha256": "476b9977feaf74b988fb2f0f970590a4c08e93f755a996808ce2159892fc3535",
+  "base_world_sha256": "320cf795fd7ea99fc6d5779e034301cbda7b4f90a3a4b73b8c559bd76b59c17e",
+  "world_package_sha256": "65be69f96606865ee43985ee1df03257d8e69a956eb5c645edac61b0ecfd966c",
+  "payload_sha256": "2c1bebad9394f3c46427767c063135980b599a7279a84a77dc68697097ab3a0c",
+  "package_sha256": "66b91d741fdb4df49bf18402c57ab49be4877bff4fcaa23f2fb3abebc2e9d176",
+  "session_sha256": "20dc1baabdbb849f53e64d9feba39964e7efc26cde28759a25fee91c559928ed",
+  "qemu_gate": {
+    "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+    "payload_sha256": "2c1bebad9394f3c46427767c063135980b599a7279a84a77dc68697097ab3a0c",
+    "empty_boot": false,
+    "background": "121826",
+    "observed_log_sha256": "ae5c82fb5f84dbdbd80ee9cbab5d952779712676e314f2a11f0b57990587c7d4",
+    "physical_verified": false,
+    "bluetooth_verified": false,
+    "controller": "mock USB only",
+    "fixture_image_sha256": "397c4ed7638fa71065c418e6301fc72072b33d76acd2b0816cac6bde77570852"
+  },
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-city-v2/runs/native-actors-fit",
+  "profile_sources": {
+    "city_core.c": "87118d150ae88002e5851410bbf1cb56c130f9f8b6933d70111cb80fe5504005",
+    "city_core.h": "32a5c95574bd3a022df954b4af57a56ee27e20d372085efc31a77a5297aabbf8",
+    "city_display.c": "8928cef0b0d6b752a92ed0ad8cfc6d868057d0f2538b5ed6bb876c49c531c181",
+    "actor_clock.c": "3314b5dbf5dadb87094af8cb656869ee0c5b8f2ddab85f98bb4c170f9c436c6a",
+    "actors_build.py": "a0d960c3f311af756b4dbbabc48b3dc25a1788ce8026f29246571b4030e7fdaf",
+    "actors_gate.py": "ec61f5583663238ee62612c7f02fe7ebff8ad4c2d7251f645f712b50c9d2ebc5"
+  },
+  "host_checks": {
+    "city_core_sha256": "87118d150ae88002e5851410bbf1cb56c130f9f8b6933d70111cb80fe5504005",
+    "harness_sha256": "1465f80cac0e90c40a2104a974d7022c8f82a1928030074653dd77e90557c6ab",
+    "host_ticks": 120,
+    "roof_cat_timing": false,
+    "adversarial_camera_frames": 16,
+    "sanitizers": false,
+    "physical_execution_verified": false
+  },
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/city-native-19xdiwof/query-0.log",
+      "log_sha256": "378bc7fb9986f315ece4f1ffe71d84e5e1013f05cf97cf1b7a0add10386be2b2"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/city-native-19xdiwof/paced-stage-1.log",
+      "log_sha256": "30e07a3dc72a11cc99fcc3b4fef732a1f1b03afe8bccbb1dfce0d41f1a9cfbfd"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/city-native-19xdiwof/commit-2.log",
+      "log_sha256": "17608aef88858f6de216383cd20362ba34e24a65de2d8fb60be87d61c8287bca"
+    }
+  ],
+  "receiver_reported_applied": true,
+  "confirmed_received": 47904,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 384,
+    "length": 384,
+    "counter": 11,
+    "sha256": "65be69f96606865ee43985ee1df03257d8e69a956eb5c645edac61b0ecfd966c",
+    "session_matches": false,
+    "raw_hex": "52465301ca58f9027116a4028001000080010000020000000b00000065be69f96606865ee43985ee1df03257d8e69a956eb5c645edac61b0ecfd966c",
+    "device_attestation": false
+  }
+}

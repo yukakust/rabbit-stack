@@ -45,7 +45,7 @@ class Controller:
                 'engine': {'background': state['engine']['background'], 'native_counter': state['engine']['native_counter']},
                 'pending': bool(state['pending'] or state.get('native_pending') or state.get('recovery_pending')),
                 'active': journal['active'] or ('city-recovery' if state.get('recovery_pending') else None),
-                'city': flow.current(state).get('schema_version') == 4,
+                'city': flow.current(state).get('schema_version') in (4,5),
                 'requests': [flow.read_json(self.request_path(i)) for i in journal['requests'][-100:]],
                 'versions': journal['versions'][-100:]}
 
@@ -127,7 +127,7 @@ class Controller:
                     self.update(record, candidate_checked=True, candidate_checks=checks)
                 if not record['engine_done']:
                     if record['background'] != state['engine']['background']:
-                        if state['engine'].get('family') == 'reviewed-city-v1':
+                        if state['engine'].get('family') in ('reviewed-city-v1','reviewed-city-v2'):
                             raise ValueError('city sky/ground must use city data; legacy background engine would remove city support')
                         self.update(record, status='CHECKING-ENGINE')
                         if not state.get('native_pending'):

@@ -33,14 +33,34 @@ def city_module(name):
     return importlib.import_module(name)
 
 
+def actors_module(name):
+    import importlib
+    directory = ROOT.parent / 'x86-64-uefi-city-v2'
+    if str(directory) not in sys.path: sys.path.insert(0, str(directory))
+    return importlib.import_module(name)
+
+
+def actors_ready(state):
+    if state.get('engine', {}).get('family') != 'reviewed-city-v2':
+        raise ValueError('reviewed actor driver must be applied before animated city data')
+    core = actors_module('scene5').ROOT / 'city_core.c'
+    if state['engine'].get('actor_core_sha256') != sha(core.read_bytes()):
+        raise ValueError('actor core differs from the applied native profile')
+
+
 def compile_world(path, counter, private):
     world = read_json(path, 2 * 1024 * 1024)
+    if world.get('schema_version') == 5:
+        return actors_module('scene5').compile_scene(world, counter, private)
     if world.get('schema_version') == 4:
         return city_module('city_world').compile_city(world, counter, private)
     return compile_v3_world(path, counter, private)
 
 
 def decode_package(packet, public):
+    if packet[:5] == b'RUP5\x05':
+        world, counter = actors_module('scene5').decode_scene(packet, public)
+        return {'counter': counter, 'health_fault': False, 'world': world}
     if packet[:5] == b'RUP4\x04':
         world, counter = city_module('city_world').decode_city(packet, public)
         return {'counter': counter, 'health_fault': False, 'world': world}
@@ -48,6 +68,8 @@ def decode_package(packet, public):
 
 
 def check_world(path, cache):
+    if Path(path).read_bytes()[:5] == b'RUP5\x05':
+        return actors_module('actors_check').check_city(path, Path(cache) / 'actors')
     if Path(path).read_bytes()[:5] == b'RUP4\x04':
         return city_module('check_city').check_city(path, Path(cache) / 'city')
     return check_v3_world(path, cache)
@@ -55,11 +77,12 @@ def check_world(path, cache):
 
 def city_ready(state):
     engine = state.get('engine', {})
-    if engine.get('family') != 'reviewed-city-v1':
+    if engine.get('family') not in ('reviewed-city-v1','reviewed-city-v2'):
         raise ValueError('reviewed city driver must be applied before city data')
     core = city_module('city_world').ROOT / 'city_core.c'
     if engine.get('city_core_sha256') != sha(core.read_bytes()):
         raise ValueError('city core differs from the applied native profile')
+    if engine.get('family') == 'reviewed-city-v2': actors_ready(state)
 from delivery_status import parse_status, confirmed_prefix
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
@@ -146,6 +169,7 @@ def current(state):
         raise ValueError('runtime source differs from saved installed gate')
     world = read_json(state['world'], 2 * 1024 * 1024)
     if world.get('schema_version') == 4: city_ready(state)
+    if world.get('schema_version') == 5: actors_ready(state)
     packet = Path(state['package']).read_bytes()
     if sha(canonical(world)) != state['world_sha256'] or sha(packet) != state['package_sha256']:
         raise ValueError('saved current world/package changed')
@@ -187,8 +211,9 @@ def prepare(state_path, state, intent, proposal):
 def prepare_world(state_path, state, intent, world, proposal):
     if state['pending'] or state.get('native_pending'): raise ValueError('pending delivery exists; resume SAME saved session first')
     current(state)
-    if world.get('schema_version') == 4: city_ready(state)
-    elif world.get('schema_version') != 3: raise ValueError('candidate requires reviewed V3 or city4 data')
+    if world.get('schema_version') == 5: actors_ready(state)
+    elif world.get('schema_version') == 4: city_ready(state)
+    elif world.get('schema_version') != 3: raise ValueError('candidate requires reviewed V3, city4 or actors5 data')
     if state['counter'] >= 0xffffffff: raise ValueError('world counter exhausted')
     directory = Path(tempfile.mkdtemp(prefix='edit-', dir=state_path.parent))
     save(directory / 'proposal.json', proposal); (directory / 'intent.txt').write_text(intent)

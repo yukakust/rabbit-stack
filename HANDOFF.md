@@ -2044,3 +2044,17 @@ QEMU uses mock USB and public fixture keys; never physical Bluetooth evidence.
 Source verifier experiments/x86-64-uefi-city-v1/verify_city.py (NO SIGN/SEND).
 Evidence: experiments/x86-64-uefi-city-v1/evidence/2026-10-03; README there describes
 loading/recovery and limitations. Binaries ignored runs, owner key stays local.
+
+### 2026-10-03: connected 3D actors and roof cat
+
+See `experiments/x86-64-uefi-city-v2/README.md` and final section of
+`docs/CONNECTED-NATIVE-MAC-HANDOFF.md`. Owner confirmed houses on physical Dell.
+Reviewed native7 and RUP5 world12 received exact physical APPLIED receipts; normal
+GUI/real LLM roof-cat request preserves all buildings/camera/colors. Generic
+bounded 3D parts, sine motion and timed visibility; reusable roof-cat data model.
+Visual cat/tail/smile observation pending. Mac app helper encountered stale TCC
+code requirement after prior city UI rebuild; permission renewal asks Touch ID.
+Same saved request resumed via agent CLI without new packet or receiver reset.
+No USB/disk/firmware writes, agent reboot or owner key output. Exact normal/EMPTY
+UEFI QEMU gates + host sanitizer/timer/controller/recovery checks passed; QEMU mock
+USB is not physical evidence. Current saved world12/native7, no pending operation.

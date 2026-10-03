@@ -11,6 +11,9 @@ from rabbit_inventory import load_json, validate_catalog, component_identity
 from llm_world import obj, array, integer, validate_schema, strict_json, WORLD_SCHEMA
 from drawing_renderer import DRAWING, render as render_drawing
 CITY_SCHEMA = flow.city_module('city_world').SCHEMA
+ACTORS_SCHEMA = flow.actors_module('scene5').SCHEMA
+ACTOR_REF = obj({'component_id': {'type': 'string', 'maxLength': 100}, 'actor_id': integer(1,65535),
+ 'name': {'type': 'string', 'maxLength':80}, 'position': ACTORS_SCHEMA['properties']['actors']['items']['properties']['position'], 'yaw': integer(0,255)})
 
 ASSET_REF = obj({'component_id': {'type': 'string', 'maxLength': 100},
                  'sprite_id': integer(1, 254), 'display_width': integer(1, 64), 'display_height': integer(1, 64)})
@@ -28,7 +31,8 @@ SCHEMA = obj({
     'inventory_assets': array(ASSET_REF, 0, 8),
     'created_sprites': array(NEW_SPRITE, 0, 4),
     'created_drawings': array(DRAWING, 0, 2),
-    'city_world': {'anyOf': [CITY_SCHEMA, {'type': 'null'}]},
+    'city_world': {'anyOf': [CITY_SCHEMA, ACTORS_SCHEMA, {'type': 'null'}]},
+    'actor_assets': array(ACTOR_REF,0,4),
     'background': {'anyOf': [{'type': 'string', 'pattern': '^[0-9a-f]{6}$'}, {'type': 'null'}]},
     'restore_version': {'anyOf': [{'type': 'string', 'maxLength': 64}, {'type': 'null'}]},
     'missing_capabilities': array({'type': 'string', 'maxLength': 120}, 0, 8),
@@ -80,6 +84,23 @@ native background update. Houses have gabled roofs/windows/doors. Box is a solid
 rectangular volume; road is a low box. Max64 buildings, dimensions<=3000cm,
 positions X/Z ±20000cm. Models/textures/characters/physics are not yet city4
 capabilities. Existing 2D history remains available through restore_version.
+When capabilities includes actors5, generic 3D actors are supported. Use actor_assets
+for supplied reusable actor components, with a unique actor_id, name, position and yaw.
+The roof-cat component already has a dangling waving tail and smiles after10 seconds
+for1 second every10 seconds. Prefer that component for the requested roof cat.
+The roof-cat model face and dangling tail point along local -Z: yaw0 faces a camera
+on the negative Z side; yaw128 turns its face away from that camera.
+Leave city_world null to preserve the entire current city and add only that actor.
+Place it on a visible house's FRONT roof edge: z=house.z-depth/2, x=house.x+localX,
+y=house.y+height+(height/3)*(1-abs(localX)/(width/2)). Use localX about -0.3*width.
+Compute this from the supplied buildings; preserve the camera.
+For other original figures, city_world can be complete schema5 with actors built from
+ellipsoid, box and cone parts. Motion translations use sine waves in centimetres,
+period_ms and phase_ms. Visibility inside/outside hides/shows parts by a repeating
+period_ms,duration_ms after delay_ms. Use this for blinking, smiles and moving limbs.
+Actors are data, never code. Max4 actors,48 parts each,96 total. Keep existing actors
+unless asked to remove them. When the current city is schema5, keep schema5 and
+ALL actors for house/camera/sky edits. No arbitrary meshes, textures or physics yet.
 Without city4 capability keep city_world null and report 3D unsupported.
 Unsupported features (arbitrary physics/new VM opcodes, files, network, sound,
 firmware, native code or unaudited engine capabilities) return status unsupported,
@@ -118,16 +139,16 @@ def asset_identity(card):
 
 
 def parse_plan(text):
-    plan = strict_json(text); plan.setdefault('created_drawings', []); plan.setdefault('city_world', None); validate_schema(plan, SCHEMA)
+    plan = strict_json(text); plan.setdefault('created_drawings', []); plan.setdefault('city_world', None); plan.setdefault('actor_assets', []); validate_schema(plan, SCHEMA)
     if (plan['objects'] is None) != (plan['programs'] is None):
         raise ValueError('objects/programs must be supplied together')
     if plan['status'] == 'unsupported' and any((plan['objects'] is not None, plan['inventory_assets'],
-            plan['created_sprites'], plan['created_drawings'], plan['city_world'], plan['background'], plan['restore_version'])):
+            plan['created_sprites'], plan['created_drawings'], plan['city_world'], plan['actor_assets'], plan['background'], plan['restore_version'])):
         raise ValueError('unsupported plan cannot contain executable changes')
     if plan['restore_version'] and any((plan['objects'] is not None, plan['inventory_assets'],
-                                      plan['created_sprites'], plan['created_drawings'], plan['city_world'], plan['background'])):
+                                      plan['created_sprites'], plan['created_drawings'], plan['city_world'], plan['actor_assets'], plan['background'])):
         raise ValueError('restore cannot mix a new edit')
-    if plan['city_world'] is not None and any((plan['objects'] is not None, plan['inventory_assets'],
+    if (plan['city_world'] is not None or plan['actor_assets']) and any((plan['objects'] is not None, plan['inventory_assets'],
                                               plan['created_sprites'], plan['created_drawings'], plan['background'])):
         raise ValueError('city cannot mix 2D edits or native background effects')
     if (plan['inventory_assets'] or plan['created_sprites'] or plan['created_drawings']) and plan['objects'] is None:
@@ -140,7 +161,8 @@ def propose(intent, state, versions):
     library = assets() if base['schema_version'] == 3 else {}
     context = {'base_world_sha256': state['world_sha256'], 'background': state.get('engine', {}).get('background', '121826'),
                'world': {k: v for k, v in base.items() if k != 'sprites'},
-               'capabilities': ['v3', 'city4'] if state.get('engine', {}).get('family') == 'reviewed-city-v1' else ['v3'],
+               'capabilities': ['v3','city4','actors5'] if state.get('engine',{}).get('family')=='reviewed-city-v2' else (['v3','city4'] if state.get('engine',{}).get('family')=='reviewed-city-v1' else ['v3']),
+               'actor_inventory': [{'component_id':k, 'summary':'Объёмный сидящий рыжий кот; хвост свисает и качается; улыбка каждые10 секунд на1 секунду', 'sha256':flow.sha(flow.canonical(v))} for k,v in flow.actors_module('scene5').models().items()] if state.get('engine',{}).get('family')=='reviewed-city-v2' else [],
                'sprites': [{k: v for k, v in s.items() if k != 'frames'} for s in base.get('sprites', [])],
                'inventory': [{'component_id': key, 'name': value['name'], 'summary': value['summary'],
                               'sha256': asset_identity(value)} for key, value in library.items()],
@@ -193,11 +215,27 @@ def compose(state, plan):
     if plan['status'] != 'ready': raise ValueError('unsupported request')
     if plan['restore_version']: raise ValueError('restore must resolve checked history first')
     world = copy.deepcopy(flow.current(state)); provenance = []
-    if plan['city_world'] is not None:
-        flow.city_ready(state)
-        city = copy.deepcopy(plan['city_world']); flow.city_module('city_world').validate(city)
-        return city, state['engine']['background'], [{'kind': 'bounded-procedural-city4'}]
-    if world['schema_version'] == 4:
+    if plan['city_world'] is not None or plan['actor_assets']:
+        city = copy.deepcopy(plan['city_world'] or world)
+        if city['schema_version']==4 and world['schema_version']==5:
+            city.update(schema_version=5,actors=copy.deepcopy(world['actors']))
+        if city['schema_version']==5 or plan['actor_assets']:
+            flow.actors_ready(state)
+            if city['schema_version']==4: city.update(schema_version=5,actors=[])
+            if city['schema_version']!=5: raise ValueError('actors require a 3D city')
+            library=flow.actors_module('scene5').models(); ids={a['id'] for a in city['actors']}
+            for ref in plan['actor_assets']:
+                if ref['component_id'] not in library: raise ValueError('unknown actor component')
+                if ref['actor_id'] in ids: raise ValueError('actor id already exists')
+                model=library[ref['component_id']]; actor=copy.deepcopy(model)
+                actor.update(id=ref['actor_id'],name=ref['name'],position=ref['position'],yaw=ref['yaw'])
+                city['actors'].append(actor);ids.add(actor['id'])
+                provenance.append({'kind':'checked-3d-actor','component_id':ref['component_id'],'sha256':flow.sha(flow.canonical(model))})
+            flow.actors_module('scene5').validate(city)
+        else:
+            flow.city_ready(state); flow.city_module('city_world').validate(city)
+        return city, state['engine']['background'], provenance+[{'kind':'bounded-procedural-city','schema_version':city['schema_version']}]
+    if world['schema_version'] in (4,5):
         if any((plan['objects'] is not None, plan['inventory_assets'], plan['created_sprites'], plan['created_drawings'], plan['background'])):
             raise ValueError('city edits require the complete city4 data candidate')
         return world, state['engine']['background'], provenance

@@ -49,6 +49,26 @@ class Tests(unittest.TestCase):
                 'objects':None,'programs':None,'city_world':world,'inventory_assets':[],'created_sprites':[],
                 'background':None,'restore_version':None,'missing_capabilities':[]}
 
+    def test_actor_add_preserves_city_camera_and_restores_with_new_counter(self):
+        city=flow.city_module('city_world').initial_city(); state=flow.read_json(self.path)
+        state['engine'].update(family='reviewed-city-v2',city_core_sha256=flow.sha((flow.city_module('city_world').ROOT/'city_core.c').read_bytes()),actor_core_sha256=flow.sha((flow.actors_module('scene5').ROOT/'city_core.c').read_bytes()))
+        flow.save(self.path,state)
+        with patch.object(flow,'check_world',return_value={}),patch.object(flow,'deliver',side_effect=self.applied):
+            before=self.controller.execute('город',plan=self.city_plan(city))
+            plan=self.city_plan(None);plan['actor_assets']=[{'component_id':'rabbit.actor.roof-cat-v1','actor_id':1,'name':'Кот','position':{'x':620,'y':510,'z':600},'yaw':0}]
+            result=self.controller.execute('кот на крыше',plan=plan);self.assertEqual(result['status'],'APPLIED')
+            actual=flow.current(flow.read_json(self.path))
+            for field in ('buildings','camera','sky','ground'):self.assertEqual(actual[field],city[field])
+            self.assertEqual(actual['schema_version'],5);self.assertEqual(len(actual['actors']),1)
+            old_city_plan=self.city_plan(city);migrated,_,_=planner.compose(flow.read_json(self.path),old_city_plan)
+            self.assertEqual(migrated['actors'],actual['actors'])
+            duplicate=self.city_plan(None);duplicate['actor_assets']=plan['actor_assets']
+            self.assertEqual(self.controller.execute('тот же id',plan=duplicate)['status'],'FAILED')
+            self.assertEqual(self.controller.execute('город без кота',restore=before['id'])['status'],'APPLIED')
+            self.assertEqual(self.controller.execute('верни кота',restore=result['id'])['status'],'APPLIED')
+            state=flow.read_json(self.path);self.assertEqual(state['counter'],7)
+            self.assertEqual(flow.current(state),actual);self.assertEqual(flow.decode_package(Path(state['package']).read_bytes(),flow.PUBLIC)['counter'],7)
+
     def test_city_requires_applied_reviewed_profile_before_radio(self):
         city = flow.city_module('city_world').initial_city()
         with patch.object(flow, 'deliver') as radio, patch('world_control.native.prepare_engine') as native:
@@ -100,27 +120,33 @@ class Tests(unittest.TestCase):
             self.assertEqual(sender.call_count,1);key.assert_not_called()
         self.assertEqual(self.path.read_bytes(),before)
 
-    def test_city_recovery_two_stage_resume_keeps_city_counters_and_exact_sessions(self):
+    def test_city_recovery_two_stage_resume_keeps_city_counters_and_exact_sessions(self, actors=False):
         from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
         from cryptography.hazmat.primitives.serialization import Encoding,PublicFormat
         recovery=flow.city_module('city_recovery'); city=flow.city_module('city_world').initial_city()
         state=flow.read_json(self.path);state['engine'].update(family='reviewed-city-v1',city_core_sha256=flow.sha((flow.city_module('city_world').ROOT/'city_core.c').read_bytes()))
+        if actors:
+            city.update(schema_version=5,actors=[flow.actors_module('scene5').models()['rabbit.actor.roof-cat-v1']])
+            state['engine'].update(family='reviewed-city-v2',actor_core_sha256=flow.sha((flow.actors_module('scene5').ROOT/'city_core.c').read_bytes()))
+        profile=flow.actors_module('actors_native') if actors else recovery.city_native
+        boot_folder='actors-empty-boot-qemu' if actors else 'empty-boot-qemu'
+        boot_status='EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS' if actors else 'EXACT-CITY-QEMU-LOAD-FULLSCREEN-DATA-RESTORE-REJECTION-PASS'
         flow.save(self.path,state)
         with patch.object(flow,'check_world',return_value={}),patch.object(flow,'deliver',side_effect=self.applied):
             self.controller.execute('город',plan=self.city_plan(city))
         key=Ed25519PrivateKey.from_private_bytes(bytes(range(32,64)));public=key.public_key().public_bytes(Encoding.Raw,PublicFormat.Raw)
         private=self.root/'fixture.key';private.with_suffix('.pub').write_bytes(public)
         checked=self.root/'checked';checked.mkdir();payload=b'MOCK-NATIVE-NOT-FOR-HARDWARE';(checked/'payload.efi').write_bytes(payload)
-        (checked/'empty-boot-qemu').mkdir();(checked/'empty-boot-qemu/observed.log').write_bytes(b'MOCK')
-        flow.save(checked/'empty-boot-qemu/report.json',{'empty_boot':True,'status':'EXACT-CITY-QEMU-LOAD-FULLSCREEN-DATA-RESTORE-REJECTION-PASS','payload_sha256':flow.sha(payload),'observed_log_sha256':flow.sha(b'MOCK')})
+        (checked/boot_folder).mkdir();(checked/boot_folder/'observed.log').write_bytes(b'MOCK')
+        flow.save(checked/boot_folder/'report.json',{'empty_boot':True,'status':boot_status,'payload_sha256':flow.sha(payload),'observed_log_sha256':flow.sha(b'MOCK')})
         release=self.root/'last-release.json';flow.save(release,{'checked_directory':str(checked)})
         state=flow.read_json(self.path);state['engine'].update(installed_gate=str(self.root/'gate.json'),last_release_report=str(release));flow.save(self.path,state)
         installed={'owner_public_sha256':flow.sha(public),'target_sha256':'11'*32,'module_hashes':{'1':'22'*32}}
         def native_applied(directory,report,session,on_applied):
             self.assertEqual(session['counter'],4);return on_applied()
         with patch.object(flow,'sender_step',return_value=(0,'RFS STATUS HEX=52465301'+'00'*56+'\n')),\
-             patch.object(recovery.engine,'gate_check',return_value=installed),patch.object(recovery.city_native,'gates',return_value={}),\
-             patch.object(recovery.engine,'prepare',return_value=(b'',{},[])),patch.object(recovery.city_native.build_city,'compile_city_driver',return_value=payload),\
+             patch.object(recovery.engine,'gate_check',return_value=installed),patch.object(profile,'gates',return_value={}),\
+             patch.object(recovery.engine,'prepare',return_value=(b'',{},[])),patch.object(profile.build_city,'compile_city_driver',return_value=payload),\
              patch.object(recovery.engine,'load_private',return_value=key),patch.object(flow,'check_world',return_value={}),\
              patch.object(flow,'deliver_session',side_effect=native_applied) as native,patch.object(flow,'deliver',return_value=1):
             first=recovery.recover(self.path,private,dell_rebooted=True)
@@ -134,6 +160,9 @@ class Tests(unittest.TestCase):
         self.assertEqual(flow.current(state),city);self.assertIsNone(state['recovery_pending'])
         self.assertEqual((Path(state['package']).parent/'session.json').read_bytes(),world_session)
         self.assertEqual((self.root/'checked/payload.efi').read_bytes(),payload);self.assertTrue(native_session)
+
+    def test_actors_recovery_two_stage_resume_keeps_exact_city5(self):
+        self.test_city_recovery_two_stage_resume_keeps_city_counters_and_exact_sessions(actors=True)
 
     def test_sequential_requests_keep_hat_assets_and_history_restores_with_new_counter(self):
         with patch.object(flow, 'check_world', return_value={'test_fixture': True}), patch.object(flow, 'deliver', side_effect=self.applied):
