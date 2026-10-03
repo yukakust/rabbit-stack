@@ -1,9 +1,13 @@
 {
-  "status": "CHECKED-SIGNED-PHYSICAL-DELIVERY-PENDING",
+  "status": "CHECKED-SIGNED-NOT-DELIVERED-RECEIVER-UNREACHABLE",
   "payload_sha256": "0beeb5450db864eba62710cfe7df7e0ba3d19594d9e480b6b50129f99225b4a6",
   "native_candidate_counter": 15,
   "host_scenarios": 34,
   "physical_execution_verified": false,
   "wifi_connection_verified": false,
-  "note": "Native14 last installed. Do not interpret host or QEMU boot tests as QCA hardware success. Exact pending Bluetooth session preserved."
+  "note": "Native14 last installed. Do not interpret host or QEMU boot tests as QCA hardware success. Exact pending Bluetooth session preserved.",
+  "read_only_query_timeouts": 2,
+  "mac_bluetooth_controller_on": true,
+  "data_or_commit_attempted": false,
+  "last_confirmed_native_counter": 14
 }

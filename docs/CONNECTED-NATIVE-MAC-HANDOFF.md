@@ -1400,6 +1400,9 @@ Evidence: native-wifi-qca9377-v1/evidence/2026-10-04/boot-irq-rom-profile.
 Exact owner-signed native15 session is saved on Mac at
 connected-supervisor runs/text-world/pci-native-yhzzk0k_. First read-only Bluetooth
 query timed out before any DATA/COMMIT; diagnostic reader also disconnected.
+Second same-session read-only query also reached its60second timeout. Both sender
+processes are terminal; no DATA/COMMIT attempted. Mac Bluetooth controller is on.
+Delivery report and both query logs are archived alongside the gate evidence.
 Native14 remains the last confirmed installed release; native15 is NOT a physical
 success. Resume the SAME pending session after reaching Dell; do not regenerate a
 nonce, clear staging or increment the counter. Observe current sender process
