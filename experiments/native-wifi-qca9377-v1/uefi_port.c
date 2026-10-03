@@ -1,4 +1,4 @@
-/* QCA9377 UEFI target adapter. NOT integrated/activated on physical Dell.
+/* QCA9377 UEFI target adapter. Physical lifecycle evidence is version-specific.
  * No direct physical dereference, bus-master enable, reset or firmware upload.
  */
 #include "uefi_port.h"
@@ -8,6 +8,7 @@ typedef Status(EFIAPI *Open)(void*,const Guid*,void**,void*,void*,uint32_t);
 typedef Status(EFIAPI *Close)(void*,const Guid*,void*,void*);
 typedef Status(EFIAPI *Free)(void*);
 typedef Status(EFIAPI *ConfigRead)(void*,uint32_t,uint32_t,uint64_t,void*);
+typedef Status(EFIAPI *ConfigWrite)(void*,uint32_t,uint32_t,uint64_t,void*);
 typedef Status(EFIAPI *Bar)(void*,uint8_t,uint64_t*,void**);
 typedef Status(EFIAPI *Attributes)(void*,uint32_t,uint64_t,uint64_t*);
 typedef Status(EFIAPI *Memory)(void*,uint32_t,uint8_t,uint64_t,uint64_t,void*);
@@ -29,6 +30,7 @@ int qca_port_open(QcaUefiPort*p,SystemTable*st,void*image,void*controller,const 
  if(qca_pci_identity(config,&identity)
   ||identity.subsystem_vendor!=target->subsystem_vendor||identity.subsystem_device!=target->subsystem_device
   ||identity.revision!=target->revision||(identity.command&4))return port_error(p,4,0);
+ p->original_command=(uint16_t)config[1];
  Attributes attr=(Attributes)method(p->pci,120);
  rc=attr(p->pci,4,0,&supported);if(rc||!(supported&0x200))return port_error(p,5,rc);
  rc=attr(p->pci,0,0,&p->original_attributes);
@@ -54,6 +56,9 @@ int qca_port_enable_memory(QcaUefiPort*p){
  p->memory_attempted=1;
  Status rc=((Attributes)method(p->pci,120))(p->pci,2,0x200,0);
  if(rc)return port_error(p,10,rc);
+ uint16_t command=0;
+ rc=((ConfigRead)method(p->pci,48))(p->pci,1,4,1,&command);
+ if(rc||command!=(uint16_t)(p->original_command|2))return port_error(p,11,rc);
  p->memory_ready=1;return 0;
 }
 int qca_port_read32(void*context,uint32_t address,uint32_t*out){
@@ -78,6 +83,18 @@ int qca_port_close(QcaUefiPort*p,QcaWake*w){
  if(!p->claimed)return 0;
  if(p->memory_attempted){
   if(((Attributes)method(p->pci,120))(p->pci,1,p->original_attributes,0))return -1;
+  /* Attribute flags may be cached. Actual PCI Command is authoritative.
+   * Write16 only: a Write32 would also touch PCI Status W1C bits. */
+  uint16_t command=0;
+  Status rc=((ConfigRead)method(p->pci,48))(p->pci,1,4,1,&command);
+  if(rc)return port_error(p,12,rc);
+  if(command!=p->original_command){
+   command=p->original_command;
+   rc=((ConfigWrite)method(p->pci,56))(p->pci,1,4,1,&command);
+   if(rc)return port_error(p,13,rc);
+   rc=((ConfigRead)method(p->pci,48))(p->pci,1,4,1,&command);
+   if(rc||command!=p->original_command)return port_error(p,14,rc);
+  }
   p->memory_attempted=p->memory_ready=0;
  }
  if(p->resource){if(((Free)service(p->system,72))(p->resource))return -1;p->resource=0;}

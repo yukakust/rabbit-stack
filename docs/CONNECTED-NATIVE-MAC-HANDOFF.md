@@ -993,3 +993,24 @@ must deassert/reset-settle before releasing ownership. Native11 city/tail visual
 observation remains pending, distinct from exact Bluetooth receipt and telemetry.
 SSID/security mode still needed before association; no password in chat/LLM/logs.
 All native compilation/rendering/tests remain Yukabox; Mac control/signing/radio.
+
+
+## 2026-10-04 — command lifecycle correction, host/ABI verified only
+
+`uefi_port` now captures real original16-bit PCI Command, verifies actual
+memory-only enable and real command restoration. Attributes(Set) success alone
+is insufficient. On mismatch, Write16 restores exactly the captured command
+without writing PCI Status W1C; a subsequent read must match. Failure/ineffective
+write keeps claim and memory_attempted until successful retry; unload remains
+blocked. Tests simulate stale-success attributes, config read/write errors,
+successful-but-dropped config writes and an initially enabled MEM bit with cached
+attributes0. Unrelated command bits/status remain preserved. ASan/UBSan and COFF
+PCI Write ABI checks passed on Yukabox; evidence/2026-10-04/command-lifecycle.
+
+This correction is NOT loaded on physical Dell yet. Current native11/world12
+is the read-only power profile. Next separately gated native reset profile must
+include this correction and fresh D0/resource/identity checks; no extra native
+probe sent merely to repeat the same zero chip-ID. Native11 confirmed MEM0102,
+so preserve the actual starting command rather than claim historic0100 restored.
+Full Wi-Fi goal remains active and incomplete. SSID/security and post-update
+city/tail observation questions are pending; password stays out of chat.

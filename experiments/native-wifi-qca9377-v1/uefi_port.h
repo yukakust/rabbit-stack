@@ -7,6 +7,7 @@ typedef struct {
  SystemTable*system;void*image,*controller,*pci,*resource;
  uint64_t original_attributes,bar_extent;
  uint32_t error;
+ uint16_t original_command;
  uint8_t claimed,memory_attempted,memory_ready,validated,wake_owned;
 } QcaUefiPort;
 /* Zero initialize. Claims PCI IO exclusively and validates fresh config/BAR.

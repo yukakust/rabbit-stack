@@ -29,6 +29,7 @@ _Static_assert(offsetof(EFI_BOOT_SERVICES,CloseProtocol)==288,"CloseProtocol");
 _Static_assert(offsetof(EFI_BOOT_SERVICES,FreePool)==72,"FreePool");
 _Static_assert(offsetof(EFI_PCI_IO_PROTOCOL,Mem)==16,"Mem read/write");
 _Static_assert(offsetof(EFI_PCI_IO_PROTOCOL,Pci)==48,"PCI read/write");
+_Static_assert(offsetof(EFI_PCI_IO_PROTOCOL,Pci)+sizeof(void*)==56,"PCI write");
 _Static_assert(offsetof(EFI_PCI_IO_PROTOCOL,Attributes)==120,"Attributes");
 _Static_assert(offsetof(EFI_PCI_IO_PROTOCOL,GetBarAttributes)==128,"GetBarAttributes");
 ''')
