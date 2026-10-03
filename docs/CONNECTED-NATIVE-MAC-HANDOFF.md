@@ -1050,3 +1050,51 @@ Native11/world12 remains physically installed; NO reset profile has been signed,
 sent or executed yet. No DMA, firmware RAM upload, scan/association/DHCP yet.
 Full original Wi-Fi/reconnect goal stays active. SSID/security-mode and post-
 update city/tail observation pending; they do not block independent port work.
+
+
+## 2026-10-04 — native12 physical reset/identity verified, chip revision1
+
+Previous goal continuation was progress (reset component code/host+COFF gates).
+This turn integrated that component and actual Command lifecycle correction into
+`reset_probe.c`/`reset_build.py`, preserving city and existing file service.
+Fresh exclusive PCI/identity/BAR/D0 checks precede wake/reset; post-deassert20ms
+checks revalidate PCI identity/BAR/no bus master and memory decode. If reset
+clears MEM, memory-only enable is repaired and read back before further MMIO.
+Close during either reset settling window cancels forward work, retains claim,
+finishes deassert/settle and then verifies Command restoration. Failed clear
+or readback retains ownership. Explicit close can request bounded cleanup retry
+without another assertion. Reattach never repeats one-shot hardware work.
+
+Eleven actual generated-production host scenarios passed ASan/UBSan (UBSan halt):
+normal/zero-before-reset/unsupported chip/D3/no target, stuck clear/ambiguous reset
+write, post-reset memory loss, zero-after-reset, and cancellation during either
+settling window. Port/component gates and normal+EMPTY real UEFI city/fullscreen/
+clock/snapshot/rollback/rejection gates passed on Yukabox; current-world/pinned-
+crypto two rebuilds matched. Earlier host test fixture failures were corrected
+before this exact profile was signed; no failed fixture profile was sent.
+
+Exact payload99463fa0068204926a2d4988e2d5dfe62c5f2ed2f22ed96a3f36dfc50ea8c67e
+signed locally Mac, delivered saved session `pci-native-23kicu1u` (56096bytes).
+COMMIT disconnected/reconnected to SAME saved session and exact APPLIED. Fresh
+query confirms native counter12/session matches. World counter12/package remain
+unchanged; native_pending=null. No root/USB/disk/OTP/Dell reboot or key copy.
+
+Physical QPD4/196 read: stage5/error0, chip-ID003821ff, supported SoC revision1,
+reset DONE/error0/owned=false, original/readback GLOBAL_RESET0, D0/PMCSR0,
+BAR extent2097152, original/active Command0102, original attrs0200, no revalidation
+error, cleanup complete. Actual Command restoration is verified by corrected
+port before CloseProtocol; this preserves the real initial0102, not historical
+0100. Bluetooth remains responding. Physical city/tail observation after native12
+is pending; previous owner observation was native9, do not silently extend it.
+
+Immediate FW indicator read was0. This is NOT a timed readiness failure and NOT
+firmware-ready proof. No firmware, CE/DMA, BMI target version, scan, association,
+DHCP or reconnect implementation verified yet. NEXT: bounded ROM-ready wait and
+CE/DMA/BMI get-target-info; bind actual target type/version before selecting/
+uploading exact firmware/board chunks in RAM. Known revision1 is a completed
+physical identity substep, not completion of the original Wi-Fi goal. Keep full
+original goal active. SSID/security mode question pending; password never chat.
+
+Remote exact workspace `/home/yuka/rabbit-world/wifi-reset-v1/source`.
+Evidence/2026-10-04/reset-profile contains source-bound gates/reproduction,
+full saved-session logs/raw+decoded telemetry/current receipt and manifest.

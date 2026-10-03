@@ -1,0 +1,22 @@
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 0: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 1: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 2: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 3: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 4: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 5: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 6: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 7: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 8: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 9: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated reset probe scenario 10: PCI D0, timed access, command repair, cleanup/cancel/reattach PASS; MOCK ONLY

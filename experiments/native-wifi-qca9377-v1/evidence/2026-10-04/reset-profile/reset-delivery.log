@@ -1,0 +1,60 @@
+MAC SENDER COMPILED; SOURCE SHA256=ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e
+STATUS VALIDATOR SHA256=0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-69; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+READ-ONLY QUERY: no BEGIN, DATA, COMMIT or ABORT
+CONNECTED RSSI=-67 error=none (local radio measurement, not attestation)
+RFS STATUS HEX=52465301724ed30ebad0caae20c5000020c50000020000000b000000c563e16ffbf9d47e2ec2701e81ea98b5ec0978ce339dc55f6f990e0a9a21eb69
+READ-ONLY STATUS (NOT ATTESTATION): state=2 error=0 received=50464 length=50464 receipt_counter=11 saved_session_matches=no
+MAC SENDER COMPILED; SOURCE SHA256=ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e
+STATUS VALIDATOR SHA256=0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f
+STAGING DIAGNOSTIC DATA DELAY=50 ms; NO COMMIT
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-77; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=0/56096
+STAGING CHECKPOINT=4100/56096 (not applied)
+STAGING CHECKPOINT=8200/56096 (not applied)
+STAGING CHECKPOINT=12300/56096 (not applied)
+STAGING CHECKPOINT=16400/56096 (not applied)
+STAGING CHECKPOINT=20500/56096 (not applied)
+STAGING CHECKPOINT=24600/56096 (not applied)
+STAGING CHECKPOINT=28700/56096 (not applied)
+STAGING CHECKPOINT=32800/56096 (not applied)
+STAGING CHECKPOINT=36900/56096 (not applied)
+STAGING CHECKPOINT=41000/56096 (not applied)
+STAGING CHECKPOINT=45100/56096 (not applied)
+STAGING CHECKPOINT=49200/56096 (not applied)
+STAGING CHECKPOINT=53300/56096 (not applied)
+STAGING CHECKPOINT=56096/56096 (not applied)
+STAGED-NOT-APPLIED: deliberate stop; keep Dell powered and rerun SAME saved session without --stage-only-bytes
+MAC SENDER COMPILED; SOURCE SHA256=ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e
+STATUS VALIDATOR SHA256=0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-78; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=56096/56096
+CONTROL ACK: phase=3; reading application status
+DISCONNECTED: phase=3 offset=56096/56096 domain=CBErrorDomain code=7 reason=The specified device has disconnected from us.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-69; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched
+TRANSFER ELAPSED=6.591 seconds (including reconnects)
