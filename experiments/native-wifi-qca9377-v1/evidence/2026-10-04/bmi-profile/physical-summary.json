@@ -1,0 +1,23 @@
+{
+  "status": "PHYSICAL-NATIVE13-APPLIED-ROM-READINESS-TIMEOUT-CLEANUP-COMPLETE",
+  "native_counter": 13,
+  "payload_sha256": "ec846096da49cc5eea9b118405e9024cfcbe6ee0be190df60564d072a1abb362",
+  "world_counter": 12,
+  "world_package_sha256": "6414d1bae588acfef261d8c6befc8fc1edb96fb76892a33c47f8d3b2c05bb180",
+  "observed_chip_id": "003821ff",
+  "observed_soc_revision": 1,
+  "rom_ready": false,
+  "rom_indicator": "00000000",
+  "rom_error": 4,
+  "bounded_wait_us": 3000000,
+  "bmi_query_executed": false,
+  "physical_dma_activation": false,
+  "dma_buffers_held": 0,
+  "cleanup_completed": true,
+  "city_visual_observation": "pending; async question after native13 sent",
+  "firmware_uploaded": false,
+  "wifi_association": false,
+  "source_report_sha256": "ba898c74b5b3189bb8f1ff1b9eb99a529729fb59378ebcfe31c9b7b109cf164a",
+  "physical_receipt_report_sha256": "dd059d6fed3823d1576e5fb5ff30db3d72aadd80db1444e496249594e9378d5c",
+  "raw_diagnostic_sha256": "67084e200c8f225de3ff40629ca40ddd1325154e0ac8b09d0f6ea41d13d62cb8"
+}

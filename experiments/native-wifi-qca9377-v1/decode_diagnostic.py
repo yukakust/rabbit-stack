@@ -3,8 +3,8 @@
 import argparse,json,struct
 from pathlib import Path
 def decode(value):
- version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 0
- length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196
+ version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 0
+ length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240
  if not version or not isinstance(value.get('raw_hex'),str) or len(value['raw_hex'])!=length*2:
   raise ValueError('bounded QPD1 envelope required')
  raw=bytes.fromhex(value['raw_hex'])
@@ -35,10 +35,18 @@ def decode(value):
    'bar_extent':extent,'original_attributes':f'{attributes:016x}',
    'chip_revision':(chip>>8)&15 if stage==2 else None,
    'probe_succeeded':stage==2 and not error and cleanup==1,'dma_enabled':False,'firmware_uploaded':False}
- if version==4:
+ if version in (4,5):
   stage,chip,error,cleanup,extent,attrs,phase,reset_error,owned,firmware,original,actual,pm,reserved,initial,readback,revalidation=struct.unpack_from('<IIIIQQIIIIHHHHIII',raw,128)
-  if stage>7 or cleanup not in (1,2) or phase>4 or owned>1 or reserved:raise ValueError('invalid reset telemetry')
+  if stage>(12 if version==5 else 7) or cleanup not in (1,2) or phase>4 or owned>1 or reserved:raise ValueError('invalid reset telemetry')
   result['reset_probe']={'stage':stage,'chip_id':f'{chip:08x}','error':error,'cleanup_completed':cleanup==1,'bar_extent':extent,'original_attributes':f'{attrs:016x}','reset_phase':phase,'reset_error':reset_error,'reset_owned':bool(owned),'fw_indicator':f'{firmware:08x}','fw_initialized_seen':bool(firmware&2),'original_command':f'{original:04x}','active_command_snapshot':f'{actual:04x}','pmcsr':f'{pm:04x}','global_reset_initial':f'{initial:08x}','global_reset_readback':f'{readback:08x}','revalidation_error':revalidation,'chip_revision':(chip>>8)&15 if stage==5 and chip else None,'identity_probe_succeeded':stage==5 and not error and cleanup==1,'dma_enabled':False,'firmware_uploaded':False}
+ if version==5:
+  rom_error,indicator,bmi_error,version_word,type_word,info_length,users,bus_phase,bus_error,bus_owned,held=struct.unpack_from('<11I',raw,196)
+  if users>4 or bus_phase>4 or bus_owned>1 or held>15:raise ValueError('invalid DMA/BMI telemetry')
+  received=bmi_error==0 and version_word not in (0,0xffffffff) and type_word not in (0,0xffffffff)
+  released=cleanup==1 and not users and not held and not bus_owned
+  result['reset_probe'].update(cleanup_completed=released,dma_enabled=bus_phase==2,chip_revision=(chip>>8)&15 if chip else None)
+  result['bmi_probe']={'stage':stage,'rom_error':rom_error,'rom_indicator':f'{indicator:08x}','rom_ready_seen':indicator!=0xffffffff and not(indicator&1) and bool(indicator&2),'bmi_error':bmi_error,'reply_received':received,'target_version_raw':f'{version_word:08x}','target_type_raw':type_word,'reply_length_field':info_length,'dma_buffers_held':users,'dma_hold_mask':held,'bus_phase':bus_phase,'bus_error':bus_error,'bus_owned':bool(bus_owned),'cleanup_completed':released,'query_and_cleanup_succeeded':stage==5 and not error and received and released,'firmware_compatibility_verified':False,'firmware_uploaded':False}
+  if received:result['bmi_target_version']=f'{version_word:08x}'
  if version==3:
   pm,csr,pcie,link,status,reserved=struct.unpack_from('<HHHHII',raw,128)
   if status>3 or reserved:raise ValueError('invalid power-capability snapshot')

@@ -1276,3 +1276,53 @@ failed stop/unmap retains native ownership and blocks unload. Include telemetry
 for ROM/BMI raw reply/error and resource cleanup, preserve city/BT normal+EMPTY
 QEMU gates and exact reproducible owner-bound package before physical delivery.
 Full firmware RAM chunks/radio/scan/WPA/DHCP/reconnect goal remains incomplete.
+
+
+## 2026-10-04 — native13 applied physically; ROM-ready timeout before DMA
+
+Added bmi_probe.c/bmi_build.py/verify_bmi_profile.py and delivery/reproduction/QPD5
+support. Full profile links production reset, ROM,4coherent DMA buffers,8CE bus
+lifetime, seeded CE0/1 rings and BMI transport; one allocation/cleanup per poll.
+Stop/cancel retains reset/CE/DMA ownership until cooperative cleanup completes,
+blocks unload on failed halt/Flush/Unmap/Free, supports cleanup retry after errors.
+17 integrated hardware-mock scenarios including D3/unsupported/absent, reset
+ambiguity/cancel, ROM timeout, above32bit mapping, malformed reply, BMI timeout,
+ambiguous bus-master enable and Flush failure pass ASan/UBSan on Yukabox. Exact
+normal+EMPTY UEFI QEMU city/BT/rejection/recovery gates pass; QCA absent in VM.
+Same native bytes rebuilt twice against current actual saved city package with
+sanitizer world checks. QPD5 is240bytes, fits247byte ATT MTU; decoder distinguishes
+raw BMI reply from firmware compatibility, and rejects invalid DMA hold masks.
+All native compilation on Yukabox; Mac only control/Bluetooth/reader/signature.
+
+Owner-authorized exact native13 payload SHA256:
+ec846096da49cc5eea9b118405e9024cfcbe6ee0be190df60564d072a1abb362.
+Signed locally (key never printed/copied) and66848byte session sent over Bluetooth.
+Staging timed out at29000bytes; same nonce/session resumed from receiver-confirmed
+29100. COMMIT disconnected as expected on module replacement; same session then
+received exact SHA/session/counter APPLIED. Saved engine native13, city world12,
+no pending operation. Fresh pre-native13 QPD4 proves previous cleanup/chip identity;
+post-native13 actual QPD5 obtained after applied receipt and Bluetooth recovery.
+Session: runs/text-world/pci-native-7e7wgk_a under connected supervisor experiment.
+
+PHYSICAL RESULT: chip003821ff/SoCrev1, D0, verified cold reset clear and PCI original
+Command0102 restoration. ROM indicator remained0 for bounded3second wait;
+stage6/error0x504 (ROM error4 timeout). BMI was NOT sent; DMA was NOT activated or
+allocated. Bus phaseIDLE/ownedfalse, buffer count/held-mask0, port cleanup complete.
+No firmware/radio/WPA/DHCP success. Exact evidence under
+experiments/native-wifi-qca9377-v1/evidence/2026-10-04/bmi-profile, including gate
+reports, source-bound reproduction, physical receipt, raw/decoded diagnostic and
+physical-summary.json. QEMU PASS must not substitute for this physical timeout.
+Async owner observation city/tail after native13 remains pending; no visual claim.
+
+NEXT: account for native PCIe bringup differences. Pinned ath10k hif_power_up
+saves and disables LinkControl ASPM BEFORE reset; our fresh prior physical power
+probe found LinkControl0143 (both ASPM bits enabled) and current profile does not
+change those bits. Implement bounded reversible16bit LinkControl save/disable/
+readback/restore under exclusive PCI claim (never32bit write touching LinkStatus),
+with retained ownership on ambiguous failure and cleanup before port release.
+Then repeat ROM wait physically in next owner-checked profile. Also inspect
+ath10k wait_for_target_init's legacy-INTx workaround (repeated interrupt-enable
+writes with readback) and QCA6174 cold+warm reset ordering. Do not blindly enable
+host interrupts or claim either hypothesis as established; no further physical
+writes until matching deterministic gates. Full original Wi-Fi goal remains active;
+firmware RAM chunks/radio/WPA/DHCP/two-way traffic/reconnect remain incomplete.

@@ -1,0 +1,51 @@
+{
+  "kind": "native-read-only-pci",
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 13,
+  "base_runtime_sha256": "99463fa0068204926a2d4988e2d5dfe62c5f2ed2f22ed96a3f36dfc50ea8c67e",
+  "base_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "6414d1bae588acfef261d8c6befc8fc1edb96fb76892a33c47f8d3b2c05bb180",
+  "payload_sha256": "ec846096da49cc5eea9b118405e9024cfcbe6ee0be190df60564d072a1abb362",
+  "package_sha256": "8c2d1b2a6c75231505f29e3cd3379d3bee92a1e51c53719be539e67013873a68",
+  "session_sha256": "cb1f431c7ac2713804d195967ea4ff9a774322944555dafb93931e1165e52cf8",
+  "checked_directory": "experiments/native-wifi-qca9377-v1/runs/bmi-profile",
+  "gate": {
+    "report_sha256": "ba898c74b5b3189bb8f1ff1b9eb99a529729fb59378ebcfe31c9b7b109cf164a",
+    "reproduction_sha256": "b6fb9c073150d94128ea93250bd64b3e9c61ccf8e80c920e9d16e5e5daee3539",
+    "profile_status": "QCA-ROM-BMI-CITY-PROFILE-GATES-PASS"
+  },
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7e7wgk_a/query-0.log",
+      "log_sha256": "b7cf4954ba6d9736b0c80e41a2e1c03544851897fceaa0e6b8efaf8673a80519"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7e7wgk_a/paced-stage-1.log",
+      "log_sha256": "09e7af54ea0d17247a7817f16b344ffc297f37146171a5274fae2708b77c3d30"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7e7wgk_a/commit-2.log",
+      "log_sha256": "7380e237e5f62decdb627eb1aea192cc486a8babe1ab9d0a7a7b7b3a5064a2e0"
+    }
+  ],
+  "receiver_reported_applied": true,
+  "confirmed_received": 66848,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 56096,
+    "length": 56096,
+    "counter": 12,
+    "sha256": "76d44df0c0cea4ec67b778d3a66ad703aaa0dabffb9d8521dba7aebce157c84d",
+    "session_matches": false,
+    "raw_hex": "52465301b982c908e41abe7920db000020db0000020000000c00000076d44df0c0cea4ec67b778d3a66ad703aaa0dabffb9d8521dba7aebce157c84d",
+    "device_attestation": false
+  }
+}

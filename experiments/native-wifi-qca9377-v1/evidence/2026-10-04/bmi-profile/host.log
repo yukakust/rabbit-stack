@@ -1,0 +1,34 @@
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 0 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 1 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 2 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 3 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 4 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 5 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 6 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 7 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 8 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 9 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 10 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 11 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 12 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 13 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 14 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 15 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+Integrated native BMI probe scenario 16 PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY

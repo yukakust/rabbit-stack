@@ -1,0 +1,39 @@
+{
+  "status": "ROM-BMI-CE0-CE1-INTEGRATION-HOST-COFF-PASS",
+  "source_sha256": {
+    "rom_ready.c": "cde2ea958aa70e0dfcd8bd8046e0045c433abce96f5eec0e90bc7419dacd11dd",
+    "bmi_transport.c": "ec3bec2e3289dee3876343a7c21f4ea4fada38a02c0f9b23487b56a58b7f17e3",
+    "bmi_transport_test.c": "e59efbdec58579889125186c7be9d35ba3341a83fd71eab544b543c0e0df3510",
+    "ce_ring.c": "cd48cb13959fe6c0062b996fee7df311eafbc157bd3d029d1b461822bf443fa5",
+    "ce_hw.c": "0878cce3649433a5db0f4e54a70fdb2fbf53b1613e017e7addb480547dd7c995",
+    "ce_uefi.c": "6013ed6bb367fa120f8345e06b4206060a43a997fd4bce40b212b7542afd782e",
+    "ce_bus.c": "848c77f9eafc6fca48a3d6209442ac305ed95060724a12492e89f7f8463f380e",
+    "dma_buffer.c": "5ce1bb596dc181f01e9d9d8047333cb196e46144768774d8a12f308a0e5d8279",
+    "bmi-target.json": "b0c32fb85a8fdb4ff2762692b4f7a301e760363e32d8dcf4cc95208171ed9dc0",
+    "rom_ready.h": "fb491c10ecd41dad9d8928957e13ced2316c513b87515f7e78b8850c97a48963",
+    "bmi_transport.h": "36c178d0a3bc1944905e09c77155e318960ffecdb5bc3aab9181feae929ee28a",
+    "ce_ring.h": "b19fe5e7017234a76b61356ff5854b96c556ea1a83cd64c41fd9eed9a5756f54",
+    "ce_hw.h": "bac5eeba42e5867f3921e561f950cb9ff99b7ffde0ca1c0d5f2ad384dac6a3bd",
+    "ce_uefi.h": "982109de2947d03724e3b996b379f321cc1d3d7eb1f88f260cccc4a6c6129800",
+    "ce_bus.h": "b6e23b8fda3ffc77a7c0a36535955ec053fa3bcc5c1951691c1125fbadfce89a",
+    "dma_buffer.h": "90ee8750b3545aa415af8530f8dcb5f65ec1e4c3253799d8b0910c648fa84e5f",
+    "uefi_port.h": "c291e7ab9afa7ee1d99c60ea26ab26d9b37259a9880ab5daf03c41956788c16b",
+    "wake_core.h": "02a1d237478b6c25fc609f8500dfee6b1d52fc8ba35422315792fdfa28a12b43",
+    "verify_bmi.py": "fd5e676a7a21a8bad61c9170a13b71d25c5830f663be34529dd81d92489046fb"
+  },
+  "reference_sha256": {
+    "pci.c": "e5c8f5aec5312eb83bef7372706cdb7c979fcf81e423bb4fced3f18591e994fd",
+    "hw.c": "7e176346c8def2054138bf3458acd4fbda7fc01d0753b77985f82215b51400f4",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "bmi.c": "f14c60e89f1e4a9c4105e5f7dcf0571717b79a7825c44aceb9fd665e03917aa1",
+    "bmi.h": "8924f6fbf6ca4cfa494e7b6f38240ec44fa554e8850315b7442f3a534be30344"
+  },
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "host_log_sha256": "c33f7326b2d1194b182cded3ba1a3e9af98e0af53374764cfdf6116c6388d3b9",
+  "build_host": "yukabox",
+  "physical_rom_ready": false,
+  "physical_bmi_response": false,
+  "native_profile_integrated": false,
+  "firmware_uploaded": false,
+  "wifi_association": false
+}
