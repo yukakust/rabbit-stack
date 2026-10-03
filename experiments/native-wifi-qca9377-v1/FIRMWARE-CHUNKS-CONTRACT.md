@@ -66,6 +66,31 @@ matching live state/receipts, never an assumption from a saved Mac bitmap.
 
 ## Remaining integration
 
+`mac_firmware_sender.m` sends one previously signed chunk. The portable
+firmware_sender_core parses exact64byte receipts and decides BEGIN/DATA/COMMIT
+or finish/reject/loss/busy. It detects confirmed-prefix regression and refuses
+foreign staging/aborted sessions without ABORT or a new session identity. Only
+matching accepted receipt with correct asset bitmap/ready flag finishes. Even
+an ACK does not advance progress; read the server status after every write.
+
+Checkpoint binds the whole packet SHA256, confirmed floor and attempted flag.
+Write it atomically and fsync file/directory before any radio write and after
+receiver status. A lost connection/timeout keeps the same signed packet and
+checkpoint. Current-world controller lock serializes this with native/world
+delivery; pending operations block firmware send. Wrapper verifies the current
+installed owner gate/public identity and Ed25519/body hash before radio, then
+gives the helper a private immutable copy of the verified packet bytes. It
+never accesses a private signing key. Complete asset/compatibility authorization
+remains with the future owner/target policy and native receiver.
+
+`send_firmware_chunk.py` compiles only by default. `--preflight` checks a signed
+packet/checkpoint offline without a Bluetooth manager. `--query-only` performs
+characteristic reads; `--send` uses ACKed writes with100byte bodies and50ms delay,
+one packet per invocation. Receiver acceptance means RAM only, never firmware
+startup. Mac compile/offline tests do not prove CoreBluetooth radio callbacks.
+Actual send is bounded240seconds, read-only query60seconds; reconnect by querying
+the same session before retry. New receiver service must be installed/gated first.
+
 The standalone `firmware_channel.c` and `firmware_gatt.c` implement the secondary
 ATT channel. They are not wired into the current native driver. Service UUID is
 52414242-4954-4649-8000-000000000007, handles11..17. Control13, data15 and status17

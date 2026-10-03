@@ -1,0 +1,10 @@
+{
+  "status": "CACHED-PERIPHERAL-READ-ONLY-QUERY-TIMEOUT",
+  "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+  "query_only": true,
+  "exit_code": 1,
+  "stdout_tail": "FAIL: 60-second read-only query timeout; application outcome may be unknown; staging retained if Dell remains powered\n",
+  "stdout_complete": false,
+  "data_or_commit_attempted": false,
+  "physical_update_verified": false
+}

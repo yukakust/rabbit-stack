@@ -1,0 +1,17 @@
+{
+  "status": "MAC-COCOA-COMPILE-OFFLINE-PACKET-CHECKPOINT-PASS",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-v1/mac_firmware_sender.m": "81759186a5fa671c4cb989b948ebea11c49fa1bae10a738b762924642a157bd9",
+    "experiments/native-wifi-qca9377-v1/firmware_sender_core.c": "67de5c5fa1a575f91a8128db7aa6759897f9f5c7b57f1339e221831bd431878d",
+    "experiments/native-wifi-qca9377-v1/firmware_sender_core.h": "440fb7f6e0d62c7f28396ce2984b9c98b95f2280a4c25e1074af4071f2a734d4",
+    "experiments/native-wifi-qca9377-v1/send_firmware_chunk.py": "ffc2a8cff95a905d42c38d91872589c77aca3a14cd5d9dd80a40808aae67780b",
+    "experiments/native-wifi-qca9377-v1/verify_mac_firmware_sender.py": "b790d2ba847c0609057415a474abd0d5c9f4f1cff79cc857f7494a822476c7e3"
+  },
+  "build_host": "Mac",
+  "fixture_packet_sha256": "916ee72a1d93ef0c9fe9330655e542dff19c9ba5b8b969d0178da5b4177baa9e",
+  "host_log_sha256": "9469a96ab4586816012d7a4f7eef929238d79133b49104f9dffa6a80199ef311",
+  "private_key_accessed": false,
+  "bluetooth_manager_started": false,
+  "cocoa_radio_callbacks_verified": false,
+  "physical_transfer_verified": false
+}

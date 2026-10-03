@@ -1470,3 +1470,41 @@ owner/target-bound RAM policy and allocation into an asset-capable native driver
 wire the ATT hook into its existing handler, add exact Mac receipt/resume sender,
 then actual normal+EMPTY UEFI/current-world/owner gates before any physical send.
 No chip firmware compatibility/upload/startup, radio/WPA/DHCP/reconnect proof yet.
+
+## 2026-10-04 — Mac signed-chunk sender and portable receiver interop
+
+Added firmware_sender_core.c/h and mac_firmware_sender.m with wrapper
+send_firmware_chunk.py. No signing/private-key access. Exact64byte receipt parser
+and pure controller stop foreign staging, prefix loss, aborted/poisoned state,
+bad bitmap/ready flags and matching rejection. ACK alone never advances confirmed
+prefix. Matching accepted RAM receipt finishes even if the complete asset is
+already pinned by a consumer; no additional writes then. Atomically persisted,
+fsynced checkpoint binds packet SHA, confirmed floor and attempted flag before
+radio writes. Retry keeps identical packet/checkpoint; no ABORT/new generation.
+Wrapper serializes with the current-world lock, blocks pending operations,
+checks installed owner gate/public identity, packet signature/body hash, then
+passes an immutable verified copy to the helper. Compile-only is the default.
+Offline --preflight starts no CBCentralManager; physical radio requires explicit
+--send or --query-only, service discovery and correct characteristic properties.
+
+Final ASan/UBSan sender+actual RAM/transport core tests pass all6datasets, including
+751436byte official container/12chunks and2MiB/32chunks. Tests ignore lost ACKs,
+query exact progress, resume, detect receiver regression/foreign session, reject
+malformed receipts/signature rejection, and check complete asset bitmap/ready.
+Mac clang compile succeeds with warnings as errors. Offline Cocoa tests check
+checkpoint atomic write/fsync, progress preservation, invalid/mismatched/fractional
+values, malformed JSON and packet tampering (public TEST key only). No Bluetooth
+manager or owner private key in those tests. Evidence under native-wifi experiment
+evidence/2026-10-04/firmware-sender. Cocoa RADIO callbacks/physical signed-asset
+transfer remain unverified; this is not firmware upload/startup or Wi-Fi.
+
+Fourth native15 discovery query timed out before DATA/COMMIT; original signed
+session remains pending, native14 last confirmed. Cached peripheral read-only
+connection is a separate diagnostic attempt, not delivery or update success.
+That cached query also reached its60second timeout; no receiver status obtained.
+All query processes are terminal. Preserve pending native15 and wait for actual
+Dell reachability; no DATA/COMMIT, abort, new nonce, reboot or media write.
+NEXT: obtain physical native15/BMI facts, add validated RAM allocations and
+owner/target asset policy to a separately gated native candidate, wire secondary
+ATT handler, then normal+EMPTY UEFI/current-world gates before physical update.
+Firmware compatibility, upload/startup, scan/WPA/DHCP/reconnect remain incomplete.

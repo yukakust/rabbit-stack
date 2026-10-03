@@ -2,10 +2,19 @@
 
 Owner chose the internal Wi-Fi: there is no Ethernet cable. Dell in Georgia has
 no installed OS/disk; Mac is command/control and Yukabox in Poland runs Unreal.
-Current physical profile is native9/world12. Preserve its city; no replacing
+Last confirmed physical profile is native14/world12; exact signed native15 is
+pending Bluetooth reachability, with no DATA/COMMIT attempted. Preserve its city; no replacing
 bootstrap/USB or reboot implied. Wi-Fi is still not associated.
 Wi-Fi authorization is explicit; the old handoff's "unrelated network runtime"
 restriction concerned an earlier engine trial, not this requested transport work.
+
+Current hardware evidence: chip003821ff/rev1 after cold reset, physical Dell
+subsystem1028:1810 and D0 verified; ROM-ready still times out. No physical BMI
+reply, firmware startup or Wi-Fi connection. Reversible boot-IRQ/post-reset ASPM
+candidate is source-gated/signed but not installed. Signed RAM chunk assembly,
+isolated ATT channel and portable/Mac sender are separate tested components;
+they are not integrated into the physical native driver. See the latest sections
+of `docs/CONNECTED-NATIVE-MAC-HANDOFF.md` and `FIRMWARE-CHUNKS-CONTRACT.md`.
 
 Historical physical discovery identified168C:0042 at02:00.0, without firmware
 SNP/Wi-Fi services. The pinned iPXE source has ath5k/ath9k, but no ath10k/QCA9377

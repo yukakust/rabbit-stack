@@ -32,6 +32,12 @@
       "exit_code": 1,
       "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-yhzzk0k_/query-2.log",
       "log_sha256": "efb4ea1de5fd88efb39520651b84831be6668ec66c40145732b000a4a9e4628e"
+    },
+    {
+      "name": "query",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-yhzzk0k_/query-3.log",
+      "log_sha256": "efb4ea1de5fd88efb39520651b84831be6668ec66c40145732b000a4a9e4628e"
     }
   ],
   "receiver_reported_applied": false,

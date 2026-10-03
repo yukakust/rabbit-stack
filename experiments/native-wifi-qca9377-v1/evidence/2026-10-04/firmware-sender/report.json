@@ -1,0 +1,65 @@
+{
+  "status": "FIRMWARE-SENDER-RECEIVER-RESUME-HOST-SANITIZERS-PASS",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-v1/firmware_sender_core.c": "67de5c5fa1a575f91a8128db7aa6759897f9f5c7b57f1339e221831bd431878d",
+    "experiments/native-wifi-qca9377-v1/firmware_sender_test.c": "5ba6b6d1b8eca4e82cf3cbd31c2be7dc71390dd7f086ced7db2fe0cdb204bfc2",
+    "experiments/native-wifi-qca9377-v1/firmware_channel.c": "1f563dae553244c6fbc9781a7d987de0d30b301945430111b544b52f918bb10d",
+    "experiments/native-wifi-qca9377-v1/firmware_chunks.c": "093fb59a143a60753785bb4ceddefc5827480c085361c898ad63f999cca6a26c",
+    "experiments/native-wifi-qca9377-v1/firmware_sender_core.h": "440fb7f6e0d62c7f28396ce2984b9c98b95f2280a4c25e1074af4071f2a734d4",
+    "experiments/native-wifi-qca9377-v1/firmware_channel.h": "f4c9d3a45d0639cd7438caa69d8745d019725b84ddca8d3c20aaae166d8b9ca7",
+    "experiments/native-wifi-qca9377-v1/firmware_chunks.h": "fb42e22a4a560d158dc5e2dcf1186049009a42c3a461a2015ba133ff34c8dea5",
+    "experiments/native-wifi-qca9377-v1/verify_firmware_sender.py": "6f7f1ff5d63aeda754efe2029d415dc1814bfad3c77a05772f24b539da59627e"
+  },
+  "build_host": "yukabox",
+  "host_log_sha256": "ca000635398ee2247cc400bbc490daf663fcdca0849013af713226f11040d7dd",
+  "channel_gate_sha256": "60c9fdcf5fb4237404f5551793878d9e147519f907fb1e8fc5ebbf6bc57e0e7a",
+  "ram_gate_sha256": "b55fa0c6bc67b308d3643f09adb89dcc10eed3ee182dfac8978845f343cb315f",
+  "datasets": [
+    {
+      "name": "length-1",
+      "bytes": 1,
+      "chunks": 1,
+      "sha256": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5",
+      "largest_packet": 225
+    },
+    {
+      "name": "length-65535",
+      "bytes": 65535,
+      "chunks": 1,
+      "sha256": "4c32fbc9c2bad24dbe35c62f9aafd3e7dd6d2419f0b4b0a064db2fd79a56b6ab",
+      "largest_packet": 65759
+    },
+    {
+      "name": "length-65536",
+      "bytes": 65536,
+      "chunks": 1,
+      "sha256": "f779dbe3aeaa609beb32212579f3aea441f244621d13c977cb8b52d7ec3016d9",
+      "largest_packet": 65760
+    },
+    {
+      "name": "length-65537",
+      "bytes": 65537,
+      "chunks": 2,
+      "sha256": "5ea07e7659785552529c03843e59b785822a318d92800a44ed2aa1dc4df61400",
+      "largest_packet": 65760
+    },
+    {
+      "name": "length-2097152",
+      "bytes": 2097152,
+      "chunks": 32,
+      "sha256": "ca3b147bddecda5d402af947981c4e17f15cba6c53e3b038713648b462b8888a",
+      "largest_packet": 65760
+    },
+    {
+      "name": "reviewed-container",
+      "bytes": 751436,
+      "chunks": 12,
+      "sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "largest_packet": 65760
+    }
+  ],
+  "cocoa_callbacks_verified": false,
+  "physical_transfer_verified": false,
+  "firmware_upload_performed": false,
+  "wifi_association": false
+}
