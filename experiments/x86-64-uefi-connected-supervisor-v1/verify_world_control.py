@@ -177,6 +177,41 @@ class Tests(unittest.TestCase):
         self.assertEqual(result['status'], 'UNCHANGED'); sender.assert_not_called(); native.assert_not_called()
         self.assertEqual(len(self.controller.status()['versions']), 1)
 
+    def test_smooth_drawing_renders_curves_transparency_and_passes_actual_c(self):
+        plan = self.plan(); plan['objects'].append({'id': 2, 'sprite': 2, 'program': 1, 'x': 105, 'y': 45, 'vx': 1, 'vy': 0, 'target': 2})
+        drawing = {'id': 2, 'name': 'smooth-original', 'width': 96, 'height': 96,
+                   'display_width': 32, 'display_height': 32, 'frames': [[
+            {'kind': 'ellipse', 'fill': 'b57947ff', 'stroke': '38291cff', 'stroke_width': 5,
+             'geometry': [256, 256, 140, 100], 'commands': []},
+            {'kind': 'path', 'fill': None, 'stroke': 'eebbaaff', 'stroke_width': 14, 'geometry': [],
+             'commands': [{'op': 'M', 'points': [116, 260]}, {'op': 'C', 'points': [20, 350, 30, 120, 100, 200]}]}]]}
+        from drawing_renderer import render
+        rendered = render(drawing)
+        self.assertGreater(len(rendered['palette']), 16)
+        self.assertTrue(any(0 < int(c[-2:], 16) < 255 for c in rendered['palette']))
+        plan['created_drawings'] = [drawing]
+        world, _, provenance = planner.compose(flow.read_json(self.path), plan)
+        self.assertEqual(world['sprites'][0], self.base['sprites'][0])
+        self.assertEqual(provenance[0]['kind'], 'llm-vector-drawing')
+        p = self.root / 'drawing.json'; flow.save(p, world); packet = self.root / 'drawing.rup'
+        packet.write_bytes(flow.compile_world(p, 4, flow.CREATOR))
+        self.assertEqual(flow.check_world(packet, self.root / 'host-check')['host_ticks'], 240)
+        bad = copy.deepcopy(drawing); bad['frames'][0][1]['commands'][1]['points'].append(1)
+        with self.assertRaises(ValueError): render(bad)
+        bad = copy.deepcopy(drawing); bad['frames'][0][0]['fill'] = 'url(file:///private/key)'
+        with self.assertRaises(ValueError): render(bad)
+
+    def test_detailed_mouse_replaces_only_requested_art_and_stays_in_package_budget(self):
+        plan = self.plan(); plan['objects'].append({'id': 2, 'sprite': 2, 'program': 1, 'x': 105, 'y': 45, 'vx': 1, 'vy': 0, 'target': 2})
+        plan['inventory_assets'] = [{'component_id': 'rabbit.asset.smooth-brown-mouse', 'sprite_id': 2,
+                                    'display_width': 40, 'display_height': 40}]
+        world, _, _ = planner.compose(flow.read_json(self.path), plan)
+        self.assertEqual(world['sprites'][0], self.base['sprites'][0])
+        self.assertEqual(world['sprites'][1]['width'], 128)
+        p = self.root / 'smooth-mouse.json'; flow.save(p, world); packet = self.root / 'smooth-mouse.rup'
+        packet.write_bytes(flow.compile_world(p, 4, flow.CREATOR)); self.assertLess(len(packet.read_bytes()), 65535)
+        self.assertEqual(flow.check_world(packet, self.root / 'host-check')['host_ticks'], 240)
+
     def test_loopback_server_auth_and_voice_use_same_execute_endpoint(self):
         from world_control_server import Server
         calls = []; finished = threading.Event()

@@ -9,6 +9,7 @@ INVENTORY = flow.ROOT.parent / 'reusable-creation-inventory-v1'
 sys.path.insert(0, str(INVENTORY))
 from rabbit_inventory import load_json, validate_catalog, component_identity
 from llm_world import obj, array, integer, validate_schema, strict_json, WORLD_SCHEMA
+from drawing_renderer import DRAWING, render as render_drawing
 
 ASSET_REF = obj({'component_id': {'type': 'string', 'maxLength': 100},
                  'sprite_id': integer(1, 254), 'display_width': integer(1, 64), 'display_height': integer(1, 64)})
@@ -25,6 +26,7 @@ SCHEMA = obj({
     'programs': {'anyOf': [WORLD_SCHEMA['properties']['programs'], {'type': 'null'}]},
     'inventory_assets': array(ASSET_REF, 0, 8),
     'created_sprites': array(NEW_SPRITE, 0, 4),
+    'created_drawings': array(DRAWING, 0, 2),
     'background': {'anyOf': [{'type': 'string', 'pattern': '^[0-9a-f]{6}$'}, {'type': 'null'}]},
     'restore_version': {'anyOf': [{'type': 'string', 'maxLength': 64}, {'type': 'null'}]},
     'missing_capabilities': array({'type': 'string', 'maxLength': 120}, 0, 8),
@@ -37,7 +39,17 @@ Use existing inventory assets when appropriate. New sprite references use unique
 sprite_id; inventory_assets specifies their display sizes. If no inventory asset
 matches, create compact ORIGINAL indexed pixel sprites (<=32x32, <=4 frames, <=16
 local RGBA colors); frames use two lowercase hex digits per pixel, exact geometry,
-index0 transparent black. New art is pixel art, not a claim of generated high-res art.
+index0 transparent black. created_sprites is pixel art. For smooth detailed original objects use
+created_drawings: up to128x128 source resolution, four poses, each up to64 layered
+ellipses/rectangles/paths with RGBA fill/stroke. Coordinates use a512x512 viewBox;
+ellipse geometry=[cx,cy,rx,ry], rect=[x,y,w,h]; paths have empty geometry and
+commands M/L/C/Q/Z with2/2/6/4/0 coordinates. Other shapes have empty commands.
+Use smooth curves, layered shading and antialiased silhouettes; default to this
+route for newly drawn objects unless the user requests pixel art. Existing smooth
+inventory art is preferred when appropriate. '256 bit' colloquially means detailed
+smooth graphics: explain that it uses up to256 shared RGBA palette entries, not
+256-bit hardware. Do not reject smooth drawings because pixel creation was32x32.
+A bitmap source is still rasterized on the physical display.
 No edits to existing sprite frames: adding another asset never repaints the cat.
 Return complete resulting objects/programs when changing data, preserving IDs.
 Pure background change may use null objects/programs with empty asset lists.
@@ -48,6 +60,10 @@ VM: 0 END; 1 MOVE; 2 BOUNCE; 3 target speed CHASE; 4 target speed FLEE;
 <=16 instructions/32 bytes; speed/impulse1..8, animation period1..255.
 160x90 surface, sprite display <=64x64; keep initial objects in visible bounds.
 New object target ids must exist. At most16 objects/sprites/programs.
+When REPLACING artwork preserve object id/program/speed/target, assign a new unused
+sprite id; unreferenced old art is removed automatically. Keep display dimensions
+large enough for detail, but x+display_width<=160 and y+display_height<=90.
+Preserve unrelated art. Smooth mouse has one pose: VM moves it, not animated paws.
 For a history restore use exact restore_version from supplied versions and null
 objects/programs/background, empty asset lists. Restore means a NEW increasing
 counter, not replaying an old signed package. Never invent a version.
@@ -66,14 +82,16 @@ def assets():
               if value['kind'] == 'asset' and value['implementation']['format'] == 'rabbit.sprite.v1'}
     # Existing generated artwork stays portable indexed data; sharing license is NOT inferred.
     for identity, name, filename in [('rabbit.asset.ginger-cat-walk', 'Рыжий кот без шапки', 'ginger-cat-walk-v1.json'),
-                                      ('rabbit.asset.ginger-cat-red-hat', 'Рыжий кот в красной шапке', 'ginger-cat-red-hat-walk-v1.json')]:
+                                      ('rabbit.asset.ginger-cat-red-hat', 'Рыжий кот в красной шапке', 'ginger-cat-red-hat-walk-v1.json'),
+                                      ('rabbit.asset.smooth-brown-mouse', 'Детальная гладкая коричневая мышка', 'cat-chases-smooth-mouse.json')]:
         path = flow.V3 / 'worlds' / filename
         world = flow.read_json(path, 2 * 1024 * 1024)
         flow.decode_package(flow.compile_world(path, 1, flow.CREATOR), flow.PUBLIC)
-        sprite = copy.deepcopy(world['sprites'][0]); sprite['palette'] = world['palette']
+        selected = next(s for s in world['sprites'] if s['name'] == 'smooth-brown-mouse-v1') if 'mouse' in identity else world['sprites'][0]
+        sprite = copy.deepcopy(selected); sprite['palette'] = world['palette']
         sprite['format'] = 'rabbit.indexed-rgba.v3'
         result[identity] = {'component_id': identity, 'version': '1.0.0', 'kind': 'asset', 'name': name,
-                            'summary': 'Существующий сгенерированный персонаж, четыре позы ходьбы, исходные RGBA цвета.',
+                            'summary': f'Детальный рисунок {sprite["width"]}x{sprite["height"]}; кадров {len(sprite["frames"])}. Один кадр движется VM, но без отдельной анимации лап.',
                             'license': {'spdx': 'LicenseRef-Not-Assigned'}, 'implementation': sprite}
     return result
 
@@ -86,16 +104,16 @@ def asset_identity(card):
 
 
 def parse_plan(text):
-    plan = strict_json(text); validate_schema(plan, SCHEMA)
+    plan = strict_json(text); plan.setdefault('created_drawings', []); validate_schema(plan, SCHEMA)
     if (plan['objects'] is None) != (plan['programs'] is None):
         raise ValueError('objects/programs must be supplied together')
     if plan['status'] == 'unsupported' and any((plan['objects'] is not None, plan['inventory_assets'],
-            plan['created_sprites'], plan['background'], plan['restore_version'])):
+            plan['created_sprites'], plan['created_drawings'], plan['background'], plan['restore_version'])):
         raise ValueError('unsupported plan cannot contain executable changes')
     if plan['restore_version'] and any((plan['objects'] is not None, plan['inventory_assets'],
-                                      plan['created_sprites'], plan['background'])):
+                                      plan['created_sprites'], plan['created_drawings'], plan['background'])):
         raise ValueError('restore cannot mix a new edit')
-    if (plan['inventory_assets'] or plan['created_sprites']) and plan['objects'] is None:
+    if (plan['inventory_assets'] or plan['created_sprites'] or plan['created_drawings']) and plan['objects'] is None:
         raise ValueError('asset plan requires resulting objects/programs')
     return plan
 
@@ -152,8 +170,7 @@ def convert_sprite(world, source, sid, name, dw, dh):
 
 
 def compose(state, plan):
-    validate_schema(plan, SCHEMA)
-    parse_plan(__import__('json').dumps(plan))
+    plan = parse_plan(__import__('json').dumps(plan))
     if plan['base_world_sha256'] != state['world_sha256']: raise ValueError('stale request base world')
     if plan['status'] != 'ready': raise ValueError('unsupported request')
     if plan['restore_version']: raise ValueError('restore must resolve checked history first')
@@ -188,6 +205,16 @@ def compose(state, plan):
         world['sprites'].append(sprite); ids.add(sprite['id'])
         provenance.append({'kind': 'llm-pixel-data', 'sprite_id': source['id'],
                            'sha256': flow.sha(flow.canonical(source)), 'license': 'NOT-ASSIGNED',
+                           'palette_mapping': approximations})
+    for drawing in plan['created_drawings']:
+        if drawing['id'] in ids: raise ValueError('new drawing id replaces existing art')
+        source = render_drawing(drawing)
+        sprite, approximations = convert_sprite(world, source, drawing['id'], drawing['name'],
+                                                drawing['display_width'], drawing['display_height'])
+        world['sprites'].append(sprite); ids.add(sprite['id'])
+        provenance.append({'kind': 'llm-vector-drawing', 'sprite_id': sprite['id'],
+                           'sha256': flow.sha(flow.canonical(drawing)), 'license': 'NOT-ASSIGNED',
+                           'source_resolution': [sprite['width'], sprite['height']],
                            'palette_mapping': approximations})
     background = plan['background'] or state.get('engine', {}).get('background', '121826')
     return world, background, provenance

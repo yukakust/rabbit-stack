@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 8,
+  "base_world_sha256": "f23221209136181ccb4f34cb2103ca59f09669a15f0c0a70399d7984da217de9",
+  "world_sha256": "69884c522068fc6bc35d54204e3517c7c55f2bd51beb57d6c43ac43427804f47",
+  "package_sha256": "1cce0f120a5f7a9359451ca5bba901c76361f8398fd331d27a8a6e46561d9537",
+  "session_sha256": "9d581dcb9b5da3ca9924fc1bca3ce51cfa5fe3e1b7439c6f6536fd709b07d846",
+  "authority": "installed-public-development-world-creator-NOT-owner-native",
+  "host_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "physical_execution_verified": false,
+  "receiver_reported_applied": true,
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/detailed-art-2026-10-03/smooth-mouse-world8/query-0.log",
+      "log_sha256": "55f20b4e8d88c1ec4fee1c3f1c13a681ad8dfeae0058ae6e3ef63c19a209275d"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/detailed-art-2026-10-03/smooth-mouse-world8/paced-stage-1.log",
+      "log_sha256": "a96b92c633d19bf405436a6c8a4bc15891d88f18a03fca90b525950d0ebdf918"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/detailed-art-2026-10-03/smooth-mouse-world8/commit-2.log",
+      "log_sha256": "ec60b22000917fd4c2a4f201bf8450fbe62004c60e2306bb97b7feb9fcc586a8"
+    }
+  ],
+  "confirmed_received": 41888,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 35196,
+    "length": 35196,
+    "counter": 7,
+    "sha256": "f0aa574eab53d00c72da60a48e5f67651beb4d0ac868c538cd857546827faf76",
+    "session_matches": false,
+    "raw_hex": "5246530146db30763589429b7c8900007c8900000200000007000000f0aa574eab53d00c72da60a48e5f67651beb4d0ac868c538cd857546827faf76",
+    "device_attestation": false
+  }
+}

@@ -1,0 +1,604 @@
+{
+  "status": "ready",
+  "explanation": "Добавлено маленькое оригинальное зелёное дерево с плавной объёмной кроной, изогнутым коричневым стволом и ветками. Кот, мышка, их движения и фон сохранены.",
+  "base_world_sha256": "f23221209136181ccb4f34cb2103ca59f09669a15f0c0a70399d7984da217de9",
+  "objects": [
+    {
+      "id": 1,
+      "sprite": 1,
+      "program": 1,
+      "x": 8,
+      "y": 40,
+      "vx": 2,
+      "vy": 0,
+      "target": 1
+    },
+    {
+      "id": 2,
+      "sprite": 2,
+      "program": 2,
+      "x": 105,
+      "y": 65,
+      "vx": 1,
+      "vy": 0,
+      "target": 2
+    },
+    {
+      "id": 3,
+      "sprite": 3,
+      "program": 3,
+      "x": 116,
+      "y": 12,
+      "vx": 0,
+      "vy": 0,
+      "target": 3
+    }
+  ],
+  "programs": [
+    {
+      "id": 1,
+      "name": "walk-bounce-four-pose-loop",
+      "code": [
+        1,
+        2,
+        5,
+        4,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "name": "mouse-scurry",
+      "code": [
+        1,
+        2,
+        5,
+        6,
+        0
+      ]
+    },
+    {
+      "id": 3,
+      "name": "tree-still",
+      "code": [
+        0
+      ]
+    }
+  ],
+  "inventory_assets": [],
+  "created_sprites": [],
+  "created_drawings": [
+    {
+      "id": 3,
+      "name": "original-curved-green-tree",
+      "width": 128,
+      "height": 128,
+      "display_width": 36,
+      "display_height": 44,
+      "frames": [
+        [
+          {
+            "kind": "ellipse",
+            "fill": "07130b40",
+            "stroke": null,
+            "stroke_width": 0,
+            "geometry": [
+              264,
+              477,
+              123,
+              19
+            ],
+            "commands": []
+          },
+          {
+            "kind": "path",
+            "fill": "714126ff",
+            "stroke": "492c21ff",
+            "stroke_width": 6,
+            "geometry": [],
+            "commands": [
+              {
+                "op": "M",
+                "points": [
+                  209,
+                  478
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  245,
+                  437,
+                  211,
+                  399,
+                  228,
+                  348
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  246,
+                  301,
+                  271,
+                  269,
+                  248,
+                  213
+                ]
+              },
+              {
+                "op": "L",
+                "points": [
+                  278,
+                  207
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  310,
+                  268,
+                  280,
+                  317,
+                  268,
+                  355
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  253,
+                  402,
+                  270,
+                  449,
+                  299,
+                  480
+                ]
+              },
+              {
+                "op": "Q",
+                "points": [
+                  253,
+                  491,
+                  209,
+                  478
+                ]
+              },
+              {
+                "op": "Z",
+                "points": []
+              }
+            ]
+          },
+          {
+            "kind": "path",
+            "fill": null,
+            "stroke": "9e663bff",
+            "stroke_width": 13,
+            "geometry": [],
+            "commands": [
+              {
+                "op": "M",
+                "points": [
+                  239,
+                  465
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  252,
+                  427,
+                  232,
+                  395,
+                  247,
+                  352
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  263,
+                  311,
+                  281,
+                  269,
+                  262,
+                  226
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "path",
+            "fill": null,
+            "stroke": "714126ff",
+            "stroke_width": 22,
+            "geometry": [],
+            "commands": [
+              {
+                "op": "M",
+                "points": [
+                  248,
+                  350
+                ]
+              },
+              {
+                "op": "Q",
+                "points": [
+                  199,
+                  317,
+                  170,
+                  259
+                ]
+              },
+              {
+                "op": "M",
+                "points": [
+                  269,
+                  312
+                ]
+              },
+              {
+                "op": "Q",
+                "points": [
+                  330,
+                  298,
+                  358,
+                  239
+                ]
+              },
+              {
+                "op": "M",
+                "points": [
+                  267,
+                  276
+                ]
+              },
+              {
+                "op": "Q",
+                "points": [
+                  211,
+                  236,
+                  211,
+                  184
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "path",
+            "fill": null,
+            "stroke": "b47a47ff",
+            "stroke_width": 6,
+            "geometry": [],
+            "commands": [
+              {
+                "op": "M",
+                "points": [
+                  243,
+                  337
+                ]
+              },
+              {
+                "op": "Q",
+                "points": [
+                  200,
+                  301,
+                  179,
+                  262
+                ]
+              },
+              {
+                "op": "M",
+                "points": [
+                  279,
+                  302
+                ]
+              },
+              {
+                "op": "Q",
+                "points": [
+                  328,
+                  285,
+                  348,
+                  250
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "path",
+            "fill": "205c38ff",
+            "stroke": "19462eff",
+            "stroke_width": 5,
+            "geometry": [],
+            "commands": [
+              {
+                "op": "M",
+                "points": [
+                  91,
+                  244
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  44,
+                  212,
+                  69,
+                  143,
+                  120,
+                  133
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  116,
+                  77,
+                  176,
+                  50,
+                  218,
+                  69
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  253,
+                  22,
+                  325,
+                  42,
+                  340,
+                  86
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  398,
+                  77,
+                  435,
+                  118,
+                  426,
+                  159
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  479,
+                  188,
+                  459,
+                  261,
+                  411,
+                  269
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  392,
+                  307,
+                  338,
+                  314,
+                  305,
+                  288
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  266,
+                  325,
+                  214,
+                  309,
+                  193,
+                  287
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  145,
+                  302,
+                  96,
+                  285,
+                  91,
+                  244
+                ]
+              },
+              {
+                "op": "Z",
+                "points": []
+              }
+            ]
+          },
+          {
+            "kind": "ellipse",
+            "fill": "2b7943ff",
+            "stroke": null,
+            "stroke_width": 0,
+            "geometry": [
+              161,
+              199,
+              83,
+              75
+            ],
+            "commands": []
+          },
+          {
+            "kind": "ellipse",
+            "fill": "32884aff",
+            "stroke": null,
+            "stroke_width": 0,
+            "geometry": [
+              345,
+              183,
+              88,
+              82
+            ],
+            "commands": []
+          },
+          {
+            "kind": "ellipse",
+            "fill": "3d9650ff",
+            "stroke": null,
+            "stroke_width": 0,
+            "geometry": [
+              235,
+              164,
+              105,
+              97
+            ],
+            "commands": []
+          },
+          {
+            "kind": "ellipse",
+            "fill": "48a356ff",
+            "stroke": null,
+            "stroke_width": 0,
+            "geometry": [
+              270,
+              118,
+              70,
+              66
+            ],
+            "commands": []
+          },
+          {
+            "kind": "ellipse",
+            "fill": "59af5cff",
+            "stroke": null,
+            "stroke_width": 0,
+            "geometry": [
+              195,
+              124,
+              58,
+              47
+            ],
+            "commands": []
+          },
+          {
+            "kind": "path",
+            "fill": "77c86d99",
+            "stroke": null,
+            "stroke_width": 0,
+            "geometry": [],
+            "commands": [
+              {
+                "op": "M",
+                "points": [
+                  151,
+                  124
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  157,
+                  94,
+                  189,
+                  85,
+                  213,
+                  99
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  190,
+                  97,
+                  168,
+                  109,
+                  162,
+                  130
+                ]
+              },
+              {
+                "op": "Q",
+                "points": [
+                  154,
+                  140,
+                  151,
+                  124
+                ]
+              },
+              {
+                "op": "Z",
+                "points": []
+              }
+            ]
+          },
+          {
+            "kind": "path",
+            "fill": "86cf7280",
+            "stroke": null,
+            "stroke_width": 0,
+            "geometry": [],
+            "commands": [
+              {
+                "op": "M",
+                "points": [
+                  235,
+                  84
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  256,
+                  58,
+                  294,
+                  63,
+                  309,
+                  86
+                ]
+              },
+              {
+                "op": "C",
+                "points": [
+                  282,
+                  74,
+                  260,
+                  75,
+                  242,
+                  93
+                ]
+              },
+              {
+                "op": "Q",
+                "points": [
+                  232,
+                  97,
+                  235,
+                  84
+                ]
+              },
+              {
+                "op": "Z",
+                "points": []
+              }
+            ]
+          },
+          {
+            "kind": "ellipse",
+            "fill": "63b95e80",
+            "stroke": null,
+            "stroke_width": 0,
+            "geometry": [
+              355,
+              153,
+              36,
+              27
+            ],
+            "commands": []
+          }
+        ]
+      ]
+    }
+  ],
+  "background": null,
+  "restore_version": null,
+  "missing_capabilities": []
+}

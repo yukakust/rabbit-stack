@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "33465d109f924f4ab1d4ccaf66b6bc00",
+  "intent": "Добавь коту ещё пожалуйста мышку",
+  "source": "voice",
+  "status": "APPLIED",
+  "base_world_sha256": "cf4c5e7695a567cdde11bfc01f57d850035abd409d0f204f8d45a98f8660a8f4",
+  "engine_done": true,
+  "world_done": true,
+  "explanation": "Добавлена маленькая коричневая мышка справа от кота: она бегает и перебирает лапками. Кот, его движение и фон сохранены.",
+  "error": null,
+  "background": "121826",
+  "candidate_sha256": "f23221209136181ccb4f34cb2103ca59f09669a15f0c0a70399d7984da217de9",
+  "provenance": [
+    {
+      "kind": "inventory",
+      "component_id": "rabbit.asset.toon-mouse-pixel",
+      "sha256": "acf821aba84feede0215a8eafbe6be33abc9be104afa3df6f7aff039a93cefa1",
+      "license": {
+        "spdx": "CC0-1.0"
+      },
+      "palette_mapping": [
+        {
+          "requested": "3b2418ff",
+          "mapped": "242715fd"
+        },
+        {
+          "requested": "f3a6a6ff",
+          "mapped": "e4bca2fd"
+        },
+        {
+          "requested": "fff2d6ff",
+          "mapped": "fdf3d8fc"
+        }
+      ]
+    }
+  ],
+  "candidate_checked": true,
+  "candidate_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "world_counter": 7,
+  "native_counter": 5,
+  "receiver_reported_applied": true
+}

@@ -623,3 +623,36 @@ GUI-generated request plus common transport, not yet app's own Bluetooth access.
 OS app Bluetooth/speech/mic permission and actual live voice/owner Dell observation
 remain pending. User no longer needs to press resume. Evidence adds gui-world6-
 applied/report.json preserving earlier pending reports separately. Goal active.
+
+
+## Live voice, smooth mouse and general drawing route — 2026-10-03
+
+Owner granted Rabbit World Bluetooth/speech/microphone, then spoke «Добавь коту ещё
+пожалуйста мышку». Actual app request sourcevoice33465d109f924f4ab1d4ccaf66b6bc00
+passed common C/signature/transport gates and physical exact APPLIED world7. This
+supersedes pending live voice evidence; owner disliked pixel8x8 mouse. Two smooth
+requests correctly returned UNSUPPORTED under former limited32x32/16color planner.
+
+Added checked existing smooth128x128 mouse asset to planner catalog, and generic
+created_drawings strict schema: bounded layered ellipses/rects/cubic/quadratic
+curves, antialiasing3x with Pillow, max128x128/4frames, no executable XML, URLs,
+files or scripts. New art is still portable indexed RGBA data, not native code.
+Old plans remain compatible with absent created_drawings default[]. Replacement
+uses new sprite id and prunes unreferenced old art; existing used colors retained.
+14 tests pass including transparency/curve C gate, malformed/injected input
+rejection, detailed mouse C gate and packet budget. Real Codex proposed an original
+curved tree; rendered and passed actual C checker NOT SENT to Dell. This is not
+image_gen quality for arbitrary generated curves and not a truecolor framebuffer.
+
+App service restarted only after verified idle, binary/permissions unchanged.
+Normal GUI request replaced existing mouse with smooth checked source40x40, y50.
+Physical exact APPLIED world8; app AX shows World8 ready/APPLIED. Cat indexed
+frames, every used color, object/speed and all programs byte-identical to world7.
+Nativecounter5/background121826 unchanged. Mouse has one pose: moves with old VM
+program, no separate anatomical paw cycle. Shared palette mapping recorded; source
+license remains notassigned, not advertised as licensed Inventory v1 export.
+
+Reused existing image_gen mouse PNG/prompt/provenance; no new image generation
+this turn. Evidence/logs/plans/hash: connected evidence/detailed-art-2026-10-03.
+No USB writes or Dell reboot. Owner visual confirmation of new smooth mouse and
+continuing hat cat still pending; do not claim it from app receipt or host preview.

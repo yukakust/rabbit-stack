@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "trials": [
+    {
+      "trial": "live-voice-world7",
+      "report": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/detailed-art-2026-10-03/live-voice-world7/report.json",
+      "report_sha256": "ceae00743fd28b595f50aea57c67b5416f3da0eb104548676309f507bbba0cfb"
+    },
+    {
+      "trial": "smooth-mouse-world8",
+      "report": "experiments/x86-64-uefi-connected-supervisor-v1/evidence/detailed-art-2026-10-03/smooth-mouse-world8/report.json",
+      "report_sha256": "46828d687bff42c1340f3ef93f226c3c968966898fad74fd766aa4d4bf7fdd28"
+    }
+  ],
+  "host_tests_passed": 14,
+  "source_hashes": {
+    "experiments/x86-64-uefi-connected-supervisor-v1/drawing_renderer.py": "7847e2ac849a12f8d7686f6c9b564d85ceac5f440546b666ba2dc985b8fcf670",
+    "experiments/x86-64-uefi-connected-supervisor-v1/world_planner.py": "19457adb0006a16324bfa6f158d5eb4357442f6231d4ba0926f6f8b3a5a201c5",
+    "experiments/x86-64-uefi-connected-supervisor-v1/verify_world_control.py": "9c488b40ae110a5024b3bb1e985353996adee61229e07b96a712ebb9512a65ca"
+  },
+  "detailed_art": {
+    "generation_this_turn": "No new bitmap generated. Reused existing built-in image_gen mouse source with recorded original prompt/provenance. Added automatic bounded smooth vector generation through existing Codex planner.",
+    "original_raster_source": "experiments/x86-64-uefi-god-runtime-v3/assets/mouse-source-v1.png",
+    "source_sha256": "bf34cff954ebf41866a6578555c03302ee975fc7c586570eba1e19bda224e2e7",
+    "source_resolution": [
+      128,
+      128
+    ],
+    "display_resolution": [
+      40,
+      40
+    ],
+    "mouse_animation": "One artwork pose; movement and VM program preserved, no anatomical paw cycle.",
+    "cat_preservation": "Compared world7/8: identical cat indexed pixels, every used palette color, object parameters and all programs.",
+    "palette": "Shared256-entry RGBA target palette. New art may map to nearest occupied colors, logged in provenance; existing visible colors never overwritten."
+  },
+  "vector_creation": {
+    "mode": "Data-only layered ellipse/rect/cubic/quadratic paths, max64shapes/64commands/4frames, supersampled3x, max128x128 source. No XML/scripts/files/network accepted.",
+    "renderer": "Pillow, fixed32samples per curve, RGBA compositing and shared atlas quantization",
+    "real_llm_smoke": "Original curved tree plan -> actual C gate PASS, not sent to Dell."
+  },
+  "observations": {
+    "app": "World8 ready, request APPLIED visibly verified by AX.",
+    "owner": "User said voice mouse drawn but very pixelated; physical new smooth mouse and continuing cat observation still pending."
+  },
+  "native_counter": 5,
+  "world_counter": 8,
+  "usb_or_reboot": false
+}

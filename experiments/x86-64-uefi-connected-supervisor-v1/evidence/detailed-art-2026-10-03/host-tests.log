@@ -1,0 +1,19 @@
+test_background_selects_native_route_without_faking_world_field (__main__.Tests.test_background_selects_native_route_without_faking_world_field) ... ok
+test_detailed_mouse_replaces_only_requested_art_and_stays_in_package_budget (__main__.Tests.test_detailed_mouse_replaces_only_requested_art_and_stays_in_package_budget) ... ok
+test_existing_high_resolution_variant_switch_keeps_exact_render_colors_in_budget (__main__.Tests.test_existing_high_resolution_variant_switch_keeps_exact_render_colors_in_budget) ... ok
+test_idempotent_client_retry_and_uncertain_pending_block_fresh_request (__main__.Tests.test_idempotent_client_retry_and_uncertain_pending_block_fresh_request) ... ok
+test_invalid_data_rejects_before_native_preparation_or_radio (__main__.Tests.test_invalid_data_rejects_before_native_preparation_or_radio) ... ok
+test_inventory_mouse_preserves_existing_render_colors_and_passes_actual_c (__main__.Tests.test_inventory_mouse_preserves_existing_render_colors_and_passes_actual_c) ... ok
+test_loopback_server_auth_and_voice_use_same_execute_endpoint (__main__.Tests.test_loopback_server_auth_and_voice_use_same_execute_endpoint) ... ok
+test_novel_pixel_art_is_checked_and_cannot_replace_existing_sprite_or_inject_code (__main__.Tests.test_novel_pixel_art_is_checked_and_cannot_replace_existing_sprite_or_inject_code) ... ok
+test_resume_after_native_receipt_before_journal_flag_does_not_rebuild_or_resign (__main__.Tests.test_resume_after_native_receipt_before_journal_flag_does_not_rebuild_or_resign) ... ok
+test_sequential_requests_keep_hat_assets_and_history_restores_with_new_counter (__main__.Tests.test_sequential_requests_keep_hat_assets_and_history_restores_with_new_counter) ... ok
+test_smooth_drawing_renders_curves_transparency_and_passes_actual_c (__main__.Tests.test_smooth_drawing_renders_curves_transparency_and_passes_actual_c) ... ok
+test_text_and_voice_share_identical_candidate_gates_and_delivery (__main__.Tests.test_text_and_voice_share_identical_candidate_gates_and_delivery) ... ok
+test_unchanged_request_is_explicit_and_does_not_create_a_version_or_send (__main__.Tests.test_unchanged_request_is_explicit_and_does_not_create_a_version_or_send) ... ok
+test_unsupported_request_and_stale_plan_do_not_touch_radio (__main__.Tests.test_unsupported_request_and_stale_plan_do_not_touch_radio) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 13.951s
+
+OK

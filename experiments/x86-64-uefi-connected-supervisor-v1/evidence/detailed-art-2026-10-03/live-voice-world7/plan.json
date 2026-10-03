@@ -1,0 +1,63 @@
+{
+  "status": "ready",
+  "explanation": "Добавлена маленькая коричневая мышка справа от кота: она бегает и перебирает лапками. Кот, его движение и фон сохранены.",
+  "base_world_sha256": "cf4c5e7695a567cdde11bfc01f57d850035abd409d0f204f8d45a98f8660a8f4",
+  "objects": [
+    {
+      "id": 1,
+      "sprite": 1,
+      "program": 1,
+      "x": 8,
+      "y": 40,
+      "vx": 2,
+      "vy": 0,
+      "target": 1
+    },
+    {
+      "id": 2,
+      "sprite": 2,
+      "program": 2,
+      "x": 105,
+      "y": 65,
+      "vx": 1,
+      "vy": 0,
+      "target": 2
+    }
+  ],
+  "programs": [
+    {
+      "id": 1,
+      "name": "walk-bounce-four-pose-loop",
+      "code": [
+        1,
+        2,
+        5,
+        4,
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "name": "mouse-scurry",
+      "code": [
+        1,
+        2,
+        5,
+        6,
+        0
+      ]
+    }
+  ],
+  "inventory_assets": [
+    {
+      "component_id": "rabbit.asset.toon-mouse-pixel",
+      "sprite_id": 2,
+      "display_width": 16,
+      "display_height": 16
+    }
+  ],
+  "created_sprites": [],
+  "background": null,
+  "restore_version": null,
+  "missing_capabilities": []
+}

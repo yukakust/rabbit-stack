@@ -1,0 +1,968 @@
+{
+  "schema_version": 1,
+  "id": "38ec29ea66ea4bd3a4ff5bdf01935c5b",
+  "intent": "Замени только рисунок существующей мышки на детальную гладкую коричневую мышку из каталога, без пиксельного стиля. Покажи её размером 40 на 40, внутри экрана. Кота в шапке, его скорость, фон и поведение мышки сохрани.",
+  "source": "text",
+  "status": "APPLIED",
+  "base_world_sha256": "f23221209136181ccb4f34cb2103ca59f09669a15f0c0a70399d7984da217de9",
+  "engine_done": true,
+  "world_done": true,
+  "explanation": "Рисунок мышки заменён на детальную гладкую коричневую мышку из каталога размером 40×40. Она поднята до y=50, чтобы целиком помещаться на экране. Кот в шапке, его скорость, фон и программа движения мышки сохранены; новая мышка имеет одну позу.",
+  "error": null,
+  "background": "121826",
+  "candidate_sha256": "69884c522068fc6bc35d54204e3517c7c55f2bd51beb57d6c43ac43427804f47",
+  "provenance": [
+    {
+      "kind": "existing-generated-world-asset",
+      "component_id": "rabbit.asset.smooth-brown-mouse",
+      "sha256": "cbd9b70612d00c25444ffb14f4dec5e4c90e43f48bfe53061461ffc94af0e68d",
+      "license": {
+        "spdx": "LicenseRef-Not-Assigned"
+      },
+      "palette_mapping": [
+        {
+          "requested": "ae9d6d0e",
+          "mapped": "ba987909"
+        },
+        {
+          "requested": "4b352ad9",
+          "mapped": "354e1efd"
+        },
+        {
+          "requested": "78442364",
+          "mapped": "7d45326e"
+        },
+        {
+          "requested": "9c5832cc",
+          "mapped": "b25825cb"
+        },
+        {
+          "requested": "a7684b27",
+          "mapped": "a16c5020"
+        },
+        {
+          "requested": "9c684ced",
+          "mapped": "98664cf9"
+        },
+        {
+          "requested": "ae9e8c0a",
+          "mapped": "b8a69708"
+        },
+        {
+          "requested": "9f9996fd",
+          "mapped": "ba9783fa"
+        },
+        {
+          "requested": "dea185b0",
+          "mapped": "d1a684ad"
+        },
+        {
+          "requested": "685f5bfd",
+          "mapped": "666848fd"
+        },
+        {
+          "requested": "a15d1505",
+          "mapped": "aa550003"
+        },
+        {
+          "requested": "85441e61",
+          "mapped": "8e482b6c"
+        },
+        {
+          "requested": "a258359f",
+          "mapped": "a2542ca7"
+        },
+        {
+          "requested": "a16f558a",
+          "mapped": "a9694b8f"
+        },
+        {
+          "requested": "b9816078",
+          "mapped": "b185686f"
+        },
+        {
+          "requested": "ae8261a7",
+          "mapped": "b3886eae"
+        },
+        {
+          "requested": "dbbea32d",
+          "mapped": "dcb1a30d"
+        },
+        {
+          "requested": "d2ac99e8",
+          "mapped": "b9a385e5"
+        },
+        {
+          "requested": "f3f3b107",
+          "mapped": "ffffaa03"
+        },
+        {
+          "requested": "e2e0d9fd",
+          "mapped": "dfd3ccfd"
+        },
+        {
+          "requested": "66281946",
+          "mapped": "741b0d58"
+        },
+        {
+          "requested": "5c33208f",
+          "mapped": "721b089b"
+        },
+        {
+          "requested": "664c190a",
+          "mapped": "7c4e2813"
+        },
+        {
+          "requested": "7b412199",
+          "mapped": "9235088c"
+        },
+        {
+          "requested": "843c2ca0",
+          "mapped": "8a4c35ac"
+        },
+        {
+          "requested": "a85d4744",
+          "mapped": "aa664651"
+        },
+        {
+          "requested": "c472557b",
+          "mapped": "b4765470"
+        },
+        {
+          "requested": "d77e62b3",
+          "mapped": "d6864fb1"
+        },
+        {
+          "requested": "ca7961da",
+          "mapped": "c28b6ed2"
+        },
+        {
+          "requested": "c6803ffd",
+          "mapped": "d07a45fb"
+        },
+        {
+          "requested": "d4aa7f06",
+          "mapped": "d1976e07"
+        },
+        {
+          "requested": "d7997d96",
+          "mapped": "cd95708c"
+        },
+        {
+          "requested": "e0845dff",
+          "mapped": "d6854efb"
+        },
+        {
+          "requested": "dfc7ab40",
+          "mapped": "d5a8875f"
+        },
+        {
+          "requested": "d8c5b5fd",
+          "mapped": "dcc1aefc"
+        },
+        {
+          "requested": "ffcccc05",
+          "mapped": "feaaa903"
+        },
+        {
+          "requested": "ac6735fc",
+          "mapped": "b66434fb"
+        },
+        {
+          "requested": "96562cfc",
+          "mapped": "995431fb"
+        },
+        {
+          "requested": "ca8648fc",
+          "mapped": "d6854efb"
+        },
+        {
+          "requested": "874926fb",
+          "mapped": "934a28fd"
+        },
+        {
+          "requested": "f5a88afc",
+          "mapped": "e4ac86fb"
+        },
+        {
+          "requested": "f5b695fc",
+          "mapped": "eab890fc"
+        },
+        {
+          "requested": "b9733cfc",
+          "mapped": "b66434fb"
+        },
+        {
+          "requested": "ec9778fc",
+          "mapped": "e79b63fd"
+        },
+        {
+          "requested": "ca784dfc",
+          "mapped": "d07a45fb"
+        },
+        {
+          "requested": "6d391afc",
+          "mapped": "672714fd"
+        },
+        {
+          "requested": "d69352fd",
+          "mapped": "d6854efb"
+        },
+        {
+          "requested": "e7886cfc",
+          "mapped": "e79b63fd"
+        },
+        {
+          "requested": "7a4323fc",
+          "mapped": "934a28fd"
+        },
+        {
+          "requested": "a35c32fb",
+          "mapped": "995431fb"
+        },
+        {
+          "requested": "ffffff01",
+          "mapped": "fffffe01"
+        },
+        {
+          "requested": "cd6952fc",
+          "mapped": "d07a45fb"
+        },
+        {
+          "requested": "cd996ffb",
+          "mapped": "ce9773f6"
+        },
+        {
+          "requested": "f5d7b3fc",
+          "mapped": "f7d7b4fc"
+        },
+        {
+          "requested": "b6774afb",
+          "mapped": "af7457f8"
+        },
+        {
+          "requested": "d0a377fc",
+          "mapped": "d6a277fb"
+        },
+        {
+          "requested": "d48769f9",
+          "mapped": "c48a6cf8"
+        },
+        {
+          "requested": "dab58cfc",
+          "mapped": "d8b495fb"
+        },
+        {
+          "requested": "cfa883fc",
+          "mapped": "d1a88dfa"
+        },
+        {
+          "requested": "aa555503",
+          "mapped": "aa555403"
+        },
+        {
+          "requested": "7f000002",
+          "mapped": "7d000003"
+        },
+        {
+          "requested": "f5c9a6fc",
+          "mapped": "ecc8a9fc"
+        },
+        {
+          "requested": "e9c298fc",
+          "mapped": "eab890fc"
+        },
+        {
+          "requested": "b3674bf7",
+          "mapped": "ac6947fa"
+        },
+        {
+          "requested": "e3caad33",
+          "mapped": "dcb1a30d"
+        },
+        {
+          "requested": "542912fb",
+          "mapped": "672714fd"
+        },
+        {
+          "requested": "d57a61f7",
+          "mapped": "d6854efb"
+        },
+        {
+          "requested": "e6a870fd",
+          "mapped": "f3a96afc"
+        },
+        {
+          "requested": "e17b63fc",
+          "mapped": "d6854efb"
+        },
+        {
+          "requested": "f19d80fc",
+          "mapped": "e4ac86fb"
+        },
+        {
+          "requested": "b25944f7",
+          "mapped": "ac6947fa"
+        },
+        {
+          "requested": "55251028",
+          "mapped": "64230f22"
+        },
+        {
+          "requested": "7a3d3a05",
+          "mapped": "7f3f3b07"
+        },
+        {
+          "requested": "bd7f7f04",
+          "mapped": "bc7f7e04"
+        },
+        {
+          "requested": "e8d2b62d",
+          "mapped": "e1cea60a"
+        },
+        {
+          "requested": "31050212",
+          "mapped": "34130714"
+        },
+        {
+          "requested": "79401efb",
+          "mapped": "954318fb"
+        },
+        {
+          "requested": "ffaaaa03",
+          "mapped": "feaaa903"
+        },
+        {
+          "requested": "8d493471",
+          "mapped": "8e482b6c"
+        },
+        {
+          "requested": "bf7f3f04",
+          "mapped": "be7e3e04"
+        },
+        {
+          "requested": "090606fc",
+          "mapped": "050502fd"
+        },
+        {
+          "requested": "70372534",
+          "mapped": "77361929"
+        },
+        {
+          "requested": "b08664fa",
+          "mapped": "b5866bf5"
+        },
+        {
+          "requested": "c0793efd",
+          "mapped": "d07a45fb"
+        },
+        {
+          "requested": "fae4c6fd",
+          "mapped": "fce7c9fc"
+        },
+        {
+          "requested": "6b371ab0",
+          "mapped": "8a4c35ac"
+        },
+        {
+          "requested": "96684afb",
+          "mapped": "98664cf9"
+        },
+        {
+          "requested": "6d391bd3",
+          "mapped": "963304cb"
+        },
+        {
+          "requested": "8c48308f",
+          "mapped": "ae582792"
+        },
+        {
+          "requested": "b88153fb",
+          "mapped": "af7457f8"
+        },
+        {
+          "requested": "743d21f8",
+          "mapped": "672714fd"
+        },
+        {
+          "requested": "e29b55fc",
+          "mapped": "e79b63fd"
+        },
+        {
+          "requested": "f9e1befc",
+          "mapped": "fbe2bbfc"
+        },
+        {
+          "requested": "52251215",
+          "mapped": "56150112"
+        },
+        {
+          "requested": "6a36186e",
+          "mapped": "7d45326e"
+        },
+        {
+          "requested": "e4c9ae19",
+          "mapped": "e1cea60a"
+        },
+        {
+          "requested": "edd3b40f",
+          "mapped": "e1cea60a"
+        },
+        {
+          "requested": "37140911",
+          "mapped": "34130714"
+        },
+        {
+          "requested": "4d190c11",
+          "mapped": "56150112"
+        },
+        {
+          "requested": "af674fd0",
+          "mapped": "b07659ce"
+        },
+        {
+          "requested": "d1886dcc",
+          "mapped": "ce9774cf"
+        },
+        {
+          "requested": "743a070a",
+          "mapped": "7b3c0506"
+        },
+        {
+          "requested": "6c33182f",
+          "mapped": "77361929"
+        },
+        {
+          "requested": "96523552",
+          "mapped": "94543650"
+        },
+        {
+          "requested": "592a124e",
+          "mapped": "741b0d58"
+        },
+        {
+          "requested": "55555503",
+          "mapped": "63534f09"
+        },
+        {
+          "requested": "6a351751",
+          "mapped": "741b0d58"
+        },
+        {
+          "requested": "94552dad",
+          "mapped": "8a4c35ac"
+        },
+        {
+          "requested": "aa4b35fc",
+          "mapped": "ae5829fb"
+        },
+        {
+          "requested": "ae664c8f",
+          "mapped": "a9694b8f"
+        },
+        {
+          "requested": "b37354d1",
+          "mapped": "b07659ce"
+        },
+        {
+          "requested": "dac7ab14",
+          "mapped": "e1cea60a"
+        },
+        {
+          "requested": "5202000b",
+          "mapped": "5102000c"
+        },
+        {
+          "requested": "4b1a0a2b",
+          "mapped": "540a0029"
+        },
+        {
+          "requested": "6b35158d",
+          "mapped": "721b089b"
+        },
+        {
+          "requested": "76392848",
+          "mapped": "94380b50"
+        },
+        {
+          "requested": "96573471",
+          "mapped": "8e482b6c"
+        },
+        {
+          "requested": "e8a45bfc",
+          "mapped": "e79b63fd"
+        },
+        {
+          "requested": "2a150cfa",
+          "mapped": "242715fd"
+        },
+        {
+          "requested": "54281293",
+          "mapped": "721b089b"
+        },
+        {
+          "requested": "5d3117fc",
+          "mapped": "672714fd"
+        },
+        {
+          "requested": "652a1728",
+          "mapped": "64230f22"
+        },
+        {
+          "requested": "8c483230",
+          "mapped": "8c472b30"
+        },
+        {
+          "requested": "996139fc",
+          "mapped": "995431fb"
+        },
+        {
+          "requested": "98674acb",
+          "mapped": "b07659ce"
+        },
+        {
+          "requested": "ac5b46c7",
+          "mapped": "b25825cb"
+        },
+        {
+          "requested": "d4b99b0f",
+          "mapped": "dcb1a30d"
+        },
+        {
+          "requested": "dcc4aa2a",
+          "mapped": "dcb1a30d"
+        },
+        {
+          "requested": "7a4424d5",
+          "mapped": "a45328dc"
+        },
+        {
+          "requested": "85472f53",
+          "mapped": "94543650"
+        },
+        {
+          "requested": "8f4931b2",
+          "mapped": "8a4c35ac"
+        },
+        {
+          "requested": "925435d1",
+          "mapped": "a45328dc"
+        },
+        {
+          "requested": "b3694eb1",
+          "mapped": "a56b4fa2"
+        },
+        {
+          "requested": "c9866b89",
+          "mapped": "c88b6891"
+        },
+        {
+          "requested": "d7b9a813",
+          "mapped": "dcb1a30d"
+        },
+        {
+          "requested": "372418fb",
+          "mapped": "242715fd"
+        },
+        {
+          "requested": "843c2b4a",
+          "mapped": "94543650"
+        },
+        {
+          "requested": "bf3f3f04",
+          "mapped": "bc3e3e04"
+        },
+        {
+          "requested": "a7694f4c",
+          "mapped": "aa664651"
+        },
+        {
+          "requested": "c75b47fd",
+          "mapped": "b66434fb"
+        },
+        {
+          "requested": "c7ab8f14",
+          "mapped": "b8a69708"
+        },
+        {
+          "requested": "f8bda0fc",
+          "mapped": "f7c594fc"
+        },
+        {
+          "requested": "fefefdfd",
+          "mapped": "fefae7fb"
+        },
+        {
+          "requested": "3e180926",
+          "mapped": "540a0029"
+        },
+        {
+          "requested": "461b094b",
+          "mapped": "741b0d58"
+        },
+        {
+          "requested": "793b2a6c",
+          "mapped": "7d45326e"
+        },
+        {
+          "requested": "72452b50",
+          "mapped": "94543650"
+        },
+        {
+          "requested": "91472912",
+          "mapped": "7c4e2813"
+        },
+        {
+          "requested": "864c24cb",
+          "mapped": "963304cb"
+        },
+        {
+          "requested": "96573e31",
+          "mapped": "94674a2f"
+        },
+        {
+          "requested": "9d564190",
+          "mapped": "a9694b8f"
+        },
+        {
+          "requested": "9864350b",
+          "mapped": "ae58290e"
+        },
+        {
+          "requested": "a55c456e",
+          "mapped": "b05a2972"
+        },
+        {
+          "requested": "a157428d",
+          "mapped": "a9694b8f"
+        },
+        {
+          "requested": "a65b45b1",
+          "mapped": "a2542ca7"
+        },
+        {
+          "requested": "ffbf7f04",
+          "mapped": "ffaa5503"
+        },
+        {
+          "requested": "ecb477fd",
+          "mapped": "fab673fc"
+        },
+        {
+          "requested": "fddec0fc",
+          "mapped": "f8ddc2fc"
+        },
+        {
+          "requested": "262324fd",
+          "mapped": "242715fd"
+        },
+        {
+          "requested": "3a3635fc",
+          "mapped": "354e1efd"
+        },
+        {
+          "requested": "6d281419",
+          "mapped": "72260814"
+        },
+        {
+          "requested": "632d1274",
+          "mapped": "7d45326e"
+        },
+        {
+          "requested": "78411c95",
+          "mapped": "9235088c"
+        },
+        {
+          "requested": "7b401dcb",
+          "mapped": "963304cb"
+        },
+        {
+          "requested": "774223b4",
+          "mapped": "8a4c35ac"
+        },
+        {
+          "requested": "7f552a06",
+          "mapped": "7c4e2813"
+        },
+        {
+          "requested": "7b5334fb",
+          "mapped": "645430fd"
+        },
+        {
+          "requested": "843c2a37",
+          "mapped": "8c472b30"
+        },
+        {
+          "requested": "92522e87",
+          "mapped": "ae582792"
+        },
+        {
+          "requested": "9c594279",
+          "mapped": "b05a2972"
+        },
+        {
+          "requested": "997153f8",
+          "mapped": "98664cf9"
+        },
+        {
+          "requested": "aa644d6b",
+          "mapped": "b4765470"
+        },
+        {
+          "requested": "b8785d70",
+          "mapped": "b4765470"
+        },
+        {
+          "requested": "b87351a8",
+          "mapped": "a56b4fa2"
+        },
+        {
+          "requested": "bd936dfd",
+          "mapped": "c48a6cf8"
+        },
+        {
+          "requested": "c9765cd0",
+          "mapped": "d78650d2"
+        },
+        {
+          "requested": "cb7d628b",
+          "mapped": "c88b6891"
+        },
+        {
+          "requested": "d38a6db8",
+          "mapped": "cc9774ad"
+        },
+        {
+          "requested": "cc996605",
+          "mapped": "d1976e07"
+        },
+        {
+          "requested": "cc9979d3",
+          "mapped": "ce9774cf"
+        },
+        {
+          "requested": "daa588cc",
+          "mapped": "cea687d0"
+        },
+        {
+          "requested": "e5c8ae44",
+          "mapped": "d5a8875f"
+        },
+        {
+          "requested": "f3d7cc0c",
+          "mapped": "e1f2d90e"
+        },
+        {
+          "requested": "1c1716fe",
+          "mapped": "242715fd"
+        },
+        {
+          "requested": "260903fd",
+          "mapped": "050502fd"
+        },
+        {
+          "requested": "471e0bf8",
+          "mapped": "672714fd"
+        },
+        {
+          "requested": "592b13b9",
+          "mapped": "721b089b"
+        },
+        {
+          "requested": "524642fd",
+          "mapped": "645430fd"
+        },
+        {
+          "requested": "575252fc",
+          "mapped": "666848fd"
+        },
+        {
+          "requested": "6d190918",
+          "mapped": "70190112"
+        },
+        {
+          "requested": "6f46282e",
+          "mapped": "77361929"
+        },
+        {
+          "requested": "95381b13",
+          "mapped": "94370610"
+        },
+        {
+          "requested": "8e382f11",
+          "mapped": "7f3f3b07"
+        },
+        {
+          "requested": "833e26fe",
+          "mapped": "934a28fd"
+        },
+        {
+          "requested": "995741ac",
+          "mapped": "8a4c35ac"
+        },
+        {
+          "requested": "9965476e",
+          "mapped": "9d694e61"
+        },
+        {
+          "requested": "8c6247b2",
+          "mapped": "8a4c35ac"
+        },
+        {
+          "requested": "99666605",
+          "mapped": "aa555403"
+        },
+        {
+          "requested": "8b807cfd",
+          "mapped": "b5866bf5"
+        },
+        {
+          "requested": "98987607",
+          "mapped": "ba987909"
+        },
+        {
+          "requested": "a8563822",
+          "mapped": "9d562a1b"
+        },
+        {
+          "requested": "a2513a57",
+          "mapped": "94543650"
+        },
+        {
+          "requested": "a2653aa8",
+          "mapped": "a2542ca7"
+        },
+        {
+          "requested": "aa6633d2",
+          "mapped": "b25825cb"
+        },
+        {
+          "requested": "af634b3e",
+          "mapped": "aa745649"
+        },
+        {
+          "requested": "ba735955",
+          "mapped": "cf744d50"
+        },
+        {
+          "requested": "a5765388",
+          "mapped": "a9694b8f"
+        },
+        {
+          "requested": "b07a6071",
+          "mapped": "b4765470"
+        },
+        {
+          "requested": "b68a67d4",
+          "mapped": "b6866bd0"
+        },
+        {
+          "requested": "af997f12",
+          "mapped": "ba987909"
+        },
+        {
+          "requested": "a19791fd",
+          "mapped": "ba9783fa"
+        },
+        {
+          "requested": "bba68c12",
+          "mapped": "b8a69708"
+        },
+        {
+          "requested": "cc666605",
+          "mapped": "bc7f7e04"
+        },
+        {
+          "requested": "c5785c98",
+          "mapped": "ca77479e"
+        },
+        {
+          "requested": "c6755cb9",
+          "mapped": "d6864fb1"
+        },
+        {
+          "requested": "c2846c67",
+          "mapped": "b68c6b66"
+        },
+        {
+          "requested": "d29379ba",
+          "mapped": "cc9774ad"
+        },
+        {
+          "requested": "d4d4aa06",
+          "mapped": "e1cea60a"
+        },
+        {
+          "requested": "e0765efd",
+          "mapped": "d6854efb"
+        },
+        {
+          "requested": "e29374db",
+          "mapped": "dc9a61e1"
+        },
+        {
+          "requested": "ffbfbf04",
+          "mapped": "feaaa903"
+        },
+        {
+          "requested": "e3e3c909",
+          "mapped": "e1f2d90e"
+        },
+        {
+          "requested": "0e020068",
+          "mapped": "741b0d58"
+        },
+        {
+          "requested": "00003305",
+          "mapped": "3500000a"
+        },
+        {
+          "requested": "00007f02",
+          "mapped": "0000ff01"
+        },
+        {
+          "requested": "1f1f0008",
+          "mapped": "34130714"
+        },
+        {
+          "requested": "3c0d0026",
+          "mapped": "540a0029"
+        },
+        {
+          "requested": "3b0f0040",
+          "mapped": "540a0029"
+        },
+        {
+          "requested": "3c261e7e",
+          "mapped": "7d45326e"
+        },
+        {
+          "requested": "45190276",
+          "mapped": "8e090771"
+        },
+        {
+          "requested": "5d2e1a62",
+          "mapped": "741b0d58"
+        },
+        {
+          "requested": "4c33190a",
+          "mapped": "56150112"
+        },
+        {
+          "requested": "5e301449",
+          "mapped": "741b0d58"
+        }
+      ]
+    }
+  ],
+  "candidate_checked": true,
+  "candidate_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "world_counter": 8,
+  "native_counter": 5,
+  "receiver_reported_applied": true
+}
