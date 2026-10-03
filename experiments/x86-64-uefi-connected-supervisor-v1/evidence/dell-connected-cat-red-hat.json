@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "status": "PHYSICAL-EXACT-RED-HAT-WORLD-APPLIED-SCREEN-PENDING",
+  "source": "Agent-operated owner Mac terminal/CoreBluetooth; actual Dell",
+  "intent": "давай коту наденем шапку",
+  "art_generation": "built-in image_gen, hat reference then original four-pose sheet edit",
+  "world": "../x86-64-uefi-god-runtime-v3/worlds/ginger-cat-red-hat-walk-v1.json",
+  "world_counter": 3,
+  "native_counter": 3,
+  "native_counter_basis": "Previous native rejected trial consumed3; no native update during hat delivery",
+  "base_world_counter": 2,
+  "base_package_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
+  "package_sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+  "package_bytes": 35017,
+  "session_sha256": "10ed4f36f9f848909b9d4f87fed929597c785708dc1fe21f47f19755c41401cd",
+  "stream_bytes": 35049,
+  "chunk_payload_bytes": 100,
+  "paced_stage_delay_ms": 50,
+  "whole_stream_staging_confirmed": 35049,
+  "same_session_commit_resume_offset": 35049,
+  "commit_elapsed_seconds": 1.694,
+  "disconnects": 0,
+  "exact_applied_receipt": true,
+  "owner_screen_observation": null,
+  "managed_current_counter": 3,
+  "managed_pending": null,
+  "authority": "installed-public-development-world-creator-NOT-owner-native",
+  "host_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "host_flow_checks_passed": 7,
+  "objects_programs_preserved": true,
+  "four_distinct_walk_poses": true,
+  "engine_native_module_changed": false,
+  "private_owner_key_loaded": false,
+  "usb_media_modified": false,
+  "manual_reboot": false,
+  "network_modified": false,
+  "archives": [
+    {
+      "name": "paced-stage",
+      "log": "evidence/dell-connected-cat-red-hat-paced-stage.log",
+      "log_sha256": "a0ed1e452df0a03c08b5eb7deb800b21345467491a23aa8936490cd51e526a3a",
+      "exit_code": 0
+    },
+    {
+      "name": "commit",
+      "log": "evidence/dell-connected-cat-red-hat-commit.log",
+      "log_sha256": "af098cbd68c0b86abd1c66bd71cd8718613ee527b40249b8b4daba250d6d5c1b",
+      "exit_code": 0
+    }
+  ],
+  "pre_send_query": {
+    "log": "evidence/dell-connected-cat-red-hat-pre-send-query.log",
+    "sha256": "62d8f5a742cb4f5eafac94f453936762df90440fbf5d868038ca268048243675",
+    "state": 3,
+    "error": 2,
+    "receipt_counter": 3,
+    "foreign_final_native_receipt": true,
+    "active_staging_abandoned": false
+  },
+  "limitations": "Exact receipt is not device attestation or independent screen observation. AI sheet edit preserves appearance/pose intent, not bit-identical pixels. C checks cover240 host ticks; physical appearance/motion awaiting owner."
+}

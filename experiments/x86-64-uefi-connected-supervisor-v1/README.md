@@ -399,8 +399,9 @@ background to121826. Current art is not degraded to the older16x16 schema.
 
 Initialize once with an operator-confirmed current world JSON, exact signed package
 and installed owner-gate report; these must reconstruct byte-identically. Default
-state is ignored `runs/text-world/state.json`. Actual Mac state currently records
-worldcounter2/ginger cat. Nativecounter3 is independent and already consumed.
+state is ignored `runs/text-world/state.json`. Actual Mac state now records
+worldcounter3/ginger cat with red hat, after exact receipt. Nativecounter3 is
+independent and already consumed by the rejected native trial.
 
 ```sh
 python3 ask_connected_world.py --initialize --world ../x86-64-uefi-god-runtime-v3/worlds/ginger-cat-walk-v1.json --package /tmp/connected-cat-world-2.rup --installed-report runs/owner-gate-s0bxi9d8/report.json
@@ -429,3 +430,22 @@ the immutable bootstrap. Host evidence includes a real Codex speed proposal and
 resident-C checks: `evidence/connected-text-world-host-ready.json`. New orchestration
 physical text-intent delivery is pending; host mocked sender tests are not physical
 evidence. Future artwork/inventory integration and voice are separate work.
+
+
+### Generated artwork through the same checked path
+
+`--world-candidate PATH` accepts a complete generated V3 data world for an explicit
+asset request, mutually exclusive with the small objects/programs `--candidate`.
+It shares the compiler, pinned resident-C checks, signing, saved session, unknown-
+delivery handling and exact receipt gate; no native fields are accepted. Assets
+are generated/edited through built-in image_gen and converted with the existing
+RGBA importer, preserving genuine alpha. The small-edit LLM schema remains bounded.
+
+First actual end-to-end asset request: owner «давай коту наденем шапку». Four-pose
+red-beanie cat imported at128x85/display64x43 with original objects/programs. World3
+package35017 bytes, hash8761fa34..., paced entire35049-byte stream, same-session
+COMMIT, exact applied receipt in1.694s for COMMIT connection, no disconnects. Current
+managed state updated fromworld2 toworld3, pending cleared. Nativecounter3 unchanged
+(consumed by prior rejected native trial); no module/media/network/reboot/key action.
+Physical hat/motion observation pending. Evidence: `evidence/dell-connected-cat-red-hat.json`.
+No full-stage elapsed time claim; previews/240-tick checks remain host evidence.

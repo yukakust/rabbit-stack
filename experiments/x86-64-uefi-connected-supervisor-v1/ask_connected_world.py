@@ -129,6 +129,13 @@ def initialize(state_path, world_path, package_path, installed_report):
 def prepare(state_path, state, intent, proposal):
     if state['pending']: raise ValueError('pending delivery exists; resume SAME saved session first')
     base = current(state); world = apply_edit(base, proposal)
+    return prepare_world(state_path, state, intent, world, proposal)
+
+
+def prepare_world(state_path, state, intent, world, proposal):
+    if state['pending']: raise ValueError('pending delivery exists; resume SAME saved session first')
+    current(state)
+    if world.get('schema_version') != 3: raise ValueError('asset candidate must retain the V3 world contract')
     if state['counter'] >= 0xffffffff: raise ValueError('world counter exhausted')
     directory = Path(tempfile.mkdtemp(prefix='edit-', dir=state_path.parent))
     save(directory / 'proposal.json', proposal); (directory / 'intent.txt').write_text(intent)
@@ -202,18 +209,22 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('intent', nargs='?'); p.add_argument('--state', type=Path, default=ROOT / 'runs/text-world/state.json')
     p.add_argument('--initialize', action='store_true'); p.add_argument('--world', type=Path); p.add_argument('--package', type=Path)
-    p.add_argument('--installed-report', type=Path); p.add_argument('--candidate', type=Path); p.add_argument('--send', action='store_true'); p.add_argument('--resume', action='store_true'); p.add_argument('--discard', action='store_true', help='discard ONLY a prepared draft that has never started sending')
+    p.add_argument('--installed-report', type=Path)
+    candidate = p.add_mutually_exclusive_group()
+    candidate.add_argument('--candidate', type=Path)
+    candidate.add_argument('--world-candidate', type=Path, help='complete V3 asset world; same deterministic/signature/health gates')
+    p.add_argument('--send', action='store_true'); p.add_argument('--resume', action='store_true'); p.add_argument('--discard', action='store_true', help='discard ONLY a prepared draft that has never started sending')
     a = p.parse_args(); a.state = a.state.resolve(); a.state.parent.mkdir(parents=True, exist_ok=True)
     with (a.state.parent / 'state.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         if a.initialize:
-            if not a.world or not a.package or not a.installed_report or a.intent or a.send or a.resume or a.discard or a.candidate:
+            if not a.world or not a.package or not a.installed_report or a.intent or a.send or a.resume or a.discard or a.candidate or a.world_candidate:
                 p.error('initialize requires only current --world, --package and --installed-report')
             initialize(a.state, a.world, a.package, a.installed_report); print('CURRENT WORLD SAVED; no Bluetooth or owner key access'); return 0
         if a.world or a.package or a.installed_report: p.error('--world/--package are initialization-only')
         state = read_json(a.state)
         if a.discard:
-            if a.send or a.resume or a.intent or a.candidate or not state['pending']:
+            if a.send or a.resume or a.intent or a.candidate or a.world_candidate or not state['pending']:
                 p.error('--discard requires only an existing never-sent pending draft')
             directory = Path(state['pending']); report = read_json(directory / 'report.json')
             if report['status'] != 'CHECKED-NOT-SENT' or report['sender_steps']:
@@ -222,11 +233,19 @@ def main():
             state['pending'] = None; save(a.state, state)
             print('UNSENT DRAFT DISCARDED; current world unchanged; archive preserved'); return 0
         if a.resume:
-            if not a.send or a.intent or a.candidate: p.error('--resume requires --send and no new intent/candidate')
+            if not a.send or a.intent or a.candidate or a.world_candidate: p.error('--resume requires --send and no new intent/candidate')
             return deliver(a.state, state)
         if not a.intent or not a.intent.strip() or len(a.intent) > 4000: p.error('intent must contain 1..4000 characters')
         if state['pending']: raise ValueError('pending session exists; use --resume --send, no new counter/nonce')
         base = current(state)
+        if a.world_candidate:
+            world = read_json(a.world_candidate, 2 * 1024 * 1024)
+            source = {'schema_version': 1, 'kind': 'generated-asset-world',
+                      'base_world_sha256': state['world_sha256'],
+                      'candidate_world_sha256': sha(canonical(world))}
+            directory, _ = prepare_world(a.state, state, a.intent, world, source)
+            print('CHECKED SAVED ASSET WORLD/SESSION: ' + str(directory), flush=True)
+            return deliver(a.state, state) if a.send else 0
         if a.candidate:
             if a.candidate.stat().st_size > 65536: raise ValueError('candidate exceeds input budget')
             proposal = parse_edit(a.candidate.read_text())

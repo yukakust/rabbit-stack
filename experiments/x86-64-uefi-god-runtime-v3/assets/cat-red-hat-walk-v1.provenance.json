@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "PHYSICAL-EXACT-APPLIED-RECEIPT-SCREEN-PENDING",
+  "generation_mode": "built-in image_gen",
+  "sources": {
+    "cat-walk-source-v1.png": "5f350927335750fb5e3a3564ffcad8c9486d54ccaab33ed8bf48082e02b6e4fd",
+    "red-beanie-source-v1.png": "d3dc2c8e3529bbbedabf854044394e9332cc96be18b605ea1bd6a643f7d45985",
+    "cat-red-hat-walk-source-v1.png": "91c1f92eb05729f8204b6da31ceba52fc4429d1348079fe7f5d9fb6adbc7eb18"
+  },
+  "prompt_set": "cat-red-hat-walk-v1.prompt.txt",
+  "importer": "../import_cat.py",
+  "world": "../worlds/ginger-cat-red-hat-walk-v1.json",
+  "recipe": "existing 2x2 importer; actual generated alpha; four row-major128x85 indexed poses; shared256-color palette; logical64x43 display",
+  "behavior": "unchanged objects/programs from original world2; vx1 and four-tick pose animation",
+  "counter": 3,
+  "signed_package_sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+  "signed_package_bytes": 35017,
+  "preview": "cat-red-hat-walk-preview-v1.gif",
+  "preview_scope": "Exact indexed pixels with existing local MOVE/BOUNCE/ANIMATE model; not physical evidence",
+  "sharing_license": "NOT-ASSIGNED",
+  "limitations": "Generated edit preserves appearance and poses visually, not a claim of bit-identical cat pixels outside hat. Installed world development Creator authority remains separate from owner-native.",
+  "physical_evidence": "../../x86-64-uefi-connected-supervisor-v1/evidence/dell-connected-cat-red-hat.json"
+}

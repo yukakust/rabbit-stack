@@ -495,3 +495,39 @@ which first text change to send (double speed, second same cat, or keep scene);
 response pending. No physical text-intent orchestration claim yet. Missing mouse
 art/background changes are currently unsupported, not fabricated. Voice and
 Creation Inventory extension remain subsequent work.
+
+
+## First text-to-art connected world receipt: cat wears red hat — 2026-10-03
+
+Owner intent «давай коту наденем шапку» authorized graphic change/delivery. Used
+imagegen skill/built-in tool: transparent red knitted beanie reference, then edit
+original 2x2 cat walk source to wear same hat in4 poses. Copied both generated
+source images into V3 assets; prompt/provenance saved. Existing import_cat.py does
+RGBA format conversion only, no painted/keyed alpha; source1536x1024 RGBA, alpha0..254.
+Imported4 distinct128x85 poses/shared256 palette/logical64x43, unchanged original
+objects/programs/vx1. AI edit is visual preservation, not identical outside-hat
+pixels. Local indexed PNG/GIF previews and user output copies saved.
+
+Extended ask_connected_world.py with explicit --world-candidate for generated V3
+art worlds; shared prepare_world uses same strict compiler/Python signature/pinned
+C240ticks/render guards/session/counter/receipt gate. Small LLM patch schema remains
+unchanged; no native fields accepted.6 existing flow checks pass after refactor,
+plus added asset native-field/legacy-world rejection test passes (7 total).
+
+Actual currentworld2 package binding checked; pre-send read-only status retained
+old rejected native3 receipt, no active foreign staging. Hat worldcounter3 package
+35017 bytes SHA8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3.
+Saved session in runs/text-world/edit-0866els1. Entire35049-byte stream staged with
+100-byte payloads/50ms delay, stopped before COMMIT. SAME session next connection
+resumed35049 and got exact applied SHA/session/worldcounter3 receipt; commit
+connection1.694s, no disconnects. Managed current state atomically advanced to
+world3/current hat world, pending=null, only after exact receipt. Nativecounter3
+remains consumed; next native>=4 must bind NEW active hat signed world.
+
+Owner screen hat/walking-cat confirmation requested, PENDING. Evidence/log hashes
+in connected evidence/dell-connected-cat-red-hat.json; generation provenance V3
+assets/cat-red-hat-walk-v1.provenance.json. No USB/media/firmware/network changes,
+manual reboot, owner-private key access or native update. Current world authority
+remains public development Creator. Do not claim authenticated device attestation
+or physical screen from preview. First text/art managed delivery receipt physically
+observed; exact screen outcome still pending.

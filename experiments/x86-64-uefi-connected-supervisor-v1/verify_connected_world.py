@@ -47,6 +47,14 @@ class WorldTests(unittest.TestCase):
         bad = self.proposal(); bad['objects'][0]['vx'] = True
         with self.assertRaises(ValueError): flow.parse_edit(json.dumps(bad))
 
+    def test_complete_asset_candidate_cannot_smuggle_native_fields_or_legacy_world(self):
+        for world in [dict(self.base, native_code='not data'), dict(self.base, schema_version=2)]:
+            path, state = self.state()
+            with self.assertRaises(ValueError):
+                flow.prepare_world(path, state, 'asset fixture', world, {'kind': 'asset-fixture'})
+            self.assertIsNone(flow.read_json(path)['pending'])
+            self.assertEqual(flow.read_json(path)['counter'], 2)
+
     def test_actual_resident_c_accepts_speed_edit_and_rejects_unsafe_first_tick(self):
         path, state = self.state()
         directory, report = flow.prepare(path, state, 'кот быстрее', self.proposal())
