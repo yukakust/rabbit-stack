@@ -16,7 +16,7 @@ static void*method(void*p,unsigned offset){return *(void**)((uint8_t*)p+offset);
 static uint64_t little(const uint8_t*p,unsigned bytes){uint64_t r=0;for(unsigned i=0;i<bytes;i++)r|=(uint64_t)p[i]<<(8*i);return r;}
 static int port_error(QcaUefiPort*p,unsigned step,Status status){p->error=(step<<8)|(uint32_t)(status&255);return -1;}
 int qca_port_open(QcaUefiPort*p,SystemTable*st,void*image,void*controller,const QcaPciTarget*target){
- if(!p||p->claimed||p->dma_users||!st||!st->boot||!image||!controller||!target)return -1;
+ if(!p||p->claimed||p->dma_users||p->link_owned||!st||!st->boot||!image||!controller||!target)return -1;
  p->system=st;p->image=image;p->controller=controller;p->pci=0;p->resource=0;
  p->memory_attempted=p->memory_ready=p->validated=p->wake_owned=0;
  p->error=0;
@@ -75,7 +75,7 @@ int qca_port_write32(void*context,uint32_t address,uint32_t value){
  return 0;
 }
 int qca_port_close(QcaUefiPort*p,QcaWake*w){
- if(!p||p->dma_users)return -1;
+ if(!p||p->dma_users||p->link_owned)return -1;
  if(p->wake_owned&&(!w||!w->owned))return -1;
  if(w&&w->owned){
   if(w->context!=p||qca_wake_close(w))return -1;

@@ -7,11 +7,13 @@
 #include "reset_core.h"
 #include "rom_ready.h"
 #include "bmi_transport.h"
+#include "pcie_link.h"
 void*qca_image;
 static QcaUefiPort port;static QcaWake wake;static QcaReset reset;
 static uint32_t stage,failed,firmware,chip,revalidate_error,recoveries,cancelled,cleanup_attempts;
 static uint16_t actual_command,pmcsr;
 static uint64_t bar,last_now;
+static QcaPcieLink link;static uint16_t link_active;
 static QcaRomReady rom;static QcaCeAccess access;static QcaCeBus bus;
 static QcaDmaBuffer buffers[4];static QcaCeRing rings[2];static QcaBmiPipe pipes[2];static QcaBmiExchange exchange;
 static unsigned bus_live,allocated,cleanup_slot,bus_retries,buffer_retries,succeeded;
@@ -27,7 +29,8 @@ static void telemetry(void){
  record(208,exchange.version,4);record(212,exchange.type,4);record(216,exchange.info_length,4);
  record(220,port.dma_users,4);record(224,bus.phase,4);record(228,bus.error,4);record(232,bus.owned,4);
  uint32_t held=0;for(unsigned i=0;i<4;i++)if(buffers[i].allocated||buffers[i].mapped)held|=1u<<i;
- record(236,held,4);
+ record(236,held,4);record(182,link_active,2);
+ record(240,link.original,2);record(242,link.readback,2);record(244,link.owned,1);record(245,link.error,1);
 }
 typedef Status(EFIAPI *Config)(void*,uint32_t,uint32_t,uint64_t,void*);
 typedef Status(EFIAPI *Memory)(void*,uint32_t,uint8_t,uint64_t,uint64_t,void*);
@@ -68,6 +71,7 @@ static void shutdown(uint64_t now){
   return;
  }
  stage=succeeded?5:6;
+ if(qca_pcie_restore(&link)){succeeded=0;stage=6;if(!failed)failed=0xa00|link.error;return;}
  if(qca_port_close(&port,&wake)&&!failed)failed=0x900;
 }
 int qca_stop(void){
@@ -90,10 +94,10 @@ void qca_start(SystemTable*st,uint64_t ms){
  if(!qca_controller||qca_diagnostic[4]!=15){stage=7;telemetry();return;}
  stage=1;last_now=ms*1000;
  if(qca_port_open(&port,st,qca_image,qca_controller,&t)||fresh()||port.bar_extent<0x8000c
-  ||qca_port_enable_memory(&port)||qca_wake_begin(&wake,&w,qca_port_read32,qca_port_write32,&port,ms*1000)){
+  ||qca_pcie_pause(&link,&port)||qca_port_enable_memory(&port)||qca_wake_begin(&wake,&w,qca_port_read32,qca_port_write32,&port,ms*1000)){
   stage=6;failed=0x10000|port.error;qca_stop();
  }
- telemetry();
+ link_active=link.readback;telemetry();
 }
 void qca_poll(uint64_t ms){
  uint64_t now=ms*1000;last_now=now;

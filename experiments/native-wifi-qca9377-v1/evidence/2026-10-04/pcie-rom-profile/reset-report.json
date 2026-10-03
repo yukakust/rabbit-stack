@@ -1,0 +1,18 @@
+{
+  "status": "COOPERATIVE-COLD-RESET-HOST-AND-COFF-PASS",
+  "source_sha256": {
+    "reset_core.c": "b3572ba2c0d77e588a2562017cf568b0960ceb55426f923f4e6f3a8f43806bdd",
+    "reset_core.h": "637942ec4c8abe69ce5df8ee4922de111be80113e4635787dd8b20b178eded45",
+    "reset_test.c": "d642245e96ddc2cbeef2f582b4896d8ea4b30a4b60e675bf20b953e70cbd1f38",
+    "wake_core.h": "02a1d237478b6c25fc609f8500dfee6b1d52fc8ba35422315792fdfa28a12b43",
+    "reset-target.json": "ba9b2cab29609ab5731817e3c59a263b5dabcb6853a326538617b166dcd5bdb7",
+    "verify_reset.py": "75e4753ca3ff66ca829ba3cffe7e69315e404254db54fb689addbc21c12e04cd"
+  },
+  "host_log_sha256": "8b4dfdb67a0061a77d614fe23347c9353f792763a754160f02e8d70506672f60",
+  "build_host": "yukabox",
+  "physical_reset": false,
+  "native_profile_integrated": false,
+  "dma": false,
+  "firmware_uploaded": false,
+  "wifi_association": false
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PHYSICAL-NATIVE14-APPLIED-ASPM-RESTORED-ROM-TIMEOUT",
+  "native_counter": 14,
+  "payload_sha256": "50e1d3d34a76d6adbfa930474b6bedd7ebdf93ff4daa0f278963bb8dd6ecb54a",
+  "world_counter": 12,
+  "world_package_sha256": "6414d1bae588acfef261d8c6befc8fc1edb96fb76892a33c47f8d3b2c05bb180",
+  "link_control_before": "0143",
+  "link_control_disabled_before_reset": "0140",
+  "link_control_restored": "0143",
+  "link_control_during_rom_wait": "not separately observed",
+  "rom_indicator": "00000000",
+  "rom_error": 4,
+  "bmi_query_executed": false,
+  "physical_dma_activation": false,
+  "dma_buffers_held": 0,
+  "cleanup_completed": true,
+  "city_visual_observation": "pending; no new owner screen observation",
+  "firmware_uploaded": false,
+  "wifi_association": false,
+  "physical_receipt_report_sha256": "32f17292e5de6629b5a97eec92124f38fd992b54fe5427f701915651e4b8cd94",
+  "raw_diagnostic_sha256": "a977149b666c930f4226795eb1fb2cad580fa1cd2ad245646ba16ac736a4a4e6"
+}

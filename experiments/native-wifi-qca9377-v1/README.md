@@ -563,3 +563,54 @@ writes with readback) and QCA6174 cold+warm reset ordering. Do not blindly enabl
 host interrupts or claim either hypothesis as established; no further physical
 writes until matching deterministic gates. Full original Wi-Fi goal remains active;
 firmware RAM chunks/radio/WPA/DHCP/two-way traffic/reconnect remain incomplete.
+
+
+## 2026-10-04 — native14: reversible ASPM tested physically; ROM still times out
+
+Added pcie_link.c/h. Under exclusive validated PCI claim, decode fresh256byte
+capability list and require D0 + matching Dell QCA identity + PCIe endpoint cap.
+Save LinkControl; clear only ASPM bits0:1 using PCI IO Write16 and exact readback.
+Own before ambiguous write. Restore exact saved word with fresh cap/identity/D0
+check, no DMA users/BM; adjacent LinkStatus is never written. New port link_owned
+blocks close/reopen until verified restore. Cleanup failure retains native/PCI
+ownership and supports explicit retry. Full integrated gate extends to21host
+scenarios: rejected capability, ambiguous/drop disable, failed/drop restore and
+retry, with original reset/DMA/BMI failures. DMA gate rerun for new port guard.
+QPD6 is246bytes (full Read response247 fits ATT MTU); adds saved/last LinkControl
+and ownership/error, preserves pre-reset active snapshot at182. Decoder gates
+ownership/size and distinguishes restoration from firmware readiness.
+
+Exact21host sanitizer + component host/COFF/ABI gates, normal+EMPTY real UEFI QEMU
+city/BT/rejection/recovery gates and two fresh native/current-world rebuilds pass
+on Yukabox. Candidate payload SHA256:
+50e1d3d34a76d6adbfa930474b6bedd7ebdf93ff4daa0f278963bb8dd6ecb54a.
+Locally signed exact native14,67872byte Bluetooth session staged fully; same session
+COMMIT/reconnect got exact SHA/session/counter APPLIED. Saved native14/world12,
+no pending operation. Receipt session runs/text-world/pci-native-_pexlbhw.
+No owner key output/copy, Mac native build, USB/bootstrap change or Dell reboot.
+
+PHYSICAL QPD6: LinkControl0143 -> verified0140 BEFORE reset -> restored0143,
+ownedfalse/error0. Chip003821ff/rev1 and D0/cold-reset checks remain good. ROM
+indicator0 after3s, stage6/error0x504; no BMI response, no DMA allocation/activation,
+held resources0 and cleanupcomplete. Evidence under native-wifi experiment
+/evidence/2026-10-04/pcie-rom-profile includes all source-bound reports and raw
+physical receipt/diagnostic. Active link snapshot is BEFORE reset, not a separate
+measurement during ROM wait: this experiment does not prove ASPM stayed disabled
+through cold reset. Do not overstate a ruled-out hypothesis. Owner visual
+city/tail observation remains pending; Bluetooth restoration is observed.
+
+NEXT: augment fresh post-reset PCI snapshot with LinkControl and ensure/reapply
+ASPM-off before ROM polling if reset changed it. Pinned ath10k
+wait_for_target_init repeats PCIE_INTR_ENABLE at SOC_CORE_BASE+offset with
+firmware|CE masks for legacy INTx boot race and flushes posted write via readback;
+current profile does not perform that step. Add a reversible boot-IRQ adapter,
+with host INTx disabled and MSI/MSI-X state validated before device IRQ enable,
+actual-command/target-register readback and cleanup/port-close ownership guard.
+Never blindly enable an unhandled host interrupt. All writes need matched mock,
+COFF, exact normal/EMPTY city/BT, reproduction and owner gates before next send.
+Another source difference is Linux pci_claim enables bus mastering BEFORE reset/
+ROM wait, while ours leaves it off until ROM-ready. If IRQ ordering is insufficient,
+plan a DMA-lifetime-aware earlier master enable only after all8CE quiescence and
+reviewed mapped empty rings, retaining mappings across reset and revalidation.
+No DMA activation, firmware compatibility/upload, scan/WPA, DHCP/two-way traffic
+or reconnect success yet. Full original Wi-Fi goal remains active/incomplete.

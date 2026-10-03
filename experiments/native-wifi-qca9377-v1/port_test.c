@@ -64,6 +64,7 @@ int main(void){
  assert(!qca_port_open(&port,&port_system,&port_system,pci,&target)&&port.claimed&&frees==1&&!attr_writes);
  assert(qca_port_read32(&port,0x80000,&value)==-1&&!mem_reads);
  assert(!qca_port_enable_memory(&port)&&attributes==0x200);
+ port.link_owned=1;assert(qca_port_close(&port,0)==-1&&port.claimed);assert(qca_port_open(&port,&port_system,&port_system,pci,&target)==-1);port.link_owned=0;
  assert(qca_port_read32(&port,0x80004,&value)==-1&&!mem_reads);
  assert(qca_port_write32(&port,0x80004,2)==-1&&!mem_writes);
  assert(!qca_wake_begin(&wake,&wake_target,qca_port_read32,qca_port_write32,&port,0));
