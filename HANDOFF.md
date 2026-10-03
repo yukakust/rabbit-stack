@@ -1645,3 +1645,7 @@ physically verified. Cause and current Dell base/world/counter unknown; screen
 observation requested. Preserve power/session; no blind retry or world restoration.
 See connected trial3 evidence/log and updated takeover. Mac sender now stops
 immediately on regression; Apple compile-only passed. No receiver/media change.
+
+Owner now reports scene disappeared after trial3 staging loss. Reboot/root
+failure cause remains unknown; current display diagnostics requested before
+further radio action. No COMMIT was sent; unhealthy candidate was not executed.

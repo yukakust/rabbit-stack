@@ -9,7 +9,7 @@
   "owner_public_sha256": "58744820acd038de35d01eaf6afbad2aa4bb4e4022c8078d4e665270d41f36b4",
   "payload_origin": "Exact module3 extracted from hash-verified Mac full-ginger QEMU fixture image offset2204032; checked against installed gate module3 hash",
   "schema_version": 1,
-  "status": "PHYSICAL-FAILED-INIT-TRIAL-STOPPED-BEFORE-COMMIT-STAGING-REGRESSION",
+  "status": "PHYSICAL-FAILED-INIT-TRIAL-NOT-COMMITTED-PREFIX-LOSS-AND-SCENE-LOSS",
   "recorded_at_utc": "2026-10-03T06:33:25.620118+00:00",
   "source": "Agent-operated owner Mac terminal/CoreBluetooth sender",
   "reviewed_plan_sha256": "d065e518dffc2e88b3b090c9cccbbe128d831d703aef8818dba6745b18b850bb",
@@ -26,7 +26,12 @@
   "exact_final_receipt": null,
   "unhealthy_candidate_executed": false,
   "receiver_loss_cause": "UNKNOWN; zero offset does not by itself prove reboot",
-  "current_dell_screen": "owner observation pending",
+  "current_dell_screen": {
+    "scene_disappeared": true,
+    "source": "Owner explicitly reported «сцена исчезла»",
+    "visible_diagnostic_text": "pending",
+    "reboot_confirmed": false
+  },
   "authenticated_device_attestation": false,
   "sender_sha256": "c758d7a3de38c2e6115f3981e31bab81f203d0f0df58faa8372ab3e8c5df2da9",
   "status_validator_sha256": "6793d285e07aeea28c35652ad94c2d04d5d39e839466caa517e57078aa358758",

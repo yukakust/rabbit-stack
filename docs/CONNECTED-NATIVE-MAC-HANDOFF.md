@@ -257,3 +257,13 @@ compile-only Apple check passed; no sender radio re-run after this edit. Install
 receiver/root/native module bytes unchanged. Failed-init physical rejection remains
 PENDING, while first/return exact application receipts and visible line changes are
 recorded separately. User has confirmed walking cat after first update only.
+
+
+Owner follow-up: «сцена исчезла» after trial3 interruption. Scene loss is observed;
+reboot/watchdog cause is NOT confirmed. Asked whether current display is Rabbit
+empty baseline/diagnostics, Dell/UEFI, or black/no-signal, plus exact lines.
+Read-only source inspection: root arms5s watchdog around radio poll and fatal()
+prints failed stage then intentionally waits for watchdog. Bootstrap imports an
+EMPTY RSS2 snapshot. This makes reboot-to-empty a plausible explanation, not a
+physical diagnosis. Ordinary rg_disconnected resets MTU only, not root staging.
+No further sender, world restore, timeout/watchdog change or USB action performed.
