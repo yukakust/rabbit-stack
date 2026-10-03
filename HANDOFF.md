@@ -2136,3 +2136,18 @@ candidate bb864687-9852-4c54-a160-4cb28ce3e2ea viewed only: Personal tier free u
 eligibility, Professional paid; declared UE5.6-5.7/Windows. Not acquired/imported,
 no Fab sign-in/license acceptance. Do not infer Linux5.8 compatibility or accept
 terms/purchase without the required concrete owner decision.
+
+### 2026-10-04: display destination fixed — Dell monitor
+
+Owner explicitly chooses Dell monitor; Yukabox execution/rendering and Mac command
+point remain unchanged. Physical topology still unknown: can Yukabox connect to a
+spare monitor HDMI/DP input, retaining mini-PC Dell input, or must image pass through
+mini-PC over network? Async question pending; do not infer an answer from elapsed
+wait. Direct input switch is a quick intermediate display test, not composition.
+Repo connected native profile has no stream receiver. Historical actual physical
+network-probe-v0.4 (2026-09-23) found Ethernet10EC:8168 and Wi-Fi168C:0042, NO firmware
+SNP/Wi-Fi protocol; do not claim a fresh network observation. Network display needs
+its own receiver/decoder/transport implementation; Pixel Streaming alone is not a
+native Dell client. No Dell write/reboot/media/OS/bootstrap change made or inferred
+from this display choice. Unreal smoke remains prior GPU proof; no fresh run needed
+for this documentation correction. See updated connected-world-control plan.

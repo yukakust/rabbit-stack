@@ -32,7 +32,12 @@ RADV enumerates Radeon890M on Ubuntu26.04; Xvfb reports no DRI3 presentation.
 Actual Unreal Vulkan offscreen rendering now works without Xvfb or a desktop.
 The screenshot shows the expected three basic blocks, ground, shadows and engine
 default pawn sphere. This does not benchmark a detailed city or validate every
-feature on Ubuntu26.04. No physical monitor is detected; display choice is pending.
+feature on Ubuntu26.04. Last probe detected no physical monitor on Yukabox. Owner
+selected the Dell monitor on2026-10-04; direct monitor input vs network through
+the Dell mini-PC is pending clarification. Native Dell currently has no stream
+receiver. Historical physical network inventory found no firmware SNP protocol;
+do not assume Pixel Streaming can already display there. Direct input switching
+would be an intermediate display test, not shared city composition.
 Final builds use `-NoUBA` (local build without the accelerator listener).
 
 ## Next gates
