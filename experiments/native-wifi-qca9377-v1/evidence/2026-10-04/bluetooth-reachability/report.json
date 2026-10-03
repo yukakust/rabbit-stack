@@ -1,0 +1,15 @@
+{
+  "status": "MAC-BLUETOOTH-AUTHORIZED-RF-ACTIVE-RABBIT-NOT-OBSERVED",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-v1/probe_mac_bluetooth.m": "c99f6d733899a4273b17d16b5f106c07be1d4b4f23be05b4f653b9eeb1454bab"
+  },
+  "raw_sha256": "df895aaa9b19028e500ca72bbd179c54510622bdefcc523aee32843eb07cd882",
+  "scan_seconds": 20,
+  "unrelated_device_names_or_identifiers_saved": false,
+  "physical_dell_screen_observation": null,
+  "physical_dell_power_state": null,
+  "mac_dell_proximity": null,
+  "data_or_commit_attempted": false,
+  "hardware_continuation_requires": "owner Dell screen/power/proximity observation and restored Bluetooth reachability",
+  "wifi_verified": false
+}

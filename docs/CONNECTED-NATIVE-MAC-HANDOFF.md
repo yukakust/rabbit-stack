@@ -1509,6 +1509,36 @@ owner/target asset policy to a separately gated native candidate, wire secondary
 ATT handler, then normal+EMPTY UEFI/current-world gates before physical update.
 Firmware compatibility, upload/startup, scan/WPA/DHCP/reconnect remain incomplete.
 
+## 2026-10-04 — Mac RF/permission revalidation; physical Dell unavailable
+
+Rabbit World app is running, AX shows world12 / operation needs continuation.
+This is saved-controller state, NOT an observation of the Dell display. Its
+CBCentralManager is only a permission/state checker; app source has no connection
+or scanning ownership. No application/TCC reset, restart or security bypass.
+
+New passive Mac probe compiles with warnings as errors. Actual20second unfiltered
+scan: controller_state5(PoweredOn), authorization3(AllowedAlways),134advertisements,
+no Rabbit service1/5/7 candidate, no connected file-service peripheral; known Dell
+cached state0(disconnected). Other device names/identifiers were not recorded.
+No connection, characteristic write, DATA/COMMIT, firmware or hardware update.
+Evidence: native-wifi-qca9377-v1/evidence/2026-10-04/bluetooth-reachability.
+This proves Mac RF reception/permission and absence of observed Rabbit services,
+not Dell power state, screen state, distance or a diagnosis of its controller.
+
+Same physical reachability blocker has persisted through four terminated
+service queries and one terminated cached connection. Software preparation is
+saved; continuing chip/firmware compatibility verification requires restored
+physical Dell reachability. Owner city/tail + Mac proximity question remains
+unanswered. Do not replace hardware proof with further mock success, reboot Dell,
+alter USB/bootstrap or infer an unchanged receiver RAM epoch.
+
+On owner return: inspect actual Dell screen/power and Mac proximity; re-query the
+exact pending native15 session before DATA. If receiver loss/reboot is observed,
+use existing reviewed recovery with fresh receiver state; never erase pending
+session/counter based on assumption. Resume full original Wi-Fi goal, including
+physical ROM/BMI, compatible firmware startup, scan/security, DHCP/two-way traffic
+and reconnect with city/BT preservation. Goal is not achieved.
+
 ## 2026-10-04 — UEFI RAM adapter and native asset service wired; policy disabled
 
 Added firmware_port.c/h. Before allocation require native-owned QPD7 clean BMI
