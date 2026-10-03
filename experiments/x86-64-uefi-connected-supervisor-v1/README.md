@@ -333,7 +333,9 @@ working bootstrap USB in place; no new media write is required.
 
 `send_file.py SAVED_SESSION --query-only` connects and reads the current60-byte
 RFS status without BEGIN/DATA/COMMIT/ABORT. It prints the raw status and saved
-session match. Receipt counter is the file service's last counter, not a dedicated
+session match. Query-only also reads connected RSSI (local radio measurement,
+not device attestation); its existing timeout bounds RSSI/status callbacks.
+Receipt counter is the file service's last counter, not a dedicated
 query of native base/world hashes or authenticated boot identity.
 
 `send_file.py SAVED_SESSION --abort-only` first reads status, requires that exact

@@ -1,0 +1,40 @@
+MAC SENDER COMPILED; SOURCE SHA256=e08bc5f9a8b03b1f27b7cf9cc9ca04ea52813b324db25bfb7826ae50f17233a3
+STATUS VALIDATOR SHA256=6793d285e07aeea28c35652ad94c2d04d5d39e839466caa517e57078aa358758
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-88; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=0/36640
+DISCONNECTED: phase=2 offset=300/36640 domain=CBErrorDomain code=6 reason=The connection has timed out unexpectedly.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-83; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=300/36640
+DISCONNECTED: phase=2 offset=700/36640 domain=CBErrorDomain code=6 reason=The connection has timed out unexpectedly.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-92; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=700/36640
+DISCONNECTED: phase=2 offset=1400/36640 domain=CBErrorDomain code=6 reason=The connection has timed out unexpectedly.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-85; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=1400/36640
+DISCONNECTED: phase=2 offset=1500/36640 domain=CBErrorDomain code=6 reason=The connection has timed out unexpectedly.
+FAIL: bounded reconnect limit; rerun SAME saved session to query outcome; application outcome may be unknown; staging retained if Dell remains powered

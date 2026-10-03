@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "PHYSICAL-EXACT-WORLD-2-RECOVERY-RECEIPT-SCREEN-PENDING",
+  "status": "PHYSICAL-EXACT-WORLD-2-RECOVERY-RECEIPT-OWNER-SCREEN-REPORTED",
   "source": "Agent-operated Mac terminal; owner reported manual reboot and proximity",
   "world_package_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
   "world_counter": 2,
@@ -45,7 +45,10 @@
       "disconnects": 0
     }
   ],
-  "owner_screen_observation": null,
+  "owner_screen_observation": {
+    "verbatim": "Код есть, синей линии нет.",
+    "interpretation": "Context suggests cat present, blue line absent; movement not explicitly reconfirmed."
+  },
   "authenticated_device_attestation": false,
   "native_unhealthy_trial_physically_verified": false,
   "limitations": "One successful smaller-chunk run is not proof of fragmentation cause or general reliability. Initial default240-byte run after owner reboot regressed21600->0 before COMMIT. Small-chunk run started from0, NOT a retained nonzero resume. World restore restores package, not lost live positions/frames/tick."

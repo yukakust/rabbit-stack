@@ -76,7 +76,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
   if([u isEqualToString:@"52414242-4954-4649-8000-000000000004"])self.status=c;
  }
  if(!self.control||!self.data||!self.status||!(self.control.properties&CBCharacteristicPropertyWrite)||!(self.data.properties&CBCharacteristicPropertyWrite)||!(self.status.properties&CBCharacteristicPropertyRead)){[self fail:@"incompatible file service"];return;}
- if(self.queryOnly||self.abortOnly){puts("READ-ONLY QUERY: no BEGIN, DATA, COMMIT or ABORT");self.phase=5;[p readValueForCharacteristic:self.status];return;}
+ if(self.queryOnly||self.abortOnly){puts("READ-ONLY QUERY: no BEGIN, DATA, COMMIT or ABORT");self.phase=5;if(self.queryOnly)[p readRSSI];else [p readValueForCharacteristic:self.status];return;}
  uint8_t begin[16]={1,1,(uint8_t)self.kind,0};memcpy(begin+4,self.nonce.bytes,8);put32(begin+12,(uint32_t)self.stream.length);
  printf("BEGIN: acknowledged write; maximum value bytes=%lu\n",(unsigned long)[p maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse]);
  self.phase=1;[p writeValue:[NSData dataWithBytes:begin length:16] forCharacteristic:self.control type:CBCharacteristicWriteWithResponse];
@@ -89,6 +89,11 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  self.pending=MIN(MIN(limit-4,self.chunkBytes),self.stream.length-self.offset);
  NSMutableData*value=[NSMutableData dataWithLength:4+self.pending];put32(value.mutableBytes,(uint32_t)self.offset);memcpy((uint8_t*)value.mutableBytes+4,(const uint8_t*)self.stream.bytes+self.offset,self.pending);
  self.phase=2;[self.peer writeValue:value forCharacteristic:self.data type:CBCharacteristicWriteWithResponse];
+}
+- (void)peripheral:(CBPeripheral*)p didReadRSSI:(NSNumber*)rssi error:(NSError*)e {
+ if(p!=self.peer||!self.queryOnly||self.phase!=5)return;
+ printf("CONNECTED RSSI=%s error=%s (local radio measurement, not attestation)\n",rssi?rssi.stringValue.UTF8String:"unavailable",e?e.localizedDescription.UTF8String:"none");
+ [p readValueForCharacteristic:self.status];
 }
 - (void)peripheral:(CBPeripheral*)p didWriteValueForCharacteristic:(CBCharacteristic*)c error:(NSError*)e {
  if(p!=self.peer)return;

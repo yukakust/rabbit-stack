@@ -362,3 +362,24 @@ fixture and no further swap/reboot. Physical rejected-trial outcome remains PEND
 Optional `--chunk-bytes` bounds/conflicting modes checked before radio; Apple sender
 sourcee08bc5f9... compiles;14 actual C world/GATT checks pass. Native/root/receiver/
 USB unchanged. All radio processes stopped after exact world recovery receipt.
+
+
+## Native3 smaller-write attempt stops before COMMIT — 2026-10-03
+
+Owner reported «Код есть, синей линии нет.» after exact world2 receipt. Context
+suggests cat present/no blue line; movement not explicitly reconfirmed. SAME
+signed native3/session was checked against post-reboot review34bb8be3..., then
+sent with100-byte DATA payloads. Four timeouts; retained resumes300/700/1400.
+Sender stopped at bounded reconnect limit, exit1. Read-only query confirmed
+STAGING1500/36640/error0/last file receipt counter2. No COMMIT, module did not
+execute, failed-init rejection still NOT physically verified. Exact session ABORT
+confirmed IDLE/received0/length0/counter2. All radio processes stopped.
+
+Query-only now also reads connected RSSI before file status. Apple compile and
+actual read-only query succeeded: connectedRSSI -84dBm, discovery -93dBm; IDLE
+and retained filecounter2. Mac WiFi channel8/2.4GHz/20MHz, no network modification.
+Shared-band interference is a hypothesis, not an established cause. Asked owner
+whether5GHz or wired internet is available for a controlled comparison; answer
+pending. Do not blindly resend or reboot. Logs/hashes and limits preserved in
+connected evidence/dell-connected-native-trial-3-small.json and four archived logs.
+No new signature/counter/nonce, receiver/module/bootstrap/media change.

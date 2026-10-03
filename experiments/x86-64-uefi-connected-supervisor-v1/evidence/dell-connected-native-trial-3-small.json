@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "status": "PHYSICAL-STAGING-TRANSFER-FAILED-EXACT-ABORT-CONFIRMED",
+  "source": "Agent-operated owner Mac terminal; physical Dell Bluetooth",
+  "release_sha256": "606594a7de56a8252eccf8759d45048851a4c79936a64f4eb7faf3662a0b62d6",
+  "post_reboot_review_sha256": "34bb8be3bf2a44e7ea185fc7884cfb6949825ceeb0fa4bdf8d9db0c9b985cb7b",
+  "saved_session": "/tmp/connected-native-trial-3.session.json",
+  "native_counter": 3,
+  "stream_bytes": 36640,
+  "chunk_payload_bytes": 100,
+  "disconnects": 4,
+  "retained_resume_offsets": [
+    300,
+    700,
+    1400
+  ],
+  "final_queried_staging_received": 1500,
+  "last_file_receipt_counter": 2,
+  "commit_sent": false,
+  "unhealthy_module_executed": false,
+  "native_unhealthy_trial_physically_verified": false,
+  "abort_confirmed": {
+    "state": 0,
+    "received": 0,
+    "length": 0,
+    "last_file_receipt_counter": 2
+  },
+  "radio_observation": {
+    "connected_rssi_dbm": -84,
+    "discovery_rssi_dbm": -93,
+    "wifi_band": "2.4GHz",
+    "wifi_channel": 8,
+    "wifi_channel_width_mhz": 20,
+    "network_modified": false,
+    "interpretation": "Low received signal and shared band are observations only; interference and failure cause are not established."
+  },
+  "archives": [
+    {
+      "name": "send",
+      "run": "native-trial-3-small-20261003T071705Z",
+      "log": "evidence/dell-connected-native-trial-3-small-send.log",
+      "log_sha256": "5e9401949fb9edae4020ac6ff95af4acd876949d6be0ba62cfd0c3836b48eaf8",
+      "exit_code": 1
+    },
+    {
+      "name": "query",
+      "run": "native-trial-3-small-query-20261003T071958Z",
+      "log": "evidence/dell-connected-native-trial-3-small-query.log",
+      "log_sha256": "8bb179a6082e150b40e3a95fe00009153161e1abc946cdbf72ecce93ebe1d3b7",
+      "exit_code": 0
+    },
+    {
+      "name": "abort",
+      "run": "native-trial-3-small-abort-20261003T072046Z",
+      "log": "evidence/dell-connected-native-trial-3-small-abort.log",
+      "log_sha256": "dec8904ef464ee4ea9b13751d1b7890191df937b9a9a42a6528e7ae71f6b2d0d",
+      "exit_code": 0
+    },
+    {
+      "name": "connected-rssi",
+      "run": "native-trial-3-connected-rssi-20261003T072206Z",
+      "log": "evidence/dell-connected-native-trial-3-small-connected-rssi.log",
+      "log_sha256": "434b7689914341dc19e3ba0afe56be8d547a2d393792d4ce1d44926e19ecbb62",
+      "exit_code": 0
+    }
+  ],
+  "limitations": "File status/receipt and local RSSI are not authenticated device attestation or native base/counter queries. No rejected receipt observed. No further reboot, media write, re-sign or new session."
+}
