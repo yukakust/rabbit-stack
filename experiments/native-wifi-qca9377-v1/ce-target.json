@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "family": "ath10k-qca9377-pci",
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "descriptor": "ce_desc",
+  "descriptor_bytes": 8,
+  "descriptor_fields": {
+    "address32_le": 0,
+    "nbytes16_le": 4,
+    "flags16_le": 6
+  },
+  "descriptor_alignment": 8,
+  "device_dma_address_bits": 32,
+  "ce_count": 8,
+  "ce_base_addresses": [
+    214016,
+    215040,
+    216064,
+    217088,
+    218112,
+    219136,
+    220160,
+    221184
+  ],
+  "metadata_mask": 65532,
+  "metadata_shift": 2,
+  "gather_mask": 1,
+  "byte_swap_mask": 2,
+  "rabbit_max_ring_entries": 32,
+  "rx_zero_length_note": "Valid transient: DRRI may advance before descriptor update; wait, do not free/fault solely on zero.",
+  "reference": "ce.h:ce_desc; ce.c:_ath10k_ce_send_nolock,_ath10k_ce_completed_recv_next_nolock; hw.c:qca6174_regs,qca6174_values",
+  "ce_header_sha256": "53dfddb64dd54b61add0b14d36bc7fad016c3fc4ab63b8bff5f7b25fc93538b1",
+  "status": "HOST-COFF-RING-CORE-ONLY",
+  "physical_ce_transfer": false,
+  "dma_mapping_implemented": false,
+  "ce_mmio_implemented": false
+}

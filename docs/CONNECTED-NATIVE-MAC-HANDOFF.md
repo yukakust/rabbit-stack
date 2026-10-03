@@ -1098,3 +1098,41 @@ original goal active. SSID/security mode question pending; password never chat.
 Remote exact workspace `/home/yuka/rabbit-world/wifi-reset-v1/source`.
 Evidence/2026-10-04/reset-profile contains source-bound gates/reproduction,
 full saved-session logs/raw+decoded telemetry/current receipt and manifest.
+
+
+## 2026-10-04 — CE ring core implemented, host/COFF gates only
+
+Previous goal turn was physical progress: native12 cold reset yielded supported
+chip revision1, with command/cleanup and saved-session receipt evidence. This
+continuation revalidated current sources/physical handoff; native12/world12
+remains installed. Implemented `ce_ring.c/h`, `ce_ring_test.c`, `verify_ce_ring.py`
+and separate `ce-target.json`. Pinned ath10k32-bit descriptor8bytes (address32,
+length16, flags16), qca6174 metadata0xfffc/shift2, gather/byte-swap flags. Native
+world data does not contain these target facts.
+
+Core implements bounded power-of-two rings2..32, one reserved entry, explicit
+little-endian descriptor bytes, descriptor/buffer32bit address/end bounds, cookies,
+TX gather publication and queued-versus-published completion invariants. Ownership
+/bookkeeping is recorded before an ambiguous doorbell. Invalid hardware indices,
+changed descriptor address/oversized length or doorbell errors fault the ring but
+retain its mapping. Zero RX length is a valid transient after DRRI advances:
+return WAIT, preserving ownership, until descriptor update (as pinned ce.c).
+Close calls adapter stop before clearing any descriptors; failed stop retains
+ownership and blocks free/unmap. Hardware stop callback must actually verify CE
+quiescence, bus-master-off and DMA flush: mock success is NOT hardware proof.
+
+5000 fill/wrap cycles across sizes, gather publication, RX update race, hostile
+length/address/index, 32bit overflow, invalid sizing/metadata and failed publish/
+stop retry passed ASan/UBSan (halt_on_error) on Yukabox. Freestanding x86 COFF
+compiled. An initial host UB in descriptor zero-fill shifting a32-bit zero beyond
+31bits was caught and fixed before successful gates; no physical code was sent.
+Evidence/2026-10-04/ce-ring hashes bind exact tested source/log. No Mac native
+build, no owner signing or physical transfer this continuation.
+
+NEXT: UEFI coherent DMA allocation/Map/Unmap/Free adapter and exact CE MMIO setup/
+stop with actual-command verification and flush. Enforce32bit device addresses,
+retained resources on ambiguous enable/stop/unmap and no callback after release.
+Then bounded ROM-ready wait and BMI get-target-info on physical Dell. Current
+ring core alone does NOT implement DMA mapping, CE MMIO, BMI, firmware loading,
+scan/association, DHCP or reconnect. Full original goal remains active/incomplete.
+SSID/security and city/tail observation pending; no password in chat/LLM/evidence.

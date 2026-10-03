@@ -1,0 +1,18 @@
+{
+  "status": "CE-RING-BOUNDS-LIFETIME-HOST-AND-COFF-PASS",
+  "source_sha256": {
+    "ce_ring.c": "744d2d92503891b34ceb646a203a2a6f24d905da7a2256ef4fddceccbc984e23",
+    "ce_ring.h": "9e1936d1c5ef0e8b1f3ca382bc76f5fbd6e151fa3a4858bf4c30d4315797b8f1",
+    "ce_ring_test.c": "a193485176f53b77a48945b0295dbf92fc30cbd7bf16af93bae04fdf714cf537",
+    "verify_ce_ring.py": "0a1890aa3135803aff009e9f8373bd245f5cd538eada8fa6b26a275b7c178d2e"
+  },
+  "host_log_sha256": "1c89cdc12e22bb8f25569becc06ea7b7876353bff0ef85da16bf1b6f823f1471",
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "reference": "ath10k ce.c/ce.h 32bit descriptor and qca6174_values metadata",
+  "build_host": "yukabox",
+  "dma_mapping_implemented": false,
+  "ce_mmio_implemented": false,
+  "physical_ce_transfer": false,
+  "firmware_uploaded": false,
+  "wifi_association": false
+}
