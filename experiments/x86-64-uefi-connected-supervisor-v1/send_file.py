@@ -13,6 +13,13 @@ import tempfile
 import uuid
 ROOT=Path(__file__).resolve().parent
 SOURCE=ROOT.parent/'ble-connected-file-transfer-v1/mac_file_sender.m'
+def inherited_lock_fds():
+    value=os.environ.get('RABBIT_CONNECTED_LOCK_FD')
+    if value is None:return ()
+    fd=int(value)
+    if fd<3:raise ValueError('invalid inherited controller lock')
+    os.fstat(fd)
+    return (fd,)
 def validate(bundle):
     if type(bundle) is not dict or bundle.get('schema_version')!=1:raise ValueError('wrong bundle schema')
     kind=bundle.get('kind',1);counter=bundle.get('counter')
@@ -31,11 +38,13 @@ def main():
     mode.add_argument('--abort-only',action='store_true',help='abort only the exact saved staging session after read-only check; no DATA/COMMIT')
     p.add_argument('--peripheral',help='known macOS peripheral UUID; query-only cached connection, no scan')
     p.add_argument('--chunk-bytes',type=int,help='bounded DATA payload bytes per write, 1..240; default240')
+    p.add_argument('--minimum-received',type=int,help='saved confirmed prefix; refuse receiver loss before any DATA/COMMIT')
     p.add_argument('--data-delay-ms',type=int,help='staging-only diagnostic pause between DATA writes, 1..100ms')
     p.add_argument('--stage-only-bytes',type=int,help='stop after a receiver-confirmed prefix, WITHOUT COMMIT')
     a=p.parse_args()
     if a.data_delay_ms is not None and (not a.send or a.stage_only_bytes is None or not 1<=a.data_delay_ms<=100):p.error('--data-delay-ms requires --send, --stage-only-bytes and 1..100ms')
     if a.chunk_bytes is not None and (not a.send or not 1<=a.chunk_bytes<=240):p.error('--chunk-bytes requires --send and 1..240 bytes')
+    if a.minimum_received is not None and (not a.send or a.minimum_received<0):p.error('--minimum-received requires --send and a nonnegative prefix')
     if a.peripheral:
         if not a.query_only:p.error('--peripheral requires --query-only')
         try:a.peripheral=str(uuid.UUID(a.peripheral))
@@ -45,6 +54,7 @@ def main():
     if a.bundle:
         if a.bundle.stat().st_size>400000:raise ValueError('bundle too large')
         saved=validate(json.loads(a.bundle.read_text()))
+        if a.minimum_received is not None and a.minimum_received>len(base64.b64decode(saved['stream_base64'])):p.error('minimum prefix exceeds stream')
         if a.stage_only_bytes is not None and not 0<a.stage_only_bytes<len(base64.b64decode(saved['stream_base64'])):
             p.error('--stage-only-bytes must be positive and smaller than the stream')
     if platform.system()!='Darwin':raise RuntimeError('Mac compilation requires macOS/Apple SDK; not verified on Linux')
@@ -67,7 +77,8 @@ def main():
         if a.peripheral:command.extend(['--peripheral',a.peripheral])
         if a.abort_only:command.append('--abort-only')
         if a.chunk_bytes is not None:command.extend(['--chunk-bytes',str(a.chunk_bytes)])
+        if a.minimum_received is not None:command.extend(['--minimum-received',str(a.minimum_received)])
         if a.data_delay_ms is not None:command.extend(['--data-delay-ms',str(a.data_delay_ms)])
-        try:return subprocess.run(command,env=env,timeout=310).returncode
+        try:return subprocess.run(command,env=env,timeout=310,pass_fds=inherited_lock_fds()).returncode
         except KeyboardInterrupt:print('STOPPED: rerun the SAME saved session; outcome not assumed');return 130
 if __name__=='__main__':raise SystemExit(main())

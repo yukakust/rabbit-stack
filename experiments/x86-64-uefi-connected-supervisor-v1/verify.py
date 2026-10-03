@@ -71,6 +71,7 @@ unsigned host_status_full(uint8_t*out){
 int host_status_check(const uint8_t*p,unsigned n,const uint8_t*nonce,const uint8_t*digest,unsigned counter,unsigned length){
  uint32_t received;return rs_status(p,n,nonce,digest,counter,length,&received);
 }
+int host_resume_allowed(unsigned received,unsigned confirmed,unsigned minimum){return rs_resume_allowed(received,confirmed,minimum);}
 ''')
         lib=d/'host.so'
         subprocess.run(['cc','-std=c11','-O2','-shared','-fPIC','-Wall','-Wextra','-Werror',
@@ -81,6 +82,11 @@ int host_status_check(const uint8_t*p,unsigned n,const uint8_t*nonce,const uint8
     @classmethod
     def tearDownClass(cls):cls.temp.cleanup()
     def setUp(self):self.lib.host_init(1)
+    def test_resume_preserves_saved_prefix_across_process_restart(self):
+        for received,confirmed,minimum,allowed in [(0,0,0,1),(499,0,500,0),(500,0,500,1),
+                                                  (499,500,0,0),(501,500,500,1),(0,0,35049,0),
+                                                  (35049,0,35049,1)]:
+            self.assertEqual(self.lib.host_resume_allowed(received,confirmed,minimum),allowed)
     def policy(self,counter=0):
         p=Policy();p.target[:]=self.target;p.owner[:]=self.owner;p.base[:]=self.base;p.state[:]=digest(b'world');p.counter=counter;return p
     def release(self):return pack(self.modules[2],private=self.key,target=self.target,base_runtime=self.base,world=b'world',counter=1)

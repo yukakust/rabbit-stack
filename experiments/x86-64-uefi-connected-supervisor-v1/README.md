@@ -427,9 +427,9 @@ and one process owns the state lock. Scene observation remains an owner check.
 World authority is the installed PUBLIC development Creator, never the private
 owner-native key. This helper cannot create/sign/install native drivers or modify
 the immutable bootstrap. Host evidence includes a real Codex speed proposal and
-resident-C checks: `evidence/connected-text-world-host-ready.json`. New orchestration
-physical text-intent delivery is pending; host mocked sender tests are not physical
-evidence. Future artwork/inventory integration and voice are separate work.
+resident-C checks: `evidence/connected-text-world-host-ready.json`. The later hat
+request below exercised physical asset delivery; host mocked sender tests are not
+physical evidence. Automatic artwork/inventory integration and voice remain work.
 
 
 ### Generated artwork through the same checked path
@@ -449,3 +449,30 @@ managed state updated fromworld2 toworld3, pending cleared. Nativecounter3 uncha
 (consumed by prior rejected native trial); no module/media/network/reboot/key action.
 Owner confirms cat wearing hat on physical Dell. Movement after the hat update was not explicitly reconfirmed. Evidence: `evidence/dell-connected-cat-red-hat.json`.
 No full-stage elapsed time claim; previews/240-tick checks remain host evidence.
+
+### State-aware recovery and common status
+
+`ask_connected_world.py --status` returns local JSON; adding `--query` archives a
+read-only Dell query and includes its correlated receipt without promoting state.
+Every delivery/resume now starts with a read-only query. Exact already-applied
+receipts finish the local operation without DATA/COMMIT; full saved STAGING goes
+straight to COMMIT. Partial STAGING resumes the same saved session, with at most
+two attempts per invocation. Rejection, application pending, foreign active state
+and lost receiver prefix remain distinct unresolved outcomes.
+
+Confirmed-prefix watermarks survive process restarts through report and streamed
+logs, including timeouts. The sender receives `--minimum-received` and checks it
+before DATA/COMMIT, closing the read/BEGIN reset race. Receiver loss blocks replay,
+new nonce/counter and draft discard; it requires receiver diagnosis. The state
+lock is inherited by both Python sender and native Mac process, so an orphan
+sender retains custody until bounded completion; competing controllers fail busy.
+
+16 orchestration tests and16 native/transport host tests pass. The actual Mac
+compiled the changed sender and read the retained world3 hat receipt. A separate
+local fixture simulated a lost response/currentworld2+pendingworld3; real Dell
+query promoted only that isolated state toworld3, with no BEGIN/DATA/COMMIT/ABORT
+and byte-identical managed state. This is physical read-only receipt recovery,
+not an induced physical radio failure or a radio stability fix. Evidence:
+`evidence/connected-world-control-recovery.json` and referenced archives.
+
+Global remaining milestones: [world control plan](../../docs/CONNECTED-WORLD-CONTROL-PLAN.md).

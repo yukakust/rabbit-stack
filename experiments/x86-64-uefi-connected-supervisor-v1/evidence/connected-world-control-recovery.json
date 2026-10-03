@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "status": "PHYSICAL-READ-ONLY-EXACT-RECEIPT-RECOVERY-WITH-SIMULATED-LOCAL-UNCERTAINTY",
+  "local_uncertainty_simulated": true,
+  "physical_disconnect_induced": false,
+  "actual_dell_read_only_queries": 3,
+  "receiver_applied_world_counter": 3,
+  "receiver_package_sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+  "exact_session_counter_digest_length_receipt_matched": true,
+  "isolated_state_counter_before": 2,
+  "isolated_state_counter_after": 3,
+  "isolated_pending_after": null,
+  "managed_state_unchanged": true,
+  "managed_state_sha256": "354b4eca39b2fa49d8fe291f6408bae52a935dd7be0f7bdd36303cadc480f00d",
+  "new_world_or_native_sent": false,
+  "begin_data_commit_abort_sent": false,
+  "native_counter": 3,
+  "native_counter_basis": "retained historical rejected native3; not queried independently",
+  "host_flow_tests_passed": 16,
+  "host_native_transport_tests_passed": 16,
+  "source_hashes": {
+    "experiments/x86-64-uefi-connected-supervisor-v1/ask_connected_world.py": "89db729c8e6c2445ac68c79fbcc0ee8296b8cbcd340f9eebe0fa3a075073dbd0",
+    "experiments/x86-64-uefi-connected-supervisor-v1/delivery_status.py": "53026b3cbee9e6e592119d9ba08549b3a8374dd4b07a4b75f12c8c21a67618d7",
+    "experiments/x86-64-uefi-connected-supervisor-v1/send_file.py": "3381f25debee62efeefc0413d7fd8ad2f03a4b71056a88306b2d4512006c1cd6",
+    "experiments/ble-connected-file-transfer-v1/mac_file_sender.m": "ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e",
+    "experiments/ble-connected-file-transfer-v1/sender_status.h": "0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f"
+  },
+  "archives": {
+    "dell-connected-world-receipt-recovery.log": "00b201663f0a4847e0855561dbeb5a6ec7b883418897cd12a27cd1d0d3646a62",
+    "connected-world-recovery-host-checks.log": "586e95967d6cf61f6c89f1f168d8bfffa1bd9daf10eda6fda3d926e28b1c45e4",
+    "dell-connected-world-control-status.json": "89fda0669870867d4719db75487a3ec8e748f9606fbe60702c085cf6809437a6"
+  },
+  "limitations": "Host injected failures are not physical Bluetooth failures. Read-only recovery checks actual retained receipt, not authenticated attestation or independent screen/motion. Radio reset cause and long-run reliability remain unproven. Asset generation is agent-assisted; automatic native upgrades and voice are not implemented."
+}

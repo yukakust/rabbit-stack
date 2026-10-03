@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "current_world": {
+    "id": "ginger-cat-red-hat-walk-v1",
+    "counter": 3,
+    "sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+    "package_sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3"
+  },
+  "authority": "installed-public-development-world-creator-NOT-owner-native",
+  "pending": null,
+  "capabilities": {
+    "text_objects_programs": true,
+    "checked_asset_candidate": true,
+    "automatic_native_upgrade": false,
+    "voice": false
+  },
+  "receiver": {
+    "outcome": "applied",
+    "state": 2,
+    "error": 0,
+    "received": 35049,
+    "length": 35049,
+    "counter": 3,
+    "sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+    "session_matches": true,
+    "raw_hex": "524653015a3c0d4b4a73bc86e9880000e988000002000000030000008761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+    "device_attestation": false
+  },
+  "device_attestation": false,
+  "query_archive": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/status-4w4v9w36"
+}

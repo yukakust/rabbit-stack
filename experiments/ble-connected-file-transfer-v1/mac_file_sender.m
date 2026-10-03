@@ -17,7 +17,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @property(nonatomic,strong) CBCharacteristic *control,*data,*status;
 @property(nonatomic,strong) NSData *stream,*nonce,*expectedDigest;
 @property NSUInteger offset,pending;
-@property NSUInteger confirmed,pauseAfter;
+@property NSUInteger confirmed,pauseAfter,minimumReceived;
 @property NSUInteger chunkBytes,dataDelayMs;
 @property NSUInteger connectionGeneration;
 @property NSTimeInterval startedAt;
@@ -167,8 +167,8 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
     [waitingPeer readValueForCharacteristic:waitingStatus];}];return;
  }
  if(self.phase!=1&&self.phase!=4){[self fail:@"final receipt absent or unexpected status phase"];return;}
- if(received<self.confirmed){
-  printf("RECEIVER STAGING REGRESSED: previously confirmed=%lu now=%u; receiver reset/loss possible, NOT same-boot resume\n",(unsigned long)self.confirmed,received);
+ if(!rs_resume_allowed(received,(uint32_t)self.confirmed,(uint32_t)self.minimumReceived)){
+  printf("RECEIVER STAGING REGRESSED: previously confirmed=%lu now=%u; receiver reset/loss possible, NOT same-boot resume\n",(unsigned long)MAX(self.confirmed,self.minimumReceived),received);
   [self fail:@"receiver staging regressed; inspect Dell state before resuming SAME session"];return;
  }
  self.offset=self.confirmed=received;
@@ -182,7 +182,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @end
 int main(int argc,char**argv){@autoreleasepool{
  setvbuf(stdout,NULL,_IONBF,0);
- if(argc<2||argc>9)return 2;
+ if(argc<2||argc>11)return 2;
  NSData*raw=[NSData dataWithContentsOfFile:[NSString stringWithUTF8String:argv[1]]];
  NSDictionary*b=raw?[NSJSONSerialization JSONObjectWithData:raw options:0 error:nil]:nil;
  if(![b isKindOfClass:NSDictionary.class]||![b[@"stream_base64"] isKindOfClass:NSString.class]||![b[@"session_base64"] isKindOfClass:NSString.class]||![b[@"counter"] isKindOfClass:NSNumber.class])return 2;
@@ -190,7 +190,7 @@ int main(int argc,char**argv){@autoreleasepool{
  id kind=b[@"kind"];if(kind&&![kind isKindOfClass:NSNumber.class])return 2;
  Sender*s=[Sender new];s.stream=[[NSData alloc]initWithBase64EncodedString:b[@"stream_base64"] options:0];s.nonce=[[NSData alloc]initWithBase64EncodedString:b[@"session_base64"] options:0];s.counter=[b[@"counter"] unsignedIntValue];s.kind=kind?[kind unsignedIntValue]:1;
  if((s.kind!=1&&s.kind!=2)||s.stream.length<=32||s.stream.length>(s.kind==1?65567u:262176u)||s.nonce.length!=8||!s.counter)return 2;
- s.chunkBytes=240;BOOL chunkSpecified=NO,delaySpecified=NO;
+ s.chunkBytes=240;BOOL chunkSpecified=NO,delaySpecified=NO,minimumSpecified=NO;
  for(int i=2;i<argc;i++){
   if(!strcmp(argv[i],"--query-only")){if(s.queryOnly)return 2;s.queryOnly=YES;}
   else if(!strcmp(argv[i],"--abort-only")){if(s.abortOnly)return 2;s.abortOnly=YES;}
@@ -199,6 +199,9 @@ int main(int argc,char**argv){@autoreleasepool{
   }else if(!strcmp(argv[i],"--chunk-bytes")){
    if(++i>=argc||chunkSpecified)return 2;char*end=0;unsigned long value=strtoul(argv[i],&end,10);
    if(!argv[i][0]||*end||!value||value>240)return 2;s.chunkBytes=value;chunkSpecified=YES;
+  }else if(!strcmp(argv[i],"--minimum-received")){
+   if(++i>=argc||minimumSpecified)return 2;char*end=0;unsigned long value=strtoul(argv[i],&end,10);
+   if(!argv[i][0]||*end||value>s.stream.length)return 2;s.minimumReceived=value;minimumSpecified=YES;
   }else if(!strcmp(argv[i],"--data-delay-ms")){
    if(++i>=argc||delaySpecified)return 2;char*end=0;unsigned long value=strtoul(argv[i],&end,10);
    if(!argv[i][0]||*end||!value||value>100)return 2;s.dataDelayMs=value;delaySpecified=YES;
@@ -207,7 +210,7 @@ int main(int argc,char**argv){@autoreleasepool{
    if(!argv[i][0]||*end||!value||value>=s.stream.length||s.pauseAfter)return 2;s.pauseAfter=value;
   }
  }
- if((s.queryOnly&&s.abortOnly)||(s.queryPeripheral&&!s.queryOnly)||((s.queryOnly||s.abortOnly)&&(s.pauseAfter||chunkSpecified)))return 2;
+ if((s.queryOnly&&s.abortOnly)||(s.queryPeripheral&&!s.queryOnly)||((s.queryOnly||s.abortOnly)&&(s.pauseAfter||chunkSpecified||minimumSpecified)))return 2;
  if(delaySpecified&&(!s.pauseAfter||s.queryOnly||s.abortOnly))return 2;
  if(delaySpecified)printf("STAGING DIAGNOSTIC DATA DELAY=%lu ms; NO COMMIT\n",(unsigned long)s.dataDelayMs);
  if(!s.queryOnly&&!s.abortOnly)printf("DATA CHUNK LIMIT=%lu bytes (excluding offset)\n",(unsigned long)s.chunkBytes);

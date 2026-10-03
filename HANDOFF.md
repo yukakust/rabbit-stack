@@ -1870,3 +1870,35 @@ receipt and worldcounter3 unchanged; no new radio or hardware action. Evidence
 and generation provenance updated with verbatim observation. Next roadmap work:
 consolidate convenient text edits/current world assets, then voice through the
 same checked delivery path and reusable Creation Inventory components.
+
+
+## Connected controller recovery and global roadmap — 2026-10-03
+
+Owner authorized global reliability/common execution work («делай»), not another
+scene modification. Added read-only preflight and exact receipt reconciliation to
+ask_connected_world.py. Local lost COMMIT response can finish from exact saved
+session/hash/counter/full-length applied receipt without replay. Saved confirmed
+prefix survives across process invocations/partial logs; Mac sender receives a
+minimum prefix before DATA/COMMIT to catch reset between query and BEGIN. Prefix
+loss, foreign active session, exact rejection, application pending and unreachable
+receiver remain explicit distinct statuses. At most two resumable attempts per
+call; no new nonce/counter or reboot used to hide uncertainty. Locks inherited
+through Python/native senders retain custody if a parent exits; competitor fails
+busy. --status emits common local JSON; --status --query adds read-only receiver
+state without promoting current state. Partial logs are archived even on timeout.
+
+16 orchestration checks and16 C/native/transport host checks pass. Changed sender
+compiled on actual Mac; real Dell returned retained exact applied hatworld3 receipt.
+Separate local simulated lost-response fixture (current2/pending3) reconciled via
+ONE real read-only Dell query to isolated current3/pending=null. No new world/native,
+BEGIN/DATA/COMMIT/ABORT, media write, reboot, network change or owner-key access.
+Managed runs/text-world/state.json remains byte-identical, actual hatworld3.
+Do not call this an induced physical radio failure: local uncertainty was simulated.
+Source hashes/logs/results: connected evidence/connected-world-control-recovery.json.
+Radio reset cause and sustained reliability are still unproven. Common controller
+supports bounded text data edits and supplied generated V3 asset worlds; automatic
+artwork planning/native upgrades, voice and inventory integration remain unfinished.
+Next global milestones and acceptance criteria: docs/CONNECTED-WORLD-CONTROL-PLAN.md.
+Nativecounter3 separate/consumed; next new native>=4 bound to active hat signedworld.
+Owner hat appearance confirmation supersedes older pending observation; movement
+after hat update was not explicitly reconfirmed.

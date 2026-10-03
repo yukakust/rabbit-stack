@@ -4,6 +4,9 @@
 #include <stdint.h>
 #include <stddef.h>
 enum { RS_INVALID,RS_STAGING,RS_APPLIED,RS_PENDING,RS_REJECTED };
+static inline int rs_resume_allowed(uint32_t received,uint32_t confirmed,uint32_t saved_minimum){
+ return received>=confirmed&&received>=saved_minimum;
+}
 static inline uint32_t rs_u32(const uint8_t*p){return p[0]|((uint32_t)p[1]<<8)|((uint32_t)p[2]<<16)|((uint32_t)p[3]<<24);}
 static inline int rs_equal(const uint8_t*a,const uint8_t*b,size_t n){uint8_t x=0;for(size_t i=0;i<n;i++)x|=a[i]^b[i];return !x;}
 static inline int rs_status(const uint8_t*p,size_t n,const uint8_t*nonce,
