@@ -1508,3 +1508,38 @@ NEXT: obtain physical native15/BMI facts, add validated RAM allocations and
 owner/target asset policy to a separately gated native candidate, wire secondary
 ATT handler, then normal+EMPTY UEFI/current-world gates before physical update.
 Firmware compatibility, upload/startup, scan/WPA/DHCP/reconnect remain incomplete.
+
+## 2026-10-04 — UEFI RAM adapter and native asset service wired; policy disabled
+
+Added firmware_port.c/h. Before allocation require native-owned QPD7 clean BMI
+success, exact Dell PCI identity, ROM-ready/no-crash, no reset/DMA/bus/IRQ claims,
+and exact reviewed policy BMI type/version match. This is not firmware
+compatibility inference. Owner/target policy cannot come from incoming packets.
+Typed AllocatePool/FreePool callbacks, System/Boot headers and stable callback
+pointers are checked. Allocate BootServicesData asset RAM plus65760byte workspace
+cooperatively; pin prevents cleanup/unload, cancel zeroes asset before freeing.
+NULL allocation errors unwind; non-NULL error/overflow/overlap retains opaque
+ownership without dereferencing/freeing. Failed free keeps claim for retry.
+
+11 ASan/UBSan host scenarios pass: both allocation failures, NULL success,
+ambiguous outputs, overlap, both free failures/retry, changed callback/recovery,
+and pinned complete signed751436byte test asset/cleanup. x86-64 UEFI COFF and
+pinned iPXE header AllocatePool64/FreePool72/type4/SystemTable120 ABI gates pass.
+
+asset_build.py wires adapter, poll, ATT delegation and stop/close/unload guards
+into a separate native city+BMI candidate. Compiled asset policy is ZERO/DISABLED
+because physical BMI/firmware compatibility is still missing. Exact twice-built
+unsigned payload SHA256:
+5ac507dfbadf542ccb52ec1e1f512e0baf46040d1d8cd130f973c72a317feaa0.
+Actual normal+EMPTY UEFI city/BT/rejection/recovery tests pass. Actual UEFI asset
+service11..17 discovery,64byte status/read-blob bounds and BEGIN denial pass via
+mock USB ATT, QCA absent, no asset allocation. Host positive RAM/BMI identity is
+synthetic, not a physical result or positive UEFI allocation test. Evidence under
+native-wifi-qca9377-v1/evidence/2026-10-04/firmware-uefi-port.
+
+No signing, new release/session, physical write, USB or reboot. Pending signed
+native15 and saved native14/world12 remain unchanged. Native owner route does NOT
+authorize this disabled-policy profile for delivery. NEXT: physical native15/BMI
+facts; separately authorize exact firmware policy, test positive UEFI allocation
+and full asset transfer/lifetime, then exact current-world/reproduction/owner
+gates. Actual firmware upload/startup, radio/WPA/DHCP/reconnect still incomplete.

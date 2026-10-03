@@ -1,0 +1,49 @@
+{
+  "status": "FIRMWARE-ASSET-DISABLED-NATIVE-UEFI-CITY-GATES-PASS",
+  "build_host": "yukabox",
+  "payload_sha256": "5ac507dfbadf542ccb52ec1e1f512e0baf46040d1d8cd130f973c72a317feaa0",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-v1/asset_build.py": "0b22914b33df7b2e6d6e40c0d9759b5848b785f8e15aad8bdafd1e22c8553200",
+    "experiments/native-wifi-qca9377-v1/verify_asset_profile.py": "8c1ddca62dd9ba2d11927aea84f1bb3701a011a6a4ba180f2516a85be9f74fb8",
+    "experiments/native-wifi-qca9377-v1/firmware_port.c": "1b60cf3343fa5da5d243b520c8d1ef08dcab530c56c1d6e2be2c93447c2faaab",
+    "experiments/native-wifi-qca9377-v1/firmware_port.h": "42f189a9523f6bae80cacf8c1d40333ad0b5ae16eea084dcac8e15e2e76b4d64",
+    "experiments/native-wifi-qca9377-v1/firmware_channel.c": "1f563dae553244c6fbc9781a7d987de0d30b301945430111b544b52f918bb10d",
+    "experiments/native-wifi-qca9377-v1/firmware_channel.h": "f4c9d3a45d0639cd7438caa69d8745d019725b84ddca8d3c20aaae166d8b9ca7",
+    "experiments/native-wifi-qca9377-v1/firmware_gatt.c": "9124f6d14d8b404e0731d1529550294ef8d05bc5b0445186f3663290c44d9ae8",
+    "experiments/native-wifi-qca9377-v1/firmware_chunks.c": "093fb59a143a60753785bb4ceddefc5827480c085361c898ad63f999cca6a26c",
+    "experiments/native-wifi-qca9377-v1/firmware_chunks.h": "fb42e22a4a560d158dc5e2dcf1186049009a42c3a461a2015ba133ff34c8dea5"
+  },
+  "native15_baseline_gate_sha256": "044d159af33acee50fec04a94bdafe3c5df2aa835cbcea2b89eff55c5e4473d2",
+  "ram_port_gate_sha256": "e04b1cb4135f7780b81f295f5c5f6621eb4bc759878592646e098d55fe145f24",
+  "gates": [
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "5ac507dfbadf542ccb52ec1e1f512e0baf46040d1d8cd130f973c72a317feaa0",
+      "empty_boot": false,
+      "background": "121826",
+      "observed_log_sha256": "fbe0af47716bb66ea8055fff0a2f4ecc72f690f03bcd94e1b4c90bff2ed9b93e",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "3a15e3d31f63d0b7c31d516d29d8eaf45460bba94967c50b11dc83b099504d74"
+    },
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "5ac507dfbadf542ccb52ec1e1f512e0baf46040d1d8cd130f973c72a317feaa0",
+      "empty_boot": true,
+      "background": "121826",
+      "observed_log_sha256": "fbe0af47716bb66ea8055fff0a2f4ecc72f690f03bcd94e1b4c90bff2ed9b93e",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "54f61240e5d153e69433c0171504bd59474e6b9f3763a3ec83096421f2148002"
+    }
+  ],
+  "asset_policy_enabled": false,
+  "actual_uefi_att_execution": true,
+  "actual_uefi_ram_allocation": false,
+  "physical_bluetooth_transfer": false,
+  "owner_signing": false,
+  "firmware_upload": false,
+  "wifi_association": false
+}

@@ -66,6 +66,29 @@ matching live state/receipts, never an assumption from a saved Mac bitmap.
 
 ## Remaining integration
 
+`firmware_port.c` owns UEFI BootServicesData allocations for the reviewed asset
+and65760byte packet workspace, with at most one allocation/free per step. It
+checks System/Boot table headers and exact AllocatePool/FreePool pointers before
+calls. Before allocating, it requires a native-owned QPD7 successful BMI/clean
+shutdown snapshot with exact Dell identity and manifest type/version match.
+It does not accept client-supplied diagnostic bytes or infer compatibility from
+the match. The owner/target adapter still must authorize the exact firmware/board
+policy. Allocation failures with NULL output can unwind; non-NULL failure output,
+pointer overflow or overlapping buffers retain uncertain ownership without any
+dereference/free. FreePool error retains the corresponding allocation for retry
+under the trusted UEFI API contract. Pin blocks cleanup; cancel zeroes accepted
+asset RAM before free. Opaque/uncertain ownership blocks native unload.
+
+`asset_build.py` wires this adapter/ATT service into the existing city+BMI driver,
+including stop/close/unload guards. Its compiled policy is deliberately disabled:
+there is no physical BMI reply or compatibility evidence yet. The signed native15
+candidate and all its sources remain unchanged. The separate unsigned asset
+candidate has actual normal/EMPTY UEFI city/ATT discovery/read/blob/denied-write
+gates, with QCA absent and no asset allocation. This proves service integration
+and rejection, not firmware reception or positive UEFI allocation. RAM allocations
+and BMI snapshots in the11 host adapter scenarios are mock fixtures. No owner
+signing, physical update, firmware execution or Wi-Fi connection in these gates.
+
 `mac_firmware_sender.m` sends one previously signed chunk. The portable
 firmware_sender_core parses exact64byte receipts and decides BEGIN/DATA/COMMIT
 or finish/reject/loss/busy. It detects confirmed-prefix regression and refuses
