@@ -851,3 +851,58 @@ identity evidence or a QCA hardware model. New pci-report/serial/host logs saved
 Before active city integration remove VM serial/poweroff harness; keep only the
 bounded read routine and deterministic decode. Native identity/data lifecycle/
 size gates are still required, and no physical profile has been signed or sent.
+
+## 2026-10-04 — superseding status: physical PCI diagnostics applied, native9/world12
+
+The preparation-only/native7 statements above are historical. Signed on Mac and
+sent via the existing saved-session paced Bluetooth workflow: native8 and native9
+both have exact correlated APPLIED receipts. Current payload SHA256
+`18e271a20a61005bb67e15622177886446980777bf24eaaa207b0e03c3ca791b`, native counter9;
+world counter12/packageSHA6414d1bae588acfef261d8c6befc8fc1edb96fb76892a33c47f8d3b2c05bb180
+unchanged; native_pending=null. Installed bootstrap/owner gate still unchanged.
+Mapped image3895296bytes within immutable4MiB. No reboot/USB/disk/firmware/OTP change.
+Owner secret used locally only; never printed/copied to Yukabox.
+
+Read-only `pci_collect.c` runs at driver attach. No VM UART/poweroff code is
+included. Exact current-world/source/pinned-crypto double rebuilds, host sanitizer
+checks and normal+EMPTY real UEFI city/fullscreen/clock/snapshot/rollback/rejection
+gates ran on Yukabox. The exact VM candidate's PCI snapshot was read through mock
+USB ATT (QCA absent in OVMF, not hardware emulation). Candidate preparation/signing
+uses `native_route.py` and binds reproduction/source/evidence/session/base state.
+
+Native8 added a fourth file-service characteristic; Mac still returned only its
+old three and two diagnostic attempts failed. Native9 preserves file handles1..7,
+adds primary service UUID ending0005 at8..10 and read-only characteristic UUID
+ending0006 at10. `read_pci.m` successfully fetched QPD1/128bytes from the same
+peripheralF45BFCB2-ABC2-AB4E-BB0F-310A54D424AF. No reader write API, no attestation.
+Physical snapshot:16handles, one168c:0042, subsystem1028:1810, PCI revision0x31,
+0000:02:00.0, 64-bit BAR0=0xd1000000, command0x0100 (memory and bus master disabled).
+PCI revision is not SoC/BMI revision. Exact board-catalog match8124bytes,
+SHA256b2713b77c725b0ff81af75c85c3aeba97885d0f40174f715b1e39d5a9d50f4e7;
+still a candidate, not calibration upload authorization before SoC/BMI validation.
+
+Initial port components `uefi_port.c`/`wake_core.c` and `wake-target.json` are
+implemented. They exclusively claim PCI IO, check fresh identity/BAR descriptor,
+allow memory-only enable and bounded allowlisted IO, cooperate with a monotonic
+deadline, and retain ownership after ambiguous writes/failed cleanup. Wake clears
+before attribute restoration and protocol close. Host ASan/UBSan mocks and COFF
+ABI checks against pinned UEFI headers passed on Yukabox. These components are NOT
+linked into native9 and have NOT performed physical PCI/MMIO writes. DMA/CE/BMI,
+firmware startup/WMI/HTT/scan/WPA/DHCP remain unimplemented. Wi-Fi does not work yet.
+
+Remote workspaces: `/home/yuka/rabbit-world/wifi-city-profile-v1` and
+`wifi-city-profile-v2` (tracked source snapshot, no owner secret). Evidence under
+`experiments/native-wifi-qca9377-v1/evidence/2026-10-04/diagnostic` contains exact
+gates/reproduction, both delivery logs/reports, raw/decoded physical PCI,
+failed first read attempts, board candidate and initial port checks. Original
+native8 source variants are archived there; current source implements native9.
+
+NEXT: owner screen/animated-tail observation pending (async question already sent).
+Before physical MMIO bring-up finish a separately gated profile with validated BAR
+extent, lifecycle cleanup/rollback/coexistence and SoC chip-ID telemetry, using the
+initial port. Then build bounded DMA/CE and BMI get-target-info before selecting
+and uploading firmware. Raw firmware751436bytes, xz476792bytes exceed262144byte
+native transport cap: design owner-verified chunk assets in RAM; do not enlarge
+immutable root limits. SSID/security-mode answer still pending; no password in
+chat/LLM/evidence/Git. There is no credential consumer yet. Continue on Mac for
+control/signing/Bluetooth, all builds/render/tests on Yukabox. Preserve old city.

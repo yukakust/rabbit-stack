@@ -1,0 +1,50 @@
+{
+  "kind": "native-read-only-pci",
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 9,
+  "base_runtime_sha256": "8d3e49b6538192f0668bea1b308c88e876018fa891952397d3a6335fc89e576c",
+  "base_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "6414d1bae588acfef261d8c6befc8fc1edb96fb76892a33c47f8d3b2c05bb180",
+  "payload_sha256": "18e271a20a61005bb67e15622177886446980777bf24eaaa207b0e03c3ca791b",
+  "package_sha256": "fa9bdef12ea6d8432b5d1e766ded3e6b4a30c7ae7680a70c506b36684a65612d",
+  "session_sha256": "8920cecf2f682036218b9fb0cc2e04026459c7b65cbb09acd6e301d852c80c6f",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/runs/checked-v2",
+  "gate": {
+    "report_sha256": "9b3015dfdbaa89f8a03e853eafb39ff90c472c70abed4e38a5d5f14bab737ece",
+    "reproduction_sha256": "c66adb6c37e47664810e3058d8f1a661fc67696bac917e0e2c8908737dda1322"
+  },
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-jnls340k/query-0.log",
+      "log_sha256": "8966ead397c828391a2a6f60959f70bcae46da322c56bd6a9d8c2c782ba5a30a"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-jnls340k/paced-stage-1.log",
+      "log_sha256": "fc05738a5af06d3c37ad5325c9a0674e6bebfcc93d64931d3fd0a4ef7671893f"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-jnls340k/commit-2.log",
+      "log_sha256": "4eda14bf15adf5e2933ab1c3911f864c0185cbbb308f5d1b8d21044d77a32ae9"
+    }
+  ],
+  "receiver_reported_applied": true,
+  "confirmed_received": 49952,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 49952,
+    "length": 49952,
+    "counter": 8,
+    "sha256": "d2212f59ad95657038ee27e915f8a29188112655227bd247c55c3993d5484ce1",
+    "session_matches": false,
+    "raw_hex": "52465301f6c699a39d1fda9520c3000020c300000200000008000000d2212f59ad95657038ee27e915f8a29188112655227bd247c55c3993d5484ce1",
+    "device_attestation": false
+  }
+}

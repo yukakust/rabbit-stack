@@ -60,7 +60,7 @@ CITY_TEST=r'''
  say("CITY DATA APPLIED AND LEGACY DATA RESTORED BEFORE ENGINE ROLLBACK");
 '''
 
-def qemu_gate(directory, payload, empty_boot=False):
+def qemu_gate(directory, payload, empty_boot=False, test_transform=None):
     """Execute the exact candidate with actual UEFI LoadImage/StartImage, mock radio."""
     color="121826"
     from run_qemu import firmware
@@ -101,6 +101,7 @@ def qemu_gate(directory, payload, empty_boot=False):
     test=test.replace(marker,marker+CITY_TEST)
     test=test.replace('le32(status+24)!=2||!same(rabbit_test_base(),base_hash,32)||disconnects!=2||pump()', 'le32(status+24)!=4||!same(rabbit_test_base(),base_hash,32)||disconnects!=4||pump()')
     test=test.replace('tampered_stream))||disconnects!=2||violations','tampered_stream))||disconnects!=4||violations')
+    if test_transform is not None: test = test_transform(test)
     (fixture / 'test.c').write_text(test)
     efi = compile_efi(fixture, 'fixture', [fixture / 'test.c', fixture / 'supervisor.c', fixture / 'native_verify.c',
         NATIVE / 'transport_core.c', NATIVE / 'sha256.c', LINK / 'file_core.c', *crypto], definitions=('RABBIT_INTEGRATION_TEST',))

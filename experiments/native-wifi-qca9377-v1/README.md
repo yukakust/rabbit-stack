@@ -1,8 +1,9 @@
-# Native Wi-Fi QCA9377 v1 — preparation, not a working driver
+# Native Wi-Fi QCA9377 v1 — physical diagnostics and initial driver port
 
 Owner chose the internal Wi-Fi: there is no Ethernet cable. Dell in Georgia has
 no installed OS/disk; Mac is command/control and Yukabox in Poland runs Unreal.
-Preserve native7/world12 and its city; no replacing bootstrap/USB or reboot implied.
+Current physical profile is native9/world12. Preserve its city; no replacing
+bootstrap/USB or reboot implied. Wi-Fi is still not associated.
 Wi-Fi authorization is explicit; the old handoff's "unrelated network runtime"
 restriction concerned an earlier engine trial, not this requested transport work.
 
@@ -68,11 +69,13 @@ SSID/security mode question is pending; password must be entered locally when a
 credential consumer exists, never in chat/evidence/Git/LLM input. No credentials
 are accessed by the present scripts. WPA3 support is not assumed.
 
-Loading/recovery **today**: run host scripts on Yukabox; they touch only their
-workspace files. Delete that workspace to remove them. There is no hardware
-loading path yet, and no claim that the Dell Wi-Fi currently works. Future native
-RAM profile must use the existing signature/current-identity/QEMU gates, with
-documented close/rollback and preserved city before hardware activation.
+Loading/recovery: the read-only diagnostic profile now uses the existing native
+owner-signature/current-world gate and resumable Bluetooth transfer. Normal and
+EMPTY UEFI trials verify exact loading, city4/5 snapshots, target-clock motion,
+fullscreen/crop consistency, native rollback and bad update rejection. Both
+native8 and native9 received exact correlated APPLIED receipts on physical Dell.
+World12 package/counter remain unchanged. Normal native rollback remains available;
+no immutable root, USB, disk, reboot or owner-key-copy change was performed.
 
 ```sh
 python3 fetch_materials.py
@@ -82,8 +85,58 @@ python3 verify_pci.py
 
 `verify_pci.py` requires the previous pinned iPXE header workspace at
 `/home/yuka/rabbit-world/dell-network-viewer-v1` and the installed UE Linux Clang/LLD.
-It uses `run_probe.py` only for an isolated virtual device; no driver is loaded on
-physical Dell. Read-only helper integration and exact native gates remain to do.
+It uses `run_probe.py` only for an isolated virtual device. Its UART/poweroff
+harness is never included in the active diagnostic profile.
+
+## Read-only diagnostics deployed on Dell
+
+`diagnostic_build.py` copies the reviewed actor profile and supplies bounded PCI
+enumeration via `pci_collect.c`, with no PCI writes/MMIO/DMA/radio access. Physical
+evidence is in `evidence/2026-10-04/diagnostic/`:16 PCI handles, one target,
+`0000:02:00.0`, vendor/device168c:0042, subsystem1028:1810, PCI revision0x31,
+BAR0=0xd1000000 (64-bit BAR, upper word0), command0x0100 (memory decode and
+bus master disabled). PCI revision is NOT the SoC chip/BMI version.
+
+Native8 added a fourth characteristic to the existing service. Mac continued
+discovering only its old three characteristics; two read attempts failed. Native9
+preserves the original file service range1..7 and adds a distinct primary service:
+`52414242-4954-4649-8000-000000000005`, handles8..10; read-only characteristic UUID
+ending0006 at handle10. `read_pci.m` then successfully read128 QPD1 bytes from the
+same peripheral. This transport record is not device attestation. The snapshot
+is taken at attach, not continuously on each read. No write API exists in reader.
+
+The exact PCI catalog match is8124bytes, SHA256
+`b2713b77c725b0ff81af75c85c3aeba97885d0f40174f715b1e39d5a9d50f4e7`.
+This is a board candidate, not permission/proof to upload calibration before
+fresh SoC/BMI/board-variant validation. Raw firmware751436bytes and even xz476792
+exceed a single262144byte native transfer; firmware delivery needs a bounded,
+owner-verified chunk/asset design, without enlarging immutable root limits.
+
+Builds, host sanitizer checks and actual UEFI VM gates run on Yukabox under
+`/home/yuka/rabbit-world/wifi-city-profile-v1` and `wifi-city-profile-v2`.
+`remote_check.py` binds current source hashes, two identical rebuilds, pinned
+crypto and actual C validation of the current world. `native_route.py` verifies
+those records/current owner/current world and signs locally on Mac, then uses the
+existing paced saved-session sender. Mac performs only control/signing/radio work.
+EFI files, owner secret, downloaded Linux/firmware and credentials stay out of Git.
+
+## Initial driver port: tested, not physically activated
+
+`uefi_port.c` implements exclusive PCI IO claiming, fresh exact identity checks,
+ACPI BAR extent validation, memory-only enable and allowlisted register IO. It
+never enables bus master. `wake_core.c` implements cooperative wake, bounded
+clock/timeout checks and supported chip revision filtering. Failed/ambiguous
+writes keep ownership; shutdown must clear wake, restore original attributes and
+close the protocol successfully before unload. `wake-target.json` separates the
+QCA target facts from universal world data and records pinned ath10k provenance.
+
+`verify_port.py` passed ASan/UBSan host hardware mocks and COFF compilation/ABI
+offset checks against pinned UEFI headers on Yukabox. These components are NOT
+linked into native9 and have NOT touched physical MMIO. DMA/Copy Engine/BMI,
+firmware RAM startup, WMI/HTT, scan, WPA handshake, DHCP and packet transport
+remain unimplemented. Owner observation of city/animated cat after diagnostics
+is pending before physical bring-up. SSID/security mode is pending; password must
+use a future local-only credential consumer, never chat/LLM/logs/Git.
 
 References: [ath10k architecture](https://wireless.docs.kernel.org/en/latest/en/users/drivers/ath10k/architecture.html)
 and [calibration/board data](https://wireless.docs.kernel.org/en/latest/en/users/drivers/ath10k/calibration.html).

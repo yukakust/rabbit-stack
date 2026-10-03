@@ -1,0 +1,25 @@
+{
+  "status": "INITIAL-UEFI-PCI-WAKE-PORT-HOST-MOCK-AND-COFF-ABI-PASS",
+  "source_sha256": {
+    "wake_core.c": "084bd68b55b284a3f15ad77b5ac1d1ed30076f39809b52f43f6e48af8ce9a3a3",
+    "wake_core.h": "02a1d237478b6c25fc609f8500dfee6b1d52fc8ba35422315792fdfa28a12b43",
+    "wake_test.c": "8c9bc1bdbef93fb852c01d3856319dc932e19cc291a98b3ece332efc18cd4b5b",
+    "wake-target.json": "f7c48b45c49f6975be4e6cc61e00a89da3f4608e9e8568a9f141588f4d2a87cd",
+    "uefi_port.c": "ff822f061944ae4d25b5cf611bc2fbce71f350fcefe1698c3425c14725b941a9",
+    "uefi_port.h": "bb7e081f8cd2772237701d2598ea575dc95e37279b88a3f6a6096683a3001726",
+    "port_test.c": "ad86a28d61b28b82980d15fd8aea063cdd55d9a6aa8bfbd0b0dab7d24f2b0cc2",
+    "verify_port.py": "1a5cc46e5cb17f97b8c83094bd605c4cd102e350651f529faf9b03bb916ba994",
+    "pci_identity.c": "6165711757f55b5bb9be9a1df11abbf4af406ee7dc29298d98ab587ce46b5611",
+    "pci_identity.h": "e54f5afb1559068a867bb12637172b5dab4865d698e67373f43b36ffd4079741"
+  },
+  "host_log_sha256": "070795176fabe576245ead63f5d5e76cfbb23fca3cba1724be275bbfc21a816c",
+  "efi_abi_reference": "pinned iPXE6262f1081fe185564e8ec8365a1d23597ec6e6f5 headers",
+  "build_host": "yukabox",
+  "physical_activated": false,
+  "actual_uefi_execution": false,
+  "mmio": "mock only",
+  "dma_implemented": false,
+  "bmi_implemented": false,
+  "firmware_uploaded": false,
+  "wifi_associated": false
+}

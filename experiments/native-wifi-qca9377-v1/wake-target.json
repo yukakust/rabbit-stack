@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "family": "ath10k-qca9377-pci",
+  "pci_vendor": "168c",
+  "pci_device": "0042",
+  "supported_chip_revisions": [0, 1],
+  "bar_index": 0,
+  "minimum_bar_extent": 524296,
+  "registers": {
+    "rtc_state": 524288,
+    "soc_wake": 524292,
+    "soc_chip_id": 2288
+  },
+  "rtc_state_on": 3,
+  "cooperative_deadline_us": 1000000,
+  "deadline_note": "Rabbit bounded cooperative policy; not a measured physical wake time or upstream polling interval",
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "register_source": "drivers/net/wireless/ath/ath10k/hw.c:qca6174_regs,qca6174_values",
+  "register_source_sha256": "7e176346c8def2054138bf3458acd4fbda7fc01d0753b77985f82215b51400f4",
+  "family_selection_source": "drivers/net/wireless/ath/ath10k/core.c:ATH10K_HW_QCA9377",
+  "status": "WAKE-COMPONENT-HOST-MOCK-ONLY-NOT-INTEGRATED",
+  "firmware_upload_verified": false,
+  "physical_chip_revision_verified": false,
+  "wifi_association_verified": false
+}
