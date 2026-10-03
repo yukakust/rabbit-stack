@@ -12,7 +12,7 @@ def bundle(data,kind,counter,nonce=None):
     if type(data) is not bytes or not 1<=len(data)<=maximum or type(counter) is not int or not 1<=counter<=0xffffffff:
         raise ValueError('invalid file kind, size or counter')
     if kind==1:
-        if len(data)<12 or data[:4] not in (b'RUP2',b'RUP3') or struct.unpack_from('<I',data,8)[0]!=counter:
+        if len(data)<12 or data[:4] not in (b'RUP2',b'RUP3',b'RUP4') or struct.unpack_from('<I',data,8)[0]!=counter:
             raise ValueError('signed world header/counter mismatch')
     else:
         if len(data)<257 or data[:4]!=b'RRT3' or struct.unpack_from('<Q',data,24)[0]!=counter:

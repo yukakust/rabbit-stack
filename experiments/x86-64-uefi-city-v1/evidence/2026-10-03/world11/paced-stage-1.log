@@ -1,0 +1,14 @@
+MAC SENDER COMPILED; SOURCE SHA256=ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e
+STATUS VALIDATOR SHA256=0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f
+STAGING DIAGNOSTIC DATA DELAY=50 ms; NO COMMIT
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-65; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=0/384
+STAGING CHECKPOINT=384/384 (not applied)
+STAGED-NOT-APPLIED: deliberate stop; keep Dell powered and rerun SAME saved session without --stage-only-bytes

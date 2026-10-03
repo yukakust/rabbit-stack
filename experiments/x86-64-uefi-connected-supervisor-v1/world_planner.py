@@ -10,6 +10,7 @@ sys.path.insert(0, str(INVENTORY))
 from rabbit_inventory import load_json, validate_catalog, component_identity
 from llm_world import obj, array, integer, validate_schema, strict_json, WORLD_SCHEMA
 from drawing_renderer import DRAWING, render as render_drawing
+CITY_SCHEMA = flow.city_module('city_world').SCHEMA
 
 ASSET_REF = obj({'component_id': {'type': 'string', 'maxLength': 100},
                  'sprite_id': integer(1, 254), 'display_width': integer(1, 64), 'display_height': integer(1, 64)})
@@ -27,6 +28,7 @@ SCHEMA = obj({
     'inventory_assets': array(ASSET_REF, 0, 8),
     'created_sprites': array(NEW_SPRITE, 0, 4),
     'created_drawings': array(DRAWING, 0, 2),
+    'city_world': {'anyOf': [CITY_SCHEMA, {'type': 'null'}]},
     'background': {'anyOf': [{'type': 'string', 'pattern': '^[0-9a-f]{6}$'}, {'type': 'null'}]},
     'restore_version': {'anyOf': [{'type': 'string', 'maxLength': 64}, {'type': 'null'}]},
     'missing_capabilities': array({'type': 'string', 'maxLength': 120}, 0, 8),
@@ -67,7 +69,19 @@ Preserve unrelated art. Smooth mouse has one pose: VM moves it, not animated paw
 For a history restore use exact restore_version from supplied versions and null
 objects/programs/background, empty asset lists. Restore means a NEW increasing
 counter, not replaying an old signed package. Never invent a version.
-Unsupported features (3D, arbitrary physics/new VM opcodes, files, network, sound,
+When capabilities includes city4, 3D houses/boxes/roads are supported: city_world
+contains the COMPLETE resulting schema4 city, and all 2D edit fields/background
+are null or empty. Preserve existing building IDs, names, dimensions, colors and
+positions unless asked to change them. An add-house request adds a unique ID and
+keeps ALL previous buildings and camera. Units are centimetres; yaw0 faces +Z,
+yaw64 +X. Camera commands change camera only: forward is +Z at yaw0; a modest
+step is200cm, turn is16 yaw units (22.5 degrees). Sky/ground are city data, not a
+native background update. Houses have gabled roofs/windows/doors. Box is a solid
+rectangular volume; road is a low box. Max64 buildings, dimensions<=3000cm,
+positions X/Z ±20000cm. Models/textures/characters/physics are not yet city4
+capabilities. Existing 2D history remains available through restore_version.
+Without city4 capability keep city_world null and report 3D unsupported.
+Unsupported features (arbitrary physics/new VM opcodes, files, network, sound,
 firmware, native code or unaudited engine capabilities) return status unsupported,
 null data/background/restore, empty asset lists, describe missing_capabilities.
 The host chooses the route and validates signatures/health; you cannot waive checks.
@@ -104,15 +118,18 @@ def asset_identity(card):
 
 
 def parse_plan(text):
-    plan = strict_json(text); plan.setdefault('created_drawings', []); validate_schema(plan, SCHEMA)
+    plan = strict_json(text); plan.setdefault('created_drawings', []); plan.setdefault('city_world', None); validate_schema(plan, SCHEMA)
     if (plan['objects'] is None) != (plan['programs'] is None):
         raise ValueError('objects/programs must be supplied together')
     if plan['status'] == 'unsupported' and any((plan['objects'] is not None, plan['inventory_assets'],
-            plan['created_sprites'], plan['created_drawings'], plan['background'], plan['restore_version'])):
+            plan['created_sprites'], plan['created_drawings'], plan['city_world'], plan['background'], plan['restore_version'])):
         raise ValueError('unsupported plan cannot contain executable changes')
     if plan['restore_version'] and any((plan['objects'] is not None, plan['inventory_assets'],
-                                      plan['created_sprites'], plan['created_drawings'], plan['background'])):
+                                      plan['created_sprites'], plan['created_drawings'], plan['city_world'], plan['background'])):
         raise ValueError('restore cannot mix a new edit')
+    if plan['city_world'] is not None and any((plan['objects'] is not None, plan['inventory_assets'],
+                                              plan['created_sprites'], plan['created_drawings'], plan['background'])):
+        raise ValueError('city cannot mix 2D edits or native background effects')
     if (plan['inventory_assets'] or plan['created_sprites'] or plan['created_drawings']) and plan['objects'] is None:
         raise ValueError('asset plan requires resulting objects/programs')
     return plan
@@ -120,10 +137,11 @@ def parse_plan(text):
 
 def propose(intent, state, versions):
     base = flow.current(state)
-    library = assets()
+    library = assets() if base['schema_version'] == 3 else {}
     context = {'base_world_sha256': state['world_sha256'], 'background': state.get('engine', {}).get('background', '121826'),
                'world': {k: v for k, v in base.items() if k != 'sprites'},
-               'sprites': [{k: v for k, v in s.items() if k != 'frames'} for s in base['sprites']],
+               'capabilities': ['v3', 'city4'] if state.get('engine', {}).get('family') == 'reviewed-city-v1' else ['v3'],
+               'sprites': [{k: v for k, v in s.items() if k != 'frames'} for s in base.get('sprites', [])],
                'inventory': [{'component_id': key, 'name': value['name'], 'summary': value['summary'],
                               'sha256': asset_identity(value)} for key, value in library.items()],
                'versions': [{'id': v['id'], 'request': v['request'], 'world_counter': v['world_counter'],
@@ -175,6 +193,14 @@ def compose(state, plan):
     if plan['status'] != 'ready': raise ValueError('unsupported request')
     if plan['restore_version']: raise ValueError('restore must resolve checked history first')
     world = copy.deepcopy(flow.current(state)); provenance = []
+    if plan['city_world'] is not None:
+        flow.city_ready(state)
+        city = copy.deepcopy(plan['city_world']); flow.city_module('city_world').validate(city)
+        return city, state['engine']['background'], [{'kind': 'bounded-procedural-city4'}]
+    if world['schema_version'] == 4:
+        if any((plan['objects'] is not None, plan['inventory_assets'], plan['created_sprites'], plan['created_drawings'], plan['background'])):
+            raise ValueError('city edits require the complete city4 data candidate')
+        return world, state['engine']['background'], provenance
     if plan['objects'] is not None:
         world['objects'] = copy.deepcopy(plan['objects']); world['programs'] = copy.deepcopy(plan['programs'])
         # Removed/replaced objects do not keep invisible art in the bounded wire package.

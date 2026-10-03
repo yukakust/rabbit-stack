@@ -29,6 +29,10 @@ class Server(ThreadingHTTPServer):
                 self.last_error = None
                 if operation == 'request': self.controller.execute(data['intent'], data.get('source', 'text'), data.get('id'))
                 elif operation == 'restore': self.controller.execute('Восстановить сохранённую версию', restore=data['version'])
+                elif operation == 'recover' or flow.read_json(self.controller.state_path).get('recovery_pending'):
+                    result = flow.city_module('city_recovery').recover(self.controller.state_path,self.controller.private_path,
+                                                                   dell_rebooted=operation=='recover',resume=operation!='recover')
+                    if result['status'] != 'APPLIED': self.last_error = 'Восстановление пока не подтверждено. Продолжите сохранённую передачу.'
                 else: self.controller.execute(resume=True)
             except Exception as error: self.last_error = str(error)
             finally: self.busy.release()
@@ -57,7 +61,7 @@ class Handler(BaseHTTPRequestHandler):
         except Exception as error: self.send_json(503, {'error': str(error)})
     def do_POST(self):
         if not self.authorized(): return
-        if self.path not in ('/request', '/resume', '/restore', '/shutdown'):
+        if self.path not in ('/request', '/resume', '/restore', '/recover', '/shutdown'):
             self.send_json(404, {'error': 'unknown endpoint'}); return
         try:
             length = int(self.headers.get('Content-Length', '-1'))
@@ -72,6 +76,9 @@ class Handler(BaseHTTPRequestHandler):
                     raise ValueError('invalid request')
             elif self.path == '/restore':
                 if set(data) != {'version'} or type(data['version']) is not str: raise ValueError('restore version required')
+            elif self.path == '/recover':
+                if set(data) != {'dell_rebooted'} or data['dell_rebooted'] is not True:
+                    raise ValueError('explicit owner observation of Dell reboot required')
             elif data: raise ValueError('resume takes an empty object')
             if self.path == '/shutdown':
                 if self.server.busy.locked(): raise ValueError('Дождитесь завершения текущей операции.')

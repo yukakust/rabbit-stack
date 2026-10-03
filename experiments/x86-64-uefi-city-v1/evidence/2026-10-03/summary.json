@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "FIRST-CITY-PHYSICAL-EXACT-RECEIPTS-OWNER-VISUAL-PENDING",
+  "current_world_counter": 11,
+  "native_counter": 6,
+  "city_world_sha256": "320cf795fd7ea99fc6d5779e034301cbda7b4f90a3a4b73b8c559bd76b59c17e",
+  "city_package_sha256": "65be69f96606865ee43985ee1df03257d8e69a956eb5c645edac61b0ecfd966c",
+  "native_payload_sha256": "476b9977feaf74b988fb2f0f970590a4c08e93f755a996808ce2159892fc3535",
+  "actual_gui_requests_applied": [
+    "add house",
+    "camera forward 200cm"
+  ],
+  "controller_tests_passed": 19,
+  "owner_visual_observation": null,
+  "physical_reboot_recovery_verified": false,
+  "qemu_empty_boot_recovery_verified": true,
+  "mac_restart_current_city_preserved": true,
+  "usb_writes": 0,
+  "dell_reboots": 0,
+  "limitations": [
+    "480x270 internal software rendering enlarged fullscreen",
+    "max64 procedural buildings; no arbitrary mesh/texture/physics",
+    "physical appearance/FPS pending owner",
+    "recovery UI implemented but physical reboot not exercised",
+    "Mac persistence; yukabox sync not implemented"
+  ]
+}

@@ -43,7 +43,9 @@ class Controller:
         state = flow.read_json(self.state_path); journal = flow.read_json(self.journal_path, 2 * 1024 * 1024)
         return {'schema_version': 1, 'world': {'counter': state['counter'], 'sha256': state['world_sha256']},
                 'engine': {'background': state['engine']['background'], 'native_counter': state['engine']['native_counter']},
-                'pending': bool(state['pending'] or state.get('native_pending')), 'active': journal['active'],
+                'pending': bool(state['pending'] or state.get('native_pending') or state.get('recovery_pending')),
+                'active': journal['active'] or ('city-recovery' if state.get('recovery_pending') else None),
+                'city': flow.current(state).get('schema_version') == 4,
                 'requests': [flow.read_json(self.request_path(i)) for i in journal['requests'][-100:]],
                 'versions': journal['versions'][-100:]}
 
@@ -72,7 +74,7 @@ class Controller:
                 identity = identity or uuid.uuid4().hex
                 path = self.request_path(identity)
                 if path.exists(): return flow.read_json(path)  # Idempotent client retry, no replay.
-                if journal['active'] or state['pending'] or state.get('native_pending'):
+                if journal['active'] or state['pending'] or state.get('native_pending') or state.get('recovery_pending'):
                     raise ValueError('finish the saved pending operation before a new request')
                 if source not in ('text', 'voice') or type(intent) is not str or not 1 <= len(intent.strip()) <= 4000:
                     raise ValueError('request must contain1..4000 characters and text/voice source')
@@ -125,6 +127,8 @@ class Controller:
                     self.update(record, candidate_checked=True, candidate_checks=checks)
                 if not record['engine_done']:
                     if record['background'] != state['engine']['background']:
+                        if state['engine'].get('family') == 'reviewed-city-v1':
+                            raise ValueError('city sky/ground must use city data; legacy background engine would remove city support')
                         self.update(record, status='CHECKING-ENGINE')
                         if not state.get('native_pending'):
                             native.prepare_engine(self.state_path, state, record['background'], self.private_path)

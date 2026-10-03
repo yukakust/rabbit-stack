@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "d8acb167bc674feab9fe28a635c2b309",
+  "intent": "Продвинь камеру вперёд по улице на 2 метра. Все здания, улицу, цвета и направление камеры сохрани.",
+  "source": "text",
+  "status": "APPLIED",
+  "base_world_sha256": "5ded4584ff2b9f62b6ec738b10032f9fee2e7c2436987d9c720357c1521d9fdc",
+  "engine_done": true,
+  "world_done": true,
+  "explanation": "Камера продвинута вперёд на 2 метра. Направление камеры, здания, улица и цвета сохранены.",
+  "error": null,
+  "background": "121826",
+  "candidate_sha256": "320cf795fd7ea99fc6d5779e034301cbda7b4f90a3a4b73b8c559bd76b59c17e",
+  "provenance": [
+    {
+      "kind": "bounded-procedural-city4"
+    }
+  ],
+  "candidate_checked": true,
+  "candidate_checks": {
+    "city_core_sha256": "1821479446600df4fc4604a099eed3108e2b6b181c4045b094c7a2b675fb14b3",
+    "harness_sha256": "621d3a40f1dce10cae03fb81dcfcd05133e4281a5ae843b062163b43ffc0517e",
+    "host_ticks": 120,
+    "physical_execution_verified": false
+  },
+  "world_counter": 11,
+  "native_counter": 6,
+  "receiver_reported_applied": true
+}

@@ -21,6 +21,8 @@ final class Application: NSObject, NSApplicationDelegate, CBCentralManagerDelega
     let resume = NSButton(title: "Продолжить передачу", target: nil, action: nil)
     let history = NSPopUpButton()
     let restore = NSButton(title: "Вернуть версию", target: nil, action: nil)
+    let rebooted = NSButton(checkboxWithTitle: "Dell был перезагружен", target: nil, action: nil)
+    let recoverCity = NSButton(title: "Восстановить город на Dell", target: nil, action: nil)
     var connection: Connection?
     var config: Configuration!
     var serverProcess: Process?
@@ -81,6 +83,11 @@ final class Application: NSObject, NSApplicationDelegate, CBCentralManagerDelega
         let versionsRow = NSStackView(views: [history, restore]); versionsRow.spacing = 10
         history.widthAnchor.constraint(greaterThanOrEqualToConstant: 320).isActive = true
         stack.addArrangedSubview(versionsRow)
+        let recoveryRow = NSStackView(views: [rebooted, recoverCity]); recoveryRow.spacing = 10
+        stack.addArrangedSubview(recoveryRow)
+        recoverCity.target = self; recoverCity.action = #selector(recoverAfterReboot)
+        rebooted.target = self; rebooted.action = #selector(refreshRecoveryControls)
+        recoverCity.isEnabled = false
         let scroll = NSScrollView(); scroll.hasVerticalScroller = true; scroll.borderType = .bezelBorder
         output.isEditable = false; output.font = .systemFont(ofSize: 14); output.isRichText = false
         output.autoresizingMask = [.width]; scroll.documentView = output
@@ -151,6 +158,10 @@ final class Application: NSObject, NSApplicationDelegate, CBCentralManagerDelega
             self.microphone.isEnabled = !busy && !pending && (self.task == nil || self.listening)
             self.resume.isEnabled = !busy && value["active"] is String
             self.restore.isEnabled = !busy && !pending
+            let city = value["city"] as? Bool ?? false
+            self.rebooted.isEnabled = city && !busy && !pending
+            self.recoverCity.isEnabled = city && !busy && !pending && self.rebooted.state == .on
+            self.input.placeholderString = city ? "Например: добавь дом справа; камера вперёд; поверни налево" : "Например: кот идёт быстрее; добавь мышку; сделай фон синим"
             let labels = ["PLANNING": "Продумываю изменение", "CHECKING-CANDIDATE": "Проверяю кандидат",
                 "CHECKING-ENGINE": "Проверяю обновление движка", "DELIVERING-ENGINE": "Передаю движок",
                 "CHECKING-WORLD": "Проверяю мир", "DELIVERING-WORLD": "Передаю мир", "APPLIED": "Применено",
@@ -196,6 +207,16 @@ final class Application: NSObject, NSApplicationDelegate, CBCentralManagerDelega
     @objc func sendText() { submit(input.stringValue, source: "text") }
     @objc func resumeRequest() {
         api("/resume", body: [:]) { [weak self] _, error in if let error = error { self?.speechLabel.stringValue = error }; self?.refresh() }
+    }
+    @objc func refreshRecoveryControls() { refresh() }
+    @objc func recoverAfterReboot() {
+        guard rebooted.state == .on else { return }
+        rebooted.state = .off; recoverCity.isEnabled = false
+        api("/recover", body: ["dell_rebooted": true]) { [weak self] _, error in
+            if let error = error { self?.speechLabel.stringValue = error }
+            else { self?.speechLabel.stringValue = "Восстанавливаю сохранённый город после перезагрузки Dell…" }
+            self?.refresh()
+        }
     }
     @objc func restoreVersion() {
         let index = history.indexOfSelectedItem

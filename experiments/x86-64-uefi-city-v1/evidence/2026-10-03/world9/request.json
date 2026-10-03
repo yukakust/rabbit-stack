@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "8a4b49fe0ce7423a9cb67bade41c7dd9",
+  "intent": "Создай первый 3D-мир: улица с пятью домами на весь экран.",
+  "source": "text",
+  "status": "APPLIED",
+  "base_world_sha256": "69884c522068fc6bc35d54204e3517c7c55f2bd51beb57d6c43ac43427804f47",
+  "engine_done": true,
+  "world_done": true,
+  "explanation": "Первый 3D-мир: улица, пять объёмных домов с крышами, дверями и окнами. Камерой можно управлять текстом или голосом. Прежний мир кота сохранён в истории.",
+  "error": null,
+  "background": "121826",
+  "candidate_sha256": "028e09c2f80b23f649900b86efa2febdaaf04b478744a2582f0f8c09ccf392a8",
+  "provenance": [
+    {
+      "kind": "bounded-procedural-city4"
+    }
+  ],
+  "candidate_checked": true,
+  "candidate_checks": {
+    "city_core_sha256": "1821479446600df4fc4604a099eed3108e2b6b181c4045b094c7a2b675fb14b3",
+    "harness_sha256": "621d3a40f1dce10cae03fb81dcfcd05133e4281a5ae843b062163b43ffc0517e",
+    "host_ticks": 120,
+    "physical_execution_verified": false
+  },
+  "world_counter": 9,
+  "native_counter": 6,
+  "receiver_reported_applied": true
+}

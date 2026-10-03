@@ -44,6 +44,97 @@ class Tests(unittest.TestCase):
         directory = Path(state['pending']); report = flow.read_json(directory / 'report.json')
         return flow.advance(path, state, directory, report, flow.read_json(directory / 'session.json'))
 
+    def city_plan(self, world):
+        return {'status':'ready','explanation':'Город','base_world_sha256':flow.read_json(self.path)['world_sha256'],
+                'objects':None,'programs':None,'city_world':world,'inventory_assets':[],'created_sprites':[],
+                'background':None,'restore_version':None,'missing_capabilities':[]}
+
+    def test_city_requires_applied_reviewed_profile_before_radio(self):
+        city = flow.city_module('city_world').initial_city()
+        with patch.object(flow, 'deliver') as radio, patch('world_control.native.prepare_engine') as native:
+            result = self.controller.execute('город', plan=self.city_plan(city))
+        self.assertEqual(result['status'], 'FAILED'); radio.assert_not_called(); native.assert_not_called()
+
+    def test_city_add_camera_and_history_restore_preserve_saved_worlds(self):
+        city = flow.city_module('city_world').initial_city()
+        state = flow.read_json(self.path)
+        state['engine'].update(family='reviewed-city-v1', city_core_sha256=flow.sha((flow.city_module('city_world').ROOT/'city_core.c').read_bytes()))
+        flow.save(self.path,state)
+        with patch.object(flow, 'check_world', return_value={'test_fixture':True}), patch.object(flow, 'deliver', side_effect=self.applied):
+            first = self.controller.execute('город', plan=self.city_plan(city))
+            self.assertEqual(first['status'],'APPLIED')
+            added = copy.deepcopy(city); house = copy.deepcopy(city['buildings'][0]); house.update(id=8,name='Новый дом'); house['position']['x']=1600
+            added['buildings'].append(house)
+            self.assertEqual(self.controller.execute('добавь дом',plan=self.city_plan(added))['status'],'APPLIED')
+            moved=copy.deepcopy(added); moved['camera']['z']+=200
+            self.assertEqual(self.controller.execute('вперёд',plan=self.city_plan(moved))['status'],'APPLIED')
+            self.assertEqual(flow.current(flow.read_json(self.path))['buildings'],added['buildings'])
+            self.assertEqual(self.controller.execute('кот',restore='initial')['status'],'APPLIED')
+            self.assertEqual(flow.current(flow.read_json(self.path)),self.base)
+            self.assertEqual(self.controller.execute('город обратно',restore=first['id'])['status'],'APPLIED')
+        state=flow.read_json(self.path); self.assertEqual(state['counter'],8); self.assertEqual(flow.current(state),city)
+        packet=Path(state['package']).read_bytes(); self.assertEqual(flow.decode_package(packet,flow.PUBLIC)['counter'],8)
+        with self.assertRaises(Exception): flow.decode_package(packet[:-1]+bytes([packet[-1]^1]),flow.PUBLIC)
+
+    def test_city_unbounded_data_and_mixed_routes_reject_before_radio(self):
+        city=flow.city_module('city_world').initial_city(); city['buildings'][0]['size']['width']=3001
+        with patch.object(flow,'deliver') as radio:
+            result=self.controller.execute('неограниченный дом',plan=self.city_plan(city))
+        self.assertEqual(result['status'],'FAILED'); radio.assert_not_called()
+        plan=self.city_plan(flow.city_module('city_world').initial_city()); plan['background']='203050'
+        with self.assertRaisesRegex(ValueError,'city cannot mix'): planner.parse_plan(json.dumps(plan))
+
+    def test_city_recovery_requires_owner_reboot_and_fresh_receiver_before_key_access(self):
+        city=flow.city_module('city_world').initial_city();state=flow.read_json(self.path)
+        state['engine'].update(family='reviewed-city-v1',city_core_sha256=flow.sha((flow.city_module('city_world').ROOT/'city_core.c').read_bytes()))
+        flow.save(self.path,state)
+        with patch.object(flow,'check_world',return_value={}),patch.object(flow,'deliver',side_effect=self.applied):
+            self.controller.execute('город',plan=self.city_plan(city))
+        recovery=flow.city_module('city_recovery')
+        with patch.object(flow,'sender_step') as sender,patch.object(recovery.engine,'load_private') as key:
+            with self.assertRaisesRegex(ValueError,'explicitly confirm'):recovery.recover(self.path,self.root/'unused')
+            sender.assert_not_called();key.assert_not_called()
+        before=self.path.read_bytes()
+        with patch.object(flow,'sender_step',return_value=(0,'foreign')) as sender,patch.object(flow,'parse_status',return_value={'outcome':'foreign-final'}),patch.object(recovery.engine,'load_private') as key:
+            with self.assertRaisesRegex(ValueError,'fresh empty'):recovery.recover(self.path,self.root/'unused',dell_rebooted=True)
+            self.assertEqual(sender.call_count,1);key.assert_not_called()
+        self.assertEqual(self.path.read_bytes(),before)
+
+    def test_city_recovery_two_stage_resume_keeps_city_counters_and_exact_sessions(self):
+        from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+        from cryptography.hazmat.primitives.serialization import Encoding,PublicFormat
+        recovery=flow.city_module('city_recovery'); city=flow.city_module('city_world').initial_city()
+        state=flow.read_json(self.path);state['engine'].update(family='reviewed-city-v1',city_core_sha256=flow.sha((flow.city_module('city_world').ROOT/'city_core.c').read_bytes()))
+        flow.save(self.path,state)
+        with patch.object(flow,'check_world',return_value={}),patch.object(flow,'deliver',side_effect=self.applied):
+            self.controller.execute('город',plan=self.city_plan(city))
+        key=Ed25519PrivateKey.from_private_bytes(bytes(range(32,64)));public=key.public_key().public_bytes(Encoding.Raw,PublicFormat.Raw)
+        private=self.root/'fixture.key';private.with_suffix('.pub').write_bytes(public)
+        checked=self.root/'checked';checked.mkdir();payload=b'MOCK-NATIVE-NOT-FOR-HARDWARE';(checked/'payload.efi').write_bytes(payload)
+        (checked/'empty-boot-qemu').mkdir();(checked/'empty-boot-qemu/observed.log').write_bytes(b'MOCK')
+        flow.save(checked/'empty-boot-qemu/report.json',{'empty_boot':True,'status':'EXACT-CITY-QEMU-LOAD-FULLSCREEN-DATA-RESTORE-REJECTION-PASS','payload_sha256':flow.sha(payload),'observed_log_sha256':flow.sha(b'MOCK')})
+        release=self.root/'last-release.json';flow.save(release,{'checked_directory':str(checked)})
+        state=flow.read_json(self.path);state['engine'].update(installed_gate=str(self.root/'gate.json'),last_release_report=str(release));flow.save(self.path,state)
+        installed={'owner_public_sha256':flow.sha(public),'target_sha256':'11'*32,'module_hashes':{'1':'22'*32}}
+        def native_applied(directory,report,session,on_applied):
+            self.assertEqual(session['counter'],4);return on_applied()
+        with patch.object(flow,'sender_step',return_value=(0,'RFS STATUS HEX=52465301'+'00'*56+'\n')),\
+             patch.object(recovery.engine,'gate_check',return_value=installed),patch.object(recovery.city_native,'gates',return_value={}),\
+             patch.object(recovery.engine,'prepare',return_value=(b'',{},[])),patch.object(recovery.city_native.build_city,'compile_city_driver',return_value=payload),\
+             patch.object(recovery.engine,'load_private',return_value=key),patch.object(flow,'check_world',return_value={}),\
+             patch.object(flow,'deliver_session',side_effect=native_applied) as native,patch.object(flow,'deliver',return_value=1):
+            first=recovery.recover(self.path,private,dell_rebooted=True)
+        self.assertTrue(first['engine_done']);self.assertFalse(first['world_done']);self.assertEqual(native.call_count,1)
+        state=flow.read_json(self.path);self.assertEqual(state['counter'],4);self.assertEqual(state['engine']['native_counter'],4)
+        native_session=(Path(state['recovery_pending'])/'session.json').read_bytes();world_session=(Path(state['pending'])/'session.json').read_bytes()
+        with patch.object(flow,'deliver_session') as native,patch.object(flow,'deliver',side_effect=self.applied):
+            final=recovery.recover(self.path,private,resume=True)
+        native.assert_not_called();self.assertEqual(final['status'],'APPLIED')
+        state=flow.read_json(self.path);self.assertEqual(state['counter'],5);self.assertEqual(state['engine']['native_counter'],4)
+        self.assertEqual(flow.current(state),city);self.assertIsNone(state['recovery_pending'])
+        self.assertEqual((Path(state['package']).parent/'session.json').read_bytes(),world_session)
+        self.assertEqual((self.root/'checked/payload.efi').read_bytes(),payload);self.assertTrue(native_session)
+
     def test_sequential_requests_keep_hat_assets_and_history_restores_with_new_counter(self):
         with patch.object(flow, 'check_world', return_value={'test_fixture': True}), patch.object(flow, 'deliver', side_effect=self.applied):
             first = self.controller.execute('кот быстрее', plan=self.plan(2))

@@ -1,0 +1,150 @@
+{
+  "schema_version": 4,
+  "world_id": "first-street-v1",
+  "camera": {
+    "x": 0,
+    "y": 250,
+    "z": -1200,
+    "yaw": 0
+  },
+  "sky": "8fc3e0",
+  "ground": "76915c",
+  "buildings": [
+    {
+      "id": 1,
+      "name": "Дом 1",
+      "kind": "house",
+      "position": {
+        "x": -800,
+        "y": 0,
+        "z": 700
+      },
+      "size": {
+        "width": 600,
+        "height": 450,
+        "depth": 600
+      },
+      "wall": "ddbd8d",
+      "roof": "a35740"
+    },
+    {
+      "id": 2,
+      "name": "Дом 2",
+      "kind": "house",
+      "position": {
+        "x": 800,
+        "y": 0,
+        "z": 900
+      },
+      "size": {
+        "width": 600,
+        "height": 450,
+        "depth": 600
+      },
+      "wall": "dab09a",
+      "roof": "a35740"
+    },
+    {
+      "id": 3,
+      "name": "Дом 3",
+      "kind": "house",
+      "position": {
+        "x": -800,
+        "y": 0,
+        "z": 1800
+      },
+      "size": {
+        "width": 600,
+        "height": 450,
+        "depth": 600
+      },
+      "wall": "acd0c1",
+      "roof": "a35740"
+    },
+    {
+      "id": 4,
+      "name": "Дом 4",
+      "kind": "house",
+      "position": {
+        "x": 800,
+        "y": 0,
+        "z": 2100
+      },
+      "size": {
+        "width": 600,
+        "height": 450,
+        "depth": 600
+      },
+      "wall": "dfd0a5",
+      "roof": "a35740"
+    },
+    {
+      "id": 5,
+      "name": "Дом 5",
+      "kind": "house",
+      "position": {
+        "x": -800,
+        "y": 0,
+        "z": 3000
+      },
+      "size": {
+        "width": 600,
+        "height": 450,
+        "depth": 600
+      },
+      "wall": "b5c4dd",
+      "roof": "a35740"
+    },
+    {
+      "id": 6,
+      "name": "Улица",
+      "kind": "road",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 1800
+      },
+      "size": {
+        "width": 700,
+        "height": 1,
+        "depth": 3000
+      },
+      "wall": "65717a",
+      "roof": "65717a"
+    },
+    {
+      "id": 7,
+      "name": "Начало улицы",
+      "kind": "road",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": {
+        "width": 700,
+        "height": 1,
+        "depth": 3000
+      },
+      "wall": "65717a",
+      "roof": "65717a"
+    },
+    {
+      "id": 8,
+      "name": "Дом 6",
+      "kind": "house",
+      "position": {
+        "x": 800,
+        "y": 0,
+        "z": 3000
+      },
+      "size": {
+        "width": 600,
+        "height": 450,
+        "depth": 600
+      },
+      "wall": "ddbd8d",
+      "roof": "a35740"
+    }
+  ]
+}

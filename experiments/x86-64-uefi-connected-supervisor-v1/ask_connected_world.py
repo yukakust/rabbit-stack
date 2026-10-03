@@ -17,13 +17,49 @@ LOCK_FD = None
 V3 = ROOT.parent / 'x86-64-uefi-god-runtime-v3'
 V2 = ROOT.parent / 'x86-64-uefi-god-runtime-v2'
 sys.path[:0] = [str(V3), str(V2)]
-from compile_world import compile_world
-from package import decode_package, PackageError
+from compile_world import compile_world as compile_v3_world
+from package import decode_package as decode_v3_package, PackageError
 from codex_world import propose_json
 from llm_world import WORLD_SCHEMA, obj, strict_json, validate_schema
 from prepare_file import bundle
 from send_file import validate as validate_session
-from world_check import check_world
+from world_check import check_world as check_v3_world
+
+
+def city_module(name):
+    import importlib
+    directory = Path(__file__).resolve().parent.parent / 'x86-64-uefi-city-v1'
+    if str(directory) not in sys.path: sys.path.insert(0, str(directory))
+    return importlib.import_module(name)
+
+
+def compile_world(path, counter, private):
+    world = read_json(path, 2 * 1024 * 1024)
+    if world.get('schema_version') == 4:
+        return city_module('city_world').compile_city(world, counter, private)
+    return compile_v3_world(path, counter, private)
+
+
+def decode_package(packet, public):
+    if packet[:5] == b'RUP4\x04':
+        world, counter = city_module('city_world').decode_city(packet, public)
+        return {'counter': counter, 'health_fault': False, 'world': world}
+    return decode_v3_package(packet, public)
+
+
+def check_world(path, cache):
+    if Path(path).read_bytes()[:5] == b'RUP4\x04':
+        return city_module('check_city').check_city(path, Path(cache) / 'city')
+    return check_v3_world(path, cache)
+
+
+def city_ready(state):
+    engine = state.get('engine', {})
+    if engine.get('family') != 'reviewed-city-v1':
+        raise ValueError('reviewed city driver must be applied before city data')
+    core = city_module('city_world').ROOT / 'city_core.c'
+    if engine.get('city_core_sha256') != sha(core.read_bytes()):
+        raise ValueError('city core differs from the applied native profile')
 from delivery_status import parse_status, confirmed_prefix
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
@@ -109,6 +145,7 @@ def current(state):
     if sha((V3 / 'runtime_core.c').read_bytes()) != state['runtime_core_sha256']:
         raise ValueError('runtime source differs from saved installed gate')
     world = read_json(state['world'], 2 * 1024 * 1024)
+    if world.get('schema_version') == 4: city_ready(state)
     packet = Path(state['package']).read_bytes()
     if sha(canonical(world)) != state['world_sha256'] or sha(packet) != state['package_sha256']:
         raise ValueError('saved current world/package changed')
@@ -150,7 +187,8 @@ def prepare(state_path, state, intent, proposal):
 def prepare_world(state_path, state, intent, world, proposal):
     if state['pending'] or state.get('native_pending'): raise ValueError('pending delivery exists; resume SAME saved session first')
     current(state)
-    if world.get('schema_version') != 3: raise ValueError('asset candidate must retain the V3 world contract')
+    if world.get('schema_version') == 4: city_ready(state)
+    elif world.get('schema_version') != 3: raise ValueError('candidate requires reviewed V3 or city4 data')
     if state['counter'] >= 0xffffffff: raise ValueError('world counter exhausted')
     directory = Path(tempfile.mkdtemp(prefix='edit-', dir=state_path.parent))
     save(directory / 'proposal.json', proposal); (directory / 'intent.txt').write_text(intent)

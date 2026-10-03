@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "e89617582d0a41c79590d26b1d951070",
+  "intent": "Добавь ещё один дом справа от улицы. Все существующие дома, улицу, цвета и камеру сохрани.",
+  "source": "text",
+  "status": "APPLIED",
+  "base_world_sha256": "028e09c2f80b23f649900b86efa2febdaaf04b478744a2582f0f8c09ccf392a8",
+  "engine_done": true,
+  "world_done": true,
+  "explanation": "Добавлен шестой дом справа от улицы. Все существующие дома, улица, цвета и камера сохранены.",
+  "error": null,
+  "background": "121826",
+  "candidate_sha256": "5ded4584ff2b9f62b6ec738b10032f9fee2e7c2436987d9c720357c1521d9fdc",
+  "provenance": [
+    {
+      "kind": "bounded-procedural-city4"
+    }
+  ],
+  "candidate_checked": true,
+  "candidate_checks": {
+    "city_core_sha256": "1821479446600df4fc4604a099eed3108e2b6b181c4045b094c7a2b675fb14b3",
+    "harness_sha256": "621d3a40f1dce10cae03fb81dcfcd05133e4281a5ae843b062163b43ffc0517e",
+    "host_ticks": 120,
+    "physical_execution_verified": false
+  },
+  "world_counter": 10,
+  "native_counter": 6,
+  "receiver_reported_applied": true
+}

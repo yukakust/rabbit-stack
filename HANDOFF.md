@@ -1995,3 +1995,52 @@ Reused existing image_gen mouse PNG/prompt/provenance; no new image generation
 this turn. Evidence/logs/plans/hash: connected evidence/detailed-art-2026-10-03.
 No USB writes or Dell reboot. Owner visual confirmation of new smooth mouse and
 continuing hat cat still pending; do not claim it from app receipt or host preview.
+
+
+## 2026-10-03 — first fullscreen procedural 3D city on connected route
+
+Owner requested to proceed with 3D. Added experiments/x86-64-uefi-city-v1:
+portable signed RUP4 camera + max64 house/box/road records, fixed-point renderer
+with depth buffer and near-plane clipping. Explicit privileged city Target Pack
+binds checked GOP after attach; candidate init never writes physical display.
+Active tick enlarges480x270 canonical frame and returns exact top-left crop for
+unchanged root presentation. No immutable production source changes, USB writes,
+Dell reboot or private-key output. This is simple flat-shaded software graphics,
+not native-resolution detail, arbitrary meshes, textures, physics or measured FPS.
+
+Actual physical receipts: owner-signed native6 payload
+476b9977feaf74b988fb2f0f970590a4c08e93f755a996808ce2159892fc3535;
+world9 first street; world10 GUI + real LLM add sixth house preserving ALL prior
+buildings/camera; world11 GUI + real LLM camera forward200cm preserving ALL
+buildings. Current world11/native6, no pending operation. Authoritative data,
+camera/packages/history persisted Mac; app restarted and current city retained.
+Physical fullscreen appearance/performance owner observation PENDING; asynchronous
+question asked, no reply yet. Do not claim screen appearance from APPLIED receipt.
+
+Controller accepts bounded city_world plans through same text/voice, C/signature,
+shared paced Bluetooth100byte/50ms/COMMIT and exact correlation pipeline. Historical
+V3 data remain restorable in city driver; restore V3 BEFORE rolling back to an old
+V3-only driver. Block native background-only route while city capability installed
+because that route would remove city snapshot support. City sky/ground are data.
+
+New UI: city command examples and owner-confirmed Dell reboot recovery checkbox +
+button. city_recovery first requires explicit owner reboot observation AND fresh
+zero read-only receiver state, exact installed bootstrap + empty-boot QEMU gate,
+rebuilds exact reviewed payload before owner signing against bootstrap1/EMPTY
+world, then restores latest saved city using new monotonic native/world counters.
+Never infer reboot from RF loss. Interrupted two-stage recovery retains sessions,
+blocks edits and resumes via normal button. Physical reboot/recovery NOT exercised;
+user/agent must first verify actual Dell appearance, then a separately coordinated
+recovery trial. Yukabox sync/persistent Dell disk/automatic boot discovery not done.
+
+19 host/controller tests pass, including no city before applied reviewed profile,
+city add/camera/history restore, bounded/mixed-route rejection, owner+fresh reboot
+guards, exact two-stage recovery resume keeping counters/sessions. Actual C120ticks
++16 adversarial max64 camera/geometry frames under ASan/UBSan pass. Exact same
+native6 payload reproducibly built and executed in real UEFI QEMU both from a V3
+world and EMPTY bootstrap: fullscreen outside old surface + coherent crop, city
+application, legacy data/engine rollback, unhealthy/bad-signature rejection pass.
+QEMU uses mock USB and public fixture keys; never physical Bluetooth evidence.
+Source verifier experiments/x86-64-uefi-city-v1/verify_city.py (NO SIGN/SEND).
+Evidence: experiments/x86-64-uefi-city-v1/evidence/2026-10-03; README there describes
+loading/recovery and limitations. Binaries ignored runs, owner key stays local.

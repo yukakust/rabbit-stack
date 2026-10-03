@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 9,
+  "base_world_sha256": "69884c522068fc6bc35d54204e3517c7c55f2bd51beb57d6c43ac43427804f47",
+  "world_sha256": "028e09c2f80b23f649900b86efa2febdaaf04b478744a2582f0f8c09ccf392a8",
+  "package_sha256": "269b1ee529e6d68ce54d2f5229499b16fb004f5a4aefe3bac29358fda0c9d790",
+  "session_sha256": "3ceaab73402ad125768786b7877f7a7f7c473ba587fb6793de162c150fa9db15",
+  "authority": "installed-public-development-world-creator-NOT-owner-native",
+  "host_checks": {
+    "city_core_sha256": "1821479446600df4fc4604a099eed3108e2b6b181c4045b094c7a2b675fb14b3",
+    "harness_sha256": "621d3a40f1dce10cae03fb81dcfcd05133e4281a5ae843b062163b43ffc0517e",
+    "host_ticks": 120,
+    "physical_execution_verified": false
+  },
+  "physical_execution_verified": false,
+  "receiver_reported_applied": true,
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-j_g41mbg/query-0.log",
+      "log_sha256": "e54313dab30fd0c2535d39ba38f682038c67f019a0d96a9f94636ccb1641ba4f"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-j_g41mbg/paced-stage-1.log",
+      "log_sha256": "3fa11273ed0364440426f372af9477ca6cba8478ff17e597d2174ded05c1e126"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-j_g41mbg/commit-2.log",
+      "log_sha256": "a56b08f44064082b6e7567691bfdcda1267dc204ee863c75e0439b55c22b4106"
+    }
+  ],
+  "confirmed_received": 352,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 43296,
+    "length": 43296,
+    "counter": 6,
+    "sha256": "1b2196177f19afac9f5c8c4bcf065128a4af9f88a43e609a68b774239f584e66",
+    "session_matches": false,
+    "raw_hex": "52465301e37277fdc525dbbd20a9000020a9000002000000060000001b2196177f19afac9f5c8c4bcf065128a4af9f88a43e609a68b774239f584e66",
+    "device_attestation": false
+  }
+}

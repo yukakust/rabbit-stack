@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 11,
+  "base_world_sha256": "5ded4584ff2b9f62b6ec738b10032f9fee2e7c2436987d9c720357c1521d9fdc",
+  "world_sha256": "320cf795fd7ea99fc6d5779e034301cbda7b4f90a3a4b73b8c559bd76b59c17e",
+  "package_sha256": "65be69f96606865ee43985ee1df03257d8e69a956eb5c645edac61b0ecfd966c",
+  "session_sha256": "60342882a3551d1b231df192a666cc3e0ee497c7fcabafe9b84eaf862a9e461d",
+  "authority": "installed-public-development-world-creator-NOT-owner-native",
+  "host_checks": {
+    "city_core_sha256": "1821479446600df4fc4604a099eed3108e2b6b181c4045b094c7a2b675fb14b3",
+    "harness_sha256": "621d3a40f1dce10cae03fb81dcfcd05133e4281a5ae843b062163b43ffc0517e",
+    "host_ticks": 120,
+    "physical_execution_verified": false
+  },
+  "physical_execution_verified": false,
+  "receiver_reported_applied": true,
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-cxjw3mik/query-0.log",
+      "log_sha256": "74aafa13159bf8ac5fa057d370b53b60695d6d4d18c4500788e5bbfee21d6312"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-cxjw3mik/paced-stage-1.log",
+      "log_sha256": "1d4a2cf8cb0ce1761ec4d5a29eb03f7a1e0774ea80ba6bf634b169a1a00b4327"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-cxjw3mik/commit-2.log",
+      "log_sha256": "410c6cdc3b88b956ee5e868bee72c71e58b3dffd945c2f3873a32dfd0b4df644"
+    }
+  ],
+  "confirmed_received": 384,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 384,
+    "length": 384,
+    "counter": 10,
+    "sha256": "7dcccc1c82783e2c8bb61327f78171f76f88df0dffede4103d5785a665074306",
+    "session_matches": false,
+    "raw_hex": "52465301ff7329a905b4ffbb8001000080010000020000000a0000007dcccc1c82783e2c8bb61327f78171f76f88df0dffede4103d5785a665074306",
+    "device_attestation": false
+  }
+}
