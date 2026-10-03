@@ -10,7 +10,7 @@ REPO=ROOT.parent.parent
 def gates(directory,payload,world):
  report=flow.read_json(directory/'report.json')
  reproduction=flow.read_json(directory/'reproduction.json',8*1024*1024)
- if report['status'] not in ('READ-ONLY-PCI-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS') or report['payload_sha256']!=flow.sha(payload):
+ if report['status'] not in ('READ-ONLY-PCI-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS','READ-ONLY-PCI-POWER-CITY-PROFILE-GATES-PASS') or report['payload_sha256']!=flow.sha(payload):
   raise ValueError('exact diagnostic profile gates required')
  if reproduction['status']!='CURRENT-SOURCES-TWO-REBUILDS-WORLD-C-CHECK-PASS' or reproduction['payload_sha256']!=flow.sha(payload) or reproduction['world_package_sha256']!=flow.sha(world):
   raise ValueError('current-source/current-world reproduction required')

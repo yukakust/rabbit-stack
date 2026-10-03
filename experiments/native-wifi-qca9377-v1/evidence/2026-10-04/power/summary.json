@@ -1,0 +1,24 @@
+{
+  "status": "EXACT-NATIVE11-APPLIED-READONLY-PHYSICAL-D0-ASPM-ENABLED",
+  "native_counter": 11,
+  "world_counter": 12,
+  "base_git_commit": "a915f07",
+  "payload_sha256": "a44ac69cb7a1549cfe8b00a60b907ff51df6a32d3cb2b2d6c33dd5d33008b74e",
+  "pci_power": {
+    "status": 1,
+    "pm_capability_offset": 64,
+    "pmcsr": "0000",
+    "power_state": 0,
+    "pcie_capability_offset": 112,
+    "link_control": "0143",
+    "aspm_enabled": true,
+    "writes": 0
+  },
+  "pci_command": "0102",
+  "no_bus_master": true,
+  "power_transition_needed": false,
+  "finding": "MEM remains enabled after native10, despite port reporting successful Attributes(Set0) and CloseProtocol. These API return values did not prove actual command restoration. Next port cleanup must capture and verify real PCI command and use a bounded 16-bit fallback if needed.",
+  "wifi_association": false,
+  "post_update_visual_observation": "pending",
+  "next": "Verified PCI command lifecycle, then bounded chip reset/readiness/identity; no D3 transition based on this D0 snapshot."
+}

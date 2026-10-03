@@ -1,0 +1,51 @@
+{
+  "kind": "native-read-only-pci",
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 11,
+  "base_runtime_sha256": "a721f3fcab4749f4fda5ad98018cdf0fc2d2d6396a68991f07e372a1caabfe60",
+  "base_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "6414d1bae588acfef261d8c6befc8fc1edb96fb76892a33c47f8d3b2c05bb180",
+  "payload_sha256": "a44ac69cb7a1549cfe8b00a60b907ff51df6a32d3cb2b2d6c33dd5d33008b74e",
+  "package_sha256": "c563e16ffbf9d47e2ec2701e81ea98b5ec0978ce339dc55f6f990e0a9a21eb69",
+  "session_sha256": "af5e157691c8d9c31c609ddba5acd0bfac601c2c38cf940f3e778b15caa348e4",
+  "checked_directory": "experiments/native-wifi-qca9377-v1/runs/checked-power",
+  "gate": {
+    "report_sha256": "3da7b6fac73f71254f36af881e33477156f36acc63520a3a8b46eefe0af926b0",
+    "reproduction_sha256": "1e557b5eb0939f7beab4e41719a029a641b2dba64c95d36cc0145038b8112778",
+    "profile_status": "READ-ONLY-PCI-POWER-CITY-PROFILE-GATES-PASS"
+  },
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-y8kegeov/query-0.log",
+      "log_sha256": "64434dcd1ae180267bb456e28280da58b3155ef9f951f73e6c4bb82d29e1a1a8"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-y8kegeov/paced-stage-1.log",
+      "log_sha256": "05b3892cba85a8a351b0b3a1ca48db98f7416b4e8de3d37adc79b710d80d96b2"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-y8kegeov/commit-2.log",
+      "log_sha256": "a52e837715b877a0bbddab140cd37eb9237d97d78a1b8e7fd6e0347f7d979037"
+    }
+  ],
+  "receiver_reported_applied": true,
+  "confirmed_received": 50464,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 53024,
+    "length": 53024,
+    "counter": 10,
+    "sha256": "7d70127899a0e0d4946d5edfeef1f3f8e2c362752b2335d32773fe783bb198f3",
+    "session_matches": false,
+    "raw_hex": "52465301add68f23c979761020cf000020cf0000020000000a0000007d70127899a0e0d4946d5edfeef1f3f8e2c362752b2335d32773fe783bb198f3",
+    "device_attestation": false
+  }
+}

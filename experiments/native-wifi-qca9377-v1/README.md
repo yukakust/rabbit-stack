@@ -193,3 +193,40 @@ Evidence: `experiments/native-wifi-qca9377-v1/evidence/2026-10-04/bringup`
 contains gate/reproduction hashes, pre-update receipt/owner observation, full
 saved-session delivery records, raw/decoded physical telemetry and a manifest.
 Remote workspace: `/home/yuka/rabbit-world/wifi-bringup-v1/source`.
+
+
+## 2026-10-04 — native11 power diagnostics, D0 confirmed; cleanup audit corrected
+
+Full goal remains working Wi-Fi: verified chip/CE/BMI, exact firmware RAM loading,
+radio scan/security, DHCP/two-way traffic and reconnect without city/BT failure.
+Owner explicitly authorized continuing all these stages. Association remains false.
+
+Read-only `power_build.py` profile reads conventional PCI config256 at attach;
+`power_core.c` bounds capability traversal (48 aligned entries, loop/duplicate/
+truncation rejection). QPD3/144 preserves file handles1..7 and diagnostic service.
+Host sanitizer gates cover all255 capability pointers, D3, malformed/missing
+chains and actual collector+ATT. Normal+EMPTY real UEFI city/snapshot/clock/
+restore/rejection and current-world two-rebuild checks passed on Yukabox.
+Locally signed and delivered native11 (`pci-native-y8kegeov`), exact correlated
+APPLIED, world12 unchanged. No PCI/MMIO writes, power transition, reset or DMA
+in this profile. Evidence under `evidence/2026-10-04/power`.
+
+Physical: PM capability0x40, PMCSR0x0000 => D0; PCIe capability0x70,
+LinkControl0x0143 => ASPM enabled. D3-to-D0 transition is NOT the next justified
+step. Device/subsystem/BAR unchanged. PCI command now0x0102, bus master disabled.
+This contradicts a stronger interpretation of native10 cleanup telemetry:
+Attributes(Set0)/CloseProtocol returned success, but MEM command bit stayed on.
+Do not describe API-success telemetry as proof that actual PCI settings restored.
+The native10 log is retained as observed; this new finding supersedes its earlier
+restoration conclusion. Before reset/CE add actual command capture/readback and
+bounded16-bit fallback restoration (never32-bit write into W1C PCI status).
+Failed readback must retain ownership and prevent unload. Preserve real initial
+command rather than blindly trusting cached UEFI attribute flags.
+
+NEXT: command lifecycle repair and adversarial API-success/stale-command tests;
+then separately gated cooperative QCA-only cold/warm reset/readiness/SoC-ID using
+pinned ath10k ordering. No PCIe accesses during reset settling intervals; recovery
+must deassert/reset-settle before releasing ownership. Native11 city/tail visual
+observation remains pending, distinct from exact Bluetooth receipt and telemetry.
+SSID/security mode still needed before association; no password in chat/LLM/logs.
+All native compilation/rendering/tests remain Yukabox; Mac control/signing/radio.

@@ -3,8 +3,8 @@
 import argparse,json,struct
 from pathlib import Path
 def decode(value):
- version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 0
- length=128 if version==1 else 160
+ version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 0
+ length=128 if version==1 else 160 if version==2 else 144
  if not version or not isinstance(value.get('raw_hex'),str) or len(value['raw_hex'])!=length*2:
   raise ValueError('bounded QPD1 envelope required')
  raw=bytes.fromhex(value['raw_hex'])
@@ -35,6 +35,10 @@ def decode(value):
    'bar_extent':extent,'original_attributes':f'{attributes:016x}',
    'chip_revision':(chip>>8)&15 if stage==2 else None,
    'probe_succeeded':stage==2 and not error and cleanup==1,'dma_enabled':False,'firmware_uploaded':False}
+ if version==3:
+  pm,csr,pcie,link,status,reserved=struct.unpack_from('<HHHHII',raw,128)
+  if status>3 or reserved:raise ValueError('invalid power-capability snapshot')
+  result['pci_power']={'status':status,'pm_capability_offset':pm,'pmcsr':f'{csr:04x}','power_state':csr&3 if status==1 else None,'pcie_capability_offset':pcie,'link_control':f'{link:04x}','aspm_enabled':bool(link&3) if pcie else None,'writes':0}
  return result
 def main():
  p=argparse.ArgumentParser();p.add_argument('input',type=Path);p.add_argument('--output',type=Path);a=p.parse_args()
