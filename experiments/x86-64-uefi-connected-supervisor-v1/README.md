@@ -1,13 +1,20 @@
 # Connected owner supervisor v1 — emulator-tested candidate
 
-This successor exists to migrate once from the installed immutable passive-radio
-loop. Ordinary worlds AND combined Scene/radio native drivers can then be delivered
-through a connected file service without USB shuttling. The owner installed the
-first candidate initially failed during discovery. The subsequent owner-installed
-20ms candidate delivered the walking cat and resumed a deliberately interrupted
-counter2 world at offset8400. Native connected replacement remains physical-test
-pending. See the owner evidence files; no authenticated attestation or full-file
-speed benchmark is claimed. Earlier candidate sections below are historical.
+This connected file service delivers ordinary worlds and owner-signed combined
+Scene/radio native drivers without USB shuttling. Physical Dell evidence now
+includes driver1->2 (walking cat/blue line), driver2->1 (blue line removed), and an
+exact rejected nativecounter3 receipt for the reviewed unhealthy module. A new
+connection confirms the rejection receipt is retained. Owner post-rejection
+scene/motion confirmation is still pending; nativecounter3 is consumed, so any
+fresh native release must use at least4 with a refreshed review.
+
+Radio reliability remains under investigation: long unpaced staging lost root
+state even with stronger RSSI. Two100-byte/50ms-paced long prefixes succeeded,
+including world2 restoration by exact receipt and native3 staging35000/36640;
+small unpaced tails then completed. This supports a candidate mitigation, not a
+proven cause or general reliability. See `evidence/dell-radio-pacing-comparison.json`
+and `evidence/dell-connected-native-trial-3-rejected.json`. Discovery/status are
+not authenticated device attestation. Earlier candidate sections are historical.
 
 ## LE packet-boundary repair and diagnostics (2026-10-02)
 

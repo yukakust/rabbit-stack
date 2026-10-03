@@ -1749,3 +1749,28 @@ pass, NOT a physical USB fix. No receiver/root/native code change.
 Evidence/log hashes: connected evidence/dell-radio-pacing-comparison.json and11
 associated logs. Two long successes support a candidate mitigation, not proven
 causation or general reliability. Precise reset cause needs physical diagnostics.
+
+
+## Exact native3 rejection receipt retained — 2026-10-03
+
+Owner confirmed walking cat («кот ходит») before final native3 COMMIT. SAME signed
+release606594a7.../saved sessionfbf8c737... reverified against unchanged installed
+gate, owner PUBLIC key and exact restored world2. No private-key access/signing.
+Read-only query confirmed retained35000/36640/counter2; same-session normal100-byte
+sender resumed35000, sent remaining1640, COMMIT, and exact REJECTED receipt
+SHA/session/counter3/error2 (exit2, expected rejection,2.254s, no disconnect).
+New connection read-only query independently reverified exact60-byte REJECTED
+status: received=length36640, counter3, releaseSHA606594a7..., exact nonce.
+Thus authenticated native trial was consumed and rejected; this is a physical
+Dell result. Generic error2 does not attest which load/health callback failed.
+Expected known fixture returns1 from scene_init; no hung fixture used.
+
+Native counter3 is NOW consumed. Next fresh native release must use at least4
+and current retained driver1/world2 basis, with refreshed review. Reusing the
+same rejected receipt/session is idempotent; do not re-sign/relabel counter3.
+Owner post-trial walking-cat/no-blue-line confirmation requested, PENDING.
+All radio processes stopped; no USB/media/network change or manual reboot.
+Evidence: connected evidence/dell-connected-native-trial-3-rejected.json plus
+three archived final query/finish/requery logs; earlier failed attempts preserved.
+Paced staging followed by small unpaced tail succeeded, but radio reset cause
+and general reliability remain unproven. Sender source unchanged this turn.

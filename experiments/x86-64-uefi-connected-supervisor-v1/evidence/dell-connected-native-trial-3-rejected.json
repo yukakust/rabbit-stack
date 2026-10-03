@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "status": "PHYSICAL-EXACT-NATIVE-3-REJECTED-RECEIPT-RETAINED-SCREEN-PENDING",
+  "source": "Agent-operated owner Mac terminal/CoreBluetooth; physical Dell",
+  "release_sha256": "606594a7de56a8252eccf8759d45048851a4c79936a64f4eb7faf3662a0b62d6",
+  "payload_sha256": "dd22921330b2f3f577c858b37a67b7bdf4f0930bcfc379611d5f7de3a46c4bc0",
+  "base_runtime_sha256": "02e3a839f5c4320754a7afa6fecc6ca626475d36c360f3ed66cdd6db30e7b4c3",
+  "world_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
+  "native_counter": 3,
+  "previous_native_counter_assumption": 0,
+  "previous_counter_basis": "No native COMMIT after observed root-state loss and original world2 recovery; not an authenticated native-counter query",
+  "native_counter_consumed": true,
+  "next_fresh_native_counter_minimum": 4,
+  "saved_session_sha256": "fbf8c73792c907558b7b03ca5f149f60e47f9aa4d707f3288ac5e9299321c4d3",
+  "staging_evidence": "evidence/dell-radio-pacing-comparison.json",
+  "resume_offset": 35000,
+  "stream_bytes": 36640,
+  "remaining_sent_bytes": 1640,
+  "finish_chunk_payload_bytes": 100,
+  "finish_elapsed_seconds": 2.254,
+  "finish_disconnects": 0,
+  "sender_exit_code": 2,
+  "sender_exit_interpretation": "Exact rejected receipt, expected result; not generic transfer failure",
+  "exact_rejected_receipt": true,
+  "post_disconnect_read_only_exact_rejection_verified": true,
+  "device_status_hex": "52465301e9bd4e6eb27f5c40208f0000208f00000302000003000000606594a7de56a8252eccf8759d45048851a4c79936a64f4eb7faf3662a0b62d6",
+  "device_status": {
+    "state": 3,
+    "error": 2,
+    "received": 36640,
+    "length": 36640,
+    "receipt_counter": 3
+  },
+  "owner_before_trial": "кот ходит",
+  "owner_after_trial": null,
+  "expected_fixture_behavior": "SCENE_REVISION3 scene_init returns1; authenticated counter consumed, previous driver/world retained by reviewed root",
+  "limitations": "Device receipt exposes generic error2, not exact failing callback/load stage or authenticated device attestation. Owner post-trial scene/motion observation still pending. Earlier failures were pre-COMMIT and remain in historical evidence.",
+  "key_loaded": false,
+  "new_signature_or_nonce": false,
+  "manual_reboot": false,
+  "usb_media_modified": false,
+  "network_modified": false,
+  "archives": [
+    {
+      "name": "native3-final-retained-query",
+      "run": "native3-final-retained-query-20261003T075949Z",
+      "log": "evidence/dell-connected-native-trial-3-native3-final-retained-query.log",
+      "log_sha256": "8cc2d6a7581819baec166989b988d2f7575d661a46e168f56bbaf6fd2ac2da1a",
+      "exit_code": 0
+    },
+    {
+      "name": "native3-final-finish",
+      "run": "native3-final-finish-20261003T080000Z",
+      "log": "evidence/dell-connected-native-trial-3-native3-final-finish.log",
+      "log_sha256": "1b2e7b58cc86d53564f7b189b7cd1b4ec6742960a4090f50833aa2c1a8dafcd6",
+      "exit_code": 2
+    },
+    {
+      "name": "native3-final-rejected-query",
+      "run": "native3-final-rejected-query-20261003T080022Z",
+      "log": "evidence/dell-connected-native-trial-3-native3-final-rejected-query.log",
+      "log_sha256": "f776da75dd211fcf655bd22dbb9a7704f9e8858cf8a490512f40005f23f7f222",
+      "exit_code": 0
+    }
+  ]
+}

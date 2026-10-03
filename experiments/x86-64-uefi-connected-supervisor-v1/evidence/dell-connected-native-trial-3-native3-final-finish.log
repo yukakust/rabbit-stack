@@ -1,0 +1,14 @@
+MAC SENDER COMPILED; SOURCE SHA256=106ff85da96cb908e11168f10b53d44c36a6d328bf1edb9448d91497c4582c5a
+STATUS VALIDATOR SHA256=6793d285e07aeea28c35652ad94c2d04d5d39e839466caa517e57078aa358758
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-78; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=35000/36640
+CONTROL ACK: phase=3; reading application status
+FILE REJECTED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched; error=2; NOT APPLIED
+TRANSFER ELAPSED=2.254 seconds (including reconnects)

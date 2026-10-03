@@ -145,5 +145,10 @@
     "owner_reboot_confirmed": true,
     "chunk_payload_bytes": 100,
     "transfer_elapsed_seconds": 58.173
+  },
+  "later_final_outcome": {
+    "status": "PHYSICAL-EXACT-NATIVE-3-REJECTED-RECEIPT-RETAINED-SCREEN-PENDING",
+    "evidence": "evidence/dell-connected-native-trial-3-rejected.json",
+    "history_preserved": true
   }
 }

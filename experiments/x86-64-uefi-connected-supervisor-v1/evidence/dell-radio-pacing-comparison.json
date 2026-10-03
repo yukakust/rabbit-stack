@@ -37,7 +37,7 @@
     "resumed_bytes": 33000,
     "finish_exact_applied_receipt": true,
     "finish_elapsed_seconds": 1.282,
-    "owner_screen_confirmation": "PENDING"
+    "owner_screen_confirmation": "Owner: кот ходит, before native3 final COMMIT"
   },
   "native_unhealthy_trial_physically_verified": false,
   "archives": [
@@ -132,7 +132,13 @@
     "after_disconnect_query_connected_rssi_dbm": -66,
     "commit_sent": false,
     "unhealthy_module_executed": false,
-    "owner_walking_cat_observation": "PENDING"
+    "owner_walking_cat_observation": "Owner: кот ходит, before native3 final COMMIT"
   },
-  "interpretation": "Two long paced runs passed; current unpaced long native run lost state despite stronger RSSI. Pacing is a candidate mitigation, not proven cause or general reliability."
+  "interpretation": "Two long paced runs passed; current unpaced long native run lost state despite stronger RSSI. Pacing is a candidate mitigation, not proven cause or general reliability.",
+  "later_native3_final_outcome": {
+    "exact_rejected_receipt": true,
+    "counter_consumed": 3,
+    "evidence": "evidence/dell-connected-native-trial-3-rejected.json",
+    "owner_post_trial_observation": "PENDING"
+  }
 }
