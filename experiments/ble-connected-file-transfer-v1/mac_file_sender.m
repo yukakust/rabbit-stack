@@ -18,7 +18,8 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @property(nonatomic,strong) NSData *stream,*nonce,*expectedDigest;
 @property NSUInteger offset,pending;
 @property NSUInteger confirmed,pauseAfter;
-@property NSUInteger chunkBytes;
+@property NSUInteger chunkBytes,dataDelayMs;
+@property NSUInteger connectionGeneration;
 @property NSTimeInterval startedAt;
 @property uint32_t counter;
 @property int phase;
@@ -29,6 +30,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @property(nonatomic,strong) NSUUID *queryPeripheral;
 - (void)fail:(NSString*)why;
 - (void)next;
+- (void)scheduleNext;
 @end
 @implementation Sender
 - (void)fail:(NSString*)why {fprintf(stderr,"FAIL: %s; application outcome may be unknown; staging retained if Dell remains powered\n",why.UTF8String);[self.central stopScan];if(self.peer)[self.central cancelPeripheralConnection:self.peer];exit(1);}
@@ -49,10 +51,11 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  printf("DISCOVERED: %s RSSI=%ld; connecting\n",p.identifier.UUIDString.UTF8String,(long)rssi.integerValue);
  (void)ad;self.peer=p;p.delegate=self;[c stopScan];[c connectPeripheral:p options:nil];
 }
-- (void)centralManager:(CBCentralManager*)c didConnectPeripheral:(CBPeripheral*)p {(void)c;puts("CONNECTED: discovering file service");[p discoverServices:@[[CBUUID UUIDWithString:Service]]];}
+- (void)centralManager:(CBCentralManager*)c didConnectPeripheral:(CBPeripheral*)p {(void)c;self.connectionGeneration++;puts("CONNECTED: discovering file service");[p discoverServices:@[[CBUUID UUIDWithString:Service]]];}
 - (void)centralManager:(CBCentralManager*)c didFailToConnectPeripheral:(CBPeripheral*)p error:(NSError*)e {(void)c;(void)p;[self fail:e.localizedDescription?:@"connect failed"];}
 - (void)centralManager:(CBCentralManager*)c didDisconnectPeripheral:(CBPeripheral*)p error:(NSError*)e {
  if(self.finished||p!=self.peer)return;
+ self.connectionGeneration++;
  if(self.queryPeripheral){[self fail:@"cached query disconnected; no packet sent"];return;}
  fprintf(stderr,"DISCONNECTED: phase=%d offset=%lu/%lu domain=%s code=%ld reason=%s\n",self.phase,(unsigned long)self.offset,(unsigned long)self.stream.length,e?e.domain.UTF8String:"none",e?(long)e.code:0,e?e.localizedDescription.UTF8String:"none");
  if(++self.reconnects>3){[self fail:@"bounded reconnect limit; rerun SAME saved session to query outcome"];return;}
@@ -80,6 +83,16 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  uint8_t begin[16]={1,1,(uint8_t)self.kind,0};memcpy(begin+4,self.nonce.bytes,8);put32(begin+12,(uint32_t)self.stream.length);
  printf("BEGIN: acknowledged write; maximum value bytes=%lu\n",(unsigned long)[p maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse]);
  self.phase=1;[p writeValue:[NSData dataWithBytes:begin length:16] forCharacteristic:self.control type:CBCharacteristicWriteWithResponse];
+}
+- (void)scheduleNext {
+ if(!self.dataDelayMs){[self next];return;}
+ if(!self.pauseAfter||self.queryOnly||self.abortOnly){[self fail:@"diagnostic pacing requires staging-only transfer"];return;}
+ CBPeripheral*peer=self.peer;CBCharacteristic*data=self.data;
+ NSUInteger generation=self.connectionGeneration,offset=self.offset;
+ self.phase=8;
+ [NSTimer scheduledTimerWithTimeInterval:self.dataDelayMs/1000.0 repeats:NO block:^(NSTimer*t){
+  (void)t;if(!self.finished&&self.phase==8&&self.connectionGeneration==generation&&self.peer==peer&&self.data==data&&self.offset==offset)[self next];
+ }];
 }
 - (void)next {
  if(self.queryOnly||self.abortOnly){[self fail:@"data/commit forbidden in query/abort mode"];return;}
@@ -111,7 +124,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  if(self.offset-self.confirmed>=4096||(self.pauseAfter&&self.offset>=self.pauseAfter)){
   self.phase=4;[p readValueForCharacteristic:self.status];return;
  }
- [self next];
+ [self scheduleNext];
 }
 - (void)peripheral:(CBPeripheral*)p didUpdateValueForCharacteristic:(CBCharacteristic*)c error:(NSError*)e {
  if(p!=self.peer)return;
@@ -164,12 +177,12 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
   self.finished=YES;puts("STAGED-NOT-APPLIED: deliberate stop; keep Dell powered and rerun SAME saved session without --stage-only-bytes");
   [self.central cancelPeripheralConnection:self.peer];exit(0);
  }
- [self next];
+ [self scheduleNext];
 }
 @end
 int main(int argc,char**argv){@autoreleasepool{
  setvbuf(stdout,NULL,_IONBF,0);
- if(argc<2||argc>7)return 2;
+ if(argc<2||argc>9)return 2;
  NSData*raw=[NSData dataWithContentsOfFile:[NSString stringWithUTF8String:argv[1]]];
  NSDictionary*b=raw?[NSJSONSerialization JSONObjectWithData:raw options:0 error:nil]:nil;
  if(![b isKindOfClass:NSDictionary.class]||![b[@"stream_base64"] isKindOfClass:NSString.class]||![b[@"session_base64"] isKindOfClass:NSString.class]||![b[@"counter"] isKindOfClass:NSNumber.class])return 2;
@@ -177,7 +190,7 @@ int main(int argc,char**argv){@autoreleasepool{
  id kind=b[@"kind"];if(kind&&![kind isKindOfClass:NSNumber.class])return 2;
  Sender*s=[Sender new];s.stream=[[NSData alloc]initWithBase64EncodedString:b[@"stream_base64"] options:0];s.nonce=[[NSData alloc]initWithBase64EncodedString:b[@"session_base64"] options:0];s.counter=[b[@"counter"] unsignedIntValue];s.kind=kind?[kind unsignedIntValue]:1;
  if((s.kind!=1&&s.kind!=2)||s.stream.length<=32||s.stream.length>(s.kind==1?65567u:262176u)||s.nonce.length!=8||!s.counter)return 2;
- s.chunkBytes=240;BOOL chunkSpecified=NO;
+ s.chunkBytes=240;BOOL chunkSpecified=NO,delaySpecified=NO;
  for(int i=2;i<argc;i++){
   if(!strcmp(argv[i],"--query-only")){if(s.queryOnly)return 2;s.queryOnly=YES;}
   else if(!strcmp(argv[i],"--abort-only")){if(s.abortOnly)return 2;s.abortOnly=YES;}
@@ -186,12 +199,17 @@ int main(int argc,char**argv){@autoreleasepool{
   }else if(!strcmp(argv[i],"--chunk-bytes")){
    if(++i>=argc||chunkSpecified)return 2;char*end=0;unsigned long value=strtoul(argv[i],&end,10);
    if(!argv[i][0]||*end||!value||value>240)return 2;s.chunkBytes=value;chunkSpecified=YES;
+  }else if(!strcmp(argv[i],"--data-delay-ms")){
+   if(++i>=argc||delaySpecified)return 2;char*end=0;unsigned long value=strtoul(argv[i],&end,10);
+   if(!argv[i][0]||*end||!value||value>100)return 2;s.dataDelayMs=value;delaySpecified=YES;
   }else{
    char*end=0;unsigned long value=strtoul(argv[i],&end,10);
    if(!argv[i][0]||*end||!value||value>=s.stream.length||s.pauseAfter)return 2;s.pauseAfter=value;
   }
  }
  if((s.queryOnly&&s.abortOnly)||(s.queryPeripheral&&!s.queryOnly)||((s.queryOnly||s.abortOnly)&&(s.pauseAfter||chunkSpecified)))return 2;
+ if(delaySpecified&&(!s.pauseAfter||s.queryOnly||s.abortOnly))return 2;
+ if(delaySpecified)printf("STAGING DIAGNOSTIC DATA DELAY=%lu ms; NO COMMIT\n",(unsigned long)s.dataDelayMs);
  if(!s.queryOnly&&!s.abortOnly)printf("DATA CHUNK LIMIT=%lu bytes (excluding offset)\n",(unsigned long)s.chunkBytes);
  unsigned char hash[32];CC_SHA256((const uint8_t*)s.stream.bytes+32,(CC_LONG)s.stream.length-32,hash);
  if(memcmp(hash,s.stream.bytes,32))return 2;s.expectedDigest=[NSData dataWithBytes:hash length:32];

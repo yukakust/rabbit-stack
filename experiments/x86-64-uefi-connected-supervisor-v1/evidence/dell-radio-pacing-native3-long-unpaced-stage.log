@@ -1,0 +1,24 @@
+MAC SENDER COMPILED; SOURCE SHA256=106ff85da96cb908e11168f10b53d44c36a6d328bf1edb9448d91497c4582c5a
+STATUS VALIDATOR SHA256=6793d285e07aeea28c35652ad94c2d04d5d39e839466caa517e57078aa358758
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-68; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=3000/36640
+STAGING CHECKPOINT=7100/36640 (not applied)
+STAGING CHECKPOINT=11200/36640 (not applied)
+STAGING CHECKPOINT=15300/36640 (not applied)
+DISCONNECTED: phase=2 offset=17300/36640 domain=CBErrorDomain code=6 reason=The connection has timed out unexpectedly.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-67; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RECEIVER STAGING REGRESSED: previously confirmed=15300 now=0; receiver reset/loss possible, NOT same-boot resume
+FAIL: receiver staging regressed; inspect Dell state before resuming SAME session; application outcome may be unknown; staging retained if Dell remains powered

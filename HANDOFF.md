@@ -1711,3 +1711,41 @@ whether5GHz or wired internet is available for a controlled comparison; answer
 pending. Do not blindly resend or reboot. Logs/hashes and limits preserved in
 connected evidence/dell-connected-native-trial-3-small.json and four archived logs.
 No new signature/counter/nonce, receiver/module/bootstrap/media change.
+
+
+## Controlled Mac pacing comparison and world recovery — 2026-10-03
+
+Owner asked agent to investigate Bluetooth without waiting for alternate WiFi.
+Read-only baseline now connectedRSSI -67 rather than prior -84dBm, without network
+change. Both unpaced and50ms-paced same-native3 3000-byte prefixes succeeded.
+Exact abort between short trials reset staging only and preserved worldreceipt2.
+Long unpaced same-native3 transfer resumed3000, confirmed15300, disconnected at
+sender17300, reconnected with receiver0. Read-only query showed filecounter0 and
+connectedRSSI -61. Stronger signal alone did NOT prevent root-state loss. BEGIN
+and disconnect do not reset filecounter in reviewed C; root reset/reinitialization
+or corruption suspected, exact failure/watchdog stage still unproven. No COMMIT
+or bad-init module execution. Exact partial-session abort confirmed IDLE/counter0.
+
+SAME original signed world2/session with100-byte payloads and50ms delay staged
+33000/33381 without disconnect; normal immediate sender resumed33000, sent381
+remaining bytes and got exact applied SHA/session/counter2 receipt (finish1.282s).
+World restored by receipt; owner walking-cat screen confirmation pending.
+Then SAME signed native3/session from0 with100-byte payloads/50ms delay staged
+35000/36640 without disconnect. Subsequent read-only query confirms retained35000
+and previous world filecounter2, connectedRSSI -66. Still STAGING, NOT APPLIED.
+All sender processes stopped; keep Dell powered. Do NOT re-sign/change nonce or
+counter. Native rejected receipt remains pending; screen-motion confirmation
+requested before continuing remaining1640 bytes and deterministic failed-init test.
+No requested/manual reboot, network modification, USB/media writes or native COMMIT
+in this comparison. Earlier root-state loss was observed, cause unproven.
+
+Sender-only --data-delay-ms1..100 is restricted to explicit --send plus staging
+limit; default sends remain unchanged. Delay timers guarded by connection
+generation/peer/characteristic/offset, so stale callbacks cannot resume a new
+connection. Apple compilation and actual short/long pacing tests pass;2 focused
+helper checks pass (existing staging-stop source assertion updated for scheduler
+call);4 invalid diagnostic modes rejected before SDK/radio.18 mock USB checks
+pass, NOT a physical USB fix. No receiver/root/native code change.
+Evidence/log hashes: connected evidence/dell-radio-pacing-comparison.json and11
+associated logs. Two long successes support a candidate mitigation, not proven
+causation or general reliability. Precise reset cause needs physical diagnostics.

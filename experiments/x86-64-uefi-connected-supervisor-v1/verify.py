@@ -40,9 +40,9 @@ class Tests(unittest.TestCase):
                        'STAGED-NOT-APPLIED:', 'self.status==waitingStatus'):
             self.assertIn(marker,source)
         self.assertIn("command.append(str(a.stage_only_bytes))",compiler)
-        # Deliberate staging stop must exit before next() can submit COMMIT.
+        # Deliberate staging stop must exit before scheduling the next DATA/COMMIT.
         pause=source.index('if(self.pauseAfter&&received>=self.pauseAfter)')
-        self.assertLess(source.index('exit(0);',pause),source.index('[self next];',pause))
+        self.assertLess(source.index('exit(0);',pause),source.index('[self scheduleNext];',pause))
 
     @classmethod
     def setUpClass(cls):

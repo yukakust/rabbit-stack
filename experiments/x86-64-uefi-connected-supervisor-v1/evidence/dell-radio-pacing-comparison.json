@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "status": "PHYSICAL-PACED-LONG-WORLD-RECOVERY-AND-NATIVE-STAGING-RETAINED",
+  "native_release_sha256": "606594a7de56a8252eccf8759d45048851a4c79936a64f4eb7faf3662a0b62d6",
+  "world_package_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
+  "sender_source_sha256": "106ff85da96cb908e11168f10b53d44c36a6d328bf1edb9448d91497c4582c5a",
+  "network_modified": false,
+  "manual_reboot_requested_or_performed": false,
+  "media_modified": false,
+  "new_signature_or_nonce": false,
+  "small_comparison": {
+    "unpaced_staged_bytes": 3000,
+    "paced_staged_bytes": 3000,
+    "paced_delay_ms": 50,
+    "both_exit_codes": 0,
+    "interpretation": "Both passed at discoveryRSSI approximately -65..-67; no evidence pacing needed for a short transfer."
+  },
+  "long_unpaced": {
+    "starting_staged_bytes": 3000,
+    "receiver_confirmed_bytes": 15300,
+    "sender_disconnect_offset": 17300,
+    "after_reconnect_bytes": 0,
+    "last_file_counter_before": 2,
+    "last_file_counter_after": 0,
+    "discovery_rssi_dbm": -68,
+    "reconnect_discovery_rssi_dbm": -67,
+    "post_loss_connected_rssi_dbm": -61,
+    "commit_sent": false,
+    "interpretation": "Root-owned state lost despite stronger signal; weak RSSI alone insufficient explanation. Reset/reinitialization or corruption suspected; exact cause unproven."
+  },
+  "world_recovery": {
+    "delay_ms": 50,
+    "chunk_bytes": 100,
+    "staged_bytes": 33000,
+    "stream_bytes": 33381,
+    "staging_disconnects": 0,
+    "resumed_bytes": 33000,
+    "finish_exact_applied_receipt": true,
+    "finish_elapsed_seconds": 1.282,
+    "owner_screen_confirmation": "PENDING"
+  },
+  "native_unhealthy_trial_physically_verified": false,
+  "archives": [
+    {
+      "name": "native3-pacing-baseline-query",
+      "run": "native3-pacing-baseline-query-20261003T075121Z",
+      "log": "evidence/dell-radio-pacing-native3-pacing-baseline-query.log",
+      "sha256": "0075ce25cac4844491dcd3cd955fbb1d315a88699087cd95486b61d3b560de01",
+      "exit_code": 0
+    },
+    {
+      "name": "native3-unpaced-stage",
+      "run": "native3-unpaced-stage-20261003T075135Z",
+      "log": "evidence/dell-radio-pacing-native3-unpaced-stage.log",
+      "sha256": "5ce0d790c20c6e7c9eafc3fc149dbffcc77b1d30ad41474f31aa4d904ad6d8f6",
+      "exit_code": 0
+    },
+    {
+      "name": "native3-unpaced-stage-abort",
+      "run": "native3-unpaced-stage-abort-20261003T075157Z",
+      "log": "evidence/dell-radio-pacing-native3-unpaced-stage-abort.log",
+      "sha256": "4e9309e0016afeac9f0732cb74f0e7cc70aae409c86636f48a618c6527cc12ca",
+      "exit_code": 0
+    },
+    {
+      "name": "native3-paced-stage",
+      "run": "native3-paced-stage-20261003T075207Z",
+      "log": "evidence/dell-radio-pacing-native3-paced-stage.log",
+      "sha256": "8f74efb43c84b10ecf0e9eaf35f4b406f8d6a895864f71c9573ceacf069803b6",
+      "exit_code": 0
+    },
+    {
+      "name": "native3-long-unpaced-stage",
+      "run": "native3-long-unpaced-stage-20261003T075225Z",
+      "log": "evidence/dell-radio-pacing-native3-long-unpaced-stage.log",
+      "sha256": "16cad2ad93742c139362db2fcd175df698e07f4c877cc416f3064324b91c3824",
+      "exit_code": 1
+    },
+    {
+      "name": "native3-long-loss-query",
+      "run": "native3-long-loss-query-20261003T075308Z",
+      "log": "evidence/dell-radio-pacing-native3-long-loss-query.log",
+      "sha256": "d40f82eaa6ab194add16c5c9a6b5599db552c92b0880df18b49b21ae23abd46e",
+      "exit_code": 0
+    },
+    {
+      "name": "native3-long-loss-abort",
+      "run": "native3-long-loss-abort-20261003T075341Z",
+      "log": "evidence/dell-radio-pacing-native3-long-loss-abort.log",
+      "sha256": "f687d2a9a0bb87148042683b9ecc7046b17ebdd28b1a50ebba21c8ea68f864fa",
+      "exit_code": 0
+    },
+    {
+      "name": "world2-paced-recovery-stage",
+      "run": "world2-paced-recovery-stage-20261003T075352Z",
+      "log": "evidence/dell-radio-pacing-world2-paced-recovery-stage.log",
+      "sha256": "468ca9760b10678acd81ccbbd7ee3196a0b3575c574444ac17f61f6faa1863db",
+      "exit_code": 0
+    },
+    {
+      "name": "world2-paced-recovery-finish",
+      "run": "world2-paced-recovery-finish-20261003T075440Z",
+      "log": "evidence/dell-radio-pacing-world2-paced-recovery-finish.log",
+      "sha256": "08b0bf53338bb707838daf22fc57e35f588ef9e2ec9137e09ba0893eb46f1a91",
+      "exit_code": 0
+    },
+    {
+      "name": "native3-long-paced-stage",
+      "run": "native3-long-paced-stage-20261003T075504Z",
+      "log": "evidence/dell-radio-pacing-native3-long-paced-stage.log",
+      "sha256": "1d39dc1ac79af6c5ad9876879f4e057fb8fdb975ab5c88bbdf9529c5ba1f2f08",
+      "exit_code": 0
+    },
+    {
+      "name": "native3-long-paced-retained-query",
+      "run": "native3-long-paced-retained-query-20261003T075616Z",
+      "log": "evidence/dell-radio-pacing-native3-long-paced-retained-query.log",
+      "sha256": "dc5ad5ff4bd2c7408da07eae605fb3ff5ead44f29f9ad64c319151e9250c63af",
+      "exit_code": 0
+    }
+  ],
+  "limitations": "Different world/native payload lengths and changing conditions prevent a causal pacing claim. File status is not boot/native attestation. No native COMMIT in these runs; precise failure stage needs physical Dell diagnostics.",
+  "long_paced_native": {
+    "delay_ms": 50,
+    "chunk_bytes": 100,
+    "received_bytes": 35000,
+    "stream_bytes": 36640,
+    "disconnects": 0,
+    "discovery_rssi_dbm": -66,
+    "after_disconnect_query_received": 35000,
+    "after_disconnect_query_last_file_counter": 2,
+    "after_disconnect_query_connected_rssi_dbm": -66,
+    "commit_sent": false,
+    "unhealthy_module_executed": false,
+    "owner_walking_cat_observation": "PENDING"
+  },
+  "interpretation": "Two long paced runs passed; current unpaced long native run lost state despite stronger RSSI. Pacing is a candidate mitigation, not proven cause or general reliability."
+}

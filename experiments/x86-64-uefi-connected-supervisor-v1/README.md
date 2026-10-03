@@ -368,3 +368,14 @@ SAME world2 session with100-byte writes from0 obtained exact receipt in58.173s,
 no disconnect. This does NOT prove fragmentation cause or general reliability.
 See `evidence/dell-connected-cat-world-2-recovery.json`. Lost live positions/frame/
 tick are not recovered by re-applying the signed original package.
+
+
+### Staging-only pacing diagnostic
+
+`--send --stage-only-bytes 3000 --chunk-bytes 100 --data-delay-ms 50` compares
+small-write delivery with a bounded pause. Delay is1..100ms and forbidden without
+a staging-only limit; this diagnostic cannot intentionally commit a release.
+Timers are guarded by connection generation, peer, characteristic and offset, so
+a callback from a disconnected session cannot resume a new connection. Normal
+sends retain the existing immediate-next-write behavior. A successful paced trial
+is not a fix unless an equivalent unpaced baseline fails under comparable signal.
