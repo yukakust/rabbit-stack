@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "target": "isolated OVMF UEFI on Yukabox",
+  "physical_dell": false,
+  "test_only": true,
+  "tested_efi_sha256": "0cc596e6b860bc4e6cc6d83cb8a753850e9e27123edadc381890371e3b39945f",
+  "files": {
+    "frame.png": "8787d1e84164892ce385b8e8738922680a8f20a97a3a3c7396712d3bde835290",
+    "host.json": "6ffc1768edc4d9dcdfb56b7fb6a8e87bba76a93606457728b6e67d8d151af4c5",
+    "host.log": "9a37c55161a93f0a5c11f22b09ca52e0e0ec82c195b89f99a364658e2f620e7d",
+    "input.json": "bb849a8b7174121b567b1ef90d42fbe5dec7bf38810daf9e13079d92aae8d741",
+    "receiver.build.json": "efda48d8fdd4d39db5f28623bb47eab8f3fbc1e76ea37ec4a9f8108ad0b24ba6",
+    "report.json": "e5b4b85e0e9ac176f603dd5be3f2667f5752315fb863b623134e66f7401cbd96",
+    "requests.log": "2f95237d2bc3d822a1d3b8c6f99d194f022deb59d7fd2c332f5801a0f7ece2a6",
+    "serial.log": "513513158cc02bbc5765d239a4f7dcd9bab6dadc9d9334f4dfc6c3a5cc1fd1b8"
+  },
+  "native_installation": "none",
+  "saved_dell_state": {
+    "native_counter": 7,
+    "world_counter": 12,
+    "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74"
+  },
+  "owner_key_accessed": false,
+  "fixture_server_stopped": true,
+  "serial_log_raw_sha256": "cbf6fe30b34c44f314b7d31468c3792713d164599761fd1b527cbad69f4c7bee",
+  "serial_log_normalization": "ANSI terminal controls removed; CRLF normalized to LF; raw log retained on Yukabox"
+}

@@ -763,3 +763,47 @@ preservation fallback. It currently runs from the already-authorized Codex agent
 context; Rabbit World reconnected and AX shows world12 ready with full history.
 App auto-launch after this service exits still requires completing/checking the
 pending Rabbit World TCC renewal. No TCC reset or security bypass was performed.
+
+## 2026-10-04 — Internet topology and isolated UEFI network receiver
+
+Owner clarified Yukabox is in Poland, Dell and its monitor are in Georgia. The
+image must travel over the Internet to the mini-PC Dell's existing video output.
+Mac is command/control only. Owner explicitly authorized implementing the native
+network receiver while preserving the old city. No cross-country display cable.
+
+New source: experiments/x86-64-uefi-network-viewer-v1. Builds, fixture serving and
+actual UEFI QEMU/sanitizer execution were done on Yukabox, not Mac. Pinned iPXE
+Realtek driver includes physical10EC:8168 ID; test VM usesRTL8139 with no ROM.
+Baseline firmware exposes neither SNP nor TCP4. Driver creates SNP, still no TCP4.
+Small source adapter exposes existing asynchronous iPXE Download protocol and
+cooperative DHCP instead of inventing TCP/IP. Pending operations progress via
+Download.Poll; callbacks are bounded and closed before freeing/unloading.
+
+Authenticated portable RPF1 RGB24/RLE frame contract: max640x360,1152128wire bytes,
+Ed25519 over header+body, exact stream ID and increasing sequence. Entire frame
+shape/signature validated before output/state writes. Production session/key
+binding is not yet implemented; public zero-seed fixture has NO deployment power.
+Remote image-signing key must never become owner executable-signing authority.
+
+Real saved UE5.8.3 Radeon frame6e4f9de0... was fetched via DHCP/HTTP by the UEFI app,
+decoded and presented in GOP; screenshot viewer region RGB hash exactly equals
+FFmpeg-converted UE input. Green neighbouring fixture survives; it is NOT the
+actual city. Bad signature/oversize/cancellation/replay preserve accepted state.
+Config closes, driver unloads successfully, final SNP count0.293 real C checks
+pass under ASan/UBSan. Evidence: network-viewer-v1/evidence/2026-10-04.
+
+NOT a physical Dell or Poland→Georgia test; NOT live capture/video/FPS evidence.
+Standalone app has test blocking waits, serial diagnostics and VM poweroff.
+Not integrated into immutable-root city native profile, not signed or sent.
+Need confirmed Ethernet to Internet router (owner question pending), reviewed
+cooperative city+viewer profile, exact normal+EMPTY native gates/current-world
+preservation, lifecycle/failure checks and reachable authenticated Yukabox endpoint.
+Native7 mapped3887104bytes already nearly fills immutable4MiB; iPXE file303616bytes
+leaves tiny margin. Account for parent PE, child code and bounded heap separately;
+do not silently modify bootstrap limits. Production NIC binding must be restricted;
+test ConnectController(AllHandles) is only in an isolated VM. See new README for
+loading/recovery prerequisites and dependency source/licence pins.
+
+No Dell reboot, USB/disk/firmware write, physical radio transmission, owner key
+access/output/copy. Mac state remains native7/world12, no pending operation; city
+map and snapshots retained. Loopback-only fixture stopped after verification.

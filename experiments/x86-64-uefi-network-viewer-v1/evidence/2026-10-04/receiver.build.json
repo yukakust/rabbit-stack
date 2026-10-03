@@ -1,0 +1,22 @@
+{
+  "efi_sha256": "0cc596e6b860bc4e6cc6d83cb8a753850e9e27123edadc381890371e3b39945f",
+  "ipxe_commit": "6262f1081fe185564e8ec8365a1d23597ec6e6f5",
+  "driver_sha256": "a5ce382883819ff2ba5bd8e1baa6fa1e90137993d45fab87e3a70ab2b70e20ca",
+  "efi_file_bytes": 394240,
+  "efi_mapped_bytes": 405504,
+  "source_sha256": {
+    "efi_receiver.c": "b8ff548618eedae1f70c855b7ad6eba2e1e993ddce16b44e961a2944df77aa7c",
+    "frame_core.c": "97efc2d4be48d88b7569e71f1096394e5c88a7fdc994163a0447bf2c78098531",
+    "monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+    "efi_probe.c": "f7755fc26dbc9ee5e16b36bb1287ac9625bfe71eb6c7920f7688acf5f132c12b",
+    "frame_core.h": "451f23e54941ee2cc23fbc61ce7eec1061a0820a9cf056061f7a001e147d8f48",
+    "ipxe_rabbit_config.c": "fb868ea3a7cd23bf1fcfa2eca926512e405718fd7d954f7a223b839888464a45",
+    "patch_ipxe.py": "d725cba0b843908dfd2cd363a2e82be4db729a230bbbe6a53b0d92f999c3829d",
+    "build_efi.py": "8ff3dc3cc0bb4913f428b6bacc3ca1ab73a8f56abd09a16f598d24bb8a2a5ae7",
+    "fixture_public.h": "59091b517ff0ab1d2c4a7d9cc2a7d670d7dd9449b7fef8aeb0db5963cf599a44"
+  },
+  "installed_on_dell": false,
+  "test_only": true,
+  "source_date_epoch": 0
+}

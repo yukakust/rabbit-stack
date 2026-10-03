@@ -1,0 +1,11 @@
+vendor/
+*.obj
+*.efi
+*.build.json
+!evidence/**/*.build.json
+*.so
+driver_bytes.h
+fixture_public.h
+monocypher*
+frame-test
+runs/

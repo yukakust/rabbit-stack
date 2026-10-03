@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "physical_dell": false,
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "source_sha256": {
+    "frame_core.c": "97efc2d4be48d88b7569e71f1096394e5c88a7fdc994163a0447bf2c78098531",
+    "frame_test.c": "791bd28af5cd9b7674e9da2d91c3eeb62530d672358ea07d86d7a099af8f6cc1",
+    "monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453"
+  },
+  "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0"
+}

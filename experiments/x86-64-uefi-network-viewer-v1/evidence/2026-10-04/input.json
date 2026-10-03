@@ -1,0 +1,14 @@
+{
+  "input_sha256": "6e4f9de0d26ce77975c08e40a6bbd8f599e1c8f930dc6e020af005b580b24e21",
+  "rgb_sha256": "f9648ef5b710227be33826423eebd3ccfd5016dd6509025e4c2e096663270932",
+  "first_wire_sha256": "cacdf84de8f6fd5130997ebfa06d77459812c435203f67a540b517d8c15101c2",
+  "wire_bytes": 528853,
+  "codec": 2,
+  "dimensions": [
+    640,
+    360
+  ],
+  "fixture_key_public": true,
+  "bind": "127.0.0.1:9783",
+  "physical_dell": false
+}

@@ -1,0 +1,30 @@
+{
+  "exit_code": 0,
+  "stderr": "qemu-system-x86_64: Slirp: Failed to send packet, ret: -1\n",
+  "screenshot_captured": true,
+  "physical_dell": false,
+  "network": "QEMU slirp loopback only",
+  "nic": "RTL8139, not Dell RTL8168",
+  "firmware": "OVMF 4M",
+  "physical_devices_opened": false,
+  "required_markers": {
+    "DRIVER START 0000000000000000": true,
+    "DHCP STATUS 0000000000000000": true,
+    "HTTP FIRST 0000000000000000": true,
+    "DECODE FIRST 0000000000000000": true,
+    "SEQUENCE FIRST 0000000000000001": true,
+    "GOP PRESENT 0000000000000000": true,
+    "BAD SIGNATURE PRESERVED": true,
+    "SEQUENCE SECOND 0000000000000002": true,
+    "OVERSIZE PRESERVED": true,
+    "ABORT PRESERVED": true,
+    "REPLAY AFTER ABORT PRESERVED": true,
+    "CONFIG CLOSE 0000000000000000": true,
+    "DRIVER UNLOAD 0000000000000000": true,
+    "SNP FINAL 0000000000000000": true
+  },
+  "viewer_rgb_sha256": "f9648ef5b710227be33826423eebd3ccfd5016dd6509025e4c2e096663270932",
+  "left_fixture_preserved": true,
+  "actual_network_pixels_match_ue": true,
+  "passed": true
+}
