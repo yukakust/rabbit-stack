@@ -458,3 +458,40 @@ Next work: data-only text intent -> checked V3 candidate -> existing world autho
 -> saved connected session -> paced staging/tail -> exact receipt -> current world.
 World development authority remains distinct from owner-native key; do not silently
 claim worlds are owner-authorized or change installed bootstrap.
+
+
+## V3 text-world path ready for first physical intent — 2026-10-03
+
+Added ask_connected_world.py: reuse existing subscription-only Codex runner through
+generic propose_json; strict small objects/programs schema, unchanged V3 sprites/
+palette/identity, exact current-world hash, deterministic Python bounds/signatures
+and actual installed runtime C activation/240 ticks/render sentinels before radio.
+world_check.py pins/rechecks crypto and gate runtime source; no owner-private key
+access. Installed world authority remains PUBLIC development Creator, distinct from
+owner-native. Do not silently claim owner-authenticated data worlds.
+
+Persistent state initialized against exact current ginger-cat JSON/packagecounter2
+and installed gate in ignored runs/text-world/state.json (pending=null). Saved
+worldcounter and nativecounter are separate; nativecounter3 consumed, next fresh
+native>=4. Proposal/delivery run saves exact package/session;100-byte/50ms-paced
+whole-stream staging stops before COMMIT, next SAME-session call commits. Current
+state advances only on exact applied receipt. Unknown delivery retains same pending
+nonce/counter/bytes and blocks fresh intent; --resume --send. Never-sent drafts may
+be explicitly discarded; ambiguous delivery cannot. Atomic save/single state lock.
+
+6 new host flow checks pass, including actual C healthy speed edit and invalid MOVE
+without boundary handling rejection, stale/extra/boolean proposal rejection,
+unknown delivery/counter preservation, exact receipt gating and packet/session
+substitution rejected before radio; only never-sent draft discard permitted.15 existing LLM tests pass after generic runner
+refactor. Whole-stream STAGING/zero callbacks until explicit COMMIT tested in actual
+C core/validator. No runtime/bootstrap/native source change.
+
+Real local Codex smoke proposal: vx1->2 only; exact cat art/palette/program retained,
+worldcounter3 candidate package d47182e6..., C240ticks checked. No radio; smoke
+draft explicitly discarded with archive preserved in runs/text-world-smoke. Actual
+Dell/current managed state staysworld2. Host evidence and saved proposal in connected
+evidence/connected-text-world-host-ready.json and speed-proposal.json. Asked owner
+which first text change to send (double speed, second same cat, or keep scene);
+response pending. No physical text-intent orchestration claim yet. Missing mouse
+art/background changes are currently unsupported, not fabricated. Voice and
+Creation Inventory extension remain subsequent work.

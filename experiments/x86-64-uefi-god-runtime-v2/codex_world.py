@@ -11,7 +11,7 @@ from llm_world import INSTRUCTIONS, MAX_JSON_BYTES, PROPOSAL_SCHEMA, parse_propo
 from package import PackageError
 
 
-def propose_codex(intent, base, *, model=None):
+def propose_json(intent, context, *, schema, instructions, parser, model=None):
     executable = shutil.which("codex")
     if not executable:
         raise PackageError("Codex CLI not found; install it on this Mac, then run codex login")
@@ -24,7 +24,7 @@ def propose_codex(intent, base, *, model=None):
         directory = Path(temporary)
         schema_path = directory / "schema.json"
         output_path = directory / "proposal.json"
-        schema_path.write_text(json.dumps(PROPOSAL_SCHEMA), encoding="utf-8")
+        schema_path.write_text(json.dumps(schema), encoding="utf-8")
         command = [executable, "exec", "--ignore-user-config", "--ephemeral",
                    "--sandbox", "read-only", "--skip-git-repo-check",
                    "--cd", str(directory), "--color", "never",
@@ -36,8 +36,8 @@ def propose_codex(intent, base, *, model=None):
         if model:
             command.extend(["--model", model])
         command.append("-")
-        prompt = INSTRUCTIONS + "\nReturn JSON only. Do not use tools.\n" + json.dumps(
-            {"request": intent, "base_world": base}, ensure_ascii=False)
+        prompt = instructions + "\nReturn JSON only. Do not use tools.\n" + json.dumps(
+            {"request": intent, "base_world": context}, ensure_ascii=False)
         try:
             result = subprocess.run(command, input=prompt, text=True,
                                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
@@ -49,4 +49,9 @@ def propose_codex(intent, base, *, model=None):
                                "and CLI version. No API fallback or package sent")
         if not output_path.is_file() or output_path.stat().st_size > MAX_JSON_BYTES:
             raise PackageError("Codex final JSON is missing or exceeds the input budget")
-        return parse_proposal(output_path.read_text(encoding="utf-8")), None
+        return parser(output_path.read_text(encoding="utf-8")), None
+
+
+def propose_codex(intent, base, *, model=None):
+    return propose_json(intent, base, schema=PROPOSAL_SCHEMA, instructions=INSTRUCTIONS,
+                        parser=parse_proposal, model=model)

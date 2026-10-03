@@ -386,3 +386,46 @@ Timers are guarded by connection generation, peer, characteristic and offset, so
 a callback from a disconnected session cannot resume a new connection. Normal
 sends retain the existing immediate-next-write behavior. A successful paced trial
 is not a fix unless an equivalent unpaced baseline fails under comparable signal.
+
+
+### Current V3 scene from text (Mac orchestration)
+
+`ask_connected_world.py` reuses the local subscription-backed Codex proposal runner,
+with a small objects/programs edit schema. It retains the exact existing sprites,
+palette, frame bytes and world identity. Velocity, placement, VM behavior, animation
+period and additional objects using existing sprites are supported. Background
+changes and missing artwork return unsupported; the installed runtime fixes the
+background to121826. Current art is not degraded to the older16x16 schema.
+
+Initialize once with an operator-confirmed current world JSON, exact signed package
+and installed owner-gate report; these must reconstruct byte-identically. Default
+state is ignored `runs/text-world/state.json`. Actual Mac state currently records
+worldcounter2/ginger cat. Nativecounter3 is independent and already consumed.
+
+```sh
+python3 ask_connected_world.py --initialize --world ../x86-64-uefi-god-runtime-v3/worlds/ginger-cat-walk-v1.json --package /tmp/connected-cat-world-2.rup --installed-report runs/owner-gate-s0bxi9d8/report.json
+python3 ask_connected_world.py 'Кот идёт вдвое быстрее' --send
+```
+
+The agent runs these commands; the owner need not paste them. Plain intent without
+`--send` prepares only. Saved `--candidate proposal.json` is also checked against
+the current-world hash. Strict JSON/schema, unchanged assets, exact package/session
+bindings, Python signature/bounds and actual installed V3 C signature/activation/
+240-tick render checks run before radio. Framebuffer sentinel checks guard rendering.
+Crypto source hashes are pinned and rechecked; runtime source is bound to the gate.
+This is host verification, not physical scene observation or a permanent health guarantee.
+
+Delivery uses100-byte/50ms-paced staging through the entire stream without COMMIT,
+then SAME session for the explicit COMMIT and exact receipt. Current JSON/counter
+advances only after exact applied receipt. Unknown delivery retains pending bytes,
+nonce and counter, blocks a new intent and resumes via `--resume --send`. A draft
+that has never started sending may be discarded with `--discard`; delivery whose
+outcome is uncertain cannot be discarded this way. Local state changes are atomic
+and one process owns the state lock. Scene observation remains an owner check.
+
+World authority is the installed PUBLIC development Creator, never the private
+owner-native key. This helper cannot create/sign/install native drivers or modify
+the immutable bootstrap. Host evidence includes a real Codex speed proposal and
+resident-C checks: `evidence/connected-text-world-host-ready.json`. New orchestration
+physical text-intent delivery is pending; host mocked sender tests are not physical
+evidence. Future artwork/inventory integration and voice are separate work.

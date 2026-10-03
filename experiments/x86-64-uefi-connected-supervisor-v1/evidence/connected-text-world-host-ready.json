@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "HOST-REAL-CODEX-V3-CANDIDATE-CHECKED-NEVER-SENT",
+  "provider": "subscription-backed local Codex CLI; existing generic proposal runner",
+  "intent": "Кот идёт вдвое быстрее. Сохрани остальную сцену и поведение.",
+  "proposal_archive": "evidence/connected-text-world-codex-speed-proposal.json",
+  "proposal_sha256": "9b9a288d7d7c905acd335a9c0b4b5b0eee1c86cce34213952a34c67b632fa373",
+  "base_world_counter": 2,
+  "candidate_world_counter": 3,
+  "base_package_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
+  "candidate_package_sha256": "d47182e67f7affb1031581432356fabf2d52bbe1d61b9b6cf0c6c4cd02eb1034",
+  "change": {
+    "object_id": 1,
+    "vx_before": 1,
+    "vx_after": 2,
+    "sprites_palette_programs_preserved": true
+  },
+  "host_checks": {
+    "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+    "harness_sha256": "8effb260e5f1ac24f1a0c2a9168aa000f2dd93480afd3a300029c8a612744bf5",
+    "host_ticks": 240,
+    "physical_execution_verified": false
+  },
+  "new_world_flow_tests_passed": 6,
+  "legacy_llm_tests_passed": 15,
+  "physical_delivery_tested": false,
+  "receiver_reported_applied": false,
+  "owner_native_key_loaded": false,
+  "world_signing_authority": "installed-public-development-world-creator-NOT-owner-native",
+  "real_current_world_counter": 2,
+  "real_current_world_pending": null,
+  "smoke_draft_discarded_never_sent": true,
+  "limitations": "Mocked transport tests prove host custody/receipt gating only; new orchestration still needs physical text-intent receipt/owner observation. C health/render checks cover240 ticks, not all future dynamic trajectories. Installed world Creator is the public development key, distinct from private owner-native authority.",
+  "actual_c_whole_stream_staging_check_passed": true
+}

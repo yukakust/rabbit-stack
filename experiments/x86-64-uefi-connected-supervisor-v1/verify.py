@@ -114,6 +114,18 @@ int host_status_check(const uint8_t*p,unsigned n,const uint8_t*nonce,const uint8
         self.assertEqual(self.lib.host_control(b'\x0212345678',9),0);self.assertEqual(self.lib.host_calls(),1)
         self.assertEqual(self.lib.host_finish(0,9),0);self.assertEqual(self.lib.host_state(),2)
         self.assertEqual(self.lib.host_finish(0,9),1)
+    def test_whole_stream_staging_remains_unapplied_until_explicit_commit(self):
+        data=digest(b'x')+b'x';self.assertEqual(self.begin(kind=1,length=len(data)),0)
+        packet=bytes(4)+data;self.assertEqual(self.lib.host_data(packet,len(packet)),0)
+        self.assertEqual(self.lib.host_state(),1);self.assertEqual(self.lib.host_calls(),0)
+        self.lib.host_status_check.argtypes=[C.c_char_p,C.c_uint,C.c_char_p,C.c_char_p,C.c_uint,C.c_uint]
+        out=C.create_string_buffer(247);n=self.lib.host_status_full(out)
+        self.assertEqual(n,61)
+        self.assertEqual(self.lib.host_status_check(out.raw[1:n],60,b'12345678',digest(b'x'),1,len(data)),1)
+        self.lib.host_swap();self.assertEqual(self.begin(kind=1,length=len(data)),0)
+        self.assertEqual(self.lib.host_calls(),0)
+        self.assertEqual(self.lib.host_control(b'\x0212345678',9),0)
+        self.assertEqual(self.lib.host_calls(),1)
     def test_no_abort_substitution_or_data_while_native_pending(self):
         self.stage()
         self.assertEqual(self.lib.host_control(b'\x0312345678',9),1)

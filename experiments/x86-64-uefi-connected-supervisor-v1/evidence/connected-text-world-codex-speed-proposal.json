@@ -1,0 +1,30 @@
+{
+  "status": "ready",
+  "explanation": "Кот идёт вдвое быстрее. Остальная сцена, отскоки и период анимации сохранены.",
+  "base_world_sha256": "3e608fbc880ad765338c38b6008f47c4f36c7a061527e957bd706585710f9866",
+  "objects": [
+    {
+      "id": 1,
+      "sprite": 1,
+      "program": 1,
+      "x": 8,
+      "y": 40,
+      "vx": 2,
+      "vy": 0,
+      "target": 1
+    }
+  ],
+  "programs": [
+    {
+      "id": 1,
+      "name": "walk-bounce-four-pose-loop",
+      "code": [
+        1,
+        2,
+        5,
+        4,
+        0
+      ]
+    }
+  ]
+}
