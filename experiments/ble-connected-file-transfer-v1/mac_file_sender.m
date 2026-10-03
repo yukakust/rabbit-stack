@@ -18,6 +18,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @property(nonatomic,strong) NSData *stream,*nonce,*expectedDigest;
 @property NSUInteger offset,pending;
 @property NSUInteger confirmed,pauseAfter;
+@property NSUInteger chunkBytes;
 @property NSTimeInterval startedAt;
 @property uint32_t counter;
 @property int phase;
@@ -85,7 +86,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  if(self.offset==self.stream.length){uint8_t commit[9]={2};memcpy(commit+1,self.nonce.bytes,8);self.phase=3;[self.peer writeValue:[NSData dataWithBytes:commit length:9] forCharacteristic:self.control type:CBCharacteristicWriteWithResponse];return;}
  NSUInteger limit=MIN((NSUInteger)244,[self.peer maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse]);
  if(limit<=4){[self fail:@"write MTU too small"];return;}
- self.pending=MIN(limit-4,self.stream.length-self.offset);
+ self.pending=MIN(MIN(limit-4,self.chunkBytes),self.stream.length-self.offset);
  NSMutableData*value=[NSMutableData dataWithLength:4+self.pending];put32(value.mutableBytes,(uint32_t)self.offset);memcpy((uint8_t*)value.mutableBytes+4,(const uint8_t*)self.stream.bytes+self.offset,self.pending);
  self.phase=2;[self.peer writeValue:value forCharacteristic:self.data type:CBCharacteristicWriteWithResponse];
 }
@@ -163,7 +164,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @end
 int main(int argc,char**argv){@autoreleasepool{
  setvbuf(stdout,NULL,_IONBF,0);
- if(argc<2||argc>4)return 2;
+ if(argc<2||argc>7)return 2;
  NSData*raw=[NSData dataWithContentsOfFile:[NSString stringWithUTF8String:argv[1]]];
  NSDictionary*b=raw?[NSJSONSerialization JSONObjectWithData:raw options:0 error:nil]:nil;
  if(![b isKindOfClass:NSDictionary.class]||![b[@"stream_base64"] isKindOfClass:NSString.class]||![b[@"session_base64"] isKindOfClass:NSString.class]||![b[@"counter"] isKindOfClass:NSNumber.class])return 2;
@@ -171,11 +172,22 @@ int main(int argc,char**argv){@autoreleasepool{
  id kind=b[@"kind"];if(kind&&![kind isKindOfClass:NSNumber.class])return 2;
  Sender*s=[Sender new];s.stream=[[NSData alloc]initWithBase64EncodedString:b[@"stream_base64"] options:0];s.nonce=[[NSData alloc]initWithBase64EncodedString:b[@"session_base64"] options:0];s.counter=[b[@"counter"] unsignedIntValue];s.kind=kind?[kind unsignedIntValue]:1;
  if((s.kind!=1&&s.kind!=2)||s.stream.length<=32||s.stream.length>(s.kind==1?65567u:262176u)||s.nonce.length!=8||!s.counter)return 2;
- if(argc>=3&&!strcmp(argv[2],"--query-only"))s.queryOnly=YES;
- else if(argc==3&&!strcmp(argv[2],"--abort-only"))s.abortOnly=YES;
- else if(argc==3){char*end=0;unsigned long value=strtoul(argv[2],&end,10);
-  if(!argv[2][0]||*end||!value||value>=s.stream.length)return 2;s.pauseAfter=value;}
- if(argc==4){if(!s.queryOnly)return 2;s.queryPeripheral=[[NSUUID alloc]initWithUUIDString:[NSString stringWithUTF8String:argv[3]]];if(!s.queryPeripheral)return 2;}
+ s.chunkBytes=240;BOOL chunkSpecified=NO;
+ for(int i=2;i<argc;i++){
+  if(!strcmp(argv[i],"--query-only")){if(s.queryOnly)return 2;s.queryOnly=YES;}
+  else if(!strcmp(argv[i],"--abort-only")){if(s.abortOnly)return 2;s.abortOnly=YES;}
+  else if(!strcmp(argv[i],"--peripheral")){
+   if(++i>=argc||s.queryPeripheral)return 2;s.queryPeripheral=[[NSUUID alloc]initWithUUIDString:[NSString stringWithUTF8String:argv[i]]];if(!s.queryPeripheral)return 2;
+  }else if(!strcmp(argv[i],"--chunk-bytes")){
+   if(++i>=argc||chunkSpecified)return 2;char*end=0;unsigned long value=strtoul(argv[i],&end,10);
+   if(!argv[i][0]||*end||!value||value>240)return 2;s.chunkBytes=value;chunkSpecified=YES;
+  }else{
+   char*end=0;unsigned long value=strtoul(argv[i],&end,10);
+   if(!argv[i][0]||*end||!value||value>=s.stream.length||s.pauseAfter)return 2;s.pauseAfter=value;
+  }
+ }
+ if((s.queryOnly&&s.abortOnly)||(s.queryPeripheral&&!s.queryOnly)||((s.queryOnly||s.abortOnly)&&(s.pauseAfter||chunkSpecified)))return 2;
+ if(!s.queryOnly&&!s.abortOnly)printf("DATA CHUNK LIMIT=%lu bytes (excluding offset)\n",(unsigned long)s.chunkBytes);
  unsigned char hash[32];CC_SHA256((const uint8_t*)s.stream.bytes+32,(CC_LONG)s.stream.length-32,hash);
  if(memcmp(hash,s.stream.bytes,32))return 2;s.expectedDigest=[NSData dataWithBytes:hash length:32];
  s.startedAt=NSProcessInfo.processInfo.systemUptime;

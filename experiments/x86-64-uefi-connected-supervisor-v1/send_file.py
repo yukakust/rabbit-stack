@@ -30,8 +30,10 @@ def main():
     mode.add_argument('--query-only',action='store_true',help='read current file status without BEGIN/DATA/COMMIT/ABORT')
     mode.add_argument('--abort-only',action='store_true',help='abort only the exact saved staging session after read-only check; no DATA/COMMIT')
     p.add_argument('--peripheral',help='known macOS peripheral UUID; query-only cached connection, no scan')
+    p.add_argument('--chunk-bytes',type=int,help='bounded DATA payload bytes per write, 1..240; default240')
     p.add_argument('--stage-only-bytes',type=int,help='stop after a receiver-confirmed prefix, WITHOUT COMMIT')
     a=p.parse_args()
+    if a.chunk_bytes is not None and (not a.send or not 1<=a.chunk_bytes<=240):p.error('--chunk-bytes requires --send and 1..240 bytes')
     if a.peripheral:
         if not a.query_only:p.error('--peripheral requires --query-only')
         try:a.peripheral=str(uuid.UUID(a.peripheral))
@@ -60,8 +62,9 @@ def main():
         command=[str(executable),str(a.bundle.resolve())]
         if a.stage_only_bytes is not None:command.append(str(a.stage_only_bytes))
         if a.query_only:command.append('--query-only')
-        if a.peripheral:command.append(a.peripheral)
+        if a.peripheral:command.extend(['--peripheral',a.peripheral])
         if a.abort_only:command.append('--abort-only')
+        if a.chunk_bytes is not None:command.extend(['--chunk-bytes',str(a.chunk_bytes)])
         try:return subprocess.run(command,env=env,timeout=310).returncode
         except KeyboardInterrupt:print('STOPPED: rerun the SAME saved session; outcome not assumed');return 130
 if __name__=='__main__':raise SystemExit(main())

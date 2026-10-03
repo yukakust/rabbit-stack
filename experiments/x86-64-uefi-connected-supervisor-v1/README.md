@@ -353,3 +353,16 @@ cached peripheral and attempts a direct connection without a filtered scan.
 This option is forbidden with sending/abort modes. It remains read-only and is
 bounded to60seconds; a UUID is not device authentication. Scan queries now use
 the same60second bound. A timeout is not evidence of its physical cause.
+
+
+### Controlled smaller-DATA write comparison
+
+`send_file.py SAVED_SESSION --send --chunk-bytes 100` preserves exact signed bytes,
+nonce, counters and commit checks while reducing DATA payload per acknowledged
+write. Default remains240; explicit override bounded1..240, forbidden in query
+and abort modes. This changes sender write partitioning only, not receiver code.
+One owner-reboot recovery comparison: default240 regressed21600->0 before COMMIT;
+SAME world2 session with100-byte writes from0 obtained exact receipt in58.173s,
+no disconnect. This does NOT prove fragmentation cause or general reliability.
+See `evidence/dell-connected-cat-world-2-recovery.json`. Lost live positions/frame/
+tick are not recovered by re-applying the signed original package.

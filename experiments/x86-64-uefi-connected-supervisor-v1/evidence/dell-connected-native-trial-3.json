@@ -94,7 +94,7 @@
     ]
   },
   "post_loss_read_only_status": "Same trial3 session staging13440/36640, receipt_counter0; prior applied2 counter lost. Suggests root state reset; cause not proven.",
-  "recovery_action": "Exact native STAGING session ABORT confirmed idle. Attempted exact old signed world2 using preserved connected-cat-session-2.json; timeout at1920 then phase0 disconnect; no reconnect/receipt. Agent stopped sender while scanning, exit241. No world/native COMMIT sent.",
+  "recovery_action": "Owner authorized/performed reboot. Default world2 run lost prefix21600->0 before COMMIT. Same saved world2 session with100-byte DATA chunks applied exactly in58.173s without disconnect; screen confirmation pending.",
   "world_recovery": {
     "status": "INTERRUPTED-BEFORE-COMMIT-NOT-RESTORED",
     "package_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
@@ -138,5 +138,12 @@
     "usb_rewrite": false,
     "native_trial_send": false,
     "new_signing_or_key": false
+  },
+  "world_recovery_after_owner_reboot": {
+    "status": "EXACT-APPLIED-RECEIPT-SCREEN-PENDING",
+    "evidence": "evidence/dell-connected-cat-world-2-recovery.json",
+    "owner_reboot_confirmed": true,
+    "chunk_payload_bytes": 100,
+    "transfer_elapsed_seconds": 58.173
   }
 }

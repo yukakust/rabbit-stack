@@ -326,3 +326,39 @@ Mac query source07b09af8... compiled on Apple SDK,2 focused helper checks pass;
 invalid UUID and cached query combined with send reject before radio. Cached
 connection allowed only with --query-only; read-only queries bounded60seconds.
 Receiver/root/native modules, installed image, keys and USB unchanged.
+
+
+## Owner reboot and exact world2 recovery via smaller writes — 2026-10-03
+
+Owner authorized/performed reboot («перезагрузил»), then Mac read-only query observed
+IDLE/zero nonce/received0/length0/receiptcounter0. SAME old signed world2/default240
+transfer reached receiver21600, timed out at sender24720, reconnected and observed
+SAME nonce but prefix0. Sender stopped before COMMIT. This reproduces loss while
+sending ordinary world on fresh boot, with no connected native COMMIT in this boot;
+no proof of exact watchdog/error cause. No second manual reboot requested/performed.
+
+Controlled sender-only100-byte DATA payload comparison after read-only query
+confirmed SAME world2 STAGING0/33381/counter0. Exact original package and session,
+no re-sign/new counter/nonce/media/receiver change. Actual run had no disconnect,
+exact SHA256/session/counter receipt, exit0 and58.173s. Owner walking-cat/no-blue-line
+screen confirmation requested and still PENDING. This was a new transfer from0,
+not a nonzero retained resume; restores original world bytes, not lost live state.
+Evidence: connected `evidence/dell-connected-cat-world-2-recovery.json` and four
+associated reboot-query/default-loss/small-query/small-restore logs. One success
+is NOT proof that smaller writes fix every fault or fragmentation is the cause.
+
+After screen confirmation, SAME saved signed trial3 has been revalidated for
+current bootstrap driver1/world2 and assumed nativecounter0 (owner reboot and
+world-only operations). Do not re-sign or create new nonce/counter to hide failure.
+RRT3 permits gaps previous<proposed; existing counter3 is still3 and valid from0.
+Post-reboot review `/tmp/connected-native-trial-3-post-reboot-review.json`, SHA256
+34bb8be3bf2a44e7ea185fc7884cfb6949825ceeb0fa4bdf8d9db0c9b985cb7b.
+Current counter/base basis is chronological evidence, not authenticated device query.
+Same release606594a7..., payloaddd229213..., base02e3a839..., worldcc545d03...,
+no native retry yet. Expected deterministic rejected receipt counter3 with driver1/
+cat retained; use100-byte writes for the next separate failed-init trial. No hung
+fixture and no further swap/reboot. Physical rejected-trial outcome remains PENDING.
+
+Optional `--chunk-bytes` bounds/conflicting modes checked before radio; Apple sender
+sourcee08bc5f9... compiles;14 actual C world/GATT checks pass. Native/root/receiver/
+USB unchanged. All radio processes stopped after exact world recovery receipt.

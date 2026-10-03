@@ -1675,3 +1675,18 @@ unchanged USB followed by same signed world2 restoration is prepared as recovery
 but owner decision is required to override original no-reboot constraint.
 See connected takeover/evidence. Query-only cached option Apple-compiles and2
 focused checks pass; no receiver/media/key change or native resend.
+
+
+## Exact world recovery after owner reboot — 2026-10-03
+
+Owner reboot confirmed. Default240-byte same-world2 transfer regressed21600->0
+before COMMIT on fresh boot with no native update in that boot. Read-only query
+then controlled100-byte writes of SAME signed world2/session obtained exact applied
+receipt in58.173s without disconnect; owner screen observation pending. Restores
+world package, not prior live positions/tick. Cause and general reliability unproven.
+Sender-only chunk override bounds checked,14 world/GATT checks and Apple compile
+pass; root/receiver/module/media/key unchanged. See connected recovery evidence.
+Same signed deterministic init-error nativecounter3 release revalidated against
+baseline1/world2 and chronologically assumed nativecounter0; no re-sign/new nonce/
+counter, no retry yet. Wait for walking-cat confirmation before next failed-init
+trial. Existing RRT3 accepts counter gap0->3. No hung fixture or further reboot.

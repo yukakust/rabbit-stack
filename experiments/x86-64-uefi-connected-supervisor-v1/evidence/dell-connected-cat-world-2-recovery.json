@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "status": "PHYSICAL-EXACT-WORLD-2-RECOVERY-RECEIPT-SCREEN-PENDING",
+  "source": "Agent-operated Mac terminal; owner reported manual reboot and proximity",
+  "world_package_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
+  "world_counter": 2,
+  "native_counter_assumption": 0,
+  "native_counter_basis": "Owner reboot followed by world-only operations; no native COMMIT since reboot, not independently queried native counter",
+  "bootstrap_driver_assumption": 1,
+  "saved_session": "/tmp/connected-cat-session-2.json",
+  "stream_bytes": 33381,
+  "chunk_payload_bytes": 100,
+  "transfer_elapsed_seconds": 58.173,
+  "recovery_receipt": "FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched",
+  "archives": [
+    {
+      "name": "reboot-query",
+      "log": "evidence/dell-connected-cat-world-2-reboot-query.log",
+      "log_sha256": "288f779bb790fe18f8c7b2517344cf5dd90118f73f6d43301847b067b268c6ab",
+      "exit_code": 0
+    },
+    {
+      "name": "reboot-default-loss",
+      "log": "evidence/dell-connected-cat-world-2-reboot-default-loss.log",
+      "log_sha256": "d3415cf3292516e72326c96e9b191af0ca740e6f709fd2d34d6098dda74be478",
+      "exit_code": 1,
+      "receiver_confirmed_offset": 21600,
+      "reconnected_offset": 0,
+      "commit_sent": false
+    },
+    {
+      "name": "small-query",
+      "log": "evidence/dell-connected-cat-world-2-small-query.log",
+      "log_sha256": "8e8cd56c9256c2546ec47c260306a21f91034107c4e3ba2693ab1730b36c3d8a",
+      "exit_code": 0
+    },
+    {
+      "name": "small-restore",
+      "log": "evidence/dell-connected-cat-world-2-small-restore.log",
+      "log_sha256": "485fb67c842a19d20a70acdf57128a15aa7d9748516b960573909bbb5f5afcc9",
+      "exit_code": 0,
+      "transfer_elapsed_seconds": 58.173,
+      "chunk_payload_bytes": 100,
+      "exact_applied_receipt": true,
+      "disconnects": 0
+    }
+  ],
+  "owner_screen_observation": null,
+  "authenticated_device_attestation": false,
+  "native_unhealthy_trial_physically_verified": false,
+  "limitations": "One successful smaller-chunk run is not proof of fragmentation cause or general reliability. Initial default240-byte run after owner reboot regressed21600->0 before COMMIT. Small-chunk run started from0, NOT a retained nonzero resume. World restore restores package, not lost live positions/frames/tick."
+}
