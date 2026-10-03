@@ -114,6 +114,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  if(self.phase!=1&&self.phase!=4){[self fail:@"final receipt absent or unexpected status phase"];return;}
  if(received<self.confirmed){
   printf("RECEIVER STAGING REGRESSED: previously confirmed=%lu now=%u; receiver reset/loss possible, NOT same-boot resume\n",(unsigned long)self.confirmed,received);
+  [self fail:@"receiver staging regressed; inspect Dell state before resuming SAME session"];return;
  }
  self.offset=self.confirmed=received;
  printf(self.phase==4?"STAGING CHECKPOINT=%lu/%lu (not applied)\n":"RESUME OFFSET=%lu/%lu\n",(unsigned long)self.offset,(unsigned long)self.stream.length);

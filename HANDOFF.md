@@ -1633,3 +1633,15 @@ Separate deterministic failed-init counter3 trial prepared only, not signed/sent
 no hung module. Mac sender recognizes exact consumed-counter error2 rejection
 separately from application;14 connected+14 world/GATT checks and Apple compile pass.
 No receiver/module/media change, no private-key output, no Dell reboot.
+
+
+## Physical unhealthy trial NOT committed; staging regression — 2026-10-03
+
+Owner confirmed blue line disappearance on return and authorized continuation.
+Counter3 signed deterministic init-error test began transfer, but after timeout
+receiver SAME session offset regressed12960->0. Agent stopped exact sender; no
+COMMIT or final receipt, so unhealthy code was not executed and rejection is NOT
+physically verified. Cause and current Dell base/world/counter unknown; screen
+observation requested. Preserve power/session; no blind retry or world restoration.
+See connected trial3 evidence/log and updated takeover. Mac sender now stops
+immediately on regression; Apple compile-only passed. No receiver/media change.

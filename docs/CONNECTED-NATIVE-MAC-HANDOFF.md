@@ -225,3 +225,35 @@ session/length/digest/counter match; explicit rejected output exits2, never appl
 Actual C file/GATT rejection and malformed-identity regression pass;14 connected
 host tests and14 world/GATT host tests pass; Apple sender compiles. Receiver C,
 installed image, native modules and file protocol are unchanged.
+
+
+## Failed-init transfer interrupted before COMMIT — 2026-10-03
+
+Owner confirmed blue line disappeared after return and authorized continuation.
+Agent rechecked installed gate/source/world, reviewed separate counter3 failed-init
+plan SHA256d065e518dffc2e88b3b090c9cccbbe128d831d703aef8818dba6745b18b850bb,
+signed once with reviewed owner-local helper, independently verified signature and
+saved SAME `/tmp/connected-native-trial-3.session.json`.
+Release606594a7de56a8252eccf8759d45048851a4c79936a64f4eb7faf3662a0b62d6.
+
+Physical transfer confirmed12960 bytes, disconnected at sender14160 with timeout,
+then SAME session/UUID reported receiver offset0. Sender originally only warned and
+continued from0; agent stopped exact Bluetooth process after noticing regression.
+A second timeout occurred at13440 before stop. No COMMIT/phase3/final receipt appears
+in complete sender log; deterministic unhealthy init was NOT executed/tested.
+Sender exit241 reflects agent termination. Current screen/base/world/counter are
+UNCONFIRMED after regression. Cause UNKNOWN; zero prefix is NOT proof of reboot.
+No agent reboot/USB/key output. Evidence and log: connected
+`evidence/dell-connected-native-trial-3.json` and adjacent sender log.
+
+STOP before any retry: obtain current physical Dell scene/diagnostic observation.
+Do not assume driver1/worldcounter2/nativecounter2 survived; do not silently resend
+world, regenerate session or change counters. Preserve exact trial3 session and Dell
+power. Check installed driver's root-owned staging reset path against observation.
+
+Mac sender now fails closed immediately on receiver prefix regression instead of
+silently restarting. Source SHA25635d2935b879b91de0eae0914a0764b21b14c68146255f3af17bb132499584b9f;
+compile-only Apple check passed; no sender radio re-run after this edit. Installed
+receiver/root/native module bytes unchanged. Failed-init physical rejection remains
+PENDING, while first/return exact application receipts and visible line changes are
+recorded separately. User has confirmed walking cat after first update only.

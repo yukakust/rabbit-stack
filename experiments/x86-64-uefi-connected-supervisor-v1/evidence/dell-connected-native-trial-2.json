@@ -8,7 +8,7 @@
   "payload_sha256": "02e3a839f5c4320754a7afa6fecc6ca626475d36c360f3ed66cdd6db30e7b4c3",
   "owner_public_sha256": "58744820acd038de35d01eaf6afbad2aa4bb4e4022c8078d4e665270d41f36b4",
   "schema_version": 1,
-  "status": "PHYSICAL-CONNECTED-NATIVE-RETURN-EXACT-RECEIPT-SCREEN-PENDING",
+  "status": "PHYSICAL-CONNECTED-NATIVE-RETURN-EXACT-RECEIPT-BLUE-LINE-DISAPPEARANCE-OWNER-CONFIRMED",
   "source": "Agent-operated owner Mac terminal/CoreBluetooth sender",
   "reviewed_plan_sha256": "c5ad9e59bcefbfacc0c0b3c37ec22e1882f864b996e1304ba9658a8a29cc916a",
   "release_sha256": "1f2ffb4e0ea0d413a435d9d57396308899d123c3bce793a58516710b5ef17c32",
@@ -23,7 +23,11 @@
     10800,
     14400
   ],
-  "owner_screen_observation": null,
+  "owner_screen_observation": {
+    "blue_bottom_line": false,
+    "source": "Owner confirmed «Синяя линия пропала. Го дальше»",
+    "cat_continues_walking": "not explicitly reported after return"
+  },
   "authenticated_device_attestation": false,
   "payload_origin": "Exact baseline driver1 extracted from hash-verified installed owner image, offset2207840, 36352bytes; no rebuild",
   "sender_sha256": "d2a89f164286ff21b5ee5d55eb7a7ab767ed68dd57778179cc15752690576006",

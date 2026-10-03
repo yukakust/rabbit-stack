@@ -1,0 +1,28 @@
+MAC SENDER COMPILED; SOURCE SHA256=c758d7a3de38c2e6115f3981e31bab81f203d0f0df58faa8372ab3e8c5df2da9
+STATUS VALIDATOR SHA256=6793d285e07aeea28c35652ad94c2d04d5d39e839466caa517e57078aa358758
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-80; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=0/36640
+STAGING CHECKPOINT=4320/36640 (not applied)
+STAGING CHECKPOINT=8640/36640 (not applied)
+STAGING CHECKPOINT=12960/36640 (not applied)
+DISCONNECTED: phase=2 offset=14160/36640 domain=CBErrorDomain code=6 reason=The connection has timed out unexpectedly.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-82; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RECEIVER STAGING REGRESSED: previously confirmed=12960 now=0; receiver reset/loss possible, NOT same-boot resume
+RESUME OFFSET=0/36640
+STAGING CHECKPOINT=4320/36640 (not applied)
+STAGING CHECKPOINT=8640/36640 (not applied)
+STAGING CHECKPOINT=12960/36640 (not applied)
+DISCONNECTED: phase=2 offset=13440/36640 domain=CBErrorDomain code=6 reason=The connection has timed out unexpectedly.
+RECONNECT: delivery unknown; querying retained session, not assuming application
