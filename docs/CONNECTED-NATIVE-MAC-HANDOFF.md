@@ -267,3 +267,38 @@ prints failed stage then intentionally waits for watchdog. Bootstrap imports an
 EMPTY RSS2 snapshot. This makes reboot-to-empty a plausible explanation, not a
 physical diagnosis. Ordinary rg_disconnected resets MTU only, not root staging.
 No further sender, world restore, timeout/watchdog change or USB action performed.
+
+
+## Owner photo, read-only status and attempted world recovery — 2026-10-03
+
+Owner photo preserved at connected evidence/dell-connected-native-trial-3-scene-loss-owner.png.
+It shows blue blank scene area and live radio diagnostics/advertising, no visible
+fatal/watchdog line. Do NOT call this proof of reboot or failed-health execution.
+
+Agent added Mac-only `--query-only` (reads RFS without BEGIN/DATA/COMMIT/ABORT).
+Actual status: same trial3 nonce, STAGING13440/36640, receiptcounter0/error0;
+previous applied nativecounter2 is no longer retained by file service. Suggests
+root state reset but does not authenticate boot identity or query active driver/world.
+Then explicit `--abort-only` first verified exact nonce+length/STAGING, sent ABORT
+only, read same-session IDLE/received0/length0. Actual query/abort logs archived.
+No cancellation of PENDING/applied/rejected/foreign sessions is allowed.
+
+Agent announced restoration, verified prior saved world2 bytes exactly match
+cc545d03..., attempted SAME `/tmp/connected-cat-session-2.json` with no new signing
+or counter. Timeout at1920/33381 then another phase0 disconnect; no reconnect,
+COMMIT or final receipt. Agent stopped scanner (exit241). World recovery NOT
+successful. Log archived as evidence/dell-connected-cat-world-2-recovery-interrupted.log.
+All senders stopped. RSSI observations-80..-87; signal weakness is observed, not
+proven cause of root state loss. Asked owner to move Mac within0.5–1m of Dell.
+
+Next: read-only query of SAME WORLD2 recovery session when Mac is nearby; inspect
+current screen/diagnostic text. Preserve both saved world2 and trial3 session files.
+Continue exact world restoration only after actual current status is understood;
+no native trial3 retry until world/base/native-counter state is established. No
+USB/reboot/firmware operation authorized or performed in this recovery.
+
+Mac sender compile passes and3 focused C/helper checks pass; CLI rejects conflicting
+radio modes, missing bundles and staging-stop combined with query/abort before
+radio. Actual query and exact abort confirm functionality; receiver/root/native
+code and bootstrap/media bytes unchanged. Sender source8d87f4b2..., validator6793d285...,
+helper modes documented in connected README. No claimed failed-init rejection.

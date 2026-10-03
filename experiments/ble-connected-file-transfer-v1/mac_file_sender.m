@@ -23,6 +23,8 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @property int phase;
 @property unsigned kind,reconnects;
 @property BOOL finished;
+@property BOOL queryOnly;
+@property BOOL abortOnly;
 - (void)fail:(NSString*)why;
 - (void)next;
 @end
@@ -63,11 +65,13 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
   if([u isEqualToString:@"52414242-4954-4649-8000-000000000004"])self.status=c;
  }
  if(!self.control||!self.data||!self.status||!(self.control.properties&CBCharacteristicPropertyWrite)||!(self.data.properties&CBCharacteristicPropertyWrite)||!(self.status.properties&CBCharacteristicPropertyRead)){[self fail:@"incompatible file service"];return;}
+ if(self.queryOnly||self.abortOnly){puts("READ-ONLY QUERY: no BEGIN, DATA, COMMIT or ABORT");self.phase=5;[p readValueForCharacteristic:self.status];return;}
  uint8_t begin[16]={1,1,(uint8_t)self.kind,0};memcpy(begin+4,self.nonce.bytes,8);put32(begin+12,(uint32_t)self.stream.length);
  printf("BEGIN: acknowledged write; maximum value bytes=%lu\n",(unsigned long)[p maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse]);
  self.phase=1;[p writeValue:[NSData dataWithBytes:begin length:16] forCharacteristic:self.control type:CBCharacteristicWriteWithResponse];
 }
 - (void)next {
+ if(self.queryOnly||self.abortOnly){[self fail:@"data/commit forbidden in query/abort mode"];return;}
  if(self.offset==self.stream.length){uint8_t commit[9]={2};memcpy(commit+1,self.nonce.bytes,8);self.phase=3;[self.peer writeValue:[NSData dataWithBytes:commit length:9] forCharacteristic:self.control type:CBCharacteristicWriteWithResponse];return;}
  NSUInteger limit=MIN((NSUInteger)244,[self.peer maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse]);
  if(limit<=4){[self fail:@"write MTU too small"];return;}
@@ -77,6 +81,10 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 }
 - (void)peripheral:(CBPeripheral*)p didWriteValueForCharacteristic:(CBCharacteristic*)c error:(NSError*)e {
  if(p!=self.peer)return;
+ if(self.abortOnly){
+  if(self.phase!=6||c!=self.control||e){[self fail:@"ABORT response failed or unexpected"];return;}
+  self.phase=7;[p readValueForCharacteristic:self.status];return;
+ }
  if((self.phase==2&&c!=self.data)||((self.phase==1||self.phase==3)&&c!=self.control)){
   [self fail:@"write callback characteristic/phase mismatch"];return;
  }
@@ -92,6 +100,24 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 - (void)peripheral:(CBPeripheral*)p didUpdateValueForCharacteristic:(CBCharacteristic*)c error:(NSError*)e {
  if(p!=self.peer)return;
  if(e||c!=self.status||c.value.length!=60){[self fail:@"invalid application status"];return;}
+ if(self.queryOnly||self.abortOnly){
+  const uint8_t*raw=c.value.bytes;
+  if(memcmp(raw,"RFS\1",4)||raw[20]>4||raw[22]||raw[23]||rs_u32(raw+12)>rs_u32(raw+16)||rs_u32(raw+16)>262176){[self fail:@"invalid read-only status envelope"];return;}
+  printf("RFS STATUS HEX=");for(unsigned i=0;i<60;i++)printf("%02x",raw[i]);puts("");
+  printf("READ-ONLY STATUS (NOT ATTESTATION): state=%u error=%u received=%u length=%u receipt_counter=%u saved_session_matches=%s\n",raw[20],raw[21],rs_u32(raw+12),rs_u32(raw+16),rs_u32(raw+24),memcmp(raw+4,self.nonce.bytes,8)?"no":"yes");
+  if(self.abortOnly){
+   if(memcmp(raw+4,self.nonce.bytes,8)){[self fail:@"ABORT requires exact saved session"];return;}
+   if(self.phase==5){
+    if(raw[20]!=1||rs_u32(raw+16)!=self.stream.length){[self fail:@"ABORT allowed only for exact staging session"];return;}
+    uint8_t abort[9]={3};memcpy(abort+1,self.nonce.bytes,8);self.phase=6;
+    puts("ABORT: exact saved STAGING session only; no DATA or COMMIT");
+    [p writeValue:[NSData dataWithBytes:abort length:9] forCharacteristic:self.control type:CBCharacteristicWriteWithResponse];return;
+   }
+   if(self.phase!=7||raw[20]!=0||rs_u32(raw+12)||rs_u32(raw+16)){[self fail:@"ABORT idle state not confirmed"];return;}
+   puts("ABORT CONFIRMED (NOT ATTESTATION): exact session idle, length=0 received=0");
+  }
+  self.finished=YES;[self.central cancelPeripheralConnection:self.peer];exit(0);
+ }
  uint32_t received=0;int outcome=rs_status(c.value.bytes,c.value.length,self.nonce.bytes,
   self.expectedDigest.bytes,self.counter,(uint32_t)self.stream.length,&received);
  if(outcome==RS_INVALID){[self fail:@"receipt session/length/state/identity mismatch"];return;}
@@ -135,7 +161,9 @@ int main(int argc,char**argv){@autoreleasepool{
  id kind=b[@"kind"];if(kind&&![kind isKindOfClass:NSNumber.class])return 2;
  Sender*s=[Sender new];s.stream=[[NSData alloc]initWithBase64EncodedString:b[@"stream_base64"] options:0];s.nonce=[[NSData alloc]initWithBase64EncodedString:b[@"session_base64"] options:0];s.counter=[b[@"counter"] unsignedIntValue];s.kind=kind?[kind unsignedIntValue]:1;
  if((s.kind!=1&&s.kind!=2)||s.stream.length<=32||s.stream.length>(s.kind==1?65567u:262176u)||s.nonce.length!=8||!s.counter)return 2;
- if(argc==3){char*end=0;unsigned long value=strtoul(argv[2],&end,10);
+ if(argc==3&&!strcmp(argv[2],"--query-only"))s.queryOnly=YES;
+ else if(argc==3&&!strcmp(argv[2],"--abort-only"))s.abortOnly=YES;
+ else if(argc==3){char*end=0;unsigned long value=strtoul(argv[2],&end,10);
   if(!argv[2][0]||*end||!value||value>=s.stream.length)return 2;s.pauseAfter=value;}
  unsigned char hash[32];CC_SHA256((const uint8_t*)s.stream.bytes+32,(CC_LONG)s.stream.length-32,hash);
  if(memcmp(hash,s.stream.bytes,32))return 2;s.expectedDigest=[NSData dataWithBytes:hash length:32];

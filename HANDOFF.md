@@ -1649,3 +1649,18 @@ immediately on regression; Apple compile-only passed. No receiver/media change.
 Owner now reports scene disappeared after trial3 staging loss. Reboot/root
 failure cause remains unknown; current display diagnostics requested before
 further radio action. No COMMIT was sent; unhealthy candidate was not executed.
+
+
+## Post-loss read-only diagnosis and interrupted restoration — 2026-10-03
+
+Owner photo shows live Rabbit advertising diagnostics, no visible fatal/watchdog
+line. Mac read-only RFS query: exact trial3 STAGING13440/36640, receiptcounter0,
+indicating prior file counter2 lost; root reset plausible, cause/boot not proven.
+Exact-session ABORT confirmed IDLE. Announced prior-world2 restoration attempt
+using preserved signed package/session (no new key/sign/counter) stopped after
+1920-byte timeout and phase0 disconnect without reconnect/COMMIT/receipt.
+Cat restoration is NOT complete. All senders stopped; owner asked to place Mac
+within0.5–1m of Dell for next read-only diagnosis. No native trial retry now.
+Photo/query/abort/recovery logs archived; see takeover and connected trial3 evidence.
+Mac-only query and exact-staging abort modes compiled, focused3 checks pass;
+receiver/bootstrap/module/media unchanged. No unhealthy module executed.

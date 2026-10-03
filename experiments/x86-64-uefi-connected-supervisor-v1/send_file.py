@@ -24,10 +24,13 @@ def validate(bundle):
     return bundle
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('bundle',nargs='?',type=Path)
-    p.add_argument('--send',action='store_true')
+    mode=p.add_mutually_exclusive_group()
+    mode.add_argument('--send',action='store_true')
+    mode.add_argument('--query-only',action='store_true',help='read current file status without BEGIN/DATA/COMMIT/ABORT')
+    mode.add_argument('--abort-only',action='store_true',help='abort only the exact saved staging session after read-only check; no DATA/COMMIT')
     p.add_argument('--stage-only-bytes',type=int,help='stop after a receiver-confirmed prefix, WITHOUT COMMIT')
     a=p.parse_args()
-    if a.send and a.bundle is None:p.error('--send needs a saved session bundle')
+    if (a.send or a.query_only or a.abort_only) and a.bundle is None:p.error('radio modes need a saved session bundle')
     if a.stage_only_bytes is not None and not a.send:p.error('--stage-only-bytes requires --send')
     if a.bundle:
         if a.bundle.stat().st_size>400000:raise ValueError('bundle too large')
@@ -47,9 +50,11 @@ def main():
             '-Xlinker','__TEXT','-Xlinker','__info_plist','-Xlinker',str(ROOT/'FileSender-Info.plist')],env=env,check=True,timeout=60)
         print('MAC SENDER COMPILED; SOURCE SHA256='+hashlib.sha256(SOURCE.read_bytes()).hexdigest(),flush=True)
         print('STATUS VALIDATOR SHA256='+hashlib.sha256((SOURCE.parent/'sender_status.h').read_bytes()).hexdigest(),flush=True)
-        if not a.send:print('NOT SENT: compile-only, no Bluetooth manager started');return 0
+        if not a.send and not a.query_only and not a.abort_only:print('NOT SENT: compile-only, no Bluetooth manager started');return 0
         command=[str(executable),str(a.bundle.resolve())]
         if a.stage_only_bytes is not None:command.append(str(a.stage_only_bytes))
+        if a.query_only:command.append('--query-only')
+        if a.abort_only:command.append('--abort-only')
         try:return subprocess.run(command,env=env,timeout=310).returncode
         except KeyboardInterrupt:print('STOPPED: rerun the SAME saved session; outcome not assumed');return 130
 if __name__=='__main__':raise SystemExit(main())
