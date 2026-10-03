@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "city_id": "rabbit-evolution-city",
+  "units": "cm",
+  "up_axis": "y",
+  "status": "placement-proposal-not-connected-rendering",
+  "districts": [
+    {
+      "district_id": "owner/first-street",
+      "executor": "reviewed-city-v2",
+      "target_ref": "dell-native7",
+      "origin": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "yaw_degrees": 0,
+      "world_counter": 12,
+      "world_snapshot": "snapshots/dell-world12.json",
+      "snapshot_file_sha256": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+      "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+      "world_hash_encoding": "utf8-json-sortkeys-compact-ensureascii-false",
+      "engine_sha256": "2c1bebad9394f3c46427767c063135980b599a7279a84a77dc68697097ab3a0c",
+      "state": "exact-applied-receipt-visual-cat-observation-pending"
+    },
+    {
+      "district_id": "owner/unreal-garden",
+      "executor": "unreal-linux",
+      "target_ref": "yukabox",
+      "origin": {
+        "x": 6000,
+        "y": 0,
+        "z": 0
+      },
+      "yaw_degrees": 0,
+      "state": "planned",
+      "world_snapshot": null,
+      "engine_sha256": null
+    }
+  ],
+  "connections": []
+}

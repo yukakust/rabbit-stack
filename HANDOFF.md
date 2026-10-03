@@ -2072,3 +2072,35 @@ not implemented. Next executor experiment must preserve the old district. No new
 Dell packet, OS/engine installation or remote-world import authorized by this plan
 edit. Current physical receipt state remains native7/world12; visual/TCC pending
 observations have not been inferred from this conversation.
+
+### 2026-10-03: Unreal on Yukabox preparation, owner-authorized
+
+Owner now explicitly authorizes proceeding with the next executor plan, correcting
+the runtime location: ONLY Yukabox runs Unreal/editor/build/render/new district;
+Mac is the command point. Keep existing Dell district. Remote SSH alias yukabox,
+user yuka; workspace /home/yuka/rabbit-world/unreal-yukabox-v1. No Mac UE install.
+
+Added experiments/unreal-yukabox-v1 read-only probe, placement map and exact world12
+snapshot. Snapshot verified remotely by both raw-file hash and existing canonical
+world hash; no owner key/credentials copied. This is a partial snapshot backup,
+not preservation of all old binaries/history or implemented district federation.
+Remote dirs engine/projects/cache/logs/snapshots created. Apt repository install
+completed for vulkan-tools/xvfb/missing XCB libraries, no OS upgrade/reboot.
+
+Actual target: Ubuntu26.04, Ryzen AI9 HX470, ~59.47GiB RAM, ~760GiB disk free;
+Radeon890M RADV Mesa26.0.3 enumerated via Vulkan, alongside CPU llvmpipe. Xvfb Vulkan
+reports no DRI3 presentation. Need real offscreen Vulkan UE launch/frame evidence;
+enumeration is NOT a render/UE success. Engine not installed; performance and this
+Ubuntu version are untested. target.json contains reproducible initial evidence.
+
+Official unrealengine.com/linux requires Epic account. Chrome agent tab633416982
+is on official epicgames.com/id/login, marked handoff. Async request asks owner to
+sign in and reply; do not ask for password, copy browser credentials or download
+large archive to Mac. Obtain official artifact URL after authorized browser login,
+download directly on Yukabox, record version/hash. If EULA acceptance appears,
+owner must review/accept or explicitly confirm that concrete legal step under UI
+policy. No EULA has been accepted by agent. No actual UE project/importer, detailed
+cat, Pixel Streaming, portal or shared rendering implemented yet. Do not claim them.
+Next: actual GPU run/frame -> small district + checked data adapter -> licensed
+rigged cat -> portal/shared composition. Display destination still to choose;
+Mac must remain a command point. No Dell write, owner-key output or USB action.

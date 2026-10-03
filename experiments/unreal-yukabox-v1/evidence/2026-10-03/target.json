@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-03T19:04:05.875982+00:00",
+  "target": "yukabox",
+  "platform": "Linux-7.0.0-29-generic-x86_64-with-glibc2.43",
+  "os_release": "PRETTY_NAME=\"Ubuntu 26.04 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"26.04\"\nVERSION=\"26.04 LTS (Resolute Raccoon)\"\nVERSION_CODENAME=resolute\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=resolute\nLOGO=ubuntu-logo\n",
+  "cpu": "AMD Ryzen AI 9 HX 470 w/ Radeon 890M",
+  "memory_bytes": 63854039040,
+  "memory_available_bytes": 30948569088,
+  "storage_free_bytes": 816780247040,
+  "display_environment": null,
+  "vulkan": {
+    "exit_code": 0,
+    "stdout": "==========\nVULKANINFO\n==========\n\nVulkan Instance Version: 1.4.341\n\n\nInstance Extensions: count = 26\n-------------------------------\nVK_EXT_acquire_drm_display             : extension revision 1\nVK_EXT_acquire_xlib_display            : extension revision 1\nVK_EXT_debug_report                    : extension revision 10\nVK_EXT_debug_utils                     : extension revision 2\nVK_EXT_direct_mode_display             : extension revision 1\nVK_EXT_display_surface_counter         : extension revision 1\nVK_EXT_headless_surface                : extension revision 1\nVK_EXT_layer_settings                  : extension revision 2\nVK_EXT_surface_maintenance1            : extension revision 1\nVK_EXT_swapchain_colorspace            : extension revision 5\nVK_KHR_device_group_creation           : extension revision 1\nVK_KHR_display                         : extension revision 23\nVK_KHR_external_fence_capabilities     : extension revision 1\nVK_KHR_external_memory_capabilities    : extension revision 1\nVK_KHR_external_semaphore_capabilities : extension revision 1\nVK_KHR_get_display_properties2         : extension revision 1\nVK_KHR_get_physical_device_properties2 : extension revision 2\nVK_KHR_get_surface_capabilities2       : extension revision 1\nVK_KHR_portability_enumeration         : extension revision 1\nVK_KHR_surface                         : extension revision 25\nVK_KHR_surface_maintenance1            : extension revision 1\nVK_KHR_surface_protected_capabilities  : extension revision 1\nVK_KHR_wayland_surface                 : extension revision 6\nVK_KHR_xcb_surface                     : extension revision 6\nVK_KHR_xlib_surface                    : extension revision 6\nVK_LUNARG_direct_driver_loading        : extension revision 1\n\nInstance Layers: count = 5\n--------------------------\nVK_LAYER_INTEL_nullhw       INTEL NULL HW                                                1.1.73   version 1\nVK_LAYER_MESA_anti_lag      Open-source implementation of the VK_AMD_anti_lag extension. 1.4.303  version 1\nVK_LAYER_MESA_device_select Linux device selection layer                                 1.4.303  version 1\nVK_LAYER_MESA_overlay       Mesa Overlay layer                                           1.4.303  version 1\nVK_LAYER_MESA_screenshot    Mesa Screenshot layer                                        1.4.303  version 1\n\nDevices:\n========\nGPU0:\n\tapiVersion         = 1.4.335\n\tdriverVersion      = 26.0.3\n\tvendorID           = 0x1002\n\tdeviceID           = 0x150e\n\tdeviceType         = PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU\n\tdeviceName         = AMD Radeon 890M (RADV STRIX1)\n\tdriverID           = DRIVER_ID_MESA_RADV\n\tdriverName         = radv\n\tdriverInfo         = Mesa 26.0.3-1ubuntu1\n\tconformanceVersion = 1.4.0.0\n\tdeviceUUID         = 00000000-c500-0000-0000-000000000000\n\tdriverUUID         = 414d442d-4d45-5341-2d44-525600000000\nGPU1:\n\tapiVersion         = 1.4.335\n\tdriverVersion      = 26.0.3\n\tvendorID           = 0x10005\n\tdeviceID           = 0x0000\n\tdeviceType         = PHYSICAL_DEVICE_TYPE_CPU\n\tdeviceName         = llvmpipe (LLVM 21.1.8, 256 bits)\n\tdriverID           = DRIVER_ID_MESA_LLVMPIPE\n\tdriverName         = llvmpipe\n\tdriverInfo         = Mesa 26.0.3-1ubuntu1 (LLVM 21.1.8)\n\tconformanceVersion = 1.3.1.1\n\tdeviceUUID         = 6d657361-3236-2e30-2e33-2d3175627500\n\tdriverUUID         = 6c6c766d-7069-7065-5555-494400000000\n",
+    "stderr": "'DISPLAY' environment variable not set... skipping surface info\nWARNING: [Loader Message] Code 0 : ICD for selected physical device does not export vkGetPhysicalDeviceDisplayPlanePropertiesKHR!\nWARNING: [Loader Message] Code 0 : ICD for selected physical device does not export vkGetPhysicalDeviceDisplayPropertiesKHR!\n"
+  },
+  "hardware_devices": [
+    {
+      "apiVersion": "1.4.335",
+      "driverVersion": "26.0.3",
+      "vendorID": "0x1002",
+      "deviceID": "0x150e",
+      "deviceType": "PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU",
+      "deviceName": "AMD Radeon 890M (RADV STRIX1)",
+      "driverID": "DRIVER_ID_MESA_RADV",
+      "driverName": "radv",
+      "driverInfo": "Mesa 26.0.3-1ubuntu1",
+      "conformanceVersion": "1.4.0.0",
+      "deviceUUID": "00000000-c500-0000-0000-000000000000",
+      "driverUUID": "414d442d-4d45-5341-2d44-525600000000"
+    }
+  ],
+  "editor_present": false,
+  "editor_path": "/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Binaries/Linux/UnrealEditor",
+  "preflight_gaps": [
+    "Official Unreal Linux build not installed"
+  ],
+  "engine_launch_verified": false,
+  "render_verified": false,
+  "note": "Enumeration is not rendering. Xvfb does not prove Vulkan presentation. Require actual Unreal Vulkan/offscreen run and frame evidence next."
+}
