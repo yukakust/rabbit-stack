@@ -28,6 +28,14 @@ int qca_pcie_pause(QcaPcieLink*l,QcaUefiPort*p){
  l->readback=l->original;l->owned=p->link_owned=1;
  return write_verify(l,(uint16_t)(l->original&~3u));
 }
+int qca_pcie_recheck(QcaPcieLink*l){
+ if(!l||!l->owned||!valid(l->port)||!l->port->link_owned||l->port->dma_users)return -1;
+ uint16_t offset=0,value=0;
+ if(snapshot(l,&offset,&value)||offset!=l->offset)return fail(l,7);
+ l->readback=value;
+ if(value&3)return write_verify(l,(uint16_t)(value&~3u));
+ return 0;
+}
 int qca_pcie_restore(QcaPcieLink*l){
  if(!l)return -1;
  if(!l->owned)return 0;

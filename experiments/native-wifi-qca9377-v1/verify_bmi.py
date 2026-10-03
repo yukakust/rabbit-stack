@@ -8,7 +8,7 @@ sha=lambda b:hashlib.sha256(b).hexdigest()
 def main():
  out=ROOT/'runs/bmi';out.mkdir(parents=True,exist_ok=True)
  inc=['-I'+str(ROOT),'-I'+str(ROOT.parent/'x86-64-uefi-wireless-supervisor-v1'),'-I'+str(ROOT.parent/'x86-64-uefi-runtime-supervisor-v1')]
- names=('rom_ready.c','bmi_transport.c','bmi_transport_test.c','ce_ring.c','ce_hw.c','ce_uefi.c','ce_bus.c','dma_buffer.c')
+ names=('rom_ready.c','bmi_transport.c','bmi_transport_test.c','ce_ring.c','ce_hw.c','ce_uefi.c','ce_bus.c','dma_buffer.c','boot_irq.c','power_core.c','pci_identity.c')
  exe=out/'test'
  subprocess.run(['gcc','-O1','-g','-Wall','-Wextra','-Werror','-fsanitize=address,undefined',*inc,*[str(ROOT/n) for n in names],'-o',str(exe)],check=True)
  log=''
@@ -18,7 +18,7 @@ def main():
  (out/'host.log').write_text(log)
  for name in ('rom_ready','bmi_transport'):
   subprocess.run([str(CC),'-target','x86_64-pc-win32-coff','-ffreestanding','-fno-stack-protector','-mno-red-zone','-Os','-Wall','-Wextra','-Werror',*inc,'-c',str(ROOT/(name+'.c')),'-o',str(out/(name+'.obj'))],check=True)
- sources=(*names,'bmi-target.json','rom_ready.h','bmi_transport.h','ce_ring.h','ce_hw.h','ce_uefi.h','ce_bus.h','dma_buffer.h','uefi_port.h','wake_core.h','verify_bmi.py')
+ sources=(*names,'bmi-target.json','rom_ready.h','bmi_transport.h','ce_ring.h','ce_hw.h','ce_uefi.h','ce_bus.h','dma_buffer.h','uefi_port.h','wake_core.h','boot_irq.h','power_core.h','pci_identity.h','verify_bmi.py')
  vendor=Path('/home/yuka/rabbit-world/native-wifi-qca9377-v1/vendor/linux/drivers/net/wireless/ath/ath10k')
  target=json.loads((ROOT/'bmi-target.json').read_text())
  assert target['rom_indicator_address']==0x3a028 and target['bmi_get_target_info']==8 and target['response_bytes']==12

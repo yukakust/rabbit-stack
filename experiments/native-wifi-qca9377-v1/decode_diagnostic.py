@@ -3,8 +3,8 @@
 import argparse,json,struct
 from pathlib import Path
 def decode(value):
- version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 0
- length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246
+ version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 0
+ length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280
  if not version or not isinstance(value.get('raw_hex'),str) or len(value['raw_hex'])!=length*2:
   raise ValueError('bounded QPD1 envelope required')
  raw=bytes.fromhex(value['raw_hex'])
@@ -35,9 +35,9 @@ def decode(value):
    'bar_extent':extent,'original_attributes':f'{attributes:016x}',
    'chip_revision':(chip>>8)&15 if stage==2 else None,
    'probe_succeeded':stage==2 and not error and cleanup==1,'dma_enabled':False,'firmware_uploaded':False}
- if version in (4,5,6):
+ if version in (4,5,6,7):
   stage,chip,error,cleanup,extent,attrs,phase,reset_error,owned,firmware,original,actual,pm,reserved,initial,readback,revalidation=struct.unpack_from('<IIIIQQIIIIHHHHIII',raw,128)
-  if stage>(12 if version>=5 else 7) or cleanup not in (1,2) or phase>4 or owned>1 or (reserved and version!=6):raise ValueError('invalid reset telemetry')
+  if stage>(12 if version>=5 else 7) or cleanup not in (1,2) or phase>4 or owned>1 or (reserved and version<6):raise ValueError('invalid reset telemetry')
   result['reset_probe']={'stage':stage,'chip_id':f'{chip:08x}','error':error,'cleanup_completed':cleanup==1,'bar_extent':extent,'original_attributes':f'{attrs:016x}','reset_phase':phase,'reset_error':reset_error,'reset_owned':bool(owned),'fw_indicator':f'{firmware:08x}','fw_initialized_seen':bool(firmware&2),'original_command':f'{original:04x}','active_command_snapshot':f'{actual:04x}','pmcsr':f'{pm:04x}','global_reset_initial':f'{initial:08x}','global_reset_readback':f'{readback:08x}','revalidation_error':revalidation,'chip_revision':(chip>>8)&15 if stage==5 and chip else None,'identity_probe_succeeded':stage==5 and not error and cleanup==1,'dma_enabled':False,'firmware_uploaded':False}
  if version>=5:
   rom_error,indicator,bmi_error,version_word,type_word,info_length,users,bus_phase,bus_error,bus_owned,held=struct.unpack_from('<11I',raw,196)
@@ -47,10 +47,18 @@ def decode(value):
   result['reset_probe'].update(cleanup_completed=released,dma_enabled=bus_phase==2,chip_revision=(chip>>8)&15 if chip else None)
   result['bmi_probe']={'stage':stage,'rom_error':rom_error,'rom_indicator':f'{indicator:08x}','rom_ready_seen':indicator!=0xffffffff and not(indicator&1) and bool(indicator&2),'bmi_error':bmi_error,'reply_received':received,'target_version_raw':f'{version_word:08x}','target_type_raw':type_word,'reply_length_field':info_length,'dma_buffers_held':users,'dma_hold_mask':held,'bus_phase':bus_phase,'bus_error':bus_error,'bus_owned':bool(bus_owned),'cleanup_completed':released,'query_and_cleanup_succeeded':stage==5 and not error and received and released,'firmware_compatibility_verified':False,'firmware_uploaded':False}
   if received:result['bmi_target_version']=f'{version_word:08x}'
- if version==6:
+ if version>=6:
   original,readback,owned,link_error=struct.unpack_from('<HHBB',raw,240)
   if owned>1 or link_error>7:raise ValueError('invalid PCIe lifecycle telemetry')
   result['pcie_link']={'original_control':f'{original:04x}','active_control_snapshot':f'{reserved:04x}','last_readback':f'{readback:04x}','owned':bool(owned),'error':link_error,'restore_completed':not owned and original==readback}
+ if version==7:
+  orig,cmd,owned,err,en0,en,core0,core,writes,link,status,cause=struct.unpack_from('<HHBBIIIIIHHI',raw,246)
+  if owned>1 or err>12 or status:raise ValueError('invalid boot IRQ telemetry')
+  restored=not owned and cmd==orig and en==en0 and not((core^core0)&0x800) and not(cause&0x7fc00)
+  result['boot_irq']={'original_command':f'{orig:04x}','command_readback':f'{cmd:04x}','owned':bool(owned),'error':err,'original_enable':f'{en0:08x}','last_enable':f'{en:08x}','original_core_control':f'{core0:08x}','last_core_control':f'{core:08x}','mmio_writes':writes,'post_reset_link_control':f'{link:04x}','pending_after_clear':f'{cause:08x}','host_irq_handler_installed':False,'restore_completed':restored}
+  if owned:
+   result['bmi_probe'].update(cleanup_completed=False,query_and_cleanup_succeeded=False)
+   result['reset_probe']['cleanup_completed']=False
  if version==3:
   pm,csr,pcie,link,status,reserved=struct.unpack_from('<HHHHII',raw,128)
   if status>3 or reserved:raise ValueError('invalid power-capability snapshot')

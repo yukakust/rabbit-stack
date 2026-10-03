@@ -8,7 +8,7 @@ typedef struct {
  uint64_t original_attributes,bar_extent;
  uint32_t error,dma_users;
  uint16_t original_command;
- uint8_t claimed,memory_attempted,memory_ready,validated,wake_owned,link_owned;
+ uint8_t claimed,memory_attempted,memory_ready,validated,wake_owned,link_owned,boot_irq_owned;
 } QcaUefiPort;
 /* Zero initialize. Claims PCI IO exclusively and validates fresh config/BAR.
  * Failed cleanup retains ownership; caller MUST NOT unload while claimed. */

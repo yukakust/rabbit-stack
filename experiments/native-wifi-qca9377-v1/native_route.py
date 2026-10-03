@@ -10,7 +10,7 @@ REPO=ROOT.parent.parent
 def gates(directory,payload,world):
  report=flow.read_json(directory/'report.json')
  reproduction=flow.read_json(directory/'reproduction.json',8*1024*1024)
- if report['status'] not in ('READ-ONLY-PCI-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS','READ-ONLY-PCI-POWER-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS') or report['payload_sha256']!=flow.sha(payload):
+ if report['status'] not in ('READ-ONLY-PCI-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS','READ-ONLY-PCI-POWER-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS') or report['payload_sha256']!=flow.sha(payload):
   raise ValueError('exact diagnostic profile gates required')
  if reproduction['status']!='CURRENT-SOURCES-TWO-REBUILDS-WORLD-C-CHECK-PASS' or reproduction['payload_sha256']!=flow.sha(payload) or reproduction['world_package_sha256']!=flow.sha(world):
   raise ValueError('current-source/current-world reproduction required')
@@ -21,23 +21,24 @@ def gates(directory,payload,world):
  for name,expected in report['source_sha256'].items():
   if reproduction['inputs'].get(name)!=expected:raise ValueError('gate source snapshot differs')
  if flow.sha((directory/'host.log').read_bytes())!=report['host_log_sha256']:raise ValueError('host evidence changed')
- if report['status'] in ('REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS'):
+ if report['status'] in ('REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS'):
   port=flow.read_json(directory/'port-report.json')
   if (port['status']!='INITIAL-UEFI-PCI-WAKE-PORT-HOST-MOCK-AND-COFF-ABI-PASS'
    or flow.sha((directory/'port-report.json').read_bytes())!=report['port_report_sha256']
    or flow.sha((directory/'port-host.log').read_bytes())!=port['host_log_sha256']):raise ValueError('exact port gates required')
   for name,expected in port['source_sha256'].items():
    if reproduction['inputs'].get('experiments/native-wifi-qca9377-v1/'+name)!=expected:raise ValueError('port gate sources changed')
- if report['status'] in ('REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS'):
+ if report['status'] in ('REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS'):
   reset=flow.read_json(directory/'reset-report.json')
   if reset['status']!='COOPERATIVE-COLD-RESET-HOST-AND-COFF-PASS' or flow.sha((directory/'reset-report.json').read_bytes())!=report['reset_report_sha256'] or flow.sha((directory/'reset-host.log').read_bytes())!=reset['host_log_sha256']:raise ValueError('reset component gate mismatch')
   for name,expected in reset['source_sha256'].items():
    if reproduction['inputs'].get('experiments/native-wifi-qca9377-v1/'+name)!=expected:raise ValueError('reset gate sources changed')
- if report['status'] in ('QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS'):
+ if report['status'] in ('QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS'):
   components=[('ce','CE-MMIO-UEFI-MAPPED-LIFETIME-HOST-COFF-PASS'),('bmi','ROM-BMI-CE0-CE1-INTEGRATION-HOST-COFF-PASS')]
-  if report['status']=='QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS':
+  if report['status'] in ('QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS'):
    if report.get('pcie_aspm_reversible') is not True:raise ValueError('PCIe lifecycle gate required')
    components.append(('dma','UEFI-COMMON-DMA-LIFETIME-HOST-COFF-ABI-PASS'))
+  if report['status']=='QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS' and report.get('boot_irq_host_isolation') is not True:raise ValueError('host IRQ isolation gate required')
   for component,status in components:
    subreport=flow.read_json(directory/(component+'-report.json'))
    if (subreport['status']!=status or flow.sha((directory/(component+'-report.json')).read_bytes())!=report[component+'_report_sha256']

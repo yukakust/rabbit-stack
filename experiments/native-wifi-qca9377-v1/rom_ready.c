@@ -5,7 +5,7 @@ static int valid(QcaUefiPort*p){return p&&p->claimed&&p->validated&&p->pci&&p->m
 static int fail(QcaRomReady*r,unsigned error){r->phase=QCA_ROM_FAULT;r->error=error;return -1;}
 int qca_rom_begin(QcaRomReady*r,QcaUefiPort*p,uint64_t now){
  if(!r||!valid(p)||now>UINT64_MAX-3000000)return -1;
- r->port=p;r->started=r->last=r->next=now;r->indicator=r->reads=r->error=0;r->phase=QCA_ROM_WAIT;return 0;
+ r->port=p;r->boot=0;r->started=r->last=r->next=now;r->indicator=r->reads=r->error=0;r->phase=QCA_ROM_WAIT;return 0;
 }
 int qca_rom_poll(QcaRomReady*r,uint64_t now){
  if(!r)return -1;
@@ -17,6 +17,7 @@ int qca_rom_poll(QcaRomReady*r,uint64_t now){
  if(now-r->started>=3000000)return fail(r,r->indicator==UINT32_MAX?3:4);
  if(now<r->next)return 0;
  r->next=now>UINT64_MAX-10000?UINT64_MAX:now+10000;
+ if(r->boot&&qca_boot_irq_poll(r->boot))return fail(r,7);
  void*fn=*(void**)((uint8_t*)r->port->pci+16);
  if(((Memory)fn)(r->port->pci,2,0,0x3a028,1,&r->indicator))return fail(r,5);
  r->reads++;

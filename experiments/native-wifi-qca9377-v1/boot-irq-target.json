@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "family": "ath10k-qca9377-pci",
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "reference_sha256": {
+    "pci.c": "e5c8f5aec5312eb83bef7372706cdb7c979fcf81e423bb4fced3f18591e994fd",
+    "hw.c": "7e176346c8def2054138bf3458acd4fbda7fc01d0753b77985f82215b51400f4",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "bmi.c": "f14c60e89f1e4a9c4105e5f7dcf0571717b79a7825c44aceb9fd665e03917aa1",
+    "bmi.h": "8924f6fbf6ca4cfa494e7b6f38240ec44fa554e8850315b7442f3a534be30344"
+  },
+  "soc_core_base": 237568,
+  "core_control": 237568,
+  "interrupt_enable": 237576,
+  "interrupt_cause": 237580,
+  "interrupt_clear": 237588,
+  "firmware_and_ce_mask": 523264,
+  "core_msi_firmware_mask": 2048,
+  "pci_command_intx_disable": 1024,
+  "baseline_device_enable_required": 0,
+  "msi_and_msix_required_disabled": true,
+  "physical_verified": false
+}

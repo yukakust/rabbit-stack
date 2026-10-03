@@ -1377,3 +1377,32 @@ plan a DMA-lifetime-aware earlier master enable only after all8CE quiescence and
 reviewed mapped empty rings, retaining mappings across reset and revalidation.
 No DMA activation, firmware compatibility/upload, scan/WPA, DHCP/two-way traffic
 or reconnect success yet. Full original Wi-Fi goal remains active/incomplete.
+
+## 2026-10-04 — native15 boot IRQ candidate checked and signed; delivery pending
+
+Added reversible boot_irq.c/h with pinned target facts. Validate fresh identity,
+D0 and MSI/MSI-X disabled before owning legacy bootstrap registers; mask host
+INTx with PCI Command Write16 before any device interrupt writes. Clear only the
+CORE_CTRL firmware MSI mask0x800, repeatedly enable firmware/CE mask0x7fc00 during
+bounded ROM wait, verify every write. Cleanup disables and clears device IRQs,
+checks pending causes, restores the saved core bit and host command; ambiguous
+writes or cleanup errors retain ownership and prevent unload. No host IRQ handler
+is enabled. Recheck/reapply ASPM-off after reset, preserving original LinkControl.
+
+QPD7 is280bytes with boot ownership/error/register snapshots and post-reset link
+measurement. Actual UEFI QEMU gates test bounded ATT Read/ReadBlob, including
+invalid offset, with QCA absent.34 host sanitizer failure/recovery scenarios,
+component gates, normal+EMPTY UEFI city/rejection/recovery, and two exact rebuilds
+with current world pass on Yukabox. Payload SHA256:
+0beeb5450db864eba62710cfe7df7e0ba3d19594d9e480b6b50129f99225b4a6.
+Evidence: native-wifi-qca9377-v1/evidence/2026-10-04/boot-irq-rom-profile.
+
+Exact owner-signed native15 session is saved on Mac at
+connected-supervisor runs/text-world/pci-native-yhzzk0k_. First read-only Bluetooth
+query timed out before any DATA/COMMIT; diagnostic reader also disconnected.
+Native14 remains the last confirmed installed release; native15 is NOT a physical
+success. Resume the SAME pending session after reaching Dell; do not regenerate a
+nonce, clear staging or increment the counter. Observe current sender process
+before retrying. City/tail and proximity question is pending. No USB/bootstrap,
+reboot, firmware upload or Wi-Fi connection performed or inferred. Full original
+goal remains active, including firmware RAM chunks, radio/WPA/DHCP/reconnect.

@@ -13,6 +13,7 @@ static QcaUefiPort port;static QcaWake wake;static QcaReset reset;
 static uint32_t stage,failed,firmware,chip,revalidate_error,recoveries,cancelled,cleanup_attempts;
 static uint16_t actual_command,pmcsr;
 static uint64_t bar,last_now;
+static QcaBootIrq boot_irq;static uint16_t post_reset_link;
 static QcaPcieLink link;static uint16_t link_active;
 static QcaRomReady rom;static QcaCeAccess access;static QcaCeBus bus;
 static QcaDmaBuffer buffers[4];static QcaCeRing rings[2];static QcaBmiPipe pipes[2];static QcaBmiExchange exchange;
@@ -31,6 +32,10 @@ static void telemetry(void){
  uint32_t held=0;for(unsigned i=0;i<4;i++)if(buffers[i].allocated||buffers[i].mapped)held|=1u<<i;
  record(236,held,4);record(182,link_active,2);
  record(240,link.original,2);record(242,link.readback,2);record(244,link.owned,1);record(245,link.error,1);
+ record(246,boot_irq.original_command,2);record(248,boot_irq.command_readback,2);
+ record(250,boot_irq.owned,1);record(251,boot_irq.error,1);record(252,boot_irq.original_enable,4);
+ record(256,boot_irq.last_enable,4);record(260,boot_irq.original_control,4);record(264,boot_irq.last_control,4);
+ record(268,boot_irq.writes,4);record(272,post_reset_link,2);record(276,boot_irq.cause,4);
 }
 typedef Status(EFIAPI *Config)(void*,uint32_t,uint32_t,uint64_t,void*);
 typedef Status(EFIAPI *Memory)(void*,uint32_t,uint8_t,uint64_t,uint64_t,void*);
@@ -71,6 +76,7 @@ static void shutdown(uint64_t now){
   return;
  }
  stage=succeeded?5:6;
+ if(qca_boot_irq_close(&boot_irq)){succeeded=0;stage=6;if(!failed)failed=0xb00|boot_irq.error;return;}
  if(qca_pcie_restore(&link)){succeeded=0;stage=6;if(!failed)failed=0xa00|link.error;return;}
  if(qca_port_close(&port,&wake)&&!failed)failed=0x900;
 }
@@ -128,15 +134,15 @@ void qca_poll(uint64_t ms){
   int rc=qca_wake_poll(&wake,now);chip=wake.chip_id;
   if(rc){
    if(rc<0||fresh()){failed=0x400|wake.error;stage=6;}
-   else if(qca_rom_begin(&rom,&port,now)){failed=0x401;stage=6;}
-   else stage=4;
+   else if(qca_pcie_recheck(&link)||qca_boot_irq_begin(&boot_irq,&port)||qca_rom_begin(&rom,&port,now)){failed=0x401;stage=6;}
+   else{post_reset_link=link.readback;link_active=link.readback;rom.boot=&boot_irq;stage=4;}
   }
  }
  else if(stage==4){
   int rc=qca_rom_poll(&rom,now);firmware=rom.indicator;
   if(rc<0){failed=0x500|rom.error;stage=6;}
   else if(rc>0){
-   if(fresh()||qca_ce_access_init(&access,&port,255)||qca_ce_bus_init(&bus,&access)){failed=0x501;stage=6;}
+   if(qca_boot_irq_close(&boot_irq)||fresh()||qca_ce_access_init(&access,&port,255)||qca_ce_bus_init(&bus,&access)){failed=0x501;stage=6;}
    else{bus_live=1;stage=8;if(qca_ce_bus_stop_begin(&bus,now)){failed=0x502;shutdown(now);}}
   }
  }
