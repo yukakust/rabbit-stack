@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "trial": "/home/yuka/rabbit-world/unreal-yukabox-v1/logs/smoke-nah3Obxq",
+  "build_succeeded": true,
+  "runner_exit_code": 0,
+  "render": "real Unreal Vulkan offscreen on Yukabox",
+  "gpu": "AMD Radeon 890M (RADV STRIX1)",
+  "frame_size": [
+    1280,
+    720
+  ],
+  "frame_sha256": "6e4f9de0d26ce77975c08e40a6bbd8f599e1c8f930dc6e020af005b580b24e21",
+  "frame_bytes": 632075,
+  "evidence_lines": [
+    "[2026.10.03-19.50.31:223][  0]LogVulkanRHI: Creating Vulkan Device using VkPhysicalDevice 0x0x2b46ab10.",
+    "[2026.10.03-19.50.31:223][  0]LogVulkanRHI: Display: - DeviceName: AMD Radeon 890M (RADV STRIX1)",
+    "[2026.10.03-19.50.31:898][  0]LogShaderCompilers: Display: Using 3 local workers for shader compilation",
+    "[2026.10.03-19.50.36:964][  0]LogTemp: Display: RABBIT_SMOKE_SCENE_STARTED",
+    "[2026.10.03-19.50.56:964][627]LogTemp: Display: RABBIT_SMOKE_FRAME_REQUESTED",
+    "[2026.10.03-19.50.57:893][628]LogTemp: Display: RABBIT_SMOKE_FRAME_WRITTEN"
+  ],
+  "old_snapshot_file_sha256": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+  "first_trial_runner_failure": "Script overwritten while bash was reading it: final shell parsing failed after frame; fixed and repeated successfully",
+  "limits": [
+    "Simple smoke scene, not connected district/cat/portal",
+    "No physical display observation",
+    "No city performance benchmark",
+    "Engine exits after screenshot; not left running"
+  ]
+}

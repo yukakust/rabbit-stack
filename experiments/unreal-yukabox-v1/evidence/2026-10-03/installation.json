@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "installed_at": "2026-10-03T19:48:47.333137+00:00",
+  "source": "https://www.unrealengine.com/linux",
+  "artifact": "Linux_Unreal_Engine_5.8.3.zip",
+  "archive_bytes": 39818576005,
+  "archive_sha256": "81985a9542e15761fa3cc0d4483a26ebe5fd0b448120faddaa2fe05d94142934",
+  "build_version": {
+    "MajorVersion": 5,
+    "MinorVersion": 8,
+    "PatchVersion": 3,
+    "Changelist": 58210709,
+    "CompatibleChangelist": 55116800,
+    "IsLicenseeVersion": 0,
+    "IsPromotedBuild": 1,
+    "BranchName": "++UE5+Release-5.8"
+  },
+  "extracted_bytes": 76966193342,
+  "file_count": 300132,
+  "editor_present": true,
+  "note": "Local artifact hash is recorded, not a vendor-published checksum. Installation does not prove runtime/GPU rendering."
+}

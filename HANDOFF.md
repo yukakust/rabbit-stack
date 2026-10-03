@@ -2104,3 +2104,35 @@ cat, Pixel Streaming, portal or shared rendering implemented yet. Do not claim t
 Next: actual GPU run/frame -> small district + checked data adapter -> licensed
 rigged cat -> portal/shared composition. Display destination still to choose;
 Mac must remain a command point. No Dell write, owner-key output or USB action.
+
+### 2026-10-03: official Unreal5.8.3 installed; actual Yukabox GPU frame
+
+Owner replied signed into Epic. Browser linux page exposed official5.8.3 archive;
+download directly on Yukabox, no browser cookies/account credentials/owner keys
+copied. No agent EULA acceptance. Archive39818576005bytes SHA256
+81985a9542e15761fa3cc0d4483a26ebe5fd0b448120faddaa2fe05d94142934;
+buildCL58210709, version5.8.3; unzip CRC passed all300132members/76966193342bytes.
+Engine /home/yuka/rabbit-world/unreal-yukabox-v1/engine. Bundled v26clang20.1.8.
+
+Our project /home/yuka/rabbit-world/unreal-yukabox-v1/projects/project/
+RabbitDistrict.uproject compiled on Yukabox. First build36.94s. Real Vulkan device
+creation log names AMD Radeon890M(RADV STRIX1),3shaderworkers. Actual1280x720 PNG
+visually inspected:3basic blocks, ground/shadows, default pawn sphere. Final stable
+runner exit0, frameSHA6e4f9de0d26ce77975c08e40a6bbd8f599e1c8f930dc6e020af005b580b24e21.
+Remote final trial logs/smoke-nah3Obxq. Source/build/selected logs/image/report in
+experiments/unreal-yukabox-v1; no engine binaries in Git. Reproduce using run_smoke.sh
+over SSH. Runtime uses-CoreLimit4/nice10, build-MaxParallelActions4/-NoUBA. Initial
+UBA transient listener ended; future local-only build disables it. No NullRHI/Xvfb
+needed. First runner's final shell parsing failed because agent replaced script
+while bash was reading it, after frame saved; fixed and repeated successfully.
+
+This proves installation/C++ integration/real offscreen GPU frame, NOT a connected
+district/realistic cat/portal/combined city/physical display/performance benchmark.
+Engine exits after captured frame; not left running as a service. Original snapshot
+hash preserved remotely, physical Dell native7/world12 untouched. Partial obsolete
+download files cleaned; official complete archive retained. Mac only command point.
+No monitors detected on Yukabox; async owner display choice unanswered. Fab free-cat
+candidate bb864687-9852-4c54-a160-4cb28ce3e2ea viewed only: Personal tier free under
+eligibility, Professional paid; declared UE5.6-5.7/Windows. Not acquired/imported,
+no Fab sign-in/license acceptance. Do not infer Linux5.8 compatibility or accept
+terms/purchase without the required concrete owner decision.

@@ -1,0 +1,6 @@
+{
+  "FileVersion": 3,
+  "Category": "Rabbit",
+  "Description": "Yukabox GPU smoke scene; not yet a connected district",
+  "Modules": [{"Name": "RabbitDistrict", "Type": "Runtime", "LoadingPhase": "Default"}]
+}
