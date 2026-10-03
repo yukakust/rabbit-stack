@@ -1859,3 +1859,14 @@ manual reboot, owner-private key access or native update. Current world authorit
 remains public development Creator. Do not claim authenticated device attestation
 or physical screen from preview. First text/art managed delivery receipt physically
 observed; exact screen outcome still pending.
+
+
+## Owner confirms red hat on physical Dell — 2026-10-03
+
+Owner: «супер, кот в шапке...что дальше делаем?». This supersedes the
+previous pending hat appearance observation: physical cat wearing hat confirmed.
+Movement after the hat update was not explicitly reconfirmed. Exact applied
+receipt and worldcounter3 unchanged; no new radio or hardware action. Evidence
+and generation provenance updated with verbatim observation. Next roadmap work:
+consolidate convenient text edits/current world assets, then voice through the
+same checked delivery path and reusable Creation Inventory components.

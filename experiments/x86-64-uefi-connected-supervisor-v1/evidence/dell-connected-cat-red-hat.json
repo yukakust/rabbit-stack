@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "PHYSICAL-EXACT-RED-HAT-WORLD-APPLIED-SCREEN-PENDING",
+  "status": "PHYSICAL-EXACT-RED-HAT-WORLD-APPLIED-OWNER-HAT-VISIBLE",
   "source": "Agent-operated owner Mac terminal/CoreBluetooth; actual Dell",
   "intent": "давай коту наденем шапку",
   "art_generation": "built-in image_gen, hat reference then original four-pose sheet edit",
@@ -21,7 +21,11 @@
   "commit_elapsed_seconds": 1.694,
   "disconnects": 0,
   "exact_applied_receipt": true,
-  "owner_screen_observation": null,
+  "owner_screen_observation": {
+    "quote": "супер, кот в шапке...что дальше делаем?",
+    "hat_visible": true,
+    "movement_after_hat_explicitly_reconfirmed": false
+  },
   "managed_current_counter": 3,
   "managed_pending": null,
   "authority": "installed-public-development-world-creator-NOT-owner-native",
@@ -62,5 +66,5 @@
     "foreign_final_native_receipt": true,
     "active_staging_abandoned": false
   },
-  "limitations": "Exact receipt is not device attestation or independent screen observation. AI sheet edit preserves appearance/pose intent, not bit-identical pixels. C checks cover240 host ticks; physical appearance/motion awaiting owner."
+  "limitations": "Exact receipt is not device attestation. Owner confirms cat wearing hat on physical Dell; movement after this update was not explicitly reconfirmed. AI sheet edit preserves appearance/pose intent, not bit-identical pixels. C checks cover240 host ticks."
 }

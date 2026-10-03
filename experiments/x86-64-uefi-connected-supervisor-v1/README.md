@@ -447,5 +447,5 @@ package35017 bytes, hash8761fa34..., paced entire35049-byte stream, same-session
 COMMIT, exact applied receipt in1.694s for COMMIT connection, no disconnects. Current
 managed state updated fromworld2 toworld3, pending cleared. Nativecounter3 unchanged
 (consumed by prior rejected native trial); no module/media/network/reboot/key action.
-Physical hat/motion observation pending. Evidence: `evidence/dell-connected-cat-red-hat.json`.
+Owner confirms cat wearing hat on physical Dell. Movement after the hat update was not explicitly reconfirmed. Evidence: `evidence/dell-connected-cat-red-hat.json`.
 No full-stage elapsed time claim; previews/240-tick checks remain host evidence.
