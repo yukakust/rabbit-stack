@@ -1,0 +1,61 @@
+{
+  "status": "REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS",
+  "payload_sha256": "a721f3fcab4749f4fda5ad98018cdf0fc2d2d6396a68991f07e372a1caabfe60",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-v1/bringup_build.py": "bec8c5aab62137d541ab7b09dd29e46b0d51f624174091862b1c9d09d39f0217",
+    "experiments/native-wifi-qca9377-v1/bringup.h": "605a678e2a1691501878bf873886dc3ac63fbdc13c15cb0abfe176698e86d8f9",
+    "experiments/native-wifi-qca9377-v1/bringup.c": "c5c70cb8449338ecc7740deec8044c43c74459959e9451fcd0ce9399b2a637c2",
+    "experiments/native-wifi-qca9377-v1/bringup_test.c": "502e43b8b9bf7697910bbd5c53c15c83172aaf4c364632c2f2a2293512d25c1b",
+    "experiments/native-wifi-qca9377-v1/verify_bringup.py": "fc245e58250deb9eae73d07c3f188adb9a43e460899ad36f1b6509863849a22f",
+    "experiments/native-wifi-qca9377-v1/diagnostic_build.py": "7997072797a35fce528c632aed55df60b7239fcca702dd29fc699cb881c17c77",
+    "experiments/native-wifi-qca9377-v1/verify_diagnostic.py": "22f314152520e7ce9894d1eb3298fa59394286ad9537e25c1f25fbbe64017a89",
+    "experiments/native-wifi-qca9377-v1/pci_collect.c": "a00aeab2edb3aa4fa94bd1c2217851555598ae483564ea7a6a9a766f0f6a7999",
+    "experiments/native-wifi-qca9377-v1/pci_collect.h": "5688189cfbcc0bb0978bcd3f183db7b1ae1f2fe0051e8a70f3643ef6531a5046",
+    "experiments/native-wifi-qca9377-v1/pci_identity.c": "6165711757f55b5bb9be9a1df11abbf4af406ee7dc29298d98ab587ce46b5611",
+    "experiments/native-wifi-qca9377-v1/pci_identity.h": "e54f5afb1559068a867bb12637172b5dab4865d698e67373f43b36ffd4079741",
+    "experiments/native-wifi-qca9377-v1/uefi_port.c": "d51af33a03bd095f8a21bac70c9a8afa4da435564b72c324f0040456d2fd1b8f",
+    "experiments/native-wifi-qca9377-v1/uefi_port.h": "4a242836b1db6ec1c2373af8dd7cd891c6143d80641fcd23dc21b1a8c38489d4",
+    "experiments/native-wifi-qca9377-v1/wake_core.c": "ee7156eb27f325ec185cf87f3dbd91c3efacf9436a572118ffb238448f0aec7d",
+    "experiments/native-wifi-qca9377-v1/wake_core.h": "02a1d237478b6c25fc609f8500dfee6b1d52fc8ba35422315792fdfa28a12b43",
+    "experiments/native-wifi-qca9377-v1/port_test.c": "2764f08d4e20a4b7ff0630ecfad64346bf88fe425a94cf9d0e00da455244e9ba",
+    "experiments/native-wifi-qca9377-v1/verify_port.py": "1a5cc46e5cb17f97b8c83094bd605c4cd102e350651f529faf9b03bb916ba994",
+    "experiments/native-wifi-qca9377-v1/wake-target.json": "f7c48b45c49f6975be4e6cc61e00a89da3f4608e9e8568a9f141588f4d2a87cd",
+    "experiments/native-wifi-qca9377-v1/wake_test.c": "8c9bc1bdbef93fb852c01d3856319dc932e19cc291a98b3ece332efc18cd4b5b",
+    "experiments/x86-64-uefi-city-v2/actors_build.py": "a0d960c3f311af756b4dbbabc48b3dc25a1788ce8026f29246571b4030e7fdaf",
+    "experiments/x86-64-uefi-city-v2/city_core.c": "87118d150ae88002e5851410bbf1cb56c130f9f8b6933d70111cb80fe5504005",
+    "experiments/x86-64-uefi-city-v2/city_core.h": "32a5c95574bd3a022df954b4af57a56ee27e20d372085efc31a77a5297aabbf8",
+    "experiments/x86-64-uefi-city-v2/city_display.c": "8928cef0b0d6b752a92ed0ad8cfc6d868057d0f2538b5ed6bb876c49c531c181",
+    "experiments/x86-64-uefi-city-v2/actor_clock.c": "3314b5dbf5dadb87094af8cb656869ee0c5b8f2ddab85f98bb4c170f9c436c6a",
+    "experiments/x86-64-uefi-city-v2/actors_gate.py": "8491706bd7990a404c8b257353db64603aa6cc2b2dc5dda6918f92668904374b"
+  },
+  "host_log_sha256": "35e441eb6f382f5d935a102ee5d65b178f1ef742a0656871a91823ceefe7347f",
+  "port_report_sha256": "e3e525b2700a0f72b39f43e9ea752d3f7a4a6a31eedb1955155c9e72cbb8bb0b",
+  "gates": [
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "a721f3fcab4749f4fda5ad98018cdf0fc2d2d6396a68991f07e372a1caabfe60",
+      "empty_boot": false,
+      "background": "121826",
+      "observed_log_sha256": "6a5891338a2dfb0db665ae7a14521957dafcf56c48ff8c1a80812482aeef85c4",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "5417508b994fd7ecc5d870b0f0e65bd7a4c87ad32efd28d160e895650b46f8ac"
+    },
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "a721f3fcab4749f4fda5ad98018cdf0fc2d2d6396a68991f07e372a1caabfe60",
+      "empty_boot": true,
+      "background": "121826",
+      "observed_log_sha256": "6a5891338a2dfb0db665ae7a14521957dafcf56c48ff8c1a80812482aeef85c4",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "05d511525e23d2758056a6ec1135d0a4abd74880896ecf7c637a102e0d8e84d9"
+    }
+  ],
+  "physical_dell_verified": false,
+  "dma": false,
+  "firmware_upload": false,
+  "physical_operation": "one-shot PCI memory decode + wake/chip-ID, then restore/close; no bus master/reset"
+}

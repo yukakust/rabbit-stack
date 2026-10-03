@@ -24,9 +24,10 @@ int qca_wake_poll(QcaWake*w,uint64_t now){
  if(w->read(w->context,w->target.state,&value)||value==0xffffffffu)return fail(w,QCA_WAKE_IO);
  if((value&7)!=w->target.on)return 0;
  if(w->read(w->context,w->target.chip_id,&value))return fail(w,QCA_WAKE_IO);
+ w->chip_id=value;
  /* PCI ID0042 supports chip revisions0 and1. Zero/all-ones fail closed. */
  if(!value||value==0xffffffffu||((value>>8)&15)>1)return fail(w,QCA_WAKE_CHIP);
- w->chip_id=value;w->phase=QCA_WAKE_READY;return 1;
+ w->phase=QCA_WAKE_READY;return 1;
 }
 int qca_wake_close(QcaWake*w){
  if(!w)return -1;

@@ -40,11 +40,12 @@ static NSString*const diagnostic=@"52414242-4954-4649-8000-000000000006";
 }
 - (void)peripheral:(CBPeripheral*)p didUpdateValueForCharacteristic:(CBCharacteristic*)c error:(NSError*)e{
  const uint8_t*b=c.value.bytes;
- if(e||![c.UUID isEqual:[CBUUID UUIDWithString:diagnostic]]||c.value.length!=128||memcmp(b,"QPD\1",4)){
+ if(e||![c.UUID isEqual:[CBUUID UUIDWithString:diagnostic]]||
+  !((c.value.length==128&&!memcmp(b,"QPD\1",4))||(c.value.length==160&&!memcmp(b,"QPD\2",4)))){
   [self fail:@"invalid PCI diagnostic envelope"];return;
  }
- NSMutableString*hex=[NSMutableString string];for(unsigned i=0;i<128;i++)[hex appendFormat:@"%02x",b[i]];
- NSDictionary*result=@{@"format":@"QPD1",@"raw_hex":hex,@"peripheral":p.identifier.UUIDString,
+ NSMutableString*hex=[NSMutableString string];for(NSUInteger i=0;i<c.value.length;i++)[hex appendFormat:@"%02x",b[i]];
+ NSDictionary*result=@{@"format":b[3]==1?@"QPD1":@"QPD2",@"raw_hex":hex,@"peripheral":p.identifier.UUIDString,
    @"device_attestation":@NO,@"writes":@0};
  NSData*json=[NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingSortedKeys error:nil];
  fwrite(json.bytes,1,json.length,stdout);puts("");fflush(stdout);

@@ -3,19 +3,19 @@
 #include <string.h>
 #include <stdio.h>
 static void*boot[44],*pci[18];
-static SystemTable system;
+static SystemTable port_system;
 static uint8_t resource[48];
 static uint32_t config[16];
 static unsigned mode,opens,closes,frees,mem_reads,mem_writes,attr_writes;
 static uint64_t attributes;
 static void put(unsigned offset,uint64_t value,unsigned bytes){for(unsigned i=0;i<bytes;i++)resource[offset+i]=(uint8_t)(value>>(8*i));}
 static Status EFIAPI open_protocol(void*h,const Guid*g,void**out,void*agent,void*controller,uint32_t flags){
- assert(h==pci&&controller==pci&&agent==&system&&g->a==0x4cf5b200&&flags==0x30);
+ assert(h==pci&&controller==pci&&agent==&port_system&&g->a==0x4cf5b200&&flags==0x30);
  if(mode==1)return EFI_ERROR(15);
  opens++;*out=pci;return 0;
 }
 static Status EFIAPI close_protocol(void*h,const Guid*g,void*agent,void*controller){
- assert(h==pci&&controller==pci&&agent==&system&&g->a==0x4cf5b200);
+ assert(h==pci&&controller==pci&&agent==&port_system&&g->a==0x4cf5b200);
  if(mode==8)return EFI_ERROR(7);
  closes++;return 0;
 }
@@ -35,7 +35,8 @@ static Status EFIAPI attr(void*p,uint32_t operation,uint64_t value,uint64_t*out)
 }
 static Status EFIAPI mem_read(void*p,uint32_t width,uint8_t bar,uint64_t offset,uint64_t count,void*out){
  assert(p==pci&&width==2&&!bar&&count==1&&(attributes&0x200));mem_reads++;
- assert(offset==0x80000||offset==0x8f0);*(uint32_t*)out=offset==0x80000?3:0x100;return 0;
+ assert(offset==0x80000||offset==0x8f0);
+ *(uint32_t*)out=offset==0x80000?(mode==10?0:3):(mode==11?0x200:0x100);return 0;
 }
 static Status EFIAPI mem_write(void*p,uint32_t width,uint8_t bar,uint64_t offset,uint64_t count,void*in){
  assert(p==pci&&width==2&&!bar&&count==1&&offset==0x80004&&(attributes&0x200));
@@ -45,14 +46,14 @@ static void baseline(void){
  mode=opens=closes=frees=mem_reads=mem_writes=attr_writes=0;attributes=0;
  memset(config,0,sizeof(config));config[0]=0x0042168c;config[1]=0x100;config[2]=0x02800031;config[4]=0xd1000004;config[11]=0x18101028;
  memset(resource,0,sizeof(resource));resource[0]=0x8a;put(1,43,2);put(6,64,8);put(14,0xd1000000,8);
- put(22,0xd10fffff,8);put(38,0x100000,8);resource[46]=0x79;
+ put(22,0xfffff,8);put(38,0x100000,8);resource[46]=0x79;
 }
 int main(void){
- system.boot=boot;boot[280/8]=open_protocol;boot[288/8]=close_protocol;boot[72/8]=free_pool;
+ port_system.boot=boot;boot[280/8]=open_protocol;boot[288/8]=close_protocol;boot[72/8]=free_pool;
  pci[48/8]=read_config;pci[128/8]=bar_attributes;pci[120/8]=attr;pci[16/8]=mem_read;pci[24/8]=mem_write;
  QcaPciTarget target={0x1028,0x1810,0x31};QcaWakeTarget wake_target={0x80000,0x80004,0x8f0,3,1000000};
  baseline();QcaUefiPort port={0};QcaWake wake={0};uint32_t value=0;
- assert(!qca_port_open(&port,&system,&system,pci,&target)&&port.claimed&&frees==1&&!attr_writes);
+ assert(!qca_port_open(&port,&port_system,&port_system,pci,&target)&&port.claimed&&frees==1&&!attr_writes);
  assert(qca_port_read32(&port,0x80000,&value)==-1&&!mem_reads);
  assert(!qca_port_enable_memory(&port)&&attributes==0x200);
  assert(qca_port_read32(&port,0x80004,&value)==-1&&!mem_reads);
@@ -66,7 +67,7 @@ int main(void){
   baseline();port=(QcaUefiPort){0};wake=(QcaWake){0};mode=failure;
   if(failure==2)config[11]=0x18111028;
   if(failure==4)put(38,0x80000,8);
-  int result=qca_port_open(&port,&system,&system,pci,&target);
+  int result=qca_port_open(&port,&port_system,&port_system,pci,&target);
   if(failure<=4||failure==7)assert(result==-1&&!attr_writes&&!mem_reads&&!mem_writes);
   else{
    assert(!result);
@@ -91,7 +92,7 @@ int main(void){
   if(corrupt==3)put(30,1,8);
   if(corrupt==4)put(14,0xd2000000,8);
   if(corrupt==5)resource[46]=0;
-  assert(qca_port_open(&port,&system,&system,pci,&target)==-1&&!attr_writes&&!mem_reads&&!mem_writes);
+  assert(qca_port_open(&port,&port_system,&port_system,pci,&target)==-1&&!attr_writes&&!mem_reads&&!mem_writes);
   assert(!qca_port_close(&port,0));
  }
  puts("UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY");

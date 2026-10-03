@@ -1,0 +1,30 @@
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 0: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 1: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 2: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 3: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 4: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 5: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 6: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 7: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 8: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 9: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 10: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 11: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 12: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 13: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
+One-shot bringup scenario 14: bounded operation, cleanup, no reattach repetition PASS; MOCK ONLY

@@ -1,0 +1,27 @@
+{
+  "status": "EXACT-NATIVE10-APPLIED-PROBE-CHIP-ID-ZERO-CLEANUP-COMPLETE",
+  "native_counter": 10,
+  "world_counter": 12,
+  "payload_sha256": "a721f3fcab4749f4fda5ad98018cdf0fc2d2d6396a68991f07e372a1caabfe60",
+  "world_package_sha256": "6414d1bae588acfef261d8c6befc8fc1edb96fb76892a33c47f8d3b2c05bb180",
+  "physical_probe": {
+    "stage": 3,
+    "chip_id": "00000000",
+    "error": 3,
+    "cleanup_completed": true,
+    "bar_extent": 2097152,
+    "original_attributes": "0000000000000000",
+    "chip_revision": null,
+    "probe_succeeded": false,
+    "dma_enabled": false,
+    "firmware_uploaded": false
+  },
+  "rtc_on_seen": true,
+  "chip_id_accepted": false,
+  "interpretation": "Wake state reached ON; register read returned zero before any hardware reset. Zero was deliberately rejected by current probe; it is not proof of a supported SoC revision or firmware compatibility. PCI attributes restored and exclusive protocol closed according to telemetry.",
+  "hardware_reset": false,
+  "wifi_association": false,
+  "post_update_visual_observation": "pending; prior native9 city and animated tail confirmed by user",
+  "build_host": "yukabox",
+  "control_signing_radio_host": "Mac"
+}

@@ -10,7 +10,7 @@ REPO=ROOT.parent.parent
 def gates(directory,payload,world):
  report=flow.read_json(directory/'report.json')
  reproduction=flow.read_json(directory/'reproduction.json',8*1024*1024)
- if report['status']!='READ-ONLY-PCI-CITY-PROFILE-GATES-PASS' or report['payload_sha256']!=flow.sha(payload):
+ if report['status'] not in ('READ-ONLY-PCI-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS') or report['payload_sha256']!=flow.sha(payload):
   raise ValueError('exact diagnostic profile gates required')
  if reproduction['status']!='CURRENT-SOURCES-TWO-REBUILDS-WORLD-C-CHECK-PASS' or reproduction['payload_sha256']!=flow.sha(payload) or reproduction['world_package_sha256']!=flow.sha(world):
   raise ValueError('current-source/current-world reproduction required')
@@ -21,6 +21,13 @@ def gates(directory,payload,world):
  for name,expected in report['source_sha256'].items():
   if reproduction['inputs'].get(name)!=expected:raise ValueError('gate source snapshot differs')
  if flow.sha((directory/'host.log').read_bytes())!=report['host_log_sha256']:raise ValueError('host evidence changed')
+ if report['status']=='REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS':
+  port=flow.read_json(directory/'port-report.json')
+  if (port['status']!='INITIAL-UEFI-PCI-WAKE-PORT-HOST-MOCK-AND-COFF-ABI-PASS'
+   or flow.sha((directory/'port-report.json').read_bytes())!=report['port_report_sha256']
+   or flow.sha((directory/'port-host.log').read_bytes())!=port['host_log_sha256']):raise ValueError('exact port gates required')
+  for name,expected in port['source_sha256'].items():
+   if reproduction['inputs'].get('experiments/native-wifi-qca9377-v1/'+name)!=expected:raise ValueError('port gate sources changed')
  for sub,empty in [('actors-qemu',False),('actors-empty-boot-qemu',True)]:
   gate=flow.read_json(directory/sub/'report.json');log=(directory/sub/'observed.log').read_bytes()
   if (gate not in report['gates'] or gate['empty_boot']!=empty or gate['payload_sha256']!=flow.sha(payload)
@@ -29,7 +36,7 @@ def gates(directory,payload,world):
    or b'ACTUAL UEFI PCI ENUMERATION READ THROUGH MOCK USB ATT; QCA ABSENT; NO WRITES' not in log):
    raise ValueError('exact UEFI PCI and city evidence required')
  return {'report_sha256':flow.sha((directory/'report.json').read_bytes()),
-  'reproduction_sha256':flow.sha((directory/'reproduction.json').read_bytes())}
+  'reproduction_sha256':flow.sha((directory/'reproduction.json').read_bytes()),'profile_status':report['status']}
 def prepare(state_path,state,checked,private_path):
  if state['pending'] or state.get('native_pending') or state.get('recovery_pending'):raise ValueError('pending operation exists')
  flow.current(state);installed=engine.gate_check(Path(state['engine']['installed_gate']))
@@ -74,7 +81,7 @@ def deliver(state_path,state,private_path):
  def applied():
   report.update(status='EXACT-APPLIED-RECEIPT',receiver_reported_applied=True);flow.save(directory/'report.json',report)
   state['engine'].update(native_counter=report['counter'],payload_sha256=report['payload_sha256'],
-   last_release_report=str(directory/'report.json'),diagnostic_profile='read-only-pci-v1',
+   last_release_report=str(directory/'report.json'),diagnostic_profile=report['gate']['profile_status'],
    basis='exact correlated applied receipt; PCI telemetry and physical scene observation separate')
   state['native_pending']=None;flow.save(state_path,state);return 0
  result=flow.deliver_session(directory,report,session,applied)

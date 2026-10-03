@@ -9,7 +9,13 @@ REPO=ROOT.parent.parent
 sha=lambda b:hashlib.sha256(b).hexdigest()
 def main():
  p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,required=True);p.add_argument('--world',type=Path,required=True)
- a=p.parse_args();inputs=json.loads(a.inputs.read_text());out=ROOT/'runs/diagnostic'
+ p.add_argument('--profile',choices=('diagnostic','bringup'),default='diagnostic')
+ a=p.parse_args()
+ if a.profile=='bringup':
+  import bringup_build
+  builder=bringup_build
+ else:builder=build
+ inputs=json.loads(a.inputs.read_text());out=ROOT/'runs'/a.profile
  def check_inputs():
   for name,expected in inputs.items():
    path=Path(name)
@@ -21,8 +27,8 @@ def main():
  for name,expected in provenance['files'].items():
   assert sha((out/Path(name).name).read_bytes())==expected,'crypto source changed'
  payload=(out/'payload.efi').read_bytes()
- assert build.compile_driver(out,crypto)==payload
- assert build.compile_driver(out,crypto)==payload
+ assert builder.compile_driver(out,crypto)==payload
+ assert builder.compile_driver(out,crypto)==payload
  checks=check_city(a.world,out/'current-world-check',sanitizers=True)
  check_inputs()
  report={'status':'CURRENT-SOURCES-TWO-REBUILDS-WORLD-C-CHECK-PASS',

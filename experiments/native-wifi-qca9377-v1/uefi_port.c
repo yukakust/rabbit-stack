@@ -13,39 +13,47 @@ typedef Status(EFIAPI *Attributes)(void*,uint32_t,uint64_t,uint64_t*);
 typedef Status(EFIAPI *Memory)(void*,uint32_t,uint8_t,uint64_t,uint64_t,void*);
 static void*method(void*p,unsigned offset){return *(void**)((uint8_t*)p+offset);}
 static uint64_t little(const uint8_t*p,unsigned bytes){uint64_t r=0;for(unsigned i=0;i<bytes;i++)r|=(uint64_t)p[i]<<(8*i);return r;}
+static int port_error(QcaUefiPort*p,unsigned step,Status status){p->error=(step<<8)|(uint32_t)(status&255);return -1;}
 int qca_port_open(QcaUefiPort*p,SystemTable*st,void*image,void*controller,const QcaPciTarget*target){
  if(!p||p->claimed||!st||!st->boot||!image||!controller||!target)return -1;
  p->system=st;p->image=image;p->controller=controller;p->pci=0;p->resource=0;
  p->memory_attempted=p->memory_ready=p->validated=p->wake_owned=0;
+ p->error=0;
  Status rc=((Open)service(st,280))(controller,&pci_guid,&p->pci,image,controller,0x30);
- if(rc)return -1;
+ if(rc)return port_error(p,1,rc);
  p->claimed=1;
- if(!p->pci)return -1;
+ if(!p->pci)return port_error(p,2,0);
  uint32_t config[16]={0};QcaPciIdentity identity;uint64_t supported=0;
- if(((ConfigRead)method(p->pci,48))(p->pci,2,0,16,config)||qca_pci_identity(config,&identity)
+ rc=((ConfigRead)method(p->pci,48))(p->pci,2,0,16,config);
+ if(rc)return port_error(p,3,rc);
+ if(qca_pci_identity(config,&identity)
   ||identity.subsystem_vendor!=target->subsystem_vendor||identity.subsystem_device!=target->subsystem_device
-  ||identity.revision!=target->revision||(identity.command&4))return -1;
+  ||identity.revision!=target->revision||(identity.command&4))return port_error(p,4,0);
  Attributes attr=(Attributes)method(p->pci,120);
- if(attr(p->pci,4,0,&supported)||!(supported&0x200)||attr(p->pci,0,0,&p->original_attributes)
-  ||(p->original_attributes&0x400))return -1;
- if(((Bar)method(p->pci,128))(p->pci,0,&supported,&p->resource)||!p->resource)return -1;
+ rc=attr(p->pci,4,0,&supported);if(rc||!(supported&0x200))return port_error(p,5,rc);
+ rc=attr(p->pci,0,0,&p->original_attributes);
+ if(rc||(p->original_attributes&0x400))return port_error(p,6,rc);
+ rc=((Bar)method(p->pci,128))(p->pci,0,&supported,&p->resource);
+ if(rc||!p->resource)return port_error(p,7,rc);
  const uint8_t*r=p->resource;
  /* ACPI QWord address-space descriptor + EndTag. Reject IO, translation,
  * unsupported geometry and insufficient extent before allowing MEM access. */
  if(r[0]!=0x8a||little(r+1,2)!=43||r[3]||r[46]!=0x79
   ||(little(r+6,8)!=32&&little(r+6,8)!=64)||little(r+14,8)!=identity.bar0
   ||little(r+30,8)||little(r+38,8)<0x80008||little(r+38,8)>0x1000000
-  ||identity.bar0>UINT64_MAX-little(r+38,8)
-  ||little(r+22,8)!=identity.bar0+little(r+38,8)-1)return -1;
+  ||identity.bar0>UINT64_MAX-little(r+38,8))return port_error(p,8,0);
+ /* GetBarAttributes AddrRangeMax may encode alignment (EDK2), not end.
+  * Extent checks therefore use only translated base + AddrLen. */
  p->bar_extent=little(r+38,8);
- if(((Free)service(st,72))(p->resource))return -1;
+ rc=((Free)service(st,72))(p->resource);if(rc)return port_error(p,9,rc);
  p->resource=0;p->validated=1;return 0;
 }
 int qca_port_enable_memory(QcaUefiPort*p){
  if(!p||!p->claimed||!p->validated||p->memory_attempted)return -1;
  /* Mark BEFORE the write: an error does not prove the device was untouched. */
  p->memory_attempted=1;
- if(((Attributes)method(p->pci,120))(p->pci,2,0x200,0))return -1;
+ Status rc=((Attributes)method(p->pci,120))(p->pci,2,0x200,0);
+ if(rc)return port_error(p,10,rc);
  p->memory_ready=1;return 0;
 }
 int qca_port_read32(void*context,uint32_t address,uint32_t*out){

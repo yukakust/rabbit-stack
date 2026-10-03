@@ -906,3 +906,53 @@ native transport cap: design owner-verified chunk assets in RAM; do not enlarge
 immutable root limits. SSID/security-mode answer still pending; no password in
 chat/LLM/evidence/Git. There is no credential consumer yet. Continue on Mac for
 control/signing/Bluetooth, all builds/render/tests on Yukabox. Preserve old city.
+
+
+## 2026-10-04 — native10 physical wake probe, identity still unresolved
+
+Owner confirmed native9 city visible and roof-cat tail moving: «виден и двигается».
+`bringup_build.py` integrates the port into a separately reviewed city profile.
+One-shot attach claims exact1028:1810/PCI31, validates BAR, enables memory only,
+requests wake, cooperatively polls for at most1second, reads chip-ID and clears
+wake/restores attributes/closes PCI IO. Reattach cannot repeat hardware writes.
+Candidate init/health stays hardware-free. Failed cleanup retains ownership and
+blocks unload; it must not silently release a live device. No bus master, DMA,
+chip reset, firmware/OTP, root/USB/disk changes or Dell reboot.
+
+Yukabox passed15 ASan/UBSan production-code lifecycle scenarios, port ABI gates,
+normal+EMPTY actual EFI city/snapshot/clock/restore/bad-update gates, two identical
+rebuilds bound to current world12 and pinned crypto. OVMF QCA-absent coverage is
+separate from physical evidence. BAR validation corrected before signing:
+EDK2 GetBarAttributes AddrRangeMax can encode alignment; checked extent uses
+base+AddrLen, with translation rejected. No physical operation used the old check.
+
+Exact payload `a721f3fcab4749f4fda5ad98018cdf0fc2d2d6396a68991f07e372a1caabfe60`
+was locally signed on Mac and delivered as native10, saved session
+`pci-native-uis35sur`. Transfer staged53024bytes; COMMIT disconnected, then the
+sender reconnected to the SAME session and obtained exact SHA/session/counter
+APPLIED. State native_pending=null, world12 package unchanged. Secret stayed Mac.
+
+Fresh physical QPD2/160-byte read from the same peripheral reports BAR extent
+2097152, original PCI attributes0, stage3/error3 (chip-ID rejected), raw chip-ID0,
+cleanup complete. The code reaches CHIP validation only after RTC state ON;
+PCI open/BAR/memory-enable/wake therefore advanced to that point. Do NOT claim
+supported chip revision, BMI version, firmware compatibility or association.
+PCI config bytes were captured BEFORE the wake operation; cleanup status, not
+those earlier bytes, reports restoration/close. This is Bluetooth telemetry,
+not device attestation. Native10 city/tail visual observation is pending.
+
+Pinned Linux uses qca6174_regs for QCA9377, RTC_SOC0x800 + CHIP_ID0xf0 =0x8f0.
+Its normal probe reads identity AFTER chip reset, while ours deliberately does
+not reset. Linux's supported-revision table permits revision0, but a zero raw
+read here is kept inconclusive rather than treated as proof. Next: establish
+PCI power/read/reset ordering and a bounded chip-only reset/recovery policy,
+then CE/DMA/BMI get-target-info; do not blindly reclassify zero as verified or
+upload guessed firmware. Preserve city/Bluetooth and exact loading/rejection
+checks for every subsequent physical native candidate. Full Wi-Fi still needs
+firmware RAM startup, WMI/HTT, scan/security and DHCP. Firmware asset chunk
+transport is also required within unchanged native/bootstrap bounds.
+
+Evidence: `experiments/native-wifi-qca9377-v1/evidence/2026-10-04/bringup`
+contains gate/reproduction hashes, pre-update receipt/owner observation, full
+saved-session delivery records, raw/decoded physical telemetry and a manifest.
+Remote workspace: `/home/yuka/rabbit-world/wifi-bringup-v1/source`.

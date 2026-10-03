@@ -1,0 +1,2 @@
+Cooperative QCA wake: bounded poll, timeout/backwards clock, chip revision, ambiguous write ownership, close retry PASS; MOCK MMIO ONLY
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries PASS; MOCK HARDWARE ONLY
