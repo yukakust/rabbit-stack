@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "PHYSICAL-CONNECTED-NATIVE-EXACT-RECEIPT-SCREEN-OBSERVATION-PENDING",
+  "status": "PHYSICAL-CONNECTED-NATIVE-EXACT-RECEIPT-BLUE-LINE-OWNER-CONFIRMED",
   "recorded_at_utc": "2026-10-02T21:49:01.779134+00:00",
   "source": "Agent-operated owner Mac terminal/CoreBluetooth sender; physical screen observation pending",
   "reviewed_plan_sha256": "2b483eb704db585f5d3e841d4fcc787826b78465e8c4c3609c075abd43290835",
@@ -24,7 +24,12 @@
   "sender_log_sha256": "02261582f047f78bc9d5d426e1d1648b6d33ee8a5cbf8caab5cafb1b02e00674",
   "sender_log_archive": "evidence/dell-connected-native-trial-1-sender.log",
   "owner_precondition_confirmation": "No Dell reboot or other world/native update since preparation; cat still walking",
-  "owner_screen_observation": null,
+  "owner_screen_observation": {
+    "blue_bottom_line": true,
+    "source": "Owner replied «появилась» to blue-line question",
+    "cat_continues_walking": "pending explicit post-update confirmation",
+    "committed_diagnostic_line": "not reported"
+  },
   "authenticated_device_attestation": false,
   "limitations": "Exact correlated Bluetooth receipt, not authenticated device attestation. Second native transition and failed-health physical trial remain pending. No reboot/USB/storage/firmware operation performed."
 }

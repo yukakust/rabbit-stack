@@ -190,3 +190,7 @@ and adjacent `dell-connected-native-trial-1-sender.log`. Preserve
 Native counter1 now has an exact applied receipt; do NOT assume baseline driver1
 or reuse the initial plan for another release. Second compatible transition and
 separately reviewed failed-health physical test remain PENDING.
+
+Owner subsequently confirmed the blue bottom line appeared («появилась»).
+Explicit post-update walking-cat confirmation remains pending; do not claim
+exact live positions/frames from screen observation alone.

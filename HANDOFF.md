@@ -1616,3 +1616,7 @@ updated docs/CONNECTED-NATIVE-MAC-HANDOFF.md. Native counter1 has an applied rec
 do not assume driver1 remains active or repeat the initial plan as a new trial.
 Second transition/failed-health physical tests remain pending. No flash/reboot or
 private-key output; owner-local saved session preserved.
+
+Owner confirmed the engine2 blue bottom line appeared. Explicit post-update
+cat-motion confirmation remains pending. First native exact receipt and visible
+revision effect are observed; second physical transition is not yet performed.
