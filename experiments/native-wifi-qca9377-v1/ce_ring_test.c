@@ -9,11 +9,12 @@ static void init(QcaCeRing*r,unsigned n,int rx){memset(r,0,sizeof(*r));mode=publ
 int main(void){
  QcaCeRing r={0};uint32_t cookie,n;
  for(unsigned entries=2;entries<=32;entries*=2){
-  init(&r,entries,0);
+  init(&r,entries,0);assert(!qca_ce_seed(&r,entries-1));
   for(unsigned round=0;round<1000;round++){
    unsigned before=r.write;
    for(unsigned i=0;i<entries-1;i++)assert(!qca_ce_post(&r,0x200000+i*100,100,round+i,0x3fff,0));
    assert(qca_ce_post(&r,0x300000,100,0,0,0)==1);
+   assert(qca_ce_seed(&r,0)==-1);
    unsigned hw=r.write;
    for(unsigned i=0;i<entries-1;i++){assert(!qca_ce_complete(&r,hw,&cookie,&n));assert(cookie==round+i&&n==100);}
    assert(qca_ce_complete(&r,hw,&cookie,&n)==1&&r.read==r.write);(void)before;

@@ -13,6 +13,10 @@ int qca_ce_init(QcaCeRing*r,volatile uint8_t*memory,uint64_t dma,uint32_t entrie
  for(unsigned i=0;i<entries;i++){put(memory+8*i,0,8);r->cookie[i]=r->address[i]=r->capacity[i]=0;}
  r->owned=1;return 0;
 }
+int qca_ce_seed(QcaCeRing*r,unsigned index){
+ if(!r||!r->owned||r->fault||index>=r->entries||r->read!=r->write||r->read!=r->published)return -1;
+ r->read=r->write=r->published=(uint8_t)index;return 0;
+}
 int qca_ce_post(QcaCeRing*r,uint64_t address,uint32_t bytes,uint32_t cookie,uint32_t meta,uint32_t flags){
  if(!r||!r->owned||r->fault||address>UINT32_MAX||!bytes||bytes>65535||address>UINT32_MAX-(bytes-1)
   ||meta>0x3fff||flags>3||(r->receive&&(meta||flags)))return -1;

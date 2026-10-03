@@ -420,3 +420,52 @@ not evidence of this Dell's actual Map behavior.
 Reference: https://raw.githubusercontent.com/tianocore/edk2/master/MdeModulePkg/Bus/Pci/PciBusDxe/PciIo.c
 (PciIoMap/Unmap/AllocateBuffer/FreeBuffer/Flush); pinned iPXE headers remain the ABI
 reference, and actual physical mapping still needs separate evidence.
+
+
+## 2026-10-04 — CE MMIO and PCI bus-master lifetime, host/COFF gates
+
+Added ce_hw.c/h, ce_uefi.c/h and ce_bus.c/h. Fixed QCA6174-family CE bases
+and register masks are recorded in ce-target.json and checked against pinned
+Linux hw.c SHA256. Halt requests are owned before ambiguous writes; bounded
+cooperative polling requires HALT request + ACK. After halt, mask interrupts,
+clear ring addresses/sizes and read them back. Configure only while halted,
+verify configuration readback, preserve supported control bits, clear W1C status
+without treating readback as a value register, seed software ring indices from
+hardware and publish with release ordering. Primary-source review caught swapped
+watermark halves before physical deployment: high threshold occupies bits15:0,
+low threshold bits31:16. Exact watermark assertions now cover this.
+
+PCI IO adapter restricts engine/register access, requires retained exclusive PCI
+claim/MEM/awake/BAR lifetime, and validates descriptor windows against registered
+mapped32bit DMA buffers. Exposure is recorded before writes, including ambiguous
+failures. Resume/doorbells reject closing or unmapped regions. Zero-size disabled
+queues accept only zero indices while halted. Halting/zeroing still works after
+DMA close has set closing, so failure recovery remains possible.
+
+Bus lifecycle controls ALL8 engines, including inactive pipes. Before bus-master
+activation mark every registered descriptor/data buffer exposed, resume configured
+engines and write only16bit PCI Command, then require exact readback. Failed enable
+retains ownership; an ambiguous error cannot authorize free. Stop requests every
+engine, cooperatively verifies halt and zero addresses/sizes, disables bus master
+with actual16bit readback. On failed halt, attempt disabling DMA capability but
+retain ownership. DMA close callback requires completed stop plus FRESH all-eight
+halt/zero-ring and bus-master-off reads, then existing adapter Flush/Unmap/Free.
+No callback dereferences a released PCI protocol. All caller operations must be
+serialized with native unload, and all DMA buffers must be registered.
+
+Evidence: experiments/native-wifi-qca9377-v1/evidence/2026-10-04/ce-hw.
+21 actual core/UEFI/bus scenarios pass ASan/UBSan on Yukabox: ambiguous enable,
+dropped enable/readback, failed disable, missing halt ACK, corrupt stop readback,
+failed config reads, closing buffers, failed Flush/Unmap and safe retained-resource
+recovery. All3 production components compile freestanding x86 COFF. Updated ring
+core passes5000 wrap cycles and seed-at-nonzero tests; updated source-bound report
+and log are included alongside CE gate evidence. Mock completion is NOT physical
+CE/DMA/BMI success. No owner key, signing, radio send or native update in this turn.
+Saved state still identifies native12 payload99463fa0... and no pending operation;
+this is saved receipt state, not a fresh physical observation.
+
+NEXT: integrate cooperative ROM readiness and CE0/CE1 BMI get-target-info into a
+native profile, bind DMA/ring/bus lifetimes to its stop/unload gate, pass exact
+normal+EMPTY city/BT and rebuild gates, then owner-sign/send and obtain physical
+telemetry. Firmware chunk upload, radio/WMI/HTT, scan/WPA, DHCP/two-way traffic and
+reconnect remain incomplete. Original full Wi-Fi goal remains active.

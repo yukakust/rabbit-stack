@@ -28,10 +28,39 @@
   "byte_swap_mask": 2,
   "rabbit_max_ring_entries": 32,
   "rx_zero_length_note": "Valid transient: DRRI may advance before descriptor update; wait, do not free/fault solely on zero.",
-  "reference": "ce.h:ce_desc; ce.c:_ath10k_ce_send_nolock,_ath10k_ce_completed_recv_next_nolock; hw.c:qca6174_regs,qca6174_values",
+  "reference": "ce.h:ce_desc; ce.c:_ath10k_ce_send_nolock,_ath10k_ce_completed_recv_next_nolock; hw.c:qca6174_regs,qca6174_values; hw.c:qcax_ce_regs,qcax_ctrl1,qcax_cmd_halt,qcax_wm_src_ring",
   "ce_header_sha256": "53dfddb64dd54b61add0b14d36bc7fad016c3fc4ab63b8bff5f7b25fc93538b1",
-  "status": "HOST-COFF-RING-CORE-ONLY",
+  "status": "HOST-COFF-RING-MMIO-DMA-LIFETIME-ONLY",
   "physical_ce_transfer": false,
-  "dma_mapping_implemented": false,
-  "ce_mmio_implemented": false
+  "dma_mapping_implemented": true,
+  "ce_mmio_implemented": true,
+  "register_offsets": {
+    "source_base": 0,
+    "source_size": 4,
+    "destination_base": 8,
+    "destination_size": 12,
+    "control1": 16,
+    "command": 24,
+    "host_ie": 44,
+    "host_is": 48,
+    "misc_ie": 52,
+    "misc_is": 56,
+    "source_write": 60,
+    "destination_write": 64,
+    "source_read": 68,
+    "destination_read": 72,
+    "source_watermark": 76,
+    "destination_watermark": 80
+  },
+  "register_masks": {
+    "halt_request": 1,
+    "halt_status": 8,
+    "control1": 524287,
+    "dmax": 65535,
+    "host_is": 31,
+    "misc_is": 2016,
+    "watermark_low": 4294901760,
+    "watermark_high": 65535
+  },
+  "hw_source_sha256": "7e176346c8def2054138bf3458acd4fbda7fc01d0753b77985f82215b51400f4"
 }

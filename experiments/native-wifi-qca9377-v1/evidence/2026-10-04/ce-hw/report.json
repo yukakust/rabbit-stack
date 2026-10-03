@@ -1,0 +1,29 @@
+{
+  "status": "CE-MMIO-UEFI-MAPPED-LIFETIME-HOST-COFF-PASS",
+  "source_sha256": {
+    "ce_bus.c": "848c77f9eafc6fca48a3d6209442ac305ed95060724a12492e89f7f8463f380e",
+    "ce_bus.h": "b6e23b8fda3ffc77a7c0a36535955ec053fa3bcc5c1951691c1125fbadfce89a",
+    "ce_bus_test.c": "f0d0262d6c24b0add19b3c1b533356726d071673746acc081747ac572cdc1e62",
+    "ce-target.json": "942150490b13e36ba2ad1564b62e15040b21a71533286b2cb5c5766d807b9154",
+    "ce_hw.c": "0878cce3649433a5db0f4e54a70fdb2fbf53b1613e017e7addb480547dd7c995",
+    "ce_hw.h": "bac5eeba42e5867f3921e561f950cb9ff99b7ffde0ca1c0d5f2ad384dac6a3bd",
+    "ce_hw_test.c": "1e321f3e5420749352854d6791d5eed04216375def82585a720fe15d94aae8b4",
+    "ce_uefi.c": "6013ed6bb367fa120f8345e06b4206060a43a997fd4bce40b212b7542afd782e",
+    "ce_uefi.h": "982109de2947d03724e3b996b379f321cc1d3d7eb1f88f260cccc4a6c6129800",
+    "ce_uefi_test.c": "8aff1b92aefc589034ffd3094a0e3b36d2e3f58321880af31c1e16baa944be08",
+    "dma_buffer.c": "5ce1bb596dc181f01e9d9d8047333cb196e46144768774d8a12f308a0e5d8279",
+    "dma_buffer.h": "90ee8750b3545aa415af8530f8dcb5f65ec1e4c3253799d8b0910c648fa84e5f",
+    "uefi_port.h": "c291e7ab9afa7ee1d99c60ea26ab26d9b37259a9880ab5daf03c41956788c16b",
+    "wake_core.h": "02a1d237478b6c25fc609f8500dfee6b1d52fc8ba35422315792fdfa28a12b43",
+    "verify_ce_hw.py": "008065f9118cf73f0d713736a5ec14678fed4721f8b49ad50b11a5405ffa35be"
+  },
+  "host_log_sha256": "ce027e150ac814e8457767a365168ff70f4c67ac0b276f8a1f4b6d0396f33362",
+  "build_host": "yukabox",
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "physical_ce_activation": false,
+  "physical_dma_activation": false,
+  "bus_master_lifecycle_implemented": true,
+  "bmi_implemented": false,
+  "firmware_uploaded": false,
+  "wifi_association": false
+}

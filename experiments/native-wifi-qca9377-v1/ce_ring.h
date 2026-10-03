@@ -15,6 +15,8 @@ typedef struct {
 /* Zero initialize the ring before first init. DMA mapping belongs to adapter. */
 int qca_ce_init(QcaCeRing*,volatile uint8_t*,uint64_t,uint32_t,int,QcaCePublish,QcaCeStop,void*);
 /* meta <=0x3fff; flags bit0=gather, bit1=byte swap, target facts. RX flags/meta0. */
+/* Adapter proves engine halted; seed only an empty ring before hardware run. */
+int qca_ce_seed(QcaCeRing*,unsigned);
 int qca_ce_post(QcaCeRing*,uint64_t,uint32_t,uint32_t,uint32_t,uint32_t);
 /* index is the adapter-decoded hardware read index. Never trust a device pointer. */
 int qca_ce_complete(QcaCeRing*,uint32_t,uint32_t*,uint32_t*);
