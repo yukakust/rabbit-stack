@@ -194,3 +194,34 @@ separately reviewed failed-health physical test remain PENDING.
 Owner subsequently confirmed the blue bottom line appeared («появилась»).
 Explicit post-update walking-cat confirmation remains pending; do not claim
 exact live positions/frames from screen observation alone.
+
+
+## Exact return to driver1 — 2026-10-03
+
+Owner explicitly confirmed the cat continued walking after the first engine2
+update, authorizing continuation. First evidence now records motion plus blue line.
+Agent extracted exact36352-byte driver1 from hash-verified installed image at
+byte offset2207840 (SHA25602e3a839...), without rebuilding/substituting a module.
+Reviewed return plan SHA256c5ad9e59bcefbfacc0c0b3c37ec22e1882f864b996e1304ba9658a8a29cc916a.
+Signed and independently verified counter2, base0954cba9... -> payload02e3a839...,
+unchanged world counter2. Release1f2ffb4e0ea0d413a435d9d57396308899d123c3bce793a58516710b5ef17c32.
+Actual Mac sender observed timeouts with SAME-session receiver resumes10800/14400,
+then deliberate native disconnect/reconnect and exact applied receipt. Exit0,
+69.404s including reconnects. Owner screen confirmation of disappearing blue line
+and continuing cat remains PENDING. Active base is now driver1/nativecounter2,
+not driver2/counter1. Evidence and log: connected evidence/dell-connected-native-trial-2.*.
+Preserve `/tmp/connected-native-trial-2.session.json`.
+
+Separate deterministic failed-init test is prepared, NOT signed/sent:
+`/tmp/connected-native-trial-3.json`, SHA256
+ d065e518dffc2e88b3b090c9cccbbe128d831d703aef8818dba6745b18b850bb.
+Exact driver3 SHA256dd22921330b2f3f577c858b37a67b7bdf4f0930bcfc379611d5f7de3a46c4bc0
+was extracted from verified prior Mac full-ginger QEMU fixture image at2204032;
+it matches installed gate module3 and its source returns1 from scene_init.
+No hung fixture is used. Counter3 would be consumed on authorized health rejection;
+active base should remain driver1. Screen/base confirmation precedes this send.
+Mac-only sender now recognizes complete error2 rejection ONLY when exact
+session/length/digest/counter match; explicit rejected output exits2, never applied.
+Actual C file/GATT rejection and malformed-identity regression pass;14 connected
+host tests and14 world/GATT host tests pass; Apple sender compiles. Receiver C,
+installed image, native modules and file protocol are unchanged.

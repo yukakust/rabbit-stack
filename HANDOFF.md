@@ -1620,3 +1620,16 @@ private-key output; owner-local saved session preserved.
 Owner confirmed the engine2 blue bottom line appeared. Explicit post-update
 cat-motion confirmation remains pending. First native exact receipt and visible
 revision effect are observed; second physical transition is not yet performed.
+
+
+## First walking-cat confirmation and second native receipt — 2026-10-03
+
+Owner confirmed cat motion after engine2 update. Agent returned exact installed
+driver1 over Bluetooth with nativecounter2: exact applied receipt,69.404s including
+reconnects; SAME-session partial resumes10800/14400 observed on timeout. World
+counter2 unchanged. Post-return screen confirmation remains pending. See connected
+evidence/dell-connected-native-trial-2.json and sender log, plus takeover doc.
+Separate deterministic failed-init counter3 trial prepared only, not signed/sent;
+no hung module. Mac sender recognizes exact consumed-counter error2 rejection
+separately from application;14 connected+14 world/GATT checks and Apple compile pass.
+No receiver/module/media change, no private-key output, no Dell reboot.

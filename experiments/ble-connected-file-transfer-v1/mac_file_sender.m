@@ -95,6 +95,11 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
  uint32_t received=0;int outcome=rs_status(c.value.bytes,c.value.length,self.nonce.bytes,
   self.expectedDigest.bytes,self.counter,(uint32_t)self.stream.length,&received);
  if(outcome==RS_INVALID){[self fail:@"receipt session/length/state/identity mismatch"];return;}
+ if(outcome==RS_REJECTED){
+  self.finished=YES;puts("FILE REJECTED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched; error=2; NOT APPLIED");
+  printf("TRANSFER ELAPSED=%.3f seconds (including reconnects)\n",NSProcessInfo.processInfo.systemUptime-self.startedAt);
+  [self.central cancelPeripheralConnection:self.peer];exit(2);
+ }
  if(outcome==RS_APPLIED){
   self.finished=YES;puts("FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched");
   printf("TRANSFER ELAPSED=%.3f seconds (including reconnects)\n",NSProcessInfo.processInfo.systemUptime-self.startedAt);

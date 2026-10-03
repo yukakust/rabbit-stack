@@ -1,0 +1,32 @@
+{
+  "native_counter": 2,
+  "previous_native_counter": 1,
+  "world_counter": 2,
+  "world_sha256": "cc545d03b210bd3ebdef2141368bd6daa90cc3ec966b7cfb357afc53d30d7645",
+  "target_sha256": "363d751288df7b47295f9c7a5250c3b41db24efd1a43a4bd348f00744c6bc7e9",
+  "base_runtime_sha256": "0954cba928440d50716749e0c01306d7621bbdb52800e05cfa6c39c033ebd816",
+  "payload_sha256": "02e3a839f5c4320754a7afa6fecc6ca626475d36c360f3ed66cdd6db30e7b4c3",
+  "owner_public_sha256": "58744820acd038de35d01eaf6afbad2aa4bb4e4022c8078d4e665270d41f36b4",
+  "schema_version": 1,
+  "status": "PHYSICAL-CONNECTED-NATIVE-RETURN-EXACT-RECEIPT-SCREEN-PENDING",
+  "source": "Agent-operated owner Mac terminal/CoreBluetooth sender",
+  "reviewed_plan_sha256": "c5ad9e59bcefbfacc0c0b3c37ec22e1882f864b996e1304ba9658a8a29cc916a",
+  "release_sha256": "1f2ffb4e0ea0d413a435d9d57396308899d123c3bce793a58516710b5ef17c32",
+  "session_nonce_hex": "3b0844c3bfa68ac4",
+  "sender_log_sha256": "75dcd608bbce65ece625adfa012e90f9cbc09e6c338ed19564dce3c6cbfa6bcf",
+  "sender_log_archive": "evidence/dell-connected-native-trial-2-sender.log",
+  "stream_bytes": 36640,
+  "transfer_elapsed_seconds": 69.404,
+  "sender_exit_code": 0,
+  "receipt": "FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched",
+  "receiver_resume_offsets": [
+    10800,
+    14400
+  ],
+  "owner_screen_observation": null,
+  "authenticated_device_attestation": false,
+  "payload_origin": "Exact baseline driver1 extracted from hash-verified installed owner image, offset2207840, 36352bytes; no rebuild",
+  "sender_sha256": "d2a89f164286ff21b5ee5d55eb7a7ab767ed68dd57778179cc15752690576006",
+  "status_validator_sha256": "9bf98c8666f1ae9ff708c91538c01b4e2353ba0b63a8930a7aa6459fe9b865c8",
+  "limitations": "Screen confirmation pending. Live frame/position continuity not measurable from receipt; no RAM retention across reboot claim."
+}

@@ -54,6 +54,7 @@ class Tests(unittest.TestCase):
         (d/'host.c').write_text('''
 #include "file_core.h"
 #include "gatt_core.h"
+#include "sender_status.h"
 static RfFile file;static RgServer driver;static unsigned calls;
 static int dispatch(uint8_t kind,const uint8_t*p,uint32_t n,uint32_t*counter){(void)p;(void)n;(void)counter;calls++;return kind==2?2:1;}
 void host_init(int owner){if(owner)rf_init_owner(&file,dispatch);else rf_init(&file,0);calls=0;rg_init_shared(&driver,&file);}
@@ -64,6 +65,12 @@ unsigned host_state(void){return file.state;}
 unsigned host_calls(void){return calls;}
 void host_swap(void){rg_init_shared(&driver,&file);}
 unsigned host_status(uint8_t*out){return rg_att(&driver,(const uint8_t*)"\\x0a\\x07\\x00",3,out,247);}
+unsigned host_status_full(uint8_t*out){
+ rg_att(&driver,(const uint8_t*)"\\x02\\xf7\\x00",3,out,247);return host_status(out);
+}
+int host_status_check(const uint8_t*p,unsigned n,const uint8_t*nonce,const uint8_t*digest,unsigned counter,unsigned length){
+ uint32_t received;return rs_status(p,n,nonce,digest,counter,length,&received);
+}
 ''')
         lib=d/'host.so'
         subprocess.run(['cc','-std=c11','-O2','-shared','-fPIC','-Wall','-Wextra','-Werror',
@@ -119,6 +126,23 @@ unsigned host_status(uint8_t*out){return rg_att(&driver,(const uint8_t*)"\\x0a\\
         a=C.create_string_buffer(247);b=C.create_string_buffer(247)
         n=self.lib.host_status(a);self.lib.host_swap();m=self.lib.host_status(b)
         self.assertEqual(n,m);self.assertEqual(a.raw[:n],b.raw[:m]);self.assertEqual(self.lib.host_state(),2)
+
+    def test_exact_consumed_counter_rejection_is_distinct_from_application(self):
+        self.stage();self.assertEqual(self.lib.host_finish(1,1),0)
+        out=C.create_string_buffer(247);n=self.lib.host_status_full(out)
+        self.assertEqual(n,61);self.assertEqual(out.raw[0],0x0b)
+        status=out.raw[1:n];data=b'x'
+        self.lib.host_status_check.argtypes=[C.c_char_p,C.c_uint,C.c_char_p,C.c_char_p,C.c_uint,C.c_uint]
+        def check(s):return self.lib.host_status_check(s,len(s),b'12345678',digest(data),1,len(data)+32)
+        self.assertEqual(check(status),4)
+        self.lib.host_swap();self.lib.host_status_full(out)
+        self.assertEqual(check(out.raw[1:n]),4)
+        self.assertEqual(check(status[:-1]),0)
+        for index in (4,12,16,20,21,22,23,24,28,59):
+            bad=bytearray(status);bad[index]^=1
+            self.assertEqual(check(bytes(bad)),0,index)
+        applied=bytearray(status);applied[20]=2;applied[21]=0
+        self.assertEqual(check(bytes(applied)),2)
     def test_kind_limits_and_partial_commit(self):
         self.assertEqual(self.begin(1,65568),1);self.assertEqual(self.begin(2,262177),1)
         self.assertEqual(self.begin(2,262176),0)
