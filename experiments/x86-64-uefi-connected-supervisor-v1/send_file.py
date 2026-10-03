@@ -10,6 +10,7 @@ import platform
 import shutil
 import subprocess
 import tempfile
+import uuid
 ROOT=Path(__file__).resolve().parent
 SOURCE=ROOT.parent/'ble-connected-file-transfer-v1/mac_file_sender.m'
 def validate(bundle):
@@ -28,8 +29,13 @@ def main():
     mode.add_argument('--send',action='store_true')
     mode.add_argument('--query-only',action='store_true',help='read current file status without BEGIN/DATA/COMMIT/ABORT')
     mode.add_argument('--abort-only',action='store_true',help='abort only the exact saved staging session after read-only check; no DATA/COMMIT')
+    p.add_argument('--peripheral',help='known macOS peripheral UUID; query-only cached connection, no scan')
     p.add_argument('--stage-only-bytes',type=int,help='stop after a receiver-confirmed prefix, WITHOUT COMMIT')
     a=p.parse_args()
+    if a.peripheral:
+        if not a.query_only:p.error('--peripheral requires --query-only')
+        try:a.peripheral=str(uuid.UUID(a.peripheral))
+        except ValueError:p.error('invalid peripheral UUID')
     if (a.send or a.query_only or a.abort_only) and a.bundle is None:p.error('radio modes need a saved session bundle')
     if a.stage_only_bytes is not None and not a.send:p.error('--stage-only-bytes requires --send')
     if a.bundle:
@@ -54,6 +60,7 @@ def main():
         command=[str(executable),str(a.bundle.resolve())]
         if a.stage_only_bytes is not None:command.append(str(a.stage_only_bytes))
         if a.query_only:command.append('--query-only')
+        if a.peripheral:command.append(a.peripheral)
         if a.abort_only:command.append('--abort-only')
         try:return subprocess.run(command,env=env,timeout=310).returncode
         except KeyboardInterrupt:print('STOPPED: rerun the SAME saved session; outcome not assumed');return 130

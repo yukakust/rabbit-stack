@@ -1664,3 +1664,14 @@ within0.5–1m of Dell for next read-only diagnosis. No native trial retry now.
 Photo/query/abort/recovery logs archived; see takeover and connected trial3 evidence.
 Mac-only query and exact-staging abort modes compiled, focused3 checks pass;
 receiver/bootstrap/module/media unchanged. No unhealthy module executed.
+
+
+## Near-Mac read-only recovery queries fail — 2026-10-03
+
+Owner placed Mac nearby. Rabbit service scan found no device; cached UUID direct
+read-only connection expired60s without connecting/status. No writes, all sender
+processes stopped. Cat not restored; cause not established. One restart from
+unchanged USB followed by same signed world2 restoration is prepared as recovery,
+but owner decision is required to override original no-reboot constraint.
+See connected takeover/evidence. Query-only cached option Apple-compiles and2
+focused checks pass; no receiver/media/key change or native resend.

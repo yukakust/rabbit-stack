@@ -346,3 +346,10 @@ exclusive with `--send` and staging-stop; compile-only remains the default.
 A receiver prefix regression now stops the sender. Inspect physical scene and
 status before resuming. A zero offset plus disappeared world does not establish
 watchdog cause. No automatic counter increase, re-signing or world restoration.
+
+
+For a known macOS peripheral, `--query-only --peripheral UUID` retrieves only that
+cached peripheral and attempts a direct connection without a filtered scan.
+This option is forbidden with sending/abort modes. It remains read-only and is
+bounded to60seconds; a UUID is not device authentication. Scan queries now use
+the same60second bound. A timeout is not evidence of its physical cause.

@@ -106,5 +106,37 @@
     "sender_offset_before_timeout": 1920,
     "receiver_prefix_beyond_zero_confirmed": false,
     "no_final_receipt": true
+  },
+  "owner_proximity_confirmation": "Owner said «рядом» after request to place Mac within0.5–1m of Dell",
+  "near_read_only_queries": [
+    {
+      "kind": "scan",
+      "log": "evidence/dell-connected-cat-world-2-near-scan-query.log",
+      "log_sha256": "cabdda54d44b808d48809dc9eccfffb9175a73af2061429ee988c7cb95ab5d90",
+      "exit_code": 241,
+      "status_received": false,
+      "data_or_commit_sent": false,
+      "result": "Scan discovered no Rabbit; agent stopped scan"
+    },
+    {
+      "kind": "cached",
+      "log": "evidence/dell-connected-cat-world-2-near-cached-query.log",
+      "log_sha256": "cd1fd535176540f65bcbafcad8c1f7195e7f58727cf32a8277bf773f40f6e0eb",
+      "exit_code": 1,
+      "status_received": false,
+      "data_or_commit_sent": false,
+      "result": "Known macOS peripheral retrieved; no connection/status; 60-second query timeout"
+    }
+  ],
+  "next_recovery_plan": {
+    "status": "REQUIRES-OWNER-REBOOT-DECISION",
+    "steps": [
+      "Owner authorizes one Dell restart, overriding earlier no-reboot restriction",
+      "Boot unchanged existing USB bootstrap; observe Bluetooth ready baseline",
+      "Mac read-only status check; use SAME previously signed world2 package/session; require exact applied receipt and owner walking-cat observation"
+    ],
+    "usb_rewrite": false,
+    "native_trial_send": false,
+    "new_signing_or_key": false
   }
 }

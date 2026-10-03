@@ -25,13 +25,22 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @property BOOL finished;
 @property BOOL queryOnly;
 @property BOOL abortOnly;
+@property(nonatomic,strong) NSUUID *queryPeripheral;
 - (void)fail:(NSString*)why;
 - (void)next;
 @end
 @implementation Sender
 - (void)fail:(NSString*)why {fprintf(stderr,"FAIL: %s; application outcome may be unknown; staging retained if Dell remains powered\n",why.UTF8String);[self.central stopScan];if(self.peer)[self.central cancelPeripheralConnection:self.peer];exit(1);}
 - (void)centralManagerDidUpdateState:(CBCentralManager*)central {
- if(central.state==CBManagerStatePoweredOn){puts("SCANNING FOR RABBIT FILE SERVICE (not identity authentication)");[central scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:Service]] options:nil];}
+ if(central.state==CBManagerStatePoweredOn){
+  if(self.queryPeripheral){
+   NSArray<CBPeripheral*>*known=[central retrievePeripheralsWithIdentifiers:@[self.queryPeripheral]];
+   if(known.count!=1){[self fail:@"cached query peripheral unavailable"];return;}
+   self.peer=known[0];self.peer.delegate=self;
+   printf("READ-ONLY CACHED CONNECT: %s (not identity authentication)\n",self.peer.identifier.UUIDString.UTF8String);
+   [central connectPeripheral:self.peer options:nil];return;
+  }
+  puts("SCANNING FOR RABBIT FILE SERVICE (not identity authentication)");[central scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:Service]] options:nil];}
  else if(central.state==CBManagerStatePoweredOff||central.state==CBManagerStateUnauthorized||central.state==CBManagerStateUnsupported)[self fail:@"Bluetooth unavailable"];
 }
 - (void)centralManager:(CBCentralManager*)c didDiscoverPeripheral:(CBPeripheral*)p advertisementData:(NSDictionary*)ad RSSI:(NSNumber*)rssi {
@@ -43,6 +52,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 - (void)centralManager:(CBCentralManager*)c didFailToConnectPeripheral:(CBPeripheral*)p error:(NSError*)e {(void)c;(void)p;[self fail:e.localizedDescription?:@"connect failed"];}
 - (void)centralManager:(CBCentralManager*)c didDisconnectPeripheral:(CBPeripheral*)p error:(NSError*)e {
  if(self.finished||p!=self.peer)return;
+ if(self.queryPeripheral){[self fail:@"cached query disconnected; no packet sent"];return;}
  fprintf(stderr,"DISCONNECTED: phase=%d offset=%lu/%lu domain=%s code=%ld reason=%s\n",self.phase,(unsigned long)self.offset,(unsigned long)self.stream.length,e?e.domain.UTF8String:"none",e?(long)e.code:0,e?e.localizedDescription.UTF8String:"none");
  if(++self.reconnects>3){[self fail:@"bounded reconnect limit; rerun SAME saved session to query outcome"];return;}
  puts("RECONNECT: delivery unknown; querying retained session, not assuming application");
@@ -153,7 +163,7 @@ static void put32(uint8_t*p,uint32_t n){for(int i=0;i<4;i++)p[i]=n>>(8*i);}
 @end
 int main(int argc,char**argv){@autoreleasepool{
  setvbuf(stdout,NULL,_IONBF,0);
- if(argc!=2&&argc!=3)return 2;
+ if(argc<2||argc>4)return 2;
  NSData*raw=[NSData dataWithContentsOfFile:[NSString stringWithUTF8String:argv[1]]];
  NSDictionary*b=raw?[NSJSONSerialization JSONObjectWithData:raw options:0 error:nil]:nil;
  if(![b isKindOfClass:NSDictionary.class]||![b[@"stream_base64"] isKindOfClass:NSString.class]||![b[@"session_base64"] isKindOfClass:NSString.class]||![b[@"counter"] isKindOfClass:NSNumber.class])return 2;
@@ -161,14 +171,15 @@ int main(int argc,char**argv){@autoreleasepool{
  id kind=b[@"kind"];if(kind&&![kind isKindOfClass:NSNumber.class])return 2;
  Sender*s=[Sender new];s.stream=[[NSData alloc]initWithBase64EncodedString:b[@"stream_base64"] options:0];s.nonce=[[NSData alloc]initWithBase64EncodedString:b[@"session_base64"] options:0];s.counter=[b[@"counter"] unsignedIntValue];s.kind=kind?[kind unsignedIntValue]:1;
  if((s.kind!=1&&s.kind!=2)||s.stream.length<=32||s.stream.length>(s.kind==1?65567u:262176u)||s.nonce.length!=8||!s.counter)return 2;
- if(argc==3&&!strcmp(argv[2],"--query-only"))s.queryOnly=YES;
+ if(argc>=3&&!strcmp(argv[2],"--query-only"))s.queryOnly=YES;
  else if(argc==3&&!strcmp(argv[2],"--abort-only"))s.abortOnly=YES;
  else if(argc==3){char*end=0;unsigned long value=strtoul(argv[2],&end,10);
   if(!argv[2][0]||*end||!value||value>=s.stream.length)return 2;s.pauseAfter=value;}
+ if(argc==4){if(!s.queryOnly)return 2;s.queryPeripheral=[[NSUUID alloc]initWithUUIDString:[NSString stringWithUTF8String:argv[3]]];if(!s.queryPeripheral)return 2;}
  unsigned char hash[32];CC_SHA256((const uint8_t*)s.stream.bytes+32,(CC_LONG)s.stream.length-32,hash);
  if(memcmp(hash,s.stream.bytes,32))return 2;s.expectedDigest=[NSData dataWithBytes:hash length:32];
  s.startedAt=NSProcessInfo.processInfo.systemUptime;
  s.central=[[CBCentralManager alloc]initWithDelegate:s queue:nil];
- [NSTimer scheduledTimerWithTimeInterval:300 repeats:NO block:^(NSTimer*t){(void)t;[s fail:@"300-second bounded timeout"];}];
+ [NSTimer scheduledTimerWithTimeInterval:s.queryOnly?60:300 repeats:NO block:^(NSTimer*t){(void)t;[s fail:s.queryOnly?@"60-second read-only query timeout":@"300-second bounded timeout"];}];
  [[NSRunLoop currentRunLoop]run];
  }return 1;}

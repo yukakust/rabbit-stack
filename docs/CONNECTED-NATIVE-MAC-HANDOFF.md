@@ -302,3 +302,27 @@ radio modes, missing bundles and staging-stop combined with query/abort before
 radio. Actual query and exact abort confirm functionality; receiver/root/native
 code and bootstrap/media bytes unchanged. Sender source8d87f4b2..., validator6793d285...,
 helper modes documented in connected README. No claimed failed-init rejection.
+
+
+## Nearby Mac cannot query receiver — 2026-10-03
+
+Owner moved Mac nearby («рядом»). Read-only service scan discovered no Rabbit;
+agent stopped scan without writes. Added optional query-only cached peripheral
+UUID connection, retrieved known F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF, but no
+connect/status callback arrived before60second query timeout. No BEGIN/DATA/COMMIT
+or ABORT in either attempt; all radio processes stopped. Cause remains unknown;
+old READY TO CONNECT text alone cannot prove current receiver liveness. Current
+screen observation requested, no new owner response yet. Near scan/cached logs
+are archived in connected evidence/dell-connected-cat-world-2-near-*-query.log.
+
+Recovery plan is concrete: one OWNER-AUTHORIZED restart using unchanged installed
+USB, observe bootstrap advertising baseline, Mac read-only query, then restore
+SAME prior signed worldcounter2 package/session and require exact receipt plus
+walking-cat observation. This is NOT authorized yet: initial request explicitly
+forbade Dell reboot. Do not restart/reset/rewrite media or retry native modules
+without that decision. No claim of successful restoration or failed-health test.
+
+Mac query source07b09af8... compiled on Apple SDK,2 focused helper checks pass;
+invalid UUID and cached query combined with send reject before radio. Cached
+connection allowed only with --query-only; read-only queries bounded60seconds.
+Receiver/root/native modules, installed image, keys and USB unchanged.

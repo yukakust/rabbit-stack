@@ -1,0 +1,4 @@
+MAC SENDER COMPILED; SOURCE SHA256=07b09af8149cf0ea54e5b741a50a0941404391f5ddecff1b11d17aa87308bcac
+STATUS VALIDATOR SHA256=6793d285e07aeea28c35652ad94c2d04d5d39e839466caa517e57078aa358758
+READ-ONLY CACHED CONNECT: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF (not identity authentication)
+FAIL: 60-second read-only query timeout; application outcome may be unknown; staging retained if Dell remains powered
