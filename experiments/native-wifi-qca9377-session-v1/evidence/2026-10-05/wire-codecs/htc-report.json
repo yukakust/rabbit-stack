@@ -4,14 +4,17 @@
     "htc_wire.c": "fa0d04a8de15f9485d04b465ead247d3b3c9e60f29c394063ef5cc4cfbf30e14",
     "htc_wire.h": "45af53b8d52ae30b77b05fc42daa1bcb8b6e2ddb4955a9d015b5fa6534f6ada4",
     "htc_wire_test.c": "ff828ae477dc2541437d42ca4f7a2708f3a75cc2f99524970c7c5583a835a2a2",
-    "verify_htc.py": "37ab9c84f8f8d539b1fabef513a3b40c232d0f57a17d02f7f095968dddbb3d9e"
+    "htc_session.c": "6bb74d7ca5d18758c2048c41c27d1a994a5fcbc4570b0764ff275d050f777b50",
+    "htc_session.h": "d96693e30cf70574d01a6a5629f9013ea09995b87eb1449d805d8a44528b3754",
+    "htc_session_test.c": "cb0894871aa0cb9fcc72ad1523b641b86bcedfc9041f2bf68870bfff0ee872ac",
+    "verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
   },
   "reference": {
     "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
     "htc_h_sha256": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963",
     "oracle_sha256": "842128e10887565560a27d9bf71450cf7231547d2777a209de010d07cd1eda2b"
   },
-  "host_log_sha256": "f3ca0ea8e8eee86e155cc122563a07a993947df00789ddf1ae486a5b8487368e",
+  "host_log_sha256": "202f8dce2a195a19d4715ae4cc80c6de8267994c7d6f516fe1d15093a4f19cde",
   "build_host": "yukabox",
   "physical_verified": false,
   "native_integrated": false,

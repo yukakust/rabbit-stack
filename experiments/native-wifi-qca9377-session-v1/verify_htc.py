@@ -18,11 +18,15 @@ def main():
   structs.append(match.group())
  oracle='#include <stdint.h>\ntypedef uint8_t u8;typedef uint16_t __le16;typedef uint32_t __le32;\n#define __packed __attribute__((packed))\n#define __aligned(n) __attribute__((aligned(n)))\n'+'\n'.join(structs)+'\n'
  (out/'upstream-wire.h').write_text(oracle)
- inputs={n:sha((ROOT/n).read_bytes()) for n in ('htc_wire.c','htc_wire.h','htc_wire_test.c','verify_htc.py')}
+ inputs={n:sha((ROOT/n).read_bytes()) for n in ('htc_wire.c','htc_wire.h','htc_wire_test.c','htc_session.c','htc_session.h','htc_session_test.c','verify_htc.py')}
  subprocess.run([str(CC),'-O1','-g','-Wall','-Wextra','-Werror','-fsanitize=address,undefined','-I'+str(ROOT),'-I'+str(out),str(ROOT/'htc_wire.c'),str(ROOT/'htc_wire_test.c'),'-o',str(out/'htc-test')],check=True)
  result=subprocess.run([str(out/'htc-test')],capture_output=True,text=True,timeout=30);(out/'host.log').write_text(result.stdout+result.stderr);assert result.returncode==0,result.stderr
  subprocess.run([str(CC),'-target','x86_64-pc-win32-coff','-ffreestanding','-fno-stack-protector','-mno-red-zone','-Os','-Wall','-Wextra','-Werror','-I'+str(ROOT),'-c',str(ROOT/'htc_wire.c'),'-o',str(out/'htc_wire.obj')],check=True)
+ subprocess.run([str(CC),'-O1','-g','-Wall','-Wextra','-Werror','-fsanitize=address,undefined','-I'+str(ROOT),str(ROOT/'htc_wire.c'),str(ROOT/'htc_session.c'),str(ROOT/'htc_session_test.c'),'-o',str(out/'session-test')],check=True)
+ session=subprocess.run([str(out/'session-test')],capture_output=True,text=True,timeout=30);assert session.returncode==0,session.stderr
+ (out/'host.log').write_text(result.stdout+result.stderr+session.stdout+session.stderr)
+ subprocess.run([str(CC),'-target','x86_64-pc-win32-coff','-ffreestanding','-fno-stack-protector','-mno-red-zone','-Os','-Wall','-Wextra','-Werror','-I'+str(ROOT),'-c',str(ROOT/'htc_session.c'),'-o',str(out/'htc_session.obj')],check=True)
  assert inputs=={n:sha((ROOT/n).read_bytes()) for n in inputs}
  report={'status':'HTC-WIRE-HOST-COFF-PASS','source_sha256':inputs,'reference':{'linux_commit':LINUX,'htc_h_sha256':EXPECTED,'oracle_sha256':sha(oracle.encode())},'host_log_sha256':sha((out/'host.log').read_bytes()),'build_host':'yukabox','physical_verified':False,'native_integrated':False,'scan_supported':False,'wifi_connected':False}
- (out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(result.stdout.strip());print(report['status'])
+ (out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(result.stdout.strip());print(session.stdout.strip());print(report['status'])
 if __name__=='__main__':main()

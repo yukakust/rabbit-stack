@@ -28,8 +28,14 @@ tests malformed/truncated/duplicate/uncorrelated scan events, and builds COFF.
 The TLV reference header is the exact pinned download at the earlier
 experiment's `runs/wmi-reference/wmi-tlv.h`; its hash is checked before use.
 
+`htc_session` adds the bounded READY → WMI connect → HTT connect → PCI setup
+handshake. It checks transport completion, service IDs and unique assigned
+endpoints. It has no DMA, deadline, operational credit ledger or WMI dispatch;
+those remain obligations of the future native transport. Its injected-message
+sequence tests are included in `verify_htc.py`.
+
 Still required: physical firmware startup; retained CE receive/transmit queues;
-HTC service/credit state; WMI TLV init and physical scan; HTT data receive/transmit;
+native HTC service/credit state; WMI TLV init and physical scan; HTT data receive/transmit;
 protected local credential delivery; router authentication; DHCP/IP; actual
 traffic to Yukabox. Firmware READY is not a Wi-Fi connection.
 
