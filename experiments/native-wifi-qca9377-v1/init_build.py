@@ -6,11 +6,11 @@ CORE=('init_probe.c','init_adapter.c','init_adapter.h','warm_core.c','warm_core.
       'channels_core.c','channels_core.h','boot_irq_mapped.c','boot_irq_mapped.h')
 def sources(directory):
  base.sources(directory)
- h=directory/'pci_collect.h';h.write_text(one(h.read_text(),'800u','864u'))
- c=directory/'pci_collect.c';c.write_text(one(c.read_text(),'qca_diagnostic[3]=13;','qca_diagnostic[3]=14;'))
- g=directory/'diagnostic_gatt.c';s=g.read_text().replace('p[7]==8?8:0','p[7]==9?8:0').replace('start==1?1:8','start==1?1:9').replace('handle==1?1:8','handle==1?1:9')
+ h=directory/'pci_collect.h';h.write_text(one(h.read_text(),'800u','888u'))
+ c=directory/'pci_collect.c';c.write_text(one(c.read_text(),'qca_diagnostic[3]=13;','qca_diagnostic[3]=15;'))
+ g=directory/'diagnostic_gatt.c';s=g.read_text().replace('p[7]==8?8:0','p[7]==10?8:0').replace('start==1?1:8','start==1?1:10').replace('handle==1?1:8','handle==1?1:10')
  s=one(s,'for(unsigned i=0;i<84;i++)value[36+i]=qca_diagnostic[716+i];length=120;',
-         'for(unsigned i=0;i<148;i++)value[36+i]=qca_diagnostic[716+i];length=184;')
+         'for(unsigned i=0;i<172;i++)value[36+i]=qca_diagnostic[716+i];length=208;')
  g.write_text(s)
  for name in CORE:(directory/name).write_bytes((ROOT/name).read_bytes())
 def compile_driver(directory,crypto):

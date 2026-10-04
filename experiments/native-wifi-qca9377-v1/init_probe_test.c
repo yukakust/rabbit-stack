@@ -11,7 +11,7 @@
 #include "reset_core.h"
 #include "diag_ce.h"
 #include <stdlib.h>
-uint8_t qca_diagnostic[864];void*qca_controller;
+uint8_t qca_diagnostic[888];void*qca_controller;
 static unsigned scenario,reset_writes,reset_cleared,allocations,dma_frees,unmaps,flushes;
 static _Alignas(4096) uint8_t hosts[14][4096];
 static uint32_t registers[8][32];static uint16_t link_control=0x143;static uint32_t boot_regs[6]={0x12300e88};static unsigned mask_attempts,link_disables,msi_toggled;static uint32_t reset_register;
@@ -136,8 +136,10 @@ int main(int argc,char**argv){
   else if(initial!=8)assert(get(128)==6);
   if(initial==13||initial==15||initial==17){assert(get(844)==1&&get(856)==2&&!get(816)&&allocations==14);}
  }
+ if(initial==17){assert(get(864)==11&&get(868)==0&&get(872)>=3000000&&get(876)>0&&get(880)>0);}
+ if(initial==0){assert(!get(864)&&!get(872)&&get(868)==2&&get(876)>0&&get(880)>0);}
  assert(!(config[1]&4));
- qca_diagnostic[0]='Q';qca_diagnostic[1]='P';qca_diagnostic[2]='D';qca_diagnostic[3]=14;
- printf("QPD14_MOCK=");for(unsigned i=0;i<864;i++)printf("%02x",qca_diagnostic[i]);puts("");
+ qca_diagnostic[0]='Q';qca_diagnostic[1]='P';qca_diagnostic[2]='D';qca_diagnostic[3]=15;
+ printf("QPD15_MOCK=");for(unsigned i=0;i<888;i++)printf("%02x",qca_diagnostic[i]);puts("");
  printf("Actual native init probe scenario %u PASS: outer PCI/cold/wake/ROM + mapped warm14 + cleanup/recovery; MOCK ONLY\n",initial);return 0;
 }

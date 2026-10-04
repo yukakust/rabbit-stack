@@ -2385,3 +2385,44 @@ still unverified; second warm ROM timeout unresolved. After owner confirms city/
 tail, sign fresh28 against actual runtime27/world14, send exact saved session and
 read hash-bound QPD14 on known Dell. Check recovery/cleanup as well as timeout;
 never clear ownership flags or imply firmware/association success.
+
+## 2026-10-04 — native28 applied; physical post-cold cleanup PASS
+
+Owner said 'виден' after27: city visible; tail motion not confirmed. Sent exact
+gated native28 against runtime27/world14; staged76064 then exact correlated APPLIED
+receipt after COMMIT/reconnect. Saved session pci-native-ifvdvbiy; do NOT replay.
+Current native28 payload b6f108f7a91e1786f31bc2db08922e100fd2667b4d360bab24c6d4867da891de,
+world14 unchanged, all pending slots empty. First read rejected still-active probe;
+next read fresh known Dell F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF QPD14 hash split.
+
+Physical stage6 failed-but-cleaned: warm timeout2, CPU resets2/pipe inits2;
+adapter CLOSED12, channels CLOSED6, allocated14/cleanup cursor14, no held pages,
+cold recovery verified/ROM2/unowned, IRQ/link/PCI restored, no retained ownership,
+BME off. This verifies post-cold stop/release fix on Dell. Warm initialization is
+still NOT successful; firmware/association/DHCP/streaming remain unperformed.
+City/tail after28 async observation pending. Evidence under
+experiments/native-wifi-qca9377-v1/evidence/2026-10-04/init-postcold-native28.
+No autonomous reboot, USB/bootstrap writes, target RAM writes or key export.
+
+Next offline candidate adds QPD15 cached warm failure phase, last indicator,
+phase elapsed microseconds, first/second ROM poll counts and last reset read.
+No additional MMIO operations: reads only already cached core values. Full gates,
+source/current-world reproduction and local signing gate required before sending.
+New UUID0A avoids cached GATT envelope; main716, QIC1 extension208, total888.
+Read-only Mac helper /tmp/rabbit-read-pci15; old14 remains supported. Do NOT use
+old28 gates with changed telemetry sources to sign a new packet.
+
+QPD15 full offline gates now PASS on Yukabox, payload
+11a9df2059578ca8f2b6c7046a61e211672ddda3f5ab065660038fb99190db3e.
+18 real native fixture scenarios; second-wait case17 explicitly asserts phase11,
+indicator0, elapsed>=3s and both ROM polls preserved through recovery. Existing
+warm operation traces pass. Split/decoder negatives, normal+EMPTY UEFI/ATT/BLE,
+273 current sources, two identical rebuilds and exact world14 C/sanitizer all pass.
+Mac native_route.gates read-only gate passes: report9a9b1c0683ef6fba38838f9bb818ce4a081d09312749d82497687835c1b24dbf,
+reproduction5d5ab08dcd0b63256188abb505269a4c95f1fc593ac8ba9ec844ab6b7708db9a.
+Checked directory runs/init-profile-native29. No29 signature/session/send yet;
+physical runtime28 and world14, no pending. Mac readonly helper compiled and19
+historical physical reports decode. Evidence warm-failure-qpd15-host is HOST ONLY.
+NEXT: obtain owner scene/tail observation after28 (asked async), then current
+bindings/sign counter29/send saved session/read QPD15 with /tmp/rabbit-read-pci15.
+Physical post-cold cleanup28 passed; exact warm failure cause still unresolved.

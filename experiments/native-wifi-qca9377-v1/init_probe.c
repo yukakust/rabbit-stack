@@ -37,6 +37,10 @@ static void telemetry(void){
  record(828,adapter.warm.pipe_inits,4);record(832,adapter.channels.phase,4);record(836,adapter.channels.allocated,4);
  record(840,adapter.channels.cleanup_slot,4);record(844,adapter.recovery_verified,4);record(848,adapter.recovery.phase,4);
  record(852,adapter.recovery.owned,4);record(856,adapter.recovery_indicator,4);record(860,adapter.mapped.error,4);
+ /* QPD15: cached warm failure only; no additional hardware reads/writes. */
+ record(864,adapter.warm.failure_phase,4);record(868,adapter.warm.indicator,4);
+ record(872,adapter.warm.failure_elapsed_us,4);record(876,adapter.warm.first_rom_polls,4);
+ record(880,adapter.warm.second_rom_polls,4);record(884,adapter.warm.last_reset_read,4);
 }
 static int fresh(void){
  uint32_t config[64]={0};QcaPciIdentity id;uint8_t power[16];

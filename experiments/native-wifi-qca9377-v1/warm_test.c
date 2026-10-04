@@ -52,6 +52,7 @@ int main(void){
  assert(m.cpu==2&&m.ce_asserts==1&&m.ce_clears==1&&m.pipes==2&&m.lf==0x10);
  const unsigned expected[]={1,1,10,20,25,30,40,50,10,20,25};
  assert(m.count==sizeof(expected)/sizeof(*expected));for(unsigned i=0;i<m.count;i++)assert(m.trace[i]==expected[i]);
+ assert(!w.failure_phase&&!w.failure_elapsed_us&&w.first_rom_polls&&w.second_rom_polls&&w.indicator==2);
  unsigned operations=m.operations;
  assert(qca_warm_poll(&w,7000000)==1&&m.operations==operations);
  /* Fault injection at EVERY read/write; fail closed and keep ownership. */
@@ -87,6 +88,7 @@ int main(void){
   setup(&w,&m);if(!kind)m.pipes_error=2;else if(kind==1)m.rom_timeout=2;else m.rom_error=2;
   assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,0));run(&w,&m);
   assert(w.phase==QCA_WARM_FAULT&&w.owned&&!w.ce_owned&&m.cpu==2);
+  if(kind==1){assert(w.failure_phase==QCA_WARM_ROM_SECOND&&w.failure_elapsed_us>=3000000&&w.indicator==0&&w.first_rom_polls&&w.second_rom_polls);}
  }
  setup(&w,&m);m.allones=1;assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,0));run(&w,&m);assert(w.error==QCA_WARM_IO&&!w.writes);
  setup(&w,&m);assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,10));assert(step(&w,&m,9)==-1&&w.error==QCA_WARM_CLOCK);

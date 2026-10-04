@@ -1,0 +1,20 @@
+{
+  "native_counter": 28,
+  "world_counter": 14,
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "46f7cc5f1ad67d32a53d7328bfe1a68324eab7c1757f3ec96468787b3a7f1fac",
+  "native_payload_sha256": "b6f108f7a91e1786f31bc2db08922e100fd2667b4d360bab24c6d4867da891de",
+  "physical_peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+  "physical_diagnostic_sha256": "d58cafbab518323e35c4e80653cab13ee61a8295118f192213cd271387700caa",
+  "physical_cleanup_verified": true,
+  "warm_initialization_verified": false,
+  "warm_error": 2,
+  "cpu_resets": 2,
+  "pipe_initializations": 2,
+  "allocated_pages": 14,
+  "cleanup_cursor": 14,
+  "all_pending_empty": true,
+  "owner_scene_after28": "requested, pending",
+  "wifi_association_verified": false,
+  "usb_or_bootstrap_changed": false
+}

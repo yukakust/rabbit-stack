@@ -3,9 +3,18 @@
  * Used by the separately gated one-shot native init profile.
  */
 #include "warm_core.h"
-static int fail(QcaWarm*w,unsigned e){if(!w->error)w->error=(uint8_t)e;w->phase=QCA_WARM_FAULT;return -1;}
+static int fail(QcaWarm*w,unsigned e){
+ if(!w->failure_phase&&w->phase!=QCA_WARM_FAULT){
+  w->failure_phase=w->phase;
+  uint64_t elapsed=w->last>=w->operation?w->last-w->operation:0;
+  w->failure_elapsed_us=elapsed>UINT32_MAX?UINT32_MAX:(uint32_t)elapsed;
+ }
+ if(!w->error)w->error=(uint8_t)e;
+ w->phase=QCA_WARM_FAULT;return -1;
+}
 static int read32(QcaWarm*w,uint32_t a,uint32_t*v){
  if(w->read(w->context,a,v)||*v==UINT32_MAX)return -1;
+ if(a==0x800)w->last_reset_read=*v;
  w->reads++;return 0;
 }
 static int write32(QcaWarm*w,uint32_t a,uint32_t v){
@@ -68,6 +77,7 @@ int qca_warm_poll(QcaWarm*w,uint64_t now){
   if(now-w->operation>=3000000)return fail(w,QCA_WARM_TIMEOUT);
   if(now<w->next)return 0;
   w->next=now+10000;
+  if(w->phase==QCA_WARM_ROM_FIRST)w->first_rom_polls++;else w->second_rom_polls++;
   if(read32(w,0x3a028,&w->indicator))return fail(w,QCA_WARM_IO);
   if(w->indicator&1)return fail(w,QCA_WARM_ROM_ERROR);
   if(!(w->indicator&2))return 0;

@@ -12,6 +12,7 @@ enum {QCA_WARM_IO=1,QCA_WARM_TIMEOUT,QCA_WARM_CLOCK,QCA_WARM_CANCELLED,
 typedef struct {
  QcaRead32 read;QcaWrite32 write;QcaWarmCheck check;QcaWarmPipes pipes;void*context;
  uint64_t started,last,operation,next;uint32_t reset_value,indicator,reads,writes;
+ uint32_t failure_phase,failure_elapsed_us,first_rom_polls,second_rom_polls,last_reset_read;
  uint8_t phase,error,owned,ce_owned,cancelled,cpu_resets,pipe_inits;
 } QcaWarm;
 /* QCA9377-only finite BAR offsets from init pack. Caller verifies cold+ROM done,

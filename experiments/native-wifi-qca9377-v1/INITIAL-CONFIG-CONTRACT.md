@@ -203,3 +203,25 @@ an exact boot-recovery plan before further native trials. Never interpret RF los
 as reboot, silently reset counters, replay26, run native compilation on Mac, or
 reuse old26 source-bound gates for changed source. Scene after26 still requires
 owner observation. No automatic reboot or new signed packet during fix checks.
+
+
+## Cached warm failure telemetry (QPD15)
+
+Physical native28 confirmed warm timeout after two CPU resets and two pipe
+configurations; post-cold re-stop/release now succeeds on physical Dell. The
+next candidate changes observability only, preserving the reset sequence and
+all PCI/DMA/IRQ ownership guards. It records cached core data at bytes864..887:
+failure phase, last warm ROM indicator, elapsed microseconds within that phase,
+first ROM polls, second ROM polls, last successful reset-control read (six LE32).
+First failure is preserved through recovery; elapsed saturates at UINT32_MAX.
+No extra MMIO read/write or DMA operation is introduced. Poll times describe
+host observations; they are not device event timestamps. Success requires ROM2,
+nonzero polls in both waits and no failure; faults require matching phase/error.
+Poll counters bounded300 each by3s/10ms schedule. Existing QPD14 remains readable.
+
+New diagnostic service UUID0A, main716bytes, QIC1 SHA256(prefix) +172tailbytes,
+extension208bytes, joined888bytes. Decoder rejects active snapshots, malformed
+length/hash/bounds and inconsistent failure/success. Actual native fixture17
+forces second ROM timeout and verifies original failure phase11, zero last warm
+indicator, elapsed>=3s and both poll counters survive successful cold cleanup.
+This does not prove the cause of the timeout or successful Wi-Fi association.

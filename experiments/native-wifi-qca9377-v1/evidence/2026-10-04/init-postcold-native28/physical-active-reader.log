@@ -1,0 +1,2 @@
+PCI CHARACTERISTICS=2
+PCI QUERY FAILED: probe still active; retry read-only after cleanup
