@@ -1,0 +1,42 @@
+{
+  "status": "PINNED-FIRMWARE-CONTAINER-AND-PCI-BOARD-CANDIDATE-PREPARED",
+  "firmware_source": {
+    "repository": "https://kernel.googlesource.com/pub/scm/linux/kernel/git/firmware/linux-firmware",
+    "commit": "f9b926a6e1d67e09e54adc329c4e76be5f24a895"
+  },
+  "firmware": {
+    "container_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+    "bytes": 751436,
+    "version": "WLAN.TF.2.1-00021-QCARMSWP-1",
+    "wmi_op": 4,
+    "htt_op": 3,
+    "firmware_image_bytes": 727125,
+    "firmware_image_sha256": "57cbd474bda6a5e34e5e9e75ec5aba79f426f4a0b35719421c75f941ec693915",
+    "otp_image_bytes": 24193,
+    "code_swap_present": false,
+    "features_hex": "c0",
+    "unknown_elements": [],
+    "hardware_compatible": null,
+    "upload_authorized": false
+  },
+  "pci_board_candidate": {
+    "group": 0,
+    "name": "bus=pci,vendor=168c,device=0042,subsystem-vendor=1028,subsystem-device=1810",
+    "bytes": 8124,
+    "sha256": "b2713b77c725b0ff81af75c85c3aeba97885d0f40174f715b1e39d5a9d50f4e7"
+  },
+  "source_materials_sha256": "169a2d12f0a2b42b0832594972355ef81bee17058f77a6346527f44bc4750041",
+  "license_files_hash_checked": true,
+  "physical_bmi_target_version_pending": true,
+  "fresh_board_variant_pending": true,
+  "initial_configuration_write_and_readback_pending": true,
+  "upload_authorized": false,
+  "upload_performed": false,
+  "next_order": [
+    "fresh post-warm configuration reads and bounded span validation",
+    "gated exact config writes/readback; config-done LAST and CPU wake",
+    "fresh BMI target version/type and exact board-variant validation",
+    "native firmware asset receiver integration and signed chunk receipts",
+    "RAM upload and startup; WMI/HTT; scan/security; DHCP"
+  ]
+}

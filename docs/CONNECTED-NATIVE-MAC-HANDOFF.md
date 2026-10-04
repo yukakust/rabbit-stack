@@ -2522,3 +2522,54 @@ evidence only. Then separately gate bounded config writes/readback, done marker
 LAST, CPU wake and BMI version before firmware. Source-pinned tables/synthetic
 inventory alone do not authorize target writes. Preserve city/cat/history, Mac
 control/signing/BLE only, Yukabox builds. No autonomous Dell reboot/USB changes.
+
+
+## 2026-10-04 — native32 PHYSICAL fresh full-channel config reads PASS
+
+Contract CONFIG-READ-TRIAL.md. Retain exact warm14/HI proof, then fixed reads
+401ee0/36bytes,400900/4,4008cc/4 through same CE7. No pointer-following/target
+writes. Snapshot parsed data before reusing response page. QPD17 reuses legacy
+config bytes716..799 alongside full14 HI proof888..923; size924, prefix716 +
+SHA-bound244 extension, fresh service UUID0C. File serviceUUID1 preserved.
+
+Yukabox gates30 actual native entrypoint ASan/UBSan cases, three per-location
+no-response faults, bad length, BME loss, legacy warm/cold/cleanup retained cases;
+core27channels/36mappedIRQ/13adapter, pinned pack, COFF, normal+EMPTY UEFI city/
+ATT/BLE/decoder, current285sources/two exact rebuilds/world14 C passed. Initial
+fixture found post-HI BME loss must be recorded as CONFIG fault; fixed. Decoder
+now also rejects complete-mask7 paired with active config phase. Gate attempts
+before these fixes are not physical authorization evidence.
+Payload1e72c4ffcc3ff6da53785032ac7f682b1080af83d8d8593ec72b9379fa7d51fc.
+
+Local owner signed AFTER gates, saved session pci-native-zgv75kje/counter32,
+81696bytes. Paced transmission resumed same session after disconnect at70200;
+COMMIT/reconnect gave exact APPLIED receipt. Current native32/world14, no pending
+slots. Do NOT replay. Known Dell read-only QPD17/writes0, stage5/errors0: warm
+DONE12/CPU2/pipes2/ROM4+4, HI401ee0 completed, configDONE4/error0/mask7.
+State words404d90,404e50,8,0,0,0,0,3,1; early_alloc0; option_flag2 **0** (old
+pre-warm QPD13 value20 is historical and cannot authorize fresh writes). Span
+preflight +10negative cases passes: pipe404d90/168bytes, services404e50/204bytes.
+All14 maps cleaned, adapter/channels closed, PCI/IRQ/link/wake/DMA released.
+Evidence full-channel-config-read-host and full-channel-config-read-native32.
+Owner city/tail after32 asked and pending, never invent physical observation.
+
+Firmware preparation (NO upload): pinned linux-firmware commit
+f9b926a6e1d67e09e54adc329c4e76be5f24a895 material hashes and license/notice checked
+on Yukabox; container WLAN.TF.2.1-00021-QCARMSWP-1,751436bytes, SHA
+8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01,
+image727125bytes, RAM OTP image24193bytes, no code swap. PCI board CANDIDATE
+1028/1810 exact catalog match8124bytes SHA
+b2713b77c725b0ff81af75c85c3aeba97885d0f40174f715b1e39d5a9d50f4e7.
+Hardware compatibility NOT proved; fresh BMI identity/board variant pending.
+Public audit and exact table/flag candidate in firmware-preparation-native32.
+No firmware binaries/private key in Git. Candidate not signed/sent.
+
+NEXT: connect source-pinned table writes/readback to full14 live adapter, fresh
+fixed reads/spans in SAME warm/BME/IRQ scope. Done marker LAST, CPU wake, bounded
+BMI info query, safe all-eight teardown/retention. Then exact BMI/board variant
+and signed asset receiver integration before firmware RAM upload/startup.
+Existing firmware_port accepts old QPD7 only: do NOT bypass it with fabricated
+telemetry; port the policy to fresh native-owned live proof and test separately.
+Preserve city14/cat/history. Mac control/signing/BLE, native builds on Yukabox;
+no autonomous reboot, USB/bootstrap, permanent OTP/firmware changes. No Wi-Fi
+association/DHCP/video yet.

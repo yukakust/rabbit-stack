@@ -66,7 +66,7 @@ def main(*,builder=build,probe=verify_init_probe,profile='init-profile',version=
  assert inputs=={str(p.relative_to(ROOT.parent.parent)):sha(p.read_bytes()) for p in paths},'source changed during profile gate'
  report={'status':status,'payload_sha256':sha(payload),'source_sha256':inputs,'host_log_sha256':sha(log.encode()),
   **{n:True for n in flags},'gates':gates,'physical_dell_verified':False,'target_ram_writes':False,'firmware_upload':False,
-  'physical_operation':('cold/wake/ROM + mapped warm reset + fourteen coherent pages/full channels; device IRQ quiesce; bounded BME-on fixed CE7 read; all-eight stop/BME-off/flush/unmap/free or retain' if profile=='full-read-profile' else 'cold/wake/ROM + mapped warm reset + fourteen coherent pages/full channel configuration with bus mastering off + teardown; verified cold recovery or retain ownership on fault'),
+  'physical_operation':('cold/wake/ROM + mapped warm reset + fourteen coherent pages/full channels; device IRQ quiesce; bounded BME-on fixed CE7 read; all-eight stop/BME-off/flush/unmap/free or retain' if profile in ('full-read-profile','config-read-profile') else 'cold/wake/ROM + mapped warm reset + fourteen coherent pages/full channel configuration with bus mastering off + teardown; verified cold recovery or retain ownership on fault'),
   **{n+'_report_sha256':sha((out/(n+'-report.json')).read_bytes()) for n in ('port','reset','init','probe')},
   'pack_report_sha256':sha((out/'pack-report.json').read_bytes()),'build_host':'yukabox'}
  (out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(status+' payload='+sha(payload))
