@@ -1588,3 +1588,18 @@ bluetooth-recovery/report.json. Current Dell animation/screen and Mac proximity
 requested; powered-on alone does not establish receiver liveness. Cause remains
 undetermined. Need physical screen observation before further recovery; do not
 claim Mac toggle restored Dell or infer unchanged receiver RAM.
+
+## 2026-10-04 — owner confirmed moving cat; close-distance BLE retry failed
+
+Owner confirms city visible and cat tail moving, Mac originally7m away; owner then
+moved Mac nearby. Fresh20second passive scan saw137advertisements, no Rabbit service
+and no connected Rabbit peripheral; Mac powered-on/allowed. Saved-peripheral
+read-only query again reached60second timeout and terminated. No DATA/COMMIT/ABORT
+or Dell reboot; native15 pending session unchanged. Evidence appended to
+bluetooth-recovery/report.json. Distance alone did not restore the connection;
+cause remains undetermined. Installed supervisor has Esc-to-stop but no separate
+remote radio-reset command available without BLE; Esc would stop the scene.
+Current whole-screen Dell photo needed to inspect visible diagnostics before
+choosing a recovery. Existing city_recovery rejects native_pending and assumes
+its own reviewed city profile; do not reboot expecting unconditional recovery or
+clear native15 without fresh receiver evidence and a reviewed transition.

@@ -48,5 +48,27 @@
   "last_confirmed_native_counter": 14,
   "pending_native_counter": 15,
   "physical_wifi_verified": false,
-  "cause": "undetermined; Mac radio reception works, no Dell response observed"
+  "cause": "undetermined; Mac radio reception works, no Dell response observed",
+  "nearby_retry": {
+    "owner_confirmed_city_visible_and_tail_moving": true,
+    "previous_mac_distance_meters": 7,
+    "owner_confirmed_mac_moved_near_dell": true,
+    "exact_new_distance_meters": null,
+    "passive_probe": {
+      "advertisement_count": 137,
+      "authorization": 3,
+      "connected_rabbit_count": 0,
+      "connections_started": 0,
+      "controller_state": 5,
+      "known_dell_cached_state": 0,
+      "physical_wifi_verified": false,
+      "rabbit_candidates": [],
+      "scan_started": true,
+      "writes": 0
+    },
+    "cached_query_exit_code": 1,
+    "cached_query_result": "60-second read-only query timeout",
+    "data_commit_abort_writes": 0,
+    "cause": "still undetermined; distance alone did not restore observed connection"
+  }
 }
