@@ -2147,8 +2147,8 @@ error0/mask7. pcie_state words:
 read still completed, config last4byte read firstpoll390ms, both completion
 checks passed. Pipe address404d90, service404e50. BMI remains timeout805 with
 ROMready2; complete cleanup, DMAheld0, bus/reset unowned, ASPM0143 restored.
-Owner post25 city/tail check requested/pending. Native23 city visible confirmed
-previously; do not infer post25 scene or tail animation.
+Owner subsequently confirmed post25 city visible; tail movement was not explicitly
+confirmed. Native23 city visibility was also confirmed previously.
 
 Important source correction: initial HOST preflight incorrectly assumed10 target
 records from generic pci_target_ce_config_wlan and rejected physical overlap.

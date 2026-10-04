@@ -101,7 +101,7 @@
   },
   "interpretation": "QPD13 main716bytes and hash-bound120byte extension read successfully from same physical connection. All3configuration reads complete. Pipe404d90, service404e50. Initial host preflight wrongly assumed generic10records and rejected overlap; pinned core/hw values require7records168bytes for QCA9377, corrected source independently checked. Full physical span preflight with10negativecases passed; target writes remain disabled.",
   "next_trial": "Source-bound QCA9377 init candidate: cold+warm sequence, owned host channels vs advertised target tables, bounded CE7 writes/readback, flags/earlyalloc then last commit marker and CPU wake. BMI/version and firmware gates separate.",
-  "physical_scene_observation": "requested after25; pending owner",
+  "physical_scene_observation": "Owner confirmed after native25: city visible. Tail movement not explicitly confirmed.",
   "firmware_uploaded": false,
   "wifi_association_verified": false,
   "initialization_target_writes": false,
