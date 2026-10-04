@@ -22,7 +22,7 @@ int main(int argc,char**argv){
   assert(qca_boot_image_begin(&s,&bad)==-1&&!s.phase);
  }
  assert(!qca_boot_image_begin(&s,&a));assert(qca_boot_image_begin(&s,&a)==-1);
- unsigned board_written=0,board_read=0,helper_written=0,main_written=0,helper_starts=0,main_starts=0,calibrations=0,done=0;
+ unsigned board_written=0,board_read=0,helper_written=0,main_written=0,helper_starts=0,main_starts=0,calibrations=0,uart_off=0,done=0;
  unsigned loops=0;const uint8_t*p;unsigned n,reply;uint8_t response[244];
  while(s.phase!=20&&s.phase!=21){
   assert(++loops<4000);assert(!qca_boot_image_request(&s,&p,&n,&reply));assert(!qca_boot_image_validate(&s));
@@ -54,6 +54,8 @@ int main(int argc,char**argv){
   }else if(phase==9){
    assert(op==4&&n==12&&reply==4&&word(p+4)==0x1234&&!word(p+8));calibrations++;
    if(scenario==10)put(response,1);
+  }else if(phase==22){
+   assert(op==3&&n==16&&!reply&&word(p+4)==0x400814&&word(p+8)==4&&!word(p+12));assert(main_written==727125&&!done);uart_off++;
   }else if(phase==5||(phase>=11&&phase<=15)){
    assert(op==3&&n==16&&!reply&&word(p+8)==4);
    uint32_t address=phase==5?0x400858:phase==11?0x400810:phase==12?0x400800:phase==13?0x400844:phase==14?0x400904:0x4008bc;
@@ -67,7 +69,7 @@ int main(int argc,char**argv){
   if(rc<0){assert(scenario>=4);break;}
   assert(rc==(s.phase==20));assert(qca_boot_image_complete(&s,response,reply_n)==-1);
  }
- if(scenario<=3){assert(s.phase==20&&!s.error&&done==1&&calibrations==1&&helper_starts==1&&main_starts==1&&board_written==8124&&board_read==8124&&helper_written==24193&&main_written==727125&&s.submitted==s.completed);assert(qca_boot_image_request(&s,&p,&n,&reply)==1);}
+ if(scenario<=3){assert(s.phase==20&&!s.error&&done==1&&calibrations==1&&helper_starts==1&&main_starts==1&&board_written==8124&&board_read==8124&&helper_written==24193&&main_written==727125&&uart_off==1&&s.submitted==s.completed);assert(qca_boot_image_request(&s,&p,&n,&reply)==1);}
  else assert(s.phase==21&&s.error&&!done&&!main_written);
  free((void*)a.board);free((void*)a.helper);free((void*)a.main);
  printf("EXACT BOARD READBACK/CALIBRATION/MAIN/DONE scenario%u PASS; HOST MOCK, NO PHYSICAL READY CLAIM\n",scenario);

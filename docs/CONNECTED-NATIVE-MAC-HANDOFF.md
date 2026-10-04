@@ -2931,3 +2931,55 @@ DHCP/IP and actual Dell-to-Yukabox traffic remain separate unimplemented stages.
 An asynchronous question asks owner for SSID and WPA2/WPA3; no password requested
 in chat, no credentials persisted. Local private credential entry is still to
 be implemented. Do not imply SSID alone or main-image startup completes Wi-Fi.
+
+## 2026-10-05 — exact generation38 boot receiver integration; delivery in progress
+
+Owner explicitly requested main firmware integration, physical Dell startup,
+SSID scan/protected association, IP and Yukabox exchange. SSID screenshot reads
+`SILK_56E35E_Plus`. Password was entered through a native Mac hidden dialog and
+saved in `/Users/yukakust/.rabbit-owner/wifi-connection.json`0600, owner directory
+0700, outside repository. Do not print/read the secret into tool output or send
+it to Yukabox. No encrypted credential channel exists yet; do not send a raw
+passphrase over the current unencrypted GATT.
+
+Added boot builder, generation38 exact receiver policy, UUID22/23 read-only
+QWBT status, observer/strict decoder, actual two-lifetime fixture, physical asset
+route and separate boot signing gates.65 first-lifetime cases,8 two-lifetime
+cases,42 core cases, COFF, both QEMU cities and341-source/current-world/two-rebuild
+checks pass on Yukabox.96 malformed QWBT bounds/success cases are rejected.
+Cancellation exposed the need to unpin after actual hardware release before RAM
+close; this path now passes during both calibration and main streaming. All
+firmware/DMA/HTC replies in these tests are MOCKS, not physical success.
+
+UART disable is now an explicit finite write before BMI_DONE. Pinned Linux PLL
+return is ignored by core_start; this candidate intentionally admits no SOC PLL
+commands and tests the reference-clock path. Do not claim PLL configured. Board
+pointer policy remains deliberately narrow and rejects any fresh overlap with
+pipe/service configuration or host interest before board write.
+
+Candidate PE139264bytes SHA
+`8ececc0196f1cbc22430d0327b8c5974898284c3d6aa4827534c8ac678debf86`.
+Local gate check also rejected a wrong native generation before any private-key
+read; the correct context reached the signing boundary with a test sentinel.
+A fresh known-peer read before delivery confirmed native37 board query/teardown
+phase5/error0/101commands/24196bytes/SMBIOS2/no variant/type8/05020001,
+adapterCLOSED12/cleanup14/DMAusers0. No new user city observation in this turn.
+
+The exact locally signed native38 session is
+`runs/text-world/pci-native-nwwhys2x` under connected supervisor. It is currently
+STAGING, not yet an applied receipt. Continue `native_route.py deliver` with the
+same state/session/packet, never create another generation/nonce. Do not retire
+native37 or claim38 installed until exact correlated APPLIED. State world15
+and semantic city hash remain unchanged. Owner key stayed on Mac; no USB,
+bootstrap, permanent programming or autonomous Dell reboot occurred.
+
+NEXT: finish native38; fresh read-only QPD18 must show complete first setup and
+teardown, QWBT boot_round0. Prepare/deliver exact generation38 firmware asset
+with `boot_asset_route.py`; preserve one controller lock and immutable packets
+across retries. Final accepted chunk starts the second fresh hardware lifetime.
+Read QWBT to prove actual calibration/main/HTC_READY and teardown or the precise
+bounded failure. Existing native34 RAM and retired native35 packets are invalid.
+After physical evidence, implement live HTC/WMI/HTT, scan, protected credentials/
+authentication, DHCP/IP, and actual Dell-Yukabox exchange. Wi-Fi is NOT connected
+and main firmware is NOT yet running at this checkpoint. Evidence host gates:
+`experiments/native-wifi-qca9377-v1/evidence/2026-10-05/boot-native38-host/`.

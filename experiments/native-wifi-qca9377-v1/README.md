@@ -828,3 +828,44 @@ Retire old generation34 asset sessions; native37 has no main-image RAM asset.
 Only then send a checked native candidate, stage a newly signed exact container
 and read fresh boot status. WMI/HTT, scan/authentication, DHCP/IP and Dell-to-
 Yukabox traffic are separate remaining implementation/physical milestones.
+
+### Exact main-image boot trial (2026-10-05)
+
+`boot_build.py` integrates the verified planner/transport/coordinator with the
+signed generation38 RAM receiver. First it completes a fresh setup/BMI hardware
+lifetime and releases all14 DMA pages/PCI owners, then allocates the two RAM
+buffers. After the complete signed751436-byte container is accepted, it starts
+an independent fresh hardware lifetime, collects SMBIOS, repeats the exact board
+helper query, and admits only the already selected Dell1028:1810 board record.
+Board bytes are read back before initialization, calibration requires return0,
+and the exact727125-byte main image is streamed with bounded BMI commands.
+UART is disabled before BMI_DONE. This is a reference-clock trial: no PLL SOC
+commands are implemented or claimed successful. An unexpected board pointer
+stops before board writes; the narrow admitted window is not chip RAM inventory.
+
+`verify_boot_profile.py` passes65 first-lifetime/signed-asset fixtures,8 actual
+entrypoint second-lifetime fixtures (including calibration/main cancellation),
+42 boot-core sanitizer cases, COFF, and normal/EMPTY city/GATT QEMU. All device
+replies in these fixtures are synthetic. Two fresh rebuilds and the current
+world package check bind341 public source inputs. Evidence:
+`evidence/2026-10-05/boot-native38-host/`. Passing these gates is not physical
+firmware startup or Wi-Fi association.
+
+Independent read-only `QWBT1` status is at service20..22/UUID22..23;
+`read_boot.py` distinguishes asset acceptance, main/HTC_READY, and complete
+resource release. `boot_asset_route.py` signs the exact generation-bound asset
+locally and retains immutable packets/checkpoints. Its final accepted chunk
+triggers the boot trial; keep the controller lock throughout staging. The
+checked native route refuses a new engine while `hardware_trial_pending` exists.
+The observer clears that marker only after a fresh known-peer boot-round status
+shows all loader owners released. A resident engine close during active DMA is
+still refused; do not attempt a native update before complete teardown.
+
+For credentials, `local_wifi_credentials.py --ssid SILK_56E35E_Plus --enter`
+opens a hidden Mac dialog and atomically stores a0600 file in the0700 owner
+directory outside Git. No password is printed, placed in command arguments,
+or sent to Yukabox. This file is local storage, not encrypted Keychain storage.
+SSID is public; actual security mode must be learned from a device scan. A signed
+Bluetooth packet alone does not provide password confidentiality; scan/auth/key
+installation, a confidential credential transport, DHCP/IP and actual Yukabox
+traffic remain unimplemented.

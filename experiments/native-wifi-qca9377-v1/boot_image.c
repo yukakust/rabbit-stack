@@ -18,7 +18,7 @@ int qca_boot_image_begin(QcaBootImage*s,const QcaBootAssets*a){
  s->assets=*a;s->phase=10;return 0;
 }
 int qca_boot_image_request(QcaBootImage*s,const uint8_t**request,unsigned*n,unsigned*reply){
- if(!s||!request||!n||!reply||!s->phase||s->error||s->pending||s->phase>20)return -1;
+ if(!s||!request||!n||!reply||!s->phase||s->error||s->pending||(s->phase>20&&s->phase!=22))return -1;
  if(s->phase==20)return 1;
  uint8_t*p=s->request;for(unsigned i=0;i<256;i++)p[i]=0;
  unsigned bytes=0;s->response_bytes=0;s->request_bytes=12;
@@ -51,6 +51,7 @@ int qca_boot_image_request(QcaBootImage*s,const uint8_t**request,unsigned*n,unsi
   uint32_t value=s->phase==11?s->option_flags|0x2208:s->phase==12?2:s->phase==15?0x42:0;
   put(p,3);put(p+4,addr);put(p+8,4);put(p+12,value);s->request_bytes=16;break;
  }
+ case 22:put(p,3);put(p+4,0x400814);put(p+8,4);put(p+12,0);s->request_bytes=16;break;
  case 19:put(p,1);s->request_bytes=4;break;
  default:return fail(s,1);
  }
@@ -58,7 +59,7 @@ int qca_boot_image_request(QcaBootImage*s,const uint8_t**request,unsigned*n,unsi
  *request=p;*n=s->request_bytes;*reply=s->response_bytes;return 0;
 }
 int qca_boot_image_validate(const QcaBootImage*s){
- if(!s||!s->pending||s->error||s->phase<1||s->phase>19||s->phase!=s->issued_phase)return -1;
+ if(!s||!s->pending||s->error||s->phase<1||(s->phase>19&&s->phase!=22)||s->phase!=s->issued_phase)return -1;
  if((s->phase==3||s->phase==4)&&(!s->assets.board||s->assets.board_bytes!=8124||s->offset>=8124||s->board_address<0x400a00||s->board_address>0x410000-8124||(s->board_address&3)))return -1;
  if(s->phase==7&&(!s->assets.helper||s->assets.helper_bytes!=24193||s->offset>=24193))return -1;
  if(s->phase==17&&(!s->assets.main||s->assets.main_bytes!=727125||s->offset>=727125))return -1;
@@ -92,6 +93,8 @@ int qca_boot_image_complete(QcaBootImage*s,const uint8_t*p,unsigned n){
  if(s->phase==10){s->option_flags=word(p);if(s->option_flags==UINT32_MAX)return fail(s,7);}
  if(s->phase==15)s->phase=1;
  else if(s->phase==9)s->phase=16;
+ else if(s->phase==18)s->phase=22;
+ else if(s->phase==22)s->phase=19;
  else s->phase++;
  return s->phase==20?1:0;
 }
