@@ -20,6 +20,7 @@ int qca_boot_transport_begin(QcaBmiLoader*l,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx
   if(addr==0x400854)put(response_buffer,0x402000);
   else if(addr>=0x402000&&addr<0x402000+8124){assert(word(p+8)<=244);memcpy(response_buffer,board_buffer+addr-0x402000,word(p+8));}
  }else if(op==3&&s->phase==3){assert(addr>=0x402000&&addr+s->issued_bytes<=0x402000+8124);memcpy(board_buffer+addr-0x402000,p+12,s->issued_bytes);}
+ else if(op==4&&s->phase==9&&scenario==18)put(response_buffer,3);
  else if(op==1){assert(s->phase==19);done++;}
  l->wire.phase=QCA_BMI_WAIT;l->wire.response=resp;l->request_bytes=s->request_bytes;l->response_bytes=s->response_bytes;wire_ready=1;return 0;
 }
@@ -45,7 +46,7 @@ int qca_ce_complete(QcaCeRing*r,uint32_t index,uint32_t*cookie,uint32_t*bytes){
 }
 static uint8_t*load(const char*name,unsigned n){FILE*f=fopen(name,"rb");assert(f);uint8_t*p=malloc(n);assert(p&&fread(p,1,n,f)==n&&fgetc(f)==EOF);assert(!fclose(f));return p;}
 int main(int argc,char**argv){
- assert(argc==4);scenario=(unsigned)atoi(argv[3]);assert(scenario<=17);
+ assert(argc==4);scenario=(unsigned)atoi(argv[3]);assert(scenario<=18);
  uint8_t*container=load(argv[1],751436),*board_data=load(argv[2],8124);
  QcaUefiPort port={0};QcaBootIrq irq={.port=&port};QcaInitAdapter a={.phase=QCA_INIT_READY,.mapped={.irq=&irq}};
  a.access.port=&port;a.bus.access=&a.access;
@@ -72,7 +73,7 @@ int main(int argc,char**argv){
   assert(qca_boot_native_close(&boot)==-1&&asset.pinned);
   uint64_t now=2;
   while(boot.phase!=5&&boot.phase!=6){assert(now<40000000);if(scenario==15&&boot.plan.phase==17)guard=1;int r=qca_boot_native_poll(&boot,now);assert(r==(boot.phase==5?1:boot.phase==6?-1:0));now+=1000;if(scenario==10&&boot.phase==3)now+=20000000;}
-  if(!scenario)assert(boot.phase==5&&boot.ready_bytes==20&&boot.credit_count==10&&boot.credit_size==256&&boot.max_endpoints==9&&done==1&&calls==boot.plan.completed&&!memcmp(board_data,board_buffer,8124));
+  if(!scenario||scenario==18){assert(boot.phase==5&&boot.ready_bytes==20&&boot.credit_count==10&&boot.credit_size==256&&boot.max_endpoints==9&&done==1&&calls==boot.plan.completed&&!memcmp(board_data,board_buffer,8124));assert(boot.plan.calibration_result==(scenario==18?3u:0u));}
   else assert(boot.phase==6&&boot.error);
   assert(qca_boot_native_close(&boot)==-1&&asset.pinned);
   a.phase=QCA_INIT_CLOSED;assert(!qca_boot_native_close(&boot)&&!asset.pinned&&!boot.owns_pin);

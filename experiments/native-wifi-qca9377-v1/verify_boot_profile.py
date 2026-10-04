@@ -48,11 +48,13 @@ def main():
    except ValueError:rejected+=1
    else:raise AssertionError(f'boot bounds accepted {off}')
   if d['phase']==5:
-   for key,value in (('error',1),('plan_phase',19),('calibration_result',1),('ready_bytes',0),('bmi_type',7),('board_error',1),('asset_ready',0),('asset_bitmap',0)):
+   for key,value in (('error',1),('plan_phase',19),('calibration_result',1),('calibration_result',2),('calibration_result',4),('ready_bytes',0),('bmi_type',7),('board_error',1),('asset_ready',0),('asset_bitmap',0)):
     b=bytearray(raw);off=8+4*NAMES.index(key);b[off:off+4]=value.to_bytes(4,'little')
     try:decode({'format':'QWBT1','raw_hex':b.hex()})
     except ValueError:rejected+=1
     else:raise AssertionError('false main ready accepted')
+  if d['phase']==5:
+   b=bytearray(raw);off=8+4*NAMES.index('calibration_result');b[off:off+4]=(3).to_bytes(4,'little');assert decode({'format':'QWBT1','raw_hex':b.hex()})['physical_trial_complete']
  assert len(observations)==8 and observations[0]['physical_trial_complete'] and all(o['all_loader_resources_released'] for o in observations) and all(not o['htc_ready_observed'] for o in observations[1:])
  report.update(receiver_policy=build.policy(),receiver_policy_sha256=prior.sha(build.POLICY.read_bytes()),firmware_upload=True,firmware_staging_only=False,firmware_execution=True,two_lifetimes_verified=True,boot_decode_rejections=rejected,permanent_otp_programming=False,wifi_connected=False,
   physical_operation='Fresh setup then closed RAM receiver, full signed exact container, second fresh PCI/SMBIOS/helper query, exact board write/readback, calibration execute0, exact main LZ load, UART disabled, BMI DONE, bounded HTC READY receive, full cleanup; RAM-only; no scan/association')

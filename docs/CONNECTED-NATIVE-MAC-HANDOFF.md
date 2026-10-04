@@ -3090,3 +3090,26 @@ claim that helper result3 itself proves calibration or Wi-Fi connectivity.
 Source may now change because the previous physical owners are proven closed;
 all new source/current-world/lifetime/COFF/QEMU/reproduction gates must rerun
 before signing any new native counter. Preserve old native38 evidence intact.
+
+
+## 2026-10-05 — result3 compatibility candidate39 host gates complete
+
+Zero-only result handling fixed for the exact hash-pinned C0-feature bundle:
+only0 and observed3 admitted, raw result retained. Unknown1/2/4/ffffffff remain
+rejected; no global skip knob or alternate images added. Receiver policy now
+binds next native generation39. Planner/native core47 ASAN/UBSAN/COFF scenarios
+include full main→HTC/pin release with injected3. Actual two-lifetime8 cases,
+first-lifetime65 entrypoint cases, normal/EMPTY actual city/GATT QEMU and98
+malformed QWBT rejections pass on Yukabox. These are HOST/MOCK proofs only.
+
+Two identical current-source/current-world rebuilds: PE SHA
+`663b6833e7dc216eba2274dfec15dfa848e132da25a6ff678445d7ac89db3c06`;
+world package SHA `c347d5541494979eab0467933d0953102d0ad94b07f309b85c13488e21dea0f7`;
+341 public inputs bound,9 changed versus native38. Reproduction SHA
+`1768dea8324a488e9550b0a99f730c01174ddc1bc384b4bc3fe7829d331f368c`;
+report SHA `9d5f35c1e86bd59134963e3e7ed68015f5ee0aea8a24580ff342b44d94788836`.
+Mac gates() revalidated checked bytes before any owner signing. Public proofs
+archived under `evidence/2026-10-05/boot-native39-host`. Candidate not physically
+applied at this checkpoint; main/HTC/Wi-Fi remain unverified. City/tail owner
+question after the physical result3 stop is pending. Never replace that pending
+observation with QEMU screenshots or advance claimed connectivity from mocks.

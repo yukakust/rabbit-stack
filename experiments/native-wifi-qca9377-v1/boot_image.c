@@ -89,7 +89,14 @@ int qca_boot_image_complete(QcaBootImage*s,const uint8_t*p,unsigned n){
   unsigned total=s->phase==7?s->assets.helper_bytes:s->assets.main_bytes;
   s->offset+=s->issued_bytes;if(s->offset<total)return 0;s->offset=0;
  }
- if(s->phase==9){s->calibration_result=word(p);if(s->calibration_result)return fail(s,6);}
+ if(s->phase==9){
+  s->calibration_result=word(p);
+  /* Only the exact hash-pinned board/helper/main bundle is admitted above.
+   * Its container features=c0 advertises IGNORE_OTP_RESULT (Linux bit7).
+   * Narrower than Linux's generic ignore: retain observed3, admit only0/3.
+   * This result alone never proves main readiness or radio calibration. */
+  if(s->calibration_result!=0&&s->calibration_result!=3)return fail(s,6);
+ }
  if(s->phase==10){s->option_flags=word(p);if(s->option_flags==UINT32_MAX)return fail(s,7);}
  if(s->phase==15)s->phase=1;
  else if(s->phase==9)s->phase=16;

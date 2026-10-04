@@ -10,7 +10,7 @@ static uint8_t*load(const char*name,unsigned n){
  assert(fread(p,1,n,f)==n&&fgetc(f)==EOF);assert(!fclose(f));return p;
 }
 int main(int argc,char**argv){
- assert(argc==5);unsigned scenario=(unsigned)atoi(argv[4]);assert(scenario<=13);
+ assert(argc==5);unsigned scenario=(unsigned)atoi(argv[4]);assert(scenario<=17);
  QcaBootAssets a={.board=load(argv[1],8124),.helper=load(argv[2],24193),.main=load(argv[3],727125),.board_bytes=8124,.helper_bytes=24193,.main_bytes=727125};
  QcaBootImage s={0};
  if(scenario>=1&&scenario<=3){
@@ -54,6 +54,7 @@ int main(int argc,char**argv){
   }else if(phase==9){
    assert(op==4&&n==12&&reply==4&&word(p+4)==0x1234&&!word(p+8));calibrations++;
    if(scenario==10)put(response,1);
+   if(scenario>=14)put(response,scenario==14?3:scenario==15?2:scenario==16?4:UINT32_MAX);
   }else if(phase==22){
    assert(op==3&&n==16&&!reply&&word(p+4)==0x400814&&word(p+8)==4&&!word(p+12));assert(main_written==727125&&!done);uart_off++;
   }else if(phase==5||(phase>=11&&phase<=15)){
@@ -69,7 +70,7 @@ int main(int argc,char**argv){
   if(rc<0){assert(scenario>=4);break;}
   assert(rc==(s.phase==20));assert(qca_boot_image_complete(&s,response,reply_n)==-1);
  }
- if(scenario<=3){assert(s.phase==20&&!s.error&&done==1&&calibrations==1&&helper_starts==1&&main_starts==1&&board_written==8124&&board_read==8124&&helper_written==24193&&main_written==727125&&uart_off==1&&s.submitted==s.completed);assert(qca_boot_image_request(&s,&p,&n,&reply)==1);}
+ if(scenario<=3||scenario==14){assert(s.phase==20&&!s.error&&done==1&&calibrations==1&&helper_starts==1&&main_starts==1&&board_written==8124&&board_read==8124&&helper_written==24193&&main_written==727125&&uart_off==1&&s.submitted==s.completed);assert(s.calibration_result==(scenario==14?3u:0u));assert(qca_boot_image_request(&s,&p,&n,&reply)==1);}
  else assert(s.phase==21&&s.error&&!done&&!main_written);
  free((void*)a.board);free((void*)a.helper);free((void*)a.main);
  printf("EXACT BOARD READBACK/CALIBRATION/MAIN/DONE scenario%u PASS; HOST MOCK, NO PHYSICAL READY CLAIM\n",scenario);

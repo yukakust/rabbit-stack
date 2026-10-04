@@ -101,8 +101,8 @@ def gates(directory,payload,world):
   for sub in ('actors-qemu','actors-empty-boot-qemu'):
    if b'INTEGRATED RAM SERVICE13..19; TARGET ABSENT WRITE REJECTED; CITY RETAINED' not in (directory/sub/'observed.log').read_bytes():raise ValueError('integrated UEFI ATT receiver gate missing')
  if report['status']==BOOT_STATUS:
-  if report.get('two_lifetimes_verified') is not True or report.get('permanent_otp_programming') is not False or report.get('wifi_connected') is not False or report.get('boot_decode_rejections')!=96:raise ValueError('exact boot trial scope required')
-  for name,status,cases in [('boot-core','EXACT-BOARD-CALIBRATION-MAIN-BMI-BOOT-CORE-HOST-COFF-PASS',42),('boot-lifetimes','NATIVE-EXACT-BOOT-TWO-LIFETIME-HOST-MOCK-PASS',8)]:
+  if report.get('two_lifetimes_verified') is not True or report.get('permanent_otp_programming') is not False or report.get('wifi_connected') is not False or report.get('boot_decode_rejections')!=98:raise ValueError('exact boot trial scope required')
+  for name,status,cases in [('boot-core','EXACT-BOARD-CALIBRATION-MAIN-BMI-BOOT-CORE-HOST-COFF-PASS',47),('boot-lifetimes','NATIVE-EXACT-BOOT-TWO-LIFETIME-HOST-MOCK-PASS',8)]:
    component=flow.read_json(directory/(name+'-report.json'))
    if component['status']!=status or component['scenarios']!=cases or component['build_host']!='yukabox' or flow.sha((directory/(name+'-report.json')).read_bytes())!=report[name+'_report_sha256'] or flow.sha((directory/(name+'-host.log')).read_bytes())!=component['host_log_sha256']:raise ValueError('boot component proof missing')
    for path,expected in component['source_sha256'].items():

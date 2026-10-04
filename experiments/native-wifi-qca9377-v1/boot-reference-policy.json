@@ -6,11 +6,18 @@
     "bmi.c": "f14c60e89f1e4a9c4105e5f7dcf0571717b79a7825c44aceb9fd665e03917aa1",
     "targaddrs.h": "9daa97806342fcb0e8584c1ce69d094d3d1e281905fa9d488781b7f5e6db5b74",
     "wmi.h": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c",
-    "htc.h": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963"
+    "htc.h": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963",
+    "core.h": "da6f9d89225467310770e9ebf67ccdd66ad381c203a50e38afadc03c85da16b2"
   },
   "physical_native_counter": 37,
   "physical_board_data_uploaded": false,
   "physical_main_started": false,
   "wifi_connected": false,
-  "permanent_programming": false
+  "permanent_programming": false,
+  "firmware_features_hex": "c0",
+  "ignore_otp_result_feature_bit": 7,
+  "reviewed_helper_results": [
+    0,
+    3
+  ]
 }
