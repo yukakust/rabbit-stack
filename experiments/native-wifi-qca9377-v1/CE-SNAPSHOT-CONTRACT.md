@@ -42,3 +42,31 @@ index/address fixtures must fail. Existing DMA lifetime/failed-cleanup tests and
 normal+EMPTY actual UEFI city/Bluetooth/malformed-link/rejection gates remain.
 Hardware diagnosis requires a new exact owner-signed native update and fresh
 physical QPD8 read; mock indices and target identities must never become Dell facts.
+
+## QPD9: CE configuration before the first halt
+
+QPD9 retains bytes0..355 and extends the report to620bytes. After ROM-ready,
+boot IRQ restoration, fresh PCI identity validation and CE access/bus initialization,
+stage13 reads one engine per cooperative poll, before the first halt/zero write.
+Bus mastering remains off; no DMA buffers have been allocated. Each engine's
+registers are sequential observations, not an atomic snapshot or device attestation.
+Raw descriptor addresses are never dereferenced, registered or reused.
+
+| Offset | Bytes | Meaning |
+|---|---|---|
+|356|4|engine availability bits0..7: all eight reads succeeded and none were all-ones|
+|360|4|engine failed/unavailable bits0..7: a read failed or returned all-ones|
+|364+32*i|32|engine i source base/size, destination base/size, control, command, source-read and destination-read; eight little-endian32bit words|
+
+CE registers use the existing validated QCA9377 allowlist at base34400 +400*i,
+offsets0,4,8,c,10,18,44,48. A failed read's initialized zero is not evidence of an
+empty queue. A missing engine bit means capture not reached, including cancellation.
+Snapshots remain immutable after stop/zero/unmap/free and one-shot reattach.
+The original all-eight quiescence, bus-master-off and DMA lifetime gates remain.
+
+Production-code fixtures seed nonzero initial bases/sizes and verify that the
+snapshot retains them after live queues are zeroed. Separate fixtures inject a
+pre-halt read failure, all-ones and cancellation after engine0. Decoder rejects
+unknown/overlapping masks, all-ones marked available and data marked uncaptured.
+Actual UEFI normal+EMPTY gates read the620byte diagnostic in three ATT chunks,
+reject offset621, and retain Bluetooth malformed-input and recovery checks.

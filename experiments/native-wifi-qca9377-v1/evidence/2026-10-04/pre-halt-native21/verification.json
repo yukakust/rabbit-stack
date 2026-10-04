@@ -1,0 +1,20 @@
+{
+  "native_counter_candidate": 21,
+  "physical_verified": false,
+  "integrated_host_scenarios": 38,
+  "host_sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "before_halt_synthetic_nonzero_queues": true,
+  "before_halt_read_failure": true,
+  "before_halt_all_ones": true,
+  "before_halt_cancellation": true,
+  "snapshot_retained_after_cleanup_and_reattach": true,
+  "decoder_invalid_masks_and_data_rejected": true,
+  "missing_pre_halt_gate_rejected_before_signing_radio": true,
+  "uefi_mock_normal_and_empty": true,
+  "rebuilds_and_current_world_checked_on": "yukabox",
+  "firmware_upload": false,
+  "wifi_association_verified": false
+}

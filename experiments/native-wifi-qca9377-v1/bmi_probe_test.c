@@ -10,7 +10,7 @@
 #include "bringup.h"
 #include "reset_core.h"
 #include <stdlib.h>
-uint8_t qca_diagnostic[356];void*qca_controller;
+uint8_t qca_diagnostic[620];void*qca_controller;
 static unsigned scenario,reset_writes,reset_cleared,allocations,dma_frees,unmaps,flushes;
 static _Alignas(4096) uint8_t hosts[4][4096];
 static uint32_t registers[8][32];static uint16_t link_control=0x143;static uint32_t boot_regs[6]={0x12300800};static unsigned mask_attempts,link_disables,msi_toggled;static uint32_t reset_register;
@@ -29,7 +29,7 @@ static Status EFIAPI mem_read(void*p,uint32_t width,uint8_t bar,uint64_t off,uin
  if(off==0x80008){mem_reads++;*(uint32_t*)out=reset_register;return 0;}
  if(off>=0x3a000&&off<=0x3a014){*(uint32_t*)out=boot_regs[(off-0x3a000)/4];return 0;}
  if(off==0x3a028){mem_reads++;*(uint32_t*)out=(scenario==11||scenario==33)?0:2;return 0;}
- if(off>=0x34400&&off<=0x36050){unsigned id=(unsigned)(off-0x34400)/0x400,index=(unsigned)(off-0x34400)%0x400;assert(id<8&&index<=0x50);*(uint32_t*)out=registers[id][index/4];return 0;}
+ if(off>=0x34400&&off<=0x36050){unsigned id=(unsigned)(off-0x34400)/0x400,index=(unsigned)(off-0x34400)%0x400;assert(id<8&&index<=0x50);if(scenario==35&&id==2&&index==8&&!registers[id][0x18/4])return EFI_ERROR(7);*(uint32_t*)out=scenario==36&&id==3&&index==8&&!registers[id][0x18/4]?0xffffffffu:registers[id][index/4];return 0;}
  if(off==0x8f0){mem_reads++;*(uint32_t*)out=scenario==2?0x200:scenario==1&&!reset_cleared?0:scenario==6?0:0x100;return 0;}
  return old_mem_read(p,width,bar,off,count,out);
 }
@@ -81,14 +81,15 @@ static Status EFIAPI bmi_config_write(void*p,uint32_t w,uint32_t off,uint64_t n,
  }
  int rc=write_config(p,w,off,n,in);return scenario==15&&(*(uint16_t*)in&4)?EFI_ERROR(7):(Status)rc;}
 int main(int argc,char**argv){
- assert(argc==2);scenario=(unsigned)atoi(argv[1]);assert(scenario<=34);unsigned initial=scenario;
+ assert(argc==2);scenario=(unsigned)atoi(argv[1]);assert(scenario<=37);unsigned initial=scenario;
  assert(!port_previous_main());baseline();config[1]|=0x00100000;
  pci[48/8]=read_config;pci[16/8]=mem_read;pci[24/8]=mem_write;pci[56/8]=bmi_config_write;
  pci[88/8]=allocate;pci[72/8]=map;pci[80/8]=unmap;pci[96/8]=free_buffer;pci[104/8]=flush;
  qca_image=&port_system;qca_controller=scenario==8?0:pci;qca_diagnostic[4]=15;
+ for(unsigned i=0;i<8;i++){registers[i][0]=0x800000+i*4096;registers[i][1]=16;registers[i][2]=0x900000+i*4096;registers[i][3]=32;}
  qca_start(&port_system,0);tick(1);
  if(scenario==9||scenario==10){if(scenario==10)tick(21);assert(qca_stop()&&get(168)==1);}
- for(unsigned ms=initial==10?22:2;ms<4000;ms++)tick(ms);
+ for(unsigned ms=initial==10?22:2;ms<4000;ms++){tick(ms);if(initial==37&&get(128)==13&&get(356)==1)assert(qca_stop());}
  if(initial==4||initial==7){assert(get(168)==1&&get(140)==2&&qca_stop());scenario=0;for(unsigned ms=4000;ms<4100;ms++)tick(ms);}
  if(initial==23||initial==26||initial==27||initial==30||initial==32||initial==33){assert(get(140)==2&&qca_stop()&&!allocations);scenario=0;assert(!qca_stop());}
  if(initial==19){assert(get(140)==2&&qca_stop()&&link_control==0x140);scenario=0;assert(!qca_stop());for(unsigned ms=4000;ms<4100;ms++)tick(ms);}
@@ -96,7 +97,7 @@ int main(int argc,char**argv){
  assert(link_control==0x143);assert(!(config[1]&0x400));assert(boot_regs[0]==0x12300800);assert(boot_regs[2]==(initial==31?0x7fc00u:0));
  assert(!qca_stop()&&get(140)==1&&!attributes&&opens==closes&&(config[1]&65535)==0x100);
  assert(!get(220)&&!get(236)&&allocations==dma_frees&&unmaps==allocations);
- if(initial==0||initial==1||initial==5||initial==28)assert(get(128)==5&&get(208)==0x05020001&&get(212)==7&&reset_cleared);
+ if(initial==0||initial==1||initial==5||initial==28||initial==35||initial==36)assert(get(128)==5&&get(208)==0x05020001&&get(212)==7&&reset_cleared);
  else if(initial!=8)assert(get(128)==6);
  if(initial==2||initial==3||initial==6||initial==8||initial==9||initial==10||initial==11)assert(!allocations);
  if(initial==12)assert(allocations==1);
@@ -109,11 +110,17 @@ int main(int argc,char**argv){
  if(initial==14){assert(get(280)==121&&get(284)==3&&get(348)==8&&!get(352));assert(get(292)==0&&!get(336));}
  if(initial==34){assert(get(280)==123&&get(284)==3&&get(348)==8&&!get(352));assert((get(292)&65535)==1&&!get(336));}
  if(!allocations||initial==12)assert(!get(280));
+ if(initial==0||initial==14||initial==34||initial==35||initial==36){
+  assert(get(356)==(initial==35?251u:initial==36?247u:255u));assert(get(360)==(initial==35?4u:initial==36?8u:0u));
+  for(unsigned i=0;i<8;i++){assert(get(364+i*32)==0x800000+i*4096);assert(get(368+i*32)==16);assert(!registers[i][0]&&!registers[i][2]);}
+ }
+ if(initial==37)assert(get(356)==1&&!get(360)&&!allocations);
+ uint8_t pre_saved[264];memcpy(pre_saved,qca_diagnostic+356,264);
  uint8_t saved[76];memcpy(saved,qca_diagnostic+280,76);
- unsigned n=reset_writes+mem_writes;qca_start(&port_system,5000);tick(5001);assert(n==reset_writes+mem_writes);assert(!memcmp(saved,qca_diagnostic+280,76));
+ unsigned n=reset_writes+mem_writes;qca_start(&port_system,5000);tick(5001);assert(n==reset_writes+mem_writes);assert(!memcmp(saved,qca_diagnostic+280,76));assert(!memcmp(pre_saved,qca_diagnostic+356,264));
  if(initial==0||initial==14||initial==34){
-  qca_diagnostic[0]='Q';qca_diagnostic[1]='P';qca_diagnostic[2]='D';qca_diagnostic[3]=8;
-  printf("QPD8_MOCK=");for(unsigned i=0;i<sizeof(qca_diagnostic);i++)printf("%02x",qca_diagnostic[i]);puts("");
+  qca_diagnostic[0]='Q';qca_diagnostic[1]='P';qca_diagnostic[2]='D';qca_diagnostic[3]=9;
+  printf("QPD9_MOCK=");for(unsigned i=0;i<sizeof(qca_diagnostic);i++)printf("%02x",qca_diagnostic[i]);puts("");
  }
  printf("Integrated native BMI probe scenario %u PASS: reset/D0/ROM/4DMA pages/CE0-1/query/stop/unmap/close; MOCK ONLY\n",initial);return 0;
 }

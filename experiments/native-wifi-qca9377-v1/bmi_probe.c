@@ -18,6 +18,7 @@ static QcaPcieLink link;static uint16_t link_active;
 static QcaRomReady rom;static QcaCeAccess access;static QcaCeBus bus;
 static QcaDmaBuffer buffers[4];static QcaCeRing rings[2];static QcaBmiPipe pipes[2];static QcaBmiExchange exchange;
 static uint8_t exchange_snapshot[76];static unsigned snapshot_latched;
+static uint8_t prehalt_snapshot[264];static unsigned prehalt_engine;
 static unsigned bus_live,allocated,cleanup_slot,bus_retries,buffer_retries,succeeded;
 
 static void record(unsigned off,uint64_t value,unsigned bytes){for(unsigned i=0;i<bytes;i++)qca_diagnostic[off+i]=(uint8_t)(value>>(8*i));}
@@ -38,6 +39,7 @@ static void telemetry(void){
  record(256,boot_irq.last_enable,4);record(260,boot_irq.original_control,4);record(264,boot_irq.last_control,4);
  record(268,boot_irq.writes,4);record(272,post_reset_link,2);record(276,boot_irq.cause,4);
  for(unsigned i=0;i<sizeof(exchange_snapshot);i++)qca_diagnostic[280+i]=exchange_snapshot[i];
+ for(unsigned i=0;i<sizeof(prehalt_snapshot);i++)qca_diagnostic[356+i]=prehalt_snapshot[i];
 }
 typedef Status(EFIAPI *Config)(void*,uint32_t,uint32_t,uint64_t,void*);
 typedef Status(EFIAPI *Memory)(void*,uint32_t,uint8_t,uint64_t,uint64_t,void*);
@@ -109,6 +111,18 @@ static void snapshot_exchange(void){
   for(unsigned n=0;n<12;n++)exchange_snapshot[56+n]=((volatile uint8_t*)buffers[3].host)[n];
  }
  snap_put(72,exchange.bytes,4);snap_put(0,flags,4);
+}
+/* Read only validated CE registers with bus mastering off, before any halt.
+ * Raw addresses are diagnostic values, never dereferenced or adopted as DMA. */
+static void snapshot_pre_halt(void){
+ static const uint32_t offsets[8]={0,4,8,12,16,24,68,72};
+ unsigned id=prehalt_engine;int valid=1;
+ for(unsigned n=0;n<8;n++){
+  uint32_t value=0;int rc=qca_ce_access_read(&access,0x34400+id*0x400+offsets[n],&value);
+  if(rc||value==0xffffffffu)valid=0;
+  for(unsigned k=0;k<4;k++)prehalt_snapshot[8+id*32+n*4+k]=(uint8_t)(value>>(8*k));
+ }
+ prehalt_snapshot[valid?0:4]|=(uint8_t)(1u<<id);prehalt_engine++;
 }
 static void shutdown(uint64_t now){
  if(bus_live){
@@ -183,8 +197,12 @@ void qca_poll(uint64_t ms){
   if(rc<0){failed=0x500|rom.error;stage=6;}
   else if(rc>0){
    if(qca_boot_irq_close(&boot_irq)||fresh()||qca_ce_access_init(&access,&port,255)||qca_ce_bus_init(&bus,&access)){failed=0x501;stage=6;}
-   else{bus_live=1;stage=8;if(qca_ce_bus_stop_begin(&bus,now)){failed=0x502;shutdown(now);}}
+   else{bus_live=1;stage=13;}
   }
+ }
+ else if(stage==13){
+  snapshot_pre_halt();
+  if(prehalt_engine==8){stage=8;if(qca_ce_bus_stop_begin(&bus,now)){failed=0x502;shutdown(now);}}
  }
  else if(stage==8){
   int rc=qca_ce_bus_stop_poll(&bus,now);

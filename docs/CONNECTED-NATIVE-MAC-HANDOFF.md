@@ -1931,3 +1931,52 @@ or bypass all-eight quiescence, bus-master-off, Flush/Unmap/Free ownership gates
 After owner scene check, gate/sign/send that separately reviewed diagnostic and
 compare before/after queue configuration to locate CE transport failure. Full
 original Wi-Fi/Unreal-to-Dell goal remains incomplete; no credential consumer yet.
+
+## 2026-10-04 — native21 applied: initial CE queues are already empty
+
+Owner authorized the bounded pre-halt diagnostic («делай»). QPD9 retains QPD8's
+exchange snapshot and adds264bytes of read-only register telemetry,620bytes total.
+After ROM-ready/IRQ restoration/fresh identity and bus/access init, stage13 reads
+one CE engine per poll before any halt/zero, with bus mastering off and no DMA
+allocation. Source/destination bases/sizes, control/command/read indices are raw
+values only, never dereferenced or reused. Original teardown/lifetime gates remain.
+
+Yukabox gates:38 ASan/UBSan integrated scenarios including synthetic nonzero
+initial queues, pre-halt read failure/all-ones/cancellation, immutable snapshots;
+invalid decoder masks/data; existing port/reset/CE/BMI/DMA/Bluetooth recovery;
+actual UEFI normal+EMPTY diagnostic three-part Read/ReadBlob with offset621
+rejected; two rebuilds/current-world C check. Missing pre-halt gate explicitly
+rejected before signing/radio. No native driver compilation on Mac.
+Checked local runs/bmi-profile-native21; payload SHA256
+4eb51e4d8559bb244bcde4f1e1453c5a11e501147cd1f662d756b1c423610a61.
+Owner-signed exact saved session pci-native-iody16yf resumed across SIX delivery
+route invocations and repeated bounded reconnections,0->3100->26200->40300->65500
+->65600->71456bytes, then COMMIT/reconnect exact SHA/session/counter21 APPLIED.
+Current native21/world13, native_pending null, idle12-version journal unchanged.
+All radio processes terminal. No physical USB/bootstrap write, Dell reboot or key
+print/copy. Mac current Wi-Fi2.4GHz/channel8 was observed; optional owner5GHz
+switch question unanswered. No network switch made and no RF cause established.
+
+Fresh physical QPD9 from known F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF:
+valid255/failed0, all EIGHT queues before first halt have source/destination base
+and size0, read indices0, command0, control80. Thus clearing existing configured
+queues is NOT supported as the cause in this trial. Do not preserve unknown DMA
+state or skip halt/lifetime protection on that hypothesis. Chip003821ff/rev1,
+D0/reset/revalidation good, ROMindicator2/ready, BMI timeout5/overall805 persists.
+QPD8 retained portion again has softwarewrite1/1, hardwarelastobserved0/0,
+request08000000, response12zeros, no TX/RX completion. DMAheld0/mask0, bus/reset
+ownership false, cleanupcomplete, ASPM0140->0143 and IRQ/Core8688/enable0 restored.
+No BMIidentity/firmwarecompatibility/upload/startup/scan/WPA/DHCP/network success.
+Owner post21 city/tail observation requested, still pending at record time; never
+claim physical animation from exact receipt or QEMU tests.
+
+Evidence: experiments/native-wifi-qca9377-v1/evidence/2026-10-04/pre-halt-native21,
+gates/reproduction, physical exact receipt/all logs/raw+decoded QPD9/hash summary.
+Session evidence metadata only; exact saved packet/session/binaries stay ignored.
+DO NOT replay completed21 or retired20/19/15/16. Future native>21 must bind current
+21/world13, preserve cached-MemoryEnable repair and Bluetooth recovery.
+NEXT: compare pinned ath10k BMI descriptor/publication, CE reset/run/clock/wake
+sequence and actual bus-master/DMA access. Add separately bounded observations
+where required before changing behavior; chip ready does not imply BMI ready or
+firmware compatibility. Await owner city/tail check before another hardware
+candidate. Full Wi-Fi and Unreal/Yukabox-to-Dell streaming goal remains unfinished.

@@ -1,0 +1,171 @@
+{
+  "kind": "native-read-only-pci",
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 21,
+  "base_runtime_sha256": "9bd99b42aded22e3b55bff9d8eaf5799f35776f6b2a26376690f94b3aa06eeaa",
+  "base_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "d5800a77dfa7a00e25c8619fd988bd99769169c7a6b87d498ca0486bad1e9788",
+  "payload_sha256": "4eb51e4d8559bb244bcde4f1e1453c5a11e501147cd1f662d756b1c423610a61",
+  "package_sha256": "cb7ccdaf5c96ae67dad4b4672ffd878dffa54b8a1a407352e770f45ce7b9148c",
+  "session_sha256": "a9bd4dc0e15ecd355a10351c9c970c1ccae0b9a9ae3fbf6c9d7c06ebf0f3e655",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/runs/bmi-profile-native21",
+  "gate": {
+    "report_sha256": "89c3d6d27dab23ec3e1c4cf5a8c1c45e03638610fa850cbf0802d8d515a020df",
+    "reproduction_sha256": "552277e02691559553b6024a47b9aef9c7942747a2605df3ae1714d36c307992",
+    "profile_status": "QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS"
+  },
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-0.log",
+      "log_sha256": "f9be7e9cc3d36778650b81c9eaab1c9103d33b401351c1ed69367953cdebedbe"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-1.log",
+      "log_sha256": "70abc91035cf1b415fea0deca68aa56b826da9f53e6193645e6ec28a9fd5e7b6"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-2.log",
+      "log_sha256": "714468b3918e6745ee53ca384755e90ada0dd2887a5037f72fe0862a992d3beb"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-3.log",
+      "log_sha256": "e0b2617b82dd7679ba1e58ac730ab6e3f4208fdc44f212b3b430acd90bed803d"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-4.log",
+      "log_sha256": "69313db7fb8c97d249638ee31a63ba0cd4d04e78e1139954ad2621c6d485eb87"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-5.log",
+      "log_sha256": "273ac4b32919e1f0f8e1453217305238850d597e7fef8c1316c11a7240e2cd67"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-6.log",
+      "log_sha256": "955b9f71b463df12b97bafd8e50f6c60defead08b58683696053e401bb45b22b"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-7.log",
+      "log_sha256": "363852529c945b4d22e15ce5bf40baf88f6740b1067e469de2b9beb76255c844"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-8.log",
+      "log_sha256": "27d4f2b801dcfd9f2a7b690c18e9efd07ba6334e31f10a9fb3f12c151fedacc1"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-9.log",
+      "log_sha256": "033ff2acbbdfc6d9e167a36072560ec303271cdd6fdd5085729ecc1ed6f11960"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-10.log",
+      "log_sha256": "85fc281f145aee1dfe1d37ca75f2defeaf09c45ca345856705bd484b7933d237"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-11.log",
+      "log_sha256": "af5c90bdcbffde8df5c7064f6ed437a0b8f7d8eb97df3f97ff4efb7df7f6ed9d"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-12.log",
+      "log_sha256": "3a73164c42344ba0eca05a00c1dab4a30d367ee6abee718467de6e02e1a321ae"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-13.log",
+      "log_sha256": "c9f29f12be0fe5e69d830708023848f4f06de4480ee7d2d1ee993f72cb4e8581"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-14.log",
+      "log_sha256": "80c177302b19b6fd4b458f9ad58720dc10e61582f65ddfcf2c62be013168d23b"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-15.log",
+      "log_sha256": "50de2a1b9f05dea4afffe889be337dcf159d2d7a8883f53e41c3afab333b03c8"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-16.log",
+      "log_sha256": "41b910d24d3ed6d5f022a8a3924aa983e518311ed155da5fa766084e9273812c"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-17.log",
+      "log_sha256": "06df264d738aa451d59792d3a442c57366ee8b6b513d1b4543d45e8c898cecf3"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-18.log",
+      "log_sha256": "96cabc4ec5847ed53d8091aa918301647bbac3ee4f4d34c7106683670d04c7cd"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-19.log",
+      "log_sha256": "a4b7066ba81371e23963c1694f956a9975f805da80ade3f5a9ceebb2fb25527d"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/query-20.log",
+      "log_sha256": "d137fed80635337ccd87278d071f236276273f09ca9d86dec4e8d7f3ae20224c"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/paced-stage-21.log",
+      "log_sha256": "dc5a51e4184d4449e4241cdd542b077891a0c4bb244c96c0c9f18e192d6b32e5"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-iody16yf/commit-22.log",
+      "log_sha256": "817555c0bf419bd17262e0782fc7ff7395499cf9c7708fe8bcdd4cf80670b7f6"
+    }
+  ],
+  "receiver_reported_applied": true,
+  "confirmed_received": 71456,
+  "last_receiver_status": {
+    "outcome": "staging",
+    "state": 1,
+    "error": 0,
+    "received": 65600,
+    "length": 71456,
+    "counter": 20,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": true,
+    "raw_hex": "5246530119a54af4abd88bbe400001002017010001000000140000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  }
+}

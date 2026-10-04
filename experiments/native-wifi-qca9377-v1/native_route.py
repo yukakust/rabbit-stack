@@ -42,6 +42,7 @@ def gates(directory,payload,world):
    if report.get('boot_irq_host_isolation') is not True:raise ValueError('host IRQ isolation gate required')
    if report.get('ble_untracked_disconnect_recovery') is not True:raise ValueError('preserved Bluetooth recovery gate required')
    if report.get('ce_snapshot_pre_cleanup') is not True:raise ValueError('bounded pre-cleanup CE telemetry gate required')
+   if report.get('ce_registers_before_first_halt') is not True:raise ValueError('bounded pre-halt CE register gate required')
   for component,status in components:
    subreport=flow.read_json(directory/(component+'-report.json'))
    if (subreport['status']!=status or flow.sha((directory/(component+'-report.json')).read_bytes())!=report[component+'_report_sha256']

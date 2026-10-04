@@ -667,3 +667,17 @@ summary retained. Physical scene/motion question pending. Next bounded diagnosti
 must inspect CE queue configuration BEFORE all-engine halt/zero, then compare with
 pinned ath10k host-side initialization. No cause/firmware/Wi-Fi success inferred.
 New profile must preserve20 memory repair and BLE recovery; do not resend20.
+
+### Physical native21: bounded CE snapshot before first halt
+
+QPD9/620bytes observes all eight engines after ROM-ready but before halt/zero,
+one engine per poll, bus mastering off, no buffers allocated. Addresses remain
+raw telemetry.38 sanitizer scenarios, normal+EMPTY actual UEFI mock diagnostic
+Read/ReadBlob and current-world repeated builds pass on Yukabox. Exact owner-
+signed21 applied on Dell through resumed same-session Bluetooth transfer; fresh
+physical report has valid255/failed0 and all initial queue bases/sizes zero,
+control80/command0/readindices0. Existing-config-erasure hypothesis not supported
+in this trial. BMI still times out with no TX/RX completion; cleanup complete.
+No firmware upload or Wi-Fi association. Owner post21 city/tail check pending.
+See [snapshot contract](CE-SNAPSHOT-CONTRACT.md) and
+[evidence](evidence/2026-10-04/pre-halt-native21/physical/summary.json).
