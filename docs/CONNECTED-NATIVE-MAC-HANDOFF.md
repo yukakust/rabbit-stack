@@ -1645,3 +1645,37 @@ After restoration require owner city/tail observation; this is not yet physical
 recovery evidence or a Wi-Fi connection. Reboot may not cure the radio: if fresh
 bootstrap cannot advertise, retain plan and diagnose physical radio. Full original
 Wi-Fi goal remains incomplete.
+
+## 2026-10-04 — owner reboot confirmed; physical recovery activated, delivery failed
+
+Owner explicitly reported Dell reboot. Dedicated prepared native16 restore first
+obtained actual fresh all-zero RFS idle response from known F45BFCB2 peripheral
+(RSSI -81/-83); second read-only query also succeeded (RSSI -79/-82). Recorded
+owner reboot plus fresh zero proof, atomically retired old native15 into controller
+ledger (all original signed files/hashes preserved) and activated saved native16
+recovery. This is an observed boot receiver response, not device attestation.
+
+Native16 paced-stage helper connected at RSSI -77 but never completed service
+discovery; disconnected phase0/offset0 of47904bytes with no error, then failed
+300second timeout. Follow-up read-only query reached60second discovery timeout.
+No BEGIN/DATA/COMMIT is observed in the logs; no APPLIED receipt or world delivery.
+Dedicated route returned DELIVERY-NOT-CONFIRMED (CLI exit0 is NOT application
+proof). All sender processes are terminal. No second Dell reboot, USB/bootstrap
+change, new nonce/counter/packet or arbitrary pending clearing.
+
+Controller still stores native14/world12 as last-confirmed saved versions; these
+are NOT Dell's current RAM after reboot. recovery_pending points to the SAME
+reboot-recovery-native16 directory, native_pending is None, engine_done/world_done
+false. Native16/world13 bytes remain exact for continuation; old native15 is
+retired, not deleted, and must not be delivered. Evidence plus full completed
+query/stage logs: reboot-recovery/physical.
+
+Asked owner what is currently on Dell screen and last BLE lines, and to position
+Mac about0.5m beside Dell given weak signal (not a diagnosis). No reply yet. Old
+fullscreen city hid text, but native16/world13 were not applied after this reboot.
+Need actual current display diagnostic/photo before choosing another recovery.
+Two successful boot queries prove transient reachability; loss after third
+connection does NOT prove an RF, antenna, UEFI or host-state cause. Do not blindly
+reboot again or claim restoration. Use dedicated same-session restore for resumes
+only after receiver state is understood; never GUI's old city_recovery for this
+new plan. Original Wi-Fi goal and physical city restoration remain incomplete.

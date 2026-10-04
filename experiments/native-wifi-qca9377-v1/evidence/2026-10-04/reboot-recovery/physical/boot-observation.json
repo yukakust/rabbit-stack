@@ -1,0 +1,29 @@
+{
+  "owner_confirmed_reboot": true,
+  "boot_receiver_status": {
+    "outcome": "idle",
+    "state": 0,
+    "error": 0,
+    "received": 0,
+    "length": 0,
+    "counter": 0,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": false,
+    "raw_hex": "524653010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  },
+  "native16_applied": false,
+  "world13_applied": false,
+  "recovery_in_progress": false,
+  "recovery_pending_retained": true,
+  "sender_process_terminal": true,
+  "first_stage_disconnected_phase": 0,
+  "first_stage_disconnected_offset": 0,
+  "staging_write_observed": false,
+  "commit_attempted": false,
+  "confirmed_received": 0,
+  "retired_old_pending_session_files_preserved": true,
+  "current_saved_world_counter": 12,
+  "current_saved_native_counter": 14,
+  "physical_current_world_known": false
+}

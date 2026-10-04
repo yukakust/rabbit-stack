@@ -1,0 +1,12 @@
+{
+  "advertisement_count": 59,
+  "authorization": 3,
+  "connected_rabbit_count": 0,
+  "connections_started": 0,
+  "controller_state": 5,
+  "known_dell_cached_state": 0,
+  "physical_wifi_verified": false,
+  "rabbit_candidates": [],
+  "scan_started": true,
+  "writes": 0
+}
