@@ -1,0 +1,3 @@
+PCI CHARACTERISTICS=2
+UNACCEPTED ENVELOPE bytes=716 error=Error Domain=CBATTErrorDomain Code=1 "The handle is invalid." UserInfo={NSLocalizedDescription=The handle is invalid.} first=51504412
+PCI QUERY FAILED: invalid PCI diagnostic envelope

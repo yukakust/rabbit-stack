@@ -1,0 +1,20 @@
+{
+  "status": "APPLICATION-UNKNOWN-RECEIVER-STAGING-LOST",
+  "exact_applied_receipt": false,
+  "board_query_observed": false,
+  "main_firmware_started": false,
+  "wifi_connected": false,
+  "owner_observation": "pending",
+  "native_session": "pci-native-0iphq475",
+  "signed_counter": 35,
+  "controller_last_confirmed_native_counter": 34,
+  "host_payload_sha256": "654629798fd72bc5a6e2d9d645e3bd6323d35436d0cbace9bc77e5167e0e8e77",
+  "host_payload_bytes": 117248,
+  "confirmed_staging_bytes_before_commit": 117536,
+  "post_commit_status": "same session staging received0/117536 receipt_counter0; no BEGIN/DATA/COMMIT in final independent query",
+  "board_reader": "service absent",
+  "pci_reader": "cached QPD18 prefix716 bytes; extension returned ATT invalid handle; cached prefix not accepted",
+  "diagnosis": "Receiver volatile-state loss/bootstrap is consistent with observations; exact reset/fault cause unknown. No replay or invented success.",
+  "recovery": "Prepare standalone city gate; physical recovery requires owner-confirmed reboot and exact empty receipt per recovery controller.",
+  "world_semantic_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "CANDIDATE-NOT-SELECTED",
+  "name": "bus=pci,vendor=168c,device=0042,subsystem-vendor=1028,subsystem-device=1810",
+  "bytes": 8124,
+  "sha256": "b2713b77c725b0ff81af75c85c3aeba97885d0f40174f715b1e39d5a9d50f4e7",
+  "basis": "Pinned catalog lookup only; requires physical board query/variant result and Linux selection rule before acceptance",
+  "firmware_commit": "f9b926a6e1d67e09e54adc329c4e76be5f24a895"
+}

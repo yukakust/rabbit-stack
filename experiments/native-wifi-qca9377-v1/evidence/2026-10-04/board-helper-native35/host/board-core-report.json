@@ -1,0 +1,27 @@
+{
+  "status": "BOUNDED-BOARD-HELPER-BMI-SMBIOS-HOST-COFF-PASS",
+  "source_sha256": {
+    "bmi_loader.c": "f80f595c4e022c19f797e85909950c8b3a6c915453672e30f093490c3d174fc0",
+    "bmi_loader.h": "8df06c539325836bdffb49027bd6fd1208ee96aae61eba8704513d4605c7f0e6",
+    "bmi_loader_test.c": "439e43cfe4f1fdc1f060a88ae424bcaab7cbd41632a86f68add3f949e418c425",
+    "board_query.c": "e555ae3823cf70c303270dfbefed3bfe2278e19f98ad0a3adf7b0d10a04e1dfe",
+    "board_query.h": "e733623205c79d90b625404e83e89c4503570a6aad91f53590dcf8260158a8bd",
+    "board_smbios.c": "b990dbb9ff53f0efdc4ba37fed456c431842c29e396d2e9bc31bfbdd99751431",
+    "board_smbios.h": "02113ecf48e21d501ad8402ceec1319d414f08e57addf8828610479689382913",
+    "board_smbios_test.c": "ea88da0c9b763b7e7c5344bd807bc27635de8ef31e2f251eacae2ae8e76ed9fc",
+    "board-query-policy.json": "6df08982d687b062d73eefc5354719316198081ad95c1787992e0459f0819e86",
+    "verify_board_core.py": "af6a6b22ca8055fc216c89868dc5ff065dfb821b460a038dd8de49a80adc1065"
+  },
+  "reference_sha256": {
+    "bmi.c": "f14c60e89f1e4a9c4105e5f7dcf0571717b79a7825c44aceb9fd665e03917aa1",
+    "bmi.h": "8924f6fbf6ca4cfa494e7b6f38240ec44fa554e8850315b7442f3a534be30344",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "core.c": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2",
+    "core.h": "da6f9d89225467310770e9ebf67ccdd66ad381c203a50e38afadc03c85da16b2"
+  },
+  "host_log_sha256": "c8d35bdc89f2636288e1fc1cecde149c26d225517b9efc3d120ec3adf2f2d7d7",
+  "build_host": "yukabox",
+  "physical_verified": false,
+  "permanent_otp_commands": false,
+  "main_firmware_execution": false
+}

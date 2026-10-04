@@ -2758,3 +2758,55 @@ summary, physical reports/logs/checkpoints and host/controller proofs are under
 evidence/2026-10-04/signed-ram-receiver-native34. No binaries, private material
 or RRT wire/session blobs are checked in. World14/native34; all pending slots
 null. Wi-Fi remains disconnected; chip-image execution has not been attempted.
+
+## 2026-10-04 native35 board helper: physical outcome UNKNOWN
+
+Base commit e6353ab was native34/world14 with full signed751436byte container
+in host RAM. At turn start a query-only of the final chunk confirmed that state.
+New bounded board helper profile passed73 actual native entrypoint fixtures,
+SMBIOS/core ASan+UBSan/COFF, normal+EMPTY city/ATT QEMU and two equal Yukabox
+PE builds/current-world checks. Payload117248bytes SHA
+654629798fd72bc5a6e2d9d645e3bd6323d35436d0cbace9bc77e5167e0e8e77; installed-owner signing occurred
+locally only after gates. No private key output/export.
+
+Saved native35 session pci-native-0iphq475 received all117536 stream bytes;
+300s staging timeout resumed the identical packet from80500. On COMMIT the
+radio timed out; reconnect found same session received0 and no exact APPLIED
+receipt. Controller status RECOVERY-REQUIRED-RECEIVER-LOSS, native_pending
+retained; last confirmed native34 is historical, not current physical authority.
+DO NOT replay/resign native35 or advance counters by assumption.
+
+Independent read-only query afterward: stateSTAGING1, received0/117536,
+receipt_counter0, same session. Board service20 absent. QPD reader got cached
+716byte QPD18 prefix, then ATT invalid-handle on extension: cache is rejected,
+not a fresh chip observation. These observations are consistent with volatile
+receiver loss/bootstrap, but reboot/fault cause is not established. User scene/
+tail observation is pending. Full firmware/helper execution and board identity
+were NOT physically confirmed. Wi-Fi still disconnected.
+
+All public host/protocol/failure logs and selection rules:
+experiments/native-wifi-qca9377-v1/evidence/2026-10-04/board-helper-native35.
+Native helper policy is query-only GET_EEPROM_BOARD_ID0x10, no permanent OTP
+write/main start. Candidate PCI board catalog hashb2713b77... is NOT selected;
+require completed physical SMBIOS/BMI identity. Old native34 RAM is owned by
+that image lifetime; after this uncertain swap do not claim it still exists.
+
+A standalone BLE-recovery city preflight is being prepared on Yukabox under
+runs/native35-city-recovery. It preserves semantic world14 and proposes world
+counter15/native36, reserving failed35. Recovery execution is gated by
+reboot_recovery.py: explicit owner confirmation of an actual Dell reboot and
+exact fresh-zero RFS receipt. No autonomous reboot, USB/flash changes or ABORT.
+Continue host diagnosis while awaiting the owner scene observation; if recovery
+is needed, finish the checked packet before requesting that physical action.
+
+Main load/start remains pending: fresh proven board selection, signed staging
+under loader ownership, calibration/main stream, BMI_DONE and valid HTC_READY.
+None may be claimed from QEMU tests or historical host-RAM receipts.
+
+Recovery preflight completed: two equal Yukabox builds, current saved world/
+roof-cat timing and normal+EMPTY QEMU passed. Signed local recovery plan
+text-world/native35-city-recovery-plan is PREPARED-NOT-ACTIVATED: native36 and
+world15 are saved, no radio write from recovery, controller native35 pending
+remains intact. Public gates/plan reports archived under recovery-preflight;
+RRT/session/base64 blobs and private keys excluded. Await actual screen state
+before deciding recovery. No owner-confirmed reboot has occurred in this turn.

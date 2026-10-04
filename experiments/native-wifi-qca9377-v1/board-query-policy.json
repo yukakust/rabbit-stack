@@ -1,0 +1,20 @@
+{
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "firmware_commit": "f9b926a6e1d67e09e54adc329c4e76be5f24a895",
+  "container_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+  "helper_sha256": "fac7edbbddb4e1b1a3d846cd55f83c607c31b7a07b0ceee73dc7ec154e8e6988",
+  "helper_bytes": 24193,
+  "patch_load_address": 4660,
+  "execute_parameter": 16,
+  "physical_version": 84017153,
+  "physical_type": 8,
+  "permanent_otp_programming": false,
+  "main_firmware_execution": false,
+  "reference_sha256": {
+    "bmi.c": "f14c60e89f1e4a9c4105e5f7dcf0571717b79a7825c44aceb9fd665e03917aa1",
+    "bmi.h": "8924f6fbf6ca4cfa494e7b6f38240ec44fa554e8850315b7442f3a534be30344",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "core.c": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2",
+    "core.h": "da6f9d89225467310770e9ebf67ccdd66ad381c203a50e38afadc03c85da16b2"
+  }
+}

@@ -1,0 +1,11 @@
+BOUNDED HELPER BMI scenario0 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+BOUNDED HELPER BMI scenario1 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+BOUNDED HELPER BMI scenario2 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+BOUNDED HELPER BMI scenario3 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+BOUNDED HELPER BMI scenario4 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+BOUNDED HELPER BMI scenario5 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+BOUNDED HELPER BMI scenario6 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+BOUNDED HELPER BMI scenario7 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+BOUNDED HELPER BMI scenario8 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+BOUNDED HELPER BMI scenario9 PASS; no DONE/SOC/NVRAM/permanent OTP commands; MOCK ONLY
+SMBIOS 36 malformed/truncated/ambiguous/map/checksum cases PASS; MOCK ONLY

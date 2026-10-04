@@ -755,3 +755,37 @@ loading, WMI/HTT, association and DHCP remain subsequent work. Physical evidence
 and host proofs are stored separately under
 `evidence/2026-10-04/signed-ram-receiver-native34/`. See the connected Mac handoff
 for session names, current state and continuation constraints.
+
+## Bounded board-helper profile (native35)
+
+The source-pinned helper (24193 bytes, SHA256
+fac7edbbddb4e1b1a3d846cd55f83c607c31b7a07b0ceee73dc7ec154e8e6988)
+is uploaded to Wi-Fi-chip RAM through BMI LZ_START/LZ_DATA and executed at
+0x1234 with parameter0x10 (GET_EEPROM_BOARD_ID). This reads board/chip IDs;
+no OTP programming, main-image execution, association or disk/USB changes.
+SMBIOS typeF8 BDF_ supplies an optional board-name variant. Malformed SMBIOS
+fails closed; missing SMBIOS permits the documented no-variant path.
+
+Loading: current-source73 integrated ASan/UBSan scenarios, exact helper-byte
+fixture, normal/EMPTY city/ATT QEMU and two identical Yukabox PE builds must
+pass native_route gates before local owner signing and the existing RRT channel.
+The running native34 RAM container is freed when its unpinned driver closes;
+it is NOT retained or treated as authority for this profile.
+
+Observation: service20/characteristic21, handles13..15, read-only QBDI0001
+160-byte status binds helper hash, query result, SMBIOS and cleanup. Exact RRT
+APPLIED is installation evidence; board-query success additionally requires
+101 commands,24196 padded bytes, phase5/error0, fresh BMI type8/version05020001
+and closed adapter/all14 DMA allocations released. Ask the owner separately
+about city/tail; a radio receipt is not a screen observation.
+
+Recovery: completion/error/cancellation uses existing all-eight CE stop, BME-off,
+flush/unmap/free and host IRQ/PCI/link/wake restoration. Failure retains unsafe
+DMA ownership and refuses unload. No automatic reboot or USB changes. Bounded
+timeouts and malformed replies are evidence to diagnose, never permission to
+relax safety or silently pick another board. Legacy profile firmware_upload
+means the main-image stage; helper_ram_upload records the actual helper writes.
+
+Next: select a unique board-2.bin record from physical SMBIOS/BMI/PCI evidence,
+then separately verify board/calibration/main-image load, BMI_DONE and HTC_READY.
+Wi-Fi connection requires subsequent WMI/HTT, scan/authentication and networking.
