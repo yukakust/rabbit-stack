@@ -2354,3 +2354,34 @@ Physical second warm ROM timeout still unresolved. Capture more diagnostics;
 do not claim that post-cold fix solves initialization/firmware/WPA/DHCP.
 Current actual state remains native26/world13, retained Wi-Fi ownership/BME off,
 all pending slots empty. Owner observation after26 is still pending.
+
+## 2026-10-04 — owner reboot confirmed, recovery27/world14 APPLIED
+
+Owner explicitly said 'перезагрузил'. Executed exact prepared native27 recovery
+under controller lock; initial read-only query on known Dell F45BFCB2-ABC2-AB4E-
+BB0F-310A54D424AF returned exact zero/EMPTY receiver. Only then activated plan.
+Native27 staged47904bytes, committed/reconnected and returned exact correlated
+APPLIED receipt. Then world14 staged2128bytes and exact APPLIED receipt returned.
+No new nonce/packet/replay, key export, USB/bootstrap write or Mac native build.
+
+Current runtime27 payload0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce,
+world14 semantic SHA unchanged fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74,
+package46f7cc5f1ad67d32a53d7328bfe1a68324eab7c1757f3ec96468787b3a7f1fac.
+Recovery/world/native pending slots empty; completed26 evidence preserved in
+retired_native_sessions. Recovery directory reboot-recovery-native27 completed:
+do NOT replay it. Wi-Fi probe disabled in recovery city profile.
+Physical city/tail after recovery27 has been asked through async question and
+is pending; do not infer screen behavior from APPLIED or QEMU.
+Evidence: evidence/2026-10-04/idle26-recovery-applied27.
+
+Independently rebuilt fixed init profile on Yukabox with CURRENT recovery-helper
+source. Full host fault/COFF/normal+EMPTY UEFI/BLE/decoder gates pass, payload
+b6f108f7a91e1786f31bc2db08922e100fd2667b4d360bab24c6d4867da891de.
+Fresh273 source hashes + two rebuilt payloads + exact current world14 C/sanitizer
+checks pass; Mac native_route.gates verifies updated report/reproduction/world.
+Checked directory experiments/native-wifi-qca9377-v1/runs/init-profile-native28.
+No native28 key signature/session/physical send yet. Physical post-cold fix is
+still unverified; second warm ROM timeout unresolved. After owner confirms city/
+tail, sign fresh28 against actual runtime27/world14, send exact saved session and
+read hash-bound QPD14 on known Dell. Check recovery/cleanup as well as timeout;
+never clear ownership flags or imply firmware/association success.
