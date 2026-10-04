@@ -34,6 +34,9 @@ void qca_poll(uint64_t ms){
 }
 int qca_stop(void){
  ram_closing=1;int hardware=qca_hardware_stop();int result=qca_fwp_close(&ram);
+ /* Resident close is a single-call ABI. Two bounded pool releases complete
+  * unpinned RAM teardown; faults/pins retain ownership and still refuse close. */
+ if(result==1)result=qca_fwp_close(&ram);
  return hardware||qca_fwp_owned(&ram)||result<0;
 }
 const QcaFirmwarePort*qca_ram_view(void){return &ram;}

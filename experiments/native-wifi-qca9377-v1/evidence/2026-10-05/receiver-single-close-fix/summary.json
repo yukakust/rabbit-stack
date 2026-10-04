@@ -1,0 +1,16 @@
+{
+  "status": "SINGLE-CALL-RECEIVER-CLOSE-REGRESSION-FIXED",
+  "baseline_source_commit": "107cfec",
+  "baseline_receiver_build_sha256": "ce1d303a2294c43a9df1421a531e53ef9bc1ccfa125b0326312dc52596b6de42",
+  "fixed_receiver_build_sha256": "a17cb5221c8036df4e40ee323d5b594c1e27cf9890cc1b103bca1fc289fa07c7",
+  "baseline_scenario": 0,
+  "baseline_result": "assert !qca_stop && ram_frees==2 && !owned failed after full751436byte container; old close frees workspace then returns1 with memory owned",
+  "fixed_scenarios": 65,
+  "actual_native_stop_tested": true,
+  "full_signed_container_fixture": true,
+  "pinned_close_rejected": true,
+  "single_call_unpinned_close": "at most2 cooperative release calls; no unbounded wait",
+  "physical_close_fix_deployed": false,
+  "physical_failure_trace": "not captured; code+regression establishes fatal mismatch before candidate.attach in resident runtime_update",
+  "firmware_main_started": false
+}

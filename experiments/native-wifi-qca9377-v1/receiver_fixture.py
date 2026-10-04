@@ -35,6 +35,8 @@ static void upload_fixture(const char*dir){
  assert(r->asset.received==4095&&r->asset.ready&&!r->asset.poisoned);
  const uint8_t*data;size_t bytes;assert(!qca_fw_pin((QcaFirmwareChunks*)&r->asset,&data,&bytes)&&bytes==751436);
  assert(qca_stop()&&!ram_frees);assert(!qca_fw_unpin((QcaFirmwareChunks*)&r->asset));
+ assert(!qca_stop()&&ram_frees==2&&!qca_fwp_owned(r));
+ printf("ONE-CALL UNPINNED RECEIVER CLOSE RELEASES BOTH RAM BUFFERS PASS\\n");
  printf("ACTUAL RECEIVER RAM FULL SIGNED CONTAINER AND PINNED UNLOAD RETENTION PASS\\n");
 }
 '''

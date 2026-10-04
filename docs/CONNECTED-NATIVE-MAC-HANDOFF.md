@@ -2836,3 +2836,19 @@ Evidence: experiments/native-wifi-qca9377-v1/evidence/2026-10-05/native35-city-r
 Wi-Fi remains unconnected; no physical board/helper/main execution proof.
 Do not reuse native34 staging after reboot. Diagnose/isolate native35 failure
 before another probe; current recovery driver deliberately has no Wi-Fi probe.
+
+2026-10-05 owner replied "да все видно" to city/tail confirmation. City recovery
+is now physically visible as well as protocol-confirmed. Code audit found
+native34 receiver qca_stop calls cooperative qca_fwp_close once; that frees
+workspace only, retains memory and returns1. Resident runtime_update invokes
+active.close once and treats that as fatal, before candidate.attach. New
+regression reproduces this exact unpinned full-container close boundary; no
+new hardware write while diagnosing. Main helper execution remains unconfirmed.
+
+Receiver single-call close regression fixed and host-gated: actual full signed
+container baseline fails at one unpinned qca_stop; fixed wrapper performs at
+most2 release steps.65 scenarios+normal/EMPTY QEMU pass. Pinned/fault retention
+remains. Evidence:2026-10-05/receiver-single-close-fix. Current native36 has
+no receiver buffers. Fresh board-query native37 gates are being regenerated
+against saved world15 before signing/radio. No physical probe from fix checks;
+never deploy generation34 fixture artifact or replay failed native35.
