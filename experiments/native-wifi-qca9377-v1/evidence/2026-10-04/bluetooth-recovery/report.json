@@ -1,0 +1,52 @@
+{
+  "status": "MAC-BLUETOOTH-POWER-CYCLE-VERIFIED-DELL-STILL-UNREACHABLE",
+  "owner_observation": "Owner reports everything powered on; current Dell animation and Mac proximity not yet confirmed",
+  "before_power_cycle": {
+    "advertisement_count": 97,
+    "authorization": 3,
+    "connected_rabbit_count": 0,
+    "connections_started": 0,
+    "controller_state": 5,
+    "known_dell_cached_state": 0,
+    "physical_wifi_verified": false,
+    "rabbit_candidates": [],
+    "scan_started": true,
+    "writes": 0
+  },
+  "after_power_cycle": {
+    "advertisement_count": 18,
+    "authorization": 3,
+    "connected_rabbit_count": 0,
+    "connections_started": 0,
+    "controller_state": 5,
+    "known_dell_cached_state": 0,
+    "physical_wifi_verified": false,
+    "rabbit_candidates": [],
+    "scan_started": true,
+    "writes": 0
+  },
+  "mac_bluetooth_ui_verified_states": [
+    "off",
+    "on"
+  ],
+  "read_only_cached_queries": [
+    {
+      "before_power_cycle": true,
+      "exit_code": 1,
+      "result": "60-second read-only query timeout"
+    },
+    {
+      "before_power_cycle": false,
+      "exit_code": 1,
+      "result": "60-second read-only query timeout"
+    }
+  ],
+  "data_commit_abort_writes": 0,
+  "dell_rebooted_by_agent": false,
+  "usb_bootstrap_changed": false,
+  "native_pending_preserved": "pci-native-yhzzk0k_",
+  "last_confirmed_native_counter": 14,
+  "pending_native_counter": 15,
+  "physical_wifi_verified": false,
+  "cause": "undetermined; Mac radio reception works, no Dell response observed"
+}

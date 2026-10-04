@@ -1573,3 +1573,18 @@ authorize this disabled-policy profile for delivery. NEXT: physical native15/BMI
 facts; separately authorize exact firmware policy, test positive UEFI allocation
 and full asset transfer/lifetime, then exact current-world/reproduction/owner
 gates. Actual firmware upload/startup, radio/WPA/DHCP/reconnect still incomplete.
+
+## 2026-10-04 — owner requested Bluetooth recovery; Mac power cycle verified
+
+Owner reports everything powered on. Fresh passive scan observed97advertisements,
+authorization3/controller5, zero Rabbit candidates or connected service; direct
+read-only cached Dell query terminated at60seconds. Used System Settings Bluetooth
+switch off/on with AX verification, then restored previous Appearance panel. Fresh
+passive scan observed18advertisements and still no Rabbit; second cached read-only
+query again terminated at60seconds. No DATA/COMMIT/ABORT, private-key access, Dell
+reboot or USB/bootstrap change. Exact pending native15 session preserved. Both
+query processes terminal. Evidence: native-wifi-qca9377-v1/evidence/2026-10-04/
+bluetooth-recovery/report.json. Current Dell animation/screen and Mac proximity
+requested; powered-on alone does not establish receiver liveness. Cause remains
+undetermined. Need physical screen observation before further recovery; do not
+claim Mac toggle restored Dell or infer unchanged receiver RAM.
