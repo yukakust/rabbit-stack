@@ -2251,3 +2251,32 @@ No new signature, session, Bluetooth send, USB/bootstrap write or Dell reboot.
 Physical receiver remains applied native25/world13, all pending slots empty.
 Target RAM initialization writes, CPU wake, firmware, association and network
 streaming remain unperformed. Owner last confirmed city visible, not tail motion.
+
+## 2026-10-04 — native26 physical warm/full-channel trial, retained recovery
+
+Integrated separate init_probe/init_adapter/init_build profile, mapped IRQ scope
+with original no-DMA boot_irq guard preserved, and QPD14 split diagnostic UUID9.
+Yukabox host fault/ASan/UBSan/COFF, actual17 entrypoint fixtures, normal/EMPTY UEFI
+city/ATT, two current-source rebuilds and unchanged world C gates all pass.
+Source snapshot273files;11 bad signing prerequisites rejected before key access.
+Native26 exact APPLIED: pci-native-wg2f6n8n,76064bytes, payload
+ d8a6dd6805c3862e201b43a05cdf860e71895227b6c94f471af391c33f4cd583.
+World13/package unchanged, all pending slots empty. Do NOT replay26.
+
+Fresh known Dell QPD14/hash split: stage20/adapter13 RETAINED, warm error2
+(second ROM wait timeout, CPU resets2/pipe initializations2), fourteen pages
+held, BME never enabled. Recovery cold phase3/unowned, ROM2, mapped guard error0,
+IRQ quiesced; recovery_verified0. All-eight-stop proof after cold reset failed,
+so warm/PCI/IRQ/link ownership remains held. This is not a warm success or full
+cleanup. City/tail after26 requested, not yet observed by agent. Evidence:
+evidence/2026-10-04/init-warm-native26 (exact gates/source/receipt/raw/decoded).
+
+Code recovery currently stops CEs BEFORE cold reset, then checks stopped state
+AFTER reset. Hypothesis: cold reset clears halt/register state. Existing mocks
+kept CE registers across reset and missed this. Need explicit reset-cleared
+register fixture, post-cold all-eight stop and verified recovery proof, with
+finite retries and no release until proof. Actual post-cold CE values were not
+captured, so cause is not yet physically proven. Retained resources prevent
+module replacement; only owner-authorized physical reboot can clear current
+state. Prepare/verify fix before requesting reboot; never force-clear owned flags.
+No target RAM writes, CORE wake, firmware/association/DHCP or stream was performed.

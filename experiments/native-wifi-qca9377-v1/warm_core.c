@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: GPL-2.0-only
  * Cooperative QCA6174/QCA9377 warm sequence adapted from pinned ath10k pci.c.
- * Host/COFF component only; not linked into a physical profile yet.
+ * Used by the separately gated one-shot native init profile.
  */
 #include "warm_core.h"
 static int fail(QcaWarm*w,unsigned e){if(!w->error)w->error=(uint8_t)e;w->phase=QCA_WARM_FAULT;return -1;}

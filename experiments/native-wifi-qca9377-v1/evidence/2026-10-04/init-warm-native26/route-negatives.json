@@ -1,0 +1,10 @@
+{
+  "status": "EXACT-NATIVE-INIT-ROUTE-NEGATIVES-PASS",
+  "cases": 11,
+  "owner_key_touched": false,
+  "additional_cases": [
+    "altered core report",
+    "altered entrypoint report",
+    "altered pinned pack report"
+  ]
+}

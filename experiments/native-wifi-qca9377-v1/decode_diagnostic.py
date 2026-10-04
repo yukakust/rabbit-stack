@@ -7,9 +7,16 @@ def combine_qpd13(prefix,extension):
  if hashlib.sha256(prefix).digest()!=extension[4:36]:raise ValueError('split diagnostic hash mismatch')
  if struct.unpack_from('<I',prefix,128)[0] not in (5,6,7):raise ValueError('probe still active')
  return {'format':'QPD13','raw_hex':(prefix+extension[36:]).hex(),'read_strategy':'split_sha256'}
+def combine_qpd14(prefix,extension):
+ if len(prefix)!=716 or prefix[:4]!=b'QPD'+bytes([14]) or len(extension)!=184 or extension[:4]!=b'QIC'+bytes([1]):raise ValueError('invalid QPD14 split envelope')
+ if hashlib.sha256(prefix).digest()!=extension[4:36]:raise ValueError('split diagnostic hash mismatch')
+ if struct.unpack_from('<I',prefix,128)[0] not in (5,6,7,20):raise ValueError('init probe still active')
+ result={'format':'QPD14','raw_hex':(prefix+extension[36:]).hex(),'read_strategy':'split_sha256'}
+ decode(result)
+ return result
 def decode(value):
- version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 11 if value.get('format')=='QPD11' else 12 if value.get('format')=='QPD12' else 13 if value.get('format')=='QPD13' else 0
- length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700 if version==10 else 716 if version==11 else 800
+ version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 11 if value.get('format')=='QPD11' else 12 if value.get('format')=='QPD12' else 13 if value.get('format')=='QPD13' else 14 if value.get('format')=='QPD14' else 0
+ length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700 if version==10 else 716 if version==11 else 864 if version==14 else 800
  if not version or not isinstance(value.get('raw_hex'),str) or len(value['raw_hex'])!=length*2:
   raise ValueError('bounded QPD1 envelope required')
  raw=bytes.fromhex(value['raw_hex'])
@@ -42,11 +49,11 @@ def decode(value):
    'probe_succeeded':stage==2 and not error and cleanup==1,'dma_enabled':False,'firmware_uploaded':False}
  if version>=4:
   stage,chip,error,cleanup,extent,attrs,phase,reset_error,owned,firmware,original,actual,pm,reserved,initial,readback,revalidation=struct.unpack_from('<IIIIQQIIIIHHHHIII',raw,128)
-  if stage>(16 if version>=10 else 13 if version>=9 else 12 if version>=5 else 7) or cleanup not in (1,2) or phase>4 or owned>1 or (reserved and version<6):raise ValueError('invalid reset telemetry')
+  if stage>(20 if version==14 else 16 if version>=10 else 13 if version>=9 else 12 if version>=5 else 7) or cleanup not in (1,2) or phase>4 or owned>1 or (reserved and version<6):raise ValueError('invalid reset telemetry')
   result['reset_probe']={'stage':stage,'chip_id':f'{chip:08x}','error':error,'cleanup_completed':cleanup==1,'bar_extent':extent,'original_attributes':f'{attrs:016x}','reset_phase':phase,'reset_error':reset_error,'reset_owned':bool(owned),'fw_indicator':f'{firmware:08x}','fw_initialized_seen':bool(firmware&2),'original_command':f'{original:04x}','active_command_snapshot':f'{actual:04x}','pmcsr':f'{pm:04x}','global_reset_initial':f'{initial:08x}','global_reset_readback':f'{readback:08x}','revalidation_error':revalidation,'chip_revision':(chip>>8)&15 if stage==5 and chip else None,'identity_probe_succeeded':stage==5 and not error and cleanup==1,'dma_enabled':False,'firmware_uploaded':False}
  if version>=5:
   rom_error,indicator,bmi_error,version_word,type_word,info_length,users,bus_phase,bus_error,bus_owned,held=struct.unpack_from('<11I',raw,196)
-  if users>4 or bus_phase>4 or bus_owned>1 or held>15:raise ValueError('invalid DMA/BMI telemetry')
+  if users>(14 if version==14 else 4) or bus_phase>4 or bus_owned>1 or held>(0x3fff if version==14 else 15):raise ValueError('invalid DMA/BMI telemetry')
   received=bmi_error==0 and version_word not in (0,0xffffffff) and type_word not in (0,0xffffffff)
   released=cleanup==1 and not users and not held and not bus_owned
   result['reset_probe'].update(cleanup_completed=released,dma_enabled=bus_phase==2,chip_revision=(chip>>8)&15 if chip else None)
@@ -141,6 +148,28 @@ def decode(value):
    'option_flag2':f'{words[10]:08x}' if mask&4 else None,'first_poll_elapsed_us':first if polls else None,
    'last_poll_elapsed_us':last if polls else None,'poll_count':polls,'target_config_written':False,'pointers_followed':False,
    'device_completion_timestamp_known':False,'configuration_compatibility_verified':False}
+ if version==14:
+  a,ae,w,we,wo,co,cpu,pipes,c,allocated,cursor,verified,recovery,ro,ri,me=struct.unpack_from('<16I',raw,800)
+  if a>13 or w>13 or c>7 or recovery>4 or max(wo,co,verified,ro)>1 or cpu>2 or pipes>2 or allocated>14 or cursor>14:
+   raise ValueError('invalid native init bounds')
+  if bus_phase==2 or actual&4 or users>held.bit_count():raise ValueError('unexpected active DMA/native held inventory')
+  if stage not in (0,1,2,3,4,5,6,7,18,19,20):raise ValueError('unknown native init stage')
+  if any(raw[204:220]) or any(raw[280:800]):raise ValueError('unexpected legacy BMI/CE7 data in init profile')
+  if stage==7 and any(raw[800:]):raise ValueError('absent target with init data')
+  if verified and (recovery!=3 or ro or ri!=2 or wo or co):raise ValueError('unverified cold recovery claimed')
+  full_release=(result['reset_probe']['cleanup_completed'] and result['pcie_link']['restore_completed'] and result['boot_irq']['restore_completed'] and not result['reset_probe']['reset_owned'] and not wo and not co and not ro)
+  if a==12 and (wo or co or ro or users or held or bus_owned or c not in (0,6)):
+   raise ValueError('closed adapter still owns resources')
+  if stage==5 and (result['reset_probe']['error'] or not full_release or a!=12 or ae or w!=12 or we or cpu!=2 or pipes!=2 or c!=6 or allocated!=14 or cursor!=14 or verified or me):
+   raise ValueError('success lacks exact warm/channel/restore proof')
+  if stage==20 and (a!=13 or not result['reset_probe']['error'] or not ae or cleanup!=2):raise ValueError('invalid retained adapter')
+  result['native_init']={'adapter_phase':a,'adapter_error':ae,'warm_phase':w,'warm_error':we,
+   'warm_owned':bool(wo),'ce_reset_owned':bool(co),'cpu_resets':cpu,'pipe_initializations':pipes,
+   'channels_phase':c,'allocated_pages':allocated,'cleanup_cursor':cursor,
+   'cold_recovery_verified':bool(verified),'cold_recovery_phase':recovery,'cold_recovery_owned':bool(ro),
+   'cold_recovery_indicator':f'{ri:08x}','mapped_guard_error':me,
+   'warm_and_channels_verified':stage==5,'all_resources_restored':full_release,
+   'retained':stage==20,'bus_master_enabled_during_probe':False,'target_ram_written':False,'firmware_uploaded':False}
  if version==3:
   pm,csr,pcie,link,status,reserved=struct.unpack_from('<HHHHII',raw,128)
   if status>3 or reserved:raise ValueError('invalid power-capability snapshot')

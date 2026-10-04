@@ -42,6 +42,7 @@ static int mappings_ready(QcaChannels*c){
  }
  return 0;
 }
+int qca_channels_retained(QcaChannels*c){return mappings_ready(c);}
 int qca_channels_prepared(QcaChannels*c){
  if(mappings_ready(c)||(c->phase!=QCA_CHANNEL_CONFIGURED&&c->phase!=QCA_CHANNEL_POSTED))return -1;
  QcaUefiPort*p=c->bus->access->port;

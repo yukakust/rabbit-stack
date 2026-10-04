@@ -32,11 +32,19 @@ def main():
         ('warm', ['warm_core.c', 'warm_test.c'], [None]),
         ('channels', ['channels_core.c', 'channels_test.c', 'ce_ring.c', 'ce_hw.c',
                       'ce_uefi.c', 'ce_bus.c', 'dma_buffer.c', 'warm_core.c'], list(range(27))),
+        ('mapped-irq', ['boot_irq_mapped.c', 'boot_irq_mapped_test.c', 'boot_irq.c',
+                        'channels_core.c', 'ce_ring.c', 'ce_hw.c', 'ce_uefi.c', 'ce_bus.c',
+                        'dma_buffer.c', 'warm_core.c', 'pci_identity.c', 'power_core.c'], list(range(36))),
+        ('adapter', ['init_adapter.c', 'init_adapter_test.c', 'boot_irq_mapped.c', 'boot_irq.c',
+                     'channels_core.c', 'ce_ring.c', 'ce_hw.c', 'ce_uefi.c', 'ce_bus.c',
+                     'dma_buffer.c', 'warm_core.c', 'reset_core.c', 'pci_identity.c', 'power_core.c'], list(range(13))),
     ]
     logs = ''
     source_names = {'verify_init_core.py', 'verify_init_pack.py', 'init-target.json', 'init_tables.py',
                     'warm_core.h', 'wake_core.h', 'channels_core.h', 'ce_bus.h', 'ce_hw.h', 'ce_ring.h',
-                    'ce_uefi.h', 'dma_buffer.h', 'uefi_port.h', 'verify_port.py'}
+                    'ce_uefi.h', 'dma_buffer.h', 'uefi_port.h', 'verify_port.py',
+                    'boot_irq_mapped.h', 'boot_irq.h', 'pci_identity.h', 'power_core.h',
+                    'init_adapter.h', 'reset_core.h'}
     for _, files, _ in components:
         source_names.update(files)
     sha = lambda data: hashlib.sha256(data).hexdigest()
@@ -55,7 +63,7 @@ def main():
             logs += run.stdout + run.stderr
             if run.returncode:
                 raise RuntimeError(f'{name} scenario {scenario} failed:\n{run.stdout}{run.stderr}')
-    for name in ('warm_core', 'channels_core'):
+    for name in ('warm_core', 'channels_core', 'boot_irq_mapped', 'init_adapter'):
         subprocess.run([str(CC), '-target', 'x86_64-pc-win32-coff', '-ffreestanding', '-fno-stack-protector',
                         '-mno-red-zone', '-Os', '-Wall', '-Wextra', '-Werror', *include, '-c',
                         str(ROOT / (name + '.c')), '-o', str(out / (name + '.obj'))], check=True)
@@ -67,6 +75,9 @@ def main():
               'pack_report_sha256': sha((out / 'pack-report.json').read_bytes()),
               'host_log_sha256': sha(logs.encode()), 'channel_scenarios': 27,
               'warm_full_channel_joint_fixture': True,
+              'mapped_irq_scenarios': 36, 'legacy_no_dma_irq_guard_preserved': True,
+              'native_pci_adapter_scenarios': 13,
+              'cold_recovery_requires_rom_and_all_eight_stop': True,
               'warm_each_io_fault_injected': True, 'warm_each_phase_cancelled': True,
               'build_host': 'yukabox', 'native_profile_integrated': False,
               'physical_warm_reset': False, 'physical_target_writes': False,

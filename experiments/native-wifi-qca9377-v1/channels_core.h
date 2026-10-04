@@ -29,6 +29,9 @@ int qca_channels_reconfigure(QcaChannels*);
  * once. CE7 RX is reserved for each diagnostic exchange, not pre-posted.
  */
 int qca_channels_prepared(QcaChannels*);
+/* Retained mapping inventory only; useful while warm reset temporarily changes
+ * CE registers. No hardware state or permission to enable bus mastering implied. */
+int qca_channels_retained(QcaChannels*);
 int qca_channels_post_receive(QcaChannels*);
 /* Caller must first perform bounded all-eight bus_stop/zero/BM-off.
  * Close at most one DMA buffer per step. Failed flush/unmap/free retains

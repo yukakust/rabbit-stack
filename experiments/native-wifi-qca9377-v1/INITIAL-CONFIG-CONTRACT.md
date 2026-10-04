@@ -131,3 +131,49 @@ physical packet is not ready. Required integration work:
 Finite target RAM writes/readback, EARLY_CFG_DONE/CPUwake and firmware gates are
 still later boundaries. No native packet, USB/bootstrap change or reboot was
 performed during these component checks.
+
+## Integrated warm/channel trial (QPD14)
+
+A separate `init_build.py` profile links `init_probe.c` and `init_adapter.c`.
+The native25 BMI profile stays intact as an earlier experiment. The new profile
+performs outer PCI/wake/cold-reset/ROM checks, allocates fourteen coherent pages,
+executes the pinned warm sequence and both full-channel configurations with bus
+mastering off, then stops all eight engines and releases resources. It does not
+upload firmware, query BMI, write target RAM tables, set EARLY_CFG_DONE or request
+CORE CPU wake. Warm CPU resets are Wi-Fi-chip resets, not a Dell reboot.
+
+`boot_irq_mapped.c` borrows the original exclusive IRQ owner and binds it to the
+exact fourteen retained mappings and BAR. Its guard rereads PCI identity, D0,
+MEM/BME/INTx and MSI/MSI-X capabilities plus chip/wake state. Boot polling also
+remasks core MSI control after CPU reset. The original `boot_irq.c` no-DMA guard
+is unchanged; mapped scope cannot restore host interrupts or enable DMA.
+
+On warm failure/cancel, the adapter first attempts finite CE deassertion, then
+quiesces boot IRQ, stops all engines and executes a bounded cold reset. Exclusive
+warm ownership is cleared only after successful cold deassertion without a
+sticky I/O error, fresh guarded PCI/wake identity, ROM-ready and all-eight-stop
+proof. Loss of reset/PCI/ASPM/wake invariants is not automatically repaired here:
+retain ownership instead. Irreducible failures enter RETAINED and prevent module
+unload, unmap/free and PCI release. No automatic whole-machine reboot is allowed.
+
+QPD14 is864bytes: existing main716 plus tail148, read via distinct diagnostic
+service UUID9 and QIC1 extension184 (header4+SHA256 prefix32+tail148). Original
+file service UUID1 is preserved. The reader/combiner require terminal stage5/6/7
+or20 and an exact prefix hash. Hash binds reads, not device attestation.
+
+The extra64bytes at800 are sixteen LE32 words: adapter phase/error, warm
+phase/error/owned/CE-owned/CPU-reset-count/pipe-init-count, channels
+phase/allocated/cleanup-cursor, verified-cold-recovery, cold phase/owned/ROM
+indicator and mapped-guard error. Stage5 requires exactly two CPU resets and
+pipe initializations, fourteen allocations and complete teardown/PCI/IRQ/link
+restore. Stage20 means retained resources, not successful connection. Old
+BMI/CE7 data regions remain zero in this profile and are rejected if populated.
+
+`verify_init_profile.py` binds actual native entrypoint fixtures17scenarios,
+channel27/mapped-IRQ36/adapter13 plus warm every-I/O/every-phase fault fixtures,
+freestanding COFF, pinned upstream pack, split/decoder negatives, BLE loss
+baseline/regression and actual normal/EMPTY UEFI city/ATT checks. QEMU has no
+QCA9377 and tests the absent-device path only. `remote_check.py --profile init`
+adds current-source two rebuilds and the unchanged live world package C checks.
+`native_route.gates` requires these separate proofs and exact source/ABI hashes
+before touching the owner key. Missing flags/subreports/hash bindings reject.
