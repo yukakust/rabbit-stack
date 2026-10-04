@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "PREPARED-NOT-SENT",
+  "kind": 2,
+  "counter": 23,
+  "sha256": "53efd9afadc14f627a402cdbb0ad9d272a850630a72c803eb9076c2ae82194e4",
+  "package_bytes": 74496,
+  "session_base64": "vBKJTSEQZm4=",
+  "saved_session_file_sha256": "3f270a16a0c7fa7920ff731c045bda22f914ebac2d29badffec269d89a44ecf4",
+  "stream_sha256": "97c2a13dfe2b37467b0db02d397df2d6647de8b634b434a42eb30d9e19bf32e7",
+  "stream_bytes": 74528,
+  "evidence_representation": "metadata only; exact saved session stays in ignored runs"
+}

@@ -24,8 +24,8 @@
   "core_control_register": 237568,
   "ring_entries": 8,
   "dmax": 2048,
-  "timeout_us": 100000,
+  "timeout_us": 3000000,
   "reference_timeout_us": 10000,
-  "timeout_note": "Cooperative bounded 100ms diagnostic budget; reference busy-polls 10ms. No firmware or pointer chase.",
+  "timeout_note": "Cooperative3second wait budget. Observe completion before timeout; record polling delay. Reference busy-polls10ms. No device completion timestamp claimed.",
   "status": "CANDIDATE-READ-ONLY-CE7-NOT-PHYSICALLY-VERIFIED"
 }

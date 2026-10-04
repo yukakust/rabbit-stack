@@ -5,12 +5,12 @@ import ble_recovery_build as ble
 ROOT,CITY,actors,one=base.ROOT,base.CITY,base.actors,base.one
 def sources(directory):
  base.sources(directory)
- header=(directory/'pci_collect.h').read_text().replace('128u','700u')
+ header=(directory/'pci_collect.h').read_text().replace('128u','716u')
  (directory/'pci_collect.h').write_text(header)
  collector=(directory/'pci_collect.c').read_text()
  collector=one(collector,'uint8_t qca_diagnostic[QCA_DIAGNOSTIC_SIZE];','uint8_t qca_diagnostic[QCA_DIAGNOSTIC_SIZE];\nvoid*qca_controller;')
  collector=one(collector,' qca_diagnostic[0]=', ' qca_controller=0;\n qca_diagnostic[0]=')
- collector=one(collector,"qca_diagnostic[3]=1;","qca_diagnostic[3]=10;")
+ collector=one(collector,"qca_diagnostic[3]=1;","qca_diagnostic[3]=11;")
  collector=one(collector,'   flags|=2;','   flags|=2;qca_controller=handles[i];')
  collector=one(collector,' put(4,flags,4);',' if(flags!=15||targets!=1)qca_controller=0;\n put(4,flags,4);')
  (directory/'pci_collect.c').write_text(collector)

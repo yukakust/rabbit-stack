@@ -2048,3 +2048,61 @@ timeout,3second cooperative budget and first/last elapsed/poll-count telemetry.
 Gate and sign NEW23 against exact current22/world13. Only confirmed CE7 read plus
 validated target ABI permits later bounded initialization configuration. Re-read
 fresh physical diagnostics and obtain owner scene observation after new application.
+
+
+## 2026-10-04 — native23 physical CE7 completion confirmed
+
+Native23 fixes premature timeout: observe both hardware completion indices before
+testing elapsed wait budget, use3seconds, and latch first/last poll delay and count.
+QPD11/716bytes retains QPD10 and adds16bytes. Decoder assumes no polling frequency.
+52 ASan/UBSan host scenarios, normal/EMPTY exact UEFI city/ATT checks, two source
+rebuilds/current-world C check passed on Yukabox. Missing completion-before-timeout
+gate is rejected before local signature/radio. Mac only built control reader/sender.
+
+Locally signed23 exact current22/world13. Saved session pci-native-dlu8d1sa,
+74528bytes staged in one uninterrupted connection, then COMMIT and exact correlated
+SHA/session/counter APPLIED after reconnect. Current native counter23, payload
+99af1e47e32c2e416f807a56420be812b95e9e3ceaf9c65ae5c9342acfdc4342;
+world13/package unchanged, journal idle12versions, all pending slots empty.
+Do NOT replay completed22/23. No USB/bootstrap write or Dell reboot.
+
+Fresh physical QPD11 from known F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF:
+CE7 DONE2/error0, TX/RX indices0->1, four received bytes, fixed4008f8->d11008f8
+returned00401ee0. First/last polling390000us, one poll, within new3s budget but
+after old100ms deadline. Confirms premature native22 timeout. Device completion
+time unknown. This proves bounded CE7 read, not arbitrary pointer authority or
+full Wi-Fi connection. Raw response matches native22 observational bytes.
+
+First read caught stage11 BMI still active; preserve it separately. Later fresh
+read is terminal stage6/error805: CE0/1 BMI timeout, both observed indices0,
+response12bytes allzero, request08000000. CE7 snapshot persists across reused
+response DMA page and BMI cleanup. Four DMA buffers released, heldmask0,
+bus/reset ownership false, cleanupcomplete. PCIe ASPM restored0143 and IRQ/core
+restored8688/enable0. No firmware upload, target initialization write, association,
+WPA or DHCP. Owner post23 city/tail observation requested and pending.
+
+Evidence: experiments/native-wifi-qca9377-v1/evidence/2026-10-04/ce7-poll-native23.
+Gate reportSHA a10dd7855267d7be2d95401f8f9d8d3e1c6a934be2d8adf5dff9df8398e39972;
+reproductionSHA909a9060a279828f1770632f1fe00a3deadf4c9e7f66136e122ea697df577db4.
+Only session metadata goes in Git; exact packet/session remain ignored.
+
+Next initialization boundary:
+1. Extend narrow read-only CE7 Target Pack to validate PCIe-state layout and
+   bounded config destinations. Physical4008f8 returned401ee0; treat as data until
+   alignment/range/nonoverlap/length checks. Never chase arbitrary pointer.
+2. Pinned pci.h pcie_state is9 LE32words: pipe_cfg_addr+0, svc_to_pipe_map+4,
+   MSI fields+8..24, power_mgmt_method+28, config_flags+32. Read it and fixed
+   hi_early_alloc400900/hi_option_flag24008cc before designing writes.
+3. Host-check exact target-side pipe/service tables for QCA9377, including
+   qca6174 override. Ensure all advertised channels have owned host resources.
+4. Follow pinned qca6174/QCA9377 cold+warm-reset ordering and safe CE lifecycle.
+   Write/read back only validated bounded RAM destinations, clear PCIeL1 mask0x1,
+   early_alloc magic6d8a in high16bits with9IRAM banks. EARLY_CFG_DONE mask0x10
+   is last commit marker; set only after verified configuration, then CPUwake2000.
+5. Fresh signed candidate>=24, saved Bluetooth session/exact receipt, fresh
+   diagnostics, complete teardown and owner scene check. BMI/version/firmware
+   gates still separate; successful CE7 alone does not authorize firmware loading.
+
+Reason for separate initialization phase: CE7 now proves the memory transport,
+while physical target config layout/contents and the missing warm/CPU handoff
+sequence are not yet verified. Do not claim CE7 timeout fix solved BMI timeout.

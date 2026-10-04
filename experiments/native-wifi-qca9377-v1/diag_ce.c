@@ -40,7 +40,7 @@ int qca_diag_begin(QcaDiagExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,QcaDma
  if(!x||x->phase!=QCA_DIAG_IDLE||!b||!b->access||!b->access->port||b->phase!=QCA_BUS_ACTIVE||!b->owned)return -1;
  x->bus=b;x->tx=tx;x->rx=rx;x->response=resp;x->started=x->last=now;
  QcaUefiPort*p=b->access->port;
- if(chip!=0x003821ff||now>UINT64_MAX-100000||bar>UINT32_MAX||p->bar_extent<0x1008fc
+ if(chip!=0x003821ff||now>UINT64_MAX-3000000||bar>UINT32_MAX||p->bar_extent<0x1008fc
   ||!registered(b,resp)||resp->bytes<4||!ring(b,tx,0)||!ring(b,rx,1)
   ||tx->descriptors==rx->descriptors)return fail(x,1);
  uintptr_t h=(uintptr_t)resp->host;
@@ -65,7 +65,12 @@ int qca_diag_poll(QcaDiagExchange*x,uint64_t now){
  if(x->phase==QCA_DIAG_DONE)return 1;
  if(x->phase!=QCA_DIAG_WAIT)return -1;
  if(now<x->last)return fail(x,6);
- x->last=now;if(now-x->started>=100000)return fail(x,7);
+ x->last=now;uint64_t elapsed=now-x->started;
+ x->last_elapsed=elapsed>UINT32_MAX?UINT32_MAX:(uint32_t)elapsed;
+ if(!x->polls)x->first_elapsed=x->last_elapsed;
+ if(x->polls<UINT32_MAX)x->polls++;
+ /* Rendering may delay the first poll. Observe completion before declaring a
+  * wait timeout; this proves observed completion, not device completion time. */
  if(x->bus->phase!=QCA_BUS_ACTIVE||!registered(x->bus,x->response))return fail(x,8);
  for(unsigned receive=0;receive<2;receive++){
   uint8_t*done=receive?&x->rx_done:&x->tx_done;if(*done)continue;
@@ -76,7 +81,7 @@ int qca_diag_poll(QcaDiagExchange*x,uint64_t now){
   if(rc<0)return fail(x,10);
   if(!rc){if(cookie!=(receive?2u:1u)||bytes!=4)return fail(x,11);*done=1;if(receive)x->bytes=bytes;}
  }
- if(!x->tx_done||!x->rx_done)return 0;
+ if(!x->tx_done||!x->rx_done)return elapsed>=3000000?fail(x,7):0;
  atomic_thread_fence(memory_order_acquire);const volatile uint8_t*p=x->response->host;
  for(unsigned i=0;i<4;i++)x->value|=(uint32_t)p[i]<<(8*i);
  x->phase=QCA_DIAG_DONE;return 1;

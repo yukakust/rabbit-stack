@@ -14,18 +14,18 @@ import actors_gate
 ROOT=build.ROOT
 sha=lambda b:hashlib.sha256(b).hexdigest()
 def fixture(source):
- source=diagnostic.fixture(source).replace('diagnostic_reply_size!=129','diagnostic_reply_size!=247').replace('"QPD\\1"','"QPD\\12"')
+ source=diagnostic.fixture(source).replace('diagnostic_reply_size!=129','diagnostic_reply_size!=247').replace('"QPD\\1"','"QPD\\13"')
  return ble_gate.fixture(build.one(source,'say("ACTUAL UEFI PCI ENUMERATION READ THROUGH MOCK USB ATT; QCA ABSENT; NO WRITES");',r'''
  if(le32(diagnostic_reply+129)!=7||le32(diagnostic_reply+141)!=1)return 1;
  uint8_t blob[5]={0x0c,10,0,246,0};
  if(att(blob,5,0x0d)||diagnostic_reply_size!=247)return 1;
  for(unsigned i=0;i<246;i++)if(diagnostic_reply[i+1])return 1;
  uint8_t final_blob[5]={0x0c,10,0,236,1};
- if(att(final_blob,5,0x0d)||diagnostic_reply_size!=209)return 1;
- for(unsigned i=0;i<208;i++)if(diagnostic_reply[i+1])return 1;
- uint8_t bad_blob[5]={0x0c,10,0,189,2};if(att(bad_blob,5,1))return 1;
+ if(att(final_blob,5,0x0d)||diagnostic_reply_size!=225)return 1;
+ for(unsigned i=0;i<224;i++)if(diagnostic_reply[i+1])return 1;
+ uint8_t bad_blob[5]={0x0c,10,0,205,2};if(att(bad_blob,5,1))return 1;
  say("ACTUAL UEFI PCI ENUMERATION READ THROUGH MOCK USB ATT; QCA ABSENT; NO WRITES");
- say("LONG QPD10 READ/BLOB BOUNDS PASS; QCA ABSENT; NO IRQ WRITES");
+ say("LONG QPD11 READ/BLOB BOUNDS PASS; QCA ABSENT; NO IRQ WRITES");
  say("ONE-SHOT WIFI RESET PROBE TARGET ABSENT; CLEAN CLOSE AND CITY RETAINED");
  '''))
 def main():
@@ -58,7 +58,7 @@ def main():
   *['-I'+str(p) for p in (ROOT,out,build.actors.OLD,build.actors.NATIVE)],
   str(ROOT/'bmi_probe_test.c'),*[str(out/n) for n in ('bmi_probe.c','diag_ce.c','reset_core.c','power_core.c','uefi_port.c','wake_core.c','pci_identity.c','rom_ready.c','bmi_transport.c','ce_ring.c','ce_hw.c','ce_uefi.c','ce_bus.c','dma_buffer.c','pcie_link.c','boot_irq.c')],'-o',str(exe)],check=True)
  log=''
- for scenario in range(48):
+ for scenario in range(52):
   result=subprocess.run([str(exe),str(scenario)],capture_output=True,text=True,check=True,env={**os.environ,'UBSAN_OPTIONS':'halt_on_error=1'});log+=result.stdout+result.stderr
  for name,source,defs in [('ble-baseline',build.actors.LINK/'hci_link.c',['-DBASELINE']),('ble-fixed',out/'ble_recovery_link.c',[])]:
   test=out/name
@@ -67,8 +67,8 @@ def main():
   result=subprocess.run([str(test)],capture_output=True,text=True,check=True)
   log+=name+': PASS\n'+result.stdout+result.stderr
  for line in log.splitlines():
-  if not line.startswith('QPD10_MOCK='):continue
-  raw=bytearray.fromhex(line.split('=',1)[1]);decoded=decode({'format':'QPD10','raw_hex':raw.hex()})
+  if not line.startswith('QPD11_MOCK='):continue
+  raw=bytearray.fromhex(line.split('=',1)[1]);decoded=decode({'format':'QPD11','raw_hex':raw.hex()})
   assert decoded['ce_before_first_halt']['all_available']
   if not decoded['ce7_diagnostic']['read_completed']:
    assert not decoded['ce_exchange_snapshot']['captured_before_cleanup']
@@ -76,12 +76,12 @@ def main():
   assert decoded['ce7_diagnostic']['response_word']=='00401000'
   snapshot=decoded['ce_exchange_snapshot']
   assert snapshot['captured_before_cleanup'] and snapshot['request_hex']=='08000000'
-  for offset,value in ((280,128),(284,4),(288,8),(304,0),(356,256),(360,1),(364,0xffffffff),(628,16),(648,8),(664,0),(632,0x400800),(632,0),(654,0),(644,0)):
+  for offset,value in ((280,128),(284,4),(288,8),(304,0),(356,256),(360,1),(364,0xffffffff),(628,16),(648,8),(664,0),(632,0x400800),(632,0),(654,0),(644,0),(712,0),(708,0),(700,0xffffffff)):
    bad=raw.copy();bad[offset:offset+4]=value.to_bytes(4,'little')
-   try:decode({'format':'QPD10','raw_hex':bad.hex()})
+   try:decode({'format':'QPD11','raw_hex':bad.hex()})
    except ValueError:pass
    else:raise AssertionError('invalid CE snapshot accepted')
- log+='QPD10 actual host snapshots + invalid flags/indices/address decoding PASS\n'
+ log+='QPD11 actual host snapshots + invalid flags/indices/address decoding PASS\n'
  (out/'host.log').write_text(log)
  gates=[actors_gate.qemu_gate(out,payload,test_transform=fixture),actors_gate.qemu_gate(out,payload,True,test_transform=fixture)]
  files=('decode_diagnostic.py','read_pci.m','ble_recovery_build.py','test_ble_recovery.c','verify_ble_recovery.py','bmi_build.py','diag_ce.c','diag_ce.h','diag-target.json','bringup.h','bmi_probe.c','bmi_probe_test.c','verify_bmi_profile.py','reset_core.c','reset_core.h','reset_test.c','reset-target.json','verify_reset.py','power_core.c','power_core.h',
@@ -91,7 +91,7 @@ def main():
  report={'status':'QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','payload_sha256':sha(payload),
   'source_sha256':{str(p.relative_to(ROOT.parent.parent)):sha(p.read_bytes()) for p in paths},
   'host_log_sha256':sha((out/'host.log').read_bytes()),'port_report_sha256':sha((out/'port-report.json').read_bytes()),
-  'reset_report_sha256':sha((out/'reset-report.json').read_bytes()),'gates':gates,'physical_dell_verified':False,'dma':True,'ce_report_sha256':sha((out/'ce-report.json').read_bytes()),'bmi_report_sha256':sha((out/'bmi-report.json').read_bytes()),'dma_report_sha256':sha((out/'dma-report.json').read_bytes()),'pcie_aspm_reversible':True,'boot_irq_host_isolation':True,'ble_untracked_disconnect_recovery':True,'ce_snapshot_pre_cleanup':True,'ce_registers_before_first_halt':True,'fixed_ce7_read_only':True,'firmware_upload':False,
+  'reset_report_sha256':sha((out/'reset-report.json').read_bytes()),'gates':gates,'physical_dell_verified':False,'dma':True,'ce_report_sha256':sha((out/'ce-report.json').read_bytes()),'bmi_report_sha256':sha((out/'bmi-report.json').read_bytes()),'dma_report_sha256':sha((out/'dma-report.json').read_bytes()),'pcie_aspm_reversible':True,'boot_irq_host_isolation':True,'ble_untracked_disconnect_recovery':True,'ce_snapshot_pre_cleanup':True,'ce_registers_before_first_halt':True,'fixed_ce7_read_only':True,'ce7_completion_before_timeout':True,'firmware_upload':False,
   'physical_operation':'reversible PCIe ASPM disable/restore + one-shot QCA reset + ROM-ready + four coherent DMA pages + fixed read-only CE7 target word + halt/close/reuse + CE0/1 BMI target-info; verified all-eight halt, bus-master-off/Flush/Unmap/Free/PCI restore; no firmware upload'}
  (out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print('BRINGUP GATES PASS payload='+sha(payload))
 if __name__=='__main__':main()

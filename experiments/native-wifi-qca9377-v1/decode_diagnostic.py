@@ -3,8 +3,8 @@
 import argparse,json,struct
 from pathlib import Path
 def decode(value):
- version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 0
- length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700
+ version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 11 if value.get('format')=='QPD11' else 0
+ length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700 if version==10 else 716
  if not version or not isinstance(value.get('raw_hex'),str) or len(value['raw_hex'])!=length*2:
   raise ValueError('bounded QPD1 envelope required')
  raw=bytes.fromhex(value['raw_hex'])
@@ -111,6 +111,13 @@ def decode(value):
    'tx_descriptor_hex':raw[672:680].hex(),'rx_descriptor_hex':raw[680:688].hex(),
    'response_word':f'{value:08x}' if flags&8 else None,'received_bytes':nbytes,
    'target_pointer_used':False,'target_config_written':False,'firmware_uploaded':False}
+ if version>=11:
+  first,last,polls,budget=struct.unpack_from('<4I',raw,700)
+  ce7=result['ce7_diagnostic']
+  if (not ce7['captured_before_cleanup'] and any(raw[700:716])) or (ce7['captured_before_cleanup'] and budget!=3000000):raise ValueError('invalid CE7 polling budget')
+  if (not polls and (first or last)) or (polls and (last<first)):raise ValueError('invalid CE7 polling time')
+  ce7.update(first_poll_elapsed_us=first if polls else None,last_poll_elapsed_us=last if polls else None,poll_count=polls,wait_budget_us=budget if budget else None,
+   completion_observed_after_wait_budget=bool(ce7['read_completed'] and last>=budget),device_completion_timestamp_known=False)
  if version==3:
   pm,csr,pcie,link,status,reserved=struct.unpack_from('<HHHHII',raw,128)
   if status>3 or reserved:raise ValueError('invalid power-capability snapshot')

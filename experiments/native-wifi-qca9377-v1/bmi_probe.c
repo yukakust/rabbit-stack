@@ -20,7 +20,7 @@ static QcaRomReady rom;static QcaCeAccess access;static QcaCeBus bus;
 static QcaDmaBuffer buffers[4];static QcaCeRing rings[2];static QcaBmiPipe pipes[2];static QcaBmiExchange exchange;
 static uint8_t exchange_snapshot[76];static unsigned snapshot_latched;
 static QcaDiagExchange diag;static QcaDiagPipe diag_pipes[2];
-static uint8_t diag_snapshot[80];static unsigned diag_latched;
+static uint8_t diag_snapshot[96];static unsigned diag_latched;
 static uint8_t prehalt_snapshot[264];static unsigned prehalt_engine;
 static unsigned bus_live,allocated,cleanup_slot,bus_retries,buffer_retries,succeeded;
 
@@ -149,6 +149,7 @@ static void snapshot_diag(void){
   for(unsigned n=0;n<4;n++)diag_snapshot[68+n]=((volatile uint8_t*)buffers[3].host)[n];
  }
  diag_put(72,diag.bytes,4);diag_put(8,flags,4);
+ diag_put(80,diag.first_elapsed,4);diag_put(84,diag.last_elapsed,4);diag_put(88,diag.polls,4);diag_put(92,3000000,4);
 }
 static void shutdown(uint64_t now){
  if(bus_live){

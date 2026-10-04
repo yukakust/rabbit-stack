@@ -6,6 +6,7 @@ typedef struct {QcaCeBus*bus;uint8_t receive;} QcaDiagPipe;
 typedef struct {
  QcaCeBus*bus;QcaCeRing*tx,*rx;QcaDmaBuffer*response;
  uint64_t started,last;uint32_t error,value,core,target,ce_address,bytes;
+ uint32_t first_elapsed,last_elapsed,polls;
  uint16_t command,initial[2],observed[2];uint8_t phase,tx_done,rx_done,mask;
 } QcaDiagExchange;
 int qca_diag_publish(void*,uint32_t);
