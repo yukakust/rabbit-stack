@@ -136,7 +136,16 @@ int qca_init_adapter_poll(QcaInitAdapter*a,uint64_t now){
   int rc=qca_ce_bus_stop_poll(&a->bus,now);
   if(rc<0){a->stop_started=0;if(++a->retries>=3)return retain(a,0x504);break;}
   if(!rc)break;
-  if(a->phase==QCA_INIT_CLEANUP_STOP){a->phase=QCA_INIT_CLEANUP;a->retries=0;break;}
+  if(a->phase==QCA_INIT_CLEANUP_STOP){
+   if(a->warm.owned){
+    /* Cold reset can clear CE halt bits. Re-stop AFTER ROM-ready before
+     * certifying recovery or releasing any of the retained mappings. */
+    if(a->recovery.phase!=QCA_RESET_DONE||a->recovery.error||a->recovery.owned
+     ||a->recovery_indicator!=2||qca_mapped_irq_guard(&a->mapped)||qca_ce_bus_released(&a->bus))return retain(a,0x50a);
+    a->recovery_verified=1;a->warm.owned=0;
+   }
+   a->phase=QCA_INIT_CLEANUP;a->retries=0;break;
+  }
   const QcaResetTarget target={0x80008,20000,1000000};
   if(qca_reset_begin(&a->recovery,&target,cold_read,cold_write,a,now)){
    if(!a->recovery.owned)return retain(a,0x505);
@@ -162,10 +171,9 @@ int qca_init_adapter_poll(QcaInitAdapter*a,uint64_t now){
   if(qca_mapped_irq_poll(&a->mapped)||((Memory)method(a,16))(a->mapped.irq->port->pci,2,0,0x3a028,1,&a->recovery_indicator)
    ||a->recovery_indicator==UINT32_MAX||(a->recovery_indicator&1))return retain(a,0x509);
   if(a->recovery_indicator&2){
-   if(qca_mapped_irq_quiesce(&a->mapped)||qca_ce_bus_released(&a->bus))return retain(a,0x50a);
-   /* Clear warm ownership ONLY under verified cold deassert/ROM/PCI/BM-off/
-    * all-eight-stop proof. No exposed mappings have been released yet. */
-   a->recovery_verified=1;a->warm.owned=0;cleanup(a);
+   if(qca_mapped_irq_quiesce(&a->mapped))return retain(a,0x50a);
+   /* Keep warm ownership until the next post-cold stop/proof succeeds. */
+   cleanup(a);
   }
   break;
  }

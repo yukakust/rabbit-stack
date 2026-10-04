@@ -1,0 +1,7 @@
+{
+  "status": "EXACT-POST-COLD-ROUTE-GATE-PASS",
+  "missing_post_cold_flag_rejected": true,
+  "owner_key_touched": false,
+  "signed": false,
+  "physical_fix_tested": false
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/yuka/rabbit-world/wifi-reset-v1/source/experiments/native-wifi-qca9377-v1/verify_init_probe.py", line 35, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/yuka/rabbit-world/wifi-reset-v1/source/experiments/native-wifi-qca9377-v1/verify_init_probe.py", line 25, in main
+    if run.returncode:raise RuntimeError(f'native probe scenario {scenario}: {run.stdout[-1000:]}\n{run.stderr}')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: native probe scenario 13: 
+test: /home/yuka/rabbit-world/wifi-reset-v1/source/experiments/native-wifi-qca9377-v1/init_probe_test.c:132: main: Assertion `!qca_stop()&&get(140)==1&&opens==closes&&!attributes' failed.
+

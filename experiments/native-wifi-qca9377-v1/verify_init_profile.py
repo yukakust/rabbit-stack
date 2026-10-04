@@ -9,7 +9,7 @@ ROOT=build.ROOT
 sha=lambda b:hashlib.sha256(b).hexdigest()
 STATUS='QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS'
 FLAGS=('native_init_entrypoints','mapped_irq_scope','warm_and_cold_recovery',
-       'full_channel_ownership','hash_bound_split_diagnostic','ble_untracked_disconnect_recovery')
+       'full_channel_ownership','hash_bound_split_diagnostic','ble_untracked_disconnect_recovery','post_cold_ce_stop')
 def fixture(source):
  return prior.fixture(source).replace('"QPD\\15"','"QPD\\16"').replace('diagnostic_reply_size!=121','diagnostic_reply_size!=185').replace('i<84','i<148').replace('12,0,121,0','12,0,185,0').replace('LONG QPD13','LONG QPD14')
 def main():
@@ -52,14 +52,14 @@ def main():
     try:decode({'format':'QPD14','raw_hex':bad.hex()})
     except ValueError:negative+=1
     else:raise AssertionError('false warm success accepted')
- assert cases==17
+ assert cases==18
  for name,source,defs in [('ble-baseline',build.actors.LINK/'hci_link.c',['-DBASELINE']),('ble-fixed',out/'ble_recovery_link.c',[])]:
   test=out/name
   subprocess.run(['gcc','-std=c11','-O1','-g','-Wall','-Wextra','-Werror','-fsanitize=address,undefined','-fno-sanitize-recover=all',
    '-I'+str(build.actors.LINK),'-I'+str(build.actors.NATIVE),str(ROOT/'test_ble_recovery.c'),str(source),*defs,'-o',str(test)],check=True)
   run=subprocess.run([str(test)],capture_output=True,text=True,check=True,timeout=30)
   log+=name+': PASS\n'+run.stdout+run.stderr
- log+=f'QPD14 exact17 snapshots + {negative} corrupt bounds/split/success rejections PASS\n'
+ log+=f'QPD14 exact18 snapshots + {negative} corrupt bounds/split/success rejections PASS\n'
  (out/'host.log').write_text(log)
  gates=[prior.actors_gate.qemu_gate(out,payload,test_transform=fixture),prior.actors_gate.qemu_gate(out,payload,True,test_transform=fixture)]
  assert inputs=={str(p.relative_to(ROOT.parent.parent)):sha(p.read_bytes()) for p in paths},'source changed during profile gate'

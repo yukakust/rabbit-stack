@@ -78,6 +78,7 @@ def main():
               'mapped_irq_scenarios': 36, 'legacy_no_dma_irq_guard_preserved': True,
               'native_pci_adapter_scenarios': 13,
               'cold_recovery_requires_rom_and_all_eight_stop': True,
+              'cold_reset_clears_ce_fixture': True,
               'warm_each_io_fault_injected': True, 'warm_each_phase_cancelled': True,
               'build_host': 'yukabox', 'native_profile_integrated': False,
               'physical_warm_reset': False, 'physical_target_writes': False,

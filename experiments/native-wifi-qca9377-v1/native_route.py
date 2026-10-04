@@ -54,13 +54,14 @@ def gates(directory,payload,world):
    for name,expected in subreport['source_sha256'].items():
     if reproduction['inputs'].get('experiments/native-wifi-qca9377-v1/'+name)!=expected:raise ValueError('component sources changed: '+name)
  if report['status']=='QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS':
-  for flag in ('native_init_entrypoints','mapped_irq_scope','warm_and_cold_recovery','full_channel_ownership','hash_bound_split_diagnostic','ble_untracked_disconnect_recovery'):
+  for flag in ('native_init_entrypoints','mapped_irq_scope','warm_and_cold_recovery','full_channel_ownership','hash_bound_split_diagnostic','ble_untracked_disconnect_recovery','post_cold_ce_stop'):
    if report.get(flag) is not True:raise ValueError('native init gate missing: '+flag)
   if report.get('target_ram_writes') is not False or report.get('firmware_upload') is not False or report.get('build_host')!='yukabox':raise ValueError('native init scope/host mismatch')
   for component,status in [('init','WARM-RESET-FULL-CHANNEL-CORE-HOST-COFF-PASS'),('probe','NATIVE-WARM-FULL-CHANNEL-PROBE-ENTRYPOINT-HOST-PASS')]:
    subreport=flow.read_json(directory/(component+'-report.json'))
    if subreport['status']!=status or flow.sha((directory/(component+'-report.json')).read_bytes())!=report[component+'_report_sha256'] or flow.sha((directory/(component+'-host.log')).read_bytes())!=subreport['host_log_sha256']:
     raise ValueError('native init component evidence mismatch: '+component)
+   if subreport.get('cold_reset_clears_ce_fixture') is not True:raise ValueError('post-cold CE reset fixture required')
    if subreport.get('build_host')!='yukabox':raise ValueError('native component host mismatch')
    for name,expected in subreport['source_sha256'].items():
     if reproduction['inputs'].get('experiments/native-wifi-qca9377-v1/'+name)!=expected:raise ValueError('native init source changed: '+name)
@@ -71,7 +72,7 @@ def gates(directory,payload,world):
      if subreport.get(flag) is not True:raise ValueError('native core proof missing: '+flag)
     if subreport.get('channel_scenarios')!=27 or subreport.get('mapped_irq_scenarios')!=36 or subreport.get('native_pci_adapter_scenarios')!=13:raise ValueError('native core scenarios differ')
     if flow.sha((directory/'pack-report.json').read_bytes())!=subreport['pack_report_sha256'] or subreport['pack_report_sha256']!=report['pack_report_sha256']:raise ValueError('source-pinned pack evidence changed')
-   if component=='probe' and (subreport.get('scenarios')!=17 or subreport.get('native_entrypoints_integrated') is not True):raise ValueError('native entrypoint proof missing')
+   if component=='probe' and (subreport.get('scenarios')!=18 or subreport.get('native_entrypoints_integrated') is not True):raise ValueError('native entrypoint proof missing')
  for sub,empty in [('actors-qemu',False),('actors-empty-boot-qemu',True)]:
   gate=flow.read_json(directory/sub/'report.json');log=(directory/sub/'observed.log').read_bytes()
   if (gate not in report['gates'] or gate['empty_boot']!=empty or gate['payload_sha256']!=flow.sha(payload)

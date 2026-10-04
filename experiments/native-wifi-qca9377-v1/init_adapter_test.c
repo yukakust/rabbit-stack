@@ -22,7 +22,7 @@ static Status EFIAPI adapter_memwrite(void*p,uint32_t w,uint8_t bar,uint64_t a,u
   assert(p==methods&&w==2&&!bar&&n==1&&!(command&4));uint32_t v=*(uint32_t*)in;
   if(a==0x80008){
    if(v&1){cold_asserts++;cold_operation_time=adapter_now;}
-   else{assert(adapter_now-cold_operation_time>=20000);cold_clears++;fw_indicator=selector==9?0:2;}
+   else{assert(adapter_now-cold_operation_time>=20000);cold_clears++;memset(reg,0,sizeof(reg));fw_indicator=selector==9?0:2;}
    cold80008=v;
    return selector==6?1:0;
   }

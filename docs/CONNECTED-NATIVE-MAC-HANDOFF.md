@@ -2280,3 +2280,40 @@ captured, so cause is not yet physically proven. Retained resources prevent
 module replacement; only owner-authorized physical reboot can clear current
 state. Prepare/verify fix before requesting reboot; never force-clear owned flags.
 No target RAM writes, CORE wake, firmware/association/DHCP or stream was performed.
+
+## 2026-10-04 — post-cold stop fix checked, not signed or sent
+
+Native26 trial/evidence committed and pushed611f7ee. Reproduced retention in
+actual native entrypoint fixture: cold reset now clears CE registers. Original
+adapter fails scenario13 cleanup assertion (saved baseline failure). Corrected
+adapter quiesces IRQ on ROM-ready, then re-stops all eight CEs AFTER cold reset,
+rechecks guarded PCI/ROM/all-eight-stop and only then marks recovery verified,
+clears warm ownership and begins guarded one-page cleanup. Sticky reset errors,
+ROM timeout, stop/flush failures still retain. Second warm ROM timeout itself is
+not resolved; actual post-cold physical registers were not captured.
+
+Added second-warm-ROM-timeout scenario17; actual entrypoints now18scenarios.
+Signing requires post_cold_ce_stop plus cold_reset_clears_ce_fixture in both core
+and actual entrypoint reports. Full Yukabox ASan/UBSan/COFF/pinned pack/normal and
+EMPTY UEFI city/ATT/BLE/decoder gates pass,273 current sources/two identical rebuilds
+and unchanged world13 C checks pass. Corrected payload SHA:
+b6f108f7a91e1786f31bc2db08922e100fd2667b4d360bab24c6d4867da891de.
+Mac exact native_route.gates passes and rejects missing new post-cold flag.
+Evidence evidence/2026-10-04/init-postcold-host. No fix signature/session/radio send.
+
+Physical engine remains26/d8a6dd..., world13 unchanged, all pending slots empty;
+retained14 mapped pages, BME off, module unload prohibited. Owner city/tail after26
+question remains pending. Need owner-confirmed physical Dell reboot, then fresh
+empty receiver and exact signed boot-city recovery before new physical native
+trial. NEVER infer reboot from RF loss or force-clear warm/map ownership.
+
+Recovery integration caveat: generic city_recovery.py chooses last_release_report
+and compiles native city on Mac; do not use it for this diagnostic profile or
+violate Yukabox-only native builds. reboot_recovery.py has proper remote preflight
+but prepare currently expects pending native/recovery, whereas26 completed and
+all slots are idle. Add/check explicit completed-current reservation or equivalent
+strict idle boot-recovery plan; do not fabricate a pending slot or reuse consumed26.
+Plan must bind exact completed26 receipt/base/counters, saved world and owner key;
+validate fresh empty boot only after owner confirms reboot. Restore counter>26 and
+world counter>13, then rerun current-world binding for the fixed native candidate.
+Preserve city/cat/history and immutable USB/bootstrap. Owner key stays Mac-local.

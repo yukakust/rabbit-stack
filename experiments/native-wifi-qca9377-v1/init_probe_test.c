@@ -85,7 +85,7 @@ static Status EFIAPI mem_write(void*p,uint32_t width,uint8_t bar,uint64_t off,ui
   uint32_t v=*(uint32_t*)in;assert(!(config[1]&4));
   if(off==0x3a028){assert(!v);fw=0;}
   else if(off==0x850)warm_lf=v;
-  else{warm_register=v&~0x40u;if(v&0x40){warm_cpus++;fw=(scenario==13||scenario==14)?0:2;
+  else{warm_register=v&~0x40u;if(v&0x40){warm_cpus++;fw=(scenario==13||scenario==14||(scenario==17&&warm_cpus==2))?0:2;
     if(scenario==15&&!warm_write_failed++){return EFI_ERROR(7);}}}
   return 0;
  }
@@ -93,7 +93,7 @@ static Status EFIAPI mem_write(void*p,uint32_t width,uint8_t bar,uint64_t off,ui
  assert(p==pci&&width==2&&!bar&&count==1);uint32_t value=*(uint32_t*)in;assert(value<=1);
  reset_writes++;last_reset_write=now_us;
  if(scenario!=4||value)reset_register=value;
- if(!value&&scenario!=4){fw=scenario==14&&warm_cpus?0:2;reset_cleared=1;if(scenario==28||scenario==29)link_control=0x143;if(scenario==31)boot_regs[2]=0x7fc00;if(scenario==5)config[1]&=~2u;}
+ if(!value&&scenario!=4){memset(registers,0,sizeof(registers));fw=scenario==14&&warm_cpus?0:2;reset_cleared=1;if(scenario==28||scenario==29)link_control=0x143;if(scenario==31)boot_regs[2]=0x7fc00;if(scenario==5)config[1]&=~2u;}
  return scenario==7?EFI_ERROR(7):0;
 }
 static void tick(unsigned ms){now_us=(uint64_t)ms*1000;qca_poll(ms);}
@@ -106,7 +106,7 @@ static Status EFIAPI bmi_config_write(void*p,uint32_t w,uint32_t off,uint64_t n,
  if(off==0x80){assert(p==pci&&w==1&&n==1);uint16_t v=*(uint16_t*)in;
   if(!(v&3)){link_disables++;if(scenario==18||(scenario==29&&link_disables>1))return 0;}
   if(scenario==19&&(v&3))return 0;
-  link_control=v;return scenario==17&&!(v&3)?EFI_ERROR(7):0;
+  link_control=v;return 0;
  }
  if(off==4){uint16_t v=*(uint16_t*)in;
   if(scenario==23&&(v&0x400))return 0;
@@ -115,7 +115,7 @@ static Status EFIAPI bmi_config_write(void*p,uint32_t w,uint32_t off,uint64_t n,
  }
  int rc=write_config(p,w,off,n,in);return scenario==15&&(*(uint16_t*)in&4)?EFI_ERROR(7):(Status)rc;}
 int main(int argc,char**argv){
- assert(argc==2);scenario=(unsigned)atoi(argv[1]);assert(scenario<=16);unsigned initial=scenario;
+ assert(argc==2);scenario=(unsigned)atoi(argv[1]);assert(scenario<=17);unsigned initial=scenario;
  assert(!port_previous_main());baseline();config[1]|=0x00100000;
  put(22,0x1fffff,8);put(38,0x200000,8);
  pci[48/8]=read_config;pci[16/8]=mem_read;pci[24/8]=mem_write;pci[56/8]=bmi_config_write;
@@ -134,7 +134,7 @@ int main(int argc,char**argv){
   assert(link_control==0x143&&!(config[1]&0x400)&&boot_regs[0]==0x12300e88);
   if(initial==0||initial==1||initial==5){assert(get(128)==5&&get(824)==2&&get(828)==2&&get(836)==14&&get(840)==14&&!get(816));}
   else if(initial!=8)assert(get(128)==6);
-  if(initial==13||initial==15){assert(get(844)==1&&get(856)==2&&!get(816)&&allocations==14);}
+  if(initial==13||initial==15||initial==17){assert(get(844)==1&&get(856)==2&&!get(816)&&allocations==14);}
  }
  assert(!(config[1]&4));
  qca_diagnostic[0]='Q';qca_diagnostic[1]='P';qca_diagnostic[2]='D';qca_diagnostic[3]=14;

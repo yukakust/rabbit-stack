@@ -169,7 +169,7 @@ pipe initializations, fourteen allocations and complete teardown/PCI/IRQ/link
 restore. Stage20 means retained resources, not successful connection. Old
 BMI/CE7 data regions remain zero in this profile and are rejected if populated.
 
-`verify_init_profile.py` binds actual native entrypoint fixtures17scenarios,
+`verify_init_profile.py` binds actual native entrypoint fixtures18scenarios,
 channel27/mapped-IRQ36/adapter13 plus warm every-I/O/every-phase fault fixtures,
 freestanding COFF, pinned upstream pack, split/decoder negatives, BLE loss
 baseline/regression and actual normal/EMPTY UEFI city/ATT checks. QEMU has no
@@ -177,3 +177,29 @@ QCA9377 and tests the absent-device path only. `remote_check.py --profile init`
 adds current-source two rebuilds and the unchanged live world package C checks.
 `native_route.gates` requires these separate proofs and exact source/ABI hashes
 before touching the owner key. Missing flags/subreports/hash bindings reject.
+
+
+### Post-cold stop correction after physical26
+
+Physical26 completed both CPU resets/channel configurations but timed out during
+second ROM wait. Recovery reached cold DONE and ROM2 yet retained all resources:
+its post-reset stopped-engine proof failed. Post-reset CE register values were
+not captured; reset-cleared CE state is a hypothesis, not a proven physical cause.
+
+Updated actual PCI fixtures now clear CE registers on cold deassertion. Original
+code fails scenario13 (cleanup prohibited). Corrected recovery quiesces ROM boot
+IRQ, performs another cooperative all-eight stop AFTER cold reset and ROM-ready,
+and only then verifies guarded PCI/ROM/all-eight-stop before clearing exclusive
+warm ownership and permitting cleanup. Sticky reset errors/ROM timeout/stop or
+flush failure still retain mappings and prohibit unload. Added actual second
+warm-ROM-timeout case17; all native entrypoint fixtures now18scenarios. Signing
+requires post_cold_ce_stop and reset-cleared CE fixture proofs in both core and
+entrypoint reports. This fix does not resolve or hide second ROM timeout itself.
+
+Current physical26 remains RETAINED; the fix cannot be hot-swapped through its
+blocked module unload. Only an owner-confirmed physical Dell reboot clears that
+RAM ownership. Then validate fresh empty receiver and restore saved city through
+an exact boot-recovery plan before further native trials. Never interpret RF loss
+as reboot, silently reset counters, replay26, run native compilation on Mac, or
+reuse old26 source-bound gates for changed source. Scene after26 still requires
+owner observation. No automatic reboot or new signed packet during fix checks.
