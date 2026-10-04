@@ -34,6 +34,13 @@ endpoints. It has no DMA, deadline, operational credit ledger or WMI dispatch;
 those remain obligations of the future native transport. Its injected-message
 sequence tests are included in `verify_htc.py`.
 
+`wmi_boot_info` validates the pinned WMI-TLV ABI and extracts bounded service
+bitmaps, regulatory band limits, memory requests and READY/MAC information.
+Malformed, duplicate and inconsistent events preserve the caller output. It
+only describes requirements; it neither allocates memory nor authorizes radio
+frequencies. The verifier pins the ABI macros in `wmi-tlv.c` as well as structs
+and includes injected-event tests with sanitizers.
+
 Still required: physical firmware startup; retained CE receive/transmit queues;
 native HTC service/credit state; WMI TLV init and physical scan; HTT data receive/transmit;
 protected local credential delivery; router authentication; DHCP/IP; actual
