@@ -1,0 +1,13 @@
+{
+  "native_counter": 38,
+  "exact_applied_receipt": true,
+  "payload_sha256": "8ececc0196f1cbc22430d0327b8c5974898284c3d6aa4827534c8ac678debf86",
+  "physical_setup_and_teardown": true,
+  "ram_receiver_phase": 4,
+  "world_counter": 15,
+  "world_semantic_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "main_firmware_started": false,
+  "wifi_connected": false,
+  "user_scene_observation": "pending async question; no new visibility/tail-motion claim",
+  "boot_asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-xn9ncwla"
+}

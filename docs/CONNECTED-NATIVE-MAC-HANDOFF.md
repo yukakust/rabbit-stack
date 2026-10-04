@@ -2983,3 +2983,32 @@ After physical evidence, implement live HTC/WMI/HTT, scan, protected credentials
 authentication, DHCP/IP, and actual Dell-Yukabox exchange. Wi-Fi is NOT connected
 and main firmware is NOT yet running at this checkpoint. Evidence host gates:
 `experiments/native-wifi-qca9377-v1/evidence/2026-10-05/boot-native38-host/`.
+
+## Native38 applied; full firmware asset transfer started (2026-10-05)
+
+Exact session `pci-native-nwwhys2x` reached all139552 transport bytes. The first
+paced stage hit its normal300s limit; the next read confirmed retained79200bytes
+and resumed the same session. COMMIT lost the Bluetooth connection, then the
+sender reconnected and obtained the exact SHA/session/counter38 APPLIED receipt.
+Controller state now native38 SHA
+`8ececc0196f1cbc22430d0327b8c5974898284c3d6aa4827534c8ac678debf86`,
+world15/semanticfa5a3250 unchanged. Physical QPD18 freshly confirms stage5/error0,
+setup4/error0, BMI05020001/type8, adapter12/cleanup14/DMAusers0. QWBT observer
+first saw RAMphase2, then freshly confirmed RAMphase4/error0, empty asset,
+boot_round0, no loader pin or main/HTC_READY. This physically verifies the new
+receiver/first hardware lifetime, not the main image. Evidence:
+`evidence/2026-10-05/boot-receiver-native38/`.
+
+User was asked asynchronously whether city/rooftop tail remain visible/moving.
+No answer at this checkpoint; do not turn host gates/receipt into physical pixels.
+
+Exact generation38 asset packets were signed locally after the new profile,
+current native receipt and fresh completed QPD18 checks. The saved session is
+`runs/text-world/firmware-ram-xn9ncwla`. State `hardware_trial_pending` binds it;
+currently data transfer is active, complete0/12 at checkpoint. Continue the SAME
+`boot_asset_route.py deliver --state .../state.json --session .../firmware-ram-xn9ncwla`;
+query and resume immutable packets/checkpoints after any bounded timeout. Do not
+regenerate signatures, increment generation, change world/source inputs or
+attempt another native engine while this trial is pending. No firmware startup,
+Wi-Fi scan/association, IP or Yukabox traffic has been confirmed. Password remains
+only in the owner-only local file; never print or send it on current GATT.
