@@ -1,0 +1,30 @@
+{
+  "status": "CURRENT-NATIVE21-PRE-BMI-SEQUENCE-GAP-RECORDED",
+  "current_probe_sha256": "6153b0a80d0719741573ef64aad799b501d448994d2fa2850708617f5aa690ff",
+  "reference_evidence_sha256": "899bc11c0052efded0ca25019d9ed5b88da2dbda4a13e4e857afed1525650347",
+  "current_sequence": [
+    "cold reset",
+    "ROM ready",
+    "host CE0/1 rings",
+    "bus mastering on",
+    "BMI target-info"
+  ],
+  "reference_missing_in_current_path": [
+    "QCA9377 cold-plus-warm reset path",
+    "diagnostic CE7 target initialization configuration",
+    "HI_OPTION_EARLY_CFG_DONE",
+    "target CPU wake after initialization configuration"
+  ],
+  "bmi_request_descriptor_matches_reviewed_reference": {
+    "command": 8,
+    "request_bytes": 4,
+    "receive_before_send": true,
+    "metadata": 16383,
+    "gather_and_swap_flags": 0
+  },
+  "hypothesis": "The native path starts BMI before target-side initialization handoff. Source difference verified; physical causal link not yet tested.",
+  "next_trial": "Separately validate a bounded read-only CE7 transfer, then physically read the fixed host-interest interconnect pointer; do not chase arbitrary pointers or write early-config flags until target ranges and ABI have been validated.",
+  "physical_bmi_reply": false,
+  "firmware_uploaded": false,
+  "wifi_association_verified": false
+}
