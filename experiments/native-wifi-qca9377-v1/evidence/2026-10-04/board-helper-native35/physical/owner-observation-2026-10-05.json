@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Asia/Tbilisi",
+  "owner_verbatim": "нет не видно, выключилось и сейчас видно маленький пустой экран и текст",
+  "city_visible": false,
+  "small_empty_surface_and_text": true,
+  "manual_reboot_confirmed": false,
+  "reset_cause_proven": false,
+  "recovery_plan": "native35-city-recovery-plan",
+  "recovery_plan_revalidated": true,
+  "recovery_activated": false,
+  "wifi_probe_in_recovery": false
+}

@@ -2810,3 +2810,11 @@ world15 are saved, no radio write from recovery, controller native35 pending
 remains intact. Public gates/plan reports archived under recovery-preflight;
 RRT/session/base64 blobs and private keys excluded. Await actual screen state
 before deciding recovery. No owner-confirmed reboot has occurred in this turn.
+
+2026-10-05 owner observation: city NOT visible; owner reports "выключилось"
+and now a small empty surface plus text. This supports volatile world loss,
+but does not establish a manual reboot or exact fault cause. Recovery plan/
+current controller/both saved sessions/source gates revalidated offline;
+47616byte standalone city driver disables Wi-Fi probing. Request one owner
+reboot to discard stale staging; restore only after confirmation and fresh-zero
+read-only receipt. Do not replay35 or activate recovery against current staging.
