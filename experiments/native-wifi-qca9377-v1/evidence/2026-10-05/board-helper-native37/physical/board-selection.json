@@ -1,0 +1,22 @@
+{
+  "catalog_sha256": "0fdcc7838f478da81704de88f7b33e28862110c6d5decf7818543f8e37e6cd98",
+  "record": {
+    "group": 0,
+    "name": "bus=pci,vendor=168c,device=0042,subsystem-vendor=1028,subsystem-device=1810",
+    "bytes": 8124,
+    "sha256": "b2713b77c725b0ff81af75c85c3aeba97885d0f40174f715b1e39d5a9d50f4e7"
+  },
+  "unique": true,
+  "data_upload": false,
+  "status": "PHYSICAL-IDENTITY-BOUND-EXACT-BOARD-SELECTED",
+  "bmi_board_id": 0,
+  "bmi_chip_id": 0,
+  "smbios_variant": "",
+  "selection_basis": "Completed helper query with unusable zero board ID; valid SMBIOS without BDF suffix; exact physical PCI/subsystem identity; pinned Linux PCI fallback rule",
+  "physical_pci_sha256": "9f8e4521f6710ceb2d600058174070bedb982673a87d688b0364ac1992a4ef4f",
+  "physical_board_query_sha256": "79a57757a3c831e19eaf6b513a575f51569f76b137127a7e6827832e83cc06f7",
+  "firmware_commit": "f9b926a6e1d67e09e54adc329c4e76be5f24a895",
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "main_firmware_started": false,
+  "wifi_connected": false
+}

@@ -2852,3 +2852,37 @@ remains. Evidence:2026-10-05/receiver-single-close-fix. Current native36 has
 no receiver buffers. Fresh board-query native37 gates are being regenerated
 against saved world15 before signing/radio. No physical probe from fix checks;
 never deploy generation34 fixture artifact or replay failed native35.
+
+## 2026-10-05 native37 physical board helper query PASSED
+
+Fresh gates bind current world15/new source closure. Native37 session
+pci-native-wqsvjyjg, payload654629798fd72bc5a6e2d9d645e3bd6323d35436d0cbace9bc77e5167e0e8e77
+117248bytes; EXACT APPLIED after normal COMMIT disconnect/reconnect. First
+staging timed out300s; same saved packet resumed from80500 and completed.
+Old35 was never replayed. Native36 has no receiver buffers, so its single-close
+completed; this differs from the reproduced native34 receiver close ABI bug.
+
+Read-only QBDI observations progress12commands/2728bytes ->83/20336 ->
+phase5/error0/submitted101/padded24196/polls101/result00000000. Exact helper
+loaded to chip RAM and executed GET_EEPROM_BOARD_ID0x10 successfully.
+SMBIOS state2/error0, no BDF suffix; BMI version05020001/type8. Final adapter
+CLOSED12/cleanup14/users0/rootstage5/error0. Fresh complete QPD18 independently
+confirms exact PCI168c:0042/subsystem1028:1810/revision31, masks31/31/5writes,
+all14 DMA released, host IRQ/PCI/link/wake restored. Native37/world15, pending
+null. Owner city/tail confirmation after37 requested and still pending.
+
+Zero board ID is unusable BMI identity; pinned upstream selection uses exact
+PCI name without variant. Unique group0 board-2 record SELECTED:
+bus=pci,vendor=168c,device=0042,subsystem-vendor=1028,subsystem-device=1810
+8124bytes SHAb2713b77c725b0ff81af75c85c3aeba97885d0f40174f715b1e39d5a9d50f4e7.
+Selection manifest binds physical raw QPD/QBDI hashes, source commits, complete
+cleanup, full catalog hash and exact record. This is board selection proof,
+NOT calibration/main image startup. Evidence:2026-10-05/board-helper-native37.
+
+NEXT: owner visual confirmation, then implement/gate a complete loader with
+its own signed-RAM asset ownership, exact chosen board/calibration/main LZ,
+BMI_DONE and valid HTC_READY. Native37 owns no reusable main-image staging;
+old native34 RAM is gone after reboot. Do not use former RAM receipt as current
+load authority. Main firmware not started, Wi-Fi not associated. No USB or OTP
+programming changes. Future receiver profiles must include the one-call close
+fix, fresh policy generation and full current-source/world gate.
