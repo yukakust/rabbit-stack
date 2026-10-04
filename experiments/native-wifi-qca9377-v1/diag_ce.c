@@ -36,12 +36,12 @@ int qca_diag_stop(void*context){
  QcaDiagPipe*p=context;if(!p||qca_ce_bus_released(p->bus))return -1;
  QcaUefiPort*port=p->bus->access->port;return ((Flush)method(port,104))(port->pci)?-1:0;
 }
-int qca_diag_begin(QcaDiagExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,QcaDmaBuffer*resp,uint32_t chip,uint64_t bar,uint64_t now){
+static int begin(QcaDiagExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,QcaDmaBuffer*resp,uint32_t chip,uint64_t bar,uint64_t now,uint32_t target,uint32_t bytes){
  if(!x||x->phase!=QCA_DIAG_IDLE||!b||!b->access||!b->access->port||b->phase!=QCA_BUS_ACTIVE||!b->owned)return -1;
  x->bus=b;x->tx=tx;x->rx=rx;x->response=resp;x->started=x->last=now;
  QcaUefiPort*p=b->access->port;
- if(chip!=0x003821ff||now>UINT64_MAX-3000000||bar>UINT32_MAX||p->bar_extent<0x1008fc
-  ||!registered(b,resp)||resp->bytes<4||!ring(b,tx,0)||!ring(b,rx,1)
+ if(chip!=0x003821ff||now>UINT64_MAX-3000000||bar>UINT32_MAX||p->bar_extent<(uint64_t)(0x100000|(target&0xfffff))+bytes
+  ||!registered(b,resp)||resp->bytes<bytes||!ring(b,tx,0)||!ring(b,rx,1)
   ||tx->descriptors==rx->descriptors)return fail(x,1);
  uintptr_t h=(uintptr_t)resp->host;
  for(unsigned i=0;i<2;i++){
@@ -51,14 +51,23 @@ int qca_diag_begin(QcaDiagExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,QcaDma
  if(((Config)method(p,48))(p->pci,1,4,1,&x->command)||x->command!=(uint16_t)(b->command|4)
   ||((Memory)method(p,16))(p->pci,2,0,0x3a000,1,&x->core)||x->core==0xffffffffu
   ||((uint64_t)(x->core&0x7ff)<<21)!=bar)return fail(x,2);
- x->target=0x004008f8;x->ce_address=(uint32_t)bar|0x1008f8;
+ x->target=target;x->ce_address=(uint32_t)bar|0x100000|(target&0xfffff);x->expected=bytes;
  x->initial[0]=x->observed[0]=tx->read;x->initial[1]=x->observed[1]=rx->read;
  if(qca_dma_expose(resp))return fail(x,3);
- for(unsigned i=0;i<4;i++)((volatile uint8_t*)resp->host)[i]=0;
+ for(unsigned i=0;i<bytes;i++)((volatile uint8_t*)resp->host)[i]=0;
  x->phase=QCA_DIAG_WAIT;atomic_thread_fence(memory_order_release);
- if(qca_ce_post(rx,resp->address,4,2,0,0))return fail(x,4);
- if(qca_ce_post(tx,x->ce_address,4,1,0,0))return fail(x,5);
+ if(qca_ce_post(rx,resp->address,bytes,2,0,0))return fail(x,4);
+ if(qca_ce_post(tx,x->ce_address,bytes,1,0,0))return fail(x,5);
  return 0;
+}
+int qca_diag_begin(QcaDiagExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,QcaDmaBuffer*resp,uint32_t chip,uint64_t bar,uint64_t now){
+ return begin(x,b,tx,rx,resp,chip,bar,now,0x004008f8,4);
+}
+int qca_diag_config_begin(QcaDiagExchange*x,const QcaDiagExchange*hi,unsigned slot,uint64_t now){
+ static const uint32_t addresses[3]={0x00401ee0,0x00400900,0x004008cc};
+ if(!x||!hi||x==hi||slot>=3||hi->phase!=QCA_DIAG_DONE||hi->error||!hi->tx_done||!hi->rx_done
+  ||hi->mask!=3||hi->target!=0x004008f8||hi->bytes!=4||hi->value!=0x00401ee0)return -1;
+ return begin(x,hi->bus,hi->tx,hi->rx,hi->response,0x003821ff,(uint64_t)(hi->core&0x7ff)<<21,now,addresses[slot],slot?4:36);
 }
 int qca_diag_poll(QcaDiagExchange*x,uint64_t now){
  if(!x)return -1;
@@ -79,7 +88,7 @@ int qca_diag_poll(QcaDiagExchange*x,uint64_t now){
   x->observed[receive]=(uint16_t)index;x->mask|=(uint8_t)(1u<<receive);
   int rc=qca_ce_complete(receive?x->rx:x->tx,index,&cookie,&bytes);
   if(rc<0)return fail(x,10);
-  if(!rc){if(cookie!=(receive?2u:1u)||bytes!=4)return fail(x,11);*done=1;if(receive)x->bytes=bytes;}
+  if(!rc){if(cookie!=(receive?2u:1u)||bytes!=x->expected)return fail(x,11);*done=1;if(receive)x->bytes=bytes;}
  }
  if(!x->tx_done||!x->rx_done)return elapsed>=3000000?fail(x,7):0;
  atomic_thread_fence(memory_order_acquire);const volatile uint8_t*p=x->response->host;

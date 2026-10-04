@@ -79,3 +79,57 @@ DMA failure retention, cached-MemoryEnable and Bluetooth recovery gates remain.
 Physical authorization remains exact source/world gates -> local owner signature
 -> Bluetooth saved session -> exact receipt -> fresh QPD11 -> owner scene check.
 Firmware upload, early-config writes and Wi-Fi association are subsequent work.
+
+
+## Bounded initialization reads after physical native23
+
+Native23 proved fixed4008f8 read completed with response401ee0. New candidate
+permits exactly three further read-only locations only after a completed HI read
+with that exact value, both completion bits and mask3,4receivedbytes, same owned
+bus/rings/response lifetime and fresh command/CORE/BAR validation for each read:
+1. Fixed401ee0,36bytes: pinned pci.h pcie_state,9LE32words.
+2. Fixed400900,4bytes: hi_early_alloc.
+3. Fixed4008cc,4bytes: hi_option_flag2.
+
+These addresses are finite Target Pack constants. A different returned HI pointer
+fails before any configuration read. No arbitrary pointer chase or write API.
+The structure's pipe/service pointers remain data; they are not adopted as
+authorized read/write destinations. Read completion does not prove config ABI.
+
+Reuse CE7 rings for all three reads, then the existing all-eight shutdown/flush
+before CE0/1 BMI. Four existing coherent pages only. Copy each successful response
+into owned telemetry before the next exchange overwrites it; preserve it during
+cleanup and reattach. Failure/cancellation suppresses BMI and uses guarded teardown.
+
+QPD12 retains QPD11 bytes0..715, appends84bytes, total800. New offsets:
+716phase idle0/state1/early2/option3/done4/fault5;720error;724readmask;728fixed
+state address;732last target;736completed length;740..775state9words;776early
+allocation;780optionflag2;784firstpollus;788lastpollus;792pollcount;796reserved0.
+Four ATT chunks246/246/246/62; offset801 rejected. Decoder rejects out-of-pack
+addresses/lengths, impossible masks, unavailable data and missing completed-HI
+authority. First HI snapshot still describes4bytes; later36byte read is separate.
+
+Target initialization writes/commit marker/CPU wake/firmware upload remain disabled
+until these physical fields, destination spans, exact target tables and reset
+sequence are validated in a separately gated candidate.
+
+
+## Physical long-read boundary and QPD13 transport
+
+Native24 exact applied, but physical CoreBluetooth returned738 of800bytes with
+no NSError. Envelope rejected; missing bytes were never padded or accepted.
+This establishes the observed transport boundary, not its underlying cause.
+
+QPD13 keeps the same800byte logical report, version13. Distinct diagnostic service
+UUID suffix8 advertises handles8..12; file service1..7 stays unchanged. Read-only
+characteristic UUID6/handle10 returns bytes0..715(716bytes, three ATT chunks).
+UUID7/handle12 returns120bytes: QIC1 header4, SHA256 of primary716bytes32,
+configuration bytes716..799(84bytes). No writes/notify/subscription are needed.
+
+Reader accepts a split prefix only when main probe stage5/6/7 is terminal. It
+checks extension exact length/header and prefix hash before assembling800bytes.
+A hash mismatch, active probe or missing extension fails without accepting data.
+Decoder's independent combiner checks the same framing; host tests reject partial
+parts, invalid header/hash and a correctly hashed active probe. Native UEFI tests
+read actual primary and extension via ATT, verify hash/bounds and reject out-of-range
+offsets. A hash binds the two reads; it is not device attestation.

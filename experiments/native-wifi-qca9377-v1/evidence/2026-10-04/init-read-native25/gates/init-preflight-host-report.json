@@ -1,0 +1,16 @@
+{
+  "status": "INIT-DESTINATION-PREFLIGHT-HOST-MOCK-PASS",
+  "physical_verified": false,
+  "verifier_sha256": "8af87c1a31816b058bcbf8fe8767f5da085495db3b38d00101e56718cc446a00",
+  "scenarios": [
+    {
+      "scenario": 0,
+      "valid_spans_pass": true,
+      "negative_cases": 10
+    },
+    {
+      "scenario": 59,
+      "invalid_pointer_rejected": true
+    }
+  ]
+}

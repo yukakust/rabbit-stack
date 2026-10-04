@@ -1,0 +1,34 @@
+core ['0'] PASS
+core ['1'] PASS
+core ['2'] PASS
+core ['3'] PASS
+core ['4'] PASS
+core ['5'] PASS
+core ['6'] PASS
+CE MMIO scenario 6: halt ACK/readback, setup/index/stop, drop/error/timeout retention PASS; MOCK ONLY
+core ['7'] PASS
+core ['8'] PASS
+core ['9'] PASS
+CE MMIO scenario 9: halt ACK/readback, setup/index/stop, drop/error/timeout retention PASS; MOCK ONLY
+uefi [] PASS
+CE UEFI allowlist/mapped-region/closing/ambiguous-write/source-only gates PASS; MOCK ONLY
+bus ['0'] PASS
+CE bus scenario 0: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY
+bus ['1'] PASS
+CE bus scenario 1: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY
+bus ['2'] PASS
+CE bus scenario 2: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY
+bus ['3'] PASS
+CE bus scenario 3: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY
+bus ['4'] PASS
+CE bus scenario 4: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY
+bus ['5'] PASS
+CE bus scenario 5: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY
+bus ['6'] PASS
+CE bus scenario 6: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY
+bus ['7'] PASS
+CE bus scenario 7: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY
+bus ['8'] PASS
+CE bus scenario 8: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY
+bus ['9'] PASS
+CE bus scenario 9: all-eight halt, command16 readback, ambiguous enable/stop retention, DMA close order PASS; MOCK ONLY

@@ -1,0 +1,52 @@
+{
+  "status": "INITIAL-CONFIG-SPANS-VALIDATED-TARGET-WRITES-DISABLED",
+  "target_tables": {
+    "pipe_config": {
+      "address": "00404d90",
+      "bytes": 168
+    },
+    "service_map": {
+      "address": "00404e50",
+      "bytes": 204
+    }
+  },
+  "config_flags": {
+    "address": "00401f00",
+    "observed": "00000001",
+    "candidate": "00000000"
+  },
+  "early_alloc": {
+    "address": "00400900",
+    "observed": "00000000",
+    "candidate": "6d8a0009"
+  },
+  "option_flag2": {
+    "address": "004008cc",
+    "observed": "00000000",
+    "commit_mask": "00000010",
+    "commit_enabled": false
+  },
+  "table_sizes_reference": "pinned core.c QCA9377 -> qca6174_values; hw.c num_target_ce_config_wlan7; pci.c service_map17records",
+  "target_pack_sha256": "c963eba57de7aeaf4d1d1e17780c1e202aaaee9530ab49ac73fcdbb43f15261d",
+  "ce_count": 8,
+  "target_pipe_records": 7,
+  "target_pipe_capacity_observed": 8,
+  "authorization_window": [
+    "00400000",
+    "00410000"
+  ],
+  "configuration_contents_verified": false,
+  "target_tables_generated": false,
+  "warm_reset_sequence_verified": false,
+  "target_writes_enabled": false,
+  "firmware_compatibility_verified": false,
+  "wifi_association_verified": false,
+  "device_attestation": false,
+  "counter": 25,
+  "payload_sha256": "4f4303fd5be75c7146b93ee1339b729b5ec62b56a1b85dbf6bb7cc5a7baee564",
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "raw_sha256": "c0113d9ad6d35cdf1002b65ef2eb2464d508d8a000bf6804659be958b0827afe",
+  "receipt_sha256": "78e8bb1404a11f6b6e76679fa38cf6cc8d0588294574cd2c5a9e126267d5d597",
+  "negative_cases": 10,
+  "verifier_sha256": "d932a50ebc3f62b48665b3e0518f104ebcd8aa5154274a84750ee98b21a07c98"
+}

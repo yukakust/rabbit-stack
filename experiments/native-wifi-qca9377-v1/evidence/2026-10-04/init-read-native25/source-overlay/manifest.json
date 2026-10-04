@@ -1,0 +1,6 @@
+{
+  "status": "EXACT-NATIVE25-HOST-PREFLIGHT-SOURCE-OVERLAY",
+  "file": "experiments/native-wifi-qca9377-v1/init_preflight.py",
+  "sha256": "8af87c1a31816b058bcbf8fe8767f5da085495db3b38d00101e56718cc446a00",
+  "reason": "The source-bound host preflight in native25 snapshot assumed10generic records. Hardware writes were disabled. Corrected host preflight uses pinned qca6174_values7records. Hardware payload unchanged; completed25 not replayable."
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "native-read-only-pci",
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 24,
+  "base_runtime_sha256": "99af1e47e32c2e416f807a56420be812b95e9e3ceaf9c65ae5c9342acfdc4342",
+  "base_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "d5800a77dfa7a00e25c8619fd988bd99769169c7a6b87d498ca0486bad1e9788",
+  "payload_sha256": "00ced69b23bae12dda5c593f6ebac1162823b145a0d941abcc980594f946ed09",
+  "package_sha256": "0f47dbf16ba890183756d10febffb688a44b642be4f59b747cdb18ef9a390b87",
+  "session_sha256": "7a6d8f618d2dcaf2cb2304276dbe9f893581487b2efc56e62f4edb27492ea221",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/runs/bmi-profile-native24",
+  "gate": {
+    "report_sha256": "2f892f55817b9443c3bd92f038e9e206504c0e450faeb9d799e76e2b769ae3e6",
+    "reproduction_sha256": "75075f6a252f9f839b28727e0c10048fdbca79f214c9195968ac8da83907c9a0",
+    "profile_status": "QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS"
+  },
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-o97jwm4t/query-0.log",
+      "log_sha256": "166dd8fd1254fcfa7ffc71fea89fe1382a658c4f1bf79b747e3ba1d69e281343"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-o97jwm4t/paced-stage-1.log",
+      "log_sha256": "c79847182489e1a02ef78e24f8d72f01e2abebf689e4aa11ff34c8a4f3c094bd"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-o97jwm4t/commit-2.log",
+      "log_sha256": "60a534ba029f2105f103854519cebd1419ac6aa7f1ec8de583e8fc1e2ee99367"
+    }
+  ],
+  "receiver_reported_applied": true,
+  "confirmed_received": 75552,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 74528,
+    "length": 74528,
+    "counter": 23,
+    "sha256": "53efd9afadc14f627a402cdbb0ad9d272a850630a72c803eb9076c2ae82194e4",
+    "session_matches": false,
+    "raw_hex": "52465301bc12894d2110666e2023010020230100020000001700000053efd9afadc14f627a402cdbb0ad9d272a850630a72c803eb9076c2ae82194e4",
+    "device_attestation": false
+  }
+}

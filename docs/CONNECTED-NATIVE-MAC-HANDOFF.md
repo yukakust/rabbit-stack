@@ -2107,3 +2107,81 @@ Next initialization boundary:
 Reason for separate initialization phase: CE7 now proves the memory transport,
 while physical target config layout/contents and the missing warm/CPU handoff
 sequence are not yet verified. Do not claim CE7 timeout fix solved BMI timeout.
+
+
+## 2026-10-04 — native24/25 initialization reads, transport fixed, QCA9377 spans checked
+
+Implemented finite CE7 configuration reads authorized only after completed HI
+word4008f8 equals401ee0: fixed pcie_state401ee0/36bytes, early_alloc400900/4,
+optionflag24008cc/4. Three successful reads copied into immutable telemetry
+before reuse. No arbitrary pointer chase, RAM writes, CPU wake or firmware upload.
+60 host ASan/UBSan scenarios include wrong HI value, each read timeout, partial
+completion, invalid36byte response length, cancellation and all-ones table pointer.
+Actual normal/EMPTY UEFI city/ATT, current-world checks and two rebuilds passed.
+
+Native24 exact APPLIED at saved pci-native-o97jwm4t,75552bytes. Physical Mac
+reader rejected800byte QPD12: returned738bytes(3*246) without NSError, missing62.
+No padding or acceptance of incomplete configuration. Exact UEFI QEMU four-chunk
+pass was not presented as proof of physical Mac read. Underlying limit cause
+not proven. Evidence init-read-native24 has receipt, rejected raw prefix, gates,
+and six-file source overlay/full manifest to recover24 from final25 tree.
+Completed24 must not be replayed.
+
+Native25 fixes transport: distinct diagnostic UUID8/service8..12, original file
+service1..7 retained. Read-only UUID6/handle10 main716bytes; UUID7/handle12 QIC1
+120bytes(header4+SHA256 main32+tail84). Reader requires terminal stage5/6/7 and
+hash match before assembling QPD13/800bytes. Independent combiner rejects partial
+parts, bad hash/header and correctly hashed active probe. Actual UEFI tests read
+main+extension and verify hash/bounds. Missing split gate rejects before signing.
+SHA binds two reads, does not attest device. Physical read now succeeds.
+
+Native25 exact APPLIED saved pci-native-y9dcccyr,76064bytes, staged one connection,
+COMMIT/reconnect correlated SHA/session/counter receipt. Current native counter25,
+payload4f4303fd5be75c7146b93ee1339b729b5ec62b56a1b85dbf6bb7cc5a7baee564,
+world13/package unchanged, journal idle12versions, all pending slots empty.
+Do NOT replay25 or use its old source-bound gates for a new payload.
+
+Fresh known F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF QPD13: configuration DONE4,
+error0/mask7. pcie_state words:
+404d90,404e50,8,0,0,0,0,3,1. Early_alloc0, optionflag20. CE7 four-byte HI
+read still completed, config last4byte read firstpoll390ms, both completion
+checks passed. Pipe address404d90, service404e50. BMI remains timeout805 with
+ROMready2; complete cleanup, DMAheld0, bus/reset unowned, ASPM0143 restored.
+Owner post25 city/tail check requested/pending. Native23 city visible confirmed
+previously; do not infer post25 scene or tail animation.
+
+Important source correction: initial HOST preflight incorrectly assumed10 target
+records from generic pci_target_ce_config_wlan and rejected physical overlap.
+No hardware writes were enabled or sent. Pinned core.c maps QCA9377 to
+qca6174_values; hw.c defines ce_count8 but num_target_ce_config_wlan7. hw.h
+NUM_TARGET_CE_CONFIG_WLAN resolves that chip-specific field. Correct write span
+is7*24=168bytes, not240 or192. Service map17*12=204bytes. The192byte pointer gap
+is available layout space, not proof that eight records should be written.
+CE7 diagnostic entry is not part of target's seven configuration records.
+Pinned QCA6174 override: record5directionOUT2/max2048; service record15pipe1.
+Pinned pci.c QCA9377 uses9IRAM banks.
+
+New init-target.json pins core.c/ce.h plus original hw/pci/targaddrs hashes.
+verify_init_pack.py independently checks source mappings/counts/record sizes,
+service count, bank count and override; Yukabox primary check passed.
+Corrected init_preflight.py passes exact physical25 receipt/current-state/raw
+checks, checks conservative400000..410000 spans/alignment/nonoverlap/reserved
+regions and flags, and runs10negative cases. Pipe168bytes404d90..404e38;
+service204bytes404e50..404f1c. Planned values: config_flags401f00 1->0;
+early_alloc400900 0->6d8a0009; optionflag24008cc remains0 until last commit.
+Tables not generated, warm-reset sequence not yet verified, target writes disabled.
+Physical field/destination validation is not full firmware compatibility.
+
+Evidence init-read-native25 has full physical raw/decoded/spans, primary source
+check, host reports, receipt/session metadata and old host-preflight source overlay.
+That overlay preserves the source-bound25 build input before corrected preflight;
+its generic10record host mock pass is not the corrected physical span gate.
+No generated binaries/session stream/private keys in Git. No USB/bootstrap write,
+Dell reboot or initialization RAM write performed by agent.
+
+Next hardware candidate>=26 after post25 scene observation: pin new init pack and
+verifier in source snapshot; implement QCA9377 cold+warm ordering and bounded
+CE7 config writes/readback with owned host channels matching advertised target
+tables. Only then EARLY_CFG_DONE0x10 as last marker and CORE_CTRL wake0x2000,
+then BMI/version query. All cancellation/error paths retain safe DMA ownership
+and guarded teardown. Firmware/WPA/DHCP/streaming remain later steps.

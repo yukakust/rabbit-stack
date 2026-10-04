@@ -45,6 +45,8 @@ def gates(directory,payload,world):
    if report.get('ce_registers_before_first_halt') is not True:raise ValueError('bounded pre-halt CE register gate required')
    if report.get('fixed_ce7_read_only') is not True:raise ValueError('fixed read-only CE7 gate required')
    if report.get('ce7_completion_before_timeout') is not True:raise ValueError('CE7 completion-before-timeout gate required')
+   if report.get('bounded_init_config_read') is not True:raise ValueError('bounded initialization configuration read gate required')
+   if report.get('hash_bound_split_diagnostic') is not True:raise ValueError('hash-bound split diagnostic gate required')
   for component,status in components:
    subreport=flow.read_json(directory/(component+'-report.json'))
    if (subreport['status']!=status or flow.sha((directory/(component+'-report.json')).read_bytes())!=report[component+'_report_sha256']

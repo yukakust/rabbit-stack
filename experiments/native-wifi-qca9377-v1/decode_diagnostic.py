@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Interpret a bounded read-only PCI report; never infers BMI/firmware support."""
-import argparse,json,struct
+import argparse,json,struct,hashlib
 from pathlib import Path
+def combine_qpd13(prefix,extension):
+ if len(prefix)!=716 or prefix[:4]!=b'QPD'+bytes([13]) or len(extension)!=120 or extension[:4]!=b'QIC'+bytes([1]):raise ValueError('invalid split diagnostic envelope')
+ if hashlib.sha256(prefix).digest()!=extension[4:36]:raise ValueError('split diagnostic hash mismatch')
+ if struct.unpack_from('<I',prefix,128)[0] not in (5,6,7):raise ValueError('probe still active')
+ return {'format':'QPD13','raw_hex':(prefix+extension[36:]).hex(),'read_strategy':'split_sha256'}
 def decode(value):
- version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 11 if value.get('format')=='QPD11' else 0
- length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700 if version==10 else 716
+ version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 11 if value.get('format')=='QPD11' else 12 if value.get('format')=='QPD12' else 13 if value.get('format')=='QPD13' else 0
+ length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700 if version==10 else 716 if version==11 else 800
  if not version or not isinstance(value.get('raw_hex'),str) or len(value['raw_hex'])!=length*2:
   raise ValueError('bounded QPD1 envelope required')
  raw=bytes.fromhex(value['raw_hex'])
@@ -118,6 +123,24 @@ def decode(value):
   if (not polls and (first or last)) or (polls and (last<first)):raise ValueError('invalid CE7 polling time')
   ce7.update(first_poll_elapsed_us=first if polls else None,last_poll_elapsed_us=last if polls else None,poll_count=polls,wait_budget_us=budget if budget else None,
    completion_observed_after_wait_budget=bool(ce7['read_completed'] and last>=budget),device_completion_timestamp_known=False)
+ if version>=12:
+  phase,error,mask,address,target,nbytes=struct.unpack_from('<6I',raw,716)
+  words=list(struct.unpack_from('<11I',raw,740));first,last,polls,reserved=struct.unpack_from('<4I',raw,784)
+  if phase>5 or mask&~7 or reserved or (polls and last<first) or (not polls and (first or last)):raise ValueError('invalid configuration snapshot')
+  if phase==0 and any(raw[716:800]):raise ValueError('unstarted configuration data')
+  preflight_rejected=phase==5 and error==1 and mask==0 and target==0 and nbytes==0 and not any(words) and not any((first,last,polls))
+  if phase and (not result['ce7_diagnostic']['read_completed'] or f'{address:08x}'!=result['ce7_diagnostic']['response_word'] or (not preflight_rejected and address!=0x00401ee0)):raise ValueError('configuration read lacks validated fixed state address')
+  if target not in (0,0x00401ee0,0x00400900,0x004008cc) or nbytes not in (0,4,36):raise ValueError('configuration address/length outside Target Pack')
+  if (not mask&1 and any(words[:9])) or (not mask&2 and words[9]) or (not mask&4 and words[10]):raise ValueError('unread configuration fields')
+  if phase==4 and (error or mask!=7 or target!=0x004008cc or nbytes!=4):raise ValueError('incomplete configuration snapshot')
+  if phase==5 and not error:raise ValueError('configuration fault missing error')
+  result['initial_config_read']={'phase':phase,'error':error,'read_mask':mask,'read_completed':phase==4 and mask==7,
+   'interconnect_word_value':f'{address:08x}' if phase else None,'fixed_state_address':'00401ee0' if phase and not preflight_rejected else None,'last_target_address':f'{target:08x}',
+   'state_words':[f'{n:08x}' for n in words[:9]],'pipe_config_address':f'{words[0]:08x}' if mask&1 else None,
+   'service_map_address':f'{words[1]:08x}' if mask&1 else None,'early_alloc':f'{words[9]:08x}' if mask&2 else None,
+   'option_flag2':f'{words[10]:08x}' if mask&4 else None,'first_poll_elapsed_us':first if polls else None,
+   'last_poll_elapsed_us':last if polls else None,'poll_count':polls,'target_config_written':False,'pointers_followed':False,
+   'device_completion_timestamp_known':False,'configuration_compatibility_verified':False}
  if version==3:
   pm,csr,pcie,link,status,reserved=struct.unpack_from('<HHHHII',raw,128)
   if status>3 or reserved:raise ValueError('invalid power-capability snapshot')

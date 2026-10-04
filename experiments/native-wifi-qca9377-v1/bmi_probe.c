@@ -21,6 +21,8 @@ static QcaDmaBuffer buffers[4];static QcaCeRing rings[2];static QcaBmiPipe pipes
 static uint8_t exchange_snapshot[76];static unsigned snapshot_latched;
 static QcaDiagExchange diag;static QcaDiagPipe diag_pipes[2];
 static uint8_t diag_snapshot[96];static unsigned diag_latched;
+static QcaDiagExchange hi_diag,config_diag;
+static uint32_t config_phase,config_error,config_mask,config_words[11];
 static uint8_t prehalt_snapshot[264];static unsigned prehalt_engine;
 static unsigned bus_live,allocated,cleanup_slot,bus_retries,buffer_retries,succeeded;
 
@@ -44,6 +46,10 @@ static void telemetry(void){
  for(unsigned i=0;i<sizeof(exchange_snapshot);i++)qca_diagnostic[280+i]=exchange_snapshot[i];
  for(unsigned i=0;i<sizeof(prehalt_snapshot);i++)qca_diagnostic[356+i]=prehalt_snapshot[i];
  for(unsigned i=0;i<sizeof(diag_snapshot);i++)qca_diagnostic[620+i]=diag_snapshot[i];
+ record(716,config_phase,4);record(720,config_error,4);record(724,config_mask,4);
+ record(728,config_phase?hi_diag.value:0,4);record(732,config_diag.target,4);record(736,config_diag.bytes,4);
+ for(unsigned i=0;i<11;i++)record(740+4*i,config_words[i],4);
+ record(784,config_diag.first_elapsed,4);record(788,config_diag.last_elapsed,4);record(792,config_diag.polls,4);record(796,0,4);
 }
 typedef Status(EFIAPI *Config)(void*,uint32_t,uint32_t,uint64_t,void*);
 typedef Status(EFIAPI *Memory)(void*,uint32_t,uint8_t,uint64_t,uint64_t,void*);
@@ -256,7 +262,23 @@ void qca_poll(uint64_t ms){
  else if(stage==14){
   int rc=qca_diag_poll(&diag,now);
   if(rc<0){failed=0xd00|diag.error;shutdown(now);}
-  else if(rc>0){snapshot_diag();stage=15;if(qca_ce_bus_stop_begin(&bus,now)){failed=0xd20;shutdown(now);}}
+  else if(rc>0){
+   snapshot_diag();hi_diag=diag;config_phase=1;
+   if(qca_diag_config_begin(&config_diag,&hi_diag,0,now)){config_phase=5;config_error=1;failed=0xe01;shutdown(now);}
+   else stage=17;
+  }
+ }
+ else if(stage==17){
+  int rc=qca_diag_poll(&config_diag,now);
+  if(rc<0){config_phase=5;config_error=0x100|config_diag.error;failed=0xe00|config_error;shutdown(now);}
+  else if(rc>0){
+   unsigned slot=config_phase-1,first=slot?slot+8:0,n=slot?1:9;
+   const volatile uint8_t*p=buffers[3].host;
+   for(unsigned i=0;i<n;i++){uint32_t v=0;for(unsigned j=0;j<4;j++)v|=(uint32_t)p[4*i+j]<<(8*j);config_words[first+i]=v;}
+   config_mask|=1u<<slot;
+   if(slot==2){config_phase=4;stage=15;if(qca_ce_bus_stop_begin(&bus,now)){failed=0xd20;shutdown(now);}}
+   else{config_phase++;config_diag=(QcaDiagExchange){0};if(qca_diag_config_begin(&config_diag,&hi_diag,slot+1,now)){config_phase=5;config_error=2;failed=0xe02;shutdown(now);}}
+  }
  }
  else if(stage==15){
   int rc=qca_ce_bus_stop_poll(&bus,now);

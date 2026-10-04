@@ -5,15 +5,28 @@ import ble_recovery_build as ble
 ROOT,CITY,actors,one=base.ROOT,base.CITY,base.actors,base.one
 def sources(directory):
  base.sources(directory)
- header=(directory/'pci_collect.h').read_text().replace('128u','716u')
+ header=(directory/'pci_collect.h').read_text().replace('128u','800u')
  (directory/'pci_collect.h').write_text(header)
  collector=(directory/'pci_collect.c').read_text()
  collector=one(collector,'uint8_t qca_diagnostic[QCA_DIAGNOSTIC_SIZE];','uint8_t qca_diagnostic[QCA_DIAGNOSTIC_SIZE];\nvoid*qca_controller;')
  collector=one(collector,' qca_diagnostic[0]=', ' qca_controller=0;\n qca_diagnostic[0]=')
- collector=one(collector,"qca_diagnostic[3]=1;","qca_diagnostic[3]=11;")
+ collector=one(collector,"qca_diagnostic[3]=1;","qca_diagnostic[3]=13;")
  collector=one(collector,'   flags|=2;','   flags|=2;qca_controller=handles[i];')
  collector=one(collector,' put(4,flags,4);',' if(flags!=15||targets!=1)qca_controller=0;\n put(4,flags,4);')
  (directory/'pci_collect.c').write_text(collector)
+ # Separate bounded extension: physical CoreBluetooth stopped the800byte QPD12
+ # at738bytes. Keep the main read716bytes and extension120bytes/hash-bound.
+ gatt=(directory/'diagnostic_gatt.c').read_text()
+ gatt=one(gatt,'#include "pci_collect.h"','#include "pci_collect.h"\n#include "sha256.h"')
+ for old,new in [('p[7]==5?8:0','p[7]==8?8:0'),('start==1?7:10','start==1?7:12'),('start==1?1:5','start==1?1:8'),
+  ('handle<=9?9:0','handle<=9?9:handle<=11?11:0'),('declaration==9?6:declaration/2+1','declaration==9?6:declaration==11?7:declaration/2+1'),
+  ('handle>10','handle>12'),('||handle==9)','||handle==9||handle==11)'),('handle==10?6:(handle-1)/2+1','handle==10?6:handle==12?7:(handle-1)/2+1'),
+  ('handle==1?1:5','handle==1?1:8'),('handle<=10?','handle<=12?')]:
+  assert old in gatt,old
+  gatt=gatt.replace(old,new)
+ gatt=one(gatt,'if(handle==10){for(unsigned i=0;i<QCA_DIAGNOSTIC_SIZE;i++)value[i]=qca_diagnostic[i];length=QCA_DIAGNOSTIC_SIZE;}',
+  "if(handle==10){for(unsigned i=0;i<716;i++)value[i]=qca_diagnostic[i];length=716;}\n  else if(handle==12){value[0]='Q';value[1]='I';value[2]='C';value[3]=1;rabbit_sha256(value+4,qca_diagnostic,716);for(unsigned i=0;i<84;i++)value[36+i]=qca_diagnostic[716+i];length=120;}")
+ (directory/'diagnostic_gatt.c').write_text(gatt)
  driver=(directory/'driver.c').read_text()
  driver=one(driver,'void qca_collect(SystemTable*);','void qca_collect(SystemTable*);\n#include "bringup.h"')
  driver=one(driver,' qca_collect(st);',' qca_collect(st);qca_start(st,city_clock_ms());')

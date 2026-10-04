@@ -1,0 +1,20 @@
+{
+  "status": "PINNED-QCA9377-INITIAL-CONFIG-PARAMETERS-PASS",
+  "pack_sha256": "c963eba57de7aeaf4d1d1e17780c1e202aaaee9530ab49ac73fcdbb43f15261d",
+  "verifier_sha256": "7e98b56a8da6475cc77b233129e76cc19a734aa7e2099d0ac41645d9009892e7",
+  "reference_sha256": {
+    "pci.c": "e5c8f5aec5312eb83bef7372706cdb7c979fcf81e423bb4fced3f18591e994fd",
+    "hw.c": "7e176346c8def2054138bf3458acd4fbda7fc01d0753b77985f82215b51400f4",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "targaddrs.h": "9daa97806342fcb0e8584c1ce69d094d3d1e281905fa9d488781b7f5e6db5b74",
+    "core.c": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2",
+    "ce.h": "53dfddb64dd54b61add0b14d36bc7fad016c3fc4ab63b8bff5f7b25fc93538b1"
+  },
+  "ce_count": 8,
+  "target_pipe_records": 7,
+  "target_pipe_bytes": 168,
+  "service_map_records": 17,
+  "service_map_bytes": 204,
+  "physical_target_writes": false,
+  "firmware_compatibility_verified": false
+}

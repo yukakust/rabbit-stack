@@ -27,5 +27,15 @@
   "timeout_us": 3000000,
   "reference_timeout_us": 10000,
   "timeout_note": "Cooperative3second wait budget. Observe completion before timeout; record polling delay. Reference busy-polls10ms. No device completion timestamp claimed.",
-  "status": "CANDIDATE-READ-ONLY-CE7-NOT-PHYSICALLY-VERIFIED"
+  "status": "PHYSICAL-CE7-WORD-READ-CONFIRMED-NATIVE23; INITIAL-CONFIG-READ-CANDIDATE",
+  "initial_config_read": {
+    "required_completed_interconnect_word": "00401ee0",
+    "fixed_state_address": "00401ee0",
+    "fixed_state_bytes": 36,
+    "fixed_early_alloc": "00400900",
+    "fixed_option_flag2": "004008cc",
+    "target_writes": false,
+    "arbitrary_pointer_chase": false,
+    "reference_layout": "pci.h pcie_state nine LE32 words; targaddrs.h hi_early_alloc and hi_option_flag2"
+  }
 }
