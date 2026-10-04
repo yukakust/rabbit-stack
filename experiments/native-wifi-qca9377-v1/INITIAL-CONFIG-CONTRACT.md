@@ -1,7 +1,9 @@
 # QCA9377 initial configuration boundary
 
-This is preparation for the next native trial, not a Wi-Fi connection or a
-physical initialization write. Dell remains on applied native25/world13.
+Physical native30/world14 passed the warm/reset/full-channel one-shot trial.
+Target configuration writes, firmware loading and Wi-Fi connection remain pending.
+See the final evidence sections for current status; early sections record the
+initial native25 preparation boundary.
 
 ## Checked data
 
@@ -75,7 +77,7 @@ gates before signing; old native25 gates do not cover them.
 `warm_core.c/h` implements the pinned two-CPU-reset sequence as bounded polling
 steps. The pipe callback is cooperative (-1 fault,0 waiting,1 complete), allowing
 the adapter to halt and configure all engines without a blocking loop. Each ROM
-wait is bounded3s; the whole sequence is bounded7s. Every normal poll rechecks
+wait is bounded3s; the whole sequence is bounded20s (originally7s). Every normal poll rechecks
 the adapter guard. A failed read/write, invalid clock, failed guard or cancelled
 operation keeps exclusive ownership. CE reset ownership is marked before its
 possibly ambiguous assertion and is removed only after10ms and verified clear.
@@ -225,3 +227,18 @@ length/hash/bounds and inconsistent failure/success. Actual native fixture17
 forces second ROM timeout and verifies original failure phase11, zero last warm
 indicator, elapsed>=3s and both poll counters survive successful cold cleanup.
 This does not prove the cause of the timeout or successful Wi-Fi association.
+
+
+## Cooperative wall-clock bound after physical29
+
+QPD15 on Dell recorded second ROM failure phase11, indicator0, elapsed1175000us,
+first polls4/second polls2. This is below that phase's3s deadline; global7s
+TIMEOUT was reached while the per-phase budget remained. PCI guards, MMIO,
+pipe configuration and gaps between native polls consume the global budget.
+The new candidate changes ONLY overall warm bound7s ->20s, preserving each
+ROM3s limit, I/O order, IRQ windows, DMA/BME policy and fault/cancel recovery.
+Native entrypoint fixture18 uses600ms poll intervals; old7s baseline fails the
+success assertion, new20s must pass with complete cleanup. Total scenarios19.
+Slow/never-finishing pipe callback still times out at20s, with retained ownership
+and bounded recovery; timer overflow guard uses the same20s. IRQ-window
+source discrepancy is a separate later hypothesis, deliberately unchanged here.

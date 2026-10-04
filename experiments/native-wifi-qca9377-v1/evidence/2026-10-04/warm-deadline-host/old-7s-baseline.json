@@ -1,0 +1,9 @@
+{
+  "status": "OLD-7S-BASELINE-FAILS-SLOW-COOPERATIVE-NATIVE-SUCCESS",
+  "scenario": 18,
+  "exit_code": -6,
+  "stderr": "SLOW-COOPERATIVE stage=6 error=5122 failure_phase=10 elapsed=1200000 cpu=2 pipes=1\nrabbit-warm7-slow-baseline: /home/yuka/rabbit-world/wifi-reset-v1/source/experiments/native-wifi-qca9377-v1/init_probe_test.c:136: main: Assertion `get(128)==5&&get(824)==2&&get(828)==2&&get(836)==14&&get(840)==14&&!get(816)' failed.\n",
+  "warm_source_sha256": "f54ea1eea9dc399488f8ae9b3a7d31db2244df04d9533cb0ffb7aba69d68bb19",
+  "fixture_sha256": "1a4a98e576eba6dcf9e7f1fbd5417fe4d5a4a983a2869788562fc3dbf7ab6e41",
+  "physical": false
+}

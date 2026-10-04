@@ -42,7 +42,7 @@ static int pipes(void*c){Mock*m=c;assert(m->cpu==m->pipes+1);if(m->pipe_waits){m
 static void setup(QcaWarm*w,Mock*m){memset(w,0,sizeof(*w));memset(m,0,sizeof(*m));m->w=w;m->reset=0x100;m->lf=0x14;m->indicator=2;}
 static int step(QcaWarm*w,Mock*m,uint64_t now){m->now=now;return qca_warm_poll(w,now);}
 static void run(QcaWarm*w,Mock*m){
- for(uint64_t t=m->now;t<7100000;t+=1000)if(step(w,m,t))return;
+ for(uint64_t t=m->now;t<20100000;t+=1000)if(step(w,m,t))return;
  assert(0);
 }
 int main(void){
@@ -81,7 +81,7 @@ int main(void){
  setup(&w,&m);assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,0));m.guard_error=1;assert(step(&w,&m,1)==-1&&w.error==QCA_WARM_GUARD&&!m.operations);
  setup(&w,&m);m.pipes_error=1;assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,0));run(&w,&m);assert(w.error==QCA_WARM_GUARD&&!m.ce_asserts);
  setup(&w,&m);m.pipe_waits=20;assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,0));run(&w,&m);assert(w.phase==QCA_WARM_DONE&&w.pipe_inits==2);
- setup(&w,&m);m.pipe_waits=8000;assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,0));run(&w,&m);assert(w.error==QCA_WARM_TIMEOUT&&!m.ce_asserts);
+ setup(&w,&m);m.pipe_waits=25000;assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,0));run(&w,&m);assert(w.error==QCA_WARM_TIMEOUT&&!m.ce_asserts);
  setup(&w,&m);m.rom_timeout=1;assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,0));run(&w,&m);assert(w.error==QCA_WARM_TIMEOUT&&!m.ce_asserts);
  setup(&w,&m);m.rom_error=1;assert(!qca_warm_begin(&w,read32,write32,guard,pipes,&m,0));run(&w,&m);assert(w.error==QCA_WARM_ROM_ERROR&&!m.ce_asserts);
  for(unsigned kind=0;kind<3;kind++){
@@ -99,6 +99,6 @@ int main(void){
  assert(w.ce_owned);m.guard_error=1;operations=m.operations;
  assert(qca_warm_recover_ce(&w,m.now+10000)==-1&&m.operations==operations&&w.ce_owned);
  m.guard_error=0;assert(qca_warm_recover_ce(&w,m.now-1)==-1&&m.operations==operations&&w.ce_owned);
- assert(step(&w,&m,7000000)==-1&&w.error==QCA_WARM_TIMEOUT&&!w.ce_owned&&w.owned);
+ assert(step(&w,&m,20000000)==-1&&w.error==QCA_WARM_TIMEOUT&&!w.ce_owned&&w.owned);
  printf("WARM-ORDER-CANCELLATION-IO-OWNERSHIP-PASS\n");return 0;
 }

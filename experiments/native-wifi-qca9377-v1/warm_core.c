@@ -37,7 +37,7 @@ static int deassert_ce(QcaWarm*w,uint64_t now){
  w->phase=QCA_WARM_CPU_SECOND;return 0;
 }
 int qca_warm_begin(QcaWarm*w,QcaRead32 r,QcaWrite32 wr,QcaWarmCheck check,QcaWarmPipes pipes,void*c,uint64_t now){
- if(!w||!r||!wr||!check||!pipes||w->owned||w->phase||now>UINT64_MAX-7000000||check(c))return -1;
+ if(!w||!r||!wr||!check||!pipes||w->owned||w->phase||now>UINT64_MAX-20000000||check(c))return -1;
  w->read=r;w->write=wr;w->check=check;w->pipes=pipes;w->context=c;
  w->started=w->last=w->operation=w->next=now;w->owned=1;w->phase=QCA_WARM_SI_ASSERT;return 0;
 }
@@ -48,7 +48,7 @@ int qca_warm_poll(QcaWarm*w,uint64_t now){
  if(now<w->last)return fail(w,QCA_WARM_CLOCK);
  w->last=now;
  if(w->check(w->context))return fail(w,QCA_WARM_GUARD);
- if(now-w->started>=7000000){w->error=QCA_WARM_TIMEOUT;w->cancelled=1;}
+ if(now-w->started>=20000000){w->error=QCA_WARM_TIMEOUT;w->cancelled=1;}
  if(w->cancelled&&!w->ce_owned)return fail(w,w->error?w->error:QCA_WARM_CANCELLED);
  if(w->ce_owned)return deassert_ce(w,now);
  uint32_t v=0;

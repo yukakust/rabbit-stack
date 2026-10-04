@@ -104,7 +104,7 @@ static Status EFIAPI free_buffer(void*p,uint64_t pages,void*host){assert(p==pci&
 static Status EFIAPI flush(void*p){assert(p==pci&&!(config[1]&4));flushes++;return scenario==16?EFI_ERROR(7):0;}
 static Status EFIAPI bmi_config_write(void*p,uint32_t w,uint32_t off,uint64_t n,void*in){
  if(off==0x80){assert(p==pci&&w==1&&n==1);uint16_t v=*(uint16_t*)in;
-  if(!(v&3)){link_disables++;if(scenario==18||(scenario==29&&link_disables>1))return 0;}
+  if(!(v&3)){link_disables++;if(scenario==29&&link_disables>1)return 0;}
   if(scenario==19&&(v&3))return 0;
   link_control=v;return 0;
  }
@@ -115,7 +115,7 @@ static Status EFIAPI bmi_config_write(void*p,uint32_t w,uint32_t off,uint64_t n,
  }
  int rc=write_config(p,w,off,n,in);return scenario==15&&(*(uint16_t*)in&4)?EFI_ERROR(7):(Status)rc;}
 int main(int argc,char**argv){
- assert(argc==2);scenario=(unsigned)atoi(argv[1]);assert(scenario<=17);unsigned initial=scenario;
+ assert(argc==2);scenario=(unsigned)atoi(argv[1]);assert(scenario<=18);unsigned initial=scenario;
  assert(!port_previous_main());baseline();config[1]|=0x00100000;
  put(22,0x1fffff,8);put(38,0x200000,8);
  pci[48/8]=read_config;pci[16/8]=mem_read;pci[24/8]=mem_write;pci[56/8]=bmi_config_write;
@@ -123,7 +123,7 @@ int main(int argc,char**argv){
  qca_image=&port_system;qca_controller=scenario==8?0:pci;qca_diagnostic[4]=15;
  qca_start(&port_system,0);tick(1);
  if(scenario==9||scenario==10){if(scenario==10)tick(21);assert(qca_stop()&&get(168)==1);}
- for(unsigned ms=initial==10?22:2;ms<15000;ms++)tick(ms);
+ for(unsigned ms=initial==10?22:2;ms<(initial==18?60000u:15000u);ms+=(initial==18&&get(128)==18&&get(800)==3)?600u:1u)tick(ms);
  if(initial==4||initial==7){assert(get(168)==1&&qca_stop());scenario=0;for(unsigned ms=15000;ms<15100;ms++)tick(ms);}
  if(initial==14||initial==16){
   assert(get(128)==20&&qca_stop()&&allocations==14&&!dma_frees&&!unmaps&&get(220)==14);
@@ -132,7 +132,8 @@ int main(int argc,char**argv){
   assert(!qca_stop()&&get(140)==1&&opens==closes&&!attributes);
   assert(!get(220)&&!get(236)&&allocations==dma_frees&&unmaps==allocations);
   assert(link_control==0x143&&!(config[1]&0x400)&&boot_regs[0]==0x12300e88);
-  if(initial==0||initial==1||initial==5){assert(get(128)==5&&get(824)==2&&get(828)==2&&get(836)==14&&get(840)==14&&!get(816));}
+  if(initial==18)fprintf(stderr,"SLOW-COOPERATIVE stage=%u error=%u failure_phase=%u elapsed=%u cpu=%u pipes=%u\n",get(128),get(136),get(864),get(872),get(824),get(828));
+  if(initial==0||initial==1||initial==5||initial==18){assert(get(128)==5&&get(824)==2&&get(828)==2&&get(836)==14&&get(840)==14&&!get(816));}
   else if(initial!=8)assert(get(128)==6);
   if(initial==13||initial==15||initial==17){assert(get(844)==1&&get(856)==2&&!get(816)&&allocations==14);}
  }

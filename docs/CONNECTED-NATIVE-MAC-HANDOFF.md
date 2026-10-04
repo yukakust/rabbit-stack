@@ -2426,3 +2426,62 @@ historical physical reports decode. Evidence warm-failure-qpd15-host is HOST ONL
 NEXT: obtain owner scene/tail observation after28 (asked async), then current
 bindings/sign counter29/send saved session/read QPD15 with /tmp/rabbit-read-pci15.
 Physical post-cold cleanup28 passed; exact warm failure cause still unresolved.
+
+
+## 2026-10-04 — native29 applied; GLOBAL warm deadline identified
+
+Owner said 'все видно, продолжай' after28: city visible (tail not explicit).
+Sent exact QPD15 native29, session pci-native-aqp0dyyt,76064bytes, exact APPLIED
+receipt; world14 unchanged and no pending. Fresh known Dell QPD15 split confirms
+stage6/adapter CLOSED12;14 pages freed, verified cold recovery/ROM2, PCI/link/IRQ
+restored, no retained ownership. No autonomous reboot/bootstrap/key export.
+
+Failure phase11 SECOND_ROM, last warm indicator0, elapsed1175000us, polls4/2,
+last reset read33000800. This is below per-wait3s, so global7s bound exhausted
+first; do NOT claim a complete second3s wait or blame chip boot performance yet.
+Physical evidence warm-failure-native29; host prerequisites warm-failure-qpd15-host.
+
+Pinned pci.c audit separately found IRQ-window discrepancy: upstream disables/
+clears IRQ before warm and after each ROM wait; ours enables across reset. Saved
+warm-irq-sequence-audit, hypothesis only. Do NOT combine it with deadline test.
+Next candidate changes ONLY total warm deadline20s (each ROM stays3s). Actual
+native fixture18 with600ms calls reproduces old7s failure and must pass with20s;
+19 scenarios total, source/signing gates require slow cooperative fixture proof.
+Full current-source/current-world gates underway on Yukabox before any signing.
+
+
+## 2026-10-04 — native30 PHYSICAL warm/channel PASS
+
+Full gates19 native entrypoint scenarios, slow600ms WARM-only calls and old7s
+source failure baseline passed on Yukabox; two equal rebuilds/current273 inputs/
+exact world14 C+sanitizer, normal+EMPTY UEFI city/ATT/BLE/decoder passed. Local
+signing gate accepted exact profile; only global warm bound7s->20s changed (ROM
+waits remain3s). No IRQ-window/DMA/target RAM/firmware change. Host evidence
+warm-deadline-host, checked runs/init-profile-native30. Initial failed fixture
+setups (obsolete ASPM fault selector/slowed outer reset) are NOT baseline proof.
+
+Signed/sent session pci-native-3skn7pxs counter30,76064bytes staged then exact
+APPLIED receipt on reconnect. Current payload39d66beb7a05b7919eca5f162c230ac057d95a229cf2d55eeb0db9a7317daa60,
+world14 SHAfa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74,
+package46f7cc5f1ad67d32a53d7328bfe1a68324eab7c1757f3ec96468787b3a7f1fac.
+No pending slots; do NOT replay30. Fresh known Dell QPD15 split: stage5 SUCCESS,
+root/adapter/warm errors0; warm DONE12, CPU resets2/pipe inits2, ROM polls4/4,
+last warm indicator2/failure phase0. Adapter CLOSED12/channels CLOSED6,
+allocated14/cleanup14, no held buffers/ownership, IRQ/link/PCI restored, BME off.
+No extra cold recovery needed. Physical evidence warm-deadline-native30.
+
+Global deadline really blocked prior trial; increasing it alone allowed complete
+physical warm initialization. IRQ-window hypothesis remains a source discrepancy
+but is NOT a required next fix after this success. Never claim association,
+firmware compatibility/upload, DHCP or video. Owner city/tail after30 async asked
+and pending; owner only visibility after28 confirmed. No autonomous reboot,
+USB/bootstrap write, owner key export or Mac native compile.
+
+NEXT: implement and gate full-channel initial-config CE7 exchange with fresh live
+host-interest/table destinations, bounded reads/writes/readback, last config-done
+marker, CPU wake and BMI version before firmware. Existing init_preflight/synthetic
+inventory does NOT authorize physical writes; must connect real14-map/ring proof,
+PCI/D0/wake/IRQ + BME scope + recovery in native adapter. Current30 unload safe.
+Keep Mac control/signing/BLE only, builds/sanitizer/COFF/UEFI on Yukabox. Retain city/
+cat/world14 and earlier history. No firmware unless exact board/image/license and
+safe loading/observability/recovery are verified separately.

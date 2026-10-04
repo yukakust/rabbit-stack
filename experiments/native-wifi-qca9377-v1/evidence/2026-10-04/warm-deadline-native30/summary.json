@@ -1,0 +1,15 @@
+{
+  "native_counter": 30,
+  "world_counter": 14,
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "46f7cc5f1ad67d32a53d7328bfe1a68324eab7c1757f3ec96468787b3a7f1fac",
+  "payload_sha256": "39d66beb7a05b7919eca5f162c230ac057d95a229cf2d55eeb0db9a7317daa60",
+  "warm_and_channels_verified": true,
+  "all_resources_restored": true,
+  "first_rom_polls": 4,
+  "second_rom_polls": 4,
+  "warm_error": 0,
+  "firmware_uploaded": false,
+  "wifi_association_verified": false,
+  "owner_scene_after30": "requested, pending"
+}

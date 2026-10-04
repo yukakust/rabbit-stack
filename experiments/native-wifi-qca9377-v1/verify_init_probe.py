@@ -20,15 +20,15 @@ def main():
  subprocess.run(['gcc','-O1','-g','-Wall','-Wextra','-Werror','-fsanitize=address,undefined',*inc,
   str(ROOT/'init_probe_test.c'),*[str(out/n) for n in FILES],'-o',str(exe)],check=True)
  log=''
- for scenario in range(18):
+ for scenario in range(19):
   run=subprocess.run([str(exe),str(scenario)],capture_output=True,text=True,timeout=30,env={**os.environ,'UBSAN_OPTIONS':'halt_on_error=1'})
   if run.returncode:raise RuntimeError(f'native probe scenario {scenario}: {run.stdout[-1000:]}\n{run.stderr}')
   log+=run.stdout+run.stderr
  (out/'host.log').write_text(log)
  assert inputs=={p.name:sha(p.read_bytes()) for p in paths},'native probe inputs changed'
  assert abi_inputs=={n:sha((ROOT.parent.parent/n).read_bytes()) for n in dependencies},'native probe ABI changed'
- report={'status':'NATIVE-WARM-FULL-CHANNEL-PROBE-ENTRYPOINT-HOST-PASS','scenarios':18,
-  'host_log_sha256':sha(log.encode()),'native_entrypoints_integrated':True,'cold_reset_clears_ce_fixture':True,'build_host':'yukabox',
+ report={'status':'NATIVE-WARM-FULL-CHANNEL-PROBE-ENTRYPOINT-HOST-PASS','scenarios':19,
+  'host_log_sha256':sha(log.encode()),'native_entrypoints_integrated':True,'slow_cooperative_poll_fixture':True,'cold_reset_clears_ce_fixture':True,'build_host':'yukabox',
   'physical_warm_reset':False,'target_ram_writes':False,'firmware_uploaded':False,'wifi_association':False,
   'source_sha256':inputs,'dependency_sha256':abi_inputs}
  (out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(report['status'])
