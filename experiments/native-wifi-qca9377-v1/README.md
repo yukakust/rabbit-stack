@@ -2,16 +2,19 @@
 
 Owner chose the internal Wi-Fi: there is no Ethernet cable. Dell in Georgia has
 no installed OS/disk; Mac is command/control and Yukabox in Poland runs Unreal.
-Last confirmed physical profile is native14/world12; exact signed native15 is
-pending Bluetooth reachability, with no DATA/COMMIT attempted. Preserve its city; no replacing
-bootstrap/USB or reboot implied. Wi-Fi is still not associated.
+Latest recovery has exact native17/world13 receiver receipts; owner confirmed the
+city visible. Historical native15/native16 packets are retired and preserved. A
+new boot-IRQ/BMI profile retains native17 Bluetooth recovery, passes fresh source/
+world gates and is delivered only through its newly saved native18 session. See
+the latest handoff/evidence for its application result. Wi-Fi is not associated.
 Wi-Fi authorization is explicit; the old handoff's "unrelated network runtime"
 restriction concerned an earlier engine trial, not this requested transport work.
 
 Current hardware evidence: chip003821ff/rev1 after cold reset, physical Dell
 subsystem1028:1810 and D0 verified; ROM-ready still times out. No physical BMI
 reply, firmware startup or Wi-Fi connection. Reversible boot-IRQ/post-reset ASPM
-candidate is source-gated/signed but not installed. Signed RAM chunk assembly,
+candidate is retested with preserved Bluetooth recovery; its physical result must
+come from the latest exact receipt and QPD7 telemetry. Signed RAM chunk assembly,
 isolated ATT channel and portable/Mac sender are separate tested components;
 they are not integrated into the physical native driver. See the latest sections
 of `docs/CONNECTED-NATIVE-MAC-HANDOFF.md` and `FIRMWARE-CHUNKS-CONTRACT.md`.
@@ -623,3 +626,18 @@ plan a DMA-lifetime-aware earlier master enable only after all8CE quiescence and
 reviewed mapped empty rings, retaining mappings across reset and revalidation.
 No DMA activation, firmware compatibility/upload, scan/WPA, DHCP/two-way traffic
 or reconnect success yet. Full original Wi-Fi goal remains active/incomplete.
+
+## Native18 physical result, after city recovery
+
+Native18 preserves separately tested Bluetooth disconnect recovery. Updated normal/
+EMPTY UEFI gates reproduce lost-event recovery;34 integrated Wi-Fi plus sanitized
+baseline/fixed link tests pass;248 sources/two native rebuilds/current-world checks
+are bound before local owner signing. Exact70432byte session received APPLIED18.
+City world13/content and12-version history retained; owner visual city/tail check
+following18 pending. Payload00324a1214b556ef23e406993a905700e9beba3b7152b041e557f475346aea51.
+Physical QPD7 NOW sees ROM indicator2/ready. BMI target-info still times out3seconds
+(error5/overall0x805). PCI/ASPM/IRQ resources restored, DMA held0 and bus_ownedfalse;
+no firmware/association success. This narrows the next work to CE0/CE1 transport
+telemetry before cleanup, not ROM readiness. Evidence and exact next constraints
+are in the latest connected-native handoff and evidence/2026-10-04/
+bootirq-ble-profile-native18/physical. Never deliver retired15/16 packets.

@@ -2,7 +2,7 @@
   "status": "EXACT-NATIVE17-WORLD13-RECEIVER-RECEIPTS",
   "receiver_reported_applied": true,
   "device_attestation": false,
-  "physical_display_observation": "pending owner response",
+  "physical_display_observation": "Owner: виден (city visible); tail motion not yet confirmed",
   "native_counter": 17,
   "world_counter": 13,
   "payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",

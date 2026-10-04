@@ -1765,3 +1765,50 @@ Do NOT rerun reboot recovery: it is complete at receiver level. Next requires
 owner city/tail observation, then prepare a new Wi-Fi diagnostic above native17
 against the CURRENT world/payload, retaining the separately tested BLE recovery
 profile. Retired native15/16 are historical and must not be delivered.
+
+Owner subsequently confirmed «виден»: city visible on physical Dell. Tail motion
+is not implied by that reply; separate observation requested.
+
+## 2026-10-04 — native18 physically applied; ROM ready, BMI exchange timeout
+
+Owner confirmed recovered city visible (tail observation separately requested).
+New BMI profile uses ble_recovery_build.link_source instead of baseline HCI;
+normal+EMPTY actual UEFI fixtures now inject the malformed-event/unknown-handle
+sequence. Baseline/fixed link ASan/UBSan and34 integrated Wi-Fi scenarios pass,
+all port/reset/CE/BMI/DMA component gates pass. Two fresh native builds match,
+248 source hashes and actual saved world13 C validation bound in reproduction.
+Mac gate accepts exact profile and rejects missing BLE-recovery evidence before
+signing/radio. Native route now requires that evidence on boot-IRQ profiles.
+
+Locally owner-signed native18 against native17/current world13. Packet70432bytes
+resumed from confirmed57600 after bounded disconnects, then exact SHA/session/
+counter18 APPLIED receipt after replacement/reconnect. Directory:
+experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-8j0d1wek
+PayloadSHA256:00324a1214b556ef23e406993a905700e9beba3b7152b041e557f475346aea51.
+Current native18/world13, no pending operation; same city content/12-version journal.
+No Mac native compilation; only Mac Bluetooth sender/reader compilation/signing.
+Original USB/bootstrap/HCI sources and retired native15/native16 files unchanged.
+
+Fresh physical280byte QPD7: chip003821ff/rev1, Dell1028:1810, D0. ROM indicator
+00000002 / rom_error0 FIRST observed ready, unlike native14 indicator0 timeout.
+Combined boot-IRQ/post-reset-ASPM profile is a positive result, not proof of which
+change independently caused it. Post-reset LinkControl0140; restored0143/error0.
+BootIRQ10MMIO writes; original enable0/core8688 restored, pending cause0, ownedfalse.
+BMI exchange reached3-second timeout(error5, overall0x805/stage6), target version/
+type remain0: NO BMI reply/firmware compatibility/startup/association success.
+Cleanupcomplete, DMA held0/mask0, bus_ownedfalse, reset_ownedfalse; PCI Command
+restored0100. Do not describe this as no DMA attempt: production path passed
+ROM and attempted the bounded CE0/CE1 exchange before safe cleanup. Completion
+indices/TX/RX details are not retained in current QPD7, so exact failure is unknown.
+Owner city/tail observation after18 pending; no physical animation claim.
+Evidence: native-wifi-qca9377-v1/evidence/2026-10-04/bootirq-ble-profile-native18,
+physical subdir has exact receipt/logs/raw and decoded QPD7/hash summary.
+
+NEXT: preserve city and BLE recovery; record CE0 TX/CE1 RX completion flags and
+initial/final hardware/ring indices BEFORE cleanup, plus bounded descriptors/
+request/response snapshot. Compare pinned ath10k BMI transport configuration and
+DMA publication/metadata with these observations. No speculative firmware upload,
+no unbounded wait/bus-master change or blind repeated reset. Fresh deterministic
+host/lifetime + actual normal/EMPTY city/BLE + two-rebuild/current-world gates
+before next locally signed profile. Physical firmware/scan/WPA/DHCP/reconnect and
+Yukabox video transport remain incomplete; original full Wi-Fi goal incomplete.

@@ -1,0 +1,7 @@
+{
+  "exact_current_source_world_gate": true,
+  "missing_ble_recovery_flag_rejected_before_signing_radio": true,
+  "native_counter_reserved": 18,
+  "signed_directory": "experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-8j0d1wek",
+  "physical_application": "exact applied receipt counter18"
+}

@@ -38,7 +38,9 @@ def gates(directory,payload,world):
   if report['status'] in ('QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS'):
    if report.get('pcie_aspm_reversible') is not True:raise ValueError('PCIe lifecycle gate required')
    components.append(('dma','UEFI-COMMON-DMA-LIFETIME-HOST-COFF-ABI-PASS'))
-  if report['status']=='QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS' and report.get('boot_irq_host_isolation') is not True:raise ValueError('host IRQ isolation gate required')
+  if report['status']=='QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS':
+   if report.get('boot_irq_host_isolation') is not True:raise ValueError('host IRQ isolation gate required')
+   if report.get('ble_untracked_disconnect_recovery') is not True:raise ValueError('preserved Bluetooth recovery gate required')
   for component,status in components:
    subreport=flow.read_json(directory/(component+'-report.json'))
    if (subreport['status']!=status or flow.sha((directory/(component+'-report.json')).read_bytes())!=report[component+'_report_sha256']

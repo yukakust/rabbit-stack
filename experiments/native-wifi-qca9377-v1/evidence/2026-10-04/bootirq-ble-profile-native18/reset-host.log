@@ -1,0 +1,1 @@
+Cold reset core: 20ms access exclusion, ambiguous writes, bounded retry/recovery, verified deassertion, clock and deadline PASS; MOCK ONLY

@@ -1,6 +1,7 @@
 """Separately gated city profile for reversible QCA wake/chip-ID telemetry."""
 import struct
 import diagnostic_build as base
+import ble_recovery_build as ble
 ROOT,CITY,actors,one=base.ROOT,base.CITY,base.actors,base.one
 def sources(directory):
  base.sources(directory)
@@ -25,9 +26,10 @@ def sources(directory):
   (directory/name).write_bytes((ROOT/name).read_bytes())
 def compile_driver(directory,crypto):
  sources(directory)
+ (directory/'ble_recovery_link.c').write_text(ble.link_source())
  payload=actors.compile_efi(directory,'bmi-driver',[directory/'driver.c',directory/'city_core.c',
   directory/'pci_collect.c',directory/'pci_identity.c',directory/'bmi_probe.c',directory/'reset_core.c',directory/'power_core.c',directory/'uefi_port.c',directory/'wake_core.c',*[directory/n for n in ('rom_ready.c','bmi_transport.c','ce_ring.c','ce_hw.c','ce_uefi.c','ce_bus.c','dma_buffer.c','pcie_link.c','boot_irq.c')],
-  actors.LINK/'usb_port.c',actors.LINK/'hci_link.c',directory/'diagnostic_gatt.c',actors.LINK/'file_core.c',
+  actors.LINK/'usb_port.c',directory/'ble_recovery_link.c',directory/'diagnostic_gatt.c',actors.LINK/'file_core.c',
   actors.NATIVE/'sha256.c',*crypto],driver=True,definitions=('SCENE_REVISION=1',))
  offset=struct.unpack_from('<I',payload,60)[0]
  if struct.unpack_from('<I',payload,offset+80)[0]>4*1024*1024:raise ValueError('mapped bringup profile exceeds root bound')
