@@ -1,0 +1,12 @@
+test_changed_old_packet_blocks_radio (__main__.RecoveryTests.test_changed_old_packet_blocks_radio) ... ok
+test_native_receipt_then_world_resume_preserves_city (__main__.RecoveryTests.test_native_receipt_then_world_resume_preserves_city) ... ok
+test_nonempty_receiver_does_not_retire_pending (__main__.RecoveryTests.test_nonempty_receiver_does_not_retire_pending) ... ok
+test_owner_reboot_required_before_any_radio (__main__.RecoveryTests.test_owner_reboot_required_before_any_radio) ... ok
+test_prepare_is_offline_and_preserves_old_session (__main__.RecoveryTests.test_prepare_is_offline_and_preserves_old_session) ... ok
+test_prepared_packet_tamper_blocks_radio (__main__.RecoveryTests.test_prepared_packet_tamper_blocks_radio) ... ok
+test_timeout_retains_activation_and_exact_sessions (__main__.RecoveryTests.test_timeout_retains_activation_and_exact_sessions) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.079s
+
+OK

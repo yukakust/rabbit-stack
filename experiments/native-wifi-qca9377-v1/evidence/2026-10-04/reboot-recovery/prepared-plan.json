@@ -1,0 +1,36 @@
+{
+  "status": "PREPARED-NOT-ACTIVATED",
+  "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native16",
+  "kind": "owner-reboot-city-recovery",
+  "files": {
+    "before-state.json": "3c590e876097fdae27287b1ddcf153a8585e052286eb29dfe8e7567c5423397c",
+    "world.json": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+    "world.rup": "d5800a77dfa7a00e25c8619fd988bd99769169c7a6b87d498ca0486bad1e9788",
+    "native.rrt": "cb142356c22c5e155739e587e042724a7fd5ac1890a079429049211b2b2569fb",
+    "payload.efi": "0bd6291bb65312b8e33afeb5187839bb4da09cfb10069f2eba4837c9cc438f62",
+    "session.json": "185ac329bae89565b6bd0cddc56336c5960f08945c47f8f9ec49869868819033",
+    "world-session.json": "bf998da7c1a28eeb2ce8f7b4c92b647ee2c62340d7ad1e775337556086cc2c43"
+  },
+  "old_pending_directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-yhzzk0k_",
+  "old_pending_files": {
+    "native.rrt": "d60cd22b59398bb73f7a6ff4b42761af8f68ceaf840bd63ab211ce4661a0e24e",
+    "session.json": "92a3eba379ba8950e85b342e73fa0a9f024fd5b2a0311b4ca59550447108b2f5",
+    "payload.efi": "0beeb5450db864eba62710cfe7df7e0ba3d19594d9e480b6b50129f99225b4a6",
+    "report.json": "74cfbeab2bb80c9405a940ad25f00030e1498946f821d666e7f29d3e8ac5fdff"
+  },
+  "counter": 16,
+  "world_counter": 13,
+  "gate_sha256": "1fd0e5b0bf49c0c5fa1a02d90fdacf860926932e1beec6a05c1df5ccb4d02e52",
+  "state_unchanged": true,
+  "old_pending_unchanged": true,
+  "stored_history_versions": 12,
+  "owner_signature_verified": true,
+  "without_owner_reboot_restore_refused_before_radio": true,
+  "data_commit_abort_writes": 0,
+  "physical_reboot": false,
+  "physical_city_restore": false,
+  "current_native_counter": 14,
+  "current_world_counter": 12,
+  "controller_test_log_sha256": "01b75da430516d57b38c441a86c32d455203ffcb0bfae8406533a48a3527f546",
+  "controller_tests_passed": 7
+}

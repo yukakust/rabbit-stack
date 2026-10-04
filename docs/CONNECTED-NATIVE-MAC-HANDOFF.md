@@ -1603,3 +1603,45 @@ Current whole-screen Dell photo needed to inspect visible diagnostics before
 choosing a recovery. Existing city_recovery rejects native_pending and assumes
 its own reviewed city profile; do not reboot expecting unconditional recovery or
 clear native15 without fresh receiver evidence and a reviewed transition.
+
+## 2026-10-04 — dedicated reboot recovery prepared; owner reboot NOT observed
+
+Owner explained fullscreen city hides diagnostic text; do not request another
+photo to read logs under that overlay. Owner authorized preparation of recovery.
+Added dedicated reboot_recovery.py + verifier +7 controller transition tests.
+Existing city_recovery is not compatible with pending diagnostic-native sessions;
+use the dedicated route, including resumes. No GUI recovery integration in this
+change. REBOOT-RECOVERY.md documents guards and limits.
+
+On Yukabox: two exact plain actor driver builds (no QCA probe), actual normal and
+EMPTY-bootstrap UEFI city load/snapshot/rejection/recovery gates with mocked radio;
+exact saved world12 recompiled at counter13 checked in C ASan/UBSan,120frames,
+roof-cat tail/smile timing and16adversarial camera frames.7 real-fixture-signature
+controller tests pass, including no radio without reboot confirmation, nonempty
+receiver refusal, immutable old packet, interrupted native/world resume and
+restored world equivalence. Dependencies and exact evidence are hash-bound.
+PayloadSHA256:0bd6291bb65312b8e33afeb5187839bb4da09cfb10069f2eba4837c9cc438f62.
+
+Mac validated gates, owner identity, signed old pending native15/world12, current
+controller/journal. Locally signed native16 against installed bootstrap1+EMPTY
+world and saved world13/exact sessions at:
+/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native16
+Checked directory: experiments/native-wifi-qca9377-v1/runs/reboot-recovery-final.
+Current native14/world12, native_pending pci-native-yhzzk0k_, all12history versions
+and every old pending byte remain unchanged. Plan PREPARED-NOT-ACTIVATED; not
+sent, no receiver writes, no Dell reboot or USB/bootstrap change. Actual Mac
+restore invoked WITHOUT owner flag verifies guard rejects before any radio.
+Evidence: native-wifi-qca9377-v1/evidence/2026-10-04/reboot-recovery.
+
+NEXT requires OWNER actual reboot and observation of bootstrap, then agent runs:
+python3 experiments/native-wifi-qca9377-v1/reboot_recovery.py restore --state experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/state.json --directory experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native16 --private /Users/yukakust/.rabbit-owner/runtime.key --dell-rebooted
+This first queries exact zero/idle RFS; absent/nonzero response leaves old pending
+native15 and state intact, no DATA/COMMIT. Only owner-confirmed reboot AND fresh
+zero status allow atomic retired-native ledger+new recovery activation, preserving
+old signed files/hashes. Existing packet15 is never sent against bootstrap.
+Native16/world13 exact receipts drive promotion. Resume SAME command/directory
+without --dell-rebooted after activation; do not regenerate packets/nonces.
+After restoration require owner city/tail observation; this is not yet physical
+recovery evidence or a Wi-Fi connection. Reboot may not cure the radio: if fresh
+bootstrap cannot advertise, retain plan and diagnose physical radio. Full original
+Wi-Fi goal remains incomplete.
