@@ -1,0 +1,408 @@
+{
+  "status": "PHYSICAL-MAIN-HTC-TRIAL-OBSERVED",
+  "session": "firmware-ram-xn9ncwla",
+  "native_counter": 38,
+  "native_payload_sha256": "8ececc0196f1cbc22430d0327b8c5974898284c3d6aa4827534c8ac678debf86",
+  "world_counter": 15,
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+  "asset_bytes": 751436,
+  "packets": [
+    {
+      "file": "chunk-0.bin",
+      "packet_sha256": "bdaf182861a31fb1b3e4839a0596a8eea755380a2442b2c524b432cf25f19a7c",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 0,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-1.bin",
+      "packet_sha256": "8397021672acb7ca581728ab1f28f18c67d1b0855df80c67880e84b15ad27651",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 65536,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-2.bin",
+      "packet_sha256": "7b33414d7624848cb201ad8985ca8cfab5395bdf9d7a688243fc38e9bad79b5c",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 131072,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-3.bin",
+      "packet_sha256": "36ad23c681e74d10a881e6f18b880e45e37c1b902f9ef8d4a56e3c68c6075aea",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 196608,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-4.bin",
+      "packet_sha256": "7a2eecb771938b54fb8cd2ddb1fe4768f6c55f1c657fb8af1670b3a593a93085",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 262144,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-5.bin",
+      "packet_sha256": "3fac3de399be69eb759d7c81366522ab39ce7f019c5107ebfc6064b013e8247a",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 327680,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-6.bin",
+      "packet_sha256": "a875559922adbbef3ed341a31b311e3ea13a6bf26d6e6416336029fa5e30022f",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 393216,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-7.bin",
+      "packet_sha256": "32eba6061610f9ddd5b32cdc0f04f17cdc4da02c6e08d20f2f12ed1c1dd06a79",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 458752,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-8.bin",
+      "packet_sha256": "1387ad98b662e15aaf8f451bcc2fa6c94d6b7366709c044cfdcf5c94cd46a061",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 524288,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-9.bin",
+      "packet_sha256": "23126c2dd2961a8220783b680389573e4023706fc59d487356ce45083d64a4a5",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 589824,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-10.bin",
+      "packet_sha256": "1f8502c08f026b011d263a3400da0297e88f559b288534485dd4ee1d8814958a",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 655360,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-11.bin",
+      "packet_sha256": "7976e9f96774066e76a3ca4bcda7456b56392d6cbcdd97eca38d0ccb998980ae",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 720896,
+      "asset_bytes": 751436,
+      "generation": 38,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    }
+  ],
+  "accepted_chunks": {
+    "0": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 1,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "bdaf182861a31fb1b3e4839a0596a8eea755380a2442b2c524b432cf25f19a7c",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-0-3.log",
+      "log_sha256": "2a6c670abecae7d39656b0e56b7d1af2598ba8e2c578feb290c912bd8ad77d30"
+    },
+    "1": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 3,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "8397021672acb7ca581728ab1f28f18c67d1b0855df80c67880e84b15ad27651",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-1-7.log",
+      "log_sha256": "850e75012d032a20d912ec6f2acdad69b3638d0828d2e7f67aaee68becb4bce0"
+    },
+    "2": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 7,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "7b33414d7624848cb201ad8985ca8cfab5395bdf9d7a688243fc38e9bad79b5c",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-2-11.log",
+      "log_sha256": "cc4a78b5bf50b95b39353aabd9b5f01f1e3fe8b79db12627cac43e89ff086548"
+    },
+    "3": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 15,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "36ad23c681e74d10a881e6f18b880e45e37c1b902f9ef8d4a56e3c68c6075aea",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-3-15.log",
+      "log_sha256": "838f2c7223e6f3389ce9f79fb567003b98c2a20d4815764064a07b63749035bd"
+    },
+    "4": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 31,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "7a2eecb771938b54fb8cd2ddb1fe4768f6c55f1c657fb8af1670b3a593a93085",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-4-19.log",
+      "log_sha256": "96ffb2fd96e2bcba5bb71463ec64185f287bf13c75806e63c7462ac9508e62fb"
+    },
+    "5": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 63,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "3fac3de399be69eb759d7c81366522ab39ce7f019c5107ebfc6064b013e8247a",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-5-23.log",
+      "log_sha256": "1e88e613edfeeb0165985e152223bb8bdfaf6eb2d205ccd18cd7cfd0d4d30f97"
+    },
+    "6": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 127,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "a875559922adbbef3ed341a31b311e3ea13a6bf26d6e6416336029fa5e30022f",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-6-27.log",
+      "log_sha256": "2b2ace89bd5103beae6e48d0bdbb8356f843555f57e3767f64f808b3902e58f7"
+    },
+    "7": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 255,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "32eba6061610f9ddd5b32cdc0f04f17cdc4da02c6e08d20f2f12ed1c1dd06a79",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-7-33.log",
+      "log_sha256": "934713e0244e095c012f002aa21b0a8fb113d6f41fdaabd5f3b44a65f77e1cc9"
+    },
+    "8": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 511,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "1387ad98b662e15aaf8f451bcc2fa6c94d6b7366709c044cfdcf5c94cd46a061",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-8-39.log",
+      "log_sha256": "1dfec8bf4adb218c5fdc63c075795556025246a5f2d08a93e2f61fccd39cf092"
+    },
+    "9": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 1023,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "23126c2dd2961a8220783b680389573e4023706fc59d487356ce45083d64a4a5",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-9-43.log",
+      "log_sha256": "e1b47af4ab5e305e338a83f65997af80fb7438a1f576d4a1ae0f2be926ce0186"
+    },
+    "10": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 2047,
+        "confirmed_floor": 65760,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 65760,
+        "packet_sha256": "1f8502c08f026b011d263a3400da0297e88f559b288534485dd4ee1d8814958a",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 0,
+        "received": 65760,
+        "state": 2
+      },
+      "log": "chunk-10-47.log",
+      "log_sha256": "e222abd149e4f36de11af8266e863c97c195dd1e8d2b8e41e8ac187730b594f2"
+    },
+    "11": {
+      "receipt": {
+        "action": 4,
+        "bitmap": 4095,
+        "confirmed_floor": 30764,
+        "device_attestation": false,
+        "error": 0,
+        "firmware_started": false,
+        "length": 30764,
+        "packet_sha256": "7976e9f96774066e76a3ca4bcda7456b56392d6cbcdd97eca38d0ccb998980ae",
+        "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+        "ready": 1,
+        "received": 30764,
+        "state": 2
+      },
+      "log": "chunk-11-49.log",
+      "log_sha256": "91548c85a48e41d1a5d7f206e56ac707653800d4439b0a59c335f059be3a5af2"
+    }
+  },
+  "all_asset_receipts_verified": true,
+  "boot_observed": {
+    "phase": 6,
+    "error": 518,
+    "plan_phase": 21,
+    "plan_error": 6,
+    "submitted": 178,
+    "completed": 178,
+    "board_address": 4202432,
+    "calibration_result": 3,
+    "offset": 0,
+    "ready_bytes": 0,
+    "credit_count": 0,
+    "credit_size": 0,
+    "max_endpoints": 0,
+    "boot_round": 1,
+    "ram_phase": 4,
+    "ram_error": 0,
+    "asset_ready": 1,
+    "asset_pinned": 0,
+    "native_stage": 6,
+    "native_error": 8448,
+    "adapter_phase": 12,
+    "cleanup_slots": 14,
+    "dma_users": 0,
+    "bmi_version": 84017153,
+    "bmi_type": 8,
+    "board_phase": 5,
+    "board_error": 0,
+    "board_result": 0,
+    "asset_bitmap": 4095,
+    "boot_attempted": 1,
+    "format": "QWBT1",
+    "device_attestation": false,
+    "htc_ready_observed": false,
+    "all_loader_resources_released": true,
+    "physical_trial_complete": false,
+    "wifi_connected": false
+  },
+  "main_htc_trial_verified": false,
+  "wifi_association": false,
+  "dhcp_ip": false,
+  "yukabox_exchange": false,
+  "city_observation": "pending owner response after native38",
+  "password_included": false,
+  "device_attestation": false
+}

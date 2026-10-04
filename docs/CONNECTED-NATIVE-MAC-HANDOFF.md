@@ -3053,3 +3053,40 @@ snapshot. A normal Dell router lease alone does not prove reachability to
 Yukabox in Poland; preserve that distinction when planning a WAN transport.
 Credentials remain on Mac only, outside Git/Yukabox. Do not read/print them or
 send the raw password/derived equivalent credential over unauthenticated GATT.
+
+
+## 2026-10-05 — native38 exact asset complete; calibration result3 stop
+
+All12 existing owner-signed packets in `firmware-ram-xn9ncwla` have correlated
+known-peer QFS_DONE receipts; final bitmap4095/ready1. Full751436-byte official
+container staged and rehashed. The actual second hardware lifetime completed
+fresh setup/BMI/helper query, wrote/read back all8124 board bytes at0x401fc0,
+loaded the helper again and executed parameter0. Its result was3. Native38's
+zero-only planner stopped at178 submitted/completed commands: QWBTphase6,
+error0x206,planphase21/planerror6. Main image was NOT uploaded/executed;
+HTC_READY, Wi-Fi scan, association, IP and Yukabox traffic remain unverified.
+
+Cleanup physically completed: rootstage6,adapterCLOSED12,cleanup14,DMAusers0,
+assetpin0. `read_boot.py` verified the current native binding and cleared
+`hardware_trial_pending`. Native remains38/worldtransport15. Full staged asset
+is still owned by that module; a replacement closes/frees its RAM, so do not
+replay generation38 asset packets as if they were generation39 packets.
+
+Physical receipts/packet hashes/raw QWBT observations are archived in
+`experiments/native-wifi-qca9377-v1/evidence/2026-10-05/main-native38-physical`.
+Summary explicitly says main/HTC trialfalse, associationfalse, IPfalse. No
+secret/binary/credential was copied. Owner city/tail observation after this
+trial is requested and pending; do not claim physical visibility from mocks.
+
+Reference audit found a concrete missing compatibility rule in our planner:
+exact container features_hex=c0 advertises bit7 IGNORE_OTP_RESULT. Pinned
+Linux `core.h` defines it as7 (SHA
+`da6f9d89225467310770e9ebf67ccdd66ad381c203a50e38afadc03c85da16b2`);
+`core.c` does not fail nonzero helper result when that firmware flag is set.
+The new narrower profile should admit only0 and observed3 for this exact
+pinned bundle, preserve raw result3, reject other unreviewed values, and still
+require actual main/BMI_DONE/HTC_READY/complete physical cleanup. This is NOT a
+claim that helper result3 itself proves calibration or Wi-Fi connectivity.
+Source may now change because the previous physical owners are proven closed;
+all new source/current-world/lifetime/COFF/QEMU/reproduction gates must rerun
+before signing any new native counter. Preserve old native38 evidence intact.
