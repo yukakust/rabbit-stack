@@ -86,8 +86,13 @@ int qca_init_adapter_poll(QcaInitAdapter*a,uint64_t now){
  if(now<a->last)return retain(a,0x102);
  a->last=now;
  if(a->phase==QCA_INIT_READY){
-  if(qca_channels_prepared(&a->channels)||qca_mapped_irq_guard(&a->mapped))error(a,0x401);
-  if(a->cancelled)cleanup(a);else return 1;
+  /* An explicit close may follow a separately owned CE7 exchange. Stop first;
+   * never demand idle-ring/BME-off proof before the stop that establishes it. */
+  if(a->cancelled)cleanup(a);
+  else{
+   if(qca_channels_prepared(&a->channels)||qca_mapped_irq_guard(&a->mapped)){error(a,0x401);cleanup(a);}
+   else return 1;
+  }
  }
  if(a->cancelled&&(a->phase==QCA_INIT_STOP||a->phase==QCA_INIT_ALLOCATE))cleanup(a);
  switch(a->phase){

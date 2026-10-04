@@ -14,6 +14,10 @@ typedef struct {
  * Bus mastering must stay OFF; host IRQ remains masked.
  */
 int qca_mapped_irq_guard(QcaMappedIrq*);
+/* Separate active CE7 scope: exact14 exposed mappings, owned active bus, fresh
+ * PCI/D0/wake identity, BME ON and masked host/device interrupts. Never usable
+ * for warm/cold reset, freeing buffers or relaxing the existing OFF guards. */
+int qca_mapped_irq_active_guard(QcaMappedIrq*);
 /* PCI-only reset guard: no RTC/CORE accesses while cold reset asserted.
  * May observe reset-restored ASPM bits, but never permits active bus mastering.
  * Caller may use it only for the finite cold-reset register callback. */

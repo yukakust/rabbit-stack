@@ -2473,8 +2473,8 @@ No extra cold recovery needed. Physical evidence warm-deadline-native30.
 Global deadline really blocked prior trial; increasing it alone allowed complete
 physical warm initialization. IRQ-window hypothesis remains a source discrepancy
 but is NOT a required next fix after this success. Never claim association,
-firmware compatibility/upload, DHCP or video. Owner city/tail after30 async asked
-and pending; owner only visibility after28 confirmed. No autonomous reboot,
+firmware compatibility/upload, DHCP or video. Owner confirmed city visibility
+after30 (видно, го дальше); tail motion was not explicitly confirmed. No autonomous reboot,
 USB/bootstrap write, owner key export or Mac native compile.
 
 NEXT: implement and gate full-channel initial-config CE7 exchange with fresh live
@@ -2485,3 +2485,40 @@ PCI/D0/wake/IRQ + BME scope + recovery in native adapter. Current30 unload safe.
 Keep Mac control/signing/BLE only, builds/sanitizer/COFF/UEFI on Yukabox. Retain city/
 cat/world14 and earlier history. No firmware unless exact board/image/license and
 safe loading/observability/recovery are verified separately.
+
+
+## 2026-10-04 — native31 PHYSICAL full-channel CE7 fixed-read PASS
+
+Source contract: experiments/native-wifi-qca9377-v1/FULL-READ-TRIAL.md.
+Full warm/channel initialization followed by ONE fixed read4008f8, expected401ee0.
+All14 retained mappings reused, CE7 ring callbacks rebound to diagnostic transport,
+IRQ quiesced before BME-on. Fresh ACTIVE guard validates PCI/MEM/BME/D0/wake,
+ASPM/MSI/MSIX, chip identity, core BAR and device IRQ each poll. Original BME-off
+guard preserved. Adapter cancellation/close takes teardown before idle-ring check.
+No target RAM writes, BMI query, firmware upload, association/DHCP/video.
+
+Yukabox full gates25 native entrypoint cases including slow-poll completion before
+timeout, no reply, TX-only, bad length, wrong word and lost BME; previous warm/cold/
+retention cases preserved. Core27channels/36mappedIRQ/13adapter, ASan/UBSan, COFF,
+pinned pack, normal+EMPTY UEFI city/ATT/BLE/decoder and current279source/current
+world14 two rebuilds passed. Host evidence full-channel-read-host.
+Payload9832bcd8d0e43ab9f419686eeb3124643aba03c35db8850522c707d8b9329e35.
+
+Local owner signing AFTER exact gates; saved session pci-native-k6ly_0c1, native31,
+80672bytes. Paced100bytes/50ms, staged then COMMIT with correlated exact APPLIED
+receipt after reconnect. Current native31/world14, no pending slots. Do NOT replay.
+Fresh read-only known Dell QPD16 (UUID0B, prefix716 + SHA-bound extension244)924bytes:
+stage5, warmDONE12/error0, CPU2/pipe2, ROM polls4/4; CE7DONE2/error0,
+word00401ee0/bytes4, TX+RX complete/mask3, polls1, observed elapsed393000us.
+This is HOST observed completion time, not measured device execution latency.
+AdapterCLOSED12/channelsCLOSED6, allocated14/cleanup14, all DMA/PCI/IRQ/link/wake
+released/restored. Physical evidence full-channel-read-native31. No reboot needed.
+Owner city/tail observation after31 asked and pending; do not invent confirmation.
+
+NEXT: expand this exact full-channel read scope to fresh fixed PCIe-state36bytes
+at401ee0, early_alloc400900 and option_flag2 at4008cc, after the same warm init.
+Validate fresh table destinations/spans/flags; old QPD12/13 values are historical
+evidence only. Then separately gate bounded config writes/readback, done marker
+LAST, CPU wake and BMI version before firmware. Source-pinned tables/synthetic
+inventory alone do not authorize target writes. Preserve city/cat/history, Mac
+control/signing/BLE only, Yukabox builds. No autonomous Dell reboot/USB changes.

@@ -9,9 +9,12 @@ REPO=ROOT.parent.parent
 sha=lambda b:hashlib.sha256(b).hexdigest()
 def main():
  p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,required=True);p.add_argument('--world',type=Path,required=True)
- p.add_argument('--profile',choices=('diagnostic','bringup','power','reset','bmi','init'),default='diagnostic')
+ p.add_argument('--profile',choices=('diagnostic','bringup','power','reset','bmi','init','full-read'),default='diagnostic')
  a=p.parse_args()
- if a.profile=='bringup':
+ if a.profile=='full-read':
+  import full_read_build
+  builder=full_read_build
+ elif a.profile=='bringup':
   import bringup_build
   builder=bringup_build
  elif a.profile=='power':
@@ -27,7 +30,7 @@ def main():
   import reset_build
   builder=reset_build
  else:builder=build
- inputs=json.loads(a.inputs.read_text());out=ROOT/'runs'/('bmi-profile' if a.profile=='bmi' else 'init-profile' if a.profile=='init' else a.profile)
+ inputs=json.loads(a.inputs.read_text());out=ROOT/'runs'/('bmi-profile' if a.profile=='bmi' else 'full-read-profile' if a.profile=='full-read' else 'init-profile' if a.profile=='init' else a.profile)
  def check_inputs():
   for name,expected in inputs.items():
    path=Path(name)

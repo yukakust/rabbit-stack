@@ -13,7 +13,7 @@ static int read32(QcaMappedIrq*m,unsigned off,uint32_t*out){
 static int write32(QcaMappedIrq*m,unsigned off,uint32_t value){
  m->writes++;m->irq->writes++;return ((Memory)method(m,24))(m->irq->port->pci,2,0,0x3a000+off,1,&value)?-1:0;
 }
-int qca_mapped_irq_pci_guard(QcaMappedIrq*m){
+static int pci_guard(QcaMappedIrq*m,int active){
  if(!m||!m->irq||!m->channels||!m->channels->bus||!m->channels->bus->access)return fail(m,1);
  QcaBootIrq*q=m->irq;QcaUefiPort*p=q->port;
  if(!p||!p->pci||!q->owned||!p->boot_irq_owned||!p->claimed||!p->validated||!p->memory_ready
@@ -24,7 +24,7 @@ int qca_mapped_irq_pci_guard(QcaMappedIrq*m){
  if(((Config)method(m,48))(p->pci,2,0,64,config))return fail(m,2);
  qca_power_decode((const uint8_t*)config,power);
  if(qca_pci_identity(config,&id)||id.bar0!=m->bar||id.subsystem_vendor!=0x1028||id.subsystem_device!=0x1810||id.revision!=0x31
-  ||id.command!=(uint16_t)(q->original_command|0x400u)||!(id.command&2)||(id.command&4)
+  ||id.command!=(uint16_t)(q->original_command|0x400u|(active?4u:0u))||!(id.command&2)||((id.command&4)!=0)!=(active!=0)
   ||power[8]!=1||(power[2]&3)||!power[4]
   ||(uint16_t)((power[4]|((uint16_t)power[5]<<8))+0x10)!=m->link_offset)return fail(m,3);
  m->link_control=(uint16_t)(power[6]|((uint16_t)power[7]<<8));
@@ -39,6 +39,19 @@ int qca_mapped_irq_pci_guard(QcaMappedIrq*m){
  uint16_t command=0;m->reads++;
  if(((Config)method(m,48))(p->pci,1,4,1,&command)||command!=id.command)return fail(m,5);
  q->command_readback=command;return 0;
+}
+int qca_mapped_irq_pci_guard(QcaMappedIrq*m){return pci_guard(m,0);}
+int qca_mapped_irq_active_guard(QcaMappedIrq*m){
+ if(!m||!m->channels||!m->channels->bus||m->channels->bus->phase!=QCA_BUS_ACTIVE
+  ||!m->channels->bus->owned)return fail(m,11);
+ for(unsigned i=0;i<14;i++)if(!m->channels->buffers[i].exposed)return fail(m,11);
+ if(pci_guard(m,1)||(m->link_control&3))return fail(m,12);
+ QcaUefiPort*p=m->irq->port;uint32_t state=0,chip=0,control=0,enable=0;
+ if(((Memory)method(m,16))(p->pci,2,0,0x80000,1,&state)||(state&7)!=3
+  ||((Memory)method(m,16))(p->pci,2,0,0x8f0,1,&chip)||chip!=0x003821ff
+  ||read32(m,0,&control)||(control&0x800)||((uint64_t)(control&0x7ff)<<21)!=m->bar
+  ||read32(m,8,&enable)||enable)return fail(m,13);
+ return 0;
 }
 int qca_mapped_irq_guard(QcaMappedIrq*m){
  if(qca_mapped_irq_pci_guard(m))return -1;

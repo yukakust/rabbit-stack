@@ -21,9 +21,16 @@ def combine_qpd15(prefix,extension):
  result={'format':'QPD15','raw_hex':(prefix+extension[36:]).hex(),'read_strategy':'split_sha256'}
  decode(result)
  return result
+def combine_qpd16(prefix,extension):
+ if len(prefix)!=716 or prefix[:4]!=b'QPD'+bytes([16]) or len(extension)!=244 or extension[:4]!=b'QIC'+bytes([1]):raise ValueError('invalid QPD16 split envelope')
+ if hashlib.sha256(prefix).digest()!=extension[4:36]:raise ValueError('split diagnostic hash mismatch')
+ if struct.unpack_from('<I',prefix,128)[0] not in (5,6,7,20):raise ValueError('init probe still active')
+ result={'format':'QPD16','raw_hex':(prefix+extension[36:]).hex(),'read_strategy':'split_sha256'}
+ decode(result)
+ return result
 def decode(value):
- version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 11 if value.get('format')=='QPD11' else 12 if value.get('format')=='QPD12' else 13 if value.get('format')=='QPD13' else 14 if value.get('format')=='QPD14' else 15 if value.get('format')=='QPD15' else 0
- length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700 if version==10 else 716 if version==11 else 888 if version==15 else 864 if version==14 else 800
+ version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 11 if value.get('format')=='QPD11' else 12 if value.get('format')=='QPD12' else 13 if value.get('format')=='QPD13' else 14 if value.get('format')=='QPD14' else 15 if value.get('format')=='QPD15' else 16 if value.get('format')=='QPD16' else 0
+ length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700 if version==10 else 716 if version==11 else 924 if version==16 else 888 if version==15 else 864 if version==14 else 800
  if not version or not isinstance(value.get('raw_hex'),str) or len(value['raw_hex'])!=length*2:
   raise ValueError('bounded QPD1 envelope required')
  raw=bytes.fromhex(value['raw_hex'])
@@ -177,7 +184,7 @@ def decode(value):
    'cold_recovery_indicator':f'{ri:08x}','mapped_guard_error':me,
    'warm_and_channels_verified':stage==5,'all_resources_restored':full_release,
    'retained':stage==20,'bus_master_enabled_during_probe':False,'target_ram_written':False,'firmware_uploaded':False}
- if version==15:
+ if version>=15:
   fp,indicator,elapsed,first,second,reset_read=struct.unpack_from('<6I',raw,864)
   if fp>12 or first>300 or second>300:raise ValueError('invalid warm failure bounds')
   if bool(fp)!=bool(we) or (w==13)!=bool(fp):raise ValueError('warm failure phase/error mismatch')
@@ -187,6 +194,20 @@ def decode(value):
    'phase_elapsed_us':elapsed,'first_rom_polls':first,'second_rom_polls':second,
    'last_reset_control_read':f'{reset_read:08x}','additional_mmio_operations':0,
    'basis':'cached warm operations before cleanup; polling times are host observations'}
+ if version==16:
+  phase,error,value,bytes_read,tx,rx,mask,polls,elapsed=struct.unpack_from('<9I',raw,888)
+  if phase>3 or tx>1 or rx>1 or mask>3 or bytes_read not in (0,4):raise ValueError('invalid full CE7 bounds')
+  complete=phase==2 and not error and value==0x00401ee0 and bytes_read==4 and tx==rx==1 and mask==3 and polls>0
+  if stage==5 and not complete:raise ValueError('success lacks fixed full-channel CE7 read')
+  if phase==0 and any(raw[888:]):raise ValueError('unstarted full CE7 with data')
+  result['native_init']['warm_sequence_verified']=w==12 and not we and cpu==pipes==2
+  result['native_init']['bus_master_enabled_during_probe']=True if phase==2 or mask or polls else None
+  result['reset_probe']['dma_enabled']=result['native_init']['bus_master_enabled_during_probe']
+  result['native_init']['terminal_dma_released']=full_release
+  result['full_channel_read']={'phase':phase,'error':error,'interconnect_word':f'{value:08x}' if complete else None,
+   'bytes':bytes_read,'tx_completed':bool(tx),'rx_completed':bool(rx),'observed_mask':mask,'polls':polls,
+   'last_poll_elapsed_us':elapsed,'read_verified':complete,'target_address':'004008f8',
+   'target_ram_written':False,'firmware_uploaded':False,'basis':'fixed CE7 read using retained full14 mapping inventory'}
  if version==3:
   pm,csr,pcie,link,status,reserved=struct.unpack_from('<HHHHII',raw,128)
   if status>3 or reserved:raise ValueError('invalid power-capability snapshot')
