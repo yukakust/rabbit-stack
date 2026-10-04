@@ -1,25 +1,66 @@
 {
-  "status": "NATIVE20-DELIVERY-NOT-CONFIRMED",
-  "signed_counter": 20,
-  "last_confirmed_native_counter": 19,
+  "status": "EXACT-APPLIED20-MEMORY-REPAIR-ROM-READY-CE-NO-COMPLETIONS",
+  "receiver_reported_applied": true,
+  "device_attestation": false,
+  "native_counter": 20,
   "world_counter": 13,
-  "pending_directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-_g6coe4s",
   "payload_sha256": "9bd99b42aded22e3b55bff9d8eaf5799f35776f6b2a26376690f94b3aa06eeaa",
   "native_packet_sha256": "a22ada5157341aa5dabea4e9badf43482f0a926254f033c8a5e85d5e3f1f82ab",
-  "receiver_applied_receipt": false,
-  "commit_attempted": false,
-  "latest_receiver_begin_resume_offset": 1400,
-  "transfer_length": 71456,
-  "bounded_reconnect_attempts_exhausted": true,
-  "owner_proximity_answer": "pending",
-  "resume": "native_route.py deliver with same canonical state/private path; no new packet or reboot",
-  "wifi_connection_confirmed": false,
-  "files_sha256": {
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "owner_proximity_observation": "рядом",
+  "owner_city_motion_observation_after20": "pending",
+  "memory_enable_repair_physically_passed": true,
+  "chip_id": "003821ff",
+  "rom_indicator": "00000002",
+  "bmi_timeout_seconds": 3,
+  "ce_snapshot": {
+    "captured_before_cleanup": true,
+    "tx_completed": false,
+    "rx_completed": false,
+    "last_observed_hardware_indices": {
+      "tx": 0,
+      "rx": 0
+    },
+    "initial_indices": {
+      "tx": 0,
+      "rx": 0
+    },
+    "software_indices": {
+      "tx_read": 0,
+      "tx_write": 1,
+      "rx_read": 0,
+      "rx_write": 1
+    },
+    "request_dma_address": "00000000b1d07000",
+    "response_dma_address": "00000000b1d06000",
+    "tx_descriptor_hex": "0070d0b10400fcff",
+    "rx_descriptor_hex": "0060d0b100000000",
+    "response_hex": "000000000000000000000000",
+    "request_hex": "08000000",
+    "received_bytes": 0,
+    "basis": "last existing BMI poll + mapped memory before stop; not a fresh MMIO snapshot or device attestation"
+  },
+  "cleanup_completed": true,
+  "dma_buffers_held": 0,
+  "bus_owned": false,
+  "pcie_and_irq_restored": true,
+  "firmware_uploaded": false,
+  "wifi_association_confirmed": false,
+  "current_pending_operation": null,
+  "journal_versions": 12,
+  "evidence_files_sha256": {
     "paced-stage-3.log": "3509cbdb54185a06638362efc9882cc63ba73689beac728624833e013ebe731b",
     "paced-stage-1.log": "5fb3450c468eea7cad3b8d58c7eb346108503f678c742cec21aad8178f133a6d",
     "session.json": "ebfa9d0b728609845867397ff6a21293a7b7f7f3365be2a4eec36d708264ff5c",
-    "report.json": "8c78b1bd7dbf25e1d8e9e98426849e505e54450b77af4f53eee2e870c4259116",
+    "paced-stage-5.log": "5b3893032c0f3b187ecd8fa000390cf49e60304df66139934981fdab9f29c1f9",
+    "report.json": "b2ce4995260335a1884ca77f1cb3be0d9839142e409f1ed84575ff5de9279432",
+    "commit-6.log": "e7f1fdd7bcf1d891234c0a6d45e4cd223668cb9e57337ba56d82e0c6a8c90aed",
+    "query-4.log": "ee32bc684a7f06bd08e96e6c6b0a93c102be67c143a6dfae9eeae919a5d57505",
     "query-0.log": "8b96d97a37163a1348f8e790b6da77d93fa331e03aedcceb5d3d391caa3996be",
-    "query-2.log": "c4c301ba81f4b1fa5547e6b2c58548dc1f9f07f84ff1fa744b753674dff3259e"
+    "query-2.log": "c4c301ba81f4b1fa5547e6b2c58548dc1f9f07f84ff1fa744b753674dff3259e",
+    "initial-pending-trial-summary.json": "950bfac393478b314fcea5d9fb97c7855f14d87e3a68cba5148a7665fca986b2",
+    "native20-decoded.json": "d4aa2fcfc62b3b6dd1d6f0eb74cc43232ad6e962b4041fed589e3f592a60c1a2",
+    "native20-pci.stderr": "d5d517cf4b6cae8870e3b373cb8e0dfc97964c625c5ce6d7a0026b60937eb3ab",
+    "native20-pci.json": "dd1c47e04883bc243b6594237f1463247303508eb6372790b59cb33b31be2bdc"
   }
 }

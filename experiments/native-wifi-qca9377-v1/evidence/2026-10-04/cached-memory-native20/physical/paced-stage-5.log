@@ -1,0 +1,48 @@
+MAC SENDER COMPILED; SOURCE SHA256=ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e
+STATUS VALIDATOR SHA256=0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f
+STAGING DIAGNOSTIC DATA DELAY=50 ms; NO COMMIT
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-81; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=1400/71456
+DISCONNECTED: phase=2 offset=2000/71456 domain=CBErrorDomain code=6 reason=The connection has timed out unexpectedly.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-85; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=2000/71456
+DISCONNECTED: phase=2 offset=2000/71456 domain=CBErrorDomain code=6 reason=The connection has timed out unexpectedly.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-78; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=2000/71456
+STAGING CHECKPOINT=6100/71456 (not applied)
+STAGING CHECKPOINT=10200/71456 (not applied)
+STAGING CHECKPOINT=14300/71456 (not applied)
+STAGING CHECKPOINT=18400/71456 (not applied)
+STAGING CHECKPOINT=22500/71456 (not applied)
+STAGING CHECKPOINT=26600/71456 (not applied)
+STAGING CHECKPOINT=30700/71456 (not applied)
+STAGING CHECKPOINT=34800/71456 (not applied)
+STAGING CHECKPOINT=38900/71456 (not applied)
+STAGING CHECKPOINT=43000/71456 (not applied)
+STAGING CHECKPOINT=47100/71456 (not applied)
+STAGING CHECKPOINT=51200/71456 (not applied)
+STAGING CHECKPOINT=55300/71456 (not applied)
+STAGING CHECKPOINT=59400/71456 (not applied)
+STAGING CHECKPOINT=63500/71456 (not applied)
+STAGING CHECKPOINT=67600/71456 (not applied)
+STAGING CHECKPOINT=71456/71456 (not applied)
+STAGED-NOT-APPLIED: deliberate stop; keep Dell powered and rerun SAME saved session without --stage-only-bytes

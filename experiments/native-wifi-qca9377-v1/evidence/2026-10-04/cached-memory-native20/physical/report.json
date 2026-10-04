@@ -1,6 +1,6 @@
 {
   "kind": "native-read-only-pci",
-  "status": "DELIVERY-NOT-CONFIRMED",
+  "status": "EXACT-APPLIED-RECEIPT",
   "counter": 20,
   "base_runtime_sha256": "4385750e67ec8362638cdaa80db9837dd4c111befa09213173c7d3f213959d0b",
   "base_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
@@ -38,20 +38,38 @@
       "exit_code": 1,
       "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-_g6coe4s/paced-stage-3.log",
       "log_sha256": "3509cbdb54185a06638362efc9882cc63ba73689beac728624833e013ebe731b"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-_g6coe4s/query-4.log",
+      "log_sha256": "ee32bc684a7f06bd08e96e6c6b0a93c102be67c143a6dfae9eeae919a5d57505"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-_g6coe4s/paced-stage-5.log",
+      "log_sha256": "5b3893032c0f3b187ecd8fa000390cf49e60304df66139934981fdab9f29c1f9"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-_g6coe4s/commit-6.log",
+      "log_sha256": "e7f1fdd7bcf1d891234c0a6d45e4cd223668cb9e57337ba56d82e0c6a8c90aed"
     }
   ],
-  "receiver_reported_applied": false,
-  "confirmed_received": 1400,
+  "receiver_reported_applied": true,
+  "confirmed_received": 71456,
   "last_receiver_status": {
     "outcome": "staging",
     "state": 1,
     "error": 0,
-    "received": 700,
+    "received": 1400,
     "length": 71456,
     "counter": 19,
     "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
     "session_matches": true,
-    "raw_hex": "52465301a060b48766fd7c8abc0200002017010001000000130000000000000000000000000000000000000000000000000000000000000000000000",
+    "raw_hex": "52465301a060b48766fd7c8a780500002017010001000000130000000000000000000000000000000000000000000000000000000000000000000000",
     "device_attestation": false
   }
 }

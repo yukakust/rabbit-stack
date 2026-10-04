@@ -654,3 +654,16 @@ checks pass; locally signed20. Bluetooth stopped at1400/71456 without COMMIT or
 APPLIED. Current engine19/world13; native_pending is pci-native-_g6coe4s. Same
 session/resume required, no reboot/new packet. See latest connected-native handoff
 and evidence cached-memory-native20. Physical repair/CE/BMI/Wi-Fi remain unproven.
+
+## Native20 physically applied: exact next boundary
+
+Owner brought Mac nearby. SAME20 packet resumed to full71456bytes, exact APPLIED20
+receipt. Current native20/world13/no pending. Physical QPD8 crosses cached-memory
+failure: activePCI0102, chip003821ff, ROMready2; BMI still times out. Immutable
+snapshot confirms posted08000000 request, softwareTX/RXwrite1/read0, last observed
+hardware0/0, neither completion, responsezero. Cleanupcomplete, mappingsreleased,
+PCI/ASPM/IRQ restored. Evidence physical summary updated; initial failed-transfer
+summary retained. Physical scene/motion question pending. Next bounded diagnostic
+must inspect CE queue configuration BEFORE all-engine halt/zero, then compare with
+pinned ath10k host-side initialization. No cause/firmware/Wi-Fi success inferred.
+New profile must preserve20 memory repair and BLE recovery; do not resend20.

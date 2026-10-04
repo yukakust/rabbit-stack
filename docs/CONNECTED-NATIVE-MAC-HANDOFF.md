@@ -1889,3 +1889,45 @@ source difference worth examining with fresh observations, NOT a proven physical
 cause or authorization to skip DMA/stop/lifetime gates. Capture target-side initial
 configuration before any speculative ring changes. Full Wi-Fi/Unreal transport
 not achieved; firmware upload/scan/WPA/DHCP/reconnect still pending.
+
+## 2026-10-04 — SAME native20 applied; memory repair physically passes, CE idle
+
+Owner replied «рядом» to proximity request. Exact saved20 resumed from receiver-
+confirmed1400/71456. Two timeouts reached2000 then a long connection staged full
+71456; COMMIT/reconnect exact SHA/session/counter20 APPLIED. Same nonce/counter/
+packet, no preparation or reboot. Current native20/world13, native_pending null,
+12-version idle journal/world content unchanged. All radio helpers terminal.
+No USB/bootstrap/owner-key-copy/Mac native build. Reachability improved during
+this trial; this does NOT establish a lasting RF fix or cause of earlier timeouts.
+
+Fresh physical QPD8 from known F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF: cached attributes
+200 / original+restored PCI Command0100, active snapshot0102, chip003821ff/rev1,
+D0/reset/revalidation good. Memory-enable repair crossed the prior step11 failure;
+ROM indicator2/ready, then BMI3second timeout5/overall0x805. NEW persisted snapshot
+captured: initial TX/RX0/0, last observed hardware0/0, software reads0/0/writes1/1,
+TXdone/RXdone false; request08000000 at mappedb1d07000, response12zeros atb1d06000,
+TXdescriptor0070d0b10400fcff, RXdescriptor0060d0b100000000, received bytes0.
+This proves posted request/response and no observed completions; it does NOT
+prove why hardware failed to advance or claim a fresh simultaneous register read.
+No BMI version/type/firmware upload/startup/scan/association/DHCP success.
+DMA held0/mask0, busownedfalse, resetownedfalse, cleanupcomplete, ASPM0140->0143
+and bootIRQ/Core8688/enable0 restored. Physical city/motion after20 requested,
+answer pending; do not turn gate snapshots into physical animation observation.
+
+Evidence cached-memory-native20/physical refreshed with all exact receipt/radio
+logs and raw+decoded QPD8/hash summary. Prior incomplete-transfer summary retained
+as initial-pending-trial-summary.json. Git evidence session representations are
+metadata/hash only; exact binary/session files stay ignored under local runs.
+DO NOT rerun native20 delivery or reuse retired19/15/16. New profile counter>20
+must bind actual current20/world13 and retain BLE recovery/MemoryEnable repair.
+
+NEXT independent investigation: capture each CE source/destination base,size,
+control/command and indices AFTER ROM ready BEFORE our first all-engine stop/zero.
+Our current stop zeroes both queue halves; pinned ath10k ce.c init_src_ring and
+init_dest_ring set only host-configured halves. This is a reviewable source
+mismatch/hypothesis, not physical proof of peer configuration or cause. Read-only
+bounded/cooperative snapshot first; never blindly preserve unknown DMA/ring state
+or bypass all-eight quiescence, bus-master-off, Flush/Unmap/Free ownership gates.
+After owner scene check, gate/sign/send that separately reviewed diagnostic and
+compare before/after queue configuration to locate CE transport failure. Full
+original Wi-Fi/Unreal-to-Dell goal remains incomplete; no credential consumer yet.
