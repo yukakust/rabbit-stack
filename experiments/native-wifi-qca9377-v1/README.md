@@ -681,3 +681,36 @@ in this trial. BMI still times out with no TX/RX completion; cleanup complete.
 No firmware upload or Wi-Fi association. Owner post21 city/tail check pending.
 See [snapshot contract](CE-SNAPSHOT-CONTRACT.md) and
 [evidence](evidence/2026-10-04/pre-halt-native21/physical/summary.json).
+
+## Firmware RAM receiver after physical native33
+
+Physical native33 obtained BMI version05020001/type8 after exact five config
+write/readback pairs and released all14 DMA mappings and host PCI/IRQ/link/wake
+ownership. The current city remains world14. Firmware upload/startup and Wi-Fi
+association are not yet established.
+
+`qca_fwp_start_setup` now accepts the completed native-owned `QcaConfigSetup`
+cache after full teardown, rather than fabricating the obsolete QPD7 snapshot.
+It checks setup completion/masks, BMI identity against a separately reviewed
+policy, exact adapter/bus/ring/buffer relationships and zero retained ownership.
+It never dereferences released DMA response memory. This grants RAM staging only;
+a later hardware upload phase needs its own fresh reinitialization and proof.
+
+The firmware GATT service supports legacy handles11..17 and relocated13..19
+(`QCA_FC_BASE=13`), preserving UUIDs and delegating all lower handles. The latter
+avoids collision with the current diagnostic service8..12. Yukabox sanitizer
+fixtures cover both layouts with six asset sizes, including the full reviewed
+751436byte container in12 signed chunks, invalid signatures, transport corruption,
+resume/duplicate receipts, pinning and zeroing. Native UEFI pool-lifetime fixtures
+cover eleven allocation/cleanup cases; the fresh setup gate rejects143 faulty
+states and checks successful two-allocation/two-free staging. COFF/UEFI ABI gates
+are host evidence, not physical receiver integration or firmware compatibility.
+
+Evidence: `evidence/2026-10-04/firmware-setup-receiver-host/`. No new physical
+package was signed or sent for this change; native33 remains applied. Next: wire
+this gate and relocated service into a separately checked native profile with
+exact owner/target/asset/generation policy and cooperative unload/retention,
+then verify physical staging. Verify fresh board variant/calibration before
+loading or executing the main runtime firmware. Upstream board-ID discovery may
+need a separately checked small RAM helper, which is distinct from OTP programming.
+No flash/OTP programming or USB/bootstrap change.

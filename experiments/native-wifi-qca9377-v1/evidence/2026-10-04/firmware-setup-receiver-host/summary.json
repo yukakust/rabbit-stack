@@ -1,0 +1,29 @@
+{
+  "status": "FRESH-SETUP-RAM-RECEIVER-HOST-SANITIZERS-COFF-ABI-PASS",
+  "build_host": "yukabox",
+  "reports_sha256": {
+    "chunks": "b55fa0c6bc67b308d3643f09adb89dcc10eed3ee182dfac8978845f343cb315f",
+    "channel": "5528833b0c6d2d8f10e834b18acb069351cdee24592dec0c8474e45787f5f5a5",
+    "port": "b8c76e82aa36113ac1375851346bfba54e865ae2d9a2768debd99cba7c8ac9c9"
+  },
+  "fresh_proof_rejections": 143,
+  "allocation_lifetime_scenarios": 11,
+  "gatt_handle_bases": [
+    11,
+    13
+  ],
+  "full_firmware_container_bytes": 751436,
+  "full_firmware_signed_chunks": 12,
+  "fixture_key_only": true,
+  "physical_baseline_commit": "2f2ca2c",
+  "physical_native_counter": 33,
+  "world_counter": 14,
+  "new_physical_package_signed": false,
+  "new_physical_package_sent": false,
+  "native_driver_integrated": false,
+  "physical_firmware_staging": false,
+  "firmware_upload": false,
+  "firmware_startup": false,
+  "wifi_association": false,
+  "next": "Integrate current-setup gate and base13 GATT into separately gated native profile with exact owner/target/asset/generation policy; verify physical RAM staging. Check fresh board variant/calibration before main runtime firmware load/startup."
+}

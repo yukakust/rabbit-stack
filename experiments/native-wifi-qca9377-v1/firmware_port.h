@@ -2,6 +2,7 @@
 #define QCA_FIRMWARE_PORT_H
 #include "scene_abi.h"
 #include "firmware_channel.h"
+#include "config_setup.h"
 typedef struct {
  SystemTable*system;
  void *allocate,*release;
@@ -16,6 +17,9 @@ typedef struct {
  * packet/client-supplied report. Policy is separately owner/target reviewed.
  * This gate binds known BMI type/version, not firmware compatibility itself. */
 int qca_fwp_start(QcaFirmwarePort*,SystemTable*,const QcaFirmwarePolicy*,const uint8_t*,size_t);
+/* Fresh native-owned setup after safe DMA teardown, never diagnostic JSON.
+ * No dereference of freed DMA response pages; cached BMI proof is checked. */
+int qca_fwp_start_setup(QcaFirmwarePort*,SystemTable*,const QcaFirmwarePolicy*,const QcaConfigSetup*);
 int qca_fwp_step(QcaFirmwarePort*); /* At most one allocation, no radio/DMA. */
 int qca_fwp_close(QcaFirmwarePort*); /* 1 still owned, 0 closed, -1 retained error. */
 size_t qca_fwp_att(QcaFirmwarePort*,uint16_t,const uint8_t*,size_t,uint8_t*,size_t);

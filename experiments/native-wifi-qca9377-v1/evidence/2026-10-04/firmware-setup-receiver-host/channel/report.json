@@ -1,0 +1,69 @@
+{
+  "status": "SIGNED-RAM-CHUNK-ATT-CHANNEL-HOST-COFF-PASS",
+  "build_host": "yukabox",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-v1/firmware_channel.c": "1f563dae553244c6fbc9781a7d987de0d30b301945430111b544b52f918bb10d",
+    "experiments/native-wifi-qca9377-v1/firmware_gatt.c": "39da0bb334a71ecef3979dd3c1bc00aae7cf7a6552955d96c7a88818d7974989",
+    "experiments/native-wifi-qca9377-v1/firmware_chunks.c": "093fb59a143a60753785bb4ceddefc5827480c085361c898ad63f999cca6a26c",
+    "experiments/native-wifi-qca9377-v1/firmware_channel_test.c": "0f3aaf334a6d4f74e337ed33d131c62af6c6350dc3516dfe0e30d9d5232226c4",
+    "experiments/native-wifi-qca9377-v1/firmware_channel.h": "f4c9d3a45d0639cd7438caa69d8745d019725b84ddca8d3c20aaae166d8b9ca7",
+    "experiments/native-wifi-qca9377-v1/verify_firmware_channel.py": "cf481a0c36ed5cefcf9fbe5fed5c9e4c6c3a48057775c6c57eba75af875203ed"
+  },
+  "ram_gate_sha256": "b55fa0c6bc67b308d3643f09adb89dcc10eed3ee182dfac8978845f343cb315f",
+  "host_log_sha256": "4000ba6a9334b9a50091926f898c17272193e961cbe054c20d8cdb83d50cf0c0",
+  "datasets": [
+    {
+      "name": "length-1",
+      "bytes": 1,
+      "chunks": 1,
+      "sha256": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5",
+      "largest_packet": 225
+    },
+    {
+      "name": "length-65535",
+      "bytes": 65535,
+      "chunks": 1,
+      "sha256": "4c32fbc9c2bad24dbe35c62f9aafd3e7dd6d2419f0b4b0a064db2fd79a56b6ab",
+      "largest_packet": 65759
+    },
+    {
+      "name": "length-65536",
+      "bytes": 65536,
+      "chunks": 1,
+      "sha256": "f779dbe3aeaa609beb32212579f3aea441f244621d13c977cb8b52d7ec3016d9",
+      "largest_packet": 65760
+    },
+    {
+      "name": "length-65537",
+      "bytes": 65537,
+      "chunks": 2,
+      "sha256": "5ea07e7659785552529c03843e59b785822a318d92800a44ed2aa1dc4df61400",
+      "largest_packet": 65760
+    },
+    {
+      "name": "length-2097152",
+      "bytes": 2097152,
+      "chunks": 32,
+      "sha256": "ca3b147bddecda5d402af947981c4e17f15cba6c53e3b038713648b462b8888a",
+      "largest_packet": 65760
+    },
+    {
+      "name": "reviewed-container",
+      "bytes": 751436,
+      "chunks": 12,
+      "sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "largest_packet": 65760
+    }
+  ],
+  "handle_bases": [
+    11,
+    13
+  ],
+  "legacy_handles_delegated": true,
+  "native_driver_integrated": false,
+  "actual_uefi_att_execution": false,
+  "physical_bluetooth_transfer": false,
+  "physical_bmi_compatibility": false,
+  "firmware_upload_performed": false,
+  "wifi_association": false
+}

@@ -2641,3 +2641,46 @@ RAM image load/startup, then WMI/HTT/scan/security/DHCP. Need signed chunks beca
 Retain prior city/cat/history; Mac control/signing/BLE, native builds Yukabox.
 No flash/OTP programming, autonomous Dell reboot, USB/bootstrap change.
 Firmware not uploaded; Wi-Fi association/DHCP/video still unverified.
+
+
+## Continuation: fresh setup proof and relocated firmware receiver (host only)
+
+Current physical baseline is STILL native33/world14, no new signing/session/send.
+Firmware has NOT been uploaded or started, Wi-Fi association remains unverified.
+
+Added qca_fwp_start_setup: accepts native-owned completed setup/BMI cache only
+AFTER adapter CLOSED and full DMA/PCI/IRQ/link/wake teardown. Requires setup
+phase4/op10/masks31/31/attempts5, BMI12bytes/length12/DONE/error0/TX+RX complete,
+version/type matching separately reviewed policy. Checks exact adapter/bus/access/
+ring/buffer relationships, same SystemTable, zero errors/ownership and all14
+buffers released. No freed DMA response dereference. RAM-only staging; cached
+proof does NOT authorize future device writes or a later firmware startup.
+Legacy qca_fwp_start(QPD7) remains for previous isolated fixtures; do not synthesize
+QPD7 from physical QPD18. Policy MUST be trusted native configuration, never a
+client packet/report. Physical BMI type8 differs from synthetic fixture type7.
+
+Firmware GATT base is selectable: old11..17 or full-diagnostic-safe13..19 using
+QCA_FC_BASE=13; same serviceUUID7/characteristicUUID8/9/A, all lower handles
+explicitly delegated. No overlap with existing file1..7/diagnostic8..12.
+Yukabox ASan/UBSan tests: six sizes including full751436byte/12chunk container,
+both GATT bases/resume/duplicate receipt/corruption/signature rejection;11 pool
+allocation/free/pinning/ambiguity scenarios;143 invalid fresh proof states and
+successful two-allocation/two-free staging; COFF/UEFI pool ABI gates. Public
+reports/logs/source hashes under firmware-setup-receiver-host. These tests are
+NOT physical native driver integration or physical Bluetooth firmware transfer.
+
+NEXT: integrate fresh setup gate plus base13 GATT into a dedicated native profile,
+with exact installed owner/target and reviewed asset digest/size/type8/version/
+generation. Cooperative polling/close must retain uncertain ownership and block
+unload while RAM asset is pinned. Check integrated actual entrypoints, normal and
+EMPTY UEFI city/Bluetooth gates, two equal rebuilds and current world before
+local owner signing. Then stage exact signed chunks and verify physical receipts.
+Separately establish board variant/calibration before main runtime firmware load/execution.
+Pinned core.c checks SMBIOS BDF extension and BMI board/chip IDs before board
+selection; PCI1028/1810 candidate alone is not a fresh exact board-variant proof.
+Upstream reads BMI IDs by loading a bounded OTP helper IMAGE into RAM and
+executing a GET_EEPROM_BOARD_ID query. This is distinct from programming
+permanent OTP; if needed, it requires its own exact RAM helper/query gate.
+Native33 historical source-bound evidence belongs to commit2f2ca2c; it does NOT
+authorize a new build from these changed sources. Do not replay applied33.
+Preserve city/cat/history; no autonomous reboot, flash/OTP programming, USB change.
