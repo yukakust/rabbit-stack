@@ -87,11 +87,47 @@ def recovery_reservation(state, owner, installed):
     return directory, verified.counter
 
 
+def completed_reservation(state, owner, installed):
+    """Bind an idle completed diagnostic release; never fabricate pending state."""
+    if state.get('pending') or state.get('native_pending') or state.get('recovery_pending'):
+        raise ValueError('completed recovery requires idle controller')
+    directory = Path(state['engine']['last_release_report']).parent
+    report = flow.read_json(directory / 'report.json')
+    session = flow.validate_session(flow.read_json(directory / 'session.json'))
+    packet = (directory / 'native.rrt').read_bytes()
+    payload = (directory / 'payload.efi').read_bytes()
+    counter = state['engine']['native_counter']
+    if (report.get('kind') != 'native-read-only-pci' or report.get('status') != 'EXACT-APPLIED-RECEIPT'
+        or report.get('receiver_reported_applied') is not True or counter < 1
+        or report.get('counter') != counter or session['kind'] != 2 or session['counter'] != counter
+        or report.get('payload_sha256') != state['engine']['payload_sha256']
+        or flow.sha(payload) != state['engine']['payload_sha256']
+        or report.get('base_world_sha256') != state['world_sha256']
+        or report.get('world_package_sha256') != state['package_sha256']
+        or base64.b64decode(session['stream_base64'])[32:] != packet
+        or flow.sha(packet) != report.get('package_sha256')
+        or flow.sha((directory / 'session.json').read_bytes()) != report.get('session_sha256')):
+        raise ValueError('completed release/session/world binding differs')
+    verified = engine.verify(packet, target=bytes.fromhex(installed['target_sha256']), owner=owner,
+        base_runtime=bytes.fromhex(report['base_runtime_sha256']),
+        world=Path(state['package']).read_bytes(), counter=counter - 1)
+    if verified.counter != counter or verified.payload != payload:
+        raise ValueError('completed release signature differs')
+    return directory, counter
+
+
+def reservation(state, owner, installed, kind):
+    if kind == 'recovery':return recovery_reservation(state, owner, installed)
+    if kind == 'native':return pending(state, owner, installed)
+    if kind == 'completed':return completed_reservation(state, owner, installed)
+    raise ValueError('unknown predecessor kind')
+
+
 def prepare(state_path, checked, directory, private):
     with flow.state_lock(state_path):
         state = flow.read_json(state_path)
-        if state['pending'] or bool(state.get('recovery_pending')) == bool(state.get('native_pending')):
-            raise ValueError('requires one pending native update or unconfirmed boot recovery')
+        if state['pending'] or (state.get('recovery_pending') and state.get('native_pending')):
+            raise ValueError('world request or conflicting recovery blocks preparation')
         world = flow.current(state)
         if world['schema_version'] != 5 or state['engine']['family'] != 'reviewed-city-v2':
             raise ValueError('reviewed actor city required')
@@ -104,8 +140,8 @@ def prepare(state_path, checked, directory, private):
         owner = private.with_suffix('.pub').read_bytes()
         if flow.sha(owner) != installed['owner_public_sha256']:
             raise ValueError('owner identity differs')
-        old_kind = 'recovery' if state.get('recovery_pending') else 'native'
-        old, old_counter = recovery_reservation(state, owner, installed) if old_kind == 'recovery' else pending(state, owner, installed)
+        old_kind = 'recovery' if state.get('recovery_pending') else 'native' if state.get('native_pending') else 'completed'
+        old, old_counter = reservation(state, owner, installed, old_kind)
         payload, checked_report = gate(checked, world, owner)
         counter = old_counter + 1  # Never reuse the still-saved native15 identity.
         if counter > 0xffffffff or state['counter'] >= 0xffffffff:
@@ -183,7 +219,7 @@ def restore(state_path, directory, private, dell_rebooted=False):
             if hashes(old, plan['old_pending_files']) != plan['old_pending_files']:
                 raise ValueError('old pending evidence changed')
             old_kind = plan.get('old_pending_kind', 'native')
-            reserved_dir, reserved_counter = recovery_reservation(state, owner, installed) if old_kind == 'recovery' else pending(state, owner, installed)
+            reserved_dir, reserved_counter = reservation(state, owner, installed, old_kind)
             if reserved_dir != old or reserved_counter + 1 != plan['counter']:
                 raise ValueError('reserved signed predecessor differs')
             # No BEGIN/DATA/COMMIT until owner observation AND exact zero receipt.

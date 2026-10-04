@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "status": "PREPARED-NOT-SENT",
+  "kind": 2,
+  "counter": 27,
+  "sha256": "cdfe539dfad3119c262bdd2d5ad18d50821c825f87afa1755482b3086d131b0c",
+  "package_bytes": 47872,
+  "session_base64": "2Nw4eyTdxIk="
+}

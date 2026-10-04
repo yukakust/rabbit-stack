@@ -2317,3 +2317,40 @@ Plan must bind exact completed26 receipt/base/counters, saved world and owner ke
 validate fresh empty boot only after owner confirms reboot. Restore counter>26 and
 world counter>13, then rerun current-world binding for the fixed native candidate.
 Preserve city/cat/history and immutable USB/bootstrap. Owner key stays Mac-local.
+
+## 2026-10-04 — completed26 offline boot recovery READY
+
+Supersedes the preceding recovery integration caveat. reboot_recovery.py now
+supports idle completed diagnostics explicitly: verifies APPLIED predecessor26,
+correlated session/counter/hash/current-world and owner public signature; preserves
+its files and reserves27 without fabricating native_pending. prepare remains
+strictly offline; activation still requires explicit owner-confirmed actual reboot
+AND exact fresh-empty receiver before any write.15 signed-fixture controller
+cases pass on Yukabox, including completed full restore/resume and mutation guards.
+
+Yukabox current-world/roof-cat C+sanitizer checks, two equal BLE-recovery city
+builds, normal and EMPTY UEFI gates passed. Checked directory on Mac:
+experiments/native-wifi-qca9377-v1/runs/idle26-city-recovery-mac.
+City recovery payload0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce,
+Wi-Fi probe disabled. Source/crypto/world evidence gate verifies locally.
+Owner key used only locally after gates; exact offline native27 and world14
+sessions are prepared at absolute directory:
+/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native27.
+Plan PREPARED-NOT-ACTIVATED, old_pending_kind=completed, reserved_counter26,
+world13 semantic city/cat preserved at future world14. No plan27 radio transmission.
+Actual restore WITHOUT --dell-rebooted rejects before radio; state byte-unchanged.
+Evidence evidence/2026-10-04/idle26-recovery-plan, no packet streams/binaries/keys.
+
+NEXT: ask owner to physically reboot Dell and report completion. Until explicit
+confirmation do not execute recovery writes. Once confirmed:
+python3 experiments/native-wifi-qca9377-v1/reboot_recovery.py restore --state experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/state.json --directory /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native27 --private /Users/yukakust/.rabbit-owner/runtime.key --dell-rebooted
+Use same directory/sessions on interruption; never recreate/resign unless a new
+strict reservation is required. Runtime27 then world14 require exact receipts,
+then owner city/tail observation. No Mac native compilation or USB write.
+After recovery, rebuild full fixed init profile/source+world binding on Yukabox
+before signing a later counter28+ trial; prior f91204d fix gates bind world13 and
+old recovery-helper source and cannot authorize changed world14/current inputs.
+Physical second warm ROM timeout still unresolved. Capture more diagnostics;
+do not claim that post-cold fix solves initialization/firmware/WPA/DHCP.
+Current actual state remains native26/world13, retained Wi-Fi ownership/BME off,
+all pending slots empty. Owner observation after26 is still pending.

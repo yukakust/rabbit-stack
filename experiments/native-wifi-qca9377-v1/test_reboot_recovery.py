@@ -63,6 +63,46 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual(p['counter'],16); self.assertEqual(p['world_counter'],13)
         self.assertEqual(r.hashes(self.old,self.old_files),self.old_files)
 
+    def completed(self):
+        state=flow.read_json(self.state);report=flow.read_json(self.old/'report.json')
+        report.update(status='EXACT-APPLIED-RECEIPT',receiver_reported_applied=True,
+                      payload_sha256=flow.sha((self.old/'payload.efi').read_bytes()))
+        state['native_pending']=None
+        state['engine'].update(native_counter=15,payload_sha256=report['payload_sha256'],last_release_report=str(self.old/'report.json'))
+        flow.save(self.old/'report.json',report);flow.save(self.state,state)
+        self.original=self.state.read_bytes();self.old_files=r.hashes(self.old,self.old_files)
+
+    def test_idle_completed_prepare_is_offline_and_preserved(self):
+        self.completed();self.prepare()
+        self.assertEqual(flow.read_json(self.plan/'plan.json')['old_pending_kind'],'completed')
+        self.assertIsNone(flow.read_json(self.state)['native_pending'])
+
+    def test_idle_completed_requires_actual_owner_reboot(self):
+        self.completed();self.prepare()
+        with patch.object(flow,'sender_step') as radio:
+            with self.assertRaisesRegex(ValueError,'explicitly confirm'):r.restore(self.state,self.plan,self.private)
+            radio.assert_not_called()
+        self.assertEqual(self.state.read_bytes(),self.original)
+
+    def test_idle_completed_nonempty_boot_rejected_without_writes(self):
+        self.completed();self.prepare()
+        with patch.object(flow,'sender_step',return_value=(0,'foreign')),patch.object(flow,'parse_status',return_value={'outcome':'foreign-final','raw_hex':'ff'}),patch.object(flow,'deliver_session') as write:
+            with self.assertRaisesRegex(ValueError,'fresh empty'):r.restore(self.state,self.plan,self.private,True)
+            write.assert_not_called()
+        self.assertEqual(self.state.read_bytes(),self.original)
+
+    def test_idle_completed_full_restore_preserves_city(self):
+        self.completed()
+        self.test_native_receipt_then_world_resume_preserves_city()
+
+    def test_idle_completed_receipt_bindings_rejected(self):
+        self.completed();state=flow.read_json(self.state);original=flow.read_json(self.old/'report.json')
+        for field,value in [('receiver_reported_applied',False),('counter',16),('payload_sha256','00'*32),('base_world_sha256','00'*32),('world_package_sha256','00'*32)]:
+            bad=dict(original);bad[field]=value;flow.save(self.old/'report.json',bad)
+            with self.assertRaises(ValueError):r.completed_reservation(state,self.owner,self.installed)
+        flow.save(self.old/'report.json',original)
+        self.assertEqual(r.completed_reservation(state,self.owner,self.installed),(self.old,15))
+
     def test_prepare_is_offline_and_preserves_old_session(self):
         self.prepare()
 
