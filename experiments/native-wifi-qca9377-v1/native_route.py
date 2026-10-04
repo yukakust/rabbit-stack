@@ -7,10 +7,11 @@ engine=build.actors.engine
 flow=engine.flow
 ROOT=Path(__file__).resolve().parent
 REPO=ROOT.parent.parent
+RECEIVER_STATUS="QCA-SETUP-SIGNED-RAM-RECEIVER-CITY-PROFILE-GATES-PASS"
 def gates(directory,payload,world):
  report=flow.read_json(directory/'report.json')
  reproduction=flow.read_json(directory/'reproduction.json',8*1024*1024)
- if report['status'] not in ('READ-ONLY-PCI-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS','READ-ONLY-PCI-POWER-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CE7-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS') or report['payload_sha256']!=flow.sha(payload):
+ if report['status'] not in ('READ-ONLY-PCI-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS','READ-ONLY-PCI-POWER-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CE7-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS',RECEIVER_STATUS) or report['payload_sha256']!=flow.sha(payload):
   raise ValueError('exact diagnostic profile gates required')
  if reproduction['status']!='CURRENT-SOURCES-TWO-REBUILDS-WORLD-C-CHECK-PASS' or reproduction['payload_sha256']!=flow.sha(payload) or reproduction['world_package_sha256']!=flow.sha(world):
   raise ValueError('current-source/current-world reproduction required')
@@ -21,14 +22,14 @@ def gates(directory,payload,world):
  for name,expected in report['source_sha256'].items():
   if reproduction['inputs'].get(name)!=expected:raise ValueError('gate source snapshot differs')
  if flow.sha((directory/'host.log').read_bytes())!=report['host_log_sha256']:raise ValueError('host evidence changed')
- if report['status'] in ('REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CE7-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS'):
+ if report['status'] in ('REVERSIBLE-PCI-WAKE-CITY-PROFILE-GATES-PASS','REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CE7-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS',RECEIVER_STATUS):
   port=flow.read_json(directory/'port-report.json')
   if (port['status']!='INITIAL-UEFI-PCI-WAKE-PORT-HOST-MOCK-AND-COFF-ABI-PASS'
    or flow.sha((directory/'port-report.json').read_bytes())!=report['port_report_sha256']
    or flow.sha((directory/'port-host.log').read_bytes())!=port['host_log_sha256']):raise ValueError('exact port gates required')
   for name,expected in port['source_sha256'].items():
    if reproduction['inputs'].get('experiments/native-wifi-qca9377-v1/'+name)!=expected:raise ValueError('port gate sources changed')
- if report['status'] in ('REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CE7-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS'):
+ if report['status'] in ('REVERSIBLE-PCI-RESET-CITY-PROFILE-GATES-PASS','QCA-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-BOOTIRQ-PCIE-ROM-BMI-CITY-PROFILE-GATES-PASS','QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CE7-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS',RECEIVER_STATUS):
   reset=flow.read_json(directory/'reset-report.json')
   if reset['status']!='COOPERATIVE-COLD-RESET-HOST-AND-COFF-PASS' or flow.sha((directory/'reset-report.json').read_bytes())!=report['reset_report_sha256'] or flow.sha((directory/'reset-host.log').read_bytes())!=reset['host_log_sha256']:raise ValueError('reset component gate mismatch')
   for name,expected in reset['source_sha256'].items():
@@ -53,8 +54,8 @@ def gates(directory,payload,world):
     or flow.sha((directory/(component+'-host.log')).read_bytes())!=subreport['host_log_sha256']):raise ValueError('component gate mismatch: '+component)
    for name,expected in subreport['source_sha256'].items():
     if reproduction['inputs'].get('experiments/native-wifi-qca9377-v1/'+name)!=expected:raise ValueError('component sources changed: '+name)
- if report['status'] in ('QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CE7-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS'):
-  setup=report['status']=='QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS'
+ if report['status'] in ('QCA-WARM-FULL-CHANNEL-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CE7-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-READ-CITY-PROFILE-GATES-PASS','QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS',RECEIVER_STATUS):
+  setup=report['status'] in ('QCA-FULL-CHANNEL-CONFIG-SETUP-BMI-CITY-PROFILE-GATES-PASS',RECEIVER_STATUS)
   config=setup or report['status']=='QCA-FULL-CHANNEL-CONFIG-READ-CITY-PROFILE-GATES-PASS'
   if setup and any(report.get(flag) is not True for flag in ('config_write_readback','config_done_last','cpu_wake_and_bmi')):raise ValueError('setup gates required')
   full=config or report['status']=='QCA-FULL-CHANNEL-CE7-READ-CITY-PROFILE-GATES-PASS'
@@ -81,6 +82,21 @@ def gates(directory,payload,world):
     if subreport.get('channel_scenarios')!=27 or subreport.get('mapped_irq_scenarios')!=36 or subreport.get('native_pci_adapter_scenarios')!=13:raise ValueError('native core scenarios differ')
     if flow.sha((directory/'pack-report.json').read_bytes())!=subreport['pack_report_sha256'] or subreport['pack_report_sha256']!=report['pack_report_sha256']:raise ValueError('source-pinned pack evidence changed')
    if component=='probe' and (subreport.get('scenarios')!=(65 if setup else 30 if config else 25 if full else 19) or subreport.get('native_entrypoints_integrated') is not True or subreport.get('slow_cooperative_poll_fixture') is not True):raise ValueError('native entrypoint proof missing')
+ if report['status']==RECEIVER_STATUS:
+  import receiver_build
+  policy=receiver_build.policy()
+  if report.get('receiver_policy')!=policy or report.get('receiver_policy_sha256')!=flow.sha(receiver_build.POLICY.read_bytes()) or any(report.get(k) is not True for k in ('signed_ram_receiver_integrated','firmware_staging_only')) or report.get('firmware_execution') is not False:raise ValueError('exact RAM-only receiver policy required')
+  probe=flow.read_json(directory/'probe-report.json')
+  if any(probe.get(k) is not True for k in ('signed_ram_receiver_integrated','full_asset_fixture','pinned_unload_retained','fixture_owner_override_only')):raise ValueError('integrated RAM entrypoint fixture required')
+  for name,status in [('asset-core','SIGNED-RAM-CHUNKS-HOST-SANITIZERS-COFF-PASS'),('asset-channel','SIGNED-RAM-CHUNK-ATT-CHANNEL-HOST-COFF-PASS'),('asset-port','FIRMWARE-UEFI-RAM-PORT-HOST-COFF-ABI-PASS')]:
+   component=flow.read_json(directory/(name+'-report.json'))
+   if component['status']!=status or component['build_host']!='yukabox' or flow.sha((directory/(name+'-report.json')).read_bytes())!=report[name+'_report_sha256'] or flow.sha((directory/(name+'-host.log')).read_bytes())!=component['host_log_sha256']:raise ValueError('exact RAM component gates required')
+   for path,expected in component['source_sha256'].items():
+    if reproduction['inputs'].get(path)!=expected:raise ValueError('RAM gate source differs: '+path)
+  asset_port=flow.read_json(directory/'asset-port-report.json');asset_channel=flow.read_json(directory/'asset-channel-report.json')
+  if asset_port.get('fresh_setup_rejections')!=143 or asset_port.get('fresh_setup_gate') is not True or asset_channel.get('handle_bases')!=[11,13]:raise ValueError('fresh/relocated receiver fixtures missing')
+  for sub in ('actors-qemu','actors-empty-boot-qemu'):
+   if b'INTEGRATED RAM SERVICE13..19; TARGET ABSENT WRITE REJECTED; CITY RETAINED' not in (directory/sub/'observed.log').read_bytes():raise ValueError('integrated UEFI ATT receiver gate missing')
  for sub,empty in [('actors-qemu',False),('actors-empty-boot-qemu',True)]:
   gate=flow.read_json(directory/sub/'report.json');log=(directory/sub/'observed.log').read_bytes()
   if (gate not in report['gates'] or gate['empty_boot']!=empty or gate['payload_sha256']!=flow.sha(payload)
@@ -98,6 +114,10 @@ def prepare(state_path,state,checked,private_path):
  public=private_path.with_suffix('.pub').read_bytes()
  if flow.sha(public)!=installed['owner_public_sha256']:raise ValueError('owner identity differs')
  counter=state['engine']['native_counter']+1
+ if gate['profile_status']==RECEIVER_STATUS:
+  import receiver_build
+  policy=receiver_build.policy()
+  if policy['owner']!=public.hex() or policy['target']!=installed['target_sha256'] or policy['generation']!=counter:raise ValueError('installed owner/target/next generation receiver binding required')
  # Secrets first touched here, after all source, VM and current-world checks.
  private=engine.load_private(private_path)
  if private.public_key().public_bytes(Encoding.Raw,PublicFormat.Raw)!=public:raise ValueError('owner key mismatch')

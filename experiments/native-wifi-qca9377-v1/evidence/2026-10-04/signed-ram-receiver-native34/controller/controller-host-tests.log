@@ -1,0 +1,34 @@
+Confirmed RAM chunk5/12 bitmap=31 ready=0
+Confirmed RAM chunk6/12 bitmap=63 ready=0
+Confirmed RAM chunk7/12 bitmap=127 ready=0
+Confirmed RAM chunk8/12 bitmap=255 ready=0
+Confirmed RAM chunk9/12 bitmap=511 ready=0
+Confirmed RAM chunk10/12 bitmap=1023 ready=0
+Confirmed RAM chunk11/12 bitmap=2047 ready=0
+Confirmed RAM chunk12/12 bitmap=4095 ready=1
+EXACT FULL RAM STAGING VERIFIED; NO FIRMWARE EXECUTION
+Confirmed RAM chunk12/12 bitmap=4095 ready=1
+EXACT FULL RAM STAGING VERIFIED; NO FIRMWARE EXECUTION
+Chunk4 unconfirmed; preserve session and query before retry. Log: /var/folders/xs/szzc15fx37l4wr372lwbh8640000gn/T/tmpbsz6jdrh/chunk-4-0.log
+{
+  "status": "SINGLE-LOCK-RESUME-AND-DURABLE-TIMEOUT-PASS",
+  "cases": [
+    {
+      "accepted_before": 4,
+      "timeout": false,
+      "pass": true
+    },
+    {
+      "accepted_before": 12,
+      "timeout": false,
+      "pass": true
+    },
+    {
+      "accepted_before": 4,
+      "timeout": true,
+      "pass": true
+    }
+  ],
+  "radio_started": false,
+  "private_key_read": false
+}

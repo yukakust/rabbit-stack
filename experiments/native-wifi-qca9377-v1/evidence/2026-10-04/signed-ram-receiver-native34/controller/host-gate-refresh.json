@@ -1,0 +1,19 @@
+{
+  "reason": "Host controller single-lock, skip already accepted chunks and durable timeout logging; full native/QEMU/current-source gates rerun; installed native bytes/policy/packets unchanged",
+  "changed_inputs": [
+    "experiments/native-wifi-qca9377-v1/asset_route.py"
+  ],
+  "previous_checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/runs/receiver-profile-native34",
+  "previous_gate": {
+    "report_sha256": "02223f6d75ae614bb0eb956d7562411e66ceb4b9c04accd6df8fd065a3ede3de",
+    "reproduction_sha256": "d6ac84ca290755f77a65ee856fa2d1cd41e6bdc8380ecd7b26390a3d846d31f7",
+    "profile_status": "QCA-SETUP-SIGNED-RAM-RECEIVER-CITY-PROFILE-GATES-PASS"
+  },
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/runs/receiver-profile-native34-final",
+  "gate": {
+    "report_sha256": "634cb9e4375201f3d05396f42f39ee03987e731eeeb68080ac6324d0a50d6660",
+    "reproduction_sha256": "b70eb80f443f2e6740edbf1dffe14f766422092c77e3952d488485460af9e5ea",
+    "profile_status": "QCA-SETUP-SIGNED-RAM-RECEIVER-CITY-PROFILE-GATES-PASS"
+  },
+  "native_payload_sha256": "4aca12f49f34cac0b679928b7c594c7f2c4c34ab610a2caac0527d50cdb1a856"
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Compile-only by default; send one previously owner-signed RAM chunk on Mac."""
-import argparse,hashlib,json,os,platform,struct,subprocess,tempfile
+import argparse,hashlib,json,os,platform,struct,subprocess,tempfile,uuid
 from pathlib import Path
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 import diagnostic_build
@@ -22,6 +22,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('packet',nargs='?',type=Path)
     modes=p.add_mutually_exclusive_group();modes.add_argument('--send',action='store_true');modes.add_argument('--query-only',action='store_true');modes.add_argument('--preflight',action='store_true')
     p.add_argument('--checkpoint',type=Path)
+    p.add_argument('--peer',type=str)
     p.add_argument('--state',type=Path,default=ROOT.parent/'x86-64-uefi-connected-supervisor-v1/runs/text-world/state.json')
     p.add_argument('--owner-public',type=Path,default=Path.home()/'.rabbit-owner/runtime.pub')
     a=p.parse_args()
@@ -30,6 +31,8 @@ def main():
     out=ROOT/'runs/mac-control';out.mkdir(parents=True,exist_ok=True);exe=out/'firmware-sender'
     native=ROOT.parent/'x86-64-uefi-runtime-supervisor-v1';plist=ROOT.parent/'x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist'
     env=os.environ.copy()
+    env.pop('RABBIT_ASSET_PEER',None)
+    if a.peer:env['RABBIT_ASSET_PEER']=str(uuid.UUID(a.peer))
     for name in ('CPATH','C_INCLUDE_PATH','CPLUS_INCLUDE_PATH','SDKROOT'):env.pop(name,None)
     subprocess.run(['xcrun','--sdk','macosx','clang','-fobjc-arc','-Wall','-Wextra','-Werror','-I'+str(ROOT),'-I'+str(native),str(ROOT/'mac_firmware_sender.m'),str(ROOT/'firmware_sender_core.c'),str(native/'sha256.c'),'-framework','Foundation','-framework','CoreBluetooth','-Wl,-sectcreate,__TEXT,__info_plist,'+str(plist),'-o',str(exe)],env=env,check=True,timeout=60)
     print('MAC ASSET SENDER COMPILED; no private key or firmware activation',flush=True)
@@ -47,7 +50,9 @@ def main():
         if flow.sha(gate_path.read_bytes())!=state['engine']['installed_gate_sha256']:raise ValueError('installed owner gate changed')
         public=a.owner_public.read_bytes()
         if flow.sha(public)!=gate['owner_public_sha256']:raise ValueError('owner identity differs from installed gate')
-        packet=a.packet.read_bytes();context=validate(packet,public);print(json.dumps(context,sort_keys=True),flush=True)
+        packet=a.packet.read_bytes();context=validate(packet,public)
+        if packet[8:40].hex()!=gate['target_sha256']:raise ValueError('asset target differs from installed gate')
+        print(json.dumps(context,sort_keys=True),flush=True)
         checkpoint=(a.checkpoint or a.packet.with_suffix(a.packet.suffix+'.checkpoint.json')).resolve()
         if checkpoint==a.packet.resolve():raise ValueError('checkpoint must not overwrite immutable packet')
         if not checkpoint.parent.is_dir():raise ValueError('checkpoint parent required')

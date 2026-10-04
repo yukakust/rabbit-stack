@@ -1,0 +1,22 @@
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+Traceback (most recent call last):
+  File "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/ask_connected_world.py", line 140, in state_lock
+    try: fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+BlockingIOError: [Errno 35] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/send_firmware_chunk.py", line 65, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/send_firmware_chunk.py", line 46, in main
+    with flow.state_lock(a.state):
+         ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/ask_connected_world.py", line 141, in state_lock
+    except BlockingIOError: raise ValueError('another controller/sender still holds this state; wait for its bounded completion')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: another controller/sender still holds this state; wait for its bounded completion

@@ -28,7 +28,7 @@ int qca_fwp_start_setup(QcaFirmwarePort*s,SystemTable*st,const QcaFirmwarePolicy
   ||!x->read.full.adapter)return -1;
  const QcaInitAdapter*a=x->read.full.adapter;
  if(a->phase!=QCA_INIT_CLOSED||a->error||a->warm.phase!=QCA_WARM_DONE||a->warm.error
-  ||a->cancelled||a->warm.owned||a->warm.ce_owned||a->recovery.owned||a->channels.phase!=QCA_CHANNEL_CLOSED
+  ||a->cancelled!=1||a->warm.owned||a->warm.ce_owned||a->recovery.owned||a->channels.phase!=QCA_CHANNEL_CLOSED
   ||a->channels.error||a->bus.error||a->mapped.error||a->bus.phase!=QCA_BUS_OFF
   ||a->channels.bus!=&a->bus||a->bus.access!=&a->access||a->mapped.channels!=&a->channels
   ||a->channels.allocated!=14||a->channels.cleanup_slot!=14||a->access.count||a->bus.owned

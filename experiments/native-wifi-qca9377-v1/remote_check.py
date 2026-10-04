@@ -9,9 +9,12 @@ REPO=ROOT.parent.parent
 sha=lambda b:hashlib.sha256(b).hexdigest()
 def main():
  p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,required=True);p.add_argument('--world',type=Path,required=True)
- p.add_argument('--profile',choices=('diagnostic','bringup','power','reset','bmi','init','full-read','config-read','setup'),default='diagnostic')
+ p.add_argument('--profile',choices=('diagnostic','bringup','power','reset','bmi','init','full-read','config-read','setup','receiver'),default='diagnostic')
  a=p.parse_args()
- if a.profile=='setup':
+ if a.profile=='receiver':
+  import receiver_build
+  builder=receiver_build
+ elif a.profile=='setup':
   import setup_build
   builder=setup_build
  elif a.profile=='config-read':
@@ -36,7 +39,7 @@ def main():
   import reset_build
   builder=reset_build
  else:builder=build
- inputs=json.loads(a.inputs.read_text());out=ROOT/'runs'/('bmi-profile' if a.profile=='bmi' else 'setup-profile' if a.profile=='setup' else 'config-read-profile' if a.profile=='config-read' else 'full-read-profile' if a.profile=='full-read' else 'init-profile' if a.profile=='init' else a.profile)
+ inputs=json.loads(a.inputs.read_text());out=ROOT/'runs'/('receiver-profile' if a.profile=='receiver' else 'bmi-profile' if a.profile=='bmi' else 'setup-profile' if a.profile=='setup' else 'config-read-profile' if a.profile=='config-read' else 'full-read-profile' if a.profile=='full-read' else 'init-profile' if a.profile=='init' else a.profile)
  def check_inputs():
   for name,expected in inputs.items():
    path=Path(name)

@@ -1,0 +1,77 @@
+{
+  "status": "SIGNED-RAM-CHUNKS-HOST-SANITIZERS-COFF-PASS",
+  "build_host": "yukabox",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-v1/firmware_chunks.c": "093fb59a143a60753785bb4ceddefc5827480c085361c898ad63f999cca6a26c",
+    "experiments/native-wifi-qca9377-v1/firmware_chunks.h": "fb42e22a4a560d158dc5e2dcf1186049009a42c3a461a2015ba133ff34c8dea5",
+    "experiments/native-wifi-qca9377-v1/firmware_chunks_test.c": "56a411fb850208a377869372bbb15ea02f1d403e347b4cd54f6892572f71a240",
+    "experiments/native-wifi-qca9377-v1/firmware_chunk_format.py": "a69ce648333c0486b26c235474c5c4d7a0f8e6cd3692b556d1f404c5bc232956",
+    "experiments/native-wifi-qca9377-v1/verify_firmware_chunks.py": "909746c734bec2c98ae513be7b177980f6171b73abc22853cd10f7dee769d51b"
+  },
+  "sha256_source": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+  "crypto_provenance": {
+    "schema_version": 1,
+    "library": "Monocypher",
+    "version": "4.0.3",
+    "git_commit": "ab2b16dd619ad5f6979a4fbe69cfa324a6fcc35f",
+    "upstream": "https://github.com/LoupVaillant/Monocypher",
+    "files": {
+      "src/monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+      "src/monocypher.h": "fcaf6ed771358bb4f40fba016f6518ae86ec02b1b877d2cc35ad92d3a26fd7b3",
+      "src/optional/monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+      "src/optional/monocypher-ed25519.h": "3a3035181f991a158d0e1c7567258f0bae8ba0f1f23c5512b4a1db1b3c9730ce",
+      "LICENCE.md": "a5781770269d2516e52ba4863f790c10a16da4089a1e81823aee19ff1e9026b0"
+    }
+  },
+  "host_log_sha256": "260763e474f7b1e5fecb1a74657268e9a89f84381b318d3bb379d97f550de59d",
+  "datasets": [
+    {
+      "name": "length-1",
+      "bytes": 1,
+      "chunks": 1,
+      "sha256": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5",
+      "largest_packet": 225
+    },
+    {
+      "name": "length-65535",
+      "bytes": 65535,
+      "chunks": 1,
+      "sha256": "4c32fbc9c2bad24dbe35c62f9aafd3e7dd6d2419f0b4b0a064db2fd79a56b6ab",
+      "largest_packet": 65759
+    },
+    {
+      "name": "length-65536",
+      "bytes": 65536,
+      "chunks": 1,
+      "sha256": "f779dbe3aeaa609beb32212579f3aea441f244621d13c977cb8b52d7ec3016d9",
+      "largest_packet": 65760
+    },
+    {
+      "name": "length-65537",
+      "bytes": 65537,
+      "chunks": 2,
+      "sha256": "5ea07e7659785552529c03843e59b785822a318d92800a44ed2aa1dc4df61400",
+      "largest_packet": 65760
+    },
+    {
+      "name": "length-2097152",
+      "bytes": 2097152,
+      "chunks": 32,
+      "sha256": "ca3b147bddecda5d402af947981c4e17f15cba6c53e3b038713648b462b8888a",
+      "largest_packet": 65760
+    },
+    {
+      "name": "reviewed-container",
+      "bytes": 751436,
+      "chunks": 12,
+      "sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "largest_packet": 65760
+    }
+  ],
+  "fixture_key_only": true,
+  "physical_bmi_compatibility": false,
+  "owner_signing_performed": false,
+  "bluetooth_receiver_integrated": false,
+  "firmware_upload_performed": false,
+  "wifi_association": false
+}

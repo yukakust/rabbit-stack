@@ -2684,3 +2684,77 @@ permanent OTP; if needed, it requires its own exact RAM helper/query gate.
 Native33 historical source-bound evidence belongs to commit2f2ca2c; it does NOT
 authorize a new build from these changed sources. Do not replay applied33.
 Preserve city/cat/history; no autonomous reboot, flash/OTP programming, USB change.
+
+
+## Continuation: integrated signed RAM receiver, physical native34
+
+Native34 was locally owner-signed after current-source gates, sent through the
+saved RRT session pci-native-ch3zpq7f and confirmed by an exact APPLIED receipt.
+Payload SHA256 4aca12f49f34cac0b679928b7c594c7f2c4c34ab610a2caac0527d50cdb1a856,
+92672bytes. World14 is unchanged; no world/native/recovery operation is pending.
+Do NOT replay applied34 or reboot Dell during this volatile RAM trial.
+
+receiver_build integrates firmware_port/channel/GATT/chunk signature checking
+with the actual native init/poll/stop entrypoints. Trusted embedded policy binds
+installed owner/target, generation34, physical BMI type8/version05020001 and the
+exact 751436byte firmware-6.bin container digest
+8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01.
+ATT handles13..19 preserve existing file1..7/diagnostic8..12. RAM allocation starts
+only after completed native setup/BMI and complete host-resource teardown.
+Normal adapter close sets cancelled=1 as a close request; this is required by
+the fresh proof gate, together with error0 and exact completed setup masks.
+A RAM pin blocks unload; cooperative close retains ambiguous allocations.
+No firmware image write, execute, BMI_DONE or association command is included.
+
+Yukabox actual-entrypoint sanitizers cover65 cases, including full signed
+12chunk staging and pinned-unload refusal. Fresh-proof port tests cover143
+invalid states and11 allocation/pinning/lifetime scenarios. Normal and EMPTY
+QEMU preserve city/animation/legacy BLE and check new ATT discovery/status plus
+absent-target rejection. Two equal native builds and the world14 gate passed.
+These are host/QEMU checks, distinct from physical receipts.
+
+Fresh physical QPD18 after34: setupDONE4/op10/masks31/31/attempts5; CPU8688->a688;
+BMI DONE2/error0/version05020001/type8/length12/bytes12, TX+RX complete,
+1poll/390000us. AdapterCLOSED12/channelsCLOSED6, all14 allocations released;
+DMA/PCI/IRQ/link/wake restored. Target configuration RAM changed intentionally.
+Visual city/tail confirmation after34 was requested and is still pending.
+
+Immutable owner-signed firmware RAM session firmware-ram-y_iygsqw was prepared
+only after this fresh diagnostic and all gates. ALL12 chunks are now confirmed
+on physical Dell: bitmap4095/ready1, exact full751436byte container in HOST RAM.
+Every chunk is owner-signature/hash/target/policy checked by native34; the final
+receipt confirms the complete container hash. No firmware started or Wi-Fi
+association. Session status EXACT-FULL-FIRMWARE-CONTAINER-IN-RAM.
+
+Controller corrections: one outer lock with a directly invoked compiled helper,
+skip all previously accepted chunks during a partial transfer, re-query only the
+last chunk after full completion, and persist each sender attempt before launch.
+Windowed writes use at most240bytes/peer budget, status after4096bytes,50ms delay;
+only RFCS receipts advance durable confirmed floors. A10ms trial ended in a
+connection timeout;50ms also had a timeout, so pause causation is not proven.
+Bounded timeout resumes retained the exact signed packets and accepted chunks.
+No re-signing or ABORT. Offline controller tests cover partial/full resume and
+durable timeout; public actual controller sources and radio logs are archived.
+
+RAM belongs to the current native driver's lifetime. A future unpinned driver
+close frees staging allocations; a pin blocks unload. A subsequent chip loader
+must deliberately arrange asset ownership or re-stage assets under its own
+checked profile; historical RAM readiness alone does not authorize chip writes.
+Do not replay applied34 or recreate this completed signed RAM session.
+
+NEXT after exact full-container receipt: separately establish exact board
+variant/calibration, then gate the RAM helper/query and chip-image loader.
+The container in Dell HOST RAM is not firmware running in Wi-Fi-chip RAM.
+Wi-Fi association, DHCP and Yukabox video are still unverified. Preserve city,
+cat and history; no autonomous reboot, flash/OTP programming or USB change.
+
+Final verification: current-source full native/QEMU profile rerun and two equal
+Yukabox builds passed after the host-only asset_route fix. Native bytes remain
+4aca12f4...; no new signing or native installation. Explicit gate_updates retain
+the original proof and the refreshed proof. Final repository asset_route deliver
+performed ONLY one --query-only of chunk11, exit0, bitmap4095/ready1, no data
+or COMMIT writes. Completed RAM session remains firmware-ram-y_iygsqw. Public
+summary, physical reports/logs/checkpoints and host/controller proofs are under
+evidence/2026-10-04/signed-ram-receiver-native34. No binaries, private material
+or RRT wire/session blobs are checked in. World14/native34; all pending slots
+null. Wi-Fi remains disconnected; chip-image execution has not been attempted.

@@ -1,0 +1,31 @@
+{
+  "status": "FULL-PHYSICAL-HOST-RAM-STAGING-CONFIRMED",
+  "maximum_data_bytes": 240,
+  "status_window_bytes": 4096,
+  "data_delay_ms": 50,
+  "confirmed_floor_from_rfcs_only": true,
+  "immutable_session": "firmware-ram-y_iygsqw",
+  "packets": 12,
+  "asset_bytes": 751436,
+  "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+  "bitmap": 4095,
+  "ready": 1,
+  "native_payload_sha256": "4aca12f49f34cac0b679928b7c594c7f2c4c34ab610a2caac0527d50cdb1a856",
+  "world_counter": 14,
+  "firmware_started": false,
+  "wifi_association": false,
+  "fast_trial_delay_ms": 10,
+  "fast_trial_result": "connection timeout; return to 50ms; causation not established",
+  "source_sha256": {
+    "ram-resume-loop.py": "950f0fb03f9585e205669bf40aed214ce81ca27af6f9596319e77df3fd6228ed",
+    "windowed-fast-sender.m": "74e5b6ee65d8c7f098dec866b3bf23735896f42c9de3eab09f62110d7f9940db",
+    "windowed-firmware-sender.m": "a8051ba02bd63dfecab9d6fcf216dea33d95d8616e0e05d6a829af61070750c2",
+    "reviewed-final-asset-route.py": "410ebd424f92f6e5189a617f1386b631f7e2f8f14231374de48c9d041427cf54",
+    "host-gate-refresh.json": "a9832a6f970093081377352560482fc55a9674af647367d4ad5434b887b4f6d0",
+    "controller-host-tests.log": "d2f89d5919b35d8dc51ba3f8e1373ea19271b5aeb143ab5b7c293d117117f2db",
+    "single-controller.py": "63d232a58eca7b33bac2677392d62efa4258c29f24086a54a03376195b03785f",
+    "verify-controller.py": "0b406e4b6f4271302a6696b6a1da410e20115b095c89cf2ffa9dd3a8b60d9cc2",
+    "fast-controller.py": "f4a363c08d27aa6baeb916fab9aee0d5f25f5878ab6260cbd54fe00c4f651020"
+  },
+  "final_repository_route_query_only_verified": true
+}

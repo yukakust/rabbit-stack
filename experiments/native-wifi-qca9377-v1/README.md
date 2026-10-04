@@ -714,3 +714,44 @@ then verify physical staging. Verify fresh board variant/calibration before
 loading or executing the main runtime firmware. Upstream board-ID discovery may
 need a separately checked small RAM helper, which is distinct from OTP programming.
 No flash/OTP programming or USB/bootstrap change.
+
+
+## Native34: integrated signed container receiver
+
+`receiver_build.py` integrates the RAM port, signed chunk core and GATT channel
+with the real native setup/poll/stop entrypoints. Handles13..19 leave file1..7
+and diagnostics8..12 intact. `receiver-policy.json` is trusted native policy:
+installed public owner/target, generation34, physical BMI type8/version05020001,
+751436byte container and its exact digest. Client diagnostic JSON never grants
+on-device write authority. Staging starts only after completed native setup/BMI
+and full DMA/PCI/IRQ/link/wake teardown; RAM pins block unload.
+
+Normal adapter close deliberately sets cancelled=1. The fresh setup gate checks
+that closure marker together with completed operation masks and zero errors;
+it must not reject every normally closed adapter or accept an unclosed one.
+
+Native34 payload SHA256
+`4aca12f49f34cac0b679928b7c594c7f2c4c34ab610a2caac0527d50cdb1a856`
+was signed locally after current-source/two-build gates and exactly confirmed
+APPLIED on physical Dell; world14 was preserved. Fresh QPD18 confirms completed
+setup and BMI05020001/type8,12bytes, all14 maps released. Host/QEMU65 integrated
+cases include full12chunk reception, unload refusal while pinned, normal/EMPTY
+city and the additional ATT service; they are distinct from physical evidence.
+
+`asset_route.py prepare` validates the installed native, immutable embedded
+policy, current world, fresh known-peer read-only diagnostic and exact container
+before touching the local owner private key. `deliver` keeps the same signed
+packets and receipt-confirmed checkpoints across timeouts. Partial accepted
+chunks remain in volatile HOST RAM. Physical Dell confirmed all12 chunks and the exact full-container hash:
+bitmap4095/ready1, status `EXACT-FULL-FIRMWARE-CONTAINER-IN-RAM`. The controller
+uses one lock, skips accepted chunks on partial resume, persists attempts before
+launch and re-queries the final chunk after completion. Windowed writes remain
+bounded by the peer MTU and receipt-confirmed floors. Connection/time limits
+preserve the exact packets/checkpoints; no re-signing or ABORT is needed.
+
+This stage does not write an image to the Wi-Fi chip or start it. Exact board
+variant/calibration, a separately gated RAM helper/query if needed, chip image
+loading, WMI/HTT, association and DHCP remain subsequent work. Physical evidence
+and host proofs are stored separately under
+`evidence/2026-10-04/signed-ram-receiver-native34/`. See the connected Mac handoff
+for session names, current state and continuation constraints.
