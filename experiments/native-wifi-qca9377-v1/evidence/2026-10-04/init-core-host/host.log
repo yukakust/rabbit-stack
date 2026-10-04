@@ -1,0 +1,28 @@
+WARM-ORDER-CANCELLATION-IO-OWNERSHIP-PASS
+Full channels scenario 0: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 1: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 2: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 3: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 4: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 5: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 6: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 7: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 8: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 9: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 10: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 11: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 12: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 13: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 14: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 15: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 16: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 17: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 18: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 19: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 20: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 21: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Aliased allocator retained; unload forbidden; MOCK ONLY
+Full channels scenario 23: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 24: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 25: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 26: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY

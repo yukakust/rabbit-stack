@@ -2214,3 +2214,40 @@ span check against exact physical25 receipt/current state. No new physical
 probe, payload signature, Bluetooth send or USB/bootstrap write. Engine remains
 native25/world13, pending slots empty. Old25 gates cannot cover these changes;
 future candidate must snapshot init_tables.py/new verifier/pack with full gates.
+
+## 2026-10-04 — warm-reset and full-host-channel C components checked
+
+Owner authorized continuing. Added warm_core.c/h, channels_core.c/h and their
+host fixtures/verify_init_core.py. Warm reset now exists as cooperative C code,
+with two CPU resets, SI0/CE timing, bounded ROM waits and a cooperative pipe
+callback. Guard/clock/I/O/cancellation failures retain exclusive ownership.
+CE ownership precedes ambiguous assertion; recovery can only deassert after10ms
+and verified clear, never restart or silently release an errored operation.
+
+Full channels allocate14 pages/57344bytes for0TX/1RX/2RX/3TX/4TX/7TX+RX.
+Each registered mapping and ring is owned; live preparedness checks current PCI
+command and actual hardware bases/sizes. CE5 host disabled and CE6 autonomous.
+Data RX1/2 posts after explicit start; diagnostic RX7 only per exchange. Reuse
+retained mappings after all-eight stop; cleanup one guarded buffer per poll.
+Duplicate DMA maps reject; aliased host allocations retain ambiguous ownership.
+
+Yukabox ASan/UBSan and freestanding COFF gates passed.27 real-component channel
+fixtures plus warm every-I/O/every-phase cancellation/guard faults, second ROM
+and pipe failures, timeouts/clock/recovery tests passed. Joint warm/channel fixture
+performs both pipe initializations using identical14 retained pages, no BME-on
+or unmap/free during reset. Source and transitive ABI identities checked before
+and after gates. Evidence init-core-host, not physical/QEMU proof.
+
+Critical integration boundary: bmi_probe.c/bmi_build.py remain native25 profile,
+not linked to new cores. Existing boot_irq.c forbids polling with dma_users>0;
+do not weaken that check to combine mapped channels with warm ROM polling.
+Need separately gated mapped/BME-off boot-IRQ adapter, actual native lifecycle,
+bounded verified cold recovery for warm faults, latched telemetry/split decoder,
+integrated faults and exact normal/EMPTY UEFI/current-world/two-build gates before
+signing candidate>=26. Warm owned flag must never be cleared merely to unload.
+INITIAL-CONFIG-CONTRACT.md has detailed loading/observability/recovery boundary.
+
+No new signature, session, Bluetooth send, USB/bootstrap write or Dell reboot.
+Physical receiver remains applied native25/world13, all pending slots empty.
+Target RAM initialization writes, CPU wake, firmware, association and network
+streaming remain unperformed. Owner last confirmed city visible, not tail motion.

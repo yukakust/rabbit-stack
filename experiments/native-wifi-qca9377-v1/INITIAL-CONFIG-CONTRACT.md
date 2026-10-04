@@ -69,3 +69,65 @@ check against physical25 data. These are host checks, not QEMU or new physical
 execution. No payload was signed or transmitted in this stage. Next candidate
 must include these new files in its reproducible source snapshot and native
 gates before signing; old native25 gates do not cover them.
+
+## Cooperative components implemented and checked on Yukabox
+
+`warm_core.c/h` implements the pinned two-CPU-reset sequence as bounded polling
+steps. The pipe callback is cooperative (-1 fault,0 waiting,1 complete), allowing
+the adapter to halt and configure all engines without a blocking loop. Each ROM
+wait is bounded3s; the whole sequence is bounded7s. Every normal poll rechecks
+the adapter guard. A failed read/write, invalid clock, failed guard or cancelled
+operation keeps exclusive ownership. CE reset ownership is marked before its
+possibly ambiguous assertion and is removed only after10ms and verified clear.
+`qca_warm_recover_ce` only deasserts an already owned CE reset; it never reasserts,
+continues initialization or releases the device. Caller must bound those retries.
+
+`channels_core.c/h` prepares14 mapped pages (57344bytes): descriptors and data
+for seven directions across six active host channels. Allocation is one page per
+poll. Every mapping is checked and registered; duplicate DMA pages are rejected,
+and aliased host allocations retain uncertain ownership to avoid double free.
+The live preparedness check validates actual owned buffer/ring objects, page
+bounds, registration, current PCI command, hardware CE bases/sizes and disabled
+host CE5/6. It is not a standalone target-write authorization API. CE1/CE2 get
+one bounded2048byte receive buffer after explicit bus start. CE7 RX belongs to
+each diagnostic exchange and is not pre-posted. Reconfiguration reuses retained
+mappings only after all-eight halt/zero/BM-off; cleanup closes at most one buffer
+per poll using existing Flush/Unmap/Free guards. Faults retain the cleanup cursor.
+
+`verify_init_core.py` passes ASan/UBSan plus freestanding x86-64 COFF compilation
+on Yukabox. Warm tests inject failure at every read/write, cancel and fail guards
+at every phase, cover both ROM/pipe failures, clock reversal, overflow, delayed
+pipe initialization and CE-deassert recovery.27 channel scenarios cover partial
+map failures, ambiguous bus enable, stuck CE7, flush/unmap/free failures,
+publication failure, duplicate mappings, malformed live resources and a joint
+warm/full-channel fixture. That joint fixture proves two pipe initializations
+reuse the same14 pages with no bus-master enable, unmap or free during warm reset.
+Source and transitive ABI hashes are checked before/after compilation and tests.
+Evidence is `evidence/2026-10-04/init-core-host`; no physical hardware was exercised.
+
+```sh
+python3 verify_init_core.py
+```
+
+These components are **not linked into bmi_probe.c/bmi_build.py yet**. A new
+physical packet is not ready. Required integration work:
+
+1. Add a native adapter that proves fresh PCI/D0/wake and IRQ isolation on each
+   warm step and connects cooperative pipe configuration to retained mappings.
+   Current boot_irq.c deliberately rejects polls while dma_users is nonzero.
+   Do not remove that guard: add a separately verified scoped boot-IRQ path for
+   retained mapped channels with bus-master off and actual ownership checks.
+2. Integrate cancellation and bounded verified cold recovery. After a warm fault,
+   exclusive ownership remains held even if CE deassert succeeds; it must not be
+   cleared by assigning a flag. Stop all engines and prove safe reset/ROM state
+   before releasing mappings/PCI or allowing module unload. Irreducible allocation
+   ambiguity still requires retaining ownership, as in the existing DMA contract.
+3. Add latched physical telemetry, decoder and hash-bound split transport for
+   warm/resource/recovery results. Run integrated fault scenarios and actual
+   normal/EMPTY UEFI city/ATT gates plus exact two builds/current-world checks.
+4. Only then sign a fresh candidate>=26 and deliver its saved session, obtain
+   exact APPLIED receipt and physical diagnostics, and ask for scene observation.
+
+Finite target RAM writes/readback, EARLY_CFG_DONE/CPUwake and firmware gates are
+still later boundaries. No native packet, USB/bootstrap change or reboot was
+performed during these component checks.

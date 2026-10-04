@@ -1,0 +1,199 @@
+{
+  "status": "PINNED-QCA9377-INITIAL-CONFIG-PARAMETERS-PASS",
+  "pack_sha256": "886caac38dbf7c384f1db89cf4272747f407435bf0a4bfbb3f1fda1541cbb772",
+  "verifier_sha256": "c12ac52b90401a919f193860c3312be6ecec8070c1ebc55616c5ac58f4d90fd3",
+  "table_builder_sha256": "5a524b010ebb62f5c7c8422781881180d49e7df9271e3f3d3567b911358317e1",
+  "reference_sha256": {
+    "pci.c": "e5c8f5aec5312eb83bef7372706cdb7c979fcf81e423bb4fced3f18591e994fd",
+    "hw.c": "7e176346c8def2054138bf3458acd4fbda7fc01d0753b77985f82215b51400f4",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "targaddrs.h": "9daa97806342fcb0e8584c1ce69d094d3d1e281905fa9d488781b7f5e6db5b74",
+    "core.c": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2",
+    "ce.h": "53dfddb64dd54b61add0b14d36bc7fad016c3fc4ab63b8bff5f7b25fc93538b1",
+    "htc.h": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963"
+  },
+  "ce_count": 8,
+  "target_pipe_records": 7,
+  "target_pipe_bytes": 168,
+  "service_map_records": 17,
+  "service_map_bytes": 204,
+  "tables": {
+    "pipe_records": [
+      [
+        0,
+        2,
+        32,
+        256,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        32,
+        2048,
+        0,
+        0
+      ],
+      [
+        2,
+        1,
+        64,
+        2048,
+        0,
+        0
+      ],
+      [
+        3,
+        2,
+        32,
+        2048,
+        0,
+        0
+      ],
+      [
+        4,
+        2,
+        256,
+        256,
+        0,
+        0
+      ],
+      [
+        5,
+        2,
+        32,
+        2048,
+        0,
+        0
+      ],
+      [
+        6,
+        3,
+        32,
+        4096,
+        0,
+        0
+      ]
+    ],
+    "service_records": [
+      [
+        260,
+        2,
+        3
+      ],
+      [
+        260,
+        1,
+        2
+      ],
+      [
+        258,
+        2,
+        3
+      ],
+      [
+        258,
+        1,
+        2
+      ],
+      [
+        257,
+        2,
+        3
+      ],
+      [
+        257,
+        1,
+        2
+      ],
+      [
+        259,
+        2,
+        3
+      ],
+      [
+        259,
+        1,
+        2
+      ],
+      [
+        256,
+        2,
+        3
+      ],
+      [
+        256,
+        1,
+        2
+      ],
+      [
+        1,
+        2,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        65024,
+        2,
+        0
+      ],
+      [
+        65024,
+        1,
+        1
+      ],
+      [
+        768,
+        2,
+        4
+      ],
+      [
+        768,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "pipe_bytes": 168,
+    "service_bytes": 204,
+    "pipe_sha256": "990dbf5a67871c9073cca440b285a0396c805fb62707d61f74aadf23f4c89dfb",
+    "service_sha256": "d2be3b443aaff3116b969f5a7d74f0552247935b8d2d9d6c9fc302299a0ae4aa",
+    "target_writes_enabled": false
+  },
+  "warm_reset_reference": {
+    "upstream_order": [
+      "irq_disable",
+      "warm_reset_si0",
+      "warm_reset_cpu",
+      "init_pipes",
+      "wait_for_target_init",
+      "warm_reset_clear_lf",
+      "warm_reset_ce",
+      "warm_reset_cpu",
+      "init_pipes",
+      "wait_for_target_init"
+    ],
+    "soc_reset_address": "00000800",
+    "lf_timer_address": "00000850",
+    "cpu_reset_mask": "00000040",
+    "ce_reset_mask": "00000001",
+    "si0_reset_mask": "00000000",
+    "firmware_indicator_address": "0003a028",
+    "native_implementation_verified": false,
+    "physical_sequence_executed": false
+  },
+  "resource_negative_cases": 42,
+  "live_host_resources_verified": false,
+  "native_write_gate_integrated": false,
+  "physical_target_writes": false,
+  "firmware_compatibility_verified": false
+}
