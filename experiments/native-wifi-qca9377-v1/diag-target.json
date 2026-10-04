@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "family": "ath10k-qca9377-pci",
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "reference_sha256": {
+    "pci.c": "e5c8f5aec5312eb83bef7372706cdb7c979fcf81e423bb4fced3f18591e994fd",
+    "hw.c": "7e176346c8def2054138bf3458acd4fbda7fc01d0753b77985f82215b51400f4",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "bmi.c": "f14c60e89f1e4a9c4105e5f7dcf0571717b79a7825c44aceb9fd665e03917aa1",
+    "bmi.h": "8924f6fbf6ca4cfa494e7b6f38240ec44fa554e8850315b7442f3a534be30344",
+    "core.h": "da6f9d89225467310770e9ebf67ccdd66ad381c203a50e38afadc03c85da16b2",
+    "pci.h": "cf12ad23688946eb4093b1e061c20ab25986144730cd193dffc5c061e98b8282",
+    "targaddrs.h": "9daa97806342fcb0e8584c1ce69d094d3d1e281905fa9d488781b7f5e6db5b74"
+  },
+  "chip_id_required": "003821ff",
+  "diagnostic_engine": 7,
+  "target_word": 4196600,
+  "target_bytes": 4,
+  "target_writes": false,
+  "host_interest_base": 4196352,
+  "hi_interconnect_state_offset": 248,
+  "translation": "((CORE_CTRL & 0x7ff) << 21) | 0x100000 | (address & 0xfffff)",
+  "translation_region_must_equal_validated_pci_bar": true,
+  "core_control_register": 237568,
+  "ring_entries": 8,
+  "dmax": 2048,
+  "timeout_us": 100000,
+  "reference_timeout_us": 10000,
+  "timeout_note": "Cooperative bounded 100ms diagnostic budget; reference busy-polls 10ms. No firmware or pointer chase.",
+  "status": "CANDIDATE-READ-ONLY-CE7-NOT-PHYSICALLY-VERIFIED"
+}

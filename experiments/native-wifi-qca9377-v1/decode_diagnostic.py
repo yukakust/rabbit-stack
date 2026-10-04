@@ -3,8 +3,8 @@
 import argparse,json,struct
 from pathlib import Path
 def decode(value):
- version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 0
- length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620
+ version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 0
+ length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700
  if not version or not isinstance(value.get('raw_hex'),str) or len(value['raw_hex'])!=length*2:
   raise ValueError('bounded QPD1 envelope required')
  raw=bytes.fromhex(value['raw_hex'])
@@ -37,7 +37,7 @@ def decode(value):
    'probe_succeeded':stage==2 and not error and cleanup==1,'dma_enabled':False,'firmware_uploaded':False}
  if version>=4:
   stage,chip,error,cleanup,extent,attrs,phase,reset_error,owned,firmware,original,actual,pm,reserved,initial,readback,revalidation=struct.unpack_from('<IIIIQQIIIIHHHHIII',raw,128)
-  if stage>(13 if version>=9 else 12 if version>=5 else 7) or cleanup not in (1,2) or phase>4 or owned>1 or (reserved and version<6):raise ValueError('invalid reset telemetry')
+  if stage>(16 if version>=10 else 13 if version>=9 else 12 if version>=5 else 7) or cleanup not in (1,2) or phase>4 or owned>1 or (reserved and version<6):raise ValueError('invalid reset telemetry')
   result['reset_probe']={'stage':stage,'chip_id':f'{chip:08x}','error':error,'cleanup_completed':cleanup==1,'bar_extent':extent,'original_attributes':f'{attrs:016x}','reset_phase':phase,'reset_error':reset_error,'reset_owned':bool(owned),'fw_indicator':f'{firmware:08x}','fw_initialized_seen':bool(firmware&2),'original_command':f'{original:04x}','active_command_snapshot':f'{actual:04x}','pmcsr':f'{pm:04x}','global_reset_initial':f'{initial:08x}','global_reset_readback':f'{readback:08x}','revalidation_error':revalidation,'chip_revision':(chip>>8)&15 if stage==5 and chip else None,'identity_probe_succeeded':stage==5 and not error and cleanup==1,'dma_enabled':False,'firmware_uploaded':False}
  if version>=5:
   rom_error,indicator,bmi_error,version_word,type_word,info_length,users,bus_phase,bus_error,bus_owned,held=struct.unpack_from('<11I',raw,196)
@@ -64,7 +64,7 @@ def decode(value):
   nbytes=struct.unpack_from('<I',raw,352)[0]
   if flags&~127 or mask&~3 or any(i>=8 for i in (seed_tx,seed_rx,last_tx,last_rx,tx_read,tx_write,rx_read,rx_write)) or nbytes>12:
    raise ValueError('invalid pre-cleanup CE snapshot')
-  if (not flags and any(raw[280:])) or (flags and not flags&1) or (mask and not flags&1):
+  if (not flags and any(raw[280:356])) or (flags and not flags&1) or (mask and not flags&1):
    raise ValueError('inconsistent pre-cleanup CE snapshot')
   for valid,address in ((flags&8,req),(flags&16,resp)):
    if (not valid and address) or (valid and (not address or address>0xffffffff)):
@@ -88,6 +88,29 @@ def decode(value):
    engines.append({'engine':i,'available':bool(valid&(1<<i)),'read_failed_or_all_ones':bool(failed_mask&(1<<i)),
     **{name:f'{word:08x}' for name,word in zip(('source_base','source_size','destination_base','destination_size','control','command','source_read','destination_read'),words)}})
   result['ce_before_first_halt']={'valid_mask':valid,'failed_mask':failed_mask,'complete':(valid|failed_mask)==255,'all_available':valid==255,'engines':engines,'basis':'bounded read-only registers after ROM-ready, before first halt; bus mastering off; addresses not dereferenced'}
+ if version>=10:
+  phase,error,flags,target,ce,core=struct.unpack_from('<6I',raw,620)
+  command,itx,irx,otx,orx,mask,tr,tw,rr,rw=struct.unpack_from('<10H',raw,644)
+  address=struct.unpack_from('<Q',raw,664)[0];value,nbytes,reserved=struct.unpack_from('<III',raw,688)
+  if phase>3 or flags&~15 or mask&~3 or any(i>=8 for i in (itx,irx,otx,orx,tr,tw,rr,rw)) or nbytes>4 or reserved:
+   raise ValueError('invalid CE7 diagnostic snapshot')
+  if not flags and any(raw[620:700]):raise ValueError('uncaptured CE7 data')
+  if flags and not flags&1:raise ValueError('unlatched CE7 data')
+  if flags&8 and (not address or address>0xffffffff):raise ValueError('invalid CE7 response address')
+  if not flags&8 and (address or value):raise ValueError('unavailable CE7 response data')
+  if target and (target!=0x004008f8 or ce!=((core&0x7ff)<<21)|0x1008f8):raise ValueError('invalid fixed CE7 target')
+  if flags and (phase==0 or (phase==3 and not 1<=error<=11)):raise ValueError('invalid captured CE7 phase')
+  if phase in (1,2) and target!=0x004008f8:raise ValueError('missing fixed CE7 target')
+  if phase==2 and (error or flags!=15 or nbytes!=4 or mask!=3 or command&6!=6):raise ValueError('invalid completed CE7 read')
+  result['ce7_diagnostic']={'captured_before_cleanup':bool(flags&1),'phase':phase,'error':error,
+   'tx_completed':bool(flags&2),'rx_completed':bool(flags&4),'read_completed':phase==2 and not error,
+   'target_address':f'{target:08x}','ce_address':f'{ce:08x}','core_control':f'{core:08x}',
+   'active_command':f'{command:04x}','initial_indices':[itx,irx],
+   'last_observed_indices':[otx if mask&1 else None,orx if mask&2 else None],
+   'software_indices':[tr,tw,rr,rw],'response_dma_address':f'{address:016x}' if flags&8 else None,
+   'tx_descriptor_hex':raw[672:680].hex(),'rx_descriptor_hex':raw[680:688].hex(),
+   'response_word':f'{value:08x}' if flags&8 else None,'received_bytes':nbytes,
+   'target_pointer_used':False,'target_config_written':False,'firmware_uploaded':False}
  if version==3:
   pm,csr,pcie,link,status,reserved=struct.unpack_from('<HHHHII',raw,128)
   if status>3 or reserved:raise ValueError('invalid power-capability snapshot')

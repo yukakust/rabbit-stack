@@ -8,6 +8,7 @@
 #include "rom_ready.h"
 #include "bmi_transport.h"
 #include "pcie_link.h"
+#include "diag_ce.h"
 void*qca_image;
 static QcaUefiPort port;static QcaWake wake;static QcaReset reset;
 static uint32_t stage,failed,firmware,chip,revalidate_error,recoveries,cancelled,cleanup_attempts;
@@ -18,6 +19,8 @@ static QcaPcieLink link;static uint16_t link_active;
 static QcaRomReady rom;static QcaCeAccess access;static QcaCeBus bus;
 static QcaDmaBuffer buffers[4];static QcaCeRing rings[2];static QcaBmiPipe pipes[2];static QcaBmiExchange exchange;
 static uint8_t exchange_snapshot[76];static unsigned snapshot_latched;
+static QcaDiagExchange diag;static QcaDiagPipe diag_pipes[2];
+static uint8_t diag_snapshot[80];static unsigned diag_latched;
 static uint8_t prehalt_snapshot[264];static unsigned prehalt_engine;
 static unsigned bus_live,allocated,cleanup_slot,bus_retries,buffer_retries,succeeded;
 
@@ -40,6 +43,7 @@ static void telemetry(void){
  record(268,boot_irq.writes,4);record(272,post_reset_link,2);record(276,boot_irq.cause,4);
  for(unsigned i=0;i<sizeof(exchange_snapshot);i++)qca_diagnostic[280+i]=exchange_snapshot[i];
  for(unsigned i=0;i<sizeof(prehalt_snapshot);i++)qca_diagnostic[356+i]=prehalt_snapshot[i];
+ for(unsigned i=0;i<sizeof(diag_snapshot);i++)qca_diagnostic[620+i]=diag_snapshot[i];
 }
 typedef Status(EFIAPI *Config)(void*,uint32_t,uint32_t,uint64_t,void*);
 typedef Status(EFIAPI *Memory)(void*,uint32_t,uint8_t,uint64_t,uint64_t,void*);
@@ -124,9 +128,31 @@ static void snapshot_pre_halt(void){
  }
  prehalt_snapshot[valid?0:4]|=(uint8_t)(1u<<id);prehalt_engine++;
 }
+static void diag_put(unsigned off,uint64_t value,unsigned bytes){
+ for(unsigned i=0;i<bytes;i++)diag_snapshot[off+i]=(uint8_t)(value>>(8*i));
+}
+static void snapshot_diag(void){
+ if(diag_latched||diag.bus!=&bus)return;
+ diag_latched=1;__atomic_thread_fence(__ATOMIC_ACQUIRE);
+ unsigned flags=1|(diag.tx_done?2u:0)|(diag.rx_done?4u:0);
+ diag_put(0,diag.phase,4);diag_put(4,diag.error,4);
+ diag_put(12,diag.target,4);diag_put(16,diag.ce_address,4);diag_put(20,diag.core,4);diag_put(24,diag.command,2);
+ diag_put(26,diag.initial[0],2);diag_put(28,diag.initial[1],2);
+ diag_put(30,diag.observed[0],2);diag_put(32,diag.observed[1],2);diag_put(34,diag.mask,2);
+ for(unsigned i=0;i<2;i++){
+  diag_put(36+4*i,rings[i].read,2);diag_put(38+4*i,rings[i].write,2);
+  if(diag.initial[i]<8&&snapshot_buffer(i,(diag.initial[i]+1)*8))
+   for(unsigned n=0;n<8;n++)diag_snapshot[52+8*i+n]=rings[i].descriptors[diag.initial[i]*8+n];
+ }
+ if(snapshot_buffer(3,4)){
+  flags|=8;diag_put(44,buffers[3].address,8);
+  for(unsigned n=0;n<4;n++)diag_snapshot[68+n]=((volatile uint8_t*)buffers[3].host)[n];
+ }
+ diag_put(72,diag.bytes,4);diag_put(8,flags,4);
+}
 static void shutdown(uint64_t now){
  if(bus_live){
-  if(stage!=12){snapshot_exchange();stage=12;cleanup_slot=0;buffer_retries=0;qca_ce_bus_stop_begin(&bus,now);}
+  if(stage!=12){snapshot_diag();snapshot_exchange();stage=12;cleanup_slot=0;buffer_retries=0;qca_ce_bus_stop_begin(&bus,now);}
   return;
  }
  stage=succeeded?5:6;
@@ -215,6 +241,31 @@ void qca_poll(uint64_t ms){
   }else if(++allocated==4)stage=10;
  }
  else if(stage==10){
+  int rc=0;
+  for(unsigned i=0;i<2;i++){
+   diag_pipes[i]=(QcaDiagPipe){&bus,(uint8_t)i};
+   if(qca_ce_init(&rings[i],buffers[i].host,buffers[i].address,8,i,qca_diag_publish,qca_diag_stop,&diag_pipes[i]))rc=1;
+  }
+  if(rc||qca_ce_hw_configure(&bus.engines[7],buffers[0].address,8,buffers[1].address,8,2048)
+   ||qca_ce_seed(&rings[0],bus.engines[7].src_index)||qca_ce_seed(&rings[1],bus.engines[7].dst_index)
+   ||qca_ce_bus_start(&bus)||qca_diag_begin(&diag,&bus,&rings[0],&rings[1],&buffers[3],chip,bar,now)){
+   failed=0xd00|diag.error;shutdown(now);
+  }else stage=14;
+ }
+ else if(stage==14){
+  int rc=qca_diag_poll(&diag,now);
+  if(rc<0){failed=0xd00|diag.error;shutdown(now);}
+  else if(rc>0){snapshot_diag();stage=15;if(qca_ce_bus_stop_begin(&bus,now)){failed=0xd20;shutdown(now);}}
+ }
+ else if(stage==15){
+  int rc=qca_ce_bus_stop_poll(&bus,now);
+  if(rc<0){failed=0xd30|bus.error;shutdown(now);}
+  else if(rc>0){
+   if(qca_ce_close(&rings[0])||qca_ce_close(&rings[1])){failed=0xd40;shutdown(now);}
+   else stage=16;
+  }
+ }
+ else if(stage==16){
   pipes[0]=(QcaBmiPipe){&bus,0};pipes[1]=(QcaBmiPipe){&bus,1};
   int rc=0;
   for(unsigned i=0;i<2;i++)if(qca_ce_init(&rings[i],buffers[i].host,buffers[i].address,8,i,qca_bmi_publish,qca_bmi_ring_stop,&pipes[i]))rc=1;

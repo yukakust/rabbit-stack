@@ -2004,3 +2004,47 @@ address translation/range, mapped host buffers, cancellation/timeout/all-eight
 teardown before physical trial. Returned pointers must not grant arbitrary read/
 write authority. Only afterward add separately gated target configuration and
 CPU notification; do not set EARLY_CFG_DONE or load firmware prematurely.
+
+## 2026-10-04 — native22 applied, CE7 response bytes arrived before first poll
+
+Implemented fixed read-only CE7 for QCA9377/rev1 word4008f8. No arbitrary target
+address or pointer chase/write API. Translation CORE_CTRL low11bits<<21 must match
+fresh PCI BAR; register extent covers target window; active Command exact0106,
+registered nonoverlapping DMA/rings, RX before TX, flags/metadata0. Successful
+CE7 would all-eight stop/flush/close/reuse rings before old BMI. Failure suppresses
+BMI and enters existing guarded teardown. QPD10/700bytes persists CE7 snapshot.
+Contract CE7-DIAGNOSTIC-CONTRACT.md and pinned diag-target.json. Fresh downloaded
+primary targaddrs.h/core.h/pci.h checked by hashes on Yukabox (no Mac native build).
+
+48 sanitizer integrated scenarios + component/Bluetooth recovery/normal+EMPTY
+actual UEFI mock long diagnostic bounds/invalid snapshot fixtures pass. Current-
+source two rebuilds/current-world check pass; missing fixed_ce7_read_only gate
+rejected before local owner signing. Exact22 payload
+be1c663e6651eca986170397a86c7c9b726179a0c4aed24559d3c751d013d19f
+saved pci-native-q_oei4o_. Single stage connection0->74528bytes without interruption;
+COMMIT/reconnect exact SHA/session/counter22 APPLIED. This is a better trial,
+not a proven lasting Bluetooth/RF fix. Current22/world13, native_pending null,
+idle12-version unchanged journal. All radio processes terminal, no USB/bootstrap,
+Dell reboot, private-key output/copy or firmware/early-config write.
+
+Fresh physical QPD10 from known F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF:
+CE7 phaseFAULT3/error7 timeout100ms/overallD07; initial indices0/0, lastobserved
+BOTH NULL (mask0): timeout happened before the first hardware-index polling pass.
+TX softwarewrite1 / RXwrite1, source target4008f8->d11008f8 using CORE8688,
+Command0106. TXdesc f80810d104000000; RXdesc0050d0b104000000 at mappedb1d05000.
+Response changed from prezeroed0 to00401ee0; RX descriptor length changed0->4.
+This is observable mapped-memory write evidence consistent with a CE7 reply,
+NOT a completed/correlated diagnostic read and not pointer access authority.
+Do NOT call it a DMA-no-response trial or immediately change descriptor encoding.
+BMI was not started (QPD8 exchange absent/bmi_error0). ROMready2, chip003821ff,
+reset/revalidation good; DMA held0/mask0, bus/reset ownership false, cleanupcomplete,
+ASPM0140->0143, IRQ/Core8688/enable0 restored. Owner post22 scene check requested,
+pending; do not infer animation. Full Wi-Fi remains incomplete.
+
+Evidence ce7-native22 gates/reproduction/physical receipt/raw+decoded/hashes; session
+metadata only in Git, exact binary packet/session remain ignored. Completed22 must
+not be resent. NEXT: change diag poll to observe completion before declaring wait
+timeout,3second cooperative budget and first/last elapsed/poll-count telemetry.
+Gate and sign NEW23 against exact current22/world13. Only confirmed CE7 read plus
+validated target ABI permits later bounded initialization configuration. Re-read
+fresh physical diagnostics and obtain owner scene observation after new application.

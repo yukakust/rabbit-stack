@@ -43,6 +43,7 @@ def gates(directory,payload,world):
    if report.get('ble_untracked_disconnect_recovery') is not True:raise ValueError('preserved Bluetooth recovery gate required')
    if report.get('ce_snapshot_pre_cleanup') is not True:raise ValueError('bounded pre-cleanup CE telemetry gate required')
    if report.get('ce_registers_before_first_halt') is not True:raise ValueError('bounded pre-halt CE register gate required')
+   if report.get('fixed_ce7_read_only') is not True:raise ValueError('fixed read-only CE7 gate required')
   for component,status in components:
    subreport=flow.read_json(directory/(component+'-report.json'))
    if (subreport['status']!=status or flow.sha((directory/(component+'-report.json')).read_bytes())!=report[component+'_report_sha256']
