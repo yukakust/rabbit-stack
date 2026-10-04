@@ -1,0 +1,23 @@
+{
+  "status": "WMI-PASSIVE-SCAN-WIRE-HOST-COFF-PASS",
+  "source_sha256": {
+    "wmi_scan.c": "2d8708b3dfcf5122fce82e6ae6724876e9b265a32587fa6ed31831e88be15a0b",
+    "wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3",
+    "wmi_scan_test.c": "99e1b9f93581226829ee13e1f62c2ed72914ff069e7c0da83b92bf52c45232f7",
+    "verify_scan.py": "de977f6f8e94a50e1e9d352ee787bce76eedb816687d5e6e2fb31313386d8fb4",
+    "verify_htc.py": "37ab9c84f8f8d539b1fabef513a3b40c232d0f57a17d02f7f095968dddbb3d9e"
+  },
+  "reference": {
+    "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+    "wmi_h_sha256": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c",
+    "wmi_tlv_h_sha256": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+    "oracle_sha256": "86feb382f64f4157ceceee0acbd65df4e671742116bf2a8f56e6d5312524c4e2"
+  },
+  "host_log_sha256": "ecebbc26b78f33d50111b5c3a28969999314e9a774ff33afe2bdf851ae85c0e8",
+  "build_host": "yukabox",
+  "physical_verified": false,
+  "native_integrated": false,
+  "regulatory_configured": false,
+  "scan_started": false,
+  "wifi_connected": false
+}

@@ -1,0 +1,10 @@
+{
+  "status": "HOST-ONLY-PROTOCOL-PREPARATION",
+  "boot_receiver_counter": 38,
+  "asset_session": "firmware-ram-xn9ncwla",
+  "new_native_signed": false,
+  "new_native_sent": false,
+  "physical_scan": false,
+  "wifi_connected": false,
+  "password_included": false
+}
