@@ -2079,7 +2079,8 @@ response12bytes allzero, request08000000. CE7 snapshot persists across reused
 response DMA page and BMI cleanup. Four DMA buffers released, heldmask0,
 bus/reset ownership false, cleanupcomplete. PCIe ASPM restored0143 and IRQ/core
 restored8688/enable0. No firmware upload, target initialization write, association,
-WPA or DHCP. Owner post23 city/tail observation requested and pending.
+WPA or DHCP. Owner subsequently confirmed post23 city visible; tail movement
+was not explicitly confirmed.
 
 Evidence: experiments/native-wifi-qca9377-v1/evidence/2026-10-04/ce7-poll-native23.
 Gate reportSHA a10dd7855267d7be2d95401f8f9d8d3e1c6a934be2d8adf5dff9df8398e39972;

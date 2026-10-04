@@ -120,7 +120,7 @@
   },
   "interpretation": "CE7 TX and RX both completed with indices0->1 and4receivedbytes. Fixed word4008f8 returned00401ee0. First polling elapsed390ms, exceeding prior100ms budget. This confirms premature timeout in native22, not the cause of separate CE0/1 BMI timeout. Device completion time unknown.",
   "next_trial": "Read bounded PCIe initialization structure using validated Target Pack before table/config writes. Full qca6174/QCA9377 warm-reset and init_config/wake sequencing still required; no early_cfg_done until target tables verified.",
-  "physical_scene_observation": "requested after23; pending owner",
+  "physical_scene_observation": "Owner confirmed after native23: city visible. Tail movement not explicitly confirmed.",
   "firmware_uploaded": false,
   "wifi_association_verified": false,
   "usb_bootstrap_written": false,
