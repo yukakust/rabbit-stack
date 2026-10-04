@@ -35,8 +35,15 @@ def combine_qpd17(prefix,extension):
  result={'format':'QPD17','raw_hex':(prefix+extension[36:]).hex(),'read_strategy':'split_sha256'}
  decode(result)
  return result
+def combine_qpd18(prefix,extension):
+ if len(prefix)!=716 or prefix[:4]!=b'QPD'+bytes([18]) or len(extension)!=244 or extension[:4]!=b'QIC'+bytes([1]):raise ValueError('invalid QPD18 split envelope')
+ if hashlib.sha256(prefix).digest()!=extension[4:36]:raise ValueError('split diagnostic hash mismatch')
+ if struct.unpack_from('<I',prefix,128)[0] not in (5,6,7,20):raise ValueError('probe still active')
+ result={'format':'QPD18','raw_hex':(prefix+extension[36:]).hex(),'read_strategy':'split_sha256'}
+ decode(result)
+ return result
 def decode(value):
- version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 11 if value.get('format')=='QPD11' else 12 if value.get('format')=='QPD12' else 13 if value.get('format')=='QPD13' else 14 if value.get('format')=='QPD14' else 15 if value.get('format')=='QPD15' else 16 if value.get('format')=='QPD16' else 17 if value.get('format')=='QPD17' else 0
+ version=1 if value.get('format')=='QPD1' else 2 if value.get('format')=='QPD2' else 3 if value.get('format')=='QPD3' else 4 if value.get('format')=='QPD4' else 5 if value.get('format')=='QPD5' else 6 if value.get('format')=='QPD6' else 7 if value.get('format')=='QPD7' else 8 if value.get('format')=='QPD8' else 9 if value.get('format')=='QPD9' else 10 if value.get('format')=='QPD10' else 11 if value.get('format')=='QPD11' else 12 if value.get('format')=='QPD12' else 13 if value.get('format')=='QPD13' else 14 if value.get('format')=='QPD14' else 15 if value.get('format')=='QPD15' else 16 if value.get('format')=='QPD16' else 17 if value.get('format')=='QPD17' else 18 if value.get('format')=='QPD18' else 0
  length=128 if version==1 else 160 if version==2 else 144 if version==3 else 196 if version==4 else 240 if version==5 else 246 if version==6 else 280 if version==7 else 356 if version==8 else 620 if version==9 else 700 if version==10 else 716 if version==11 else 924 if version>=16 else 888 if version==15 else 864 if version==14 else 800
  if not version or not isinstance(value.get('raw_hex'),str) or len(value['raw_hex'])!=length*2:
   raise ValueError('bounded QPD1 envelope required')
@@ -92,7 +99,7 @@ def decode(value):
   if owned:
    result['bmi_probe'].update(cleanup_completed=False,query_and_cleanup_succeeded=False)
    result['reset_probe']['cleanup_completed']=False
- if version>=8:
+ if 8<=version<18:
   flags,mask,seed_tx,seed_rx,last_tx,last_rx,tx_read,tx_write,rx_read,rx_write,req,resp=struct.unpack_from('<II8HQQ',raw,280)
   nbytes=struct.unpack_from('<I',raw,352)[0]
   if flags&~127 or mask&~3 or any(i>=8 for i in (seed_tx,seed_rx,last_tx,last_rx,tx_read,tx_write,rx_read,rx_write)) or nbytes>12:
@@ -110,7 +117,7 @@ def decode(value):
    'tx_descriptor_hex':raw[320:328].hex() if flags&32 else None,'rx_descriptor_hex':raw[328:336].hex() if flags&64 else None,
    'response_hex':raw[336:348].hex() if flags&16 else None,'request_hex':raw[348:352].hex() if flags&8 else None,
    'received_bytes':nbytes,'basis':'last existing BMI poll + mapped memory before stop; not a fresh MMIO snapshot or device attestation'}
- if version>=9:
+ if 9<=version<18:
   valid,failed_mask=struct.unpack_from('<II',raw,356)
   if valid&~255 or failed_mask&~255 or valid&failed_mask:raise ValueError('invalid pre-halt CE masks')
   engines=[]
@@ -121,7 +128,7 @@ def decode(value):
    engines.append({'engine':i,'available':bool(valid&(1<<i)),'read_failed_or_all_ones':bool(failed_mask&(1<<i)),
     **{name:f'{word:08x}' for name,word in zip(('source_base','source_size','destination_base','destination_size','control','command','source_read','destination_read'),words)}})
   result['ce_before_first_halt']={'valid_mask':valid,'failed_mask':failed_mask,'complete':(valid|failed_mask)==255,'all_available':valid==255,'engines':engines,'basis':'bounded read-only registers after ROM-ready, before first halt; bus mastering off; addresses not dereferenced'}
- if version>=10:
+ if 10<=version<18:
   phase,error,flags,target,ce,core=struct.unpack_from('<6I',raw,620)
   command,itx,irx,otx,orx,mask,tr,tw,rr,rw=struct.unpack_from('<10H',raw,644)
   address=struct.unpack_from('<Q',raw,664)[0];value,nbytes,reserved=struct.unpack_from('<III',raw,688)
@@ -144,7 +151,7 @@ def decode(value):
    'tx_descriptor_hex':raw[672:680].hex(),'rx_descriptor_hex':raw[680:688].hex(),
    'response_word':f'{value:08x}' if flags&8 else None,'received_bytes':nbytes,
    'target_pointer_used':False,'target_config_written':False,'firmware_uploaded':False}
- if version>=11:
+ if 11<=version<18:
   first,last,polls,budget=struct.unpack_from('<4I',raw,700)
   ce7=result['ce7_diagnostic']
   if (not ce7['captured_before_cleanup'] and any(raw[700:716])) or (ce7['captured_before_cleanup'] and budget!=3000000):raise ValueError('invalid CE7 polling budget')
@@ -161,8 +168,8 @@ def decode(value):
   if target not in (0,0x00401ee0,0x00400900,0x004008cc) or nbytes not in (0,4,36):raise ValueError('configuration address/length outside Target Pack')
   if (not mask&1 and any(words[:9])) or (not mask&2 and words[9]) or (not mask&4 and words[10]):raise ValueError('unread configuration fields')
   if phase==4 and (error or mask!=7 or target!=0x004008cc or nbytes!=4):raise ValueError('incomplete configuration snapshot')
-  if version==17 and phase in (1,2,3) and mask==7:raise ValueError('completed config with active phase')
-  if version==17 and phase in (1,2,3) and error:raise ValueError('active config with fault')
+  if version>=17 and phase in (1,2,3) and mask==7:raise ValueError('completed config with active phase')
+  if version>=17 and phase in (1,2,3) and error:raise ValueError('active config with fault')
   if phase==5 and not error:raise ValueError('configuration fault missing error')
   result['initial_config_read']={'phase':phase,'error':error,'read_mask':mask,'read_completed':phase==4 and mask==7,
    'interconnect_word_value':f'{address:08x}' if phase else None,'fixed_state_address':'00401ee0' if phase and not preflight_rejected else None,'last_target_address':f'{target:08x}',
@@ -177,7 +184,7 @@ def decode(value):
    raise ValueError('invalid native init bounds')
   if bus_phase==2 or actual&4 or users>held.bit_count():raise ValueError('unexpected active DMA/native held inventory')
   if stage not in (0,1,2,3,4,5,6,7,18,19,20):raise ValueError('unknown native init stage')
-  if any(raw[204:220]) or any(raw[280:716 if version==17 else 800]):raise ValueError('unexpected legacy BMI/CE7 data in init profile')
+  if any(raw[204:220]) or (any(raw[356:716]) if version==18 else any(raw[280:716 if version>=17 else 800])):raise ValueError('unexpected legacy BMI/CE7 data in init profile')
   if stage==7 and any(raw[800:]):raise ValueError('absent target with init data')
   if verified and (recovery!=3 or ro or ri!=2 or wo or co):raise ValueError('unverified cold recovery claimed')
   full_release=(result['reset_probe']['cleanup_completed'] and result['pcie_link']['restore_completed'] and result['boot_irq']['restore_completed'] and not result['reset_probe']['reset_owned'] and not wo and not co and not ro)
@@ -209,8 +216,8 @@ def decode(value):
   complete=phase==2 and not error and value==0x00401ee0 and bytes_read==4 and tx==rx==1 and mask==3 and polls>0
   if stage==5 and not complete:raise ValueError('success lacks fixed full-channel CE7 read')
   if phase==0 and any(raw[888:]):raise ValueError('unstarted full CE7 with data')
-  if version==17 and result['initial_config_read']['phase'] and not complete:raise ValueError('config lacks full-channel interconnect proof')
-  if version==17 and stage==5 and not result['initial_config_read']['read_completed']:raise ValueError('success lacks config read')
+  if version>=17 and result['initial_config_read']['phase'] and not complete:raise ValueError('config lacks full-channel interconnect proof')
+  if version>=17 and stage==5 and not result['initial_config_read']['read_completed']:raise ValueError('success lacks config read')
   result['native_init']['warm_sequence_verified']=w==12 and not we and cpu==pipes==2
   result['native_init']['bus_master_enabled_during_probe']=True if phase==2 or mask or polls else None
   result['reset_probe']['dma_enabled']=result['native_init']['bus_master_enabled_during_probe']
@@ -219,6 +226,23 @@ def decode(value):
    'bytes':bytes_read,'tx_completed':bool(tx),'rx_completed':bool(rx),'observed_mask':mask,'polls':polls,
    'last_poll_elapsed_us':elapsed,'read_verified':complete,'target_address':'004008f8',
    'target_ram_written':False,'firmware_uploaded':False,'basis':'fixed CE7 read using retained full14 mapping inventory'}
+ if version==18:
+  sp,se,op,wm,rm,attempts,ca,cb,cr,bp,be,bv,bt,bl,bb,tx,rx,np,elapsed=struct.unpack_from('<19I',raw,280)
+  if sp>5 or op>10 or wm>31 or rm>31 or rm&~wm or attempts>5 or ca>1 or bp>3 or tx>1 or rx>1 or bb>12:raise ValueError('invalid setup bounds')
+  if sp==0 and any(raw[280:356]):raise ValueError('unstarted setup with data')
+  if sp!=5 and se:raise ValueError('non-fault setup with error')
+  if sp==1 and op>=10:raise ValueError('active setup with completed operation count')
+  if sp==5 and not se:raise ValueError('setup fault without error')
+  if (wm or attempts or sp) and not result['initial_config_read']['read_completed']:raise ValueError('setup lacks config proof')
+  if wm&16 and (wm!=31 or rm&15!=15):raise ValueError('config-done posted before previous readbacks')
+  if ca and (op!=10 or wm!=31 or rm!=31):raise ValueError('CPU wake before complete readbacks')
+  complete=sp==4 and not se and op==10 and wm==rm==31 and attempts==5 and ca and bp==2 and not be and bv not in (0,0xffffffff) and bt not in (0,0xffffffff) and bb==12 and tx==rx==1 and np>0
+  if stage==5 and not complete:raise ValueError('setup success lacks config/BMI proof')
+  result['config_setup']={'phase':sp,'error':se,'operation':op,'write_mask':wm,'readback_mask':rm,'write_attempts':attempts,'target_ram_write_attempted':bool(attempts),'cpu_wake_attempted':bool(ca),'cpu_before':f'{cb:08x}','cpu_readback':f'{cr:08x}','bmi_phase':bp,'bmi_error':be,'bmi_version':f'{bv:08x}','bmi_type':bt,'bmi_length_field':bl,'bmi_bytes':bb,'bmi_tx_completed':bool(tx),'bmi_rx_completed':bool(rx),'bmi_polls':np,'bmi_last_elapsed_us':elapsed,'setup_and_bmi_verified':bool(complete),'firmware_uploaded':False}
+  result['bmi_probe'].update(reply_received=bp==2 and not be,target_version_raw=f'{bv:08x}',target_type_raw=bt,reply_length_field=bl,bmi_error=be,query_and_cleanup_succeeded=bool(complete and full_release),basis='native-owned post-config BMI telemetry')
+  if bp==2 and not be:result['bmi_target_version']=f'{bv:08x}'
+  result['native_init']['target_ram_written']=bool(attempts)
+  result['initial_config_read']['target_config_written']=bool(attempts)
  if version==3:
   pm,csr,pcie,link,status,reserved=struct.unpack_from('<HHHHII',raw,128)
   if status>3 or reserved:raise ValueError('invalid power-capability snapshot')

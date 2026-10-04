@@ -2,6 +2,10 @@
  * Narrow read-only CE7 diagnostic adapted from pinned ath10k pci.c. */
 #include "diag_ce.h"
 #include <stdatomic.h>
+#ifdef QCA_CONFIG_SETUP
+#include "config_read.h"
+#include "init_tables_native.h"
+#endif
 typedef Status(EFIAPI *Config)(void*,uint32_t,uint32_t,uint64_t,void*);
 typedef Status(EFIAPI *Memory)(void*,uint32_t,uint8_t,uint64_t,uint64_t,void*);
 typedef Status(EFIAPI *Flush)(void*);
@@ -36,7 +40,7 @@ int qca_diag_stop(void*context){
  QcaDiagPipe*p=context;if(!p||qca_ce_bus_released(p->bus))return -1;
  QcaUefiPort*port=p->bus->access->port;return ((Flush)method(port,104))(port->pci)?-1:0;
 }
-static int begin(QcaDiagExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,QcaDmaBuffer*resp,uint32_t chip,uint64_t bar,uint64_t now,uint32_t target,uint32_t bytes){
+static int begin(QcaDiagExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,QcaDmaBuffer*resp,uint32_t chip,uint64_t bar,uint64_t now,uint32_t target,uint32_t bytes,const uint8_t*write){
  if(!x||x->phase!=QCA_DIAG_IDLE||!b||!b->access||!b->access->port||b->phase!=QCA_BUS_ACTIVE||!b->owned)return -1;
  x->bus=b;x->tx=tx;x->rx=rx;x->response=resp;x->started=x->last=now;
  QcaUefiPort*p=b->access->port;
@@ -54,20 +58,20 @@ static int begin(QcaDiagExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,QcaDmaBu
  x->target=target;x->ce_address=(uint32_t)bar|0x100000|(target&0xfffff);x->expected=bytes;
  x->initial[0]=x->observed[0]=tx->read;x->initial[1]=x->observed[1]=rx->read;
  if(qca_dma_expose(resp))return fail(x,3);
- for(unsigned i=0;i<bytes;i++)((volatile uint8_t*)resp->host)[i]=0;
+ for(unsigned i=0;i<bytes;i++)((volatile uint8_t*)resp->host)[i]=write?write[i]:0;
  x->phase=QCA_DIAG_WAIT;atomic_thread_fence(memory_order_release);
- if(qca_ce_post(rx,resp->address,bytes,2,0,0))return fail(x,4);
- if(qca_ce_post(tx,x->ce_address,bytes,1,0,0))return fail(x,5);
+ if(qca_ce_post(rx,write?x->ce_address:resp->address,bytes,2,0,0))return fail(x,4);
+ if(qca_ce_post(tx,write?resp->address:x->ce_address,bytes,1,0,0))return fail(x,5);
  return 0;
 }
 int qca_diag_begin(QcaDiagExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,QcaDmaBuffer*resp,uint32_t chip,uint64_t bar,uint64_t now){
- return begin(x,b,tx,rx,resp,chip,bar,now,0x004008f8,4);
+ return begin(x,b,tx,rx,resp,chip,bar,now,0x004008f8,4,0);
 }
 int qca_diag_config_begin(QcaDiagExchange*x,const QcaDiagExchange*hi,unsigned slot,uint64_t now){
  static const uint32_t addresses[3]={0x00401ee0,0x00400900,0x004008cc};
  if(!x||!hi||x==hi||slot>=3||hi->phase!=QCA_DIAG_DONE||hi->error||!hi->tx_done||!hi->rx_done
   ||hi->mask!=3||hi->target!=0x004008f8||hi->bytes!=4||hi->value!=0x00401ee0)return -1;
- return begin(x,hi->bus,hi->tx,hi->rx,hi->response,0x003821ff,(uint64_t)(hi->core&0x7ff)<<21,now,addresses[slot],slot?4:36);
+ return begin(x,hi->bus,hi->tx,hi->rx,hi->response,0x003821ff,(uint64_t)(hi->core&0x7ff)<<21,now,addresses[slot],slot?4:36,0);
 }
 int qca_diag_poll(QcaDiagExchange*x,uint64_t now){
  if(!x)return -1;
@@ -95,3 +99,43 @@ int qca_diag_poll(QcaDiagExchange*x,uint64_t now){
  for(unsigned i=0;i<4;i++)x->value|=(uint32_t)p[i]<<(8*i);
  x->phase=QCA_DIAG_DONE;return 1;
 }
+
+#ifdef QCA_CONFIG_SETUP
+/* Five finite writes paired with exact readback, never arbitrary addresses. */
+int qca_diag_setup_bytes(const QcaConfigRead*c,unsigned op,uint32_t*address,unsigned*bytes,uint8_t data[204]){
+ if(!c||op>=10||!address||!bytes||!data||c->phase!=4||c->error||c->mask!=7||c->slot!=3
+  ||c->full.error||c->full.exchange.phase!=QCA_DIAG_DONE||c->full.exchange.value!=0x00401ee0
+  ||!c->full.adapter||qca_channels_retained(&c->full.adapter->channels))return -1;
+ const QcaDiagExchange*hi=&c->full.exchange;QcaInitAdapter*a=c->full.adapter;
+ if(hi->error||hi->target!=0x004008f8||hi->bytes!=4||!hi->tx_done||!hi->rx_done||hi->mask!=3
+  ||hi->bus!=&a->bus||a->phase!=QCA_INIT_READY||a->warm.phase!=QCA_WARM_DONE||a->warm.owned||a->recovery.owned)return -1;
+ static const uint32_t locations[3]={0x401ee0,0x400900,0x4008cc};
+ for(unsigned i=0;i<3;i++){
+  const QcaDiagExchange*x=&c->reads[i];
+  if(x->phase!=QCA_DIAG_DONE||x->error||x->target!=locations[i]||x->bytes!=(i?4u:36u)
+   ||!x->tx_done||!x->rx_done||x->mask!=3||x->bus!=&a->bus||x->response!=&a->channels.buffers[13])return -1;
+ }
+ const uint32_t*w=c->words;
+ for(unsigned i=0;i<11;i++)if(w[i]==UINT32_MAX)return -1;
+ if((w[10]&0x10)||(w[9]>>16!=0&&w[9]>>16!=0x6d8a))return -1;
+ uint32_t bases[4]={w[0],w[1],0x401ee0,0x400800},sizes[4]={168,204,36,0x124};
+ for(unsigned i=0;i<4;i++){
+  if((bases[i]&3)||bases[i]<0x400000||bases[i]>0x410000-sizes[i])return -1;
+  for(unsigned j=0;j<i;j++)if(bases[i]<bases[j]+sizes[j]&&bases[j]<bases[i]+sizes[i])return -1;
+ }
+ unsigned slot=op/2;*address=slot<2?w[slot]:slot==2?0x401f00:slot==3?0x400900:0x4008cc;
+ *bytes=slot==0?168:slot==1?204:4;
+ if(slot<2){const uint8_t*p=slot?qca_setup_services:qca_setup_pipes;for(unsigned i=0;i<*bytes;i++)data[i]=p[i];}
+ else{uint32_t value=slot==2?w[8]&~1u:slot==3?w[9]|0x6d8a0009u:w[10]|0x10u;
+  for(unsigned i=0;i<4;i++)data[i]=(uint8_t)(value>>(i*8));}
+ return 0;
+}
+int qca_diag_setup_begin(QcaDiagExchange*x,const QcaConfigRead*c,unsigned op,uint64_t now){
+ uint8_t data[204];uint32_t address;unsigned bytes;
+ if(qca_diag_setup_bytes(c,op,&address,&bytes,data))return -1;
+ const QcaDiagExchange*hi=&c->full.exchange;
+ QcaDmaBuffer*buffer=&c->full.adapter->channels.buffers[(op&1)?13:11];
+ return begin(x,hi->bus,hi->tx,hi->rx,buffer,0x003821ff,(uint64_t)(hi->core&0x7ff)<<21,now,address,bytes,(op&1)?0:data);
+}
+
+#endif

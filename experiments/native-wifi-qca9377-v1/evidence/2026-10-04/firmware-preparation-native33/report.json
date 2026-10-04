@@ -1,0 +1,22 @@
+{
+  "status": "FRESH-PHYSICAL-BMI-HARDWARE-AND-FIRMWARE-DIRECTORY-MATCH-PASS",
+  "native_counter": 33,
+  "physical_identity_sha256": "f24d7eeb13dd8f1911342d9d528ea711dd850d1be53272da8b5193382b9c343d",
+  "physical_bmi_version": "05020001",
+  "physical_bmi_type": 8,
+  "hardware_name": "qca9377 hw1.1",
+  "version_symbol": "QCA9377_HW_1_1_DEV_VERSION",
+  "firmware_directory": "ath10k/QCA9377/hw1.0",
+  "board_calibration_bytes": 8124,
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "reference_sha256": {
+    "core.c": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13"
+  },
+  "firmware_uploaded": false,
+  "fresh_board_variant_pending": true,
+  "signed_asset_receiver_live_policy_integration_pending": true,
+  "firmware_startup_verified": false,
+  "wifi_association_verified": false,
+  "upload_authorized": false
+}

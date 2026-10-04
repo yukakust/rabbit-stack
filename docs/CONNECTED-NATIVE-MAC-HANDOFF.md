@@ -2573,3 +2573,71 @@ telemetry; port the policy to fresh native-owned live proof and test separately.
 Preserve city14/cat/history. Mac control/signing/BLE, native builds on Yukabox;
 no autonomous reboot, USB/bootstrap, permanent OTP/firmware changes. No Wi-Fi
 association/DHCP/video yet.
+
+
+## 2026-10-04 — native33 PHYSICAL config writes/readback + FIRST BMI PASS
+
+Contract SETUP-BMI-TRIAL.md. New finite setup profile repeats the exact full14
+warm/HI/config read proof in SAME live scope. Native policy rejects invalid
+completed-exchange owners/buffers, table alignment/range/overlap, early-alloc
+signature and already-done flag. Writes are never authorized by old JSON.
+Source-pinned native table arrays independently checked against init_tables.py
+and pinned upstream. Five paired operations: pipe168, services204, config_flags
+bit0 clear, early_alloc OR6d8a0009, option_flag2 OR10 LAST. Exact byte readbacks
+required; done submission requires all prior write/readback masks15.
+Only then core control OR2000 and existing idle CE0/CE1 BMI_GET_TARGET_INFO8.
+CPU bit can self-clear, other core bits must match. BMI observes completion
+before3second timeout. No firmware write/execute/done command or image in payload.
+
+QPD18 remains924/prefix716 + SHA-bound244 extension, serviceUUID0D/fileUUID1.
+Setup280..355 replaces unused legacy CE snapshot region; config716..799 and
+HI888..923 preserved. Explicit bounded write/readback/cpu/BMI masks and attempts;
+decoder rejects false/out-of-order success. Historical route manifest kind
+native-read-only-pci retained for compatibility; THIS profile declares
+target_ram_writes=true/firmware_upload=false and gates those independently.
+
+Yukabox65 actual native entrypoint ASan/UBSan cases: previous warm/cold/CE7/config
+faults, ten IO timeouts, five bad readbacks, five unsafe span/flag cases, ten
+operation cancellations, BMI timeout/bad length/zero version/BME loss and delayed
+BMI completion>=3s. Fixed mock setup-cache timing and seed flag0 matching fresh
+native32. New phase280=1 is a valid cancellation snapshot, so old legacy-region
+negative mutation was replaced with invalid setup phase6, not relaxed decoder.
+Core27channels/36mappedIRQ/13adapter/pinned tables/COFF/normal+EMPTY UEFI city/
+ATT/BLE/decoder/current292sources/world14/two equal rebuilds passed. Host evidence
+config-setup-bmi-host. Payload
+70ab49fb8d08690152c698fc93e76de4603ff06a039359dbffe073e7aa285da5.
+
+Local owner signing AFTER exact gates. Saved pci-native-f73i7q5r/native33,
+86816bytes, paced100bytes/50ms stage then COMMIT/reconnect exact APPLIED receipt.
+Current native33/world14; no pending slots. Do NOT replay. Fresh known Dell
+read-only QPD18/writes0: stage5/root+adapter+warm+setup errors0, warmDONE12,
+CPU resets2/pipes2/ROM polls4+4, fresh configDONE4/mask7. SetupDONE4/op10,
+write mask31/readback mask31/attempts5, CPU before8688/readbacka688.
+**FIRST physical BMI reply**: DONE2/error0, version05020001, type8, length12,
+12bytes, TX/RX complete, polls1/host-observed elapsed392000us. Fixture type7
+is synthetic; physical policy must bind actual type8, never borrow fixture data.
+AdapterCLOSED12/channelsCLOSED6,14maps cleaned, all HOST DMA/PCI/IRQ/link/wake
+resources restored. Target RAM/CPU state intentionally changed and NOT restored
+by this teardown. No reboot needed; owner city/tail after33 asked and pending.
+Evidence config-setup-bmi-native33. World14 hashes remain unchanged.
+
+Fresh hardware audit on Yukabox matches05020001 to
+QCA9377_HW_1_1_DEV_VERSION/qca9377 hw1.1, PCI dev0042, firmware directory
+ath10k/QCA9377/hw1.0, calibration8124bytes. core.c/hw.h exact pinned hashes
+checked. Public evidence firmware-preparation-native33. This resolves hardware
+version/directory, NOT firmware startup or exact board variant compatibility.
+Previous pinned container/license/PCI board candidate in native32 preparation
+remain relevant; fresh board-variant selection and live policy integration pending.
+
+NEXT: integrate signed bounded firmware asset receiver with native-owned fresh
+setup/BMI proof (actual05020001/type8), exact owner/target/asset generation/hashes,
+and cancellation/lifetime policy. Existing firmware_port takes OLD QPD7 only;
+do NOT fabricate an old snapshot or trust client-supplied diagnostic JSON.
+Keep new live setup owner valid across the receive/load phase or separately
+reinitialize and revalidate before each hardware phase; no historical receipt
+authorizes future writes alone. Validate exact board variant/calibration before
+RAM image load/startup, then WMI/HTT/scan/security/DHCP. Need signed chunks because
+751436byte container exceeds immutable262144byte native transfer limit.
+Retain prior city/cat/history; Mac control/signing/BLE, native builds Yukabox.
+No flash/OTP programming, autonomous Dell reboot, USB/bootstrap change.
+Firmware not uploaded; Wi-Fi association/DHCP/video still unverified.

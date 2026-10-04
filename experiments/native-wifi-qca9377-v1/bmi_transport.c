@@ -61,7 +61,6 @@ int qca_bmi_poll(QcaBmiExchange*x,uint64_t now){
  if(x->phase!=QCA_BMI_WAIT)return -1;
  if(now<x->last)return fail(x,4);
  x->last=now;
- if(now-x->started>=3000000)return fail(x,5);
  if(x->bus->phase!=QCA_BUS_ACTIVE||!registered(x->bus,x->request)||!registered(x->bus,x->response))return fail(x,6);
  for(unsigned receive=0;receive<2;receive++){
   uint8_t*done=receive?&x->rx_done:&x->tx_done;if(*done)continue;
@@ -72,7 +71,7 @@ int qca_bmi_poll(QcaBmiExchange*x,uint64_t now){
   if(rc<0)return fail(x,8);
   if(!rc){if(cookie!=(receive?2u:1u)||(!receive&&nbytes!=4))return fail(x,9);*done=1;if(receive)x->bytes=nbytes;}
  }
- if(!x->tx_done||!x->rx_done)return 0;
+ if(!x->tx_done||!x->rx_done)return now-x->started>=3000000?fail(x,5):0;
  if(x->bytes!=12)return fail(x,10);
  atomic_thread_fence(memory_order_acquire);const volatile uint8_t*p=x->response->host;
  x->info_length=le32(p);x->version=le32(p+4);x->type=le32(p+8);

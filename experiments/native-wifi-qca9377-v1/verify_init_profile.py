@@ -12,7 +12,7 @@ FLAGS=('native_init_entrypoints','mapped_irq_scope','warm_and_cold_recovery',
        'full_channel_ownership','hash_bound_split_diagnostic','ble_untracked_disconnect_recovery','post_cold_ce_stop','warm_failure_telemetry','warm_cooperative_deadline')
 def fixture(source):
  return prior.fixture(source).replace('"QPD\\15"','"QPD\\17"').replace('diagnostic_reply_size!=121','diagnostic_reply_size!=209').replace('i<84','i<172').replace('12,0,121,0','12,0,209,0').replace('LONG QPD13','LONG QPD15')
-def main(*,builder=build,probe=verify_init_probe,profile='init-profile',version='QPD15',combine=combine_qpd15,expected_cases=19,flags=FLAGS,status=STATUS,test_transform=fixture,extra_negative=()):
+def main(*,builder=build,probe=verify_init_probe,profile='init-profile',version='QPD15',combine=combine_qpd15,expected_cases=19,flags=FLAGS,status=STATUS,test_transform=fixture,extra_negative=(),target_ram_writes=False):
  build=builder
  if not __debug__:raise SystemExit('optimized Python forbidden')
  out=ROOT/'runs'/profile;out.mkdir(parents=True,exist_ok=False)
@@ -43,6 +43,7 @@ def main(*,builder=build,probe=verify_init_probe,profile='init-profile',version=
    except ValueError:negative+=1
    else:raise AssertionError('invalid QPD15 split accepted')
   for offset,value in ((800,14),(808,14),(816,2),(820,2),(824,3),(828,3),(832,8),(836,15),(840,15),(844,2),(848,5),(852,2),(220,15),(224,2),(236,0x4000),(716,1),(280,1),(864,13),(876,301),(880,301))+extra_negative:
+   if version=='QPD18' and (offset,value)==(280,1):continue  # phase1 is valid setup telemetry; phase6 tested instead
    bad=raw.copy();bad[offset:offset+4]=value.to_bytes(4,'little')
    try:decode({'format':version,'raw_hex':bad.hex()})
    except ValueError:negative+=1
@@ -65,8 +66,8 @@ def main(*,builder=build,probe=verify_init_probe,profile='init-profile',version=
  gates=[prior.actors_gate.qemu_gate(out,payload,test_transform=test_transform),prior.actors_gate.qemu_gate(out,payload,True,test_transform=test_transform)]
  assert inputs=={str(p.relative_to(ROOT.parent.parent)):sha(p.read_bytes()) for p in paths},'source changed during profile gate'
  report={'status':status,'payload_sha256':sha(payload),'source_sha256':inputs,'host_log_sha256':sha(log.encode()),
-  **{n:True for n in flags},'gates':gates,'physical_dell_verified':False,'target_ram_writes':False,'firmware_upload':False,
-  'physical_operation':('cold/wake/ROM + mapped warm reset + fourteen coherent pages/full channels; device IRQ quiesce; bounded BME-on fixed CE7 read; all-eight stop/BME-off/flush/unmap/free or retain' if profile in ('full-read-profile','config-read-profile') else 'cold/wake/ROM + mapped warm reset + fourteen coherent pages/full channel configuration with bus mastering off + teardown; verified cold recovery or retain ownership on fault'),
+  **{n:True for n in flags},'gates':gates,'physical_dell_verified':False,'target_ram_writes':target_ram_writes,'firmware_upload':False,
+  'physical_operation':('cold/wake/ROM + warm/full14 + fresh config reads + five finite writes/exact readbacks, done LAST, CPU wake/BMI info, all-eight stop/BME-off/flush/unmap/free or retain' if profile=='setup-profile' else 'cold/wake/ROM + mapped warm reset + fourteen coherent pages/full channels; device IRQ quiesce; bounded BME-on fixed CE7 read; all-eight stop/BME-off/flush/unmap/free or retain' if profile in ('full-read-profile','config-read-profile','setup-profile') else 'cold/wake/ROM + mapped warm reset + fourteen coherent pages/full channel configuration with bus mastering off + teardown; verified cold recovery or retain ownership on fault'),
   **{n+'_report_sha256':sha((out/(n+'-report.json')).read_bytes()) for n in ('port','reset','init','probe')},
   'pack_report_sha256':sha((out/'pack-report.json').read_bytes()),'build_host':'yukabox'}
  (out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(status+' payload='+sha(payload))

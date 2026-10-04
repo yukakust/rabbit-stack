@@ -97,6 +97,10 @@ def main():
  assert '#define NUM_TARGET_CE_CONFIG_WLAN ar->hw_values->num_target_ce_config_wlan' in sources['hw.h']
  assert re.search(r'case QCA9377_1_0_DEVICE_ID:\s*return 9;',sources['pci.c']) and pack['early_alloc_iram_banks']==9
  assert re.search(r'config->pipedir = __cpu_to_le32\(PIPEDIR_OUT\);.*?config->nbytes_max = __cpu_to_le32\(2048\);.*?serv_to_pipe\[15\].pipenum = __cpu_to_le32\(1\);',sources['pci.c'],re.S)
+ native=(Path(__file__).parent/'init_tables_native.h').read_text()
+ for name,data in zip(('qca_setup_pipes','qca_setup_services'),table_bytes()):
+  body=re.search(name+r'\[\d+\]=\{(.*?)\};',native,re.S).group(1)
+  assert bytes(int(v) for v in re.findall(r'\d+',body))==data,'native table bytes differ'
  tables=check_table_contents(sources);negative=resource_checks();warm=check_warm_sequence(sources)
  out={'status':'PINNED-QCA9377-INITIAL-CONFIG-PARAMETERS-PASS','pack_sha256':hashlib.sha256(a.pack.read_bytes()).hexdigest(),'verifier_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'table_builder_sha256':hashlib.sha256(Path(__file__).with_name('init_tables.py').read_bytes()).hexdigest(),'reference_sha256':pack['reference_sha256'],'ce_count':count,'target_pipe_records':records,'target_pipe_bytes':records*24,'service_map_records':services,'service_map_bytes':services*12,'tables':tables,'warm_reset_reference':warm,'resource_negative_cases':negative,'live_host_resources_verified':False,'native_write_gate_integrated':False,'physical_target_writes':False,'firmware_compatibility_verified':False};a.output.write_text(json.dumps(out,indent=2)+'\n');print(out['status'])
 if __name__=='__main__':main()
