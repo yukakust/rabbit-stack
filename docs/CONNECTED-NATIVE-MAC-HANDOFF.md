@@ -2185,3 +2185,32 @@ CE7 config writes/readback with owned host channels matching advertised target
 tables. Only then EARLY_CFG_DONE0x10 as last marker and CORE_CTRL wake0x2000,
 then BMI/version query. All cancellation/error paths retain safe DMA ownership
 and guarded teardown. Firmware/WPA/DHCP/streaming remain later steps.
+
+## 2026-10-04 — initialization table candidates independently verified
+
+After owner confirmed city visible, added init_tables.py: exact seven LE32 pipe
+records/168bytes and seventeen service records/204bytes. verify_init_pack.py
+independently parses pinned pci.c/ce.h/htc.h, applies source-checked QCA6174
+override and compares every encoded byte. New htc.h hash pinned in init-target.
+Yukabox report passes,42 negative resource cases reject unowned/unmapped,
+duplicate/missing/unsupported channels and malformed rings/buffer capacities.
+Optimized Python explicitly rejected to keep source assertions enabled.
+
+Important host CE5 detail: upstream override disables its host queues and moves
+HTT RX service15 to CE1. Do not invent an extra CE5 host TX queue merely because
+target CE5 direction is OUT. CE6 target-autonomous. Required active host channels
+are0TX/1RX/2RX/3TX/4TX/7TX+RX. Current native25 has only0/1/7; live resources are
+still incomplete. Pure synthetic inventory checks are not live DMA proof and
+are not integrated into native_route signing or runtime write authorization.
+
+Verifier also pins exact cold+warm call order and warm BAR offsets/masks from
+primary pci.c/hw.c/hw.h. This checks upstream sequence, not our native execution.
+Native cooperative warm-reset implementation, added live channels, finite CE7
+write/readback/commit and CPU wake remain pending. INITIAL-CONFIG-CONTRACT.md
+records the boundaries, loading and guarded recovery requirements.
+
+Evidence init-tables-host includes primary-source/table report and new host
+span check against exact physical25 receipt/current state. No new physical
+probe, payload signature, Bluetooth send or USB/bootstrap write. Engine remains
+native25/world13, pending slots empty. Old25 gates cannot cover these changes;
+future candidate must snapshot init_tables.py/new verifier/pack with full gates.

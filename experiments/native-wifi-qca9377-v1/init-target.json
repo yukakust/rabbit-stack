@@ -8,7 +8,8 @@
     "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
     "targaddrs.h": "9daa97806342fcb0e8584c1ce69d094d3d1e281905fa9d488781b7f5e6db5b74",
     "core.c": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2",
-    "ce.h": "53dfddb64dd54b61add0b14d36bc7fad016c3fc4ab63b8bff5f7b25fc93538b1"
+    "ce.h": "53dfddb64dd54b61add0b14d36bc7fad016c3fc4ab63b8bff5f7b25fc93538b1",
+    "htc.h": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963"
   },
   "chip_id_required": "003821ff",
   "chip_revision_required": 1,
