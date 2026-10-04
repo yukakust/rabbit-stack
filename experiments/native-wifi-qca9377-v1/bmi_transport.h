@@ -7,7 +7,8 @@ typedef struct {QcaCeBus*bus;uint8_t receive;} QcaBmiPipe;
 typedef struct {
  QcaCeBus*bus;QcaCeRing*tx,*rx;QcaDmaBuffer*request,*response;
  uint64_t started,last;uint32_t bytes,error,version,type,info_length;
- uint8_t phase,tx_done,rx_done;
+ uint8_t phase,tx_done,rx_done,observed_mask;
+ uint16_t initial_index[2],observed_index[2];
 } QcaBmiExchange;
 /* Ring callbacks: CE0 source / CE1 destination, checked hardware adapter. */
 int qca_bmi_publish(void*,uint32_t);

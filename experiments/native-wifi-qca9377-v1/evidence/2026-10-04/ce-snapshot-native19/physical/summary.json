@@ -1,0 +1,15 @@
+{
+  "status": "EXACT-APPLIED19-EARLY-MEMORY-ENABLE-READBACK-FAILURE",
+  "receiver_reported_applied": true,
+  "device_attestation": false,
+  "error_hex": "10b00",
+  "original_attributes_hex": "200",
+  "original_and_restored_command_hex": "0100",
+  "chip_reset_attempted": false,
+  "ce_exchange_snapshot_captured": false,
+  "held_dma_buffers": 0,
+  "port_cleanup_completed": true,
+  "firmware_uploaded": false,
+  "wifi_association": false,
+  "owner_city_observation_after_native19": "pending"
+}

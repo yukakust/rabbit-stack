@@ -641,3 +641,16 @@ no firmware/association success. This narrows the next work to CE0/CE1 transport
 telemetry before cleanup, not ROM readiness. Evidence and exact next constraints
 are in the latest connected-native handoff and evidence/2026-10-04/
 bootirq-ble-profile-native18/physical. Never deliver retired15/16 packets.
+
+## Latest19/20 continuation
+
+Native19 QPD8 snapshot profile applied exactly, but physical diagnostic stopped
+before chip reset at actual MemoryEnable Command readback(error0x10b00): cached
+attributes200, actual Command0100. No exchange snapshot, no BMI result. Original
+port sources/physical receipts kept in ce-snapshot-native19/physical. Added bounded
+Write16 MEM-only repair for exactly unchanged Command, exact readback, ambiguous/
+dropped/foreign-command retention tests. Fresh Yukabox gates/rebuild/current-world
+checks pass; locally signed20. Bluetooth stopped at1400/71456 without COMMIT or
+APPLIED. Current engine19/world13; native_pending is pci-native-_g6coe4s. Same
+session/resume required, no reboot/new packet. See latest connected-native handoff
+and evidence cached-memory-native20. Physical repair/CE/BMI/Wi-Fi remain unproven.

@@ -1,0 +1,23 @@
+{
+  "status": "UEFI-COMMON-DMA-LIFETIME-HOST-COFF-ABI-PASS",
+  "source_sha256": {
+    "dma_buffer.c": "5ce1bb596dc181f01e9d9d8047333cb196e46144768774d8a12f308a0e5d8279",
+    "dma_buffer_test.c": "95a71d943568581316afa9515bd323daea4636bf9f2fe7f4e9193a245da62fff",
+    "uefi_port.c": "5f90fa147ec73e28394e4f2b56ecdff15426a9da5570fbfffa6c7bcdeb7c080d",
+    "wake_core.c": "ee7156eb27f325ec185cf87f3dbd91c3efacf9436a572118ffb238448f0aec7d",
+    "pci_identity.c": "6165711757f55b5bb9be9a1df11abbf4af406ee7dc29298d98ab587ce46b5611",
+    "dma_buffer.h": "90ee8750b3545aa415af8530f8dcb5f65ec1e4c3253799d8b0910c648fa84e5f",
+    "uefi_port.h": "bd108f6e88382d1ea7eaf9c20edf399a0b8bd4cfdc306924a436650109e20894",
+    "wake_core.h": "02a1d237478b6c25fc609f8500dfee6b1d52fc8ba35422315792fdfa28a12b43",
+    "pci_identity.h": "e54f5afb1559068a867bb12637172b5dab4865d698e67373f43b36ffd4079741",
+    "verify_dma.py": "54a7bd3f9bc6f376ab0f5ff3f4c90d0ad821408cba6919856d593e8ccb2819f5"
+  },
+  "host_log_sha256": "4f3e847c374f3d2bce7b57d05b2b89a85cdea5164165c21446ecd7582a901db7",
+  "build_host": "yukabox",
+  "efi_abi_reference": "pinned iPXE6262f1081fe185564e8ec8365a1d23597ec6e6f5 headers",
+  "physical_dma_activation": false,
+  "ce_stop_callback": "mock only; physical CE halt adapter still required",
+  "ce_mmio_implemented": false,
+  "bmi_implemented": false,
+  "wifi_association": false
+}

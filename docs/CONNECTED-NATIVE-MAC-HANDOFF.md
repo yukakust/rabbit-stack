@@ -1812,3 +1812,80 @@ no unbounded wait/bus-master change or blind repeated reset. Fresh deterministic
 host/lifetime + actual normal/EMPTY city/BLE + two-rebuild/current-world gates
 before next locally signed profile. Physical firmware/scan/WPA/DHCP/reconnect and
 Yukabox video transport remain incomplete; original full Wi-Fi goal incomplete.
+
+## 2026-10-04 — native19 CE snapshot applied; early memory-enable mismatch
+
+Owner confirmed city visible after18; tail motion is not implied. QPD8 extends
+280 to356bytes with an immutable76byte pre-cleanup exchange snapshot. Existing
+BMI polling records initial/last observed hardware indices; snapshot captures
+completion flags, software indices, mapped addresses, original descriptor slots,
+request/response bytes. No extra MMIO read/write or changed timeout/order. Capture
+occurs before stop/unmap/free, once; maps/registered bounds checked, acquire fence;
+indices are last observations, not simultaneous fresh hardware reads. Contract
+CE-SNAPSHOT-CONTRACT.md.35 production-code integrated sanitizer scenarios include
+neither/TX-only/full completion and persistent snapshots after release; actual
+mock snapshots decoded and malformed flags/mask/index/address rejected. Component
+and normal+EMPTY real UEFI city/BLE/malformed-link/rejection gates pass, two builds/
+248 input hashes/actual current world13 C checks pass. No QEMU physical claim.
+
+Locally signed/delivered SAME native19 packet71456bytes through many bounded link
+timeouts/resumptions, exact SHA/session/counter19 APPLIED after replacement.
+Payload4385750e67ec8362638cdaa80db9837dd4c111befa09213173c7d3f213959d0b.
+Directory experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-99fzp6dy.
+Native19/world13, no pending; fresh physical QPD8 obtained. It stopped EARLIER:
+error0x10b00 (port step11 actual MemoryEnable Command readback), original cached
+UEFI attributes0x200, original/restored actual PCI Command0100. No chip reset,
+ROM wait, DMA allocation or BMI attempt; snapshot absent, cleanupcomplete.
+This does NOT establish TX/RX failure: no exchange was reached. Native18's prior
+ROM-ready observation remains historical valid evidence. New19 physical city/tail
+observation not received. Evidence ce-snapshot-native19/physical includes exact
+receipts/raw+decoded data and ORIGINAL19 uefi_port.c/port_test.c preserved separately
+before the next correction; their baseline source comes from b13c198.
+
+Next correction targets a reproduced cached-Attributes Enable no-op. If fresh
+actual Command is exactly original (MEM still off), explicit Write16 of only
+original|MEM, then exact readback. Unknown Command changes/error/dropped writes
+fail closed, no MMIO until verified; memory_attempted retains ownership before
+ambiguous writes, original Command/attributes restoration still required. No
+bus-master/StatusW1C/USB/bootstrap/reboot/firmware change. Four additional port
+cases cover success/drop/ambiguous-applied/foreign command with original PCI
+Status preservation, no MMIO before success and cleanup retry. Current19 signed
+session is complete; do not resume it after source correction. Next new update
+must be above19, preserve city world13 and BLE recovery, and pass NEW exact gates.
+
+## 2026-10-04 — native20 exact memory-enable repair prepared, transfer incomplete
+
+Four added production port cases and all component/sanitizer/COFF/35 integrated/
+normal+EMPTY UEFI city/BLE/malformed-link gates PASS on Yukabox. Two exact new
+native builds/current world13 C/248source reproduction PASS. PayloadSHA256:
+9bd99b42aded22e3b55bff9d8eaf5799f35776f6b2a26376690f94b3aa06eeaa.
+Locally owner-signed NEW native20 against exact applied19 and city13. Directory:
+experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-_g6coe4s.
+Private key not printed/copied; no Mac native compile/USB/bootstrap/reboot.
+
+Physical radio attempt: fresh query of native19's exact final receipt, staged
+native20 from0 to700, next same-session attempt reached1400/71456; final3
+reconnections BEGIN-confirmed1400 then timed out without advancement. No COMMIT
+attempt, no APPLIED20 receipt, no post20 chip read. Report DELIVERY-NOT-CONFIRMED;
+canonical saved engine remains19/world13, native_pending points to SAME20directory.
+All radio processes terminal. Source-bound20 gates remain current (no source edit
+following checked builds). Preserve packet/nonces/counters/current19/20gatefiles.
+Evidence cached-memory-native20 (gates/rebuild/source hashes) and physical subdir
+(exact session/report/all radio logs/pending summary). Do not confuse tested repair
+with a physically successful repair or CE exchange. Wi-Fi remains incomplete.
+
+Async owner question asks whether Mac is still next to Dell, or can be brought to
+30-50cm from Bluetooth adapter; no answer yet. Very weak RSSI/repeated timeout
+observations do NOT establish an RF/antenna/firmware cause. Before another long
+retry obtain updated proximity/physical scene observation; no forced radio reset.
+Resume same packet via:
+python3 experiments/native-wifi-qca9377-v1/native_route.py deliver --state experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/state.json --private /Users/yukakust/.rabbit-owner/runtime.key
+Then exact20 APPLIED -> fresh read-pci + QPD8 decode -> owner current city/tail.
+No fresh preparation, signed21, reboot flag, pending clear or old19 resume.
+If current20 now reaches BMI, inspect immutable snapshot before choosing changes.
+Pinned Linux pci_host_ce_config_wlan/ce.c init_src_ring/init_dest_ring configure
+host-side queues; our current all-engine halt/zero clears both halves. This is a
+source difference worth examining with fresh observations, NOT a proven physical
+cause or authorization to skip DMA/stop/lifetime gates. Capture target-side initial
+configuration before any speculative ring changes. Full Wi-Fi/Unreal transport
+not achieved; firmware upload/scan/WPA/DHCP/reconnect still pending.

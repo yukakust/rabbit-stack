@@ -1,0 +1,7 @@
+{
+  "exact_current_source_world_gate": true,
+  "missing_ce_snapshot_flag_rejected_before_signing_radio": true,
+  "native_counter_reserved": 19,
+  "signed_directory": "experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-99fzp6dy",
+  "physical_application": "exact applied counter19; early actual PCI Command memory readback failure"
+}

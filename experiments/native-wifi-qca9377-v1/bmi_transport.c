@@ -43,7 +43,9 @@ int qca_bmi_info_begin(QcaBmiExchange*x,QcaCeBus*b,QcaCeRing*tx,QcaCeRing*rx,Qca
   ||!ring_memory(b,tx,0,0)||!ring_memory(b,rx,1,1)
   ||overlap(req,tx)||overlap(req,rx)||overlap(resp,tx)||overlap(resp,rx))return -1;
  x->bus=b;x->tx=tx;x->rx=rx;x->request=req;x->response=resp;x->started=x->last=now;
- x->bytes=x->error=x->version=x->type=x->info_length=0;x->tx_done=x->rx_done=0;x->phase=QCA_BMI_WAIT;
+ x->bytes=x->error=x->version=x->type=x->info_length=0;x->tx_done=x->rx_done=x->observed_mask=0;
+ x->initial_index[0]=x->observed_index[0]=tx->read;
+ x->initial_index[1]=x->observed_index[1]=rx->read;x->phase=QCA_BMI_WAIT;
  if(qca_dma_expose(req)||qca_dma_expose(resp))return fail(x,1);
  for(unsigned i=0;i<12;i++)((volatile uint8_t*)resp->host)[i]=0;
  for(unsigned i=0;i<4;i++)((uint8_t*)req->host)[i]=i?0:8; /* BMI_GET_TARGET_INFO LE32 */
@@ -65,6 +67,7 @@ int qca_bmi_poll(QcaBmiExchange*x,uint64_t now){
   uint8_t*done=receive?&x->rx_done:&x->tx_done;if(*done)continue;
   unsigned index=0;uint32_t cookie=0,nbytes=0;
   if(qca_ce_hw_index(&x->bus->engines[receive?1:0],receive,&index))return fail(x,7);
+  x->observed_index[receive]=(uint16_t)index;x->observed_mask|=(uint8_t)(1u<<receive);
   int rc=qca_ce_complete(receive?x->rx:x->tx,index,&cookie,&nbytes);
   if(rc<0)return fail(x,8);
   if(!rc){if(cookie!=(receive?2u:1u)||(!receive&&nbytes!=4))return fail(x,9);*done=1;if(receive)x->bytes=nbytes;}

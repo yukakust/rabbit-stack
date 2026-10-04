@@ -17,6 +17,7 @@ static QcaBootIrq boot_irq;static uint16_t post_reset_link;
 static QcaPcieLink link;static uint16_t link_active;
 static QcaRomReady rom;static QcaCeAccess access;static QcaCeBus bus;
 static QcaDmaBuffer buffers[4];static QcaCeRing rings[2];static QcaBmiPipe pipes[2];static QcaBmiExchange exchange;
+static uint8_t exchange_snapshot[76];static unsigned snapshot_latched;
 static unsigned bus_live,allocated,cleanup_slot,bus_retries,buffer_retries,succeeded;
 
 static void record(unsigned off,uint64_t value,unsigned bytes){for(unsigned i=0;i<bytes;i++)qca_diagnostic[off+i]=(uint8_t)(value>>(8*i));}
@@ -36,6 +37,7 @@ static void telemetry(void){
  record(250,boot_irq.owned,1);record(251,boot_irq.error,1);record(252,boot_irq.original_enable,4);
  record(256,boot_irq.last_enable,4);record(260,boot_irq.original_control,4);record(264,boot_irq.last_control,4);
  record(268,boot_irq.writes,4);record(272,post_reset_link,2);record(276,boot_irq.cause,4);
+ for(unsigned i=0;i<sizeof(exchange_snapshot);i++)qca_diagnostic[280+i]=exchange_snapshot[i];
 }
 typedef Status(EFIAPI *Config)(void*,uint32_t,uint32_t,uint64_t,void*);
 typedef Status(EFIAPI *Memory)(void*,uint32_t,uint8_t,uint64_t,uint64_t,void*);
@@ -70,9 +72,47 @@ static int reset_write(void*context,uint32_t address,uint32_t value){
   ||(value!=reset.original&&value!=(reset.original|1)))return -1;
  return ((Memory)method(24))(port.pci,2,0,address,1,&value)?-1:0;
 }
+/* Snapshot only mapped, registered memory before any stop/unmap/free. No new
+ * MMIO reads/writes: hardware indices come from the existing BMI polling path.
+ * Keep this immutable during cleanup/retry and describe indices as last observed.
+ */
+static void snap_put(unsigned off,uint64_t value,unsigned bytes){
+ for(unsigned i=0;i<bytes;i++)exchange_snapshot[off+i]=(uint8_t)(value>>(8*i));
+}
+static int snapshot_buffer(unsigned n,unsigned bytes){
+ QcaDmaBuffer*d=&buffers[n];
+ if(!d->host||!d->allocated||!d->mapped||!d->valid||d->closing||d->bytes<bytes)return 0;
+ for(unsigned i=0;i<access.count;i++)if(access.buffers[i]==d)return 1;
+ return 0;
+}
+static void snapshot_exchange(void){
+ if(snapshot_latched||exchange.bus!=&bus)return;
+ snapshot_latched=1;__atomic_thread_fence(__ATOMIC_ACQUIRE);unsigned flags=1|(exchange.tx_done?2u:0)|(exchange.rx_done?4u:0);
+ snap_put(4,exchange.observed_mask,4);
+ for(unsigned i=0;i<2;i++){
+  snap_put(8+2*i,exchange.initial_index[i],2);snap_put(12+2*i,exchange.observed_index[i],2);
+  snap_put(16+4*i,rings[i].read,2);snap_put(18+4*i,rings[i].write,2);
+  /* Original posted slot, not a later advanced read index. */
+  unsigned index=exchange.initial_index[i];
+  if(rings[i].owned&&index<rings[i].entries&&snapshot_buffer(i,(index+1)*8)
+    &&rings[i].descriptors==(volatile uint8_t*)buffers[i].host){
+   flags|=1u<<(5+i);
+   for(unsigned n=0;n<8;n++)exchange_snapshot[40+8*i+n]=rings[i].descriptors[index*8+n];
+  }
+ }
+ if(snapshot_buffer(2,4)){
+  flags|=8;snap_put(24,buffers[2].address,8);
+  for(unsigned n=0;n<4;n++)exchange_snapshot[68+n]=((volatile uint8_t*)buffers[2].host)[n];
+ }
+ if(snapshot_buffer(3,12)){
+  flags|=16;snap_put(32,buffers[3].address,8);
+  for(unsigned n=0;n<12;n++)exchange_snapshot[56+n]=((volatile uint8_t*)buffers[3].host)[n];
+ }
+ snap_put(72,exchange.bytes,4);snap_put(0,flags,4);
+}
 static void shutdown(uint64_t now){
  if(bus_live){
-  if(stage!=12){stage=12;cleanup_slot=0;buffer_retries=0;qca_ce_bus_stop_begin(&bus,now);}
+  if(stage!=12){snapshot_exchange();stage=12;cleanup_slot=0;buffer_retries=0;qca_ce_bus_stop_begin(&bus,now);}
   return;
  }
  stage=succeeded?5:6;

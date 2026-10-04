@@ -58,7 +58,19 @@ int qca_port_enable_memory(QcaUefiPort*p){
  if(rc)return port_error(p,10,rc);
  uint16_t command=0;
  rc=((ConfigRead)method(p->pci,48))(p->pci,1,4,1,&command);
- if(rc||command!=(uint16_t)(p->original_command|2))return port_error(p,11,rc);
+ if(rc)return port_error(p,11,rc);
+ if(command!=(uint16_t)(p->original_command|2)){
+  /* An already-set cached Attributes bit may make Enable a no-op although
+   * actual MEM was restored off. Only repair that exact unchanged command:
+   * preserve every other bit, never enable bus mastering or touch Status W1C.
+   * Unknown command changes fail closed; ownership predates ambiguous writes. */
+  if(command!=p->original_command)return port_error(p,11,0);
+  command=(uint16_t)(p->original_command|2);
+  rc=((ConfigWrite)method(p->pci,56))(p->pci,1,4,1,&command);
+  if(rc)return port_error(p,15,rc);
+  rc=((ConfigRead)method(p->pci,48))(p->pci,1,4,1,&command);
+  if(rc||command!=(uint16_t)(p->original_command|2))return port_error(p,16,rc);
+ }
  p->memory_ready=1;return 0;
 }
 int qca_port_read32(void*context,uint32_t address,uint32_t*out){

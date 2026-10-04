@@ -28,8 +28,8 @@ static Status EFIAPI read_config(void*p,uint32_t width,uint32_t offset,uint64_t 
 static Status EFIAPI write_config(void*p,uint32_t width,uint32_t offset,uint64_t count,void*in){
  assert(p==pci&&width==1&&offset==4&&count==1);config_writes++;
  if(mode==16)return EFI_ERROR(7);
- if(mode!=17)config[1]=(config[1]&0xffff0000u)|*(uint16_t*)in;
- return 0;
+ if(mode!=17&&mode!=19)config[1]=(config[1]&0xffff0000u)|*(uint16_t*)in;
+ return mode==20?EFI_ERROR(7):0;
 }
 static Status EFIAPI bar_attributes(void*p,uint8_t bar,uint64_t*support,void**out){
  assert(p==pci&&!bar);*support=0;*out=resource;return 0;
@@ -38,8 +38,8 @@ static Status EFIAPI attr(void*p,uint32_t operation,uint64_t value,uint64_t*out)
  assert(p==pci);if(operation==0){*out=attributes;return 0;}
  if(operation==4){*out=mode==3?0:0x200;return 0;}
  assert(operation==1||operation==2);attr_writes++;
- if(operation==2){assert(value==0x200);attributes|=value;config[1]|=2;return mode==5?EFI_ERROR(7):0;}
- assert(!value);if(mode==6)return EFI_ERROR(7);attributes=value;if(mode!=12&&mode!=16&&mode!=17)config[1]&=~2u;return 0;
+ if(operation==2){assert(value==0x200);attributes|=value;if(mode<18)config[1]|=2;else if(mode==21)config[1]|=4;return mode==5?EFI_ERROR(7):0;}
+ assert(!value||value==0x200);if(mode==6)return EFI_ERROR(7);attributes=value;if(mode!=12&&mode!=16&&mode!=17){if(value&0x200)config[1]|=2;else config[1]&=~2u;}return 0;
 }
 static Status EFIAPI mem_read(void*p,uint32_t width,uint8_t bar,uint64_t offset,uint64_t count,void*out){
  assert(p==pci&&width==2&&!bar&&count==1&&(attributes&0x200));mem_reads++;
@@ -118,6 +118,21 @@ int main(void){
  baseline();config[1]|=2;port=(QcaUefiPort){0};wake=(QcaWake){0};
  assert(!qca_port_open(&port,&port_system,&port_system,pci,&target));
  assert(!qca_port_enable_memory(&port));assert(!qca_port_close(&port,&wake));assert((config[1]&65535)==0x102&&config_writes==1);
+ /* Fresh actual MEM-off with cached Attributes MEM-on, as physical QPD8.
+  * Successful repair, dropped write, ambiguous applied write, foreign command.
+  * Never perform MMIO or allow uncertain ownership to be silently discarded. */
+ for(unsigned cached=18;cached<=21;cached++){
+  baseline();attributes=0x200;config[1]|=0x00100000;port=(QcaUefiPort){0};wake=(QcaWake){0};
+  assert(!qca_port_open(&port,&port_system,&port_system,pci,&target));mode=cached;
+  int enabled=qca_port_enable_memory(&port);
+  assert(port.claimed&&port.memory_attempted&&!mem_reads&&!mem_writes);
+  if(cached==18)assert(!enabled&&port.memory_ready&&config[1]==0x00100102&&config_writes==1);
+  else assert(enabled==-1&&!port.memory_ready);
+  if(cached==19)assert(port.error==0x1000&&config[1]==0x00100100);
+  if(cached==20)assert(port.error==0xf07&&config[1]==0x00100102);
+  if(cached==21)assert(port.error==0xb00&&!config_writes);
+  mode=0;assert(!qca_port_close(&port,&wake)&&!port.claimed&&attributes==0x200&&config[1]==0x00100100);
+ }
  puts("UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY");
  return 0;
 }

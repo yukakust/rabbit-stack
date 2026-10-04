@@ -1,0 +1,32 @@
+SCENARIO 0 PASS
+DMA scenario 0: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 1 PASS
+SCENARIO 2 PASS
+SCENARIO 3 PASS
+DMA scenario 3: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 4 PASS
+DMA scenario 4: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 5 PASS
+DMA scenario 5: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 6 PASS
+DMA scenario 6: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 7 PASS
+DMA scenario 7: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 8 PASS
+DMA scenario 8: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 9 PASS
+DMA scenario 9: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 10 PASS
+DMA scenario 10: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 11 PASS
+DMA scenario 11: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 12 PASS
+DMA scenario 12: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 13 PASS
+DMA scenario 13: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 14 PASS
+DMA scenario 14: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 15 PASS
+SCENARIO 16 PASS
+DMA scenario 16: common-buffer geometry, stop/master/flush/unmap/free order and retained failure lifetime PASS; MOCK ONLY
+SCENARIO 17 PASS

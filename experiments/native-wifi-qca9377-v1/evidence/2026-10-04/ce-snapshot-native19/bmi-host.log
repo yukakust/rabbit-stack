@@ -1,0 +1,11 @@
+ROM + BMI CE0/CE1 scenario 0 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 1 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 2 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 3 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 4 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 5 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 6 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 7 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 8 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 9 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
+ROM + BMI CE0/CE1 scenario 10 PASS: actual production bus/ring callbacks, RX-before-TX, completion race/invalid response/error stop; MOCK ONLY
