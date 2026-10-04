@@ -3012,3 +3012,44 @@ regenerate signatures, increment generation, change world/source inputs or
 attempt another native engine while this trial is pending. No firmware startup,
 Wi-Fi scan/association, IP or Yukabox traffic has been confirmed. Password remains
 only in the owner-only local file; never print or send it on current GATT.
+
+
+## 2026-10-05 — operating-protocol preparation while exact asset uploads
+
+Native38 `pci-native-nwwhys2x` remains installed. Same signed asset session
+`firmware-ram-xn9ncwla` is still active: seven full RAM chunks accepted at this
+checkpoint (bitmap127), partial next chunk may progress after this text.
+The bounded local resumer retains the exact existing signatures/session and
+only continues after correlated known-peer receipts. Do not prepare another
+asset, close/replace the native module, or change the frozen native38 inputs
+while `hardware_trial_pending` remains. All341 recorded inputs were rehashed
+unchanged during protocol preparation. Native38 still has no verified main
+firmware startup, association, IP or Yukabox exchange at this checkpoint.
+
+Independent future source under `experiments/native-wifi-qca9377-session-v1`
+was prepared/checked on Yukabox and pushed in `7f11c25`, `cc46656`, `99774d6`:
+
+- bounded HTC PCI wire codec with validated trailers and pinned-struct wire
+  differential (11331 assertion groups), freestanding COFF;
+- READY → WMI/HTT connect → PCI setup handshake with matching service/unique
+  endpoint/confirmed-transmit sequence tests (16 groups);
+- passive VDEV0 WMI-TLV scan constructor, request-correlated event parser and
+  malformed/truncated/duplicate rejection tests (8234 groups);
+- read-only initial WMI service ABI/regulatory band/memory request/READY MAC
+  information parser and bounded malformed-event checks (47340 groups).
+
+ASAN/UBSAN and COFF proofs are HOST ONLY, archived under the new experiment's
+`evidence/2026-10-05/wire-codecs`. No new native was signed or transmitted.
+Actual CE2/CE3 handling, operating credit ledger, WMI memory/init/VDEV/regulatory
+configuration, physical scanning and beacon/security parsing, confidential
+credential delivery, authentication and IP remain to implement. Described band
+limits are NOT regulatory approval. This does not alter the previous world,
+bootstrap or USB. Do not claim current physical city/tail pixels until the owner
+answers the pending observation question after native38.
+
+Yukabox read-only network inventory shows a private router IPv4 address and a
+Tailscale overlay address, with no global IPv6 on its Wi-Fi interface in that
+snapshot. A normal Dell router lease alone does not prove reachability to
+Yukabox in Poland; preserve that distinction when planning a WAN transport.
+Credentials remain on Mac only, outside Git/Yukabox. Do not read/print them or
+send the raw password/derived equivalent credential over unauthenticated GATT.
