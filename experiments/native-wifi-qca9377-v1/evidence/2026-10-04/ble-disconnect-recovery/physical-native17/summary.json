@@ -1,0 +1,67 @@
+{
+  "status": "EXACT-NATIVE17-WORLD13-RECEIVER-RECEIPTS",
+  "receiver_reported_applied": true,
+  "device_attestation": false,
+  "physical_display_observation": "pending owner response",
+  "native_counter": 17,
+  "world_counter": 13,
+  "payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+  "native_packet_sha256": "2ee1d91b9403c277939fb0737290bbf26ed6733e768683010b5d88dba99ce1d0",
+  "world_packet_sha256": "d5800a77dfa7a00e25c8619fd988bd99769169c7a6b87d498ca0486bad1e9788",
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "journal_sha256": "15755161641fedb39ffa305a897d7695e61d8a13019d3e8cfc976045395faebe",
+  "journal_versions": 12,
+  "old_native16_files_intact": true,
+  "retired_native_sessions": [
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-yhzzk0k_",
+      "files": {
+        "native.rrt": "d60cd22b59398bb73f7a6ff4b42761af8f68ceaf840bd63ab211ce4661a0e24e",
+        "session.json": "92a3eba379ba8950e85b342e73fa0a9f024fd5b2a0311b4ca59550447108b2f5",
+        "payload.efi": "0beeb5450db864eba62710cfe7df7e0ba3d19594d9e480b6b50129f99225b4a6",
+        "report.json": "74cfbeab2bb80c9405a940ad25f00030e1498946f821d666e7f29d3e8ac5fdff"
+      },
+      "reason": "owner-confirmed-reboot-and-fresh-zero-receiver",
+      "replacement_counter": 16
+    },
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native16",
+      "files": {
+        "native.rrt": "cb142356c22c5e155739e587e042724a7fd5ac1890a079429049211b2b2569fb",
+        "session.json": "185ac329bae89565b6bd0cddc56336c5960f08945c47f8f9ec49869868819033",
+        "payload.efi": "0bd6291bb65312b8e33afeb5187839bb4da09cfb10069f2eba4837c9cc438f62",
+        "report.json": "c5586038a741db16afde253047356d3ae4a724d13d059e1a6bf89d50e1061b01"
+      },
+      "reason": "owner-confirmed-reboot-and-fresh-zero-receiver",
+      "replacement_counter": 17
+    }
+  ],
+  "canonical_state_sha256": "be909780a299c4495350720cea366690aae8624a61db3ee22804728afb66d130",
+  "logs_and_reports": {
+    "report.json": "e821c82dc18bcf599d37fc9a4f151fd2817438c83e3ab5270ba6f60790798107",
+    "plan.json": "660143a0bffad44bde6406e2c1f637c1069007f7849b13d9235d785be9d428f8",
+    "session.json": "e6137cb51e54a3c8734a7414d79b5f9cca718525178edc166f32a4016f85bed7",
+    "world-session.json": "c273b77dd282a4c6255cbfcd940ae0ef02d2b87b5c6dc7c11bdfc38a6ea2a22f",
+    "restored-world/report.json": "92f3e6ea13c01d05b034c0ef005fe45fd08387b94dbfc625c645dca9a09ab850",
+    "paced-stage-3.log": "04a6385f631a53b9f5644619885ddf0865eb269d22f687d9cff5640dae8c8130",
+    "paced-stage-1.log": "36d9eba5e7b51a81967e0aeeabf1715f4b7d4670fe1235f2c07d050f1894d344",
+    "commit-10.log": "3b703f1edd26e09c6eee321c133fe53b93fe4ec55fb61c2e4e1a8495f96d134a",
+    "paced-stage-5.log": "1a2724e7e3636d0ec57927fffa5264e7aec189b023e8ba62569b2b46192ed835",
+    "paced-stage-7.log": "7f33ce323c8ccede3d4c8d7dd26f8c19fde4cb5975f7c5fa5c6ee29ec8b7ab9d",
+    "query-6.log": "a469c3e6a2dcbb0ffb308f1ce7e06adfbebe6b6f1c4a662d7d7dbf0a5a01e34c",
+    "query-4.log": "5bb6b7e55b541074dedbb113726db43fb16fe4e581787bed87cd88a74068e1eb",
+    "query-0.log": "0fe0727e3bb84974012204ec83f75e44a5611c5ba9cccda2928e3b540b65d407",
+    "query-2.log": "13dbf318252391733d22858e6689dce66d7e6e32df2ff34337dd640b17d0ceb5",
+    "query-8.log": "54caf8e97446393ed06a20d0656b228148126f07057fde2f43fa727fe999aba7",
+    "paced-stage-9.log": "837c4915956aed60e48c0dea797ddf9652a9b18789803bf70c6d0b3616aa7bbd",
+    "restored-world/commit-2.log": "e19e8be451a6768fdeee1f41548d9382b1eb38e4d8afbb1aa1d82ffb4750f420",
+    "restored-world/paced-stage-1.log": "59a9ecd5815cf366a543ddd5d2e0354cbd9b307e33fb3fe8e41645871f082236",
+    "restored-world/query-0.log": "d841014216eb8d70d2e4f2138407515f2e2c9c0d04a8bf4d65a3beb0b0d8e03a"
+  },
+  "wifi_connection_confirmed": false,
+  "limitations": [
+    "No physical proof of malformed-event recovery yet",
+    "Bluetooth link repeatedly timed out before candidate applied",
+    "No physical USB/bootstrap changes"
+  ]
+}

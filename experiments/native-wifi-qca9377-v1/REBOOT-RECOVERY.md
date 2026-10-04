@@ -61,3 +61,16 @@ do not resume that plan. Use the exact prepared native17 directory for the next
 fresh-boot trial. Promote native/world counters only through exact receipts.
 Future Wi-Fi profiles must retain the radio recovery fix rather than silently
 reintroducing the original HCI disconnect filter.
+
+## Physical native17 result
+
+After a new owner-confirmed reboot and fresh zero receiver query, native17 and
+unchanged city world13 returned exact applied packet/session/counter receipts.
+State now has native17/world13 with no pending recovery. The idle 12-version
+journal and world content hash are unchanged; native15/native16 files remain.
+Stage resumptions overcame repeated timeouts, so broad Bluetooth stability and
+physical malformed-input recovery remain unproven. Display/tail observation is
+pending. Exact receipts/logs are under evidence/2026-10-04/ble-disconnect-recovery/
+physical-native17. Wi-Fi connection is not established; do not resume the retired
+recovery or deliver native15. A subsequent diagnostic must build above current
+native17/world13 and preserve its BLE recovery code.

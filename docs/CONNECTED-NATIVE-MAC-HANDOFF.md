@@ -1738,3 +1738,30 @@ receipts then owner city/tail observation required. After activation resume SAME
 Future Wi-Fi candidate profiles must retain this separately validated radio fix
 rather than reintroduce original disconnect filter. Original Wi-Fi goal remains
 incomplete; physical native17 recovery has NOT been attempted.
+
+## 2026-10-04 — native17 + saved city world13 physically delivered
+
+Owner confirmed a NEW reboot. Fresh read-only known-Dell RFS status was exact
+zero/idle; canonical state then retired old native16 with hashes/files retained
+and activated native17. Multiple bounded attempts retained the SAME packet/session
+and resumed prefixes 3400,13200,19500,24700; receiver eventually confirmed full
+47904 bytes. Bluetooth timed out repeatedly (RSSI roughly -75 to -93); no claim
+that the new profile fixes all link instability. Commit disconnected on native
+replacement; reconnect returned exact packet SHA256/session/counter17 APPLIED.
+Saved city world13 (2128-byte package) then returned exact APPLIED receipt.
+
+Current canonical counters are native17/world13; native_pending/recovery_pending
+are null. WorldSHA remains fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74;
+12-version idle journal SHA unchanged. All prepared17 files and predecessor16
+packet/session/payload/report hashes rechecked intact. Native15 also retained.
+Physical malformed-event recovery itself is NOT proven by these normal receipts.
+The city/tail display observation is pending owner's answer; receiver reports
+are application receipts, NOT device attestation. No Wi-Fi connection established.
+
+Evidence: experiments/native-wifi-qca9377-v1/evidence/2026-10-04/ble-disconnect-recovery/physical-native17
+includes exact boot/stage/reconnect/commit logs, both receiver receipt reports,
+sessions/plan and summary. Private key remains local; no USB/bootstrap writes.
+Do NOT rerun reboot recovery: it is complete at receiver level. Next requires
+owner city/tail observation, then prepare a new Wi-Fi diagnostic above native17
+against the CURRENT world/payload, retaining the separately tested BLE recovery
+profile. Retired native15/16 are historical and must not be delivered.

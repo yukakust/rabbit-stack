@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "status": "APPLIED",
+  "kind": "owner-reboot-city-recovery",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/runs/reboot-recovery-ble17",
+  "gate_sha256": "1176328f2145ca9e7cc801738e51d5195f03c88e1656df71464362a86df68a78",
+  "files": {
+    "before-state.json": "86a5463c9bc65c854041826576dd70363acf89fca3f616fb8208ad44399b8294",
+    "world.json": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+    "world.rup": "d5800a77dfa7a00e25c8619fd988bd99769169c7a6b87d498ca0486bad1e9788",
+    "native.rrt": "2ee1d91b9403c277939fb0737290bbf26ed6733e768683010b5d88dba99ce1d0",
+    "payload.efi": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+    "session.json": "e6137cb51e54a3c8734a7414d79b5f9cca718525178edc166f32a4016f85bed7",
+    "world-session.json": "c273b77dd282a4c6255cbfcd940ae0ef02d2b87b5c6dc7c11bdfc38a6ea2a22f"
+  },
+  "old_pending_directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native16",
+  "old_pending_files": {
+    "native.rrt": "cb142356c22c5e155739e587e042724a7fd5ac1890a079429049211b2b2569fb",
+    "session.json": "185ac329bae89565b6bd0cddc56336c5960f08945c47f8f9ec49869868819033",
+    "payload.efi": "0bd6291bb65312b8e33afeb5187839bb4da09cfb10069f2eba4837c9cc438f62",
+    "report.json": "c5586038a741db16afde253047356d3ae4a724d13d059e1a6bf89d50e1061b01"
+  },
+  "reserved_counter": 16,
+  "old_pending_kind": "recovery",
+  "journal_sha256": "15755161641fedb39ffa305a897d7695e61d8a13019d3e8cfc976045395faebe",
+  "counter": 17,
+  "world_counter": 13,
+  "owner_confirmed_reboot": true,
+  "engine_done": true,
+  "world_done": true,
+  "receiver_reported_applied": true,
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/query-0.log",
+      "log_sha256": "0fe0727e3bb84974012204ec83f75e44a5611c5ba9cccda2928e3b540b65d407"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/paced-stage-1.log",
+      "log_sha256": "36d9eba5e7b51a81967e0aeeabf1715f4b7d4670fe1235f2c07d050f1894d344"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/query-2.log",
+      "log_sha256": "13dbf318252391733d22858e6689dce66d7e6e32df2ff34337dd640b17d0ceb5"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/paced-stage-3.log",
+      "log_sha256": "04a6385f631a53b9f5644619885ddf0865eb269d22f687d9cff5640dae8c8130"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/query-4.log",
+      "log_sha256": "5bb6b7e55b541074dedbb113726db43fb16fe4e581787bed87cd88a74068e1eb"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/paced-stage-5.log",
+      "log_sha256": "1a2724e7e3636d0ec57927fffa5264e7aec189b023e8ba62569b2b46192ed835"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/query-6.log",
+      "log_sha256": "a469c3e6a2dcbb0ffb308f1ce7e06adfbebe6b6f1c4a662d7d7dbf0a5a01e34c"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/paced-stage-7.log",
+      "log_sha256": "7f33ce323c8ccede3d4c8d7dd26f8c19fde4cb5975f7c5fa5c6ee29ec8b7ab9d"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/query-8.log",
+      "log_sha256": "54caf8e97446393ed06a20d0656b228148126f07057fde2f43fa727fe999aba7"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/paced-stage-9.log",
+      "log_sha256": "837c4915956aed60e48c0dea797ddf9652a9b18789803bf70c6d0b3616aa7bbd"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17/commit-10.log",
+      "log_sha256": "3b703f1edd26e09c6eee321c133fe53b93fe4ec55fb61c2e4e1a8495f96d134a"
+    }
+  ],
+  "boot_receiver_status": {
+    "outcome": "idle",
+    "state": 0,
+    "error": 0,
+    "received": 0,
+    "length": 0,
+    "counter": 0,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": false,
+    "raw_hex": "524653010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  },
+  "confirmed_received": 47904,
+  "last_receiver_status": {
+    "outcome": "staging",
+    "state": 1,
+    "error": 0,
+    "received": 24700,
+    "length": 47904,
+    "counter": 0,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": true,
+    "raw_hex": "524653016532c6ac17bdfd157c60000020bb000001000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  }
+}

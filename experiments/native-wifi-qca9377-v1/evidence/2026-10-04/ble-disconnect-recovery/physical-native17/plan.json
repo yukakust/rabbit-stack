@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "status": "PREPARED-NOT-ACTIVATED",
+  "kind": "owner-reboot-city-recovery",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/runs/reboot-recovery-ble17",
+  "gate_sha256": "1176328f2145ca9e7cc801738e51d5195f03c88e1656df71464362a86df68a78",
+  "files": {
+    "before-state.json": "86a5463c9bc65c854041826576dd70363acf89fca3f616fb8208ad44399b8294",
+    "world.json": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+    "world.rup": "d5800a77dfa7a00e25c8619fd988bd99769169c7a6b87d498ca0486bad1e9788",
+    "native.rrt": "2ee1d91b9403c277939fb0737290bbf26ed6733e768683010b5d88dba99ce1d0",
+    "payload.efi": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+    "session.json": "e6137cb51e54a3c8734a7414d79b5f9cca718525178edc166f32a4016f85bed7",
+    "world-session.json": "c273b77dd282a4c6255cbfcd940ae0ef02d2b87b5c6dc7c11bdfc38a6ea2a22f"
+  },
+  "old_pending_directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native16",
+  "old_pending_files": {
+    "native.rrt": "cb142356c22c5e155739e587e042724a7fd5ac1890a079429049211b2b2569fb",
+    "session.json": "185ac329bae89565b6bd0cddc56336c5960f08945c47f8f9ec49869868819033",
+    "payload.efi": "0bd6291bb65312b8e33afeb5187839bb4da09cfb10069f2eba4837c9cc438f62",
+    "report.json": "c5586038a741db16afde253047356d3ae4a724d13d059e1a6bf89d50e1061b01"
+  },
+  "reserved_counter": 16,
+  "old_pending_kind": "recovery",
+  "journal_sha256": "15755161641fedb39ffa305a897d7695e61d8a13019d3e8cfc976045395faebe",
+  "counter": 17,
+  "world_counter": 13,
+  "owner_confirmed_reboot": false,
+  "engine_done": false,
+  "world_done": false,
+  "receiver_reported_applied": false,
+  "sender_steps": []
+}
