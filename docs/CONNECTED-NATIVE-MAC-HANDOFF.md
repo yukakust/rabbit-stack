@@ -2886,3 +2886,48 @@ old native34 RAM is gone after reboot. Do not use former RAM receipt as current
 load authority. Main firmware not started, Wi-Fi not associated. No USB or OTP
 programming changes. Future receiver profiles must include the one-call close
 fix, fresh policy generation and full current-source/world gate.
+
+## Continuation: exact boot core and HTC_READY (2026-10-05; host only)
+
+Owner subsequently reported the city visible (`виден`). This confirms visibility;
+do not turn it into a separate new tail-motion observation. Current native37 /
+world15 remains installed. A fresh known-peer read-only QBDI observation during
+boot-core work again returned phase5/error0,101commands,24196padded helper bytes,
+result0,valid SMBIOS/no variant, BMI05020001/type8, rootstage5/error0,
+adapterCLOSED12/cleanup14/DMAusers0. No BLE characteristic write or new native
+delivery occurred, no main-image asset exists on Dell, Wi-Fi not connected.
+
+Implemented `boot_image`, `boot_transport`, `boot_native` and a Yukabox-only
+`verify_boot_core.py`, with pinned Linux/firmware/crypto references. The planner
+admits only the selected 8124-byte Dell board data,24193-byte helper and727125-
+byte main image by exact SHA256. It configures host-interest, writes board data,
+reads back every byte before the initialized flag, reloads/executes calibration
+(parameter0, require result0), streams the exact main image and BMI_DONE. The
+native coordinator validates fresh setup/query bindings, rehashes/pins the full
+751436-byte receiver asset, checks TLVs, uses bounded DMA transport and waits for
+a strict endpoint0 HTC_READY message. Board writes additionally reject overlap
+with fresh pipe/service configuration and host-interest spans. Unpin is denied until actual adapter DMA
+ownership is fully released, including on errors. No SOC/NVRAM/flash-section or
+permanent programming command is admitted.
+
+42 host sanitizer scenarios and COFF builds of all3 modules pass. Main/coordinator
+device replies are explicit MOCKS, not UEFI/physical proof. The real pinned
+container caught an over-strict assumption about zero alignment padding; only
+the NUL-terminated magic is compared and alignment is skipped, while the full
+container hash remains fixed. Code is not integrated into a native PE builder or
+admitted by a signing gate. Evidence:2026-10-05/boot-core-host.
+
+NEXT: integrate the loader with a new generation-bound receiver, fresh second
+hardware setup and independent status observation. Validate actual entrypoints,
+complete signed-asset fixtures, both hardware/RAM lifetimes, one-call resident
+close, timeout/cancellation and normal/EMPTY-city QEMU before signing. Audit
+target clock/UART configuration and BMI-to-HTC ring transition against pinned
+Linux. The board-address window0x400a00..0x410000 is deliberately conservative;
+unexpected actual pointers must be diagnosed and reviewed BEFORE permitting a
+write. Never reuse old generation34 or retired native35 sessions.
+
+Then physical board/calibration/main/HTC trial. WMI/HTT, scan, authentication,
+DHCP/IP and actual Dell-to-Yukabox traffic remain separate unimplemented stages.
+An asynchronous question asks owner for SSID and WPA2/WPA3; no password requested
+in chat, no credentials persisted. Local private credential entry is still to
+be implemented. Do not imply SSID alone or main-image startup completes Wi-Fi.

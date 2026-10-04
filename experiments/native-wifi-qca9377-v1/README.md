@@ -789,3 +789,42 @@ means the main-image stage; helper_ram_upload records the actual helper writes.
 Next: select a unique board-2.bin record from physical SMBIOS/BMI/PCI evidence,
 then separately verify board/calibration/main-image load, BMI_DONE and HTC_READY.
 Wi-Fi connection requires subsequent WMI/HTT, scan/authentication and networking.
+
+### Boot image core (2026-10-05; host-only)
+
+`boot_image.c` plans target host-interest configuration, exact 8124-byte board
+upload and full readback, exact helper/calibration execution with parameter0,
+exact 727125-byte main-image LZ stream with zero-padded tail, cache flush and
+BMI_DONE. Every admitted asset has a fixed SHA256. Board-address writes require
+an aligned span within a deliberately conservative `0x400a00..0x410000` window;
+this is a policy limit, not the documented physical RAM size. Unexpected ROM
+pointers stop the plan before writing; expand only after separately checking
+actual addresses. Nonzero extension pointers/calibration results are rejected.
+
+`boot_transport.c` only accepts a pending command matching the planner, checks
+exclusive registered DMA/rings and posts RX before TX. Each exchange has a
+3-second monotonic deadline. `boot_native.c` binds the planner to a fresh
+completed setup and exact zero-ID/no-variant board query, pins and rehashes the
+full signed-receiver container, validates its TLVs and rejects overlap with
+fresh PCI pipe/service configuration and host-interest memory before writing
+board data. It then waits for a bounded
+endpoint0 HTC_READY response. Pins remain held on errors and cancellation until
+the actual adapter has stopped all DMA and released its mappings. No SOC,
+NVRAM, flash-section or permanent programming command exists.
+
+`python3 experiments/native-wifi-qca9377-v1/verify_boot_core.py` runs on Yukabox
+against pinned vendor files and crypto provenance. It tests 42 sanitizer cases
+and COFF-compiles all three new modules. The coordinator fixture explicitly
+mocks DMA/device operations; it does not exercise an installed UEFI profile.
+The official container has a nonzero alignment byte after its NUL-terminated
+magic: alignment padding is skipped, while the full container hash is checked.
+
+**Not yet an installed loader:** no builder/physical-signing gate admits this
+core. Next integrate it with a new generation-bound native RAM receiver, test
+both hardware lifetimes (setup/close/staging and fresh setup/load/close), the
+actual entrypoints and normal/EMPTY-city QEMU. Audit clock/UART initialization
+and the BMI-to-HTC pipe transition against pinned Linux before physical trial.
+Retire old generation34 asset sessions; native37 has no main-image RAM asset.
+Only then send a checked native candidate, stage a newly signed exact container
+and read fresh boot status. WMI/HTT, scan/authentication, DHCP/IP and Dell-to-
+Yukabox traffic are separate remaining implementation/physical milestones.

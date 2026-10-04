@@ -1,0 +1,23 @@
+{
+  "status": "BOOT-CORE-HOST-ONLY-PHYSICAL-NATIVE37-UNCHANGED",
+  "physical_native_counter": 37,
+  "world_counter": 15,
+  "native_payload_sha256": "654629798fd72bc5a6e2d9d645e3bd6323d35436d0cbace9bc77e5167e0e8e77",
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "new_native_sent": false,
+  "private_key_used": false,
+  "physical_main_firmware_started": false,
+  "wifi_connected": false,
+  "physical_baseline_read_only": true,
+  "physical_observation_sha256": "79a57757a3c831e19eaf6b513a575f51569f76b137127a7e6827832e83cc06f7",
+  "remaining": [
+    "Complete native receiver/loader integration and current-source/world/QEMU gates",
+    "Audit clock/UART and BMI-to-HTC transition; diagnose any unexpected board pointer before writes",
+    "New generation-bound signed RAM transfer; physical calibration/main/HTC proof",
+    "WMI/HTT and Wi-Fi scan/authentication",
+    "DHCP/IP and actual Dell-Yukabox traffic"
+  ],
+  "network_configuration": "SSID and protection type requested; no password received or stored",
+  "host_scenarios": 42,
+  "host_report_sha256": "924f97a7aba828e13e73a049f532f77e7edccb93ca107d83150403fa3b2c5d04"
+}
