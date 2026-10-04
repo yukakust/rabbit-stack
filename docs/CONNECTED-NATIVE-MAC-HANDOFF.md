@@ -2818,3 +2818,21 @@ current controller/both saved sessions/source gates revalidated offline;
 47616byte standalone city driver disables Wi-Fi probing. Request one owner
 reboot to discard stale staging; restore only after confirmation and fresh-zero
 read-only receipt. Do not replay35 or activate recovery against current staging.
+
+## 2026-10-05 physical city recovered, native36/world15
+
+Owner explicitly confirmed "перезагрузил". Prepared recovery plan rechecked and
+activated only after exact fresh-zero receiver query. Standalone Wi-Fi-disabled
+BLE city driver native36 and restored world transport15 both have exact
+SHA/session/counter APPLIED receipts. Recovery report APPLIED/engine_done/world_done;
+all pending slots null. Semantic world hash remains
+fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74.
+Native36 payload0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce,
+47616bytes; world15 packagec347d5541494979eab0467933d0953102d0ad94b07f309b85c13488e21dea0f7.
+The native36 COMMIT disconnected normally; reconnect obtained exact APPLIED.
+Saved native35 remains preserved/retired, never replayed; owner private key
+never printed/exported. Physical city/tail confirmation requested, pending.
+Evidence: experiments/native-wifi-qca9377-v1/evidence/2026-10-05/native35-city-recovered36.
+Wi-Fi remains unconnected; no physical board/helper/main execution proof.
+Do not reuse native34 staging after reboot. Diagnose/isolate native35 failure
+before another probe; current recovery driver deliberately has no Wi-Fi probe.

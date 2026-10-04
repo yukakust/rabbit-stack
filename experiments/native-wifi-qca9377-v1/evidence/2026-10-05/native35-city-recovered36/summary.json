@@ -1,0 +1,17 @@
+{
+  "status": "EXACT-ENGINE-AND-WORLD-RECOVERY-RECEIPTS",
+  "owner_reboot_confirmation": "перезагрузил",
+  "owner_screen_observation": "pending",
+  "native_counter": 36,
+  "native_payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+  "world_counter": 15,
+  "world_semantic_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "c347d5541494979eab0467933d0953102d0ad94b07f309b85c13488e21dea0f7",
+  "all_pending_null": true,
+  "wifi_probe_enabled": false,
+  "wifi_connection": false,
+  "board_helper_or_main_execution_confirmed": false,
+  "failed_native35_preserved": true,
+  "bootstrap_query": "exact zero receiver observed before recovery activation",
+  "same_semantic_world_as_before_failure": true
+}
