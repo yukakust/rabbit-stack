@@ -65,8 +65,13 @@ def sources(directory):
  # close must succeed in one call once telemetry says all owners released.
  s=one(s,'ram_closing=1;int hardware=qca_hardware_stop();int result=qca_fwp_close(&ram);','ram_closing=1;int hardware=qca_hardware_stop();\n if(boot_round&&qca_boot_native_close(&boot))return 1;\n int result=qca_fwp_close(&ram);')
  s=one(s,' return qca_fwp_att(&ram,mtu,p,n,r,capacity);',''' if(boot_round&&p&&n>=3&&(p[0]==0x12||p[0]==0x52)){
-  if(!r||capacity<5)return 0;
-  r[0]=1;r[1]=p[0];r[2]=p[1];r[3]=p[2];r[4]=3;return p[0]==0x52?0:5;
+  unsigned handle=(unsigned)p[1]|((unsigned)p[2]<<8);
+  /* Asset writes remain sealed. Legacy replacement is delegated only after
+     every hardware owner and the firmware pin have actually been released. */
+  if((handle>=13&&handle<=19)||!qca_init_adapter_released(&adapter)||port.claimed||port.dma_users||ram.asset.pinned){
+   if(!r||capacity<5)return 0;
+   r[0]=1;r[1]=p[0];r[2]=p[1];r[3]=p[2];r[4]=3;return p[0]==0x52?0:5;
+  }
  }
  return qca_fwp_att(&ram,mtu,p,n,r,capacity);''')
  s+='''

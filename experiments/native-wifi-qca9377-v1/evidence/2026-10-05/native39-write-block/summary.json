@@ -1,0 +1,14 @@
+{
+  "status": "PHYSICAL-NATIVE39-BEGIN-REJECTED-BY-INSTALLED38",
+  "native39_bytes_confirmed": 0,
+  "installed_counter_observed": 38,
+  "native39_applied": false,
+  "reason": "boot_round unconditional write rejection in installed native38 even after full cleanup",
+  "old_session_retained": "pci-native-f_6ar4mr",
+  "retry_after_bootstrap_reboot": false,
+  "requires_boot_recovery_above_reserved39": true,
+  "wifi_connected": false,
+  "user_reboot_requested": true,
+  "user_reboot_confirmed": false,
+  "password_included": false
+}

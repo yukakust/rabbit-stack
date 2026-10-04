@@ -3113,3 +3113,58 @@ archived under `evidence/2026-10-05/boot-native39-host`. Candidate not physicall
 applied at this checkpoint; main/HTC/Wi-Fi remain unverified. City/tail owner
 question after the physical result3 stop is pending. Never replace that pending
 observation with QEMU screenshots or advance claimed connectivity from mocks.
+
+## 2026-10-05 — native39 BEGIN rejected; closed-trial write gate corrected
+
+Fresh physical QWBT again confirmed native38's faulted trial had released all
+hardware/DMA owners and the firmware pin. Locally signed candidate39 saved as
+`pci-native-f_6ar4mr`, but its BEGIN failed with ATT write-not-permitted.
+Both surrounding exact peer queries still reported the completed native38
+receipt; native39 confirmed prefix is0 and no application was reported. Evidence:
+`experiments/native-wifi-qca9377-v1/evidence/2026-10-05/native39-write-block`.
+The generic sender labels this recovery-required receiver loss; the actual
+observed cause is installed native38's unconditional boot_round write rejection,
+which incorrectly also covers legacy resident update handles after cleanup.
+
+Do NOT replay that pending candidate against bootstrap after reboot. Its exact
+signed bytes remain preserved. An owner reboot has been requested, not yet
+confirmed at this checkpoint; no reboot/USB operation was performed by the agent.
+Use separately gated `reboot_recovery` with the pending39 predecessor to reserve
+recovery40, restore the exact saved actor city as worldtransport16, then use a
+fresh result3-compatible Wi-Fi candidate41. Policy generation is now41.
+
+Generated native write guard now keeps RAM asset handles13..19 sealed and blocks
+legacy writes while any actual adapter/PCI/DMA owner or firmware pin remains.
+Once cleanup is complete, legacy handles1..12 are delegated to the resident
+again. The actual two-lifetime eight host scenarios verify active write blocking,
+both write opcodes delegated after successful/faulted/cancelled cleanup, retained
+asset sealing and one-call final close. Sanitized host tests pass on Yukabox;
+this fix is NOT installed physically. Fresh recovery preflight also passed two
+native builds, actor-world C checks and normal/EMPTY QEMU. Full candidate41 gates
+and physical recovery/application remain separate next steps.
+
+Recovery40 is now locally signed and saved as
+`runs/text-world/native40-city-recovery-plan`, PREPARED-NOT-ACTIVATED.
+Its checked directory is `native-wifi-qca9377-v1/runs/native40-recovery-preflight`;
+payload SHA `0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce`.
+No recovery radio writes occurred. Require the owner's reboot report and a fresh
+exact empty receiver read before `reboot_recovery.py restore --dell-rebooted`.
+Preparation does not mutate the live controller; it still retains pending39.
+Do not change gated source while this saved recovery is awaiting activation.
+
+Candidate41 full host gates and two-rebuild/current-world reproduction also
+finished. Mac gates() independently revalidated341 current public inputs against
+the exact planned restored worldtransport16 package SHA
+`8254c70465eac5a04612e2e33f74be5afa078c2e71b9f00b5d5e13a8f02f0f5e`.
+Candidate PE139264 bytes SHA
+`e24248302a81e5def809d2379722e2389ec4c4c47458c9bf3b027cc5fc2d38d1`;
+report SHA `562b2f1f78cb61045566d94e22fe2c8bcb7d8256d46d963403874e61ab34d8a4`;
+reproduction SHA `dd5ad5d4f08e1075f3444b69b3ec441a626986301974e02b2fa0df8473ac3572`.
+Checked folder `native-wifi-qca9377-v1/runs/boot-profile-native41`.
+Host evidence is `evidence/2026-10-05/boot-native41-host`; recovery evidence is
+`evidence/2026-10-05/native40-recovery-host`. These are not physical Wi-Fi proofs.
+Do not sign candidate41 until exact recovery40 and restored-world16 receipts
+have promoted controller state. Then fresh QPD18/QWBT must admit a new locally
+signed generation41 full-asset session; retired38 packets cannot be reused.
+Main/HTC startup, scan, protected association, IP and Dell→Yukabox exchange are
+all still physically unverified. Owner reboot and scene observation are pending.

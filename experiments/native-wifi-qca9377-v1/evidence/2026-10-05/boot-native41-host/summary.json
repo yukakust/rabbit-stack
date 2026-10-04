@@ -1,0 +1,25 @@
+{
+  "status": "CANDIDATE41-HOST-GATES-PASS-NOT-PHYSICAL",
+  "gate": {
+    "report_sha256": "562b2f1f78cb61045566d94e22fe2c8bcb7d8256d46d963403874e61ab34d8a4",
+    "reproduction_sha256": "dd5ad5d4f08e1075f3444b69b3ec441a626986301974e02b2fa0df8473ac3572",
+    "profile_status": "QCA-EXACT-RAM-MAIN-BOOT-CITY-PROFILE-GATES-PASS"
+  },
+  "payload_sha256": "e24248302a81e5def809d2379722e2389ec4c4c47458c9bf3b027cc5fc2d38d1",
+  "payload_bytes": 139264,
+  "expected_native_counter": 41,
+  "recovery_predecessor_counter": 40,
+  "expected_world_transport": 16,
+  "world_package_sha256": "8254c70465eac5a04612e2e33f74be5afa078c2e71b9f00b5d5e13a8f02f0f5e",
+  "all_current_source_inputs": 341,
+  "post_cleanup_legacy_writes_delegated": true,
+  "active_legacy_writes_rejected": true,
+  "completed_asset_writes_sealed": true,
+  "physical_applied": false,
+  "physical_main_htc": false,
+  "wifi_connected": false,
+  "ip_acquired": false,
+  "yukabox_exchange": false,
+  "owner_signing": false,
+  "device_attestation": false
+}

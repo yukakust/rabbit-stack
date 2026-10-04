@@ -105,6 +105,7 @@ def gates(directory,payload,world):
   for name,status,cases in [('boot-core','EXACT-BOARD-CALIBRATION-MAIN-BMI-BOOT-CORE-HOST-COFF-PASS',47),('boot-lifetimes','NATIVE-EXACT-BOOT-TWO-LIFETIME-HOST-MOCK-PASS',8)]:
    component=flow.read_json(directory/(name+'-report.json'))
    if component['status']!=status or component['scenarios']!=cases or component['build_host']!='yukabox' or flow.sha((directory/(name+'-report.json')).read_bytes())!=report[name+'_report_sha256'] or flow.sha((directory/(name+'-host.log')).read_bytes())!=component['host_log_sha256']:raise ValueError('boot component proof missing')
+   if name=='boot-lifetimes' and any(component.get(flag) is not True for flag in ('post_cleanup_legacy_writes_delegated','active_legacy_writes_rejected','completed_asset_writes_sealed')):raise ValueError('post-trial replacement lifetime gates missing')
    for path,expected in component['source_sha256'].items():
     if reproduction['inputs'].get('experiments/native-wifi-qca9377-v1/'+path)!=expected:raise ValueError('boot component sources changed: '+path)
    for path,expected in component.get('dependency_sha256',{}).items():

@@ -71,7 +71,12 @@ static void sm_fixture(void){
  for(unsigned ms=15001;ms<60000;ms++){
   tick(ms);const QcaBootNative*b=qca_boot_view();
   if((fault==6&&b->plan.phase==7)||(fault==7&&b->plan.phase==17)){if(!cancel_called++){assert(qca_stop()&&!ram_frees&&r->asset.pinned);}}
-  if(get(128)==18&&b->plan.submitted&&b->phase!=6&&b->phase!=5)assert(r->asset.pinned);
+  if(get(128)==18&&b->plan.submitted&&b->phase!=6&&b->phase!=5){
+   assert(r->asset.pinned);
+   uint8_t request[4]={0x12,6,0,0},reply[8]={0};
+   assert(qca_ram_att(247,request,4,reply,8)==5&&reply[4]==3);
+   request[0]=0x52;assert(qca_ram_att(247,request,4,reply,8)==0);
+  }
   if(qca_boot_round()&&(get(128)==5||get(128)==6))break;
  }
  const QcaBootNative*b=qca_boot_view();fprintf(stderr,"SECOND phase=%u error=%u plan=%u/%u streams=%u exec=%u stage=%u/%u pins=%u alloc=%u free=%u open=%u close=%u\n",b->phase,b->error,b->plan.phase,b->plan.error,streams,executions,get(128),get(136),r->asset.pinned,allocations,dma_frees,opens,closes);
@@ -80,6 +85,19 @@ static void sm_fixture(void){
  else if(fault<=5)assert(b->phase==6&&b->error);
  else assert(b->phase==1&&!b->error&&!main_done);
  uint8_t status[160];qca_boot_status(status);printf("QWBT_MOCK=");for(unsigned i=0;i<160;i++)printf("%02x",status[i]);puts("");
+ /* Actual callback must return legacy writes to the resident after cleanup,
+    including fault/cancellation paths; the completed RAM asset stays sealed. */
+ for(unsigned opcode=0x12;opcode<=0x52;opcode+=0x40){
+  uint8_t request[4]={(uint8_t)opcode,0,0,0},reply[247]={0};
+  for(unsigned handle=1;handle<=12;handle++){
+   request[1]=(uint8_t)handle;assert(qca_ram_att(247,request,4,reply,247)==SIZE_MAX);
+  }
+  for(unsigned handle=13;handle<=19;handle++){
+   request[1]=(uint8_t)handle;size_t n=qca_ram_att(247,request,4,reply,247);
+   assert(n==(opcode==0x12?5u:0u));if(n)assert(reply[4]==3);
+  }
+ }
+ puts("LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS");
  assert(!qca_stop()&&ram_frees==2&&!qca_fwp_owned(r));
  printf("ACTUAL ENTRYPOINT TWO LIFETIMES fault%u PASS; SYNTHETIC RADIO/HTC ONLY\n",fault);
 ''' +s[end:]
