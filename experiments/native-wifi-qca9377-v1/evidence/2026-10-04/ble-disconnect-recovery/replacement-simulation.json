@@ -1,0 +1,21 @@
+{
+  "status": "OFFLINE-REPLACEMENT-NATIVE17-WORLD13-TRANSITION-PASS",
+  "radio": "mocked",
+  "owner_private_key_read": false,
+  "actual_signed_packet_public_verification": true,
+  "canonical_controller_state_unchanged": true,
+  "old_native16_files_unchanged": true,
+  "calls": [
+    {
+      "kind": 2,
+      "counter": 17,
+      "reused_query": true
+    },
+    {
+      "kind": 1,
+      "counter": 13,
+      "reused_query": false
+    }
+  ],
+  "physical_transfer": false
+}

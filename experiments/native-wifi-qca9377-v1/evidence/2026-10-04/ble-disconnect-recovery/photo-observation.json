@@ -1,0 +1,21 @@
+{
+  "image_sha256": "f47f8b554dfe5c33d8724f9683ea34442dd59dbcb65d7492ff5b90dd5033fabb",
+  "source": "owner supplied physical Dell photograph",
+  "observed_successful_disconnect_handles": [
+    1,
+    2,
+    3
+  ],
+  "advertising_restart_visible_after_handles": [
+    1,
+    2
+  ],
+  "malformed_successful_usb_payload_hex": "0000480001",
+  "diagnostic": "HCI INPUT IGNORED: EVENT LENGTH MISMATCH",
+  "third_disconnect_hex": "050400030013",
+  "advertising_restart_visible_after_handle3": false,
+  "usb_event_reads_final_hex": "00000018",
+  "usb_event_timeouts_final_hex": "00003fe8",
+  "interpretation": "state machine can miss a connection and ignore its later disconnect; reason header was not observed remains unknown",
+  "candidate_physical_success": false
+}

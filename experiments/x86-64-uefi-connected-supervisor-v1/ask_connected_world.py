@@ -304,7 +304,7 @@ def deliver(state_path, state):
                            lambda: advance(state_path, state, directory, report, session))
 
 
-def deliver_session(directory, report, session, on_applied):
+def deliver_session(directory, report, session, on_applied, initial_query_text=None):
     """Shared world/native transport; caller verifies authority, package and health first."""
     import base64
     # Finish a local crash between durable receipt and durable current-state promotion.
@@ -326,7 +326,13 @@ def deliver_session(directory, report, session, on_applied):
         print('Receiver loss detected; no replay, new nonce or counter. Inspect receiver state.'); return 1
     # At most two resumable transfer attempts. Every attempt starts with a read-only query.
     for attempt in range(2):
-        code, text = sender_step(directory, report, 'query', ['--query-only'])
+        # Dedicated boot recovery already queried under the SAME controller lock
+        # immediately before activation. Reuse that result once, through the same
+        # parser and state checks, instead of another connect/disconnect cycle.
+        if attempt == 0 and initial_query_text is not None:
+            code, text = 0, initial_query_text
+        else:
+            code, text = sender_step(directory, report, 'query', ['--query-only'])
         if code:
             report['status'] = 'DELIVERY-NOT-CONFIRMED'; save(directory / 'report.json', report); return 1
         try: observed = parse_status(text, session)

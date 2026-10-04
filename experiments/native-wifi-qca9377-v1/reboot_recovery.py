@@ -66,11 +66,32 @@ def pending(state, owner, installed):
     return directory, session['counter']
 
 
+def recovery_reservation(state, owner, installed):
+    """Reserve above an existing failed boot-recovery packet, preserving it."""
+    directory = Path(state['recovery_pending'])
+    plan = flow.read_json(directory / 'plan.json')
+    report = flow.read_json(directory / 'report.json')
+    if (plan['kind'] != 'owner-reboot-city-recovery' or report['engine_done'] or report['world_done'] or
+        report.get('receiver_reported_applied') or hashes(directory, plan['files']) != plan['files']):
+        raise ValueError('only intact unconfirmed boot recovery may be superseded')
+    before = flow.read_json(directory / 'before-state.json')
+    if before['world_sha256'] != state['world_sha256'] or before['engine']['native_counter'] != state['engine']['native_counter']:
+        raise ValueError('old recovery world/counter differs')
+    packet = (directory / 'native.rrt').read_bytes()
+    session = flow.validate_session(flow.read_json(directory / 'session.json'))
+    verified = engine.verify(packet, target=bytes.fromhex(installed['target_sha256']), owner=owner,
+        base_runtime=bytes.fromhex(installed['module_hashes']['1']), world=b'', counter=state['engine']['native_counter'])
+    if (session['kind'] != 2 or session['counter'] != verified.counter or verified.counter != plan['counter'] or
+        base64.b64decode(session['stream_base64'])[32:] != packet or verified.payload != (directory / 'payload.efi').read_bytes()):
+        raise ValueError('old recovery signature/session differs')
+    return directory, verified.counter
+
+
 def prepare(state_path, checked, directory, private):
     with flow.state_lock(state_path):
         state = flow.read_json(state_path)
-        if state['pending'] or state.get('recovery_pending') or not state.get('native_pending'):
-            raise ValueError('requires only a saved pending native update')
+        if state['pending'] or bool(state.get('recovery_pending')) == bool(state.get('native_pending')):
+            raise ValueError('requires one pending native update or unconfirmed boot recovery')
         world = flow.current(state)
         if world['schema_version'] != 5 or state['engine']['family'] != 'reviewed-city-v2':
             raise ValueError('reviewed actor city required')
@@ -83,7 +104,8 @@ def prepare(state_path, checked, directory, private):
         owner = private.with_suffix('.pub').read_bytes()
         if flow.sha(owner) != installed['owner_public_sha256']:
             raise ValueError('owner identity differs')
-        old, old_counter = pending(state, owner, installed)
+        old_kind = 'recovery' if state.get('recovery_pending') else 'native'
+        old, old_counter = recovery_reservation(state, owner, installed) if old_kind == 'recovery' else pending(state, owner, installed)
         payload, checked_report = gate(checked, world, owner)
         counter = old_counter + 1  # Never reuse the still-saved native15 identity.
         if counter > 0xffffffff or state['counter'] >= 0xffffffff:
@@ -110,6 +132,7 @@ def prepare(state_path, checked, directory, private):
             'checked_directory': str(checked.resolve()), 'gate_sha256': flow.sha((checked / 'recovery-gate.json').read_bytes()),
             'files': hashes(directory, names), 'old_pending_directory': str(old),
             'old_pending_files': hashes(old, ('native.rrt', 'session.json', 'payload.efi', 'report.json')),
+            'reserved_counter': old_counter, 'old_pending_kind': old_kind,
             'journal_sha256': flow.sha(journal.read_bytes()), 'counter': counter,
             'world_counter': state['counter'] + 1, 'owner_confirmed_reboot': False,
             'engine_done': False, 'world_done': False, 'receiver_reported_applied': False, 'sender_steps': []}
@@ -122,6 +145,7 @@ def restore(state_path, directory, private, dell_rebooted=False):
     with flow.state_lock(state_path):
         state = flow.read_json(state_path)
         plan = flow.read_json(directory / 'plan.json')
+        boot_query_text = None
         report = flow.read_json(directory / 'report.json')
         before = flow.read_json(directory / 'before-state.json')
         if hashes(directory, plan['files']) != plan['files']:
@@ -142,7 +166,7 @@ def restore(state_path, directory, private, dell_rebooted=False):
         restored = (directory / 'world.rup').read_bytes()
         if (native_session['kind'] != 2 or native_session['counter'] != plan['counter'] or
             verified.counter != plan['counter'] or verified.payload != payload or
-            plan['counter'] != before['engine']['native_counter'] + 2 or
+            plan['counter'] != plan.get('reserved_counter', before['engine']['native_counter'] + 1) + 1 or
             base64.b64decode(native_session['stream_base64'])[32:] != native or
             world_session['kind'] != 1 or world_session['counter'] != plan['world_counter'] or
             plan['world_counter'] != before['counter'] + 1 or
@@ -158,11 +182,16 @@ def restore(state_path, directory, private, dell_rebooted=False):
             old = Path(plan['old_pending_directory'])
             if hashes(old, plan['old_pending_files']) != plan['old_pending_files']:
                 raise ValueError('old pending evidence changed')
+            old_kind = plan.get('old_pending_kind', 'native')
+            reserved_dir, reserved_counter = recovery_reservation(state, owner, installed) if old_kind == 'recovery' else pending(state, owner, installed)
+            if reserved_dir != old or reserved_counter + 1 != plan['counter']:
+                raise ValueError('reserved signed predecessor differs')
             # No BEGIN/DATA/COMMIT until owner observation AND exact zero receipt.
             code, text = flow.sender_step(directory, report, 'query', ['--query-only'])
             observed = flow.parse_status(text, native_session) if not code else None
             if not observed or observed['outcome'] != 'idle' or observed['raw_hex'] != EMPTY:
                 raise ValueError('fresh empty receiver not observed; old pending preserved')
+            boot_query_text = text
             report.update(owner_confirmed_reboot=True, boot_receiver_status=observed)
             flow.save(directory / 'report.json', report)
             state.update(native_pending=None, recovery_pending=str(directory.resolve()))
@@ -190,7 +219,8 @@ def restore(state_path, directory, private, dell_rebooted=False):
                 report.update(engine_done=True, status='ENGINE-APPLIED')
                 flow.save(directory / 'report.json', report)
                 return 0
-            if flow.deliver_session(directory, report, native_session, applied):
+            result = flow.deliver_session(directory, report, native_session, applied, initial_query_text=boot_query_text) if boot_query_text is not None else flow.deliver_session(directory, report, native_session, applied)
+            if result:
                 return report
         elif state['engine']['native_counter'] != plan['counter'] or state['engine']['payload_sha256'] != flow.sha(payload):
             raise ValueError('applied recovery engine differs')

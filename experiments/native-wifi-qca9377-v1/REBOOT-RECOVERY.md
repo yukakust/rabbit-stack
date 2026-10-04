@@ -36,3 +36,28 @@ resumes; the GUI's older `city_recovery` route does not support this pending-nat
 transition. After completion normal text/voice world edits use the same controller.
 No promise is made that reboot will fix the hardware radio; if bootstrap also
 cannot advertise, recovery remains pending and physical diagnosis is required.
+
+## Photo-grounded lost connection recovery
+
+The physical photo showed a malformed five-byte successful USB input, followed
+by a valid disconnect for handle3 without another advertising message. The
+baseline C state machine reproduces this: it ignores an untracked connection's
+disconnect while it still believes it is advertising. The separate
+`ble_recovery_build.py` actor profile restarts advertising after a valid successful
+disconnect in that state, preserving a known live connection with another handle.
+It does not assemble USB fragments or establish why the connection header was
+missing. Original radio/bootstrap source files remain unchanged. The USB API's
+returned transfer length is described in the [UEFI specification](https://uefi.org/specs/UEFI/2.11/17_Protocols_USB_Support.html#efi-usb-io-protocol-usbsyncinterrupttransfer).
+
+Native17 is prepared separately against bootstrap+EMPTY world. Native15/native16
+signed packets remain intact. Preparing a successor to an unconfirmed recovery
+reserves a higher counter using the old packet's verified owner signature; it
+does not activate the new plan, infer a reboot or clear the old pending state.
+Activation requires a NEW owner-confirmed reboot and fresh zero receiver status.
+That status is reparsed and reused once under the same controller lock, avoiding
+a redundant connection. Retries and normal delivery keep their usual queries.
+The old native16 gate snapshot is now stale because recovery Python source changed;
+do not resume that plan. Use the exact prepared native17 directory for the next
+fresh-boot trial. Promote native/world counters only through exact receipts.
+Future Wi-Fi profiles must retain the radio recovery fix rather than silently
+reintroducing the original HCI disconnect filter.

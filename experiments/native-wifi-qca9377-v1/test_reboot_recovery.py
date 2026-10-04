@@ -134,6 +134,38 @@ class RecoveryTests(unittest.TestCase):
                 r.restore(self.state,self.plan,self.private,True)
             radio.assert_not_called()
 
+    def test_prepare_replacement_reserves_higher_counter_and_keeps_failed_plan(self):
+        self.prepare(); self.activate()
+        before = self.state.read_bytes()
+        old = r.hashes(self.plan, ('native.rrt','session.json','payload.efi','report.json'))
+        new = self.root / 'replacement'
+        with patch.object(flow,'sender_step') as radio:
+            plan = r.prepare(self.state,self.checked,new,self.private)
+            radio.assert_not_called()
+        self.assertEqual(plan['counter'],17);self.assertEqual(plan['reserved_counter'],16)
+        self.assertEqual(plan['old_pending_kind'],'recovery')
+        self.assertEqual(self.state.read_bytes(),before);self.assertEqual(r.hashes(self.plan,old),old)
+        with patch.object(flow,'sender_step',return_value=(0,'foreign')), patch.object(flow,'parse_status',return_value={'outcome':'foreign-final','raw_hex':'ff'}):
+            with self.assertRaisesRegex(ValueError,'fresh empty'):
+                r.restore(self.state,new,self.private,True)
+        self.assertEqual(self.state.read_bytes(),before)
+
+    def test_boot_proof_is_reparsed_and_reused_only_once(self):
+        self.prepare()
+        record=flow.read_json(self.plan/'report.json');session=flow.read_json(self.plan/'session.json')
+        with patch.object(flow,'sender_step',return_value=(1,'FAIL')) as radio:
+            result=flow.deliver_session(self.plan,record,session,lambda:0,initial_query_text='RFS STATUS HEX='+r.EMPTY+'\n')
+        self.assertEqual(result,1)
+        self.assertEqual([call.args[2] for call in radio.call_args_list],['paced-stage','query'])
+
+    def test_invalid_reused_boot_proof_cannot_write(self):
+        self.prepare()
+        record=flow.read_json(self.plan/'report.json');session=flow.read_json(self.plan/'session.json')
+        with patch.object(flow,'sender_step') as radio:
+            result=flow.deliver_session(self.plan,record,session,lambda:0,initial_query_text='invalid')
+            radio.assert_not_called()
+        self.assertEqual(result,1);self.assertEqual(record['status'],'INVALID-RECEIVER-STATUS')
+
 
 if __name__ == '__main__':
     unittest.main()

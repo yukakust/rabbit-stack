@@ -1679,3 +1679,62 @@ connection does NOT prove an RF, antenna, UEFI or host-state cause. Do not blind
 reboot again or claim restoration. Use dedicated same-session restore for resumes
 only after receiver state is understood; never GUI's old city_recovery for this
 new plan. Original Wi-Fi goal and physical city restoration remain incomplete.
+
+## 2026-10-04 — photo diagnosis, isolated BLE recovery profile, native17 prepared
+
+Owner photo shows valid disconnects for handles1/2 followed by advertising-ready,
+then successful USB read5bytes `00 00 48 00 01` / EVENT LENGTH MISMATCH; later
+valid `05 04 00 03 00 13` has no restart marker while USB polls continue. Source
+reproduction: rl_event ignores the malformed input, remains RL_ADVERTISING, then
+ignores Disconnect Complete because it only handles known RL_CONNECTED links.
+Hardware can have auto-disabled advertising during an unobserved connection.
+This explains a persistent state-machine failure; it does not prove why the
+connection header was missing or rule out RF/firmware causes. Photo transcript
+and image hash archived; room image not copied to Git.
+
+Separate ble_recovery_build.py clones original HCI source in build workspace,
+adds successful-untracked-disconnect restart while logically advertising, retains
+known live peer on foreign disconnect, validates handle/status/pending/state. No
+controller reset/ACL acceptance/file clearing is introduced by this transition.
+Original hci_link/usb_port/bootstrap sources unchanged. Host ASan/UBSan reproduces
+baseline silence and candidate recovery; malformed/foreign/error/stopped/fault/
+pending-command cases tested. Two exact candidate native builds; actual normal
+and EMPTY-bootstrap UEFI gates pass, EMPTY fixture injects observed malformed
+input+unknown disconnect AFTER candidate attach. No event assembler added.
+PayloadSHA256:0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce.
+
+Recovery can prepare successor above an unconfirmed signed recovery's counter,
+without changing current state or old signed files. Dedicated restore validates
+the predecessor reservation again before activation. Shared deliver_session now
+optionally reuses the immediately preceding boot query once under SAME lock,
+through normal status validation; defaults/resume/retries still query normally.
+10controller tests and16connected-world regression tests pass on Yukabox. Actual
+saved world13 C/ASan/UBSan+tail/smile/max-camera checks and two current-source
+rebuilds/normal+EMPTY UEFI gates pass. Offline shadow-controller simulation using
+actual native17 packet PUBLIC verification and MOCK radio proves replacement
+native17/world13 receipts/counters/equivalence without canonical state changes
+or owner private-key read. This is not physical success.
+
+Locally signed NEW native17 against installed bootstrap1+EMPTY world, world13
+unchanged city/cat. PREPARED-NOT-ACTIVATED, no new radio attempt. Directory:
+/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17
+Checked: experiments/native-wifi-qca9377-v1/runs/reboot-recovery-ble17. Old
+native15/native16 packets/files preserved; current controller STILL points to
+unconfirmed recovery-native16, saved native14/world12; no promotion or erase.
+The native16 old gate is now stale due recovery Python changes; DO NOT resume
+its command or clear it manually. Next fresh-boot trial must use native17.
+Evidence: native-wifi-qca9377-v1/evidence/2026-10-04/ble-disconnect-recovery.
+
+NEXT needs a NEW owner-confirmed Dell reboot AFTER this preparation (the earlier
+reboot does not authorize assuming a new receiver epoch). No USB/bootstrap write.
+Then agent from repository runs:
+python3 experiments/native-wifi-qca9377-v1/reboot_recovery.py restore --state experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/state.json --directory experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native17 --private /Users/yukakust/.rabbit-owner/runtime.key --dell-rebooted
+Fresh zero receiver proof retires native16 with all hashes/bytes retained and
+activates native17; reuse verified query prevents redundant third connection
+before staging. Existing bootstrap still has old radio code until candidate is
+applied, so this is not a guarantee of physical transfer. Native17/world13 exact
+receipts then owner city/tail observation required. After activation resume SAME
+17directory without --dell-rebooted, do not make a new nonce/counter/package.
+Future Wi-Fi candidate profiles must retain this separately validated radio fix
+rather than reintroduce original disconnect filter. Original Wi-Fi goal remains
+incomplete; physical native17 recovery has NOT been attempted.

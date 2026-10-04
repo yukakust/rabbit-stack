@@ -1,0 +1,44 @@
+{
+  "status": "BLE-UNTRACKED-DISCONNECT-RECOVERY-GATES-PASS",
+  "build_host": "yukabox",
+  "payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+  "source_sha256": {
+    "ble_recovery_build.py": "3cb6db3d757a18be764bfa53e011f8e06c66b5c13d4275a7f3884f6b7bdb3774",
+    "test_ble_recovery.c": "c414dee03a327982ef470f9f4643bc86420be91f7df409553a0976adb5b22327",
+    "verify_ble_recovery.py": "f28956698a2feeb083aa8eb8c58058fa20fda276c051a470d914d89cc7182bdc"
+  },
+  "host_log_sha256": "c7f019674279dc3262a668bd1b24931e4a8db3381a0cd5f72f1ac537b1ebf9ce",
+  "gates": [
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+      "empty_boot": false,
+      "background": "121826",
+      "observed_log_sha256": "ae5c82fb5f84dbdbd80ee9cbab5d952779712676e314f2a11f0b57990587c7d4",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "8d488587cdb1c44b63494834b8d26c59b21787dc49dcbd545bf7055930d173a0"
+    },
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+      "empty_boot": true,
+      "background": "121826",
+      "observed_log_sha256": "ae5c82fb5f84dbdbd80ee9cbab5d952779712676e314f2a11f0b57990587c7d4",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "f3532c5ba9ddf7051e4b5986fc7d88f9aaf54659b02c6a4d1b0c903c59cab9fd"
+    }
+  ],
+  "baseline_lost_advertising_reproduced": true,
+  "fixed_restarts_advertising": true,
+  "known_live_foreign_handle_preserved": true,
+  "two_native_builds": true,
+  "bootstrap_changed": false,
+  "physical_transfer": false,
+  "physical_recovery": false,
+  "event_reassembly_added": false,
+  "root_cause_of_missing_connection_header_known": false
+}
