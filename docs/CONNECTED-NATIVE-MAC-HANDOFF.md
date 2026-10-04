@@ -1980,3 +1980,27 @@ sequence and actual bus-master/DMA access. Add separately bounded observations
 where required before changing behavior; chip ready does not imply BMI ready or
 firmware compatibility. Await owner city/tail check before another hardware
 candidate. Full Wi-Fi and Unreal/Yukabox-to-Dell streaming goal remains unfinished.
+
+## 2026-10-04 — owner confirms native21 city; pre-BMI sequence audit
+
+Owner replied «виден»: city visible after21 confirmed; do not infer tail movement.
+No new radio delivery or chip writes in this audit, current21/world13 unchanged.
+Pinned pci.c/hw.h hashes checked again on Yukabox. QCA9377 dispatch selects
+qca6174_chip_reset (cold+warm), qca6174 CPU-to-CE translation. hif_power_up order is
+chip_reset -> init_pipes -> init_config -> wake_target_cpu. init_config uses
+CE7 diagnostic target reads/writes: interconnect state, target pipe configuration,
+service-to-pipe map, PCIe flags, early allocation(9banks), EARLY_CFG_DONE; then
+CORE_CTRL CPU_INTR2000. Current probe performs cold reset/ROM-ready -> host CE0/1
+configuration -> direct BMI. It omits that target initialization handoff and warm
+reset. Request command8/4bytes, receive-before-send and metadata3fff match reviewed
+BMI descriptor publication; no evidence yet that changing these fixes the timeout.
+
+Evidence pre-bmi-sequence-audit/reference.json retains bounded pinned pci.c
+excerpts with hash/line numbers; summary binds current probe/source findings.
+This confirms a SOURCE SEQUENCE GAP, not the physical cause or working solution.
+Next narrow trial: implement/host-gate bounded read-only CE7 diagnostic transfer,
+then read the fixed QCA9377 host-interest interconnect pointer. Validate target
+address translation/range, mapped host buffers, cancellation/timeout/all-eight
+teardown before physical trial. Returned pointers must not grant arbitrary read/
+write authority. Only afterward add separately gated target configuration and
+CPU notification; do not set EARLY_CFG_DONE or load firmware prematurely.
