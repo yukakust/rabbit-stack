@@ -1,0 +1,15 @@
+{
+  "status": "EXACT-NATIVE40-AND-WORLD16-APPLIED",
+  "owner_confirmed_reboot": true,
+  "native_counter": 40,
+  "world_counter": 16,
+  "native_payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+  "world_package_sha256": "8254c70465eac5a04612e2e33f74be5afa078c2e71b9f00b5d5e13a8f02f0f5e",
+  "world_semantic_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "retired_candidate39": "pci-native-f_6ar4mr",
+  "retired39_replayed": false,
+  "city_observation": "requested, pending owner response",
+  "wifi_connected": false,
+  "password_included": false,
+  "device_attestation": false
+}

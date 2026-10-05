@@ -1,0 +1,22 @@
+MAC SENDER COMPILED; SOURCE SHA256=ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e
+STATUS VALIDATOR SHA256=0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-70; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=47904/47904
+CONTROL ACK: phase=3; reading application status
+DISCONNECTED: phase=3 offset=47904/47904 domain=CBErrorDomain code=7 reason=The specified device has disconnected from us.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-66; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched
+TRANSFER ELAPSED=9.664 seconds (including reconnects)

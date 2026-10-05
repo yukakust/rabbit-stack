@@ -3168,3 +3168,33 @@ have promoted controller state. Then fresh QPD18/QWBT must admit a new locally
 signed generation41 full-asset session; retired38 packets cannot be reused.
 Main/HTC startup, scan, protected association, IP and Dell→Yukabox exchange are
 all still physically unverified. Owner reboot and scene observation are pending.
+
+## 2026-10-05 — owner reboot; city40/16 restored; candidate41 radio staging
+
+Owner explicitly reported reboot. `native40-city-recovery-plan` was activated
+only after a fresh known-peer exact EMPTY RFS read. Both recovery native40 and
+worldtransport16 have correlated SHA/session/counter APPLIED receipts; controller
+promotion completed and recovery_pending cleared. Old candidate39 was preserved
+and retired, not replayed against bootstrap. Physical receipt evidence:
+`evidence/2026-10-05/native40-recovery-physical`. Actual screen/tail observation
+was requested and remains pending; do not infer visible pixels from receipts.
+
+Mac gates rechecked the restored world and locally signed native41 once as
+`runs/text-world/pci-native-tsp9rho2`. Bluetooth suffered repeated CBErrorDomain6
+timeouts/reconnect-limit stops with discovery RSSI as low as-95. Two bounded
+deliver invocations retained the same packet. A final independent read-only
+query confirmed EXACT same-session staging114500/139552 bytes, error0, state1.
+The last applied world receipt counter16 in RFS is not native41 application.
+Controller remains native40/world16; native_pending is that exact41 directory.
+Report status `STAGING-RETAINED-AWAITING-PHYSICAL-RADIO-POSITION`; no ABORT,
+new nonce, re-sign or bootstrap/USB write occurred. New41 firmware asset packets
+have NOT been prepared/sent. Evidence: `evidence/2026-10-05/native41-radio-staging`.
+
+Owner was asked to put Mac within one metre of Dell and report it; no response
+at this checkpoint. Do not assume the radio position changed. Keep Dell powered,
+do not reboot again, and preserve all exact staging/checkpoints. After the owner
+reports proximity, run `native_route.py deliver` against the existing pending
+session, never prepare another native packet. After exact41 APPLIED receipt,
+read fresh QPD18/QWBT, admit locally signed generation41 asset session, deliver
+it, then observe actual calibration/main/HTC cleanup. Candidate41 full host gate
+and future-world binding remain intact. Wi-Fi association/IP/Yukabox are false.

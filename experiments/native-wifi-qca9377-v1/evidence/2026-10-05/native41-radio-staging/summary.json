@@ -1,0 +1,23 @@
+{
+  "status": "EXACT-NATIVE41-PARTIAL-STAGING-RETAINED",
+  "session": "pci-native-tsp9rho2",
+  "native_packet_counter": 41,
+  "installed_native_counter": 40,
+  "world_counter": 16,
+  "receiver_confirmed_bytes": 114500,
+  "transport_bytes": 139552,
+  "remaining_bytes": 25052,
+  "native41_applied": false,
+  "no_new_firmware_asset_session": true,
+  "same_session_resume_required": true,
+  "observed_repeated_cb_error_code": 6,
+  "observed_discovery_rssi_min": -95,
+  "radio_position_request": "Mac within one metre of Dell",
+  "owner_position_response": "pending",
+  "city_observation": "pending owner response after native40 recovery",
+  "wifi_connected": false,
+  "ip_acquired": false,
+  "yukabox_exchange": false,
+  "password_included": false,
+  "device_attestation": false
+}
