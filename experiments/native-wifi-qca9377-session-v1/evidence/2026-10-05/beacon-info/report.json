@@ -1,0 +1,23 @@
+{
+  "status": "BEACON-PROBE-BOUNDED-INFO-HOST-COFF-PASS",
+  "build_host": "yukabox",
+  "source_sha256": {
+    "beacon_info.c": "10001c0b5c54748370aaa713be275ebe0476f282d2686f40a0267d4f1ab5d38c",
+    "beacon_info.h": "98edfe74b4ff64292ab1e8279dced824d06aa8b98639792387b72b732f197a30",
+    "beacon_info_test.c": "31950de6edf28b70a6cb98f0b69ac3b0dd4bc30296d10ca848f84ef5e3567ddb",
+    "verify_beacon.py": "31481bbf3b51040cc729c1dcb566eced2bb4121f74d318e50e5edfda18f52723",
+    "verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "reference": {
+    "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+    "ieee80211_h_sha256": "572535ac04d9dda668501b0233746d0e5c143195d85c02ed3be2532a37c0e8d7",
+    "oracle_sha256": "b57359c65196507452fbe9ea99209808bc239043c3aefe4848958c382f64f018"
+  },
+  "host_log_sha256": "4aa5d0be788b8dfa6443271895c99a395b65488bfde0b3be943112776f94ae01",
+  "opaque_rsn_only": true,
+  "physical_verified": false,
+  "native_integrated": false,
+  "radio_scanned": false,
+  "security_validated": false,
+  "wifi_connected": false
+}

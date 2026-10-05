@@ -34,6 +34,19 @@ endpoints. It has no DMA, deadline, operational credit ledger or WMI dispatch;
 those remain obligations of the future native transport. Its injected-message
 sequence tests are included in `verify_htc.py`.
 
+`beacon_info` extracts SSID/BSSID, advertised DS/HT channel, privacy flag and
+opaque RSN bytes from one bounded ordinary beacon/probe response. Hidden SSIDs
+do not match the requested network. Malformed frames, duplicate key elements,
+inconsistent channels and fragments preserve caller output. RX must validate
+firmware framing and strip any FCS before calling it. Advertisements are
+untrusted; an SSID match or privacy flag does not authenticate an access point.
+Opaque RSN bytes still need a separate security validator before association.
+
+Run `python3 verify_beacon.py` on Yukabox with the pinned Linux `ieee80211.h`
+saved under `runs/reference`. It checks the header hash, derives an independent
+layout/constant oracle, checks9117 assertion groups with ASAN/UBSAN, and builds
+freestanding COFF. This parser is not integrated into native41 or a real scan.
+
 `wmi_boot_info` validates the pinned WMI-TLV ABI and extracts bounded service
 bitmaps, regulatory band limits, memory requests and READY/MAC information.
 Malformed, duplicate and inconsistent events preserve the caller output. It

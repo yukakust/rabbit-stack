@@ -1,12 +1,15 @@
 # Next operating-profile integration
 
 This is the remaining implementation boundary, not a physical connection proof.
-Native38 only tests exact firmware startup and then closes all hardware owners.
+Native41 only tests exact firmware startup and then closes all hardware owners.
 The new pure protocol modules are not called by that installed image.
 
 ## Physical prerequisite
 
-Finish the existing signed `firmware-ram-xn9ncwla` session. Read fresh QWBT and
+Native38's full asset was staged, but helper result3 stopped it before main.
+Its session is historical and must not be replayed. Result3 compatibility and
+post-cleanup legacy update delegation are fixed in applied native41. Finish the
+existing signed `firmware-ram-ytrkhw7x` generation41 session. Read fresh QWBT and
 save its actual phase/error/command counts/READY/closed-ownership fields. A full
 RAM bitmap only proves staging. Require verified calibration, main upload,
 BMI_DONE and actual HTC_READY before claiming firmware startup. Unexpected
@@ -17,7 +20,7 @@ do not widen the current write guard based on a host fixture.
 
 Derive a separately checked operating profile after this trial is released.
 Use fresh setup/query and exact source/asset binding. Keep the adapter and RAM
-asset pin while radio/DMA are active; do not run native38's automatic successful
+asset pin while radio/DMA are active; do not run native41's automatic successful
 teardown at HTC_READY. Add distinct operating telemetry so READY, scan, router
 association, lease and WAN traffic cannot be confused with a closed diagnostic.
 
@@ -45,7 +48,8 @@ band limits are not a country/channel authorization table.
 ## Discover and connect
 
 Use the passive scan codec only after those prerequisites. Correlate scan IDs,
-parse received beacon/probe-response SSID/BSSID/channel/RSN information, and
+feed bounded validated RX frames to the host-checked beacon/probe-response
+SSID/BSSID/channel/opaque-RSN parser (it does not validate security), and
 select the explicitly requested `SILK_56E35E_Plus`. Passive scans alone may not
 reveal a hidden SSID. Do not infer the router's security from a lock icon or from
 an unidentified current Mac connection. Unsupported security must be reported

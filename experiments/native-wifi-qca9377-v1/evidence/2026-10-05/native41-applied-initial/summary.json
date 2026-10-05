@@ -1,0 +1,18 @@
+{
+  "status": "EXACT-NATIVE41-APPLIED-FIRST-LIFETIME-CLOSED",
+  "native_counter": 41,
+  "world_counter": 16,
+  "native_payload_sha256": "e24248302a81e5def809d2379722e2389ec4c4c47458c9bf3b027cc5fc2d38d1",
+  "owner_reports_mac_nearby": true,
+  "internet_interruption_reported": true,
+  "bluetooth_disconnect_cause_proven": false,
+  "fresh_initial_setup_and_bmi_verified": true,
+  "fresh_initial_qwbt_ram_phase": 4,
+  "full_firmware_asset_session": "firmware-ram-ytrkhw7x",
+  "full_asset_complete": false,
+  "main_htc_complete": false,
+  "wifi_connected": false,
+  "city_observation": "pending owner response",
+  "password_included": false,
+  "device_attestation": false
+}

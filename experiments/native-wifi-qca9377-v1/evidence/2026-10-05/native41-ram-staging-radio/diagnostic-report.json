@@ -1,0 +1,12 @@
+{
+  "status": "FRAME16-MAC-CONTROL-HELPER-OFFLINE-PASS",
+  "parent_source_sha256": "a8051ba02bd63dfecab9d6fcf216dea33d95d8616e0e05d6a829af61070750c2",
+  "source_sha256": "43ef6c7e11933c82386bff3ae7bff939469a73f6b0508399fec00e5499e969ac",
+  "helper_sha256": "0bd912164e29402da78e06a2972cc2702d021e4c69e1715f47cd9e4c908c302e",
+  "data_bytes": 16,
+  "receipt_window_bytes": 512,
+  "delay_ms": 50,
+  "physical_radio_started": false,
+  "private_key_read": false,
+  "native_rebuild": false
+}

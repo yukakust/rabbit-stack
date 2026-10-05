@@ -3198,3 +3198,57 @@ session, never prepare another native packet. After exact41 APPLIED receipt,
 read fresh QPD18/QWBT, admit locally signed generation41 asset session, deliver
 it, then observe actual calibration/main/HTC cleanup. Candidate41 full host gate
 and future-world binding remain intact. Wi-Fi association/IP/Yukabox are false.
+
+## 2026-10-05 — native41 applied; firmware partial; bounded radio experiments
+
+Owner says Mac already stands nearby and internet interrupted. Do not keep
+assuming distance or claim internet loss caused BLE timeouts. The local Cocoa
+sender uses direct GATT; the observed failures were Bluetooth disconnects.
+Same `pci-native-tsp9rho2` resumed114500/139552, completed and received exact
+APPLIED SHA/session/counter41. Controller is native41/worldtransport16,
+native_pending clear. Fresh physical QPD18: stage5/error0/setup4/op10/masks31;
+BMI type8/version05020001, adapterCLOSED12, cleanup14/DMAusers0. Initial QWBT:
+boot_round0,ram_phase4,bitmap0. Evidence: `evidence/2026-10-05/native41-applied-initial`.
+Visual city/tail observation is still pending; receipts are not screenshots.
+
+After these gates, the owner key locally signed twelve immutable generation41
+asset packets ONCE as `runs/text-world/firmware-ram-ytrkhw7x`. Standard paced
+controller delivered three fully accepted packets (bitmap7), plus a confirmed
+partial fourth. Total confirmed firmware-data floor225856/751436; packet4's
+last confirmed received29472/65760 includes224-byte envelope. Twenty bounded
+iterations ended after two no-progress observations. Do not re-sign, ABORT,
+reboot or replay older-generation assets. `hardware_trial_pending` retains that
+exact directory; default resume is `boot_asset_route.py deliver --session ...`.
+All frozen native/source/world/gate bindings remain unchanged.
+
+Two isolated Mac-only control-helper derivatives were tested using the same
+immutable packets and checkpoint, same50ms pacing,512-byte receipt window.
+Only DATA limit changed to16 or48. Offline preflight starts no manager; owner
+signatures/current native/source/target/world checks ran before physical use.
+The standard supervisor was paused while its child completed naturally, then
+resumed after experiments; no concurrent radio managers or driver changes.
+Frame16 ran240s to its own bounded timeout, confirming18480→28208 without
+disconnect in that ONE interval. Frame48 confirmed28704→29232 and disconnected
+after~13s. This is not proof of a fragmentation cause or sustainable throughput.
+Public actual helper/controller sources and receipts are archived in
+`evidence/2026-10-05/native41-ram-staging-radio`. No key, credential or binary.
+
+Final fresh known-peer QWBT confirms boot_round0,phase0,plan0,board0,
+asset_bitmap7,ready0,pin0,boot_attempted0; adapter12/cleanup14/DMAusers0.
+No calibration/main/HTC attempt was triggered; Wi-Fi/IP/Yukabox remain false.
+The partial RAM session is retained, and no sender remains running/stopped.
+Mac read-only CoreWLAN still reports channel8/band1 (2.4GHz), security3, with
+SSID hidden by privacy: do not identify this as the requested router network.
+Owner asked whether "5GHz Wi-Fi" means cellular5G; explained they differ.
+Available Mac5GHz network name/band is still unknown. Apple interference
+reference: https://support.apple.com/en-us/102319 ; a common interference cause
+is possible, not proven. Keep the physical evidence separate from this hypothesis.
+
+Independent `native-wifi-qca9377-session-v1/beacon_info` now parses bounded
+ordinary beacons/probe responses, exact SSID/BSSID, DS/HT channel, privacy and
+opaque RSN. It cannot authenticate an AP, validate security or associate.
+Pinned Linux ieee80211.h hash
+`572535ac04d9dda668501b0233746d0e5c143195d85c02ed3be2532a37c0e8d7` supplies an
+independent layout/constant oracle.9117 ASAN/UBSAN groups and native COFF pass
+on Yukabox; proof is `session-v1/evidence/2026-10-05/beacon-info`. No integration
+into the frozen native41 image and no physical scan. Credential stays on Mac.
