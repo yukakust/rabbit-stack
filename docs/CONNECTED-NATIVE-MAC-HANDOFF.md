@@ -3514,3 +3514,32 @@ and closes through actual all-owner cleanup. Read BOTH QWOP and QWBT; only the
 latter reports boot readiness/closed ownership, while QWOP distinguishes actual
 control/service-ready success/failure. RAM bitmap alone proves only staging.
 No persistent radio/WMI INIT/scan/router association/IP/Yukabox exchange yet.
+
+
+### 2026-10-05: WMI INIT envelope prepared independently of frozen43
+
+Exact43 firmware session firmware-ram-5yo48w3h continues under its existing
+bounded controller; historical checkpoint:2 accepted chunks (bitmap3), third
+partial17280/65760. Read latest receipts; do not infer main/control startup or
+edit411 frozen native inputs. No second radio owner or new asset signature.
+
+New independent native-wifi-qca9377-wmi-init-v1 provides a PURE complete WMI INIT
+serializer (command1/TLV74,75,18,76), ABI from pinned Linux wmi-tlv.c/.h.
+44-word/176-byte resource vector is opaque except vdev/peer binding: it is NOT a
+reviewed station policy. Existing memory plan is recomputed; one unsplit mapping
+per request, exact ids/count/sizes, nonzero/aligned32-bit addresses, extent and
+mutual-overlap guards. Actual map ownership/control-buffer exclusion/retention
+remain caller responsibilities. No allocation, WMI transmit, credentials or
+native43 integration. Active-peer mode/64-bit addresses/split requests excluded.
+
+1,691,012 independent pinned-layout/capacity/address/plan/rejection checks under
+ASAN/UBSAN plus COFF pass on Yukabox. Source oracle caught/fixed resource size and
+memory-plan success-code mismatch before integration. Primary Linux commit
+6b5a2b7d9bc156e505f09e698d85d6a1547c1206, wmi-tlv.c SHA
+02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb,
+wmi-tlv.h SHA16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9.
+Remote refs /home/yuka/rabbit-world/wmi-init-next/reference; public proof in
+wmi-init-v1/evidence/2026-10-05. All411 active native inputs rechecked unchanged.
+Next after physical SERVICE_READY: actual memory requests, reviewed station
+resource profile and retained DMA memory lifecycle, then WMI INIT+actual READY.
+Persistent radio, scan, protected association, DHCP/IP and WAN remain unfinished.
