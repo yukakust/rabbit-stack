@@ -3643,3 +3643,22 @@ restart either asset sender while the current controller is live. If asset
 controller stops unconfirmed, observer also stops; resume only saved exact
 session after checking receipts. Raw CE1 diagnostic still pending; no format
 fix, router association/IP/WAN/Unreal display success yet.
+
+
+### 2026-10-05: native44 complete; actual CE1 response identifies length rejection
+
+All12 exact44 assets accepted. Fresh physical QWBT boot complete3114/3114,
+READY20/error0, native stage6/error8448, adapter12/cleanup14/DMA0/pin0.
+hardware_trial_pending cleared only after actual all-owner release. QWOP0002
+phase3/error4, CE1 step5, RX20 bytes, cookie0x501, no ring/MMIO fault.
+Actual frame prefix00000c0000010000030000010001f80600000000: HTC body12,
+CONNECT message3/service0x100/status0/endpoint1/max1784/trailing4 zero.
+Existing qca_htc_connection in session-v1/htc_wire.c requires EXACT8-byte body
+and rejects this actual12-byte body before field parsing. Narrow reason proven;
+next candidate must use pinned connect-response struct and validate metadata/
+lengths, not blindly widen input. Pinned ath10k htc.c checks control_resp_len
+against sizeof(message header)+sizeof(connect response). Preserve original
+427 inputs; derive isolated override for next candidate, rerun actual CE fixtures
+with observed20-byte response and malformed variants. Evidence archived at
+operating-diagnostic-v1/evidence/2026-10-05/native44-control-response.
+No new45 candidate signed/sent. Still no router association/IP/WAN/Unreal stream.
