@@ -1,0 +1,68 @@
+{
+  "kind": "native-read-only-pci",
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 44,
+  "base_runtime_sha256": "72a758d543f4cf53244295fbcf525e52367fd3b97fee037870d69e365229537b",
+  "base_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "8254c70465eac5a04612e2e33f74be5afa078c2e71b9f00b5d5e13a8f02f0f5e",
+  "payload_sha256": "34126735c8c35f854d4a3cb1410e359e55999fef86298a5467cd9e6515dfab83",
+  "package_sha256": "4b0185b7f91c543c0a479e3bbf0df97a39345d07ba5262a7a5365a591628ea75",
+  "session_sha256": "d877338e835fad92aa32f481e51a6d001e442b68ed37a91180f295fd624de858",
+  "checked_directory": "experiments/native-wifi-qca9377-operating-diagnostic-v1/runs/checked-candidate",
+  "gate": {
+    "report_sha256": "d91a07dbe6b0d6eda80e2187d8e2a12fab31a09504e1e9f1dab42f50eb30714e",
+    "reproduction_sha256": "2fa517e3b318aaffe0b8c2709e1422f2aa01ca4433b540e8e1151eb12aa7ada3",
+    "profile_status": "OPERATING-CANDIDATE-TWO-REBUILDS-UEFI-QEMU-PASS",
+    "baseline_gate": {
+      "report_sha256": "cc043f79b5a974a591d9b4aaae2e6732032a370079f005fb2ecdf47063c983c5",
+      "reproduction_sha256": "ee0cfdc640ee0c6d1b364d52d6dc6ecb56f99e527ed68d6dde921fd0e1d76168",
+      "profile_status": "QCA-EXACT-RAM-MAIN-BOOT-CITY-PROFILE-GATES-PASS"
+    }
+  },
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7jesbhyh/query-0.log",
+      "log_sha256": "bdb0463275d82e18cefc054db87181ff5c8427613e163ad0aca17b12ad10b76b"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7jesbhyh/paced-stage-1.log",
+      "log_sha256": "1e014db2e2294eba7e061d4cc1dc810fb2ae81bef538cf2f1b828e1aa68a2f40"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7jesbhyh/query-2.log",
+      "log_sha256": "1470e1a5de7e91fe17aa1795d84cd02a5243cc7f803ee2a5ce39e0422d0058fa"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7jesbhyh/paced-stage-3.log",
+      "log_sha256": "af6d5253dc17a69c2a4123170013d6d4f4fe906b94b6fab5177542fb2699e10c"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7jesbhyh/commit-4.log",
+      "log_sha256": "7eeab2e5eb214328e6c8787716e368bd74f1fe394802ce9fd3ddadc0b4429e3d"
+    }
+  ],
+  "receiver_reported_applied": true,
+  "confirmed_received": 148256,
+  "last_receiver_status": {
+    "outcome": "staging",
+    "state": 1,
+    "error": 0,
+    "received": 80400,
+    "length": 148256,
+    "counter": 43,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": true,
+    "raw_hex": "524653016bc4c18b696ea7ef103a010020430200010000002b0000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  }
+}

@@ -3617,3 +3617,29 @@ native staging checkpoint24600/148256 is sender progress, NOT APPLIED; exact
 report confirmation floor is still0 during the paced-stage invocation. This
 chain performs the authorized diagnostic trial only, never a guessed format
 change. After final raw response, agent must inspect it before any next candidate.
+
+
+### 2026-10-05: native44 exact APPLIED; fresh initial gates and44 assets started
+
+Native44 now EXACT-APPLIED-RECEIPT, counter44/payload SHA
+34126735c8c35f854d4a3cb1410e359e55999fef86298a5467cd9e6515dfab83.
+Initial continue44.py correctly stopped on probe-active PCI read. Fresh read-only
+retry after setup completed passed strict QPD18 gate, then owner locally signed
+NEW immutable44 firmware session firmware-ram-z9vgatek exactly once. It is now
+hardware_trial_pending. No43 assets replayed; all427 frozen inputs unchanged.
+Evidence: operating-diagnostic-v1/evidence/2026-10-05/native44-applied-initial.
+
+Sole asset controller runs under ignored runs/control/finish44.py (exec53902),
+calling resume_asset44.py with exact session,24-attempt/two-stall limits.
+finish44.py's post-asset observation portion lacks import time (caught during
+review); do not interrupt the active asset sender or replay preparation. Its
+first post-asset boot read is still safe, then it may exit at time.sleep. A
+separate corrected observe44.py (exec7499) waits for finish44 process to exit,
+requires actual all12 accepted/exact full-RAM report/current44 before any read,
+then performs bounded boot reads/final QWOP0002 after all-owner release. It owns
+no radio while waiting. Finite idle-sleep guard follows observer. Correct the
+old ignored finish44 import only after it exits if it is ever reused. Do not
+restart either asset sender while the current controller is live. If asset
+controller stops unconfirmed, observer also stops; resume only saved exact
+session after checking receipts. Raw CE1 diagnostic still pending; no format
+fix, router association/IP/WAN/Unreal display success yet.
