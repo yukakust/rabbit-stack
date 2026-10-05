@@ -3662,3 +3662,42 @@ against sizeof(message header)+sizeof(connect response). Preserve original
 with observed20-byte response and malformed variants. Evidence archived at
 operating-diagnostic-v1/evidence/2026-10-05/native44-control-response.
 No new45 candidate signed/sent. Still no router association/IP/WAN/Unreal stream.
+
+
+### 2026-10-05: bounded actual CONNECT response fix, native45 admitted/sending
+
+Isolated native-wifi-qca9377-connect-response-v1 preserves every native44/43/42
+source byte unchanged. Derived driver overrides only htc_wire.c: pinned ath10k
+CONNECT core is8 bytes (message header2 + response6); Linux accepts minimum core.
+Actual44 has12 bytes with four zero trailing bytes. New parser accepts only8 or
+this12-byte zero suffix, preserving message/service/status/endpoint/capacity
+checks;9..11/13+ or nonzero extension remain rejected. No claim of standardized
+metadata format. Native44 QWOP0002/208 diagnostic and all-owner teardown retained.
+
+Pinned-struct independent oracle + captured Dell20-byte frame + early-RX/control
+checks:5186 under ASAN/UBSAN/COFF on Yukabox.27 actual native CE fixture scenarios
+include20-byte default reply, early completion, short/malformed/wrong-service/
+non-success/unknown extension rejection and valid legacy16-byte frame.65 actual
+initial scenarios pass. FullEFI two identical builds147968 bytes SHA256
+127c950855f275e839ca4a5f614280b6b0ef9e15fb2754d0cd4e60dd2a928302.
+Both real supervisor QEMU city/fullscreen/restore/rejection/readonlyGATT cases
+pass. Two exact current-world builds/C ASAN checks and446-source reproduction
+pass.357 admission corruption/physical-observation cases reject with zero
+secret loads/radio writes. Additional response proof/log/source hashes required
+by admission. Evidence: connect-response-v1/evidence/2026-10-05/native45-admission.
+
+Fresh actual native44 QWBT+QWOP reread; exact known CE1 failure/captured20-byte
+response and all-owner release mandatory before signing. Saved one NEW native45
+signed session pci-native-s9npn8cw; transfer started, NOT yet APPLIED. Controller
+runs/control/resume_native45.py (exec40527):6 attempts/two no-progress stop.
+Exact continuation runs/control/continue45.py (exec6947) waits for existing
+controller exit (one-hour max), requires exact45 applied/hash/state, retries
+initial read-only PCI only for documented probe-active result (8 max), then
+strictly signs NEW45 assets once after exact initial live gate. It delivers
+through24-attempt/two-stall saved-asset controller and performs bounded30 boot
+reads/final QWOP0002 only after actual owner release. time import checked; no
+second radio owner while waiting. Finite caffeinate guard follows continuation.
+No45 assets prepared yet. Preserve446 frozen inputs/world16; do not replay44
+assets, re-sign existing packets, reboot Dell, touch USB/bootstrap or print key.
+Physical first-control/SERVICE_READY success remains unconfirmed. No persistent
+radio/WMI INIT/router association/IP/WAN/Unreal display success claimed.
