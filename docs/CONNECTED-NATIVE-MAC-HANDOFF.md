@@ -3701,3 +3701,41 @@ No45 assets prepared yet. Preserve446 frozen inputs/world16; do not replay44
 assets, re-sign existing packets, reboot Dell, touch USB/bootstrap or print key.
 Physical first-control/SERVICE_READY success remains unconfirmed. No persistent
 radio/WMI INIT/router association/IP/WAN/Unreal display success claimed.
+
+
+### 2026-10-05: native45 APPLIED;45 firmware staging; pure WMI INIT coordination
+
+Native45 EXACT-APPLIED-RECEIPT observed, hash
+127c950855f275e839ca4a5f614280b6b0ef9e15fb2754d0cd4e60dd2a928302.
+continue45.py correctly waited for completion and used bounded read-only retries
+until initial QPD18 passed setup/BMI/all-owner cleanup. Signed NEW immutable45
+assets once: firmware-ram-to7dn7gd, now hardware_trial_pending. Sole controller
+continue45.py/resume_asset45.py is running; first packet confirmed21600/65760,
+zero complete chunks at this historical checkpoint. Read latest receipts.
+No44 asset replay/re-signing. All446 active input hashes unchanged. Evidence:
+connect-response-v1/evidence/2026-10-05/native45-applied-initial. Finite sleep
+guard still follows continuation. No physical CONNECT/SERVICE_READY proof yet;
+no inferred city observation, association/IP/WAN/Unreal display success.
+
+Independent native-wifi-qca9377-wmi-transaction-v1 now coordinates existing INIT
+serializer, exclusive credit ledger and READY decoder.945 ordering/early READY/
+credit reports/cancellation/fault/malformed/session mismatch checks pass ASAN/
+UBSAN and COFF on Yukabox. Reserve during construction, commit BEFORE descriptor
+publication, no DMA-completion refund; unposted cancellation or validated firmware
+reports alone refund. Genuine READY plus matching TX completion required, in
+either order. Completion IDs reject repeated API consumption, not authenticated
+replay. Minor53 matches current encoder. Ambiguous publication faults retain
+committed credit/actual external DMA owners; no allocation or MMIO here.
+This is NOT native45 integration or station policy/mapping approval. Opaque test
+resource vectors are not hardware configuration. Native proof lives separately
+in wmi-transaction-v1/evidence/2026-10-05; no new Dell packet sent for this module.
+
+Before real INIT: actual SERVICE_READY requests/capabilities, approved station
+resource vector and separately checked live DMA mappings/non-overlap/lifetime.
+Existing qca_dma_open requires bus mastering off; cannot simply allocate while
+current CE adapter is active. Also current208-byte QWOP reports memory_count but
+not every memory request; need exact read-only request telemetry or validated
+native-only use of actual service object. Do not guess geometry from host tests.
+Next remains finish physical45 control trial, inspect actual status/data, then
+checked memory/INIT integration. Credential provisioning, scan/association,
+DHCP/IP and WAN/video receiver remain unfinished.
