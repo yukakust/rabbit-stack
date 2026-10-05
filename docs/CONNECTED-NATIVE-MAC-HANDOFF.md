@@ -3543,3 +3543,60 @@ wmi-init-v1/evidence/2026-10-05. All411 active native inputs rechecked unchanged
 Next after physical SERVICE_READY: actual memory requests, reviewed station
 resource profile and retained DMA memory lifecycle, then WMI INIT+actual READY.
 Persistent radio, scan, protected association, DHCP/IP and WAN remain unfinished.
+
+
+### 2026-10-05: native43 physical HTC READY; first control response rejected
+
+All12 generation43 firmware assets accepted (bitmap4095). Main firmware loaded,
+3114 commands confirmed, boot phase5/error0, READY20 bytes, credits2/1792,
+endpoints4. QWOP0001: phase3/error4, session2, posted16, TX1/RX1. RX1 proves
+CE completion/cookie/length validation passed; HTC control parsing rejected
+first response. Original43 did not retain raw bytes; reason not proven.
+Actual adapter12/cleanup14/DMA0/pin0, native stage6/error8448. Read BOTH statuses:
+boot READY is not a successful control handshake. Asset trial pending cleared
+only after actual all-owner release. Known-peer read-only observations archived
+in operating-v1/evidence/2026-10-05/native43-control-fault. Scene observation
+remains pending; no inferred cat visibility. No Wi-Fi association/IP/WAN.
+
+Owner authorized exact CE1 diagnosis/fix. Isolated native44 diagnostic candidate
+in native-wifi-qca9377-operating-diagnostic-v1 retains all original43/42 source
+bytes and strict checks. QWOP0002/208 bytes adds receive stage, pre-consumption
+ring indices, descriptor8 and bounded prefix64. No credentials or keys present
+in this pre-association diagnostic.22 actual-entrypoint CE/fault scenarios and65
+initial scenarios passed on Yukabox; full EFI/QEMU/current-world reproduction
+and strict admission are in progress. Not yet physically installed. Do not
+claim a format fix until actual diagnostic bytes identify the rejected response.
+
+
+### 2026-10-05: native44 diagnostic admitted and exact transfer started
+
+Yukabox22 CE/native-entrypoint scenarios and65 initial scenarios pass ASAN/UBSAN
+and COFF. Full EFI builds identical:147968 bytes SHA256
+34126735c8c35f854d4a3cb1410e359e55999fef86298a5467cd9e6515dfab83.
+Both actual supervisor QEMU city/fullscreen/restore/rejection/read-only GATT
+cases pass, and current world16 C checks/reproduction pass across427 current
+inputs, including every unchanged native43 input.350 admission corruption/
+physical-release cases reject with zero secret loads/radio writes. Physical43
+raw QWBT and QWOP were freshly reread together; exact known43 CE1 failure and
+all-owner release required before44 signing. No broad failure bypass added.
+Evidence: operating-diagnostic-v1/evidence/2026-10-05/native44-admission.
+
+One locally signed saved native44 session: pci-native-7jesbhyh. Controller
+operating-diagnostic-v1/runs/control/resume_native44.py: at most6 delivery
+attempts, stops after two no-progress attempts, exact saved signed bytes only.
+It is sole radio owner, finite idle-sleep guard follows controller. Transfer
+started; NOT yet observed APPLIED. Preserve427 frozen source inputs and exact
+world16. Read report/state/latest receipts before any next action. No new
+firmware44 assets signed/staged yet. Once APPLIED, read fresh QPD18/QWBT and
+QWOP0002 using read_diagnostic.py, then prepare exact generation44 assets through
+operating_route.py asset-prepare/deliver. Do not replay43 signed assets. Actual
+firmware pin/DMA ownership must close before any further native change.
+
+QWOP0002 expands to208 bytes, retaining original22 status words then ten receive
+words(pipe/step/hardware index/read/write/published/cookie/length/ring fault/
+hardware error), pre-consumption descriptor8 and bounded DMA prefix64. Steps1
+MMIO index,2 CE completion,3 cookie,4 length,5 HTC control reject,6 duplicate
+SERVICE_READY,7 HTC service frame reject. Descriptor captured BEFORE consume
+clears length. Snapshot survives existing teardown. No guard relaxed or guessed
+format fix. Next: actual44 raw response -> narrow evidence-supported correction.
+Wi-Fi association/IP/WAN/Unreal on Dell remain unfinished.
