@@ -3600,3 +3600,20 @@ SERVICE_READY,7 HTC service frame reject. Descriptor captured BEFORE consume
 clears length. Snapshot survives existing teardown. No guard relaxed or guessed
 format fix. Next: actual44 raw response -> narrow evidence-supported correction.
 Wi-Fi association/IP/WAN/Unreal on Dell remain unfinished.
+
+
+Native44 finite trial continuation is running in ignored runs/control/continue44.py
+(exec session61366). It waits for the existing native44 controller to exit,
+requires exact native44 APPLIED/state/hash, then under the same exclusive state
+lock reads known-peer QPD18 using the verified read-pci43 helper. It calls strict
+asset-prepare exactly once, only after actual fresh setup/BMI/all-owner-release
+and unchanged427-input gates. If any gate/read/receipt fails it stops without
+bypass or re-signing. It then runs the24-attempt/two-stall exact asset controller,
+followed by at most30 boot observations,120 seconds apart, and final QWOP0002
+read only after actual all-owner release. Wait for native controller is capped
+at one hour. Finite caffeinate guard follows continuation process. Archived
+inspectable controller sources in native44-admission evidence. Current observed
+native staging checkpoint24600/148256 is sender progress, NOT APPLIED; exact
+report confirmation floor is still0 during the paced-stage invocation. This
+chain performs the authorized diagnostic trial only, never a guessed format
+change. After final raw response, agent must inspect it before any next candidate.
