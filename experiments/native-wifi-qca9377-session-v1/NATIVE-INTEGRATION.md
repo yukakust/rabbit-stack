@@ -51,6 +51,19 @@ Send WMI init with exact mapped memory descriptions; require READY/status/MAC.
 Create station VDEV0 and apply a checked regulatory/channel profile. Raw firmware
 band limits are not a country/channel authorization table.
 
+## First native control candidate — host/QEMU checked
+
+`native-wifi-qca9377-operating-v1` now integrates the protocol coordinator with
+actual CE0/CE1/CE2 code and native entrypoints. The bounded20-second trial retains
+the adapter/pin during connect-WMI/connect-HTT/setup and SERVICE_READY receipt,
+then uses existing actual stop/cleanup.17 ASAN/UBSAN hardware-model scenarios,
+COFF, two byte-identical full UEFI builds, normal/EMPTY QEMU and current-world
+reproduction pass on Yukabox. Payload147456bytes, generation43 candidate only.
+No physical signing/delivery/admission yet. Actual controller remains42.
+The candidate is not a persistent radio and does not send WMI INIT or scan.
+Next: exact physical admission and observation, then retained host memory/init.
+See that candidate's README for binding and replacement boundaries.
+
 ## Discover and connect
 
 Use the passive scan codec only after those prerequisites. Correlate scan IDs,
