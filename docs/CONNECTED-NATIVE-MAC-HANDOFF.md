@@ -3475,3 +3475,42 @@ is necessary (42 packets MUST NOT replay). Prepare only once, retain checkpoints
 After final asset triggers firmware+control trial, read QWOP+QWBT and verify all
 actual owners released before any replacement. Persistent radio/WMI INIT/scan/
 protected credentials/association/DHCP/WAN are still unimplemented.
+
+
+### 2026-10-05: native43 physically applied; new immutable43 assets staging
+
+Exact native session pci-native-39db645t completed147744 bytes. Commit disconnected
+as expected; reconnect verified exact SHA/session/counter43 APPLIED. Controller
+is43/world16, native_pending clear. Payload72a758d543f4cf53244295fbcf525e52367fd3b97fee037870d69e365229537b.
+Native initial lifetime QPD18: stage5/error0,setup4/error0,BMI type8/version05020001,
+adapter12/cleanup14/DMA0. QWOP0001/96bytes is physically readable via UUID24/25;
+all initial fields0, so no operational/control startup claimed. Visual city/tail
+confirmation after43 was requested and is pending, never inferred from receipts.
+Proof: operating-v1/evidence/2026-10-05/native43-applied-initial.
+
+First cached Mac PCI helper reported diagnostic service absent: its discovery
+filter omitted UUID0D although its callback accepted0D. Read-only inventory found
+service0D. An ignored derived Cocoa helper explicitly requests0D/0C and filters
+the known peer; it read actual QPD18 successfully. Original frozen read_pci.m and
+all411 source inputs remain unchanged. Public derived read-only helper source is
+archived with proof. `runs/control/read-operating` similarly reads known-peer
+UUID24/25, QWOP0001/96byte envelope, no write. Do not infer missing hardware from
+stale/filtered CoreBluetooth service inventory alone.
+
+After fresh exact physical QPD18 and all operating admission/current-installed
+APPLIED/policy checks, owner locally signed twelve NEW immutable generation43
+packets once: firmware-ram-5yo48w3h. It is now hardware_trial_pending. New asset
+RAM began empty (bitmap0), current first packet SHA
+e4d1e5dac54440706a810a28c19abf82b0f3156659ceaa504a960a77d0665c16.
+At checkpoint4320/65760 receiver-confirmed, no accepted chunk; use latest logs.
+Bounded controller operating-v1/runs/control/resume_asset43.py uses
+operating_route.py asset-deliver,24 attempts maximum, stop after two no-progress
+attempts, exact saved signatures/packet/checkpoints, same source checks every run.
+It is sole radio owner; finite idle-sleep guard follows controller20859.
+Do not edit411 frozen inputs, re-sign/change nonce/counter, replay42 packets,
+change world, touch bootstrap/USB or reboot Dell during this trial.
+After all12 accepted, boot/calibration/main/HTC/control-SERVICE_READY trial runs
+and closes through actual all-owner cleanup. Read BOTH QWOP and QWBT; only the
+latter reports boot readiness/closed ownership, while QWOP distinguishes actual
+control/service-ready success/failure. RAM bitmap alone proves only staging.
+No persistent radio/WMI INIT/scan/router association/IP/Yukabox exchange yet.

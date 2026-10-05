@@ -59,8 +59,9 @@ the adapter/pin during connect-WMI/connect-HTT/setup and SERVICE_READY receipt,
 then uses existing actual stop/cleanup.17 ASAN/UBSAN hardware-model scenarios,
 COFF, two byte-identical full UEFI builds, normal/EMPTY QEMU and current-world
 reproduction pass on Yukabox. Payload147456bytes, generation43 candidate only.
-Strict additive admission and321 corruption checks now pass. Exact signed43
-native staging is active; actual controller remains42 until an APPLIED receipt.
+Strict additive admission and321 corruption checks pass. Exact43 APPLIED is
+confirmed and fresh physical QPD18 shows released ownership. A new immutable43
+firmware asset session is staging; QWOP is readable but control has not started.
 The candidate is not a persistent radio and does not send WMI INIT or scan.
 Next: exact physical admission and observation, then retained host memory/init.
 See that candidate's README for binding and replacement boundaries.
