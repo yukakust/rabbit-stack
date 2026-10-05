@@ -3252,3 +3252,44 @@ Pinned Linux ieee80211.h hash
 independent layout/constant oracle.9117 ASAN/UBSAN groups and native COFF pass
 on Yukabox; proof is `session-v1/evidence/2026-10-05/beacon-info`. No integration
 into the frozen native41 image and no physical scan. Credential stays on Mac.
+
+
+## 2026-10-05 — no 5GHz network; radio isolation and HCI framing proof
+
+Owner reports no available 5GHz Wi-Fi. It is not a requirement. A bounded45s
+Mac Wi-Fi-off trial verified Off, attempted the SAME native41 firmware packet,
+then verified On again; an independent restore watchdog was reaped afterward.
+The query confirmed packet4 received31024/65760; sending disconnected with no
+further confirmed progress. Turning off Mac Wi-Fi did not eliminate the observed
+Bluetooth failure. This does not exclude other RF causes or prove a software
+cause. Internet availability is not the direct GATT sender's dependency.
+
+The cached16 helper avoids repeatedly fsyncing an unchanged attempted checkpoint,
+while retaining save-before-first-write and durable validated receipt floors.
+Offline Cocoa mock tests cover actual16-byte writes, receipt persistence and
+save-failure blocking. Physical ordinary and Wi-Fi-off attempts still failed;
+no reliability or throughput improvement is claimed. Public actual helper/test/
+wrapper sources and observations: session-v1/evidence/2026-10-05/mac-radio-followup.
+No key, credential or generated binary is archived.
+
+Independent bt_event_stream prototype passes33926 ASAN/UBSAN mock cases and
+freestanding COFF on Yukabox, using the actual derived BLE link. It reproduces
+old rl_event loss of a21-byte connection event split16+5 and two7-byte credit
+events coalesced into14 bytes; the assembler delivers both correctly. Every
+payload length0..255, split position and mixed block size1..260 is exercised.
+Public proof hashes were checked against local sources:
+session-v1/evidence/2026-10-05/bt-events. Reference:
+https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/bluetooth/btusb.c
+The prototype accepts only successful USB read bytes. It is NOT integrated into
+usb_port poll or shutdown, NOT installed on Dell, and NOT proof of physical
+failure causality. Shutdown integration must preserve connection-race capture,
+exact disconnection completion and unknown-outcome unload refusal.
+
+Native41/world16 and frozen source closure remain unchanged. Pending exact
+firmware-ram-ytrkhw7x is retained: three accepted packets, bitmap7, partial fourth.
+Last confirmed body floor227408/751436. No firmware boot, scan, association, IP
+or Dell-to-Yukabox exchange occurred. No sender or radio-off watchdog is running.
+Next: isolated USB poll/close integration tests, then deliberately gated native
+replacement if needed. Do not mutate frozen41 inputs or silently clear its
+pending session; replacement would discard partial RAM staging and requires a
+fresh generation-bound asset session with originals preserved.

@@ -1,0 +1,20 @@
+{
+  "status": "BT-EVENT-STREAM-ACTUAL-LINK-HOST-COFF-PASS",
+  "build_host": "yukabox",
+  "source_sha256": {
+    "bt_event_stream.c": "4d1c8aa7013ca0048dd582ce12a89a776afe91d93088a97ec9b6a2512bce895b",
+    "bt_event_stream.h": "0289901b12b0249b291fc154cdcddf681ec10bcc9f26c53fa3dd5d9df8cc62b9",
+    "bt_event_stream_test.c": "7e14676fca1616b8fabc9ce83aa2af0e137b35981ffb473aadc062da8e78d35d",
+    "verify_bt_events.py": "002b14208e29495df69b007207c4165f8f7a8fa7b93ae8b68320f1c3b9d8e94e",
+    "verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "derived_link_sha256": "1be2817c5df0a8a2cc117fed1fda5e38a5568d5f1980d70803da5fd2192e973e",
+  "hci_link_h_sha256": "88ad59bc188977d3b6f6c1efa72746218152d54c7876dc7c6f61e3874f4fe3fd",
+  "host_log_sha256": "15ad4f33c00e4cfa339acf576f2f48ab78ff2f8c397e8fdfa9e3f56709c4cd12",
+  "split_connection_event_16_plus5_verified": true,
+  "coalesced_credit_events7_plus7_verified": true,
+  "physical_verified": false,
+  "native_integrated": false,
+  "root_cause_of_physical_disconnect_proven": false,
+  "wifi_connected": false
+}

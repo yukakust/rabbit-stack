@@ -1,0 +1,14 @@
+{
+  "status": "CACHED16-DURABILITY-AND-MAC-OFFLINE-PREFLIGHT-PASS",
+  "parent_source_sha256": "a8051ba02bd63dfecab9d6fcf216dea33d95d8616e0e05d6a829af61070750c2",
+  "source_sha256": "6250eb4c345afa09df3de5e50f51236408624175d027b150283fe03ee2cb4b1c",
+  "helper_sha256": "538719ada4af00fadc8bc9b25cb04a142305e606f46c1862a14ae092ba70c37c",
+  "test_source_sha256": "e71efc09db1bcff3cb146c414a5b59556d0b8140b63c5d3d4c20576dcad03389",
+  "test_log_sha256": "90e654f4f74edc95dbced204a3c37a007fd564f9df749af0fbbd7c9fe99448be",
+  "data_bytes": 16,
+  "receipt_window_bytes": 512,
+  "delay_ms": 50,
+  "physical_radio_started": false,
+  "private_key_read": false,
+  "native_rebuild": false
+}
