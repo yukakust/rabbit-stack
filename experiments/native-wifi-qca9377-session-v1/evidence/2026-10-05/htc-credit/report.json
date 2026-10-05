@@ -1,0 +1,23 @@
+{
+  "status": "HTC-CREDIT-HOST-ASAN-COFF-PASS",
+  "build_host": "yukabox",
+  "checks": 100487721,
+  "source_sha256": {
+    "htc_credit.c": "53e5cc0482490daeccc05fc1b7b21069f47e16ffdfc05a3586bab722cd28bf2a",
+    "htc_credit.h": "330c272ea2cd73bb684a72997d1eba82af30a84dc8f2ec409a6fcd5a5ed6b9a7",
+    "htc_credit_test.c": "441d07661837c86e333b82cf47034c1c6dcad0eaed1dfa58f4d8b4338d52edf3",
+    "verify_credit.py": "5bc5d2c570dc71d4741d0c165cba72e2e7a03d58b8c916fabaa1e07285bf2151",
+    "htc_wire.h": "45af53b8d52ae30b77b05fc42daa1bcb8b6e2ddb4955a9d015b5fa6534f6ada4",
+    "verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "reference": {
+    "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+    "htc_c_sha256": "ba19a833a986bcdc097550aff81c620501243db3792db248da34b39c145b9629",
+    "oracle_sha256": "a61372510ada2362e8642b131843b526c65d6ed910cd014b4d7ad4e98d53a46b"
+  },
+  "host_log_sha256": "a40a62d4d0cf5e7f31570666258c48bc1e380335290d209b4f3904c251bb2ab9",
+  "native_integrated": false,
+  "physical_verified": false,
+  "wifi_connected": false,
+  "scope": "pure single-owner WMI credit ledger; no DMA submission or RX replay detection"
+}

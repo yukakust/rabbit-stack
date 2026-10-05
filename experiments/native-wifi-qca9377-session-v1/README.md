@@ -61,3 +61,24 @@ traffic to Yukabox. Firmware READY is not a Wi-Fi connection.
 
 Protocol reference: Linux commit
 `6b5a2b7d9bc156e505f09e698d85d6a1547c1206`, ath10k `htc.h` and `htc.c`.
+
+
+## Operating control prerequisites (host-only)
+
+`htc_credit.h/.c`: single-owner WMI credit ledger, fixed negotiated endpoint;
+accounting preserves available + reserved + outstanding = negotiated credits.
+Reservations include the eight-byte HTC header. Commit before DMA publication;
+only unposted reservations may be cancelled. DMA completion alone never restores
+credits. Caller must retain unknown DMA ownership and consume each RX completion
+once. Arbitrary repeated incremental firmware reports cannot be detected here.
+No hardware, dynamic allocation, automatic cleanup or HTT credit-flow support.
+`verify_credit.py` uses the exact pinned Linux cost expression as its oracle;
+100,487,721 size/boundary/state/rejection checks pass ASAN/UBSAN and COFF on Yukabox.
+
+`htc_control.h/.c`: endpoint-zero READY/WMI/HTT/setup coordinator. A response
+arriving before the corresponding validated TX completion is checked against the
+prospective state and copied once; no phase advances before completion. All six
+WMI/HTT endpoint assignments within the observed four-endpoint limit and both
+response/completion orders pass (1,418 checks), ASAN/UBSAN and COFF on Yukabox.
+Actual CE ownership, deadlines, quiesce and early WMI service events remain outside
+this module. Neither module is installed or proves a router connection.

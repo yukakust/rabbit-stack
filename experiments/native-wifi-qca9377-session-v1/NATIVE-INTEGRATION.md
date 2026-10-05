@@ -1,26 +1,27 @@
 # Next operating-profile integration
 
 This is the remaining implementation boundary, not a physical connection proof.
-Native41 only tests exact firmware startup and then closes all hardware owners.
-The new pure protocol modules are not called by that installed image.
+Native42 tests exact firmware startup and then closes all hardware owners.
+The pure operating-protocol modules are not called by that installed image.
 
-## Physical prerequisite
+## Physical prerequisite — completed on 2026-10-05
 
-Native38's full asset was staged, but helper result3 stopped it before main.
-Its session is historical and must not be replayed. Result3 compatibility and
-post-cleanup legacy update delegation are fixed in applied native41. Finish the
-existing signed `firmware-ram-ytrkhw7x` generation41 session. Read fresh QWBT and
-save its actual phase/error/command counts/READY/closed-ownership fields. A full
-RAM bitmap only proves staging. Require verified calibration, main upload,
-BMI_DONE and actual HTC_READY before claiming firmware startup. Unexpected
-board pointers or READY layouts need observed bytes and reviewed policy;
-do not widen the current write guard based on a host fixture.
+The exact generation42 session `firmware-ram-pwg6_pnz` delivered all twelve
+immutable packets (bitmap4095). Fresh QWBT observed all3114 BMI commands complete,
+plan20/error0, calibration result3 under the exact firmware feature policy, and
+actual HTC READY:20bytes,2credits,1792-byte credits,4endpoints. A subsequent read
+confirmed native stage5/error0, adapter12,cleanup14,DMA0 and asset pin0. The
+controller cleared hardware_trial_pending only after this actual cleanup.
+Evidence: native-wifi-qca9377-v1/evidence/2026-10-05/native42-firmware-ready.
+This proves the physical startup diagnostic, not a retained operating lifetime,
+scan, association, lease, encrypted traffic or WAN. Visual city/tail observation
+remains separate and pending. The retired partial41 session must not be replayed.
 
 ## Native operating lifetime
 
 Derive a separately checked operating profile after this trial is released.
 Use fresh setup/query and exact source/asset binding. Keep the adapter and RAM
-asset pin while radio/DMA are active; do not run native41's automatic successful
+asset pin while radio/DMA are active; do not run native42's automatic successful
 teardown at HTC_READY. Add distinct operating telemetry so READY, scan, router
 association, lease and WAN traffic cannot be confused with a closed diagnostic.
 
@@ -33,9 +34,14 @@ processing a validated completion and reposting require a single explicit owner.
 
 Drive `htc_session` with the observed READY and verified CE0/CE1 completions.
 Open WMI/HTT services, keep assigned endpoints, and post CE2 receive before
-operating WMI events. Route responses by endpoint and CE identity. Operational
-WMI credits require a separate bounded ledger; the handshake codec alone does
-not grant transmit permission. Stash WMI events that arrive while control TX
+operating WMI events. Route responses by endpoint and CE identity. The pure `htc_credit` ledger now reserves WMI credits including the HTC header,
+commits them before descriptor publication, and restores them only from bounded
+firmware credit reports. It cannot identify a replayed RX completion: the actual
+CE owner must consume each completion once. `htc_control` coordinates the
+endpoint-zero handshake and retains a validated early response until its exact
+TX completion; it does not queue early WMI service events or drive hardware.
+Both are host-checked with ASAN/UBSAN and COFF on Yukabox, not installed on Dell.
+The handshake codec alone does not grant transmit permission. Stash WMI events that arrive while control TX
 completion is still pending. Bound timeout/cancellation with monotonic time.
 
 Validate service-ready ABI and memory requests. Derive all firmware host-memory

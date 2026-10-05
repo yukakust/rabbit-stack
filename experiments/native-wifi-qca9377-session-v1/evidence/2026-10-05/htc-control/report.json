@@ -1,0 +1,22 @@
+{
+  "status": "HTC-CONTROL-ORDER-ASAN-COFF-PASS",
+  "build_host": "yukabox",
+  "source_sha256": {
+    "htc_control.c": "46a0916c57c54988204353f7270dea975cfb70e2c5c10ec2399fea14a653ea19",
+    "htc_control.h": "fa85afb15148704e3a815ac2c688f6b7d2152e8f46c2d2ed6096ad84030f6f90",
+    "htc_control_test.c": "d88a107b5741b45630bdda913df1224f8482aa19e010e24b6d6d2a8981247bf9",
+    "verify_control.py": "65cde70a034e9782d6fbf523732b3a0650b69ba445b745ddecbdb07dd89b759d",
+    "htc_credit.c": "53e5cc0482490daeccc05fc1b7b21069f47e16ffdfc05a3586bab722cd28bf2a",
+    "htc_credit.h": "330c272ea2cd73bb684a72997d1eba82af30a84dc8f2ec409a6fcd5a5ed6b9a7",
+    "htc_session.c": "6bb74d7ca5d18758c2048c41c27d1a994a5fcbc4570b0764ff275d050f777b50",
+    "htc_session.h": "d96693e30cf70574d01a6a5629f9013ea09995b87eb1449d805d8a44528b3754",
+    "htc_wire.c": "fa0d04a8de15f9485d04b465ead247d3b3c9e60f29c394063ef5cc4cfbf30e14",
+    "htc_wire.h": "45af53b8d52ae30b77b05fc42daa1bcb8b6e2ddb4955a9d015b5fa6534f6ada4",
+    "verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "host_log_sha256": "349728c7c0ba7c1c00caa94e5ba510a14b14eafa102879a7ac782281901166d9",
+  "native_integrated": false,
+  "physical_verified": false,
+  "wifi_connected": false,
+  "scope": "endpoint-zero handshake only; caller owns actual DMA, deadlines and quiesce; early WMI service events not handled"
+}

@@ -3368,3 +3368,34 @@ follows controller36915 and automatically releases on exit. At this additional
 checkpoint two chunks are accepted (bitmap3) and the third is partially staged;
 confirmed body floor178368/751436. These figures are historical checkpoints;
 read current report before continuing. Owner visual answer still pending.
+
+
+### 2026-10-05: physical native42 firmware startup complete; operating prerequisites
+
+This supersedes the historical partial asset counts above. After Mac restart,
+fresh QWBT retained bitmap255 and unstarted/released ownership, permitting the
+same immutable signed42 session to resume. All12 packets completed, bitmap4095.
+Actual Dell main transfer progressed through plan17 to plan20. Fresh QWBT:
+phase5/error0, submitted=completed3114, calibration_result3 (exact admitted
+feature policy), ready_bytes20, credits2,credit_size1792,max_endpoints4.
+A following read verified native_stage5/error0,adapter12,cleanup14,DMAusers0,
+asset_pinned0,boot_round1 and physical_trial_complete true. hardware_trial_pending
+is clear. Public raw/decoded/log/checksum proof is in
+native-wifi-qca9377-v1/evidence/2026-10-05/native42-firmware-ready.
+This is a CLOSED diagnostic; no active radio connection, scan, DHCP or WAN.
+No Dell reboot/bootstrap/USB/OTP/flash change. City/tail visual remains pending.
+
+New pure session-v1 `htc_credit` and `htc_control` prerequisites pass on Yukabox:
+100,487,721 pinned-cost/credit ownership checks and1,418 endpoint/early-response
+ordering checks under ASAN/UBSAN, plus native COFF. Credit cost includes HTC
+header, ticketed reservation is cancellable only before publication, committed
+credits return only through bounded firmware reports. Caller must consume each
+actual RX completion once; ledger cannot independently detect report replays.
+The control coordinator validates/copies one early endpoint-zero response and
+publishes it only after that exact TX completion. No actual CE submission,
+retained adapter, early WMI service queue, host-memory allocation, WMI INIT,
+regulatory/VDEV profile, scan, protected credentials, association, IP or WAN
+has been integrated. Public proof: session-v1/evidence/2026-10-05/htc-credit and
+htc-control. Next: actual retained native CE0/CE1 handshake and CE2 WMI service
+RX/memory-init, with monotonic deadlines and explicit quiesce before replacement.
+Mac credentials remain owner-only; no key/password output or remote export.
