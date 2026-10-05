@@ -3293,3 +3293,78 @@ Next: isolated USB poll/close integration tests, then deliberately gated native
 replacement if needed. Do not mutate frozen41 inputs or silently clear its
 pending session; replacement would discard partial RAM staging and requires a
 fresh generation-bound asset session with originals preserved.
+
+
+## 2026-10-05 — native42 USB framing applied; fresh signed asset session
+
+Native42 incorporates bt_event_stream into actual USB poll AND close, with one
+shared stream across their handover. Successful reads only; complete events are
+checked even after the awaited completion, and a trailing partial prevents
+unload.618 ASAN/UBSAN poll/close/race/timeout cases plus18 original USB tests and
+COFF pass on Yukabox. Historical unknown-disconnect recovery is retained in the
+link verifier; framing does NOT reconstruct an orphan tail whose header was
+lost. The previous QEMU orphan-injection fixture exposed this limitation. The
+native42 fixture instead verifies a genuine connection split16+5 and matched
+disconnection through actual UEFI replacement. No arbitrary resynchronization
+or physical root-cause claim. Both normal/EMPTY city QEMU gates pass, alongside
+65 initial-lifetime fixtures,8 two-lifetime cases,47 boot-core cases and98 boot
+telemetry rejections. Host proof includes388 original/new dependencies plus the
+checked resume script (389 total); missing isolated crypto/media imports were
+restored and included before final reproduction. Two builds and current-world
+C sanitizer check match payload
+`0460c259f65abb7ffa02cc430b05bae30f89cb36db9a976bb309f83cb6bb2201`.
+Report SHA `cc043f79b5a974a591d9b4aaae2e6732032a370079f005fb2ecdf47063c983c5`;
+reproduction SHA `ee0cfdc640ee0c6d1b364d52d6dc6ecb56f99e527ed68d6dde921fd0e1d76168`.
+Public evidence: native-wifi-qca9377-v1/evidence/2026-10-05/boot-native42-host.
+
+Before changing any frozen41 source, fresh physical QWBT verified boot_round0,
+ready0,pin0,boot_attempted0,bitmap7,adapter12/cleanup14/DMA0. The separately
+checked next candidate and389 proposed source hashes passed offline route gates.
+`retire_partial_boot.py` preflight then deliberately retired only the partial
+host-RAM session in the controller; no ABORT/device write/reboot. ALL341 frozen
+old source inputs and all original signed packets/checkpoints are preserved in
+firmware-ram-ytrkhw7x/frozen-source-before-replacement and retirement.json.
+Old packet41 assets MUST NOT resume/replay. Retirement proof is archived in
+native41-partial-retired. Device RAM staging was discarded on actual old-driver
+close during the subsequently verified replacement.
+
+Mac locally signed one native42 packet `pci-native-weu86l9x`. First paced100-byte
+attempt reached its300s deadline; fresh exact matching query confirmed79900.
+Same signed packet resumed to140064; commit caused expected disconnect, and
+reconnect obtained exact SHA/session/counter42 APPLIED. Controller is42/world16;
+native_pending clear. This is an applied receipt, not device attestation or
+proof all Bluetooth disconnect causes are fixed. New42 QPD18: stage5/error0,
+setup4/error0,BMI type8/version05020001,adapter12/cleanup14/DMA0. New42 QWBT:
+boot_round0,ram_phase4,bitmap0,ready0,pin0,boot_attempted0. Physical proof is
+native42-applied-initial. Owner was asked whether city/tail remain visible;
+visual observation is still pending and must not be inferred from receipts.
+
+After fresh exact gates, Mac locally signed all twelve immutable generation42
+firmware packets once: `runs/text-world/firmware-ram-pwg6_pnz`. This is now the
+exact hardware_trial_pending; retain it across retries. Standard
+boot_asset_route.py deliver was started against that saved session. At this
+checkpoint first packet is partially staging; no accepted chunk/main startup,
+scan, association, IP or Yukabox exchange has been confirmed. Do not mutate
+389 frozen inputs, create a new nonce/counter, replay retired41 packets, reboot
+Dell or touch bootstrap/USB. Read actual current report/receipts before resume;
+full bitmap4095 only proves RAM staging. After final packet auto-triggers the
+bounded boot lifetime, read fresh QWBT and keep hardware pending until actual
+all-owner cleanup. Native operating/WMI/security/IP/WAN integration remains
+separate, described in session-v1/NATIVE-INTEGRATION.md.
+
+
+Independent native-wifi-qca9377-memory-v1 now provides a PURE host-memory size
+plan, outside frozen42 inputs.4,605,536 ASAN/UBSAN differential/budget/overflow/
+duplicate cases plus COFF pass on Yukabox against exact Linux wmi.c
+SHA68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4
+and wmi.h SHAfff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c.
+No actual allocation, mapping, physical-address validation or WMI INIT occurs;
+no native integration/physical Wi-Fi proof. Fixed future station resources and
+retained-mapping lifetime checks are still required. Reference:
+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux/+/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi.c
+Generation42 exact session resume is bounded24 attempts, stops after two attempts
+without confirmed progress, and has one sole radio owner. Mac idle-sleep guard
+follows controller36915 and automatically releases on exit. At this additional
+checkpoint two chunks are accepted (bitmap3) and the third is partially staged;
+confirmed body floor178368/751436. These figures are historical checkpoints;
+read current report before continuing. Owner visual answer still pending.

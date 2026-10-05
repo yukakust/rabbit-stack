@@ -1,0 +1,29 @@
+{
+  "status": "WMI-MEMORY-PLAN-PINNED-ORACLE-ASAN-COFF-PASS",
+  "build_host": "yukabox",
+  "cases": 4605536,
+  "source_sha256": {
+    "memory_plan.c": "66c3b0e60749a323995792249a1d4bac7c2f1db4f9abce0bf12e72f85da7a5b6",
+    "memory_plan.h": "406808119e037f45797baad98d03ea5e7fae160488b8c5c022c6398b4c54c2a4",
+    "memory_plan_test.c": "80e9d97feb6cc125ca5dcb16ac426c39fecde734ae1473c08a296405f6b16ff6",
+    "verify_memory.py": "1c95697d186f1432cad04c913d627b4aea494b5708f4804a5b516df6648b107c"
+  },
+  "dependency_sha256": {
+    "experiments/native-wifi-qca9377-session-v1/wmi_boot_info.h": "59c71b834bd43bfe5626bfef6062a88476c43762be2b10b8cf4861c67255f262",
+    "experiments/native-wifi-qca9377-session-v1/wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3",
+    "experiments/native-wifi-qca9377-session-v1/verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "reference": {
+    "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+    "wmi_c_sha256": "68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4",
+    "wmi_h_sha256": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c",
+    "oracle_sha256": "803828ea4fdf3db8a1ce3fa073fdba21f2162cf0ee92179ac50412330062d055",
+    "source_url": "https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux/+/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi.c"
+  },
+  "host_log_sha256": "0ebf655f737eb7f38aaa50ddc8f6e873da331cffc67ab75e162ec115752e37e9",
+  "allocation_performed": false,
+  "physical_address_checked": false,
+  "native_integrated": false,
+  "physical_verified": false,
+  "wifi_connected": false
+}

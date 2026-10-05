@@ -101,6 +101,13 @@ def gates(directory,payload,world):
   for sub in ('actors-qemu','actors-empty-boot-qemu'):
    if b'INTEGRATED RAM SERVICE13..19; TARGET ABSENT WRITE REJECTED; CITY RETAINED' not in (directory/sub/'observed.log').read_bytes():raise ValueError('integrated UEFI ATT receiver gate missing')
  if report['status']==BOOT_STATUS:
+  usb=flow.read_json(directory/'bt-usb-report.json')
+  if report.get('bt_usb_integrated') is not True or usb.get('status')!='BT-USB-POLL-CLOSE-HOST-COFF-PASS' or usb.get('build_host')!='yukabox' or usb.get('regression_tests')!=18 or flow.sha((directory/'bt-usb-report.json').read_bytes())!=report.get('bt_usb_report_sha256'):raise ValueError('USB stream integration proof required')
+  for log,key in (('bt-usb-asan.log','asan_log_sha256'),('bt-usb-regression.log','regression_log_sha256')):
+   if flow.sha((directory/log).read_bytes())!=usb[key]:raise ValueError('USB proof log changed')
+  for n,h in usb['source_sha256'].items():
+   if reproduction['inputs'].get('experiments/native-wifi-qca9377-session-v1/'+n)!=h:raise ValueError('USB proof source differs')
+  if reproduction['inputs'].get('experiments/ble-connected-file-transfer-v1/usb_port.c')!=usb['baseline_usb_sha256'] or reproduction['inputs'].get('experiments/ble-connected-file-transfer-v1/usb_port.h')!=usb['baseline_usb_header_sha256'] or reproduction['inputs'].get('experiments/ble-connected-file-transfer-v1/verify_usb.py')!=usb['baseline_test_sha256']:raise ValueError('USB baseline inputs changed')
   if report.get('two_lifetimes_verified') is not True or report.get('permanent_otp_programming') is not False or report.get('wifi_connected') is not False or report.get('boot_decode_rejections')!=98:raise ValueError('exact boot trial scope required')
   for name,status,cases in [('boot-core','EXACT-BOARD-CALIBRATION-MAIN-BMI-BOOT-CORE-HOST-COFF-PASS',47),('boot-lifetimes','NATIVE-EXACT-BOOT-TWO-LIFETIME-HOST-MOCK-PASS',8)]:
    component=flow.read_json(directory/(name+'-report.json'))

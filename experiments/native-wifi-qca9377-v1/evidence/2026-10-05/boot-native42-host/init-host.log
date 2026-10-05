@@ -1,0 +1,77 @@
+WARM-ORDER-CANCELLATION-IO-OWNERSHIP-PASS
+Full channels scenario 0: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 1: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 2: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 3: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 4: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 5: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 6: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 7: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 8: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 9: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 10: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 11: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 12: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 13: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 14: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 15: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 16: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 17: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 18: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 19: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 20: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 21: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Aliased allocator retained; unload forbidden; MOCK ONLY
+Full channels scenario 23: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 24: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 25: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Full channels scenario 26: mapped ownership, RX, all-eight stop, guarded cleanup PASS; MOCK ONLY
+Mapped IRQ scope scenario 0 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 1 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 2 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 3 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 4 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 5 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 6 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 7 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 8 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 9 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 10 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 11 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 12 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 13 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 14 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 15 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 16 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 17 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 18 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 19 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 20 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 21 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 22 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 23 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 24 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 25 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 26 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 27 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 28 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 29 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 30 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 31 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 32 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 33 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 34 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Mapped IRQ scope scenario 35 PASS: fresh identity/D0/BM-off/INTx/MSI and retained pages; MOCK ONLY
+Native init adapter scenario 0 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 1 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 2 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 3 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 4 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 5 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 6 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 7 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 8 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 9 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 10 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 11 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY
+Native init adapter scenario 12 PASS: borrowed PCI/IRQ, warm/full channels, cold-proof recovery or retained ownership; MOCK ONLY

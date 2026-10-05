@@ -1,0 +1,22 @@
+{
+  "status": "BT-USB-POLL-CLOSE-HOST-COFF-PASS",
+  "build_host": "yukabox",
+  "source_sha256": {
+    "bt_usb_build.py": "f9973218f20e48beb6645ef4749f096f4446dfd25b02ad32e9379fcb25380114",
+    "verify_bt_usb.py": "9fe50b85767a0fb553a7705e0a950b9f3587c3dc7225838e29e5932a164476b0",
+    "bt_event_stream.c": "4d1c8aa7013ca0048dd582ce12a89a776afe91d93088a97ec9b6a2512bce895b",
+    "bt_event_stream.h": "0289901b12b0249b291fc154cdcddf681ec10bcc9f26c53fa3dd5d9df8cc62b9"
+  },
+  "baseline_usb_sha256": "eab8f95592387bf612a81fa4a3c995c300e2ad7566701c98e28460d2693d0c5c",
+  "baseline_usb_header_sha256": "87cb2e466c684312d8e34843874a4511674289e23da78f7bcd7ad4c645e31e66",
+  "baseline_test_sha256": "59c87f3194fa9387f48bba90c59f401b9d22f8c1426c45029bf25fc3bbf5c962",
+  "derived_usb_sha256": "2319a00a940bb52b51ac6d50fff6aac54807d0662c16999ad4d583a4e140db09",
+  "derived_header_sha256": "b484a26e8333d001f343e188df0120854ee65e387f8b17b0a18e9047196ecb17",
+  "derived_link_sha256": "1be2817c5df0a8a2cc117fed1fda5e38a5568d5f1980d70803da5fd2192e973e",
+  "asan_log_sha256": "f2b918da8d08490bf1c6be0314c69bf7461d12c70ba67e51ca1c58032015f2e8",
+  "regression_log_sha256": "6b7b6bb2249f586cd8da6770c5ea61ffb0dc58d7f3bde79d0bb96d8c993590fc",
+  "regression_tests": 18,
+  "physical_verified": false,
+  "installed_on_dell": false,
+  "wifi_connected": false
+}

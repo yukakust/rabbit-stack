@@ -4,6 +4,9 @@ Not admitted to physical signing until actual entrypoint/lifetime/QEMU gates.
 """
 import hashlib,json,struct
 from pathlib import Path
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parent.parent/'native-wifi-qca9377-session-v1'))
+import bt_usb_build
 import receiver_build as prior
 import board_build
 from firmware_preflight import container,elements
@@ -88,9 +91,9 @@ void qca_boot_status(uint8_t out[160]){
  q.write_text(s)
  q=directory/'diagnostic_gatt.c';s=q.read_text();s=one(s,'#include "pci_collect.h"','#include "pci_collect.h"\nsize_t qca_boot_att(uint16_t,const uint8_t*,size_t,uint8_t*,size_t);');s=one(s,'if(s){size_t asset=qca_ram_att','if(s){size_t boot=qca_boot_att(s->mtu,p,n,r,capacity);if(boot!=SIZE_MAX)return boot;}\n if(s){size_t asset=qca_ram_att');q.write_text(s)
 def compile_driver(directory,crypto):
- sources(directory);(directory/'ble_recovery_link.c').write_text(prior.ble.link_source())
+ sources(directory);bt_usb_build.sources(directory);(directory/'ble_recovery_link.c').write_text(prior.ble.link_source())
  names=('init_probe.c','init_adapter.c','warm_core.c','channels_core.c','boot_irq_mapped.c','full_read.c','config_read.c','config_setup.c','bmi_transport.c','diag_ce.c','reset_core.c','power_core.c','uefi_port.c','wake_core.c','rom_ready.c','ce_ring.c','ce_hw.c','ce_uefi.c','ce_bus.c','dma_buffer.c','pcie_link.c','boot_irq.c','firmware_port.c','firmware_channel.c','firmware_gatt.c','firmware_chunks.c','bmi_loader.c','board_query.c','board_smbios.c','boot_image.c','boot_transport.c','boot_native.c','boot_gatt.c')
- payload=actors.compile_efi(directory,'boot-receiver-driver',[directory/'driver.c',directory/'city_core.c',directory/'pci_collect.c',directory/'pci_identity.c',*[directory/n for n in names],actors.LINK/'usb_port.c',directory/'ble_recovery_link.c',directory/'diagnostic_gatt.c',actors.LINK/'file_core.c',actors.NATIVE/'sha256.c',*crypto],driver=True,definitions=('SCENE_REVISION=1','QCA_CONFIG_SETUP=1','QCA_FC_BASE=13'))
+ payload=actors.compile_efi(directory,'boot-receiver-driver',[directory/'driver.c',directory/'city_core.c',directory/'pci_collect.c',directory/'pci_identity.c',*[directory/n for n in names],directory/'usb_port.c',directory/'bt_event_stream.c',directory/'ble_recovery_link.c',directory/'diagnostic_gatt.c',actors.LINK/'file_core.c',actors.NATIVE/'sha256.c',*crypto],driver=True,definitions=('SCENE_REVISION=1','QCA_CONFIG_SETUP=1','QCA_FC_BASE=13'))
  off=struct.unpack_from('<I',payload,60)[0]
  if struct.unpack_from('<I',payload,off+80)[0]>4*1024*1024:raise ValueError('mapped boot receiver exceeds installed root bound')
  return payload
