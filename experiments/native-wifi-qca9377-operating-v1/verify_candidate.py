@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Repeated full EFI and real supervisor/QEMU/city/GATT, not physical admission."""
-import json,hashlib
+import json,hashlib,shutil,time
 from pathlib import Path
 import operating_build as build
 import verify_boot_profile,verify_init_profile
@@ -22,16 +22,19 @@ def fixture(source):
  return build.one(s,marker,extra)
 def main():
  out=ROOT/'runs/operating-profile';out.mkdir(parents=True,exist_ok=True)
- paths=[p for d in (ROOT,build.BASE,build.SESSION) for p in d.iterdir() if p.is_file() and p.suffix in ('.c','.h','.py','.json')]
+ paths=[p for d in (build.BASE,build.SESSION) for p in d.iterdir() if p.is_file() and p.suffix in ('.c','.h','.py','.json')]+[p for p in ROOT.iterdir() if p.is_file()]
  inputs={str(p.relative_to(ROOT.parent.parent)):sha(p.read_bytes()) for p in paths}
  _,_,crypto=build.prior.actors.engine.prepare(out,bytes.fromhex('29acbae141bccaf0b22e1a94d34d0bc7361e526d0bfe12c89794bc9322966dd7'))
  payload=build.compile_driver(out,crypto);assert payload==build.compile_driver(out,crypto)
  (out/'candidate.efi').write_bytes(payload)
+ for name in ('actors-qemu','actors-empty-boot-qemu'):
+  old=out/name
+  if old.exists():shutil.move(str(old),str(out/(name+'.previous-'+str(time.time_ns()))))
  gates=[verify_init_profile.prior.actors_gate.qemu_gate(out,payload,test_transform=fixture),verify_init_profile.prior.actors_gate.qemu_gate(out,payload,True,test_transform=fixture)]
  assert inputs=={n:sha((ROOT.parent.parent/n).read_bytes()) for n in inputs}
  host=ROOT/'runs/operating-host/report.json';h=json.loads(host.read_text())
  assert h['status']=='NATIVE-OPERATING-CE-HANDSHAKE-SERVICE-READY-ASAN-COFF-PASS' and h['scenarios']==17
  for n,v in h['source_sha256'].items():assert inputs[n]==v
- report={'status':'OPERATING-CANDIDATE-TWO-REBUILDS-UEFI-QEMU-PASS','build_host':'yukabox','payload_sha256':sha(payload),'payload_bytes':len(payload),'source_sha256':inputs,'operating_host_report_sha256':sha(host.read_bytes()),'gates':gates,'physical_signing_admitted':False,'physical_verified':False,'current_world_reproduction_checked':False,'scan':False,'wifi_connected':False}
+ report={'status':'OPERATING-CANDIDATE-TWO-REBUILDS-UEFI-QEMU-PASS','build_host':'yukabox','payload_sha256':sha(payload),'payload_bytes':len(payload),'source_sha256':inputs,'operating_report_sha256':sha(host.read_bytes()),'initial_report_sha256':sha((ROOT/'runs/initial-host/report.json').read_bytes()),'receiver_policy':build.policy(),'receiver_policy_sha256':sha((ROOT/'receiver-policy.json').read_bytes()),'gates':gates,'physical_signing_admitted':False,'physical_verified':False,'current_world_reproduction_checked':False,'scan':False,'wifi_connected':False}
  (out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(report['status'],len(payload),sha(payload))
 if __name__=='__main__':main()

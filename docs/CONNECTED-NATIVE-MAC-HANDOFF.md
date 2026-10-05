@@ -3438,3 +3438,40 @@ separately signed generation43 RAM assets (42 packets MUST NOT replay under43),
 read QWOP+QWBT and verify physical all-owner cleanup. Asset staging must repeat
 because cross-module RAM ownership has not been implemented. All credentials/
 owner key stay on Mac, never output/export. No bootstrap/USB/reboot/OTP action.
+
+
+### 2026-10-05: native43 strict admission complete; exact signed transfer active
+
+Operating admission is now `operating-v1/operating_route.py`: original native42
+port/reset/IRQ/allocation/USB/asset/boot checks remain mandatory through unchanged
+native_route.gates on the retained baseline, plus exact operating policy, source
+closure,17 operational and65 NEW actual derived initial-entrypoint scenarios,
+current-world sanitizers and both read-only-GATT/fullscreen/city QEMU gates.
+321 corruption/rebinding/log/payload negative cases reject, no secret or radio.
+Original native_route.py/boot_build.py and all389 baseline inputs stay unchanged.
+The new reproduction binds411 current inputs. Same147456-byte native payload SHA
+72a758d543f4cf53244295fbcf525e52367fd3b97fee037870d69e365229537b.
+Evidence: operating-v1/evidence/2026-10-05/native43-admission. During gate work,
+source-snapshot mismatch and README closure inconsistency correctly blocked the
+candidate; corrected and repeated all65+17 tests/builds/QEMU/reproduction.
+
+Fresh native42 QWBT before signing confirms READY, all3114 commands complete,
+no errors,stage5/adapter12/cleanup14/DMA0/pin0. Local owner signing occurred only
+after all admission/owner/target/next-counter/fresh-release checks. Exact pending
+native session `pci-native-39db645t`, counter43; native_pending is set. Actual
+Bluetooth staging began (known peer), confirmed4100/147744 at this checkpoint;
+NOT APPLIED yet. Read newest logs/state before resuming. Preserve exact packet,
+nonce,counter and411 frozen source inputs; do not edit them while pending.
+Bounded controller operating-v1/runs/control/resume_native43.py, at most6 calls,
+stops after two no-progress calls. It uses the same route query-before-send and
+all admission checks every time. Finite idle-sleep guard follows controller12113.
+No bootstrap/USB/reboot/OTP action. City observation remains separate/pending.
+
+After exact43 APPLIED, read fresh QPD18 first-lifetime completion before staging
+assets. operating_route.py asset-prepare/asset-deliver reuse unchanged finite
+boot_asset_route/signing/sender machinery with stricter operating installed
+payload/policy/owner/target/counter/APPLIED binding. A new signed43 asset session
+is necessary (42 packets MUST NOT replay). Prepare only once, retain checkpoints.
+After final asset triggers firmware+control trial, read QWOP+QWBT and verify all
+actual owners released before any replacement. Persistent radio/WMI INIT/scan/
+protected credentials/association/DHCP/WAN are still unimplemented.
