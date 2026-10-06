@@ -4228,3 +4228,19 @@ timeout requires teardown before retry. These host results are not physical.
 Independent next necessary task delegated to persistent_radio in NEW
 persistent-rx-v1: real bounded CE1/CE2 RX completion/credit/dispatch servicing
 after READY, with actual guarded owners. No hardware/state/secrets delegated.
+
+### 2026-10-07: bounded persistent native RX reviewed; station dispatch next
+
+Native52 firmware transfer still advancing under controller41277 (8/12
+confirmed, ninth prefix21600 at heartbeat). No completed INIT result yet.
+Reviewed persistent-rx-v1:41 actual-entrypoint model ASAN/COFF scenarios,
+exact source/log hash bindings; derives native52 and reviewed owner bridge.
+Adopts real posted CE1/2 descriptors, bounded completion/cookie/address/length
+guards, fresh retained owners, trailer-only once-per-completion credits,
+two owned raw-event slots/backpressure and all-owner release before clear.
+No station/event registry or physical payload admission. Host proof only.
+Next independent station-dispatch-v1 delegated to scan_pipeline: RX pump owns
+credit accounting; dispatch owned payload without calling old full-HTC receive
+which would apply credits twice. Monotonic event IDs may skip credit-only RX.
+Must retain unmatched events, real scan/request/vdev identity, no invented
+VDEV_CREATE firmware ACK. No hardware or frozen source edits delegated.
