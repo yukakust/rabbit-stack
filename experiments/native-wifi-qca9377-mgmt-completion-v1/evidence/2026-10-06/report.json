@@ -1,0 +1,25 @@
+{
+  "status": "WMI-MGMT-COMPLETION-BOUNDS-OWNER-PLAN-ASAN-COFF-PASS",
+  "build_host": "yukabox",
+  "checks": 33502,
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-mgmt-completion-v1/completion.c": "495c6c3a2526df3fe42e343a09624b80a4d53d96222c67f1394f71de2bf06fb5",
+    "experiments/native-wifi-qca9377-mgmt-completion-v1/completion.h": "ce01d495b03801f692403d448e5510b2cbc38a9fac5bdeb11722a78d9447b58e",
+    "experiments/native-wifi-qca9377-mgmt-completion-v1/completion_test.c": "7247690df903ef750f89bf9c32c5ece4ea7e4275bfd1d031aab6a889fc9ba99d",
+    "experiments/native-wifi-qca9377-mgmt-completion-v1/verify_completion.py": "59b20515823bdfa1e8a82e7750d86e50092295fc4876b85a086cbeb0ea307911",
+    "experiments/native-wifi-qca9377-session-v1/verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "reference_sha256": {
+    "wmi-tlv.c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "wmi-tlv.h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9"
+  },
+  "derived_oracle_sha256": "731720000ca7206224493ebc048644ff94220b0e6087ded18d14494e49846f9d",
+  "host_log_sha256": "6552fa56f8cc290393de631d23c9798874f398780afd0d97c35ca0d536304869",
+  "native_integrated": false,
+  "physical_verified": false,
+  "dma_release_implemented": false,
+  "descriptor_generation_verified": false,
+  "station_profile_admitted": false,
+  "wifi_connected": false
+}

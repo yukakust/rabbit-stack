@@ -3898,3 +3898,23 @@ unchanged. Physical firmware-ram-xa_97zti first chunk is accepted (bitmap1),
 second underway; continue47/resume_asset47 and sleep guard active. Do not
 duplicate controller or read final operating result before actual completion.
 No router association/IP/WAN/Unreal display yet.
+
+### 2026-10-06: management completion decoding/ID plan checked; firmware3/12
+
+Independent native-wifi-qca9377-mgmt-completion-v1 prepares single/bundle
+WMI completion wire handling required by Linux host_capab bit9. Actual pinned
+Linux enums/struct and callback array semantics; strict2048-byte/32-report
+local envelope, matching count/array lengths, unique IDs, ACK RSSI only when
+validated policy enables it. Full batch matched against outstanding IDs before
+a mask is returned; unknown/duplicate ID rejects with no partial mutation.
+No mask is a DMA release: generation, actual DMA completion, retained owners
+and dispatcher integration remain required. No credit refund or radio command.
+33502 ASAN/UBSAN and freestanding COFF checks pass on Yukabox; exact source/
+reference/oracle hashes in evidence/2026-10-06. HOST ONLY: physical wire
+compatibility, native dispatcher and station admission are still unverified.
+
+Firmware trial firmware-ram-xa_97zti now has three exact chunks accepted
+(bitmap7); fourth underway. Existing continue47/resume_asset47 and sleep
+guard alive,491 frozen native47 inputs unchanged. Do not start duplicate radio
+work, replay sessions, reboot or alter the pending candidate. No final47
+SERVICE_READY/memory result, WMI INIT, association, IP or WAN success yet.
