@@ -1,0 +1,8 @@
+{
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "path": "drivers/net/wireless/ath/ath10k/wmi-tlv.c",
+  "sha256": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+  "function": "ath10k_wmi_tlv_op_pull_rdy_ev",
+  "observed": "abi_ver1 copied into arg->abi_version; no minor equality gate",
+  "physical_ready_observed": false
+}

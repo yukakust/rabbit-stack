@@ -33,13 +33,30 @@ int main(void){
   if(!early)assert(qca_wmi_init_complete(&s,s.frame_bytes)&&s.phase==QCA_INIT_WAIT_READY);
   memcpy(mut,p,n);mut[48]=1;reject_rx(&s,mut,n,1); /* Firmware READY reports failure. */
   memcpy(mut,p,n);mut[0]=2;reject_rx(&s,mut,n,1);
-  memcpy(mut,p,n);mut[20]=54;reject_rx(&s,mut,n,1);
+  memcpy(mut,p,n);mut[24]^=1;reject_rx(&s,mut,n,1); /* Foreign ABI namespace. */
   reject_rx(&s,p,n,0);reject_rx(&s,p,n,2);
   assert(qca_wmi_init_receive(&s,p,n,1)&&s.ready_seen&&s.ready.mac[0]==2&&s.ready.mac[5]==1&&c.available==1+returned&&c.outstanding==1-returned);checks++;
   if(early){assert(s.phase==QCA_INIT_POSTED);reject_rx(&s,p,n,1);reject_rx(&s,p,n,2);assert(qca_wmi_init_complete(&s,s.frame_bytes));checks++;}
   assert(s.phase==QCA_INIT_RUNNING&&!qca_wmi_init_complete(&s,s.frame_bytes));checks++;reject_rx(&s,p,n,2);
  }
  info.memory_count=0;
+ /* Minor is reported firmware metadata, not an equality gate against INIT 53.
+    Physical SERVICE_READY reported 574; READY itself is still unobserved. */
+ const uint32_t minors[]={0,53,54,574,65535,UINT32_MAX};
+ for(unsigned m=0;m<sizeof(minors)/sizeof(minors[0]);m++)for(unsigned early=0;early<2;early++){
+  QcaHtcSession h=session();QcaHtcCredit c={0};QcaWmiInitTransaction s={0};
+  assert(qca_htc_credit_begin(&c,&h.ready,&h.wmi));
+  assert(qca_wmi_init_begin(&s,&c,&h,&info,&resources,words,0,0));
+  assert(qca_wmi_init_post(&s));unsigned n=ready(p,0);put(p+20,minors[m]);
+  if(!early)assert(qca_wmi_init_complete(&s,s.frame_bytes));
+  for(unsigned off=16;off<=36;off+=4){
+   if(off==20)continue;
+   memcpy(mut,p,n);mut[off]^=1;reject_rx(&s,mut,n,1);
+  }
+  assert(qca_wmi_init_receive(&s,p,n,1)&&s.ready.abi_minor==minors[m]);checks++;
+  if(early){assert(s.phase==QCA_INIT_POSTED);assert(qca_wmi_init_complete(&s,s.frame_bytes));}
+  assert(s.phase==QCA_INIT_RUNNING&&c.outstanding==1&&c.available==1);checks++;
+ }
  for(unsigned mode=0;mode<11;mode++){
   QcaHtcSession h=session();QcaHtcCredit c={0};QcaWmiInitTransaction s={0};assert(qca_htc_credit_begin(&c,&h.ready,&h.wmi));
   if(mode==0){c.size=h.ready.credit_size=64;} /* Insufficient credits. */

@@ -3857,3 +3857,22 @@ checks major/namespaces, not minor equality. Existing pure wmi-transaction-v1
 uses a narrow READY minor53 profile and is not yet native-integrated. Review that
 profile against real/pinned READY semantics before integration; do not blindly
 require advertised574 or assume no host buffers for later HTT data reception.
+
+### 2026-10-06: native47 applied; new firmware trial in progress
+
+Exact correlated APPLIED receipt confirms native47, payload76e5db52405f86e60a7d6d95791289f4e73b09213f8e5302d58d131a31b3f910,
+148768 signed transport bytes. State native_pending cleared. Bounded continuation
+read initial PCI after five probe-active retries and admitted NEW47 firmware
+asset session firmware-ram-xa_97zti. Delivery of first of12 chunks is active;
+no final SERVICE_READY/memory result yet. Do not duplicate sender, replay46,
+re-sign, reboot, or edit491 frozen native47 inputs. Existing continuation/
+resume_asset47 processes and finite caffeinate guard remain the owners.
+
+Independent host-only wmi-transaction-v1 revision removes READY minor==53
+equality: pinned Linux READY parser reports the minor as metadata; our strict
+major/namespaces/status/MAC/credit/order checks remain. Synthetic minors
+0/53/54/574/65535/UINT32_MAX with both DMA/READY orders and independent
+major/namespace corruptions pass1029 ASAN/UBSAN and freestanding COFF checks
+on Yukabox. Evidence wmi-transaction-v1/evidence/2026-10-06. Not integrated
+in native47, and actual WMI READY is still unobserved. Firmware transfer
+continues; no scan, association, IP, WAN or Unreal display is claimed.

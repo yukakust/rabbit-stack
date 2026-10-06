@@ -41,7 +41,7 @@ int qca_wmi_init_receive(QcaWmiInitTransaction*s,const uint8_t*p,unsigned n,uint
  QcaHtcFrame f;QcaHtcCredit credit=*s->credit;QcaWmiReadyInfo ready={0};
  if(!qca_htc_decode(p,n,&f)||(f.endpoint&&f.endpoint!=credit.endpoint))return 0;
  if(f.payload_bytes){
-  if(f.endpoint!=credit.endpoint||s->ready_seen||!qca_wmi_ready_info(f.payload,f.payload_bytes,&ready)||ready.abi_minor!=53)return 0;
+  if(f.endpoint!=credit.endpoint||s->ready_seen||!qca_wmi_ready_info(f.payload,f.payload_bytes,&ready))return 0;
  }else{
   unsigned reports=0;for(unsigned j=0;j<QCA_HTC_ENDPOINTS;j++)reports+=f.credits[j];if(!reports)return 0;
  }

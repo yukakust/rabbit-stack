@@ -1,0 +1,32 @@
+{
+  "status": "WMI-INIT-TRANSACTION-ORDER-CREDIT-ASAN-COFF-PASS",
+  "build_host": "yukabox",
+  "checks": 1029,
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-wmi-transaction-v1/init_transaction.c": "c28630c4911e72ce1cdb020aec6bce5c0e7bdf07df71e1790492bb56aee5034f",
+    "experiments/native-wifi-qca9377-wmi-init-v1/init_wire.c": "a7d9ca050fb5b1f5c3c41b9089b61707884fe805cdbfb3e21795a2bffe85e4ce",
+    "experiments/native-wifi-qca9377-memory-v1/memory_plan.c": "66c3b0e60749a323995792249a1d4bac7c2f1db4f9abce0bf12e72f85da7a5b6",
+    "experiments/native-wifi-qca9377-session-v1/htc_wire.c": "fa0d04a8de15f9485d04b465ead247d3b3c9e60f29c394063ef5cc4cfbf30e14",
+    "experiments/native-wifi-qca9377-session-v1/htc_credit.c": "53e5cc0482490daeccc05fc1b7b21069f47e16ffdfc05a3586bab722cd28bf2a",
+    "experiments/native-wifi-qca9377-session-v1/wmi_boot_info.c": "d988cd80f06b27a35d930e907bd488cb70af04485effeb628b4f3f488a8294ac",
+    "experiments/native-wifi-qca9377-session-v1/wmi_scan.c": "2d8708b3dfcf5122fce82e6ae6724876e9b265a32587fa6ed31831e88be15a0b",
+    "experiments/native-wifi-qca9377-wmi-transaction-v1/init_transaction.h": "2451a08b52389151fa407aa0c2967e4ea71fe1b68587af0559fe4e0335b3df61",
+    "experiments/native-wifi-qca9377-wmi-transaction-v1/init_transaction_test.c": "fc65fff5b3be9ceff172d9c69385d70157dd7e6358fac20686d353dabdba5cc2",
+    "experiments/native-wifi-qca9377-wmi-transaction-v1/verify_transaction.py": "6e1fd9fc1c5074c8d6f4c7ed822fb4304890a4716e2ab5064f27b89415a304fb",
+    "experiments/native-wifi-qca9377-wmi-init-v1/init_wire.h": "7b82710cbaef39c5c26b3eefbc2a2aa8a1c4331846abda213eedeb2f5bd61494",
+    "experiments/native-wifi-qca9377-memory-v1/memory_plan.h": "406808119e037f45797baad98d03ea5e7fae160488b8c5c022c6398b4c54c2a4",
+    "experiments/native-wifi-qca9377-session-v1/htc_wire.h": "45af53b8d52ae30b77b05fc42daa1bcb8b6e2ddb4955a9d015b5fa6534f6ada4",
+    "experiments/native-wifi-qca9377-session-v1/htc_credit.h": "330c272ea2cd73bb684a72997d1eba82af30a84dc8f2ec409a6fcd5a5ed6b9a7",
+    "experiments/native-wifi-qca9377-session-v1/htc_session.h": "d96693e30cf70574d01a6a5629f9013ea09995b87eb1449d805d8a44528b3754",
+    "experiments/native-wifi-qca9377-session-v1/wmi_boot_info.h": "59c71b834bd43bfe5626bfef6062a88476c43762be2b10b8cf4861c67255f262",
+    "experiments/native-wifi-qca9377-session-v1/wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3",
+    "experiments/native-wifi-qca9377-session-v1/verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "derived_scan_sha256": "eda085596e6eba21e34dd07d8ea6b845352b2b0c8095933de6b54fd4a455a213",
+  "host_log_sha256": "f96082e2cb6d19cdd9221d01160bfe1cf2e5236ea023da9898841e1a313787cb",
+  "native_integrated": false,
+  "mapping_ownership_verified": false,
+  "resource_vector_approved": false,
+  "physical_verified": false,
+  "wifi_connected": false
+}
