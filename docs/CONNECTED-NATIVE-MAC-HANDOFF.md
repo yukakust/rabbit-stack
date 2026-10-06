@@ -4136,3 +4136,19 @@ READY/router/IP claim. Preserve and resume this exact session; do not resign or
 replay49 assets. Device reboot retires RAM staging only through existing proof
 path. Three agents work in NEW separate scopes on persistent native integration,
 STOP_SCAN and mature supplicant port; no device owner or secrets delegated.
+
+### 2026-10-06: native50 physical trial completed; new RX parser failure
+
+All12 exact firmware chunks accepted, bitmap4095. Main firmware boot3114/3114
+completed, HTC READY20, SERVICE_READY320 build21/minor574/zero host-memory
+requests parsed successfully. After CE3 INIT publication228, one RX credit
+completion accepted (available2/outstanding0), then actual CE2 completion68
+bytes/cookie1538/index3 was rejected by transaction parser: startup phase3
+error8, diagnostic step4. No validated WMI READY/MAC or TX completion recorded.
+This is different from49's RX0 deadline. Correct routing is not sufficient
+proof of full INIT acceptance; rejected raw frame content is not exposed by
+current96-byte GATT telemetry. Next diagnostic must expose exact RX prefix
+and bounded reject reason; do not guess packet type or relax validators.
+All14 actual owners/pin released, hardware_trial_pending cleared; controller
+17105 completed, no ongoing transfer. Exact observations/asset evidence at
+wmi-native-v3/evidence/2026-10-06/native50-control-result. Router/IP/WAN absent.
