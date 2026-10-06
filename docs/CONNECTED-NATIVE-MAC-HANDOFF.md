@@ -4244,3 +4244,19 @@ credit accounting; dispatch owned payload without calling old full-HTC receive
 which would apply credits twice. Monotonic event IDs may skip credit-only RX.
 Must retain unmatched events, real scan/request/vdev identity, no invented
 VDEV_CREATE firmware ACK. No hardware or frozen source edits delegated.
+
+### 2026-10-07: native52 loading; owned station dispatch reviewed
+
+All12 firmware52 chunks accepted, chip main image advancing offset159960
+at heartbeat; controller41277 live, all14 owners/pin intentionally retained
+until trial result. No WMI INIT result or station connection yet.
+Reviewed station-dispatch-v1,50478 ASAN/COFF checks on Yukabox, source/log
+bindings verified. Owns copied pump payloads, accepts monotonic completion gaps,
+updates only validated scan state; ledger never reapplied. Exact pending
+scan/request/VDEV0 and ordering, unknown/foreign/unsupported TLV retained with
+explicit ownership/backpressure; no invented CREATE firmware ACK. Host only.
+Independent next work in new scopes: persistent-profile-v1 prepares bounded
+10s actual persistent/RX trial with read-only telemetry, counter53 provisional
+and full EFI/QEMU/world17 proof; owned-scan-stop-v1 joins stop to owned events
+without raw receive or double credit. Neither has physical admission yet;
+native52 must complete/actual INIT/owner-release before any new hardware trial.
