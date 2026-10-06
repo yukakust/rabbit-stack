@@ -1,0 +1,62 @@
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O2", "-ffunction-sections", "-fdata-sections", "-DCONFIG_NO_STDOUT_DEBUG", "-DCONFIG_NO_WPA_MSG", "-DCONFIG_NO_TKIP", "-isystem", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src", "-isystem", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src/utils", "-c", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src/rsn_supp/wpa.c", "-o", "/home/yuka/rabbit-world/parallel-supplicant-v1/runs/verified/wpa.o"]
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-supplicant-v1/runs/verified/wpa.o"]
+                 U aes_unwrap
+                 U bcmp
+                 U bin_clear_free
+                 U eloop_cancel_timeout
+                 U eloop_register_timeout
+                 U forced_memzero
+                 U free
+                 U ieee802_11_rsnx_capab
+                 U inc_byte_array
+                 U malloc
+                 U memcpy
+                 U memset
+                 U os_memcmp_const
+                 U os_memdup
+                 U os_zalloc
+                 U pmksa_cache_add
+                 U pmksa_cache_add_entry
+                 U pmksa_cache_clear_current
+                 U pmksa_cache_deinit
+                 U pmksa_cache_flush
+                 U pmksa_cache_get
+                 U pmksa_cache_head
+                 U pmksa_cache_init
+                 U pmksa_cache_list
+                 U pmksa_cache_reconfig
+                 U pmksa_cache_remove
+                 U random_get_bytes
+                 U rc4_skip
+                 U snprintf
+                 U wpa_cipher_key_len
+                 U wpa_cipher_rsc_len
+                 U wpa_cipher_to_alg
+                 U wpa_cipher_txt
+                 U wpa_cipher_valid_mgmt_group
+                 U wpa_cipher_valid_pairwise
+                 U wpa_compare_rsn_ie
+                 U wpa_eapol_key_mic
+                 U wpa_gen_rsnxe
+                 U wpa_gen_wpa_ie
+                 U wpa_key_mgmt_txt
+                 U wpa_mic_len
+                 U wpa_parse_kde_ies
+                 U wpa_parse_wpa_ie
+                 U wpa_parse_wpa_ie_rsn
+                 U wpa_pmk_to_ptk
+                 U wpa_use_aes_key_wrap
+                 U wpa_use_akm_defined
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O2", "-ffunction-sections", "-fdata-sections", "-DCONFIG_NO_STDOUT_DEBUG", "-DCONFIG_NO_WPA_MSG", "-DCONFIG_NO_TKIP", "-isystem", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src", "-isystem", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src/utils", "-g", "-fsanitize=address,undefined", "-c", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src/common/wpa_common.c", "-o", "/home/yuka/rabbit-world/parallel-supplicant-v1/runs/verified/wpa_common.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O2", "-ffunction-sections", "-fdata-sections", "-DCONFIG_NO_STDOUT_DEBUG", "-DCONFIG_NO_WPA_MSG", "-DCONFIG_NO_TKIP", "-isystem", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src", "-isystem", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src/utils", "-g", "-fsanitize=address,undefined", "-I", "/home/yuka/rabbit-world/parallel-supplicant-v1/runs/verified", "/home/yuka/rabbit-world/parallel-supplicant-v1/source/ptk_boundary_test.c", "/home/yuka/rabbit-world/parallel-supplicant-v1/runs/verified/wpa_common.o", "-Wl,--gc-sections", "-o", "/home/yuka/rabbit-world/parallel-supplicant-v1/runs/verified/ptk-test"]
+
+
+["/home/yuka/rabbit-world/parallel-supplicant-v1/runs/verified/ptk-test"]
+PASS 1038 actual-upstream PTK install boundary cases
+

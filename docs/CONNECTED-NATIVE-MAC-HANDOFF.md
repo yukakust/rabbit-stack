@@ -4208,3 +4208,23 @@ NEW firmware52 generation/session and all-owner INIT observation. Preserve
 saved bytes, no resign/replay51. Trial just started, not APPLIED/connected.
 Heartbeat wi-fi-dell every30min remains active; use actual latest state, not
 old automation creation snapshot of51 or its retired controller.
+
+### 2026-10-07: native52 applied; parallel offline integration reviewed
+
+Exact native52 applied; sole controller41277 continues NEW saved firmware
+session firmware-ram-r7mvy8zb. At heartbeat2 full chunks confirmed, third
+confirmed prefix57600/65760 before resume. Preserve exact session; controller
+is live, no second Bluetooth owner. WMI INIT result not yet available.
+
+Reviewed and source/evidence hash-verified offline outputs now preserved:
+persistent-native-v1 (27 actual-entrypoint model ASAN/COFF cases): real14-map
+retention after validated READY, explicit stop/release and fault revocation;
+no RX pump yet. scan-stop-v1 (280685 ASAN/COFF checks): pinned Linux STOP_ONE,
+actual terminal event plus published-TX completion, no DMA credit refund.
+supplicant-port-v1 (1038 ASAN boundary cases): unedited mature RSN object,47
+unresolved dependencies, upstream PTK no-reinstall boundary; NOT linked/native
+or full handshake. set_key must wait genuine firmware completion, uncertain
+timeout requires teardown before retry. These host results are not physical.
+Independent next necessary task delegated to persistent_radio in NEW
+persistent-rx-v1: real bounded CE1/CE2 RX completion/credit/dispatch servicing
+after READY, with actual guarded owners. No hardware/state/secrets delegated.
