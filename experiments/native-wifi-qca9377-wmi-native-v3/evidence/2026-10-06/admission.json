@@ -1,0 +1,8 @@
+{
+  "checks": 24,
+  "passed": true,
+  "secret_loads": 0,
+  "radio_writes": 0,
+  "physical_verified": false,
+  "wifi_connected": false
+}

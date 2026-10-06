@@ -4111,3 +4111,14 @@ unchanged. Join order: physical INIT/READY -> persistent radio -> scan/beacons
 and regulatory policy -> association + real HTT + supplicant/key installation
 -> IP -> actual Yukabox exchange -> video/Unreal. Host subparts can proceed in
 parallel, but no router/IP/Unreal success is inferred from their tests.
+
+Native50 CE3 candidate host proof completed: 65 initial scenarios,22 actual
+startup/CE/ownership scenarios plus rejected old CE0 regression, two identical
+EFI rebuilds, full and empty-boot supervisor QEMU, current world17 C/ASAN check
+and unchanged535-source reproduction. Payload156672 SHA256
+c56f1d738253c4505a5d5485c352fa6d697c5ff5c6218f981b399ee463546d46.
+Local checked-candidate passes24 admission/corruption cases, no key/radio.
+Candidate is UNSIGNED and NOT delivered. Next physical50 admission needs fresh
+known-peer combined native49 boot/operating/startup owner-release observations,
+exact current counter/world/gates and one sequential controller. Do not replay
+firmware49, assume READY or combine this diagnostic with unintegrated scan.
