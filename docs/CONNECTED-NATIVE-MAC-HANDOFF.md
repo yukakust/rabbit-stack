@@ -4152,3 +4152,23 @@ and bounded reject reason; do not guess packet type or relax validators.
 All14 actual owners/pin released, hardware_trial_pending cleared; controller
 17105 completed, no ongoing transfer. Exact observations/asset evidence at
 wmi-native-v3/evidence/2026-10-06/native50-control-result. Router/IP/WAN absent.
+
+### 2026-10-07: native51 precise INIT reject capture implemented and trial started
+
+Isolated wmi-native-v4 preserves native50 sources. Same INIT acceptance and
+all-owner teardown, extended read-only QWIN0002/244: old96 fields retained,
+then reject stage/frame bytes/prefix bytes/endpoint/payload bytes at96..115,
+128-byte exact zero-padded RX prefix at116. Captured before parser: the physical
+68-byte rejection will fit completely. Reasons1 coordinator/preconditions,
+2 HTC framing,3 endpoint,4 READY/schema/ABI/status/MAC,5 credit accounting.
+Does not claim diagnosis of unseen physical bytes or relax validators.
+65 initial +22 startup scenarios ASAN/COFF (including exact exported bytes and
+reject-stage checks), oldCE0 regression, two EFI rebuilds, both QEMU gates,
+currentworld17 C/ASAN,535-source reproduction and24 admission cases passed.
+Payload156672 SHA fd073f22156ad9921ca628d02b4384f370869ebf0cb04959b10ad8df70112fa7.
+Fresh native50 boot/op/startup tuple and actual all14 owner release admitted
+local signing once. Saved pci-native-o59ttl2m. Sole controller32341 and finite
+caffeinate32342, wmi-native-v4/runs/control/continue51.py/continue51.log, execute
+exact native delivery -> fresh initial -> NEW firmware51 session -> boot/INIT
+observation. Preserve this exact session, never replay old50 firmware.
+At this record trial just started, not APPLIED or Wi-Fi connected.

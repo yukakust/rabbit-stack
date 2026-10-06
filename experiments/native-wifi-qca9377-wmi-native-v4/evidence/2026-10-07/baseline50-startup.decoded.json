@@ -1,0 +1,27 @@
+{
+  "phase": 3,
+  "error": 8,
+  "transaction_phase": 6,
+  "tx_posted": 228,
+  "tx_count": 1,
+  "rx_count": 1,
+  "ready_seen": 0,
+  "tx_complete": 0,
+  "abi_minor": 0,
+  "credit_available": 2,
+  "credit_outstanding": 0,
+  "memory_count": 0,
+  "mac_hex": "000000000000",
+  "receive": {
+    "pipe": 2,
+    "step": 4,
+    "hardware_index": 3,
+    "read_index": 2,
+    "write_index": 3,
+    "published_index": 3,
+    "cookie": 1538,
+    "bytes": 68
+  },
+  "wifi_connected": false,
+  "device_attestation": false
+}
