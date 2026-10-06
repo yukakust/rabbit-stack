@@ -2420,3 +2420,48 @@ cleanup14/DMA0/pin0). All469 inputs preserved; no new47 code/signature yet.
 Evidence: service-start-v1/evidence/2026-10-06/native46-control-result.
 Next actual-layout review/strict bounded decoder compatibility and tests, then
 new candidate. No association/IP/WAN or Unreal display claimed.
+
+
+### 2026-10-06: native47 SERVICE_READY common-prefix/memory validation admitted
+
+Pinned wmi-tlv.h/.c svc_rdy struct104 and parser use common prefix; firmware
+reports TLV value128 with same prefix and opaque24 extra bytes. Independent
+service-layout-v1 derives wmi_boot_info.c without changing any46 inputs: accepts
+only104/128, exact ABI major/namespaces, reported minor (actual574), known chain/
+request limits and full memory array/declaration consistency. Hardware capability
+limits2300..2800 and4900..6500 cover actual2312..2732/4920..6100; metadata parsing
+is not regulatory/channel permission, and no RF scan/TX operation introduced.
+Actual46 prefix declares num_mem_reqs0 at pinned offset72. Final array must still
+be validated physically; zero metadata in failed46 was NOT proof of no requests.
+Full320-byte host fixture uses observed256 prefix plus explicit synthetic bitmap
+suffix/empty memory array; it is host-only, not a new physical capture.
+
+22244 pinned-struct/common-prefix/extension/ABI/band/memory/truncation ASAN/UBSAN
+and COFF checks pass on Yukabox;41 actual native CE scenarios include extended
+packet, mismatched declaration/unknown size/band/chain/ABI rejection.65 initial
+scenarios and prior5186 CONNECT/7198 available proofs retained. Two identicalEFI
+builds148480 bytes SHA76e5db52405f86e60a7d6d95791289f4e73b09213f8e5302d58d131a31b3f910;
+both supervisor QEMU city/fullscreen/restore/rejection/long-read-GATT cases pass.
+Current-world C/reproduction491 inputs pass;367 admission corruption/owner-release
+cases reject with zero key loads/radio writes. Layout proof/log/source mandatory.
+Evidence: service-layout-v1/evidence/2026-10-06/native47-admission.
+
+Fresh46 dual QWBT/QWOP and actual all-owner release read. Known immutable46
+baseline record is hash pinned in47 route; entire488-byte packet compared except
+variable descriptor DMA address. Prepared one NEW signed native47 session
+pci-native-_pg_zhuu. resume_native47.py exec7209/native PID92408 started exact
+transfer; still NOT observed APPLIED. continue47.py exec40911 takes exact saved
+session/PID args, waits bounded native completion, requires47 APPLIED/hash/state,
+read-only initial probe retries, strict NEW47 asset signing once, exact bounded
+asset sender and120 boot observations/final QWOP0003 after real owner release.
+Finite caffeinate guard follows continuation; all491 inputs frozen/unchanged.
+Initial Bluetooth RSSI-69..-70, better than prior46 transfer but not a reliability
+proof. No47 firmware assets yet prepared. Do not replay46/re-sign/mutate world,
+reboot Dell/touch USB/bootstrap or print private key. Physical city observation
+not inferred from receipts. No INIT/association/IP/WAN/Unreal display success.
+
+Future INIT review: actual service ABI minor574 is reported; Linux compatibility
+checks major/namespaces, not minor equality. Existing pure wmi-transaction-v1
+uses a narrow READY minor53 profile and is not yet native-integrated. Review that
+profile against real/pinned READY semantics before integration; do not blindly
+require advertised574 or assume no host buffers for later HTT data reception.

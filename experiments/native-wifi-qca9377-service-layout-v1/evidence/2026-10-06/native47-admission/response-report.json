@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL-CONNECT-RESPONSE-PINNED-CORE-ASAN-COFF-PASS",
+  "checks": 5186,
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "reference_sha256": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963",
+  "oracle_sha256": "201487179924fd098c45e160bd04c0061917967419b7bfcf66e8dc756a70fe54",
+  "host_log_sha256": "f2e2103eb4a4a69ccd35c5a3b65a3f1a1e33b9a0f7696cc582ca253c1a3dfba0",
+  "build_host": "yukabox",
+  "physical_verified": false,
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-service-layout-v1/htc_wire.c": "1ea19b85b8cd3e52f8165eb39a69346aca26c60a2fa3a52402bb547634080374",
+    "experiments/native-wifi-qca9377-service-layout-v1/connect_response_test.c": "c82ec96d005f80c7a77df2e9dee646e353d2556448be006bd9c8cd1d55fe8944",
+    "experiments/native-wifi-qca9377-service-layout-v1/verify_response.py": "1ac43ae88f590eb24af3a9b0ae4a6bf8995c80f17b0e55c7b99a25661f337622",
+    "experiments/native-wifi-qca9377-service-layout-v1/operating_build.py": "5c9c05e9dcc9d23347ad6fe30801a15144490686cfcc44451129c670656caf26"
+  }
+}

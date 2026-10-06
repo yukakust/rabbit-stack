@@ -1,0 +1,22 @@
+{
+  "status": "SERVICE-READY-COMMON-PREFIX-MEMORY-ASAN-COFF-PASS",
+  "checks": 22244,
+  "build_host": "yukabox",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-service-layout-v1/wmi_boot_info.c": "dfcc0651889ff45d47377a6e86d18efce54980c0a7267b5841642eee39c180b6",
+    "experiments/native-wifi-qca9377-service-layout-v1/layout_test.c": "831992094d89b6cd1367f3d181cffbe41692ae3ed5ae560790cd902217738fe7",
+    "experiments/native-wifi-qca9377-service-layout-v1/verify_layout.py": "2a6e5615c26cb7ae685616438c96e45f95c4c6e8aba90857f0366066c95a33db",
+    "experiments/native-wifi-qca9377-service-layout-v1/operating_build.py": "5c9c05e9dcc9d23347ad6fe30801a15144490686cfcc44451129c670656caf26",
+    "experiments/native-wifi-qca9377-session-v1/wmi_boot_info.h": "59c71b834bd43bfe5626bfef6062a88476c43762be2b10b8cf4861c67255f262",
+    "experiments/native-wifi-qca9377-session-v1/wmi_scan.c": "2d8708b3dfcf5122fce82e6ae6724876e9b265a32587fa6ed31831e88be15a0b",
+    "experiments/native-wifi-qca9377-session-v1/wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3"
+  },
+  "reference_sha256": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+  "oracle_sha256": "23ce8720faf0b718e1113cccb73f61ea1414c7f1ec568988531f2b4d245301f7",
+  "host_log_sha256": "ab7b4517af3ed5448f71f5be3dbbe67d19d0a5b56882999e73be27c2987f2cb9",
+  "native_integrated": false,
+  "memory_allocated": false,
+  "regulatory_approved": false,
+  "physical_verified": false,
+  "wifi_connected": false
+}
