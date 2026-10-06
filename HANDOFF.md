@@ -2406,3 +2406,17 @@ retained; do not re-sign/replay/change base/world. Async asks owner move Mac abo
 one metre from Dell; response pending. No46 firmware assets yet prepared. Check
 latest receipts/controller status before resume; do not start another radio owner.
 No Dell reboot, USB/bootstrap changes or private-key output.
+
+
+### 2026-10-06: physical46 prelude fixed; actual SERVICE_READY128-value format
+
+Fresh QWOP0003 confirms HTC RUNNING7/TX3/RX4/endpoints1,2, no CE/MMIO faults,
+available.seen1/length128/word0=0x08000000. CE2 rearm succeeded; actual next320-byte
+packet is WMI SERVICE_READY1, first TLV32 value128. Existing decoder requires104
+and rejects it (operating error9), so service_valid0 and memory_count0 are NOT
+proof of absent memory requests. First256 bytes archived, full320 retained on
+Dell. Fresh boot confirms3114/3114/READY20/error0/all owners released (adapter12,
+cleanup14/DMA0/pin0). All469 inputs preserved; no new47 code/signature yet.
+Evidence: service-start-v1/evidence/2026-10-06/native46-control-result.
+Next actual-layout review/strict bounded decoder compatibility and tests, then
+new candidate. No association/IP/WAN or Unreal display claimed.
