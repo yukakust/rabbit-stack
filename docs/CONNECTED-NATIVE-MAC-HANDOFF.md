@@ -4088,3 +4088,26 @@ register guards, transmit/completion on CE3 and independent route-aware target
 fixture (current host fixture incorrectly accepted INIT on0). Do not merely
 change a doorbell number or widen timeouts. Physical corrected-route success
 is not yet established; native49 sources/captures remain unchanged.
+
+### 2026-10-06: user-authorized parallel Wi-Fi development
+
+Three isolated agent outputs reviewed; no physical writes, credentials or owner
+key access. persistent-v1: lifecycle retain/quiesce/actual-stop/release, 1976
+ASAN/UBSAN checks and COFF; review fixed invalid/epoch-mismatched observations
+to terminal RETAINED, prohibiting further work/release/unload. station-scan-v1:
+READY/MAC -> ordered STA-create -> passive scan/event coordinator, 11166 checks
+and COFF against pinned Linux create/scan structs. security-plan-v1: concrete
+mature-supplicant/HTT/key-confirmation/encrypted-provisioning/lwIP integration
+plan and framing-only EAPOL-Key parser, 201477 checks and COFF against actual
+hostap2.11 headers. None is integrated into the physical Dell; framing is not
+a WPA handshake, and scan coordination is not discovery of an actual network.
+
+Root integrates the prerequisite separately in wmi-native-v3 counter50: CE3
+INIT using existing ring3/buffers6,7, actual ownership/register guards, target
+fixture route derived from setup table plus independent pinned Linux pci.c
+route oracle, explicit regression rejection of the old CE0 publication. Keep
+physical trials under one controller and leave all native49 source/evidence
+unchanged. Join order: physical INIT/READY -> persistent radio -> scan/beacons
+and regulatory policy -> association + real HTT + supplicant/key installation
+-> IP -> actual Yukabox exchange -> video/Unreal. Host subparts can proceed in
+parallel, but no router/IP/Unreal success is inferred from their tests.

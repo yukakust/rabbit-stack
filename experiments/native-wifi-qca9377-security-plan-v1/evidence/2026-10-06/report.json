@@ -1,0 +1,20 @@
+{
+  "status": "HOST-FRAMING-ONLY-ASAN-UBSAN-COFF-PASS",
+  "checks": 201477,
+  "compiler": "clang version 20.1.8 (github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin\n",
+  "archive_sha256": "912ea06f74e30a8e36fbb68064d6cdff218d8d591db0fc5d75dee6c81ac7fc0a",
+  "sources": {
+    "eapol_frame.c": "3a5d3fd7494f2d0cc895364efeb529eed8008b08071cc5074f4a6d4ceaec0e66",
+    "eapol_frame.h": "a57cf93e4b5667aaf9327cd3632544343b615ad8652bd17956cf866be0f41775",
+    "eapol_frame_test.c": "8a0b28c54ff968d95cac95071f18df38d1f06f5880d1363bcc11260a99808d8b",
+    "verify.py": "651655bc0f0f67cf150d002f8b88f885583144882a5bde1437f82ddaa926dafb"
+  },
+  "oracle_header_sha256": "42b8fb26ba117b839193ff83d361dfecf52b0d6a841cfaa89d412cac56dc5818",
+  "log_sha256": "444c5f9760f23088fa0607fca71363b9e6ac800c5c931b77a0fcb03eed097b5a",
+  "device_actions": 0,
+  "secret_reads": 0,
+  "mic_verified": false,
+  "wpa_handshake_implemented": false,
+  "dell_installed": false,
+  "wifi_connected": false
+}

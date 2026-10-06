@@ -1,0 +1,13 @@
+{
+  "status": "PURE-PERSISTENT-LIFECYCLE-HOST-PASS",
+  "physical": false,
+  "integrated": false,
+  "station_ready": false,
+  "log": "persistent lifecycle: 1976 checks PASS",
+  "inputs": {
+    "lifecycle.h": "a0a9c60bb33ff9dcc09337a51ef961a7995e25e5ae1c54b67c63af3447bfb258",
+    "lifecycle.c": "d22d48e10434db0cf2774a24667b121256a16ecd6b2a0f0bfd011a51cd403c8c",
+    "lifecycle_test.c": "bc68f6e1606e901944e4e50b6aeed96ac5f0f40a2c633c56a54d2bd461418f3e",
+    "verify.py": "9ae569ebfa2e36515c6a8e827494ff3f28460873449e0c58ff6dc43e9bbac05a"
+  }
+}

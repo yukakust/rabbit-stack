@@ -1,0 +1,18 @@
+{
+  "hostap_release": "2.11",
+  "archive_sha256": "912ea06f74e30a8e36fbb68064d6cdff218d8d591db0fc5d75dee6c81ac7fc0a",
+  "hostap_files": {
+    "src/common/wpa_common.h": "42b8fb26ba117b839193ff83d361dfecf52b0d6a841cfaa89d412cac56dc5818",
+    "src/common/wpa_common.c": "49999cc7d32ab5a6f6ba5636e9f9c50c2de6250e7b0b5f82303c6379236c2b66",
+    "src/rsn_supp/wpa.c": "de875f763b4d355b04d63b7adb4a3ea7c5876ade7a919545c180f63fc2eb4ef9",
+    "src/drivers/driver.h": "16e95b835c05874de79e6d6a6929ca276dcbdc58ba4f61eb907406b6978ad8c5"
+  },
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "linux_files": {
+    "drivers/net/wireless/ath/ath10k/mac.c": "e99b6749933719a39037645385ea88be181b380f1135d62aea07c0b474a8236c",
+    "drivers/net/wireless/ath/ath10k/htt_tx.c": "3f73bddf26ec9e4e79a46c143a2fce35bf80a441068adbbe9aa29145692b33a3",
+    "drivers/net/wireless/ath/ath10k/htt_rx.c": "cabc2774651d670d247defc5f5f405640436dd131a0fc2522e605c2d8e7fb4d8"
+  },
+  "download_location": "/home/yuka/rabbit-world/parallel-security-v1/reference",
+  "notes": "Hashes pin inspected content, not a claim this historical upstream version has all current security fixes. No secrets or vendor reference source copied into repo."
+}

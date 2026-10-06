@@ -1,0 +1,9 @@
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-std=c11", "-Wall", "-Wextra", "-Werror", "-g", "-fsanitize=address,undefined", "-isystem", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src", "-isystem", "/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src/utils", "/home/yuka/rabbit-world/parallel-security-v1/source/eapol_frame.c", "/home/yuka/rabbit-world/parallel-security-v1/source/eapol_frame_test.c", "-o", "runs/verified/framing-test"]
+
+
+["runs/verified/framing-test"]
+PASS 201477 framing checks; upstream wpa_eapol_key size/offset oracle
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "--target=x86_64-pc-win32-coff", "-std=c11", "-Wall", "-Wextra", "-Werror", "-ffreestanding", "-fno-stack-protector", "-c", "/home/yuka/rabbit-world/parallel-security-v1/source/eapol_frame.c", "-o", "runs/verified/eapol_frame.obj"]
+
