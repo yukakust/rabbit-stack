@@ -4046,3 +4046,19 @@ not physically sent. No scan/channel/keys/association/IP. Firmware acceptance
 requires a future confirmation/ordering path; DMA completion is not acceptance
 and stop/delete serialization is not all-owner release. Persistent radio and
 actual INIT result must come before interface/scan integration.
+
+### 2026-10-06: exact native49 APPLIED; fresh initial accepted; firmware restarted
+
+Sole saved pci-native-cizvcg3f transfer completed156448 transport bytes. Commit
+disconnected, sender reconnected and exact correlated SHA/session/counter49
+APPLIED receipt confirmed. State engine49/payload145bb27e... and native_pending
+cleared. Fresh known-peer QPD18 initial snapshot accepted by unchanged strict
+asset preparation guards (actual setup/BMI/target/all initial14 owners released).
+NEW exact signed firmware session firmware-ram-s23u1qom, generation49, prepared
+once; no old47 chunk replay. First of12 packets started with valid fresh empty
+asset status and staging length65760. No full chunk/firmware/INIT result yet.
+continue49 PID1524 remains sole controller with finite sleep guard,535 inputs
+checked unchanged. Exact native receipt and initial snapshot archived at
+wmi-native-v2/evidence/2026-10-06/native49-applied-initial. WMI READY/MAC,
+radio persistence, router association/IP/WAN/Unreal display unconfirmed.
+Physical scene observation after49 not inferred from receipts.

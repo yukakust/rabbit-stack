@@ -1,0 +1,12 @@
+{
+  "status": "NATIVE49-EXACT-APPLIED-INITIAL-PROBE-ACCEPTED",
+  "native_counter": 49,
+  "payload_sha256": "145bb27e7f066ac24f471cf9e130329aedbc9bd33d9bf11b2ae78a5a82b535e3",
+  "world_counter": 17,
+  "world_package_sha256": "47d63aa6e81b35fc355005cf65f889b9c43bc332443e37ddbba672b920c2fc2b",
+  "new_asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-s23u1qom",
+  "completed_firmware_chunks": 0,
+  "firmware_initialization_verified": false,
+  "screen_observation": false,
+  "wifi_connected": false
+}
