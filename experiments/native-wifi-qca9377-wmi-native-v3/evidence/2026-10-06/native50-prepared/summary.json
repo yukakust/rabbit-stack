@@ -1,0 +1,10 @@
+{
+  "status": "EXACT50-SIGNED-SAVED-SESSION-STAGING",
+  "counter": 50,
+  "payload_sha256": "c56f1d738253c4505a5d5485c352fa6d697c5ff5c6218f981b399ee463546d46",
+  "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-n4pntq1v",
+  "controller_pid": 17105,
+  "receiver_reported_applied": false,
+  "wifi_connected": false,
+  "credentials_read": false
+}

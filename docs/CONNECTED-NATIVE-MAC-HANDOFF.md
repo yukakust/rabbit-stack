@@ -4122,3 +4122,17 @@ Candidate is UNSIGNED and NOT delivered. Next physical50 admission needs fresh
 known-peer combined native49 boot/operating/startup owner-release observations,
 exact current counter/world/gates and one sequential controller. Do not replay
 firmware49, assume READY or combine this diagnostic with unintegrated scan.
+
+### 2026-10-06: native50 hardware continuation started
+
+Fresh sequential known-peer zero-write BOOT/operating/startup observations
+matched actual native49 timeout and all14 owners/pin released. Strict current
+world/counter535-source gates passed. Exact CE3 native50 signed locally once
+and saved as pci-native-n4pntq1v; controller17105 + finite caffeinate17106 owns
+sequential delivery, initial read, NEW generation50 firmware session and final
+boot/INIT capture. Controller/log: wmi-native-v3/runs/control/continue50.py and
+continue50.log. First DATA checkpoint4100/156960 observed. NOT yet APPLIED, no
+READY/router/IP claim. Preserve and resume this exact session; do not resign or
+replay49 assets. Device reboot retires RAM staging only through existing proof
+path. Three agents work in NEW separate scopes on persistent native integration,
+STOP_SCAN and mature supplicant port; no device owner or secrets delegated.
