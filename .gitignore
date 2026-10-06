@@ -4,3 +4,4 @@ __pycache__/
 *.bin
 experiments/arm64-pill/pill
 /experiments/native-wifi-qca9377-wmi-native-v1/runs/
+/experiments/native-wifi-qca9377-wmi-native-v2/runs/

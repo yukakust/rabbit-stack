@@ -1,0 +1,11 @@
+{
+  "native_counter": 49,
+  "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-cizvcg3f",
+  "payload_sha256": "145bb27e7f066ac24f471cf9e130329aedbc9bd33d9bf11b2ae78a5a82b535e3",
+  "world_package_sha256": "47d63aa6e81b35fc355005cf65f889b9c43bc332443e37ddbba672b920c2fc2b",
+  "signed_once": true,
+  "current_state": "delivery active, not yet applied",
+  "admission_checks": 24,
+  "physical_verified": false,
+  "wifi_connected": false
+}

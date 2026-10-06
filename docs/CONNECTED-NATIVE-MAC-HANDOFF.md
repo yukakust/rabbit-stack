@@ -3990,3 +3990,39 @@ historical now: native48 was consumed by recovery, engine is plain city with
 no Wi-Fi probe. Rebuild/rebind future counter/policy and current world17; do
 not reuse old48 payload/session or its world16 reproduction as current evidence.
 No scan/association/IP/WAN/Unreal display success.
+
+### 2026-10-06: visible city confirmed; new bounded WMI INIT49 signed/delivering
+
+User confirmed restored city visible/moving and authorized continuation.
+Native48 remains exact plain city recovery; world17 package47d63aa6... current.
+New independent wmi-native-v2 derives unchanged INIT candidate with generation49
+and world17 reproduction. Captures original legacy hardware/boot42 evidence
+with its ORIGINAL world16 bytes (no rebinding/fabrication), while49 itself has
+separate current-world17 C/normal+EMPTY QEMU/two-rebuild proof. The physical
+starting-state gate now requires exact completed reboot recovery48 (signed
+bootstrap-bound payload/plain no-Wi-Fi profile, preserved world17), fresh known
+peer zero-write actual world17 receipt and owner scene observation. This replaces
+obsolete post46 live-state assumptions after user reset; all actual49 CE guards
+still require physical parsed SERVICE_READY before INIT, and nonzero memory
+requests reject without command/new allocation. No scan/station traffic/PSK/IP.
+
+Initial65 and real CE INIT22 ASAN/UBSAN/COFF cases pass. Pinned INIT/memory/
+transaction/resource evidence is mandatory in535-source closure. Two identical
+EFI156160 SHA145bb27e7f066ac24f471cf9e130329aedbc9bd33d9bf11b2ae78a5a82b535e3;
+normal/EMPTY supervisor QEMU and current-world C120 ticks/16 adversarial camera
+checks pass.24 admission corruption/legacy-world/missing source/log cases reject
+with zero key loads/radio writes. Delegated native transport gate regression
+caught recursive baseline gate selection BEFORE any signing; captured original
+BASE_GATES fixed and delegated path tested. All535 inputs re-proved afterwards.
+
+Fresh actual recovery48/world17 read verified. Local owner signature produced
+once; exact saved session pci-native-cizvcg3f counter49; native_pending active.
+No49 APPLIED/firmware/INIT result yet. Sole bounded continue49 PID1524 handles
+exact native delivery, fresh initial QPD18, strict fresh49 asset preparation
+once, saved firmware delivery, actual all-owner QWBT release then QWOP3/QWIN1
+reads. Finite caffeinate follows its PID. Script/metadata archived in native49-
+admission evidence; script operational state in runs/control. No duplicate
+sender, re-sign, old47 firmware replay, reboot, USB/bootstrap or key output.
+535 source inputs frozen while delivery/trial active. Bluetooth initial RSSI
+-66..-69; not a reliability guarantee. Owner gate/proof/current world bound.
+Physical WMI INIT success, router/IP/WAN/Unreal display still unconfirmed.
