@@ -1,0 +1,25 @@
+{
+  "status": "STA-VDEV-PINNED-WIRE-ASAN-COFF-PASS",
+  "build_host": "yukabox",
+  "checks": 12723,
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-vdev-wire-v1/vdev_wire.c": "7644187bbb928a5f1214a878c58df1141fa201dd2db8a0daacb912ff38b8f365",
+    "experiments/native-wifi-qca9377-vdev-wire-v1/vdev_wire.h": "c9ff94ab1c84b607ec96d6b225b4e3c3ac450d735a9ac0b347614e08620f0300",
+    "experiments/native-wifi-qca9377-vdev-wire-v1/vdev_test.c": "a6f8044b8993e00b0f3220b3743933f298c9967757b7c8099432ad69ec4aba1c",
+    "experiments/native-wifi-qca9377-vdev-wire-v1/verify_vdev.py": "b9689d594c58ba6ac8fa9b64bfaada5d6277dbd2d5c31634b5196dc2841809de",
+    "experiments/native-wifi-qca9377-session-v1/verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "reference_sha256": {
+    "wmi-tlv.c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "wmi-tlv.h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+    "wmi.h": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c"
+  },
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "derived_oracle_sha256": "ee40738aad8abdc2098c82b3e0e4a6746564ddc21cd83b1e6e91c99edf28e3cf",
+  "host_log_sha256": "a8c6a28442046769a7afa8c6769d63c99e82773b0fbe44f6b93d7d7dbe3d1e55",
+  "native_integrated": false,
+  "physical_verified": false,
+  "firmware_command_sent": false,
+  "scan": false,
+  "wifi_connected": false
+}

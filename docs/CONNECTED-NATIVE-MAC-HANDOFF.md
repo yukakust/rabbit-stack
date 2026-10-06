@@ -4026,3 +4026,23 @@ sender, re-sign, old47 firmware replay, reboot, USB/bootstrap or key output.
 535 source inputs frozen while delivery/trial active. Bluetooth initial RSSI
 -66..-69; not a reliability guarantee. Owner gate/proof/current world bound.
 Physical WMI INIT success, router/IP/WAN/Unreal display still unconfirmed.
+
+### 2026-10-06: native49 progressing; independent station wire prepared
+
+Sole continue49 PID1524 and finite sleep guard remain active. First native
+staging call reached77900 then bounded300s timeout; next fresh read confirmed
+80500 bytes of SAME nonce/hash saved session pci-native-cizvcg3f and resumed.
+Latest staging checkpoint117400/156448, NOT APPLIED. No re-sign/replay/new
+asset session.535 signed candidate source inputs checked unchanged. Wait for
+exact49 application/initial probe, then full firmware delivery and real
+QWBT/QWOP/QWIN READY/MAC results; no router connection claimed.
+
+Independent native-wifi-qca9377-vdev-wire-v1 prepares strict STA CREATE/STOP/
+DELETE bodies from pinned Linux enum/struct/CREATE assignments:28/12/12 bytes,
+STA2/NONE0, four resource IDs, actual READY MAC input and zero padding.12723
+ASAN/UBSAN/COFF wire/MAC/bounds/alias tests pass on Yukabox; report/log/source/
+oracle/reference hashes recorded. HOST ONLY, not part of535 native49 inputs,
+not physically sent. No scan/channel/keys/association/IP. Firmware acceptance
+requires a future confirmation/ordering path; DMA completion is not acceptance
+and stop/delete serialization is not all-owner release. Persistent radio and
+actual INIT result must come before interface/scan integration.
