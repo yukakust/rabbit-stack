@@ -2347,3 +2347,62 @@ native-only use of actual service object. Do not guess geometry from host tests.
 Next remains finish physical45 control trial, inspect actual status/data, then
 checked memory/INIT integration. Credential provisioning, scan/association,
 DHCP/IP and WAN/video receiver remain unfinished.
+
+
+### 2026-10-06: physical native45 CONNECT success; native46 SERVICE_AVAILABLE trial
+
+Actual45: HTC session RUNNING7, TX3/RX3, endpoints WMI1/HTT2, credit2,
+no ring/MMIO fault. Zero-extended CONNECT fix confirmed on Dell. First CE2
+frame36 is WMI event3/TLV559/value20/advertised extended length128/four words,
+not SERVICE_READY1. Current45 rejected it (operating error9). Boot3114/3114,
+READY20, actual adapter12/cleanup14/DMA0/pin0. Hardware pending cleared by actual
+release observation. Physical evidence: connect-response-v1/evidence/2026-10-06/
+native45-control-result. No association/IP/WAN/Unreal display success.
+
+Pinned wmi-tlv.h/.c enum and dispatch identify SERVICE_AVAILABLE separately;
+first field is service_map_ext_len, NOT an offset. New pure service-available-v1
+validates only known event3/tag559/value20/length128 and preserves opaque4 words.
+7198 actual-payload/mutation/truncation checks ASAN/UBSAN/COFF on Yukabox, pinned
+enum oracle. Physical packet itself was36 bytes; an initial38-byte hex literal
+in new admission was caught/rejected before any key access, corrected to actual36.
+Negative test range also corrected to22 status+10 receive words; variable DMA
+address was intentionally not an admission authority. Full proof rerun after
+all source changes; no guard relaxation or fabricated report rebind.
+
+New isolated service-start-v1 candidate generation46 retains exact45 source/owner/
+world. At most one validated SERVICE_AVAILABLE, negotiated WMI endpoint, zero
+credit reports; rearm CE2 and await SERVICE_READY under existing deadline.
+Malformed/duplicate/foreign/missing events and ambiguous rearm retain all owners
+until actual teardown.35 actual native CE scenarios +65 initial scenarios pass;
+existing5186 CONNECT oracle checks retained. Two exactEFI builds148480 bytes SHA
+ dd261ac34e720259bc5d199b5f9832ddf7cb9ead7d7b607d3974af6593f5fcfc.
+Both supervisor QEMU city/fullscreen/restore/rejection/read-only long-GATT cases
+pass, current-world C/reproduction pass across469 inputs.365 admission rejection
+cases pass with zero key loads/radio writes. New available proof/log/source
+bindings mandatory. Evidence: service-start-v1/evidence/2026-10-06/native46-admission.
+
+Read-only QWOP0003 is488 bytes (within512-byte GATT attribute), original22 words/
+receive metadata/prefix plus available seen/advertised length/4words. Final256
+bytes are16 decoded memory-request slots if service_valid, otherwise bounded
+raw service-frame prefix (up to256 bytes, total length in existing field).
+CoreBluetooth reader checks exact488-byte/magic envelope. QEMU explicitly tests
+first246-byte ATT payload, second242-byte payload, end/invalid offsets and writes
+rejected. Future INIT still requires actual request review/station vector/live
+DMA ownership; no allocations/INIT/credentials/scan/association introduced.
+
+After fresh actual45 dual QWBT/QWOP and owner release, signed one NEW native46
+session pci-native-z_yxuvwo. Sole resume_native46.py controller exec85816,6 attempts/
+two no-progress stop. Exact continue46.py exec48385 waits native PID57975 (one-hour
+cap), exact46 APPLIED/hash/state, then bounded8 probe-active read-only retries,
+strict NEW46 asset preparation/signing once, exact24-attempt/two-stall asset
+controller and up to120 boot reads120 seconds apart (four-hour observation cap)
+plus final QWOP0003 only after real all-owner release. Finite sleep guard follows
+continuation. All469 frozen inputs verified, none edited after signing.
+
+Current native transfer has weak local Bluetooth RSSI-83..-87 and repeated
+connection timeouts, partial first staging reached5900/148768; this is NOT
+APPLIED or receiver-confirmed floor until next exact query. Saved packet/session
+retained; do not re-sign/replay/change base/world. Async asks owner move Mac about
+one metre from Dell; response pending. No46 firmware assets yet prepared. Check
+latest receipts/controller status before resume; do not start another radio owner.
+No Dell reboot, USB/bootstrap changes or private-key output.

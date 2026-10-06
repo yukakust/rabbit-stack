@@ -1,0 +1,22 @@
+{
+  "status": "ACTUAL-SERVICE-AVAILABLE-PINNED-ENUM-ASAN-COFF-PASS",
+  "checks": 7198,
+  "build_host": "yukabox",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-service-available-v1/available.c": "4ce9f38b13555e2369f8e5a8601ee319bf9239412b8c3b61fe22d3ab64fc0e01",
+    "experiments/native-wifi-qca9377-service-available-v1/available_test.c": "585c120a04815737a4269dafbc407156efa0aa3d048d3e6866cc8115867f3c1c",
+    "experiments/native-wifi-qca9377-service-available-v1/available.h": "5eec54ecf7e977c211ae494e6091bbdd72f6c2a50250be0f176eb686fee7b098",
+    "experiments/native-wifi-qca9377-service-available-v1/verify_available.py": "c4c09c83849226834001e4ca952f4c86788ce59b893e241debdac121f3b6ace5",
+    "experiments/native-wifi-qca9377-session-v1/verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "reference": {
+    "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+    "wmi_tlv_h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+    "wmi_tlv_c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "oracle_sha256": "915c35a375d1363c40998860e1648e5d76669ec33d6ca4d1a2d51874e7275610"
+  },
+  "host_log_sha256": "4b42f0d4b485573a01876c0aae6279f6138cfa53fb70397e8980ae57e8804616",
+  "native_integrated": false,
+  "physical_verified": false,
+  "wifi_connected": false
+}

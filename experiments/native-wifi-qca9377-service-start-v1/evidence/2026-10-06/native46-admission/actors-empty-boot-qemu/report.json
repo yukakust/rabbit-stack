@@ -1,0 +1,11 @@
+{
+  "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+  "payload_sha256": "dd261ac34e720259bc5d199b5f9832ddf7cb9ead7d7b607d3974af6593f5fcfc",
+  "empty_boot": true,
+  "background": "121826",
+  "observed_log_sha256": "d02fc39f8f0c16503f3d2cda95ecbbb83c76380a02900d9c0b40cc4353d94d5f",
+  "physical_verified": false,
+  "bluetooth_verified": false,
+  "controller": "mock USB only",
+  "fixture_image_sha256": "58780338e355931e7f8865ae8650afe7c952fdf0668171163329567484aed25f"
+}
