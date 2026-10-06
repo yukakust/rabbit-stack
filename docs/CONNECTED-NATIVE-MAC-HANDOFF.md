@@ -3876,3 +3876,25 @@ major/namespace corruptions pass1029 ASAN/UBSAN and freestanding COFF checks
 on Yukabox. Evidence wmi-transaction-v1/evidence/2026-10-06. Not integrated
 in native47, and actual WMI READY is still unobserved. Firmware transfer
 continues; no scan, association, IP, WAN or Unreal display is claimed.
+
+### 2026-10-06: INIT resource reference prepared; firmware delivery progressing
+
+New independent native-wifi-qca9377-resources-v1 replaces opaque fixture
+assumptions with full44-word Linux QCA9377 PCI TLV resource reference: vdev4/
+peers33/TIDs66/AST16/WDS32/MSDU1056/WoW22 and all exact remaining fields.
+Base bitmap uses FOUR low bits per u32; service65 RX_FULL_REORDER is word16/
+bit1. Only32-word base map admitted by this pure builder; no extended174
+TX_ACK_RSSI assumptions. Reference host capability512 requires a management
+bundle completion handler or an explicitly tested alternate policy before
+native admission. Linux chain masks7 preserved as reference, not RF permission.
+
+Independent compiled Linux cfg assignments/struct/macros and pinned hardware
+defaults compare randomized base maps; memory-plan/INIT serialization uses
+actual reference counts with0..16 synthetic requests.8347 ASAN/UBSAN and COFF
+checks pass on Yukabox; source/oracle/reference hashes recorded in evidence/
+2026-10-06. Candidate remains HOST ONLY, not station-profile admitted, no DMA
+owners/command dispatch/physical READY claimed. All491 native47 inputs checked
+unchanged. Physical firmware-ram-xa_97zti first chunk is accepted (bitmap1),
+second underway; continue47/resume_asset47 and sleep guard active. Do not
+duplicate controller or read final operating result before actual completion.
+No router association/IP/WAN/Unreal display yet.

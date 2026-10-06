@@ -1,0 +1,34 @@
+{
+  "status": "QCA9377-PCI-TLV-RESOURCE-REFERENCE-ASAN-COFF-PASS",
+  "build_host": "yukabox",
+  "checks": 8347,
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-resources-v1/resources.c": "c681a7e7e99c848c8c8c64cd1c36d76a146f3f0fb86507170014c78e64fba09a",
+    "experiments/native-wifi-qca9377-resources-v1/resources.h": "3366e771562d43c8b0e42d6b7af7ca368bf5367669918e73664a9e0396b518ec",
+    "experiments/native-wifi-qca9377-resources-v1/resources_test.c": "759c72193df514c38053e26521f3248d4d753652bf23562fabbaf9261634d9fd",
+    "experiments/native-wifi-qca9377-resources-v1/verify_resources.py": "308940defc51397d6224c984c39e01c835c5be022a641136d3508d28b8313f71",
+    "experiments/native-wifi-qca9377-memory-v1/memory_plan.h": "406808119e037f45797baad98d03ea5e7fae160488b8c5c022c6398b4c54c2a4",
+    "experiments/native-wifi-qca9377-memory-v1/memory_plan.c": "66c3b0e60749a323995792249a1d4bac7c2f1db4f9abce0bf12e72f85da7a5b6",
+    "experiments/native-wifi-qca9377-wmi-init-v1/init_wire.c": "a7d9ca050fb5b1f5c3c41b9089b61707884fe805cdbfb3e21795a2bffe85e4ce",
+    "experiments/native-wifi-qca9377-wmi-init-v1/init_wire.h": "7b82710cbaef39c5c26b3eefbc2a2aa8a1c4331846abda213eedeb2f5bd61494",
+    "experiments/native-wifi-qca9377-session-v1/wmi_boot_info.h": "59c71b834bd43bfe5626bfef6062a88476c43762be2b10b8cf4861c67255f262",
+    "experiments/native-wifi-qca9377-session-v1/verify_htc.py": "a6ed6ccae52b266d965daaab05bfafb8853fd8b89128c3e8fc66f711e9048265"
+  },
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "reference_sha256": {
+    "wmi-tlv.c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "wmi-tlv.h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "wmi.h": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c",
+    "core.c": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2"
+  },
+  "derived_oracle_sha256": "79fcf1a8144701f2b904d79e37ca8c56674d317ab9544c259579330b3736516e",
+  "host_log_sha256": "9e1477d9abb2d919bdc29acc7055d9e62daa21556fe1c2e88a7a92bb836e48e3",
+  "native_integrated": false,
+  "station_profile_admitted": false,
+  "extended_services_validated": false,
+  "management_bundle_handler_implemented": false,
+  "dma_owners_verified": false,
+  "physical_verified": false,
+  "wifi_connected": false
+}
