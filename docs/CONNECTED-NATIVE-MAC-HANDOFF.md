@@ -4062,3 +4062,29 @@ checked unchanged. Exact native receipt and initial snapshot archived at
 wmi-native-v2/evidence/2026-10-06/native49-applied-initial. WMI READY/MAC,
 radio persistence, router association/IP/WAN/Unreal display unconfirmed.
 Physical scene observation after49 not inferred from receipts.
+
+### 2026-10-06: physical49 all firmware/boot/SERVICE_READY pass; INIT TX timeout
+
+All12 firmware-ram-s23u1qom chunks accepted, bitmap4095. Actual main boot
+submitted/completed3114, calibration3, HTC READY20 observed. Actual QWOP3
+phase2/error0/session7, tx3/rx4, valid SERVICE_READY320, build21/minor574/
+chains1, zero memory requests. This is the first physical full SERVICE_READY
+parse success. No fabricated zero-request claim from a truncated capture.
+
+QWIN1 phase3/error12 (20s deadline), transactionFAULT, INIT228 bytes posted
+once, zero RX, no TX completion and no READY/MAC. One committed credit remains;
+no DMA-completion refund invented. Actual QWBT adapter12/cleanup14/DMA0/pin0
+proves all owners released; hardware_trial_pending cleared, controller exited.
+No router/IP connection or WMI INIT success. Exact captures/asset report in
+wmi-native-v2/evidence/2026-10-06/native49-control-result.
+
+Code review identified concrete routing mismatch: startup49 posts/completes
+INIT on CE0/ring0/buffer1. The actual signed/readback initialization service
+table init_tables_native.h maps WMI_CONTROL0x100 OUT to CE3 and IN to CE2.
+Pinned Linux pci.c has the same map; reserved HTC control service1 uses OUT0/
+IN1, explaining why prior handshake worked. CE3/ring3/buffer7 already belongs
+to the14-map scope. Next candidate must add actual CE3 ownership/mapping/
+register guards, transmit/completion on CE3 and independent route-aware target
+fixture (current host fixture incorrectly accepted INIT on0). Do not merely
+change a doorbell number or widen timeouts. Physical corrected-route success
+is not yet established; native49 sources/captures remain unchanged.

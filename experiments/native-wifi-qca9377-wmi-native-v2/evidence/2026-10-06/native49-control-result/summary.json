@@ -1,0 +1,14 @@
+{
+  "status": "PHYSICAL49-BOOT-SERVICE-READY-PASS-INIT-TX-TIMEOUT",
+  "all12_firmware_chunks_accepted": true,
+  "main_boot_submitted_completed": 3114,
+  "service_ready_valid": true,
+  "memory_requests": 0,
+  "init_tx_bytes_posted": 228,
+  "init_tx_completion_seen": false,
+  "init_ready_seen": false,
+  "all14_dma_owners_released": true,
+  "implementation_mismatch": "WMI INIT uses CE0 while signed/readback setup maps WMI service0x100 OUT to CE3; reserved HTC control uses CE0",
+  "physical_fix_verified": false,
+  "wifi_connected": false
+}
