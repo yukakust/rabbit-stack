@@ -3918,3 +3918,41 @@ Firmware trial firmware-ram-xa_97zti now has three exact chunks accepted
 guard alive,491 frozen native47 inputs unchanged. Do not start duplicate radio
 work, replay sessions, reboot or alter the pending candidate. No final47
 SERVICE_READY/memory result, WMI INIT, association, IP or WAN success yet.
+
+### 2026-10-06: bounded real CE WMI INIT native48 candidate checked, NOT signed
+
+New independent native-wifi-qca9377-wmi-native-v1 derives from unchanged47.
+After actual HTC + parsed SERVICE_READY it reuses retained14-map/pin guard,
+requires zero memory requests and exactly32 base bitmap words, builds Linux
+reference resource vector/INIT228 bytes, reserves/commits credits BEFORE actual
+CE0 publication (WMI endpoint transfer metadata), posts CE1/2 and requires
+actual TX completion plus valid READY/MAC. Early READY retained;20s timeout.
+Only firmware reports refund committed credit. Unposted cancel refunds;
+ambiguous TX/RX, nonzero memory, wrong fields/endpoint/cookie, replayed READY,
+clock reversal or poisoned pin fault while all real owners remain held.
+Shared operating errors propagate to startup status; resident stop cancels
+logical startup before existing ALL-engine stop/flush/unmap/free/unpin.
+No new allocation, RF scan/management TX, credential, association or IP.
+Management-bundle reference flag is not native station dispatch admission.
+This diagnostic closes its radio lifetime even after successful INIT.
+
+22 actual generated-entrypoint/real-CE ASAN/UBSAN scenarios and all65 initial
+entrypoint cases pass on Yukabox. Every success/fault/cancel case proves all14
+maps released and pin removed; synthetic target is explicit, never physical.
+New read-only UUID26/27 handles26..28, QWIN0001/96 telemetry tracks startup,
+READY/MAC/minor/credits/last RX. Existing QWOP3/QWBT unchanged. Mac helper
+compiled only (zero radio reads/writes); --read requires exact installed48/hash.
+Two byte-identical EFI156160 bytes SHA203e606ab41663170a3307dd3dbe18b26ccb8db67d5566b6e03f9fc7b1e893b7;
+actual supervisor QEMU city/fullscreen/restore/rejection/read-only new GATT
+checks pass in normal and EMPTY boot. Current world package8254c704... validated
+under C ASAN120 ticks/16 adversarial cameras. Full reproduction525 exact source
+inputs verified unchanged. Evidence: wmi-native-v1/evidence/2026-10-06/native48-candidate;
+unsigned EFI/report/reproduction saved locally in runs/operating-profile.
+No physical admission/signing route exists for48 yet. Required next: finish47
+firmware trial, fresh real QWBT/QWOP success/memory and actual all-owner release,
+then bind an exact48 admission gate before signing/delivery; do not bypass it.
+
+Current physical firmware-ram-xa_97zti has6/12 chunks accepted (bitmap63),
+seventh transferring. continue47/resume_asset47 and finite sleep guard remain
+active; all491 signed native47 inputs unchanged. No47 final SERVICE_READY
+result yet, no48 signed/sent and no Wi-Fi router/IP/WAN/Unreal display success.
