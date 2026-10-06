@@ -1,0 +1,22 @@
+{
+  "status": "READY-MINIMUM-PREFIX-PINNED-ASAN-COFF-PASS",
+  "checks": 4294,
+  "build_host": "yukabox",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-wmi-native-v5/wmi_boot_info.c": "bb90ce0d55fbe650c4729f71573f5e7eafebc6367acc689c5f1000b460303e6c",
+    "experiments/native-wifi-qca9377-wmi-native-v5/ready_test.c": "a4c70085d56ffb1fc545b03d3f671367b3512fc8151b688f8f02f5cfeec6afd0",
+    "experiments/native-wifi-qca9377-wmi-native-v5/verify_ready.py": "768696ef2aec6b3ae25c05d1456fe52c20fa2476e6ae7b52f7e7f60c6262da9b",
+    "experiments/native-wifi-qca9377-session-v1/wmi_scan.c": "2d8708b3dfcf5122fce82e6ae6724876e9b265a32587fa6ed31831e88be15a0b",
+    "experiments/native-wifi-qca9377-session-v1/wmi_boot_info.h": "59c71b834bd43bfe5626bfef6062a88476c43762be2b10b8cf4861c67255f262",
+    "experiments/native-wifi-qca9377-session-v1/wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3"
+  },
+  "reference_sha256": {
+    "wmi-tlv.h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+    "wmi-tlv.c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "wmi.h": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c"
+  },
+  "oracle_sha256": "5e793acd1965b7e1fc5849e37465cc3f3207355ee5744bfe77be36a339700417",
+  "host_log_sha256": "7d67f62abb0e43565167307c8fb62762de3800144b87f3cbd8d17dccd81259b9",
+  "physical_verified": false,
+  "wifi_connected": false
+}

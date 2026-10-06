@@ -4172,3 +4172,39 @@ caffeinate32342, wmi-native-v4/runs/control/continue51.py/continue51.log, execut
 exact native delivery -> fresh initial -> NEW firmware51 session -> boot/INIT
 observation. Preserve this exact session, never replay old50 firmware.
 At this record trial just started, not APPLIED or Wi-Fi connected.
+
+### 2026-10-07: physical51 complete exact READY response and proven schema mismatch
+
+All12 assets accepted. Boot3114/3114, HTC READY20, SERVICE_READY320 passed.
+QWIN2 captured COMPLETE68-byte RX, endpoint1/payload60, reject_reason4. Exact
+WMI event2/tag35 contains52-byte READY value: ABI01000000/minor574/pinned
+namespaces, MACc0:b5:d7:78:c3:fb, status0,16-byte suffix. Current codec
+requires exactly36 and rejects a valid common-prefix extension. Actual pinned
+Linux wmi-tlv.c READY policy uses min_len sizeof(wmi_tlv_rdy_ev)=36 and its
+pull consumes prefix ABI/MAC/status without exact-length check. New isolated
+wmi-native-v5 will use that bounded minimum, preserve mandatory ABI/status/MAC
+checks and expose all old diagnostics. Host captured-frame prefix/extension
+ASAN/COFF proof4294 checks passed, complete native/QEMU proof in progress.
+No WMI INIT TX completion/physical success claimed. All14 owners/pin released
+and controller32341 exited. No hardware_pending. Exact evidence stored under
+wmi-native-v4/evidence/2026-10-07/native51-control-result. Wi-Fi/IP absent.
+
+### 2026-10-07: native52 READY prefix fix verified and hardware trial started
+
+Isolated v5 overrides only wmi_boot_info.c READY exact36 -> minimum36 in
+existing bounded/aligned TLV parser, following pinned Linux policy and pull.
+ABI/namespaces/status/nonzero-unicast MAC requirements preserved. Independent
+actual Linux struct oracle verifies size36,MACoffset24,statusoffset32. Exact
+physical51 payload and every extension byte mutation passed;4294 ASAN/COFF
+codec checks,65 initial,23 startup (new52-byte READY actual-model case),
+CE0-rejection regression, two EFI rebuilds, both supervisor QEMU gates,
+world17 C/ASAN,540-input reproduction and24 admission cases passed.
+Payload156672 SHA0b4dfbf03b12eef58cbaa4eabe965dda606ded3337a60708b22574b02edb52f6.
+Fresh sequential native51 diagnostics and actual all14 resource release
+admitted local signing once; exact saved session pci-native-cpez9mi7.
+Sole controller41277/caffeinate41278: v5/runs/control/continue52.py and
+continue52.log, metadata controller52.json. Performs native52 transfer then
+NEW firmware52 generation/session and all-owner INIT observation. Preserve
+saved bytes, no resign/replay51. Trial just started, not APPLIED/connected.
+Heartbeat wi-fi-dell every30min remains active; use actual latest state, not
+old automation creation snapshot of51 or its retired controller.
