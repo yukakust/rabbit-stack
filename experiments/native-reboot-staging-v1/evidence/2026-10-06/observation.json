@@ -1,0 +1,20 @@
+{
+  "status": "OWNER-REBOOT-FRESH-EMPTY-RECEIVER",
+  "owner_confirmed_reboot": true,
+  "observed_at": 1791291707.6789818,
+  "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+  "writes": 0,
+  "receiver": {
+    "outcome": "idle",
+    "state": 0,
+    "error": 0,
+    "received": 0,
+    "length": 0,
+    "counter": 0,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": false,
+    "raw_hex": "524653010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  },
+  "log_sha256": "cda99e458b65d69bb1ec42e65032daf9c48efc8cce47e2e3e1a5678742fa3ae1"
+}

@@ -1,0 +1,47 @@
+{
+  "status": "PARTIAL-RAM-STAGING-RETIRED-AFTER-OWNER-REBOOT",
+  "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-xa_97zti",
+  "native_counter": 47,
+  "completed_chunks_before_reboot": 6,
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "signed_packet_sha256": {
+    "chunk-0.bin": "fcf852d354d40830dd5cc3af76dc587610694ddb0596855d3b82aef2b4b4402e",
+    "chunk-1.bin": "97bba89faf094fdf847b41532382676d004fcccfa9406001bb38d93dcceeab16",
+    "chunk-2.bin": "d292308b89883ef91b95f8962d39e3e82ea3f84ec82446a3854af1eee01d1b03",
+    "chunk-3.bin": "0b02a2d8b17febaf21f85dbc5d1457170e5137b498d0a805cb7bf1b53410aa2b",
+    "chunk-4.bin": "e114608978d4e36cf5717040a5e8928302bb8cbe7ed5d54d550b0da9f67e5b1a",
+    "chunk-5.bin": "829a1e6be28bef3e462e7123e333c506c389c08ca914f1611af597e480a8ab2c",
+    "chunk-6.bin": "dc3a5c4a707b82678cf7ff19f21024af22c815ba164a656935bc91eddc60e657",
+    "chunk-7.bin": "61caa54723adfee55eaabe34da071f5557f62ece92462773eeda415c82f9e41e",
+    "chunk-8.bin": "80c88ebb6975343add08f8526d50f0c273684ab41aa3f755e1b5cee3dbbe0e53",
+    "chunk-9.bin": "4bfa01be3a4bf84dbaef2b1e62c6702c65e82ff709aad2113c455ea05be9e7f4",
+    "chunk-10.bin": "201ec7c721db946316323c468d550f53c8f058fb3b29ae15d4d152f2b09659ba",
+    "chunk-11.bin": "328559dfe4608d87a329b085cfc819657a78852ac501394809937e491aa7b1d8"
+  },
+  "report_before_sha256": "75b3724dad45e67b639f9358d0d94b9d4c31180fd7ef5bc5fa4956450a3371b7",
+  "observation_sha256": "47d0821a9203825b34570a4397221e69e83fce9eb04be45677e6fec31632a204",
+  "owner_confirmed_reboot": true,
+  "fresh_empty_receiver": {
+    "status": "OWNER-REBOOT-FRESH-EMPTY-RECEIVER",
+    "owner_confirmed_reboot": true,
+    "observed_at": 1791291707.6789818,
+    "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+    "writes": 0,
+    "receiver": {
+      "outcome": "idle",
+      "state": 0,
+      "error": 0,
+      "received": 0,
+      "length": 0,
+      "counter": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "session_matches": false,
+      "raw_hex": "524653010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "device_attestation": false
+    },
+    "log_sha256": "cda99e458b65d69bb1ec42e65032daf9c48efc8cce47e2e3e1a5678742fa3ae1"
+  },
+  "device_writes": 0,
+  "private_key_loads": 0,
+  "wifi_connected": false
+}

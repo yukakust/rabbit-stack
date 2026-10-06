@@ -3956,3 +3956,37 @@ Current physical firmware-ram-xa_97zti has6/12 chunks accepted (bitmap63),
 seventh transferring. continue47/resume_asset47 and finite sleep guard remain
 active; all491 signed native47 inputs unchanged. No47 final SERVICE_READY
 result yet, no48 signed/sent and no Wi-Fi router/IP/WAN/Unreal display success.
+
+### 2026-10-06: owner reboot reset native47; plain city restored as48/world17
+
+User reported an actual Dell reboot. Existing firmware sender/continuation had
+already stopped after bounded timeouts, old session firmware-ram-xa_97zti
+completed6/12 chunks. Fresh known-peer RFS EMPTY/counter0 confirmed reset with
+zero query writes. No old staging resumed or erased. New native-reboot-staging-v1
+verifies owner/public target, exact historical native47 signature, twelve saved
+chunk signatures/hashes, world/native binding and all491 frozen sources.
+Explicit owner reboot + fresh EMPTY log required; archives exact old state/report
+and signed hashes, marks RAM staging retired, clears only hardware_trial_pending.
+11 isolated tests pass; zero retirement private-key loads/radio writes.
+Original report archived byte-exactly and audit hash checked.
+
+Existing verify_reboot_recovery on Yukabox repeated plain BLE-recovery city
+EFI builds, current restored world17 C/roof-cat timing checks, normal/EMPTY
+supervisor QEMU. Payload47616 SHA0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce.
+Baseline BMI reproduction metadata copied without changing frozen sources.
+Gates checked again on Mac before authorized local signing. Exact plan
+native48-city-recovery-plan consumes native48/world17, freshly EMPTY checked
+again before any BEGIN. Native commit disconnected/reconnected; correlated
+exact receipt confirmed48, then exact restored-world receipt confirmed17.
+State recovery_pending and hardware_trial_pending cleared; semantic world
+fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74 preserved.
+Physical city/tail observation requested, still not inferred from receipts.
+No reboot/USB/bootstrap/storage write or key output by agent.
+
+Evidence native-reboot-staging-v1/evidence/2026-10-06. Old firmware packets
+remain immutable. Need fresh Wi-Fi trial after visual confirmation, whole
+firmware delivery must restart from0. Unsigned WMI candidate48/203e606a... is
+historical now: native48 was consumed by recovery, engine is plain city with
+no Wi-Fi probe. Rebuild/rebind future counter/policy and current world17; do
+not reuse old48 payload/session or its world16 reproduction as current evidence.
+No scan/association/IP/WAN/Unreal display success.
