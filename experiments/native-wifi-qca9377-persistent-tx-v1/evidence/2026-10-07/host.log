@@ -1,0 +1,195 @@
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=0 posts=2 DMA_done=2 credit_outstanding=2 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=60 fault=0 startup=0 phase=5 polls=124 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+TX_DEBUG phase=5 error=0 bytes=20 max=4088 size=256 total=8 available=7 reserved=0 out=1
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=6 outstanding=2
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=60 stop=0 polls=124
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=1 posts=1 DMA_done=0 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=30 fault=0 startup=0 phase=5 polls=62 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=30 stop=0 polls=62
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=2 posts=1 DMA_done=0 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=11 fault=0 startup=0 phase=5 polls=24 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=11 stop=0 polls=24
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=3 posts=1 DMA_done=0 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=12 fault=0 startup=0 phase=5 polls=26 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=12 stop=0 polls=26
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=4 posts=1 DMA_done=0 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=12 fault=0 startup=0 phase=5 polls=26 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=12 stop=0 polls=26
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=5 posts=1 DMA_done=0 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=12 fault=0 startup=0 phase=5 polls=26 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=12 stop=0 polls=26
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=6 posts=1 DMA_done=0 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=12 fault=0 startup=0 phase=5 polls=26 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=12 stop=0 polls=26
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=7 posts=1 DMA_done=0 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=12 fault=0 startup=0 phase=4 polls=43 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=4 error=0 life_error=0 active=12 stop=1 polls=43
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=8 posts=0 DMA_done=0 credit_outstanding=0 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=60 fault=0 startup=0 phase=5 polls=123 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=8 outstanding=0
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=60 stop=0 polls=123
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=9 posts=1 DMA_done=1 credit_outstanding=8 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=35 fault=0 startup=0 phase=5 polls=74 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+TX_DEBUG phase=5 error=0 bytes=2048 max=4088 size=256 total=8 available=0 reserved=0 out=8
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=0 outstanding=8
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=35 stop=0 polls=74
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=10 posts=2 DMA_done=2 credit_outstanding=8 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=60 fault=0 startup=0 phase=5 polls=124 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+TX_DEBUG phase=5 error=0 bytes=2048 max=4088 size=256 total=8 available=0 reserved=0 out=8
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=0 outstanding=8
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=60 stop=0 polls=124
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=11 posts=1 DMA_done=1 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=60 fault=0 startup=0 phase=5 polls=122 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=60 stop=0 polls=122
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=12 posts=1 DMA_done=0 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=12 fault=0 startup=0 phase=4 polls=43 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=4 error=0 life_error=0 active=12 stop=1 polls=43
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=13 posts=0 DMA_done=0 credit_outstanding=0 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=11 fault=0 startup=0 phase=5 polls=23 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=0
+PERSISTENT_FINAL phase=5 error=0 life_error=3 active=11 stop=0 polls=23
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=14 posts=1 DMA_done=0 credit_outstanding=1 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=12 fault=0 startup=0 phase=5 polls=26 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase2/error0 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=1
+PERSISTENT_FINAL phase=5 error=0 life_error=2 active=12 stop=0 polls=26
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+TX_SHARED_NATIVE scenario=15 posts=0 DMA_done=0 credit_outstanding=0 SAFE_RELEASE_PASS
+PERSISTENT_MOCK active_ticks=11 fault=0 startup=0 phase=5 polls=23 ALL14 RELEASE PASS
+WMI_INIT_MOCK phase2/error0 transaction4 tx1 rx1 fault0 ALL14 RELEASED PASS
+OPERATING_MOCK phase3/error2 tx3 rx4 fault35 SAFE RELEASE PASS
+QWBT_MOCK=5157425430303031050000000000000014000000000000002a0c00002a0c000000804000000000000000000014000000080000000001000009000000010000000500000000000000000000000000000006000000002100000c0000000e00000000000000010002050800000005000000000000000000000000000000010000008f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01
+LEGACY WRITES BLOCKED WHILE OWNED; DELEGATED AFTER COMPLETE CLEANUP; ASSET SEALED PASS
+ACTUAL ENTRYPOINT TWO LIFETIMES fault35 PASS; SYNTHETIC RADIO/HTC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=6/8448 pins=0 alloc=14 free=14 open=2 close=2
+INIT COUNTS tx=1 rx=1 posted=0 available=7 outstanding=0
+PERSISTENT_FINAL phase=5 error=0 life_error=3 active=11 stop=0 polls=23

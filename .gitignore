@@ -11,3 +11,5 @@ experiments/arm64-pill/pill
 /experiments/native-wifi-qca9377-wmi-native-v5/runs/
 /experiments/native-wifi-qca9377-persistent-profile-v1/runs/
 /experiments/native-wifi-qca9377-persistent-admission-v1/runs/
+/experiments/native-wifi-qca9377-persistent-tx-v1/runs/
+/experiments/native-wifi-qca9377-beacon-rx-v1/runs/

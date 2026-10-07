@@ -1,0 +1,37 @@
+{
+  "status": "PINNED-WMI-MGMT-RX-BEACON-ADAPTER-ASAN-COFF-PASS",
+  "checks": 459252,
+  "unchanged_beacon_checks": 9117,
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "reference_sha256": {
+    "wmi-tlv.c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "wmi-tlv.h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+    "wmi.c": "68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4",
+    "wmi.h": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c",
+    "ieee80211.h": "572535ac04d9dda668501b0233746d0e5c143195d85c02ed3be2532a37c0e8d7"
+  },
+  "session_sha256": {
+    "beacon_info.c": "10001c0b5c54748370aaa713be275ebe0476f282d2686f40a0267d4f1ab5d38c",
+    "beacon_info.h": "98edfe74b4ff64292ab1e8279dced824d06aa8b98639792387b72b732f197a30",
+    "beacon_info_test.c": "31950de6edf28b70a6cb98f0b69ac3b0dd4bc30296d10ca848f84ef5e3567ddb"
+  },
+  "source_sha256": {
+    "beacon_rx.c": "b14c40cfafe6da94414de28dcc9388e1756fcb26518d9cecb8d10f8d4b3262f8",
+    "beacon_rx.h": "606fcbc85a3deebef20a4902b2314daf68d879ebed4d6800b74b7c07b9a1afb4",
+    "beacon_rx_test.c": "f37716060a09b057ac4e48aae5491d32904b6887d7baf39969592ffa465cb002",
+    "verify_beacon_rx.py": "3df77c5f81c708087588b3b0706cabb31527ab228064c66cd1d8c7e7f676ff5b"
+  },
+  "mgmt_oracle_sha256": "2cad2b1064ef2d2794d10728ee5ffd3f453a2f83427f5c215b1bdee29ede04ff",
+  "beacon_oracle_sha256": "b57359c65196507452fbe9ea99209808bc239043c3aefe4848958c382f64f018",
+  "compiler": "clang version 20.1.8 (github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin\n",
+  "host_log_sha256": "022c0668f09ce99f117505d4187e6b3442070892475b438a3086d236ebe2ab4c",
+  "firmware_event_id": 28673,
+  "expected_header_bytes": 40,
+  "native_integrated": false,
+  "device_actions": 0,
+  "radio_scanned": false,
+  "physical_mgmt_format_observed": false,
+  "physical_ssid_discovered": false,
+  "security_validated": false,
+  "wifi_connected": false
+}

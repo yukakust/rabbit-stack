@@ -4352,3 +4352,32 @@ and actualcurrenttarget/lifecycle before one native trial.
 Independent next necessary preparation delegated to persistent_radio in NEW
 persistent-tx-v1: actualserializedCE3 owner/publication using sharedRXHTCledger,
 no DMAcreditrefund, ambiguityretaineduntilactualstop. Nohardware/candidate/secrets.
+
+### 2026-10-07: all53 assets accepted; runtime TX and beacon adapters reviewed
+
+Native53 exactfirmware session firmware-ram-8sztj97t all12 accepted bitmap4095,
+RAMready1. Solecontroller46741 remainslive; actualchipmainloading offset120032
+submitted/completed663/663 at heartbeat, all14 owners+pin appropriately retained.
+Do not sign/change engine until actual allownerrelease/result. NoWi-Fi/IP/WAN.
+
+Reviewed persistent-tx-v1 exact source/log+54 compiledfixturebindings:16 actual
+nativebridge/RX/CE3 scenarios ASAN/UBSAN+COFF onYukabox. Sole serializedCE3
+publisher borrows sharedRXcreditledger, commitsbeforepublication, exactmapping/
+cookie/address/index/length guards, runtimeHTCsequence, boundedcreditwait and
+ambiguityretaineduntilactualstop. DMAcompletion onlyorderscommands; no credit
+refund or inventedfirmwareACK. INITcoordinator is not runtimeTX. Host-only.
+
+Reviewed beacon-rx-v1 source/log+unchangedsessionbeaconhelper bindings:
+459252 adapter +9117 baseline ASAN/UBSAN checks+COFF onYukabox. Pinnedactual
+WMI MGMT_RX0x7001/header40/TLV44+17, boundedbytearray (unalignedlenperLinux),
+rawchannel/rate/SNR/status/RSSI preserved, copiedBSSID/SSID/opaqueRSN. Errors/
+unknownextensions/foreignframes unaccepted with callerownership intact.
+MGMT_RX lacks vdev/scan/requestIDs: collector MUST bind actualownedCE/radioepoch
+and reviewedchannelpolicy, never manufacturecorrelation or SSIDfromSTARTED.
+No physicalMGMT_RX/SSID claim; no HTT/FCSguessing.
+
+Next independent NEW scan-coordinator-v1 prepares HOST-ONLY runtimeTX/RX +
+policy/channel + station/ownedSTOP + beaconjoin. Oldstationprepare/post/STOP
+reservecredits too: newcoordinator MUST use purewire bodies and soleactualTX
+owner, reflect publication/DMAordering into pendingstate without doublecredits.
+No frozenedits/nativecandidate/RF/hardware/secrets delegated.
