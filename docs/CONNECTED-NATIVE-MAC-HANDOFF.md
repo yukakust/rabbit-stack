@@ -5190,3 +5190,22 @@ Snapshot at evidence/sign-and-launch: pacednative delivery inprogress, no APPLIE
 claim yet, hardware_trial_pendingnull/no59firmware signed at snapshot. Actualstate
 and newest receipts override this entry. No secondcontroller; if stopped preserve
 exactsession and do notsignagain. Last code/evidence push758bd7d succeeded.
+
+### 2026-10-07: physical59 APPLIED; correct initial service; assets59 started
+
+Actual exact APPLIED59 receipt package5462ada06c7a1e2fb801c31f9f3ab35c3eecc286dc7fbba8b3c296c7d9ce62ad, native_pendingnull,world19 retained.
+PID8339 exited after initial read-pci43 “diagnostic service absent”; NOfirmware
+signed by thatcontroller. New knownpeer locked readonlyRFS counter59 and240QPFX
+generation59 bothsuccess: noreset/contextloss evidence. Hostread_pci service list
+excluded0D; adding0D to multi-service list stillfailed. New read_initial59.m requests
+ONLY exact0D service + knownpeerfilter; got actual hashjoinedQPD18/924 bytes with
+alloriginal setup/ROM/14teardown gates; no native/HCI/timer/source/key changes.
+Evidence at observation59-root-route-v1/evidence/applied59-and-initial.
+
+Then originalassetprepare through strict59guards signed12newRAMchunks ONCE,
+exactsession runs/text-world/firmware-ram-e66kaqfm. SoleassetcontrollerPID10417
+assets.py deliver, metadata runs/control/asset-controller59.json, logassets59.log.
+Do not restart continue59.py or signagain. Check livepid/newreceipts beforeanything
+Bluetooth. On failure retain exactpackets/checkpoints/diagnostics; no automatic
+reconnectloop. After all12accepted/ready1 allow660s quiet before prefixread.
+Wi-Fi association/IP stillunconfirmed; city/catvisual59 notyetnewownerobservation.

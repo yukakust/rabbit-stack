@@ -1,0 +1,21 @@
+{
+  "native_counter": 59,
+  "world_counter": 19,
+  "native_applied": true,
+  "firmware_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm",
+  "firmware_chunks_signed_once": 12,
+  "initial_diagnostic_bytes": 924,
+  "read_initial_source_sha256": "a4493584aa56b74805456bbb2795404575b8d2a8a3da3f6aedd7eb7710a87f3d",
+  "device_reset_observed": false,
+  "wifi_connected": false,
+  "inputs": {
+    "initial59-single-service.log": "9df8aea053c09a80861b0c3c34c17577f88caabd29ddedbb173416d526e1e51f",
+    "initial59-0.log": "231d162538638640a7679c307cba7192cf6edaed4b2f202f568e16a83a750baf",
+    "initial59-correct-service.log": "231d162538638640a7679c307cba7192cf6edaed4b2f202f568e16a83a750baf",
+    "asset-controller59.json": "a2135c052702fa20e0280f7dba296a47952358e4c9d8a9a8d2cd951c0c148816",
+    "initial59.json": "25c3dd66f050455e2a8b7855d48dddca66e91b8ce01f3956d4ccde70351fc23a",
+    "native-report.json": "a8c89583af7745228f14e5a386314350996f1d157b87b6c4e9a7acb618ae8c8f",
+    "receipt.log": "f894375f3fdaa7f99a1d65305b09b9e8ebc7de97c51891657d0bd537ac6829bf",
+    "prefix.log": "2016d72d72c095b1c4a6b74556c10909181a7924a512c40f2d14c5556cec1349"
+  }
+}
