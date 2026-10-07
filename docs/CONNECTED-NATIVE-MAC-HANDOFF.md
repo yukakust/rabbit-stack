@@ -4760,3 +4760,28 @@ Root found rng_bind can replace previous retained RNG pool when arena live0;
 BASELINE NOT ADMITTED. Agent preparing NEWport-v2 regression/fix plus runtime
 integration; old v1 preserved. Parallel NEWoffline HTT56 profile preparation
 from frozen HTT55; no physical admission until all55raw/release proof saved.
+
+### 2026-10-07: physical55 full firmware staging; offline next components
+
+Exact55 firmware-ram-g4w7ruqs full12 accepted bitmap4095 ready1, container
+RAM report EXACT-FULL-FIRMWARE-CONTAINER-IN-RAM. Public receipts archived
+scan-admission-v2/evidence/2026-10-07/firmware55-full-staging. Solecontroller63271
+now observation only. Last BOOT native_stage18/board_phase2/14DMA users;
+not release, INIT/SSID/IP or firmware execution proof. No other BLE operations.
+
+Root verified new port-v2 source/log bindings and retained RNG rebind fix:
+277113 ASAN/mock ABI checks+19COFF. Runtime-v1 bindings verified: genuine pinned
+LLVM chkstk probe,65436 guarded stack checks+233521 memory shim checks; isolated
+public-vector EFI66048 linked only, NOT executed or combined Rabbit budget.
+Actual native RNG/TargetPack/stack/ownerAUTH/physical pin remain unapproved.
+
+HTT profile-v2 GEN56 frozen offline168448 SHA
+ede1f957d94dc85280659474982874112c9c39c10f3012f900cc7ae15ca95df5;
+root reran read-only admission_gate validating600sources/compiled fixture/proof
+bindings. Native24,4equalEFI,2QEMU/world17/50gate checks pass. NEVER admitted/
+signed/device-sent. Must capture55 all110pages2x+genuineall14release first.
+
+Owner-auth-frame-v1 reviewed1538actualnegative/KAT+syntheticACK cases; positive
+signedAUTH chain explicitly unproved. NEWv2 uses only published RFC8032 dummy
+seed for offline test signing+actualNoise handshake/Split positiveproof;
+no real key/credential/device/RNG/signing access or provisioning approval.

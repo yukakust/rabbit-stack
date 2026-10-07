@@ -1,0 +1,730 @@
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/cipherstate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-0.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/dhstate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-1.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/handshakestate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-2.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/hashstate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-3.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/internal.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-4.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/names.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-5.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/patterns.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-6.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/symmetricstate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-7.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_unused_new", "-Dnoise_free=qca_unused_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/util.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-8.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/backend/ref/hash-sha256.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-9.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/crypto/sha2/sha256.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-10.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-secure-provision-v1/reference/monocypher.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-11.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-Wall", "-Wextra", "-Werror", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dh_monocypher.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-12.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-Wall", "-Wextra", "-Werror", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/cipher_monocypher.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-13.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-Wall", "-Wextra", "-Werror", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/native_port.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-14.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-Wall", "-Wextra", "-Werror", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/native_factories.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-15.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-Wall", "-Wextra", "-Werror", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/native_abi_probe.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-16.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-Wall", "-Wextra", "-Werror", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng/rng_port.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-17.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/port_test.c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-0.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-1.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-2.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-3.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-4.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-5.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-6.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-7.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-8.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-9.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-10.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-11.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-12.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-13.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-14.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-15.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-16.o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/host-17.o", "-Wl,--gc-sections", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/port-test"]
+
+
+["/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/port-test"]
+abi=33392,16,8,8,0,32768,33280,33344,33376,16,8
+checks=277113 Noise-NK-library dummy handshake/transport/replay/mismatch PASS peak_live_slots=18 allocations=18 rng_calls=0
+
+
+["/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/port-test", "foreign"]
+PASS 37 native allocator quarantine foreign no foreign dereference/owner release invention
+
+
+["/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/port-test", "interior"]
+PASS 37 native allocator quarantine interior no foreign dereference/owner release invention
+
+
+["/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/port-test", "size"]
+PASS 37 native allocator quarantine size no foreign dereference/owner release invention
+
+
+["/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/port-test", "double"]
+PASS 37 native allocator quarantine double no foreign dereference/owner release invention
+
+
+["/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/port-test", "rng-uncertain"]
+PASS 43 retained uncertain RNG owner blocks rebind/reset
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/cipherstate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-0.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-0.obj"]
+   text	   data	    bss	    dec	    hex	filename
+    757	      0	      0	    757	    2f5	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-0.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-0.obj"]
+00000000000002b3 T noise_cipherstate_decrypt
+0000000000000213 T noise_cipherstate_decrypt_with_ad
+00000000000002a6 T noise_cipherstate_encrypt
+000000000000015b T noise_cipherstate_encrypt_with_ad
+00000000000000ac T noise_cipherstate_free
+00000000000000e1 T noise_cipherstate_get_cipher_id
+00000000000000ed T noise_cipherstate_get_key_length
+00000000000000fa T noise_cipherstate_get_mac_length
+00000000000002e9 T noise_cipherstate_get_max_key_length
+00000000000002ef T noise_cipherstate_get_max_mac_length
+000000000000014e T noise_cipherstate_has_key
+0000000000000107 T noise_cipherstate_init_key
+0000000000000000 T noise_cipherstate_new_by_id
+0000000000000052 T noise_cipherstate_new_by_name
+00000000000002c0 T noise_cipherstate_set_nonce
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-0.obj"]
+                 U noise_aesgcm_new
+                 U noise_chachapoly_new
+                 U noise_name_to_id
+                 U qca_noise_free
+                 U strlen
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/dhstate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-1.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-1.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   1591	      0	      0	   1591	    637	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-1.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-1.obj"]
+0000000000000493 T noise_dhstate_calculate
+0000000000000219 T noise_dhstate_clear_key
+000000000000054c T noise_dhstate_copy
+00000000000005a0 T noise_dhstate_format_fingerprint
+00000000000000bb T noise_dhstate_free
+000000000000017b T noise_dhstate_generate_dependent_keypair
+0000000000000152 T noise_dhstate_generate_keypair
+00000000000000f0 T noise_dhstate_get_dh_id
+00000000000002ae T noise_dhstate_get_keypair
+000000000000010a T noise_dhstate_get_private_key_length
+00000000000003d8 T noise_dhstate_get_public_key
+00000000000000fd T noise_dhstate_get_public_key_length
+00000000000005f3 T noise_dhstate_get_role
+0000000000000117 T noise_dhstate_get_shared_key_length
+0000000000000134 T noise_dhstate_has_keypair
+0000000000000143 T noise_dhstate_has_public_key
+0000000000000124 T noise_dhstate_is_ephemeral_only
+0000000000000461 T noise_dhstate_is_null_public_key
+0000000000000000 T noise_dhstate_new_by_id
+0000000000000061 T noise_dhstate_new_by_name
+00000000000001b2 T noise_dhstate_set_keypair
+000000000000025d T noise_dhstate_set_keypair_private
+0000000000000419 T noise_dhstate_set_null_public_key
+0000000000000342 T noise_dhstate_set_public_key
+0000000000000600 T noise_dhstate_set_role
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-1.obj"]
+                 U memcpy
+                 U memset
+                 U noise_curve25519_new
+                 U noise_curve448_new
+                 U noise_format_fingerprint
+                 U noise_is_zero
+                 U noise_name_to_id
+                 U noise_newhope_new
+                 U qca_noise_free
+                 U strlen
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/handshakestate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-2.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-2.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   5317	      0	      0	   5317	   14c5	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-2.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-2.obj"]
+000000000000097f T noise_handshakestate_fallback
+0000000000000989 T noise_handshakestate_fallback_to
+000000000000035f T noise_handshakestate_free
+0000000000000bf4 T noise_handshakestate_get_action
+0000000000000477 T noise_handshakestate_get_fixed_ephemeral_dh
+00000000000004ca T noise_handshakestate_get_fixed_hybrid_dh
+0000000000001380 T noise_handshakestate_get_handshake_hash
+000000000000045d T noise_handshakestate_get_local_keypair_dh
+0000000000000427 T noise_handshakestate_get_protocol_id
+000000000000046a T noise_handshakestate_get_remote_public_key_dh
+000000000000041b T noise_handshakestate_get_role
+000000000000069e T noise_handshakestate_has_local_keypair
+0000000000000539 T noise_handshakestate_has_pre_shared_key
+00000000000006db T noise_handshakestate_has_remote_public_key
+0000000000000676 T noise_handshakestate_needs_local_keypair
+000000000000051d T noise_handshakestate_needs_pre_shared_key
+00000000000006b3 T noise_handshakestate_needs_remote_public_key
+0000000000000000 T noise_handshakestate_new_by_id
+0000000000000303 T noise_handshakestate_new_by_name
+0000000000000f6e T noise_handshakestate_read_message
+000000000000054c T noise_handshakestate_set_pre_shared_key
+00000000000005b5 T noise_handshakestate_set_prologue
+000000000000131e T noise_handshakestate_split
+00000000000006f0 T noise_handshakestate_start
+0000000000000c00 T noise_handshakestate_write_message
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-2.obj"]
+                 U __chkstk
+                 U memcpy
+                 U memset
+                 U noise_clean
+                 U noise_dhstate_calculate
+                 U noise_dhstate_clear_key
+                 U noise_dhstate_free
+                 U noise_dhstate_generate_dependent_keypair
+                 U noise_dhstate_get_role
+                 U noise_dhstate_has_keypair
+                 U noise_dhstate_has_public_key
+                 U noise_dhstate_is_null_public_key
+                 U noise_dhstate_new_by_id
+                 U noise_dhstate_set_public_key
+                 U noise_dhstate_set_role
+                 U noise_hashstate_get_hash_length
+                 U noise_hashstate_hash_one
+                 U noise_hashstate_hkdf
+                 U noise_pattern_lookup
+                 U noise_pattern_reverse_flags
+                 U noise_protocol_id_to_name
+                 U noise_symmetricstate_decrypt_and_hash
+                 U noise_symmetricstate_encrypt_and_hash
+                 U noise_symmetricstate_free
+                 U noise_symmetricstate_get_mac_length
+                 U noise_symmetricstate_mix_hash
+                 U noise_symmetricstate_mix_key
+                 U noise_symmetricstate_new_by_id
+                 U noise_symmetricstate_new_by_name
+                 U noise_symmetricstate_split
+                 U qca_noise_free
+                 U qca_noise_new_object
+                 U qca_port_malloc
+                 U strlen
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/hashstate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-3.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-3.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   2018	      0	      0	   2018	    7e2	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-3.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-3.obj"]
+0000000000000162 T noise_hashstate_finalize
+00000000000000c7 T noise_hashstate_free
+0000000000000115 T noise_hashstate_get_block_length
+00000000000000fc T noise_hashstate_get_hash_id
+0000000000000108 T noise_hashstate_get_hash_length
+00000000000007cc T noise_hashstate_get_max_block_length
+00000000000007c6 T noise_hashstate_get_max_hash_length
+0000000000000197 T noise_hashstate_hash_one
+0000000000000200 T noise_hashstate_hash_two
+00000000000002b6 T noise_hashstate_hkdf
+0000000000000000 T noise_hashstate_new_by_id
+000000000000006d T noise_hashstate_new_by_name
+00000000000005c8 T noise_hashstate_pbkdf2
+0000000000000122 T noise_hashstate_reset
+000000000000013c T noise_hashstate_update
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-3.obj"]
+                 U __chkstk
+                 U memcpy
+                 U memset
+                 U noise_blake2b_new
+                 U noise_blake2s_new
+                 U noise_clean
+                 U noise_name_to_id
+                 U noise_sha256_new
+                 U noise_sha512_new
+                 U qca_noise_free
+                 U strlen
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/internal.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-4.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-4.obj"]
+   text	   data	    bss	    dec	    hex	filename
+      5	      0	      0	      5	      5	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-4.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-4.obj"]
+0000000000000000 T noise_aesgcm_new
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-4.obj"]
+                 U noise_aesgcm_new_ref
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/names.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-5.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-5.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   2984	      0	      0	   2984	    ba8	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-5.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-5.obj"]
+0000000000000000 R ??_C@_01KNKLHLMO@K?$AA@
+0000000000000000 R ??_C@_01MMEEDKFM@X?$AA@
+0000000000000000 R ??_C@_01NANMIPIL@N?$AA@
+0000000000000000 R ??_C@_02BAHDIOLJ@XX?$AA@
+0000000000000000 R ??_C@_02BBAPPCCJ@IN?$AA@
+0000000000000000 R ??_C@_02BCILCGEH@KN?$AA@
+0000000000000000 R ??_C@_02BEEAOEKM@NN?$AA@
+0000000000000000 R ??_C@_02GJDHBAOJ@NK?$AA@
+0000000000000000 R ??_C@_02GMHIAGGM@IK?$AA@
+0000000000000000 R ??_C@_02GPPMNCAC@KK?$AA@
+0000000000000000 R ??_C@_02HBJMMPCL@XK?$AA@
+0000000000000000 R ??_C@_02INIFBHL@NX?$AA@
+0000000000000000 R ??_C@_02MOLDLGO@XN?$AA@
+0000000000000000 R ??_C@_02NJHEHPO@IX?$AA@
+0000000000000000 R ??_C@_02OBDJDJA@KX?$AA@
+0000000000000000 R ??_C@_03JFAPLOKC@448?$AA@
+0000000000000000 R ??_C@_05BAFJBCIH@XXhfs?$AA@
+0000000000000000 R ??_C@_05CKHGJBCD@NNhfs?$AA@
+0000000000000000 R ??_C@_05DHBJPPNF@XKhfs?$AA@
+0000000000000000 R ??_C@_05DHHDKBJL@INhfs?$AA@
+0000000000000000 R ??_C@_05GIBOCELO@Noise?$AA@
+0000000000000000 R ??_C@_05HKLLAAJA@KNhfs?$AA@
+0000000000000000 R ??_C@_05ICJGMFIC@25519?$AA@
+0000000000000000 R ??_C@_05JFBLGCLC@KXhfs?$AA@
+0000000000000000 R ??_C@_05LCFLIPOA@KKhfs?$AA@
+0000000000000000 R ??_C@_05MFNGPDAB@NXhfs?$AA@
+0000000000000000 R ??_C@_05NINDMDLJ@IXhfs?$AA@
+0000000000000000 R ??_C@_05OCJGBOFD@NKhfs?$AA@
+0000000000000000 R ??_C@_05PPJDCOOL@IKhfs?$AA@
+0000000000000000 R ??_C@_05PPPJHAKF@XNhfs?$AA@
+0000000000000000 R ??_C@_06HKIKMHH@SHA256?$AA@
+0000000000000000 R ??_C@_06JBABBCNN@AESGCM?$AA@
+0000000000000000 R ??_C@_06PJBKPJBG@SHA512?$AA@
+0000000000000000 R ??_C@_06PPOBDDDN@Xnoidh?$AA@
+0000000000000000 R ??_C@_07BGNOPJFO@BLAKE2s?$AA@
+0000000000000000 R ??_C@_07CONOKNBN@NewHope?$AA@
+0000000000000000 R ??_C@_07DBHNOKOM@IXnoidh?$AA@
+0000000000000000 R ??_C@_07DLLIODPF@NXnoidh?$AA@
+0000000000000000 R ??_C@_07EFAHNKEO@BLAKE2b?$AA@
+0000000000000000 R ??_C@_07EIPCBPDH@Ed25519?$AA@
+0000000000000000 R ??_C@_07GHELGMLP@IKnoidh?$AA@
+0000000000000000 R ??_C@_07HDFIONJB@KXnoidh?$AA@
+0000000000000000 R ??_C@_07IBGMNLFJ@XXnoidh?$AA@
+0000000000000000 R ??_C@_08HCFNAGDC@NoisePSK?$AA@
+0000000000000000 R ??_C@_0L@FACOHGCL@XXfallback?$AA@
+0000000000000000 R ??_C@_0L@GKHPCDII@ChaChaPoly?$AA@
+0000000000000000 R ??_C@_0M@BPGDGOLG@KXnoidh?$CLhfs?$AA@
+0000000000000000 R ??_C@_0M@GEOFFBLK@XXnoidh?$CLhfs?$AA@
+0000000000000000 R ??_C@_0M@IHMABJKG@NXnoidh?$CLhfs?$AA@
+0000000000000000 R ??_C@_0M@MEEMFCOD@IKnoidh?$CLhfs?$AA@
+0000000000000000 R ??_C@_0M@PDFIPACJ@IXnoidh?$CLhfs?$AA@
+0000000000000000 R ??_C@_0P@EHOIDIFL@XXfallback?$CLhfs?$AA@
+0000000000000073 T noise_id_to_name
+0000000000000000 T noise_name_to_id
+00000000000002e4 T noise_protocol_id_to_name
+00000000000000b0 T noise_protocol_name_to_id
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-5.obj"]
+                 U memcmp
+                 U memcpy
+                 U memset
+                 U strlen
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/patterns.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-6.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-6.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   1147	      0	      0	   1147	    47b	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-6.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-6.obj"]
+0000000000000000 T noise_pattern_lookup
+000000000000001c T noise_pattern_reverse_flags
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-6.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/symmetricstate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-7.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-7.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   1647	      0	      0	   1647	    66f	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-7.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-7.obj"]
+00000000000003d8 T noise_symmetricstate_decrypt_and_hash
+0000000000000368 T noise_symmetricstate_encrypt_and_hash
+00000000000001d4 T noise_symmetricstate_free
+00000000000004d8 T noise_symmetricstate_get_mac_length
+0000000000000217 T noise_symmetricstate_get_protocol_id
+00000000000002fd T noise_symmetricstate_mix_hash
+0000000000000249 T noise_symmetricstate_mix_key
+0000000000000000 T noise_symmetricstate_new_by_id
+000000000000017f T noise_symmetricstate_new_by_name
+000000000000050d T noise_symmetricstate_split
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-7.obj"]
+                 U memcpy
+                 U memset
+                 U noise_cipherstate_decrypt_with_ad
+                 U noise_cipherstate_encrypt_with_ad
+                 U noise_cipherstate_free
+                 U noise_cipherstate_get_key_length
+                 U noise_cipherstate_get_mac_length
+                 U noise_cipherstate_has_key
+                 U noise_cipherstate_init_key
+                 U noise_cipherstate_new_by_id
+                 U noise_clean
+                 U noise_hashstate_free
+                 U noise_hashstate_get_hash_length
+                 U noise_hashstate_hash_one
+                 U noise_hashstate_hash_two
+                 U noise_hashstate_hkdf
+                 U noise_hashstate_new_by_id
+                 U noise_protocol_id_to_name
+                 U noise_protocol_name_to_id
+                 U qca_noise_free
+                 U qca_noise_new_object
+                 U strlen
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_unused_new", "-Dnoise_free=qca_unused_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/util.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-8.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-8.obj"]
+   text	   data	    bss	    dec	    hex	filename
+    496	      0	      0	    496	    1f0	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-8.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-8.obj"]
+0000000000000055 T noise_clean
+00000000000000c6 T noise_format_fingerprint
+0000000000000001 T noise_init
+0000000000000000 T noise_init_helper
+0000000000000069 T noise_is_equal
+000000000000009b T noise_is_zero
+0000000000000033 T qca_unused_free
+0000000000000004 T qca_unused_new
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-8.obj"]
+                 U qca_port_calloc
+                 U qca_port_free
+                 U sha256_finish
+                 U sha256_reset
+                 U sha256_update
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/backend/ref/hash-sha256.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-9.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-9.obj"]
+   text	   data	    bss	    dec	    hex	filename
+     98	      0	      0	     98	     62	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-9.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-9.obj"]
+0000000000000000 T noise_sha256_new
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-9.obj"]
+                 U qca_noise_new_object
+                 U sha256_finish
+                 U sha256_reset
+                 U sha256_update
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/crypto/sha2/sha256.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-10.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-10.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   1791	      0	      0	   1791	    6ff	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-10.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-10.obj"]
+0000000000000000 R __xmm@5be0cd191f83d9ab9b05688c510e527f
+0000000000000000 R __xmm@a54ff53a3c6ef372bb67ae856a09e667
+000000000000054e T sha256_finish
+0000000000000000 T sha256_reset
+0000000000000022 T sha256_update
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-10.obj"]
+                 U memcpy
+                 U memset
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-secure-provision-v1/reference/monocypher.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-11.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-11.obj"]
+   text	   data	    bss	    dec	    hex	filename
+  37299	      0	      0	  37299	   91b3	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-11.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-11.obj"]
+0000000000000000 R __xmm@00000000000000010000000000000000
+0000000000000000 R __xmm@00000000000000020000000000000002
+0000000000000000 R __xmm@6b20657479622d323320646e61707865
+0000000000000000 R __xmm@80000000800000008000000080000000
+0000000000000000 R __xmm@80000000800000058000000080000005
+0000000000000000 R __xmm@80000000800000098000000080000009
+0000000000000000 R __xmm@800000008000000a800000008000000a
+0000000000007a36 T crypto_aead_init_djb
+0000000000007a68 T crypto_aead_init_ietf
+0000000000007a00 T crypto_aead_init_x
+0000000000007ddd T crypto_aead_lock
+0000000000007caa T crypto_aead_read
+0000000000007e79 T crypto_aead_unlock
+0000000000007a9f T crypto_aead_write
+0000000000002642 T crypto_argon2
+00000000000000c0 R crypto_argon2_no_extras
+0000000000002624 T crypto_blake2b
+000000000000252b T crypto_blake2b_final
+0000000000000b85 T crypto_blake2b_init
+00000000000025d2 T crypto_blake2b_keyed
+0000000000000aa9 T crypto_blake2b_keyed_init
+0000000000000bdb T crypto_blake2b_update
+0000000000000394 T crypto_chacha20_djb
+00000000000000e6 T crypto_chacha20_h
+0000000000000516 T crypto_chacha20_ietf
+0000000000000545 T crypto_chacha20_x
+00000000000053f6 T crypto_eddsa_check
+0000000000004148 T crypto_eddsa_check_equation
+00000000000051a2 T crypto_eddsa_key_pair
+0000000000004075 T crypto_eddsa_mul_add
+0000000000003ef9 T crypto_eddsa_reduce
+0000000000004e84 T crypto_eddsa_scalarbase
+0000000000005252 T crypto_eddsa_sign
+000000000000543c T crypto_eddsa_to_x25519
+00000000000039da T crypto_eddsa_trim_scalar
+0000000000007572 T crypto_elligator_key_pair
+00000000000063e9 T crypto_elligator_map
+0000000000007227 T crypto_elligator_rev
+0000000000000a64 T crypto_poly1305
+00000000000009b5 T crypto_poly1305_final
+00000000000005bb T crypto_poly1305_init
+000000000000068e T crypto_poly1305_update
+0000000000000000 T crypto_verify16
+0000000000000028 T crypto_verify32
+000000000000006b T crypto_verify64
+00000000000000d2 T crypto_wipe
+00000000000039fb T crypto_x25519
+0000000000006113 T crypto_x25519_dirty_fast
+000000000000607a T crypto_x25519_dirty_small
+0000000000007659 T crypto_x25519_inverse
+0000000000003eed T crypto_x25519_public_key
+0000000000005fd3 T crypto_x25519_to_eddsa
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-11.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dh_monocypher.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-12.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-12.obj"]
+   text	   data	    bss	    dec	    hex	filename
+    602	      0	      0	    602	    25a	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-12.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-12.obj"]
+0000000000000000 T noise_curve25519_new
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-12.obj"]
+                 U crypto_wipe
+                 U crypto_x25519
+                 U crypto_x25519_public_key
+                 U memcpy
+                 U noise_is_equal
+                 U noise_is_zero
+                 U qca_noise_entropy
+                 U qca_noise_new_object
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-Dnoise_new_object=qca_noise_new_object", "-Dnoise_free=qca_noise_free", "-Dmalloc=qca_port_malloc", "-Dcalloc=qca_port_calloc", "-Dfree=qca_port_free", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/cipher_monocypher.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-13.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-13.obj"]
+   text	   data	    bss	    dec	    hex	filename
+    511	      0	      0	    511	    1ff	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-13.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-13.obj"]
+0000000000000000 R __xmm@00000000000000ff00000000000000ff
+0000000000000000 T noise_chachapoly_new
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-13.obj"]
+                 U crypto_aead_init_ietf
+                 U crypto_aead_read
+                 U crypto_aead_write
+                 U crypto_wipe
+                 U memcpy
+                 U qca_noise_new_object
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/native_port.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-14.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-14.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   1786	      0	      8	   1794	    702	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-14.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-14.obj"]
+0000000000000000 R ??_C@_0CB@OBLBJHHL@Noise_NK_25519_ChaChaPoly_SHA256@
+0000000000000269 T qca_native_allocations
+00000000000000a2 T qca_native_bind
+000000000000023d T qca_native_live
+0000000000000253 T qca_native_peak
+0000000000000000 T qca_native_reset
+0000000000000140 T qca_native_rng_bind
+0000000000000490 T qca_nk_new
+00000000000005bf T qca_noise_entropy
+00000000000003a1 T qca_noise_free
+0000000000000371 T qca_noise_new_object
+0000000000000347 T qca_port_calloc
+0000000000000439 T qca_port_free
+000000000000027f T qca_port_malloc
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-14.obj"]
+                 U crypto_wipe
+                 U memset
+                 U noise_handshakestate_free
+                 U noise_handshakestate_new_by_name
+                 U rng_fill
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/native_factories.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-15.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-15.obj"]
+   text	   data	    bss	    dec	    hex	filename
+     18	      0	      0	     18	     12	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-15.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-15.obj"]
+0000000000000000 T noise_aesgcm_new_ref
+000000000000000c T noise_blake2b_new
+0000000000000009 T noise_blake2s_new
+0000000000000003 T noise_curve448_new
+0000000000000006 T noise_newhope_new
+000000000000000f T noise_sha512_new
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-15.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/native_abi_probe.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-16.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-16.obj"]
+   text	   data	    bss	    dec	    hex	filename
+     88	      0	      0	     88	     58	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-16.obj
+
+
+["objcopy", "-O", "binary", "-j", ".rdata", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-16.obj", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/abi.bin"]
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-16.obj"]
+0000000000000000 R qca_noise_port_abi
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-16.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng/rng_port.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-17.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-17.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   2626	      0	      0	   2626	    a42	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-17.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-17.obj"]
+0000000000000184 T rng_cleanup
+0000000000000030 R rng_ctr_guid
+0000000000000000 T rng_diagnostic
+0000000000000204 T rng_discover
+00000000000005c6 T rng_fill
+0000000000000010 R rng_hash_guid
+0000000000000020 R rng_hmac_guid
+0000000000000000 R rng_protocol_guid
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-17.obj"]
+                 U memset
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2", "-I/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/dependencies/rng", "-c", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/native_memory.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-18.obj"]
+
+
+["size", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-18.obj"]
+   text	   data	    bss	    dec	    hex	filename
+   1829	      0	      0	   1829	    725	/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-18.obj
+
+
+["nm", "-g", "--defined-only", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-18.obj"]
+0000000000000000 R __xmm@00000000000000010000000000000000
+0000000000000000 R __xmm@00000000000000030000000000000002
+0000000000000000 R __xmm@00000000000000050000000000000004
+0000000000000000 R __xmm@00000000000000070000000000000006
+0000000000000000 R __xmm@00000000000000090000000000000008
+0000000000000000 R __xmm@000000000000000b000000000000000a
+0000000000000000 R __xmm@000000000000000d000000000000000c
+0000000000000000 R __xmm@000000000000000f000000000000000e
+0000000000000000 R __xmm@00000000000000100000000000000010
+0000000000000000 R __xmm@80000000800000008000000080000000
+000000000000066e T memchr
+0000000000000631 T memcmp
+0000000000000000 T memcpy
+000000000000001b T memset
+000000000000065b T strlen
+
+
+["nm", "-u", "/home/yuka/rabbit-world/parallel-noise-native-port-v2/experiments/native-wifi-qca9377-noise-native-port-v2/runs/port/coff-18.obj"]
+

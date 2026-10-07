@@ -1,0 +1,235 @@
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-fno-builtin", "-Dmemcpy=qca_memcpy", "-Dmemset=qca_memset", "-Dmemcmp=qca_memcmp", "-Dmemchr=qca_memchr", "-Dstrlen=qca_strlen", "-c", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/native_memory.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/memory.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runtime_test.c", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/chkstk_bridge.S", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/probe_call.S", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/memory.o", "-o", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/memory-test"]
+
+
+["/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/memory-test", "memory"]
+PASS 233521 real runtime memory shims ASAN/UBSAN
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-fno-builtin", "-Dmemcpy=qca_memcpy", "-Dmemset=qca_memset", "-Dmemcmp=qca_memcmp", "-Dmemchr=qca_memchr", "-Dstrlen=qca_strlen", "-c", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/native_memory.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/memory-plain.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runtime_test.c", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/chkstk_bridge.S", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/probe_call.S", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/memory-plain.o", "-o", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/probe-test"]
+
+
+["/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/probe-test"]
+PASS 65436 actual LLVM probe guarded-stack/register preservation/page-crossing
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-c", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/chkstk_bridge.S", "-o", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/chkstk.obj"]
+
+
+["nm", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/chkstk.obj"]
+0000000000000000 b .bss
+0000000000000000 d .data
+0000000000000000 t .text
+0000000000000000 T ___chkstk_ms
+0000000000000000 T __chkstk
+
+
+["python3", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/verify_port.py"]
+abi=33392,16,8,8,0,32768,33280,33344,33376,16,8
+checks=277113 Noise-NK-library dummy handshake/transport/replay/mismatch PASS peak_live_slots=18 allocations=18 rng_calls=0
+quarantine modes PASS ['foreign', 'interior', 'size', 'double', 'rng-uncertain']
+COFF 19 objects PASS; full EFI not linked
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port", "-I/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/dependencies/rng", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-c", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/efi_smoke.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/efi-smoke.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/lld", "-flavor", "link", "/subsystem:efi_application", "/entry:efi_main", "/nodefaultlib", "/machine:x64", "/opt:ref", "/fixed:no", "/out:/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/public-vector-runtime.efi", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-0.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-1.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-2.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-3.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-4.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-5.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-6.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-7.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-8.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-9.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-10.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-11.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-12.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-13.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-14.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-15.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-16.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-17.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/runs/port/coff-18.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/chkstk.obj", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/efi-smoke.obj"]
+
+
+["objdump", "-x", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/public-vector-runtime.efi"]
+
+/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/public-vector-runtime.efi:     file format pei-x86-64
+/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/public-vector-runtime.efi
+architecture: i386:x86-64, flags 0x0000012f:
+HAS_RELOC, EXEC_P, HAS_LINENO, HAS_DEBUG, HAS_LOCALS, D_PAGED
+start address 0x000000014000e7e4
+
+Characteristics 0x22
+	executable
+	large address aware
+
+Time/Date		Wed Oct  7 06:19:47 2026
+Magic			020b	(PE32+)
+MajorLinkerVersion	14
+MinorLinkerVersion	0
+SizeOfCode		000000000000dc00
+SizeOfInitializedData	0000000000002200
+SizeOfUninitializedData	0000000000000000
+AddressOfEntryPoint	000000000000e7e4
+BaseOfCode		0000000000001000
+ImageBase		0000000140000000
+SectionAlignment	00001000
+FileAlignment		00000200
+MajorOSystemVersion	6
+MinorOSystemVersion	0
+MajorImageVersion	0
+MinorImageVersion	0
+MajorSubsystemVersion	6
+MinorSubsystemVersion	0
+Win32Version		00000000
+SizeOfImage		0001b000
+SizeOfHeaders		00000400
+CheckSum		00000000
+Subsystem		0000000a	(EFI application)
+DllCharacteristics	00008160
+					HIGH_ENTROPY_VA
+					DYNAMIC_BASE
+					NX_COMPAT
+					TERMINAL_SERVICE_AWARE
+SizeOfStackReserve	0000000000100000
+SizeOfStackCommit	0000000000001000
+SizeOfHeapReserve	0000000000100000
+SizeOfHeapCommit	0000000000001000
+LoaderFlags		00000000
+NumberOfRvaAndSizes	00000010
+
+The Data Directory
+Entry 0 0000000000000000 00000000 Export Directory [.edata (or where ever we found it)]
+Entry 1 0000000000000000 00000000 Import Directory [parts of .idata]
+Entry 2 0000000000000000 00000000 Resource Directory [.rsrc]
+Entry 3 0000000000000000 00000000 Exception Directory [.pdata]
+Entry 4 0000000000000000 00000000 Security Directory
+Entry 5 000000000001a000 000000d4 Base Relocation Directory [.reloc]
+Entry 6 0000000000000000 00000000 Debug Directory
+Entry 7 0000000000000000 00000000 Description Directory
+Entry 8 0000000000000000 00000000 Special Directory
+Entry 9 0000000000000000 00000000 Thread Storage Directory [.tls]
+Entry a 0000000000000000 00000000 Load Configuration Directory
+Entry b 0000000000000000 00000000 Bound Import Directory
+Entry c 0000000000000000 00000000 Import Address Table Directory
+Entry d 0000000000000000 00000000 Delay Import Directory
+Entry e 0000000000000000 00000000 CLR Runtime Header
+Entry f 0000000000000000 00000000 Reserved
+
+
+PE File Base Relocations (interpreted .reloc section contents)
+
+Virtual Address: 0000f000 Chunk size 192 (0xc0) Number of fixups 92
+	reloc    0 offset   68 [f068] DIR64
+	reloc    1 offset   80 [f080] DIR64
+	reloc    2 offset   98 [f098] DIR64
+	reloc    3 offset   b0 [f0b0] DIR64
+	reloc    4 offset   c8 [f0c8] DIR64
+	reloc    5 offset   e0 [f0e0] DIR64
+	reloc    6 offset   f8 [f0f8] DIR64
+	reloc    7 offset  110 [f110] DIR64
+	reloc    8 offset  128 [f128] DIR64
+	reloc    9 offset  140 [f140] DIR64
+	reloc   10 offset  158 [f158] DIR64
+	reloc   11 offset  170 [f170] DIR64
+	reloc   12 offset  188 [f188] DIR64
+	reloc   13 offset  1a0 [f1a0] DIR64
+	reloc   14 offset  1b8 [f1b8] DIR64
+	reloc   15 offset  1d0 [f1d0] DIR64
+	reloc   16 offset  1e8 [f1e8] DIR64
+	reloc   17 offset  200 [f200] DIR64
+	reloc   18 offset  218 [f218] DIR64
+	reloc   19 offset  230 [f230] DIR64
+	reloc   20 offset  248 [f248] DIR64
+	reloc   21 offset  260 [f260] DIR64
+	reloc   22 offset  278 [f278] DIR64
+	reloc   23 offset  290 [f290] DIR64
+	reloc   24 offset  2a8 [f2a8] DIR64
+	reloc   25 offset  2c0 [f2c0] DIR64
+	reloc   26 offset  2d8 [f2d8] DIR64
+	reloc   27 offset  2f0 [f2f0] DIR64
+	reloc   28 offset  308 [f308] DIR64
+	reloc   29 offset  320 [f320] DIR64
+	reloc   30 offset  338 [f338] DIR64
+	reloc   31 offset  350 [f350] DIR64
+	reloc   32 offset  368 [f368] DIR64
+	reloc   33 offset  380 [f380] DIR64
+	reloc   34 offset  398 [f398] DIR64
+	reloc   35 offset  3b0 [f3b0] DIR64
+	reloc   36 offset  3c8 [f3c8] DIR64
+	reloc   37 offset  3e0 [f3e0] DIR64
+	reloc   38 offset  3f8 [f3f8] DIR64
+	reloc   39 offset  410 [f410] DIR64
+	reloc   40 offset  428 [f428] DIR64
+	reloc   41 offset  440 [f440] DIR64
+	reloc   42 offset  458 [f458] DIR64
+	reloc   43 offset  470 [f470] DIR64
+	reloc   44 offset  488 [f488] DIR64
+	reloc   45 offset  4a0 [f4a0] DIR64
+	reloc   46 offset  4b8 [f4b8] DIR64
+	reloc   47 offset  4d0 [f4d0] DIR64
+	reloc   48 offset  4e8 [f4e8] DIR64
+	reloc   49 offset  500 [f500] DIR64
+	reloc   50 offset  518 [f518] DIR64
+	reloc   51 offset  530 [f530] DIR64
+	reloc   52 offset  710 [f710] DIR64
+	reloc   53 offset  718 [f718] DIR64
+	reloc   54 offset  720 [f720] DIR64
+	reloc   55 offset  728 [f728] DIR64
+	reloc   56 offset  730 [f730] DIR64
+	reloc   57 offset  738 [f738] DIR64
+	reloc   58 offset  740 [f740] DIR64
+	reloc   59 offset  748 [f748] DIR64
+	reloc   60 offset  750 [f750] DIR64
+	reloc   61 offset  758 [f758] DIR64
+	reloc   62 offset  760 [f760] DIR64
+	reloc   63 offset  768 [f768] DIR64
+	reloc   64 offset  770 [f770] DIR64
+	reloc   65 offset  778 [f778] DIR64
+	reloc   66 offset  780 [f780] DIR64
+	reloc   67 offset  788 [f788] DIR64
+	reloc   68 offset  808 [f808] DIR64
+	reloc   69 offset  810 [f810] DIR64
+	reloc   70 offset  818 [f818] DIR64
+	reloc   71 offset  820 [f820] DIR64
+	reloc   72 offset  828 [f828] DIR64
+	reloc   73 offset  830 [f830] DIR64
+	reloc   74 offset  888 [f888] DIR64
+	reloc   75 offset  890 [f890] DIR64
+	reloc   76 offset  898 [f898] DIR64
+	reloc   77 offset  8a0 [f8a0] DIR64
+	reloc   78 offset  8a8 [f8a8] DIR64
+	reloc   79 offset  8b0 [f8b0] DIR64
+	reloc   80 offset  8b8 [f8b8] DIR64
+	reloc   81 offset  8c0 [f8c0] DIR64
+	reloc   82 offset  8c8 [f8c8] DIR64
+	reloc   83 offset  8d0 [f8d0] DIR64
+	reloc   84 offset  8d8 [f8d8] DIR64
+	reloc   85 offset  8e0 [f8e0] DIR64
+	reloc   86 offset  8e8 [f8e8] DIR64
+	reloc   87 offset  988 [f988] DIR64
+	reloc   88 offset  990 [f990] DIR64
+	reloc   89 offset  998 [f998] DIR64
+	reloc   90 offset  9a0 [f9a0] DIR64
+	reloc   91 offset  9a8 [f9a8] DIR64
+
+Virtual Address: 00010000 Chunk size 20 (0x14) Number of fixups 6
+	reloc    0 offset  c20 [10c20] DIR64
+	reloc    1 offset  c28 [10c28] DIR64
+	reloc    2 offset  c30 [10c30] DIR64
+	reloc    3 offset  c38 [10c38] DIR64
+	reloc    4 offset  c40 [10c40] DIR64
+	reloc    5 offset  c48 [10c48] DIR64
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         0000db32  0000000140001000  0000000140001000  00000400  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .rdata        00001fbc  000000014000f000  000000014000f000  0000e000  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .data         00000000  0000000140011000  0000000140011000  00000000  2**4
+                  ALLOC, LOAD, DATA
+  3 .reloc        000000d4  000000014001a000  000000014001a000  00010000  2**2
+                  CONTENTS, LOAD, READONLY, DATA
+SYMBOL TABLE:
+no symbols
+
+
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-fstack-usage", "-I/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/handshakestate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/handshakestate-stack.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-fstack-usage", "-I/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/hashstate.c", "-o", "/home/yuka/rabbit-world/parallel-noise-native-runtime-v1/source/runs/runtime/hashstate-stack.obj"]
+

@@ -1,0 +1,72 @@
+{
+  "status": "OWNER-AUTH-FRAME-ACTUAL-CRYPTO-NEGATIVE-KAT-ASAN-COFF-PASS",
+  "checks": 1538,
+  "source_sha256": {
+    "auth_frame.c": "a0cea1e95eb0b55d6dab9617abb87bcc1b0c801eb0efc964ea95079ba7c264b4",
+    "auth_frame.h": "9a07037b069a65640249468d1c4c59f4a483c30b689c8df31f81a3d82f6038b9",
+    "auth_test.c": "1dad9c02e0318b1d15f033522a0af4d131d44660a13a3bb84d10496eb31da311",
+    "factory.c": "d1e35d248659d939626a29dd6d75614a05ce832b433419a8707b1d6191618166",
+    "verify_auth.py": "c25defa1cbed8877736b047f6527cc5a0d6428d7001095d30605ef42a7cd7cc2",
+    "compat/malloc.h": "141b6dc79b8b3c96ebd6c2a9a7cb8d278cc82361ecabdc21269bc4aaf579a794",
+    "public-fixture-request.json": "650a8f19771434be4815469307877b0eb906360775f242121b20c72a6458a4ff"
+  },
+  "reference_sha256": {
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/cipherstate.c": "655c3e2a3ff25b083f46ff9d42f0bd6b10039334fed07ba72676aef6187a9c8c",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/util.c": "c1538502560b204a63ca567deb10eed743533bf04329df6f36e2fc67eadf7657",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/names.c": "b8a3d65fe15376312d801c4a71223e78d00b9e8fe19dcc575d8173e46605f587",
+    "/home/yuka/rabbit-world/parallel-secure-provision-v1/reference/monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "/home/yuka/rabbit-world/parallel-secure-provision-v1/reference/monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+    "/home/yuka/rabbit-world/parallel-noise-monocypher-backend-v2/experiments/native-wifi-qca9377-noise-monocypher-backend-v2/cipher_monocypher.c": "b1559266548c82b77df10f8167d5d86bc2cc9490cc1d4504f7de0d6d92b3c790",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/internal.h": "7fc7ecdcf4d4f064517c3fe84ef09451800e015ccc6e049dabe4f0f613ef8d50",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/keys.h": "cbf88e6c75ad59dd25b7c8f3c1039c55276e835d65c485a3d048aca0d5e97836",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protobufs.h": "caca15bc1482574a73e56421eb2de71dae2203e12d7199b8a140a50ea6aa16f3",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol.h": "8d6cfca4bd55e1892aa35032108350e90a391e1df1c6cd5ddaf60978bc222066",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/dhstate.h": "67b5f26aee29416d6ab63f0097b28194575b4d935017d1cc2e133382c3101853",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/cipherstate.h": "dddf1bb446a3a1f871ff178f4afba004fe1c2fdbfff5d1ad2f5d51082b3ccdbe",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/hashstate.h": "23d0c1ff891d55d658c217316a43121a6afc7cbf15043f3ab1892d8bdd20ff49",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/names.h": "4c880b718b4433362568e47fbb380a1bdd74ade6b106c43c9d90b3bdb8877479",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/constants.h": "72a99ae6f74f6af1ab17bd9276d6de085621d5bf7e8f2e12f16a289d4880c96e",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/randstate.h": "47be42dbc4fc5ca86b60c094bdc1aba2917eebc394e70bd76672b10dd7a343ed",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/errors.h": "778a407b2c8d1d8f8fb163137efae1aaa6c37323cfa875657fef2f0c04413055",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/util.h": "903bf61248c195c4fb6908730f0556b1e1256dfa51e83626f9eb4c6bb0a43c70",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/buffer.h": "7194f16b2b8046e3ace2fd6ef03671aba0b063d4c4033dfcd7442acec10a5d42",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/symmetricstate.h": "54387b74d526feb6f312788282d33a39b88528322d180f2e39ef4d36d8dbd4ae",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/signstate.h": "ea269b214d84e98b54dc5f9a1c2c49c4860e032992402c369f5fd9bc291f6e53",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/protocol/handshakestate.h": "6145f42caeedd0b88b6a55a1aa092d20466ee5192367895a873f238654a07711",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/keys/loader.h": "14edf0221be05a8e9a686dc69a41702dbae74f42f61eba15e37055a14c40d27a",
+    "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include/noise/keys/certificate.h": "5e1cc7bf6c0cd341ce63d6fffdc89d231f49fe9ec9573913ef4f7a2897411773"
+  },
+  "monocypher_sha256": {
+    "monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "monocypher.h": "fcaf6ed771358bb4f40fba016f6518ae86ec02b1b877d2cc35ad92d3a26fd7b3",
+    "monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+    "monocypher-ed25519.h": "3a3035181f991a158d0e1c7567258f0bae8ba0f1f23c5512b4a1db1b3c9730ce"
+  },
+  "coff": [
+    {
+      "file": "auth_frame.c",
+      "sha256": "b0e3e6dc9e696436979fbddb07afb42a942f977f201b44183ed9af3994e00c8b"
+    },
+    {
+      "file": "monocypher.c",
+      "sha256": "7b08505e673e175ceea4ce97b2479085c48258d5857da125ab3c0f4262b076ad"
+    },
+    {
+      "file": "monocypher-ed25519.c",
+      "sha256": "1ba863b2aac9c4379c693e465a338d77671363e5eb48fa0253cfd6daa4c4c089"
+    }
+  ],
+  "log_sha256": "d6f9871e2e1bad1297a5b81f3efe9fdc5f2abdc26f6a777cab62ba94201b4d96",
+  "signed_auth_positive_fixture": false,
+  "ack_positive_end_to_end_verified": false,
+  "synthetic_pre_authenticated_ack_gating_verified": true,
+  "signatures_created": 0,
+  "real_keys_read": 0,
+  "credentials_read": 0,
+  "device_rng_calls": 0,
+  "radio_operations": 0,
+  "physical_pin_verified": false,
+  "device_authenticated": false,
+  "native_candidate": false,
+  "provisioning_approved": false
+}

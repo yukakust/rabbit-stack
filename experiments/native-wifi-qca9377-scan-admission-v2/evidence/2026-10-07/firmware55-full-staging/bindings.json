@@ -1,0 +1,10 @@
+{
+  "files": {
+    "report.json": "652420aeb05bf34a9823658dee3e0dc833adc7479de512258c85ae7242afd1b6",
+    "boot55.decoded.json": "10899445a7d36fc45456258ce530c34449d00ba4375091bd6aba2f8f3e00c7c4",
+    "controller55.json": "669be613b9bbf2608a4ee61d8eead0393802e823fdedea1f0718a0aaf978cd40"
+  },
+  "status": "PHYSICAL55-FULL12-RAM-STAGING-ONLY",
+  "scan_verified": false,
+  "wifi_connected": false
+}
