@@ -1,0 +1,24 @@
+{
+  "status": "EXACT-BOUNDED53-ADMITTED-SIGNED-TRIAL-STARTED",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-persistent-admission-v1/read_status.py": "d8a6e1c25279a7ea325bf1c5c4b5a26d4521930278730187972d1e5858a0040d",
+    "experiments/native-wifi-qca9377-persistent-admission-v1/route.py": "6629481ea29abc21ee20add65d855cd2370eb0a00b964ac7d8383113df1f7a7f",
+    "experiments/native-wifi-qca9377-persistent-admission-v1/test_admission.py": "44cb1947cda943f9a48fd48938d8a9adbe025a37e2297ef81cbd11ea237fc9bc",
+    "experiments/native-wifi-qca9377-persistent-admission-v1/README.md": "67fe369abaa541ddf8512513552272dcfe8856122ba21e16f20512afdd2914ec",
+    "experiments/native-wifi-qca9377-persistent-admission-v1/continue53.py": "65e4194b7ff30b46c675f2f268dcf5ffc2586810844a90696803e5922ad8b593"
+  },
+  "payload_sha256": "261649e8cd7ab2bd59621f8ee559c421c36cc5e54c5d19238b558e55dc55a522",
+  "native_counter": 53,
+  "admission_negative_cases": 20,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-0iwr2hpw",
+  "physical_verified": false,
+  "router_connected": false,
+  "files_sha256": {
+    "baseline-boot52.json": "0600d89fc27d690c51287aa644f71b7fd9e57159629ac4aa33738526f531ae96",
+    "baseline-startup52.json": "e7662ee169d2468e6ee3a4e83b8e1dc58e4ae587cb9d8d905eaf0694a93e6ce4",
+    "baseline-operating52.json": "186a550f7fd16193afecb544a7428704b2bfc0e9eb8ef0c5c450318950c47985",
+    "controller53.json": "647bef344785266ef58638bbf2d53a226e8d5a7d0a0727d6dc576e5259c3a204",
+    "signed53-not-yet-applied.json": "59134f6e03bd6fbe56d4c80dd2cc857350d728d6f82164843e67023582d2246b",
+    "combined52.json": "7762b8f68a9bec861c286c189f7bb7499b9a0e8f2fa1e7025370944910e39bc3"
+  }
+}

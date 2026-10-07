@@ -4260,3 +4260,45 @@ Independent next work in new scopes: persistent-profile-v1 prepares bounded
 and full EFI/QEMU/world17 proof; owned-scan-stop-v1 joins stop to owned events
 without raw receive or double credit. Neither has physical admission yet;
 native52 must complete/actual INIT/owner-release before any new hardware trial.
+
+### 2026-10-07: physical native52 INIT succeeds; bounded persistent53 admission next
+
+Exact native52 and all12 firmware52 chunks accepted. QWBT phase5/error0,
+3114/3114, native_stage5/error0; QWOP SERVICE_READY320 accepted. QWIN0002
+phase2/error0, transaction RUNNING4, READY seen1, INIT TX complete1, ABI574,
+MAC c0:b5:d7:78:c3:fb, credit2/outstanding0, memory requests0. Complete68-byte
+READY frame accepted under pinned Linux common-prefix policy. All14 DMA/PCI/
+IRQ/link/wake/pin owners released; hardware_trial_pending cleared and sole
+controller41277 exited. Exact receipts/raw bytes/hashes archived in v5
+evidence/2026-10-07/native52-control-result. No router/IP/WAN or new physical
+scene observation claimed. Preserve world17, no reboot/USB/flash.
+
+Next isolated persistent-profile-v1 candidate53: bounded10s genuine retained
+owners plus CE1/CE2 RX pump, read-only QWRX0001 handles29..31, checked stop.
+WholeEFI four equal builds, both supervisor QEMU, currentworld17 C/ASAN and24
+actual-native model scenarios prepared on Yukabox; admission not yet signed.
+Do not edit candidate source bytes. Separate root admission scope will bind
+565-source closure, generated inputs and all proofs before physical signing.
+
+### 2026-10-07: exact bounded persistent53 admitted and sole controller started
+
+Root separate persistent-admission-v1 leaves all frozen52/profile source
+bytes unchanged.565-input/source + generated-compiler bindings, inherited52
+complete gates,24 actual-entrypoint ASAN/COFF fixtures, both actual supervisor
+QEMU and world17 C/ASAN verified.20 corruptions rejected with key/radio mocked
+unreachable. Fresh sequential known-peer zero-write52 QWBT/QWOP/QWIN confirms
+actual READY/MAC/INIT TX and all14 owners released before signing once.
+Payload163840 SHA261649e8cd7ab2bd59621f8ee559c421c36cc5e54c5d19238b558e55dc55a522.
+Saved exact53 session pci-native-0iwr2hpw. Sole controller46741 and caffeinate
+46742: persistent-admission-v1/continue53.py, runs/control/continue53.log,
+controller53.json. Finite native resume -> NEW firmware53 -> actual boot
+release -> QWIN/QWRX reads. Can resume SAME native/asset sessions; no resign or
+replay52 firmware. Counter53 not yet APPLIED at this record.
+
+Final53 success must include actual owner release and READY/TX, QWRX bounded
+trial PASS, rx_error0 and valid RX phase. Legacy stage6/8448 is controlled stop
+and insufficient alone. Two-event backpressure intentionally limits this
+trial; not proof of sustained station traffic. No station/RF/credentials.
+Owned-scan-stop-v1 reviewed100568 ASAN/COFF checks; matching terminal + genuine
+STOP TX completion, retained unknown/foreign ownership, deadlines/overflow
+fault without credit refund. ENDED alone NEVER permits DMA unload. Host only.

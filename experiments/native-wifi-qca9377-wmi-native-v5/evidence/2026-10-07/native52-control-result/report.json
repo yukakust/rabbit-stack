@@ -1,0 +1,23 @@
+{
+  "status": "PHYSICAL-NATIVE52-WMI-INIT-READY-MAC-TX-COMPLETE-ALL-OWNERS-RELEASED",
+  "native_counter": 52,
+  "payload_sha256": "0b4dfbf03b12eef58cbaa4eabe965dda606ded3337a60708b22574b02edb52f6",
+  "world_counter": 17,
+  "world_package_sha256": "47d63aa6e81b35fc355005cf65f889b9c43bc332443e37ddbba672b920c2fc2b",
+  "mac_hex": "c0b5d778c3fb",
+  "router_connected": false,
+  "ip_verified": false,
+  "scene_observed_after_trial": false,
+  "files_sha256": {
+    "startup52.decoded.json": "353d01e4445ac703ccec0bf9d14c5d76717ecddd8286d818adecbc44db37631c",
+    "startup52.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-receipt.json": "9b96e79d54a8ad055a5cfd60f4aedb4c12c9ac4359d11cf5d953c72f9c0dee77",
+    "operating52.json": "186a550f7fd16193afecb544a7428704b2bfc0e9eb8ef0c5c450318950c47985",
+    "operating52.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "boot52.decoded.json": "643b2084e1779883a999bc5ea67fa19e075eeb2abe339280b1c5e29d1f625269",
+    "operating52.decoded.json": "80f34e3863259c7a5a84eb9a93ea19d1f8de0b766f1d064e2c1f1c003c1d7e36",
+    "boot52.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "startup52.json": "e7662ee169d2468e6ee3a4e83b8e1dc58e4ae587cb9d8d905eaf0694a93e6ce4",
+    "boot52.json": "0600d89fc27d690c51287aa644f71b7fd9e57159629ac4aa33738526f531ae96"
+  }
+}

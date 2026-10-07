@@ -1,0 +1,11 @@
+{
+  "pid": 46741,
+  "caffeinate_pid": 46742,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-0iwr2hpw",
+  "native_counter": 53,
+  "controller": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-persistent-admission-v1/continue53.py",
+  "controller_sha256": "65e4194b7ff30b46c675f2f268dcf5ffc2586810844a90696803e5922ad8b593",
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-persistent-admission-v1/runs/control/continue53.log",
+  "signed_once": true,
+  "no_router_ip_claim": true
+}

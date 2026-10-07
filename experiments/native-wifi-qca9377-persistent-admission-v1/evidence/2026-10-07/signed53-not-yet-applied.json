@@ -1,0 +1,56 @@
+{
+  "kind": "native-read-only-pci",
+  "status": "SENDING-PACED-STAGE",
+  "counter": 53,
+  "base_runtime_sha256": "0b4dfbf03b12eef58cbaa4eabe965dda606ded3337a60708b22574b02edb52f6",
+  "base_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "47d63aa6e81b35fc355005cf65f889b9c43bc332443e37ddbba672b920c2fc2b",
+  "payload_sha256": "261649e8cd7ab2bd59621f8ee559c421c36cc5e54c5d19238b558e55dc55a522",
+  "package_sha256": "e71ae61b26f25f6a52b715835852d48c6d5b0e6766f9054816656885946363c3",
+  "session_sha256": "2e1b7a023812b481dd8e536366f94bc9e7c86d429fce463c2cef95346464b9f1",
+  "checked_directory": "experiments/native-wifi-qca9377-persistent-profile-v1/runs/checked-candidate",
+  "gate": {
+    "report_sha256": "673b298b7ff1464c794985b1096c0745886b533464460b5eccc03cff69c1060e",
+    "reproduction_sha256": "673b298b7ff1464c794985b1096c0745886b533464460b5eccc03cff69c1060e",
+    "profile_status": "BOUNDED-PERSISTENT-PROFILE-REPEATED-EFI-QEMU-WORLD17-PASS",
+    "baseline_gate": {
+      "report_sha256": "cb2a253f309f96ddb0a88fa0c88cca9e0e9f45c135c52da6f4a081d447bdc136",
+      "reproduction_sha256": "1907fcf527314fc8b9711c244fd8a44007c819fc0a2f6dd3a269d98a896f3f55",
+      "profile_status": "WMI-INIT-CANDIDATE-TWO-REBUILDS-UEFI-QEMU-PASS",
+      "baseline_gate": {
+        "report_sha256": "cc043f79b5a974a591d9b4aaae2e6732032a370079f005fb2ecdf47063c983c5",
+        "reproduction_sha256": "ee0cfdc640ee0c6d1b364d52d6dc6ecb56f99e527ed68d6dde921fd0e1d76168",
+        "profile_status": "QCA-EXACT-RAM-MAIN-BOOT-CITY-PROFILE-GATES-PASS"
+      }
+    },
+    "admission_source_sha256": "6629481ea29abc21ee20add65d855cd2370eb0a00b964ac7d8383113df1f7a7f"
+  },
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-0iwr2hpw/query-0.log",
+      "log_sha256": "65e3c58e1c91aa5bb4226561a21c7e50cde04a2a0137bb536ad8c644b9e5be9d"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": null,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-0iwr2hpw/paced-stage-1.log",
+      "log_sha256": null
+    }
+  ],
+  "receiver_reported_applied": false,
+  "confirmed_received": 0,
+  "last_receiver_status": {
+    "outcome": "foreign-final",
+    "state": 2,
+    "error": 0,
+    "received": 156960,
+    "length": 156960,
+    "counter": 52,
+    "sha256": "ee73789eb7965f764e8121db46660a374e14ff3717dff267e03d92770638d167",
+    "session_matches": false,
+    "raw_hex": "52465301fd6fa603a46f740a20650200206502000200000034000000ee73789eb7965f764e8121db46660a374e14ff3717dff267e03d92770638d167",
+    "device_attestation": false
+  }
+}
