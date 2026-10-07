@@ -5123,3 +5123,10 @@ byautomaticpossiblecybersecurityriskflag; no rephrasedretry, no producedcandidat
 admitted/signed/deployed. Partialhci-command-generation-v1 files remainuntracked,
 NOT approved. Next: confirm restoredcity/tail, then diagnose actualreset/transport
 cause beforeanotherfirmwaretrial; do not claim the flagged fix is implemented.
+
+Owner now confirms "виден кот и город" after58/world19 recovery. Saved exact
+message at physical58-world19/owner-city-visible.json; city/cat visual restoration
+confirmed, tail motion not yet separately confirmed. Motion question pending.
+No new radio packet signed/sent, no reset command, counters remain58/19. Next
+hardware trial needs transport/reset diagnosis and reviewed new candidate;
+the rejected HCI timer preparation is not retried or assumed completed.

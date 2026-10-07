@@ -1,0 +1,12 @@
+{
+  "status": "OWNER-CONFIRMED-CITY-AND-CAT-VISIBLE",
+  "owner_message": "виден кот и город, что дальше делаем?",
+  "native_counter": 58,
+  "world_counter": 19,
+  "recorded_at": "2026-10-07T15:12:12.546971+00:00",
+  "city_visible": true,
+  "cat_visible": true,
+  "tail_motion_confirmed": false,
+  "motion_question_pending": true,
+  "wifi_connection_claimed": false
+}
