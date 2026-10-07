@@ -1,0 +1,34 @@
+[
+  {
+    "timestamp": "2026-10-07 12:47:58.665604+0000",
+    "message": "Connect Requested for device F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF by session firmware-sender-central-7694-1367 with options clientBundleID NoClientBundleID clientProcessID NoClientProcessID connectionUseCase 0 maxAllowedConnectionDelay 0"
+  },
+  {
+    "timestamp": "2026-10-07 12:47:58.665647+0000",
+    "message": "Connecting device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" for session \"firmware-sender-central-7694-1367\" with options (connect:0 disconnect:0 notify:0 delay:0 wantsObjectDiscoverData:0 transportBridging:0 disableLeGATT:0 ancsRequired:0)"
+  },
+  {
+    "timestamp": "2026-10-07 12:47:59.379814+0000",
+    "message": "Outgoing connection to device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" (Public C0:B5:D7:78:C3:FC) with handle:0x1471045f0 was successful with connection interval 24 active=1"
+  },
+  {
+    "timestamp": "2026-10-07 12:47:59.379817+0000",
+    "message": "Connection Complete: setting LE device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" connection threshold to 18 events with interval 24, LSTO 72"
+  },
+  {
+    "timestamp": "2026-10-07 12:49:03.413076+0000",
+    "message": "Connection timed out to device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\""
+  },
+  {
+    "timestamp": "2026-10-07 12:49:03.413513+0000",
+    "message": "Device disconnected - {cbuuid: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF, devicename: , lmHandle: 0x4c, adv-addr: C0:B5:D7:78:C3:FC-Public, resolved-addr: , result: 307}"
+  },
+  {
+    "timestamp": "2026-10-07 12:49:06.428398+0000",
+    "message": "Outgoing connection to device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" (Public C0:B5:D7:78:C3:FC) with handle:0x142704600 was successful with connection interval 24 active=1"
+  },
+  {
+    "timestamp": "2026-10-07 12:49:03.408679+0000",
+    "message": "Disconnect connection handle: 0x4c (76) wakeUp: No\nSNR: 29 33 30 25 32 28 34 33 34 24 34 36 34 38 33 34 29 37 29 33 36 33 36 33 32 32 34 36 33 33 \nRSSI: -68 -66 -63 -71 -64 -70 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 -64 \nRetransmission Rx: Good Good Good Good Good Good No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync \nRetransmission Tx: Good Good Good Good Good Good No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync \nPacket Type Rx: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None \nPacket Type Tx: LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE"
+  }
+]

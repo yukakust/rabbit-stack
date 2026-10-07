@@ -1,0 +1,17 @@
+{
+  "status": "ACTUAL-WORLD19-READBACK-MATCH",
+  "observed_at": 1791386159.0969322,
+  "known_peer": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+  "raw_hex": "5246530191aa0f843d16d0755008000050080000020000001300000089ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "world_package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "world_counter": 19,
+  "native_counter_saved": 58,
+  "read_only": true,
+  "writes": 0,
+  "state_unchanged": true,
+  "device_attestation": false,
+  "motion_proved": false,
+  "source_sha256": "99461845cc771a763b6de4134301bcb2acf7b31a01167264fd79f39f1766438d",
+  "executable_sha256": "5deb5f7b33dc58adf1ce207c7c78db33c0d21a284fd44d4f58dc65b9f16f3fd9",
+  "log_sha256": "f81ac0c87e25a233ecf9ef7006f690acc88fe227c12ab6390a1bf26319f89871"
+}

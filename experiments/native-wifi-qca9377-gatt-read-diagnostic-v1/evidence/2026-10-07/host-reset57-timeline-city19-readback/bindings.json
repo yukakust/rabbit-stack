@@ -1,0 +1,32 @@
+{
+  "status": "ACTUAL-MAC-BLUETOOTH-HISTORY-CORRELATED-READONLY",
+  "world19_readback_matches": true,
+  "writes": 0,
+  "new_signature": false,
+  "new_firmware_trial": false,
+  "facts": {
+    "failed_sender_session": "firmware-sender-central-7694-1367",
+    "connected_utc": "2026-10-07 12:47:59.379814+0000",
+    "timeout_utc": "2026-10-07 12:49:03.413076+0000",
+    "connection_duration_seconds": 64.033262,
+    "mac_recorded_link_supervision_timeout_ms": 720,
+    "mac_recorded_connection_interval_raw": 24,
+    "mac_final_radio_stats_contains": "Retransmission Rx/Tx Good then No-Sync; RSSI history -63..-71",
+    "reconnected_utc": "2026-10-07 12:49:06.428398+0000"
+  },
+  "limits": [
+    "Mac history does not contain Dell terminal USB poll error or resident watchdog stage",
+    "Cause of physical57 reset not proven",
+    "Do not attribute the observed failure to the same-opcode10s timer solely from this64s connection",
+    "No modification or retry of the rejected timer-preparation task"
+  ],
+  "raw_local_log_sha256": {
+    "selected-bluetooth.log": "b520d50fc1996475b1b9643154a9d65632fcb55b664ef260674e5f2e78e73634",
+    "timeout-window.log": "d45f7034001c0c982a91c7e438a190a65681f1c3895dd5845edcc33ca3791d7d"
+  },
+  "committed_files_sha256": {
+    "selected-peer-timeline.json": "4a7ff3d1d2ab3e7bdd2cb598191339d7358746d7bc6a8cd3e11728470676da08",
+    "city19-receipt.log": "f81ac0c87e25a233ecf9ef7006f690acc88fe227c12ab6390a1bf26319f89871",
+    "city19-report.json": "e3f4f69406fdcf72d571f0a8a71b86b7000f310bb34b2a7907bd03f371e19d3c"
+  }
+}

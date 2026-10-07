@@ -5130,3 +5130,22 @@ confirmed, tail motion not yet separately confirmed. Motion question pending.
 No new radio packet signed/sent, no reset command, counters remain58/19. Next
 hardware trial needs transport/reset diagnosis and reviewed new candidate;
 the rejected HCI timer preparation is not retried or assumed completed.
+
+### 2026-10-07: authorized read-only reset investigation; city19 still matches
+
+After owner "делай", ROOT fresh locked knownpeer read confirmed exactRFS state2,
+counter19/2128bytes/package89ffda..., savedstate unchanged58/19/allpendingnull.
+No new signatures/firmwaretrial or frozen source changes. Tail-motion question
+still pending; receipt does not prove animation.
+
+Mac's actual bluetoothd history for failed sender7694/1367: connection completed
+12:47:59.379814UTC, timeout12:49:03.413076UTC (~64.033s), newconnection succeeded
+12:49:06.428398UTC. Host recorded LSTO72/720ms andinterval24, final handle0x4c
+radio history Good thenNo-Sync, RSSI-63..-71. These are host observations, not
+Dell terminal USBfault or watchdog-stage evidence; reset cause remainsunproved.
+Do not declare10s same-opcode bug actual57cause solelyfromthis64s connection.
+Public selectedlogs +currentworld19 exactreadback at gatt-read-diagnostic-v1/
+evidence/2026-10-07/host-reset57-timeline-city19-readback/bindings.json. Fullselected
+Mac logs remainlocalignoredruns; no credentials/privatekey accessed/exported.
+Rejectedtimer preparation was NOT retried/renamed/deployed. GitHubpush53fdfcc
+attempts returnedremoteInternalServerError; localcommits preserved, retrypushlater.
