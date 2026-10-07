@@ -5248,3 +5248,40 @@ hardware_trial_pending stillpreserved forROOTclassification/retirement, notactiv
 controller. Next reviewedisolatedgeneration needsfullMAIN/bootcontinuation with
 samehostobservability/currentworld19 andfreshchipROM/reset-lifetimechecks; no
 Dellreboot/USB/bootstrap/OTP/flash permitted. Rejectedtimerfix remainsuntouched.
+
+### 2026-10-08: authorized nextfullboot60 preparation inprogress
+
+Owner explicitly “делай” fullfirmwareboot andnetworksearch. observation59 agent
+prepares NEW unsignedfullboot60/currentworld19 derivative using originalvalidated
+wmi-native-v5 fullMAIN/BMI_DONE/HTC/INIT/READY andpassiveQPFXobservability, no
+rejectedtimerfix. independent secure_connection agent read-onlyauditofgenuine
+scan integration; don't claim scanincluded60beforeproof. Root publicverifyactual59
+RRTsignature+all12firmwaresignatures+bitmap4095 PASS. New transition59.py public
+archive/retirement gates and5copiedproof faulttestsPASS; retirementNOTexecuted.
+State still59/world19/exactcompletedhardwarependinge66kaqfm,noactivecontroller.
+No60signatures/reservation/radiooperationsyet. Rootgate/controllerpreparation
+infullboot60-root-route-v1, candidatefullboot60-native-v1. Wait frozenactual60
+source/native/fullEFI/currentworld/QEMU proof beforekey/retirement/devicewrites.
+Actual59prefixclock elapsed255.354s/all312transport to32984MAINbytes;600s prefix
+watcher may notcover full727128MAIN. Newfullbootwatcher deadline must beexplicit
+bounded andjustifiedfrommeasuredtransport; HCI/resident/USBtimersunchanged.
+
+60 developmentupdate:103 actual productionnative Cmodels PASS onYukabox
+(38fullboot/startup/transport+65initial), includingactiveGATTreadpurity, actual
+fullMAIN727128/BMI_DONE1/WMIINIT1/READY andreal14closure inmodel. WholeEFI
+repeat/currentworld19ASAN/normal+EMPTYQEMU proof stillinprogress, notadmitted.
+Fullboot watchdog5400s: actual59 312transactions/255.354s vsmodel full3114,
+projected~2548.6s;~2.12allowance, deterministicdeadline/rollbackchecked. HCI/USB/
+resident andper-commandtimeoutsunchanged. Roottransitiontests6PASS incldurable
+copyarchivefailleavescopiedstateunchanged; actualstate59stillpendingcompleted.
+
+Frozen fullboot60-collector-v1:44hostcallback/preflightPASS, proof
+0615819bee8531eb9a92d4eac8fb1a6a28812f0444ae14bd84bd250ddd240859.
+One knownpeer/connection, sequentialsingle-servicediscovery, QPFX240 every30s
+untilactualphase3/released1,thenQWBT160/QWOP488/QWIN244 samelink. Max5460s,
+outstandingATT60s; errorsdurablysavedbeforestop; noreconnect/writes/readyclaim.
+Rootcollector_gate independentlychecksallsource/compilerinputs/executable;
+continue60.py willstageexactpackets thenmonitor. No60signature/radioyet.
+Read-only scan61-integration-audit-v1 README documentsreuseofscan-native-profile-v2,
+adoptpersistentownersBEFORE60diagnosticstop, lifecycle/RX/credits/regulatory and
+GATThandle29..51vs32..255 conflict; notscanimplementation/admission.
