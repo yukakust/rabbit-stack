@@ -1,0 +1,16 @@
+{
+  "pid": 9222,
+  "caffeinate_pid": 9223,
+  "prior_foreground_pid": 4153,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-bq9nq_ik",
+  "controller": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-prefix57-root-route-v1/continue57.py",
+  "controller_sha256": "ca9388542ee1838244588498eb3141da0fd175f88ed798b9a9708871a3f37830",
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-prefix57-root-route-v1/runs/control/continue57.log",
+  "signed_once": true,
+  "no_bluetooth_until_prior_exit": true,
+  "firmware_session_not_yet_created": false,
+  "prior_waiter_pid": 4327,
+  "prior_controller_pid": 4424,
+  "resumed_at": "2026-10-07T13:07:07.051579+00:00",
+  "firmware_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx"
+}

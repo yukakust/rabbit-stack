@@ -1,0 +1,4 @@
+{"code":0,"domain":"","message":"","stage":"manager:5"}
+{"code":0,"domain":"","message":"","stage":"connected; discover requested service"}
+{"code":0,"domain":"","message":"","stage":"discover services callback"}
+{"code":0,"domain":"","message":"","stage":"requested service absent; no read"}

@@ -1,0 +1,51 @@
+{
+  "format": "PHYSICAL57-GATT-FAILURE-1",
+  "recorded_at": "2026-10-07T13:15:59.035951+00:00",
+  "native_counter_saved": 57,
+  "world_counter_saved": 18,
+  "completed_firmware_chunks": 10,
+  "total_firmware_chunks": 12,
+  "last_bitmap": 1023,
+  "next_packet_confirmed_bytes_before_timeout": 4320,
+  "asset_error": {
+    "stage": "read callback",
+    "domain": "CBATTErrorDomain",
+    "code": 1,
+    "meaning": "Invalid Handle"
+  },
+  "ordinary_file_status": "RFS1 IDLE, zero session/length/counter/digest",
+  "prefix_service_targeted_discovery": "absent",
+  "peer_advertising": true,
+  "writes_during_diagnostic": 0,
+  "state_mutated": false,
+  "private_key_accessed": false,
+  "firmware_boot_started_confirmed": false,
+  "wifi_connected_confirmed": false,
+  "cause": "UNPROVEN; receiver reset/lost native services possible; cached service list is not current-device proof",
+  "controllers_exited": [
+    4424,
+    9222
+  ],
+  "next_action": "User photo of current Dell screen, including top-left diagnostic panel. No resend/sign/retire until current boot/runtime established.",
+  "files": {
+    "last-complete-chunk-9-41.log": "92c097c61aa32b8fd108e3b061be9f8b7e0299a002542068403d8ef7d5981562",
+    "asset-report.json": "e3df78d8925103b6909898f863a27ac09160c888b98e8e2bc503e0a507abd34a",
+    "read_gatt-phase2.m": "99461845cc771a763b6de4134301bcb2acf7b31a01167264fd79f39f1766438d",
+    "report.json": "68f041f3213e15f96286e11415e51dcbd951aae22ce33d9d2a65cc63785790c9",
+    "controller57.json": "47698f9d831b24e383d2086b1e62a62c66e1f47bba6fab50a3350c6345d6c347",
+    "asset.log": "685467d3554e32c2b0fb6864f62d33d8a329d55cb6843a607c2cf3bd78160888",
+    "passive-after-invalid-handle.json": "8252963cfdadbc8b5f16449f16551076dd486109974be2b84df357f747ae1f8b",
+    "chunk-10-48.log": "6c66e070edc5bf5440020c1e9e32dcda9254d69646013f377c25433b8b61896e",
+    "continue57.log": "77297087b7ad70835ee9f5603bffea9321ddf57852aea76a43c300a339929fe5",
+    "read_gatt-phase1.m": "1500b1eb325ccfc5471a41e0a92da2ffdff645fc4fb2f68f1ae950995ecdbaf2",
+    "state-preserved.json": "c79db17708e23dcb678c918398998cbad138c627fba8bd7d1340c155ebe85298",
+    "receipt.log": "b093fccb7d7a82be31832d168c2c8574fbadb2a19cb58059ff84fb96cfb718c6",
+    "chunk-10-45.log": "6c66e070edc5bf5440020c1e9e32dcda9254d69646013f377c25433b8b61896e",
+    "chunk-10-44.log": "6c66e070edc5bf5440020c1e9e32dcda9254d69646013f377c25433b8b61896e",
+    "chunk-10-46.log": "6c66e070edc5bf5440020c1e9e32dcda9254d69646013f377c25433b8b61896e",
+    "prefix.log": "c800479450d2554c3cea179787a8012c17b0cfa2ddc72b8a021b3b2256d932cd",
+    "chunk-10-47.log": "6c66e070edc5bf5440020c1e9e32dcda9254d69646013f377c25433b8b61896e",
+    "chunk-10-43.log": "edcd5588aeb97aa035b71dbcc110ef38f2e8e65e4bf37ecf85a6b64ec8abd683",
+    "chunk-10-42.log": "3e79bb80885d6514bf191f016d7c7e5a96e26d4407171f8ae3b42cd880cc1ad5"
+  }
+}

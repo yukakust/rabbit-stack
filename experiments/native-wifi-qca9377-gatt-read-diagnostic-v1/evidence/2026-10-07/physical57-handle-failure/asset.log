@@ -1,0 +1,18 @@
+{"code":0,"domain":"","message":"","stage":"manager:5"}
+{"code":0,"domain":"","message":"","stage":"connected; discover all services"}
+{"code":0,"domain":"","message":"","stage":"discover services callback"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-000000000001"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-00000000000D"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-000000000007"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-000000000022"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-000000000024"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-000000000026"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-000000000028"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-00000000002A"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-00000000002C"}
+{"code":0,"domain":"","message":"","stage":"discover characteristics:52414242-4954-4649-8000-000000000007"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000008 properties:8"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000009 properties:8"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-00000000000A properties:2"}
+{"code":0,"domain":"","message":"","stage":"read request:52414242-4954-4649-8000-00000000000A"}
+{"code":1,"domain":"CBATTErrorDomain","message":"The handle is invalid.","stage":"read callback:52414242-4954-4649-8000-00000000000A"}

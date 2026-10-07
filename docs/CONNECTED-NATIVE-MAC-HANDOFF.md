@@ -5056,3 +5056,30 @@ Native57APPLIED/initialQPD18/publiclogs/preparedasset report archivedroot-route-
 evidence/2026-10-07/applied57. Fullfirmwareaccept/bootprefix/USBHCIdiag NOTyet
 confirmed. Tinyoverlayexpectedonphysicalcity; notclaimedvisuallyconfirmed.
 Controller quiet660safterall12beforeobserver2read underlock; notrouter/IPproof.
+
+### 2026-10-07 13:16 UTC: native57 asset transfer stopped; inspect physical screen
+
+Saved native57/world18 remain unchanged, pendingfirmware-ram-efn8f6wx preserved.
+Ten of12 full chunks accepted (bitmap1023). Chunk10 (eleventh) reached4320 bytes
+before connection timeout; queries44..48 returned invalidhandle. Controllers
+4424 and9222 exited. Passive knownpeer advertisement remains visible onMac.
+DO NOT restart continue57 or sign/replay/retire pending packets automatically.
+Current controller57.json status STOPPED-PHYSICAL-OBSERVATION-REQUIRED and
+restart_allowed=false. Old native51 automation snapshot is not current state.
+
+New host-only gatt-read-diagnostic-v1 under existing state.lock, no writes/key,
+proved error specifically on asset status READ callback: CBATTErrorDomain/code1,
+ATT Invalid Handle; service/characteristic discovery callbacks succeeded. Ordinary
+file status exact60 bytes RFS1+allzero (IDLE/session/length/counter/digest), and
+targeted prefix57 service40 discovery returned absent. Cached all-service list
+is NOT physical proof of an active driver. Receiver reset/lost native services
+is possible, exact cause not proved; no same-boot RAM resume currently admitted.
+Do not claim reboot, firmware boot start, prefix teardown or Wi-Fi/IP success.
+
+Exact phase1/phase2 source, callback logs, last accepted chunk, failed attempts,
+passive advertisement capture, controller logs, public asset report and unchanged
+state hash manifest saved at experiments/native-wifi-qca9377-gatt-read-diagnostic-v1/
+evidence/2026-10-07/physical57-handle-failure/bindings.json. Needed user action:
+photo of current Dell screen, including top-left diagnostic area; preserve power,
+USB and boot. No additional reboot permission exists. Then establish fresh
+runtime/boot context before deciding resume or separately reviewed recovery.

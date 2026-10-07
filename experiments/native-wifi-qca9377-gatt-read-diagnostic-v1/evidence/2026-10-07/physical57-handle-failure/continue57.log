@@ -1,0 +1,84 @@
+ROOT replaced waiting no-radio continuation to include exact observer2 context schema; native signature unchanged
+/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx
+EXACT57 ASSET DELIVERY 1
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Chunk0 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-0-1.log
+EXACT57 ASSET DELIVERY 2
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk1/12 bitmap=1 ready=0
+Chunk1 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-1-5.log
+EXACT57 ASSET DELIVERY 3
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Chunk1 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-1-7.log
+EXACT57 ASSET DELIVERY 4
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk2/12 bitmap=3 ready=0
+Chunk2 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-2-11.log
+EXACT57 ASSET DELIVERY 5
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk3/12 bitmap=7 ready=0
+Chunk3 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-3-15.log
+EXACT57 ASSET DELIVERY 6
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk4/12 bitmap=15 ready=0
+Chunk4 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-4-19.log
+EXACT57 ASSET DELIVERY 7
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk5/12 bitmap=31 ready=0
+Chunk5 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-5-23.log
+EXACT57 ASSET DELIVERY 8
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk6/12 bitmap=63 ready=0
+Chunk6 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-6-27.log
+EXACT57 ASSET DELIVERY 9
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk7/12 bitmap=127 ready=0
+Chunk7 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-7-31.log
+EXACT57 ASSET DELIVERY 10
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk8/12 bitmap=255 ready=0
+Chunk8 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-8-35.log
+EXACT57 ASSET DELIVERY 11
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk9/12 bitmap=511 ready=0
+Chunk9 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-9-39.log
+EXACT57 ASSET DELIVERY 12
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Confirmed RAM chunk10/12 bitmap=1023 ready=0
+Chunk10 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-10-43.log
+EXACT57 ASSET DELIVERY 13
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Chunk10 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-10-44.log
+EXACT57 ASSET DELIVERY 14
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Chunk10 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-10-45.log
+STOP two no-progress attempts; preserve exact assets
+
+ROOT RESUME exact57 after invalid-handle stop; passive known-peer advertisement confirmed; no resign
+EXACT57 ASSET DELIVERY 1
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Chunk10 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-10-46.log
+EXACT57 ASSET DELIVERY 2
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Chunk10 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-10-47.log
+EXACT57 ASSET DELIVERY 3
+MAC ASSET SENDER COMPILED; no private key or firmware activation
+NOT SENT: no Bluetooth manager started
+Chunk10 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-10-48.log
+STOP two no-progress attempts; preserve exact assets
