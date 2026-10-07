@@ -1,0 +1,19 @@
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-Wall", "-Wextra", "-Werror", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/runs/verified", "/home/yuka/rabbit-world/parallel-secure-provision-v1/source/primitive_test.c", "/home/yuka/rabbit-world/parallel-secure-provision-v1/reference/monocypher.c", "/home/yuka/rabbit-world/parallel-secure-provision-v1/reference/monocypher-ed25519.c", "-o", "/home/yuka/rabbit-world/parallel-secure-provision-v1/runs/verified/test"]
+
+
+["/home/yuka/rabbit-world/parallel-secure-provision-v1/runs/verified/test"]
+PASS 38476 Monocypher dummy AEAD-binding/X25519 checks; NO HANDSHAKE/AUTH/RNG PROOF
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Os", "-Wall", "-Wextra", "-Werror", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-c", "/home/yuka/rabbit-world/parallel-secure-provision-v1/reference/monocypher.c", "-o", "/home/yuka/rabbit-world/parallel-secure-provision-v1/runs/verified/monocypher.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Os", "-Wall", "-Wextra", "-Werror", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-c", "/home/yuka/rabbit-world/parallel-secure-provision-v1/reference/monocypher-ed25519.c", "-o", "/home/yuka/rabbit-world/parallel-secure-provision-v1/runs/verified/monocypher-ed25519.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "--version"]
+clang version 20.1.8 (github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin
+

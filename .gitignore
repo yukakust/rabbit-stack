@@ -23,3 +23,5 @@ experiments/arm64-pill/pill
 /experiments/native-wifi-qca9377-htt-version-v1/runs/
 /experiments/native-wifi-qca9377-bss-security-v1/runs/
 /experiments/native-wifi-qca9377-htt-native-v1/runs/
+/experiments/native-wifi-qca9377-htt-native-profile-v1/runs/
+/experiments/native-wifi-qca9377-secure-provision-plan-v1/runs/

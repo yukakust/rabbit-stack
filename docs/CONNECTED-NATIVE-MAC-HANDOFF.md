@@ -4566,3 +4566,35 @@ andexplicitdeviceauthentication+secureRNG boundary. ExistingBLEUUID/signature/
 targetreceipts aren'tdeviceattestation. No realpassword/keyread/export. Ifno
 existingpinnedDellidentity, physicalSAScomparison is eventualrequiredstep
 beforesecrets; donotbypasswhileusersleeps. No approvalrequestneedednow.
+
+### 2026-10-07: native54 actual release; offline55 and provisioning boundary
+
+At heartbeat54chipmainloading696880 thenfull3114/3114, HTCready20; BOOT5/error0,
+native6/8448 controlledstop, actualadapter12/cleanup14/DMA0/pin0, RAMreleased.
+Sole52976 nowcapturingQSCN+all40pages; doNOTparallelBLE. Hardware_trial_pending
+STILLfirmware-ram-g9g89amj untilcombinedfreshreceipt/BOOT/QSCN/exportproof.
+Ifcollector1failsorfinishes, rootdecodeitsrawusingv2offlinewhenpossible; else
+runv2collectonlyafteroldPIDexit. No firmware/assetsreplay/resign.
+
+Reviewedhtt-native-profile-v1 frozenOFFLINE55:168448-byte EFI SHA
+c4c656e38ed37027c56dffb4f22c35ba5b339a279c6ecf400eebe684452ed72f.
+24productionentrypointPCI/CE/DMA ASAN/UBSAN+COFF cases, actualmodel14release;
+4equalEFIbuilds+normal/emptyactualsupervisorQEMU+world17ASAN120ticks/16camera.
+598inputclosure and116compiledfixtures exactlocalhashesverified. Rehashes
+retainedowner-signedfirmwarecontainer andIE6 plusmain/helperplanpointerbinding
+beforequery; nohardcodedop. ProductionteardownobservedonlyAFTERgenuineall
+map/PCI/DMA/IRQ/link/wake/pinrelease (notintermediatecleanup). ReadonlyQHTT
+statusUUID2e/2f handles29..31; QHTX6rawslots as30pagesUUID80..9d handles32..92.
+Allrawframing/trailers retained. NoRF/dataplanereadyclaim. Counter55UNSIGNED
+andNOTsent; prerequisite54result+ALL54rawexportsstored+rootadmission.
+
+Reviewedsecure-provision-plan-v1 draft:38476syntheticMonocypher4.0.3 ASAN/COFF
+primitive+independentHKDForaclechecks, source/logbindingsverified; NOTcomplete
+authenticatedkeyexchange/provisioning. NoDellpinnedprivateidentity orintegrated
+EFI_RNG pathfoundinproject; nohardwarepresenceconclusion. Physicalfullrecipient
+fingerprint/QR/sessioncomparison mandatorybeforesecretloadifnopinnedidentity.
+OwnerEd25519signatureauthenticatesMaconthischannel, notsubstitutedDellkey.
+No realkey/credentialread/export orsigning. IndependentNEWefi-rng-port-v1
+preparesboundedofficialprotocol/provider/length/failure/zeroizetests; diagnostic
+exportsNEVERrandomsamples. NEWprovisioning-review-v1 checksmatureAKE reuse
+(e.g.Noise-C) versuscustomcomposition, no actualprovisioning/hardware.
