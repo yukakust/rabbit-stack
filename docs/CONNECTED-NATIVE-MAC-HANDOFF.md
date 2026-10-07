@@ -4834,3 +4834,17 @@ phase17/all14DMAowned, no releaseproof, neverunload/sign56.
 Requireduseraction requested: observewhethercityvisible/cattailmoving, noreboot.
 Parallelsoftwarememoryowner preparation continues independently; hardware
 continuation requires restoreddiscovery/physicalobservation, nottimeoutincrease.
+
+### 2026-10-07: user confirms live city; no Rabbit advertisement at any UUID
+
+Human explicitly confirmscityvisible andcattailmoving. Rootsequential repeated
+freshv3knownpeer120s timedout, otheradvertisementsseen. Then passiveexisting
+probe20s(allUUID,Rabbitservicefilter locally) reports149advertisements,
+Macpoweredon5/authorization3, connectedRabbit0/cacheddisconnected0,
+RabbitcandidatesEMPTY. No connection/write frompassiveprobe, no activeBLEjob.
+Exactlogs+userobservation archivedlive-city-no-rabbit-advertisement.
+RulesoutonlyknownUUIDcache explanation forthis20sscan; NOTproofchipcrash,
+driverfault/range/coexistencecause. Full55asset/pending unchanged; cannotadmit56.
+UseraskedtoverifyMac0.5–1m fromDell (notjustsamehouse/7m), no reboot/USBchange.
+Nextafterproximityanswer: solepassive/freshread; ifstillabsent need preserve
+blockedhardwarediagnostics andexplicit recoverydecision, no forcedrestart.

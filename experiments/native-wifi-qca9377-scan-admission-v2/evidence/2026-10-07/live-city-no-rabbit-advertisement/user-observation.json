@@ -1,0 +1,6 @@
+{
+  "source": "human user in current chat",
+  "city_visible": true,
+  "cat_tail_moving": true,
+  "not_inferred_from_host_or_qemu": true
+}
