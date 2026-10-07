@@ -1,0 +1,8 @@
+{
+  "pid": 8339,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-o_atkvtj",
+  "controller_sha256": "9cb4008a3ae2a1fd3a5ca0d60027ca5d0362eb8fb0148c719cdae2d6d3218e6d",
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observation59-root-route-v1/runs/control/continue59.log",
+  "signatures_created_native": 1,
+  "no_parallel_BLE": true
+}

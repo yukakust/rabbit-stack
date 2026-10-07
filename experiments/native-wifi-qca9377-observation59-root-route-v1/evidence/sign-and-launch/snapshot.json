@@ -1,0 +1,12 @@
+{
+  "observed_at": 1791394365.370503,
+  "status": "SENDING-PACED-STAGE",
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-o_atkvtj",
+  "counter": 59,
+  "payload_sha256": "eb38baaf0b8e2ee120290744a116d02c33ff7bf2f011a73e945a10e239d51e55",
+  "native_package_sha256": "5462ada06c7a1e2fb801c31f9f3ab35c3eecc286dc7fbba8b3c296c7d9ce62ad",
+  "session_sha256": "cc7ab026961824c6237e5f247bfbe18e043a3ce920b21c7699afe5f0a28d9d8a",
+  "receiver_reported_applied": false,
+  "firmware_assets_signed": false,
+  "wifi_connected": false
+}

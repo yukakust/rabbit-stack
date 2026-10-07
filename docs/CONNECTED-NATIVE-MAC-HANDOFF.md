@@ -5182,3 +5182,11 @@ assetdeliver once; any failure stops (no reconnectloop); full12 thenquiet660s/re
 At this entry no59 signature/reservation/radio trial yet. Resume only actual saved
 state/session; never replay retired57. Rootproof includes pinned helper/executable
 hashes. Next step fresh liveworld19 query → exact local59 signing → solecontroller.
+
+Native59 now signed ONCE after fresh actualworld19RFSread, reserved exactsession
+runs/text-world/pci-native-o_atkvtj; solecontrollerPID8339 launched from
+observation59-root-route-v1/continue59.py, metadata/log in runs/control.
+Snapshot at evidence/sign-and-launch: pacednative delivery inprogress, no APPLIED
+claim yet, hardware_trial_pendingnull/no59firmware signed at snapshot. Actualstate
+and newest receipts override this entry. No secondcontroller; if stopped preserve
+exactsession and do notsignagain. Last code/evidence push758bd7d succeeded.

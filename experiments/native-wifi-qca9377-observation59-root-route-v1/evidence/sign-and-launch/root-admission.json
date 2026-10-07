@@ -1,0 +1,21 @@
+{
+  "state_sha256": "d23d05588c37e4afabc9716f947993a8504af9c6e3f5f8e414d5cebde6a34987",
+  "candidate": {
+    "report_sha256": "030bafe91d289a71264e5c7af86753517ad33dfc890ff2cf4c32508e877acf3a",
+    "reproduction_sha256": "934b0c6b475a1cbd86b4ca027c176d8b91c77a2e854d5d88b130a87c565b79be",
+    "profile_status": "BOOT-PREFIX59-REPEATED-EFI-QEMU-WORLD19-DIAGNOSTIC-PASS",
+    "receiver_policy": {
+      "owner": "622b248c42829ad066e5ae428ea30e955c750e4c3f221553bb346254e82545ac",
+      "target": "363d751288df7b47295f9c7a5250c3b41db24efd1a43a4bd348f00744c6bc7e9",
+      "digest": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "total": 751436,
+      "type": 8,
+      "version": 84017153,
+      "kind": 1,
+      "generation": 59
+    }
+  },
+  "observation_sha256": "6b7f3b7b65a558f1c54d72540ec6da222c35d0bd490ebc0f4f877c86e8cd4dce",
+  "read_only_DIAGNOSTIC_scope": true,
+  "timer_fix_included": false
+}

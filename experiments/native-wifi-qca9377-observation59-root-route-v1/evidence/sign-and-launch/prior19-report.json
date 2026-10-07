@@ -1,0 +1,9 @@
+{
+  "status": "FRESH-READONLY-PRE-SIGN59",
+  "observed_at": 1791394323.553416,
+  "raw_hex": "5246530191aa0f843d16d0755008000050080000020000001300000089ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "state_sha256": "d23d05588c37e4afabc9716f947993a8504af9c6e3f5f8e414d5cebde6a34987",
+  "query_sha256": "f81ac0c87e25a233ecf9ef7006f690acc88fe227c12ab6390a1bf26319f89871",
+  "writes": 0,
+  "counter59_reserved": false
+}
