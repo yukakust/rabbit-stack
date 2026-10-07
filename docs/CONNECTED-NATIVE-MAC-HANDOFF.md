@@ -5083,3 +5083,43 @@ evidence/2026-10-07/physical57-handle-failure/bindings.json. Needed user action:
 photo of current Dell screen, including top-left diagnostic area; preserve power,
 USB and boot. No additional reboot permission exists. Then establish fresh
 runtime/boot context before deciding resume or separately reviewed recovery.
+
+### 2026-10-07: owner startup-screen photo; city restored as58/world19
+
+Owner supplied photo419b002f: smallblue rectangle+BLEconsole, no city/cat or
+prefix57overlay. Fresh knownpeer locked read again exactEMPTY RFS1. Reset/context
+loss observed; manual owner reboot NOT confirmed, cause NOT established. No
+reboot command or USB/bootstrap write performed. New observed-reset57-recovery-v1
+route/restore derivative reviewed and frozen,8copiedstate testsPASS. Original
+reboot_recovery.prepare unchanged; no fake dell-rebooted/human authorization.
+
+Before retiring obsoletehardwarepending57, route verified actualAPPLIED57 and
+all12 saved firmware signatures plus lastaccepted10/bitmap1023/ready0/world18,
+durably archived all sessions/packets/logs/photo/state/journal under ignored
+runs/actual-recovery58/retirement, then cleared ONLYhardwarepending andappended
+audit;57/18 counters unchanged untilactualnewreceipts. Originalsigned57files
+unchanged; do notresumecontinue57 or resenditsRAMpacketsinto bootstrap.
+
+Yukabox plain-city58-ble-reset-recovery preflight:2equalEFI, sameprevious56payload
+0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce,
+ASAN/UBSAN120ticks/16camera/roofcat timing,normal+EMPTYactualsupervisorQEMU,
+199source inputs. Initialdefault(noBLErecovery)preflight was NOTapproved;
+actualsigned58 uses --ble-recovery and identicalproven56payload.
+World19package89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7;
+semanticfa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74 unchanged.
+Fresh actualEMPTY+photo/archive/state/source guards underexistinglock beforekey.
+SIGNED ONCE native58 plan runs/text-world/native58-observed-bootstrap-city-plan.
+Soleforegroundcontroller completed EXACTAPPLIED58 thenEXACTAPPLIEDworld19;
+allpending/null, noactiveBTcontroller. Publicexactlogs/reports/manifest at
+observed-reset57-recovery-v1/evidence/2026-10-07/physical58-world19/bindings.json.
+Visualcity/tail motion still requiresowner confirmation; Wi-Fi/IP notconfirmed.
+
+Read-only sourceaudit identified reachable resident HCIdeadline same-opcode
+generation bug: coalesced COMPLETE200a/connect/disconnect mayissueNEW200a before
+resident sees pending0, retainingprevious10sdeadline. Physical57 cause unproved.
+CriticalHCIoverflow before assetready is ruledout (capture/request ignoresphase0).
+Separate scan_pipeline preparation of minimaldriver-onlydefer/model was stopped
+byautomaticpossiblecybersecurityriskflag; no rephrasedretry, no producedcandidate
+admitted/signed/deployed. Partialhci-command-generation-v1 files remainuntracked,
+NOT approved. Next: confirm restoredcity/tail, then diagnose actualreset/transport
+cause beforeanotherfirmwaretrial; do not claim the flagged fix is implemented.

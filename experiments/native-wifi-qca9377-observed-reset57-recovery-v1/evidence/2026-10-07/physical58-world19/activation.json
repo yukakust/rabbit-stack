@@ -1,0 +1,10 @@
+{
+  "state_sha256": "4f5a9b1e8e1ec9c47b1a4ac511d0facbacdb36dff950a0838fabfbc8bbe92841",
+  "retirement": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/actual-recovery58/retirement/retirement.json",
+  "retirement_sha256": "6588905cfdc9cf9b58cca8dff8ccfe53dd2637ab8927b72463f1f428e411e715",
+  "observation": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/actual-recovery58/observation.json",
+  "query_log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/actual-recovery58/fresh-empty.log",
+  "photo": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-gatt-read-diagnostic-v1/evidence/2026-10-07/user-screen-reset/owner-screen.png",
+  "receiver_bootstrap_observed": true,
+  "manual_reboot_confirmed": false
+}

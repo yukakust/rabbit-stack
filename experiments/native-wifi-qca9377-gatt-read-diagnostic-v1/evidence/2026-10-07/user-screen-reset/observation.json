@@ -1,0 +1,14 @@
+{
+  "format": "OWNER-PHOTO-BOOTSTRAP-OBSERVATION-1",
+  "observed_at": "2026-10-07T14:53:36.506619+00:00",
+  "owner_request": "\u0447\u0442\u043e \u0434\u0430\u043b\u044c\u0448\u0435 \u0434\u0435\u043b\u0430\u0435\u043c?",
+  "owner_confirmed_manual_reboot": false,
+  "reboot_command_sent": false,
+  "photo_sha256": "32369134945be4d27d9d4ea199fce6b82c17d7048569195bdb9c53baf4d6c99c",
+  "visible": "small solid blue rectangle, BLE console, no city/cat/prefix57 overlay",
+  "fresh_read_code": 0,
+  "fresh_read_log_sha256": "b093fccb7d7a82be31832d168c2c8574fbadb2a19cb58059ff84fb96cfb718c6",
+  "state_before_sha256": "c79db17708e23dcb678c918398998cbad138c627fba8bd7d1340c155ebe85298",
+  "writes": 0,
+  "cause": "not established; watchdog/reset suspected"
+}

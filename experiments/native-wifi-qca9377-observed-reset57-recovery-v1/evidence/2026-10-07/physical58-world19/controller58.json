@@ -1,0 +1,13 @@
+{
+  "pid": 17117,
+  "caffeinate_pid": 17130,
+  "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/native58-observed-bootstrap-city-plan",
+  "activation": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/actual-recovery58/activation.json",
+  "signed_once": true,
+  "source_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/route.py": "7dcae8623e4f4eea2d09a3895e99d7679bfd528f23565cffeeb7149c5566267b",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/restore_observed.py": "d517c13fffe0e0097d3eb9493a720f938e80500415d4c28799b8db8dbd373bd3"
+  },
+  "status": "EXACT58-CITY-WORLD19-APPLIED",
+  "finished_at": 1791385457.181686
+}

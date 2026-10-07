@@ -1,0 +1,33 @@
+{
+  "status": "PHYSICAL58-ENGINE-AND-WORLD19-EXACT-APPLIED",
+  "native_counter": 58,
+  "native_payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+  "world_counter": 19,
+  "world_package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "world_semantic_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "owner_visual_motion_confirmed": false,
+  "manual_reboot_confirmed": false,
+  "reset_cause": "NOT_ESTABLISHED",
+  "wifi_connected_confirmed": false,
+  "all_pending_null": true,
+  "files": {
+    "activation.json": "f7e9998352917d4b1692b64412a7631bc4b2c4e846a6359d54f4cffc1a1621f5",
+    "after-state.json": "d23d05588c37e4afabc9716f947993a8504af9c6e3f5f8e414d5cebde6a34987",
+    "retirement-public-manifest.json": "6588905cfdc9cf9b58cca8dff8ccfe53dd2637ab8927b72463f1f428e411e715",
+    "prepared-public.json": "ff432731f6a25c514e6743731fadf3928d14581cd629b22e89eacd6c28875476",
+    "controller58.json": "91531681c3e838c1d58921f47a0afe9fb5611a2bc575dd3f18605332bbc9806f",
+    "native58/commit-2.log": "4a51114369903ea923909726e72094084581714c81f2284a84901571f70185eb",
+    "native58/paced-stage-1.log": "b248cb3fc01e5323366c83519cfeca4f1aa12843161a108e37fccaa9172237c0",
+    "native58/session.json": "6ae776464fa0e61c404dbfdb0b08732d87581ed0b0ae869b3b34c020ef236dc7",
+    "native58/plan.json": "f063d23c901c908e74ace8415366f0e7c0eabbffd8eaf294149adb06b3f55afd",
+    "native58/report.json": "fc94d66d3f7e76fb91ceaefa06a7fab8ad06346d2f69259e0995cf61380aa280",
+    "native58/query-0.log": "9aeaef597c6bd4594a4ddd0842f14a6eacb38f70c49c0581fe3053ce5cde6417",
+    "native58/world.json": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+    "world19/commit-2.log": "68fcdc66156479a063fa968c5564ffcddb9858cfa218da77c049fdb284061309",
+    "world19/paced-stage-1.log": "698d6819340b2511981d06f6469e2d9627dcf8f1311a1581769b5f0288bda809",
+    "world19/session.json": "dcb8b54ed06a54ce6f8cd1349451aff9b5a7d94266f1e617266b15d3d004dc07",
+    "world19/report.json": "ced9e9469232c201e55fdb94753f35003c44782741bb86e6757f392b8067a1ce",
+    "world19/query-0.log": "7534dcd7b6709df16d30efaaa9c7251ada92d9c53f9824b03b167a39ba1ed53e",
+    "world19/world.json": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91"
+  }
+}

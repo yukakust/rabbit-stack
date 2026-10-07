@@ -1,0 +1,35 @@
+{
+  "status": "ROOT-REVIEWED-PREFLIGHT-SIGNED58-PHYSICAL-DELIVERY-STARTED",
+  "payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+  "world_counter": 19,
+  "native_counter": 58,
+  "python_copied_state_tests": 8,
+  "controller": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/actual-recovery58/controller58.json",
+  "manual_reboot_confirmed": false,
+  "reset_cause": "NOT_ESTABLISHED",
+  "retirement_audit_sha256": "6588905cfdc9cf9b58cca8dff8ccfe53dd2637ab8927b72463f1f428e411e715",
+  "signed_plan": {
+    "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/native58-observed-bootstrap-city-plan",
+    "native_counter": 58,
+    "world_counter": 19,
+    "signed_once": true,
+    "activation": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/actual-recovery58/activation.json",
+    "retirement": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/actual-recovery58/retirement/retirement.json",
+    "files": {
+      "before-state.json": "4f5a9b1e8e1ec9c47b1a4ac511d0facbacdb36dff950a0838fabfbc8bbe92841",
+      "world.json": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+      "world.rup": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+      "native.rrt": "54170bfe74f223477b0305896ece4cddc136da83d91922676739eb283b4c1fc3",
+      "payload.efi": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+      "session.json": "6ae776464fa0e61c404dbfdb0b08732d87581ed0b0ae869b3b34c020ef236dc7",
+      "world-session.json": "dcb8b54ed06a54ce6f8cd1349451aff9b5a7d94266f1e617266b15d3d004dc07"
+    }
+  },
+  "source_sha256": {
+    "route.py": "7dcae8623e4f4eea2d09a3895e99d7679bfd528f23565cffeeb7149c5566267b",
+    "restore_observed.py": "d517c13fffe0e0097d3eb9493a720f938e80500415d4c28799b8db8dbd373bd3",
+    "test_route.py": "3eada88f7f9d34f8faa6e36f670665ee0cccb095d1a300ef3c00ea1f4544de4b"
+  },
+  "physical_restoration_claimed": false,
+  "wifi_connected_claimed": false
+}

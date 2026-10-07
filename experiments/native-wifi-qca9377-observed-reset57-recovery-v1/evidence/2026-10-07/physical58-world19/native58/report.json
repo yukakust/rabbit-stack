@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "status": "APPLIED",
+  "kind": "owner-reboot-city-recovery",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/plain-city58-ble-reset-recovery",
+  "gate_sha256": "96275f92133022d99d8e3a3fb377cee5fd734928a7136683650e1cee7606705b",
+  "files": {
+    "before-state.json": "4f5a9b1e8e1ec9c47b1a4ac511d0facbacdb36dff950a0838fabfbc8bbe92841",
+    "world.json": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+    "world.rup": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+    "native.rrt": "54170bfe74f223477b0305896ece4cddc136da83d91922676739eb283b4c1fc3",
+    "payload.efi": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+    "session.json": "6ae776464fa0e61c404dbfdb0b08732d87581ed0b0ae869b3b34c020ef236dc7",
+    "world-session.json": "dcb8b54ed06a54ce6f8cd1349451aff9b5a7d94266f1e617266b15d3d004dc07"
+  },
+  "old_pending_directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-bq9nq_ik",
+  "old_pending_files": {
+    "native.rrt": "9a559eb9f547ff573a7ce5450caecc1e000b6ae43a95a4b8cdd12f1f00ca198d",
+    "session.json": "b05e161ce72babb76345af2933acb38f3ae8187bd7bfa9e3be4084a4a6a06139",
+    "payload.efi": "9c63e6622c10190a8a17de2ff01ee03f72de95e93fd7326ca4da6e2c429be161",
+    "report.json": "9878337a6dab263c49560dbfc34169c60df014a86da516d07959186c88dc6e1e"
+  },
+  "reserved_counter": 57,
+  "old_pending_kind": "completed",
+  "journal_sha256": "15755161641fedb39ffa305a897d7695e61d8a13019d3e8cfc976045395faebe",
+  "counter": 58,
+  "world_counter": 19,
+  "owner_confirmed_reboot": false,
+  "engine_done": true,
+  "world_done": true,
+  "receiver_reported_applied": true,
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/native58-observed-bootstrap-city-plan/query-0.log",
+      "log_sha256": "9aeaef597c6bd4594a4ddd0842f14a6eacb38f70c49c0581fe3053ce5cde6417"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/native58-observed-bootstrap-city-plan/paced-stage-1.log",
+      "log_sha256": "b248cb3fc01e5323366c83519cfeca4f1aa12843161a108e37fccaa9172237c0"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/native58-observed-bootstrap-city-plan/commit-2.log",
+      "log_sha256": "4a51114369903ea923909726e72094084581714c81f2284a84901571f70185eb"
+    }
+  ],
+  "manual_reboot_confirmed": false,
+  "receiver_bootstrap_observed": true,
+  "reset_cause": "NOT_ESTABLISHED",
+  "bootstrap_proof": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/actual-recovery58/activation.json",
+  "bootstrap_proof_sha256": "f7e9998352917d4b1692b64412a7631bc4b2c4e846a6359d54f4cffc1a1621f5",
+  "boot_receiver_status": {
+    "outcome": "idle",
+    "state": 0,
+    "error": 0,
+    "received": 0,
+    "length": 0,
+    "counter": 0,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": false,
+    "raw_hex": "524653010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  },
+  "confirmed_received": 47904,
+  "last_receiver_status": {
+    "outcome": "idle",
+    "state": 0,
+    "error": 0,
+    "received": 0,
+    "length": 0,
+    "counter": 0,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": false,
+    "raw_hex": "524653010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  }
+}
