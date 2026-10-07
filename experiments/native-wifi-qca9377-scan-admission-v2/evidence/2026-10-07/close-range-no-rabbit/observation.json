@@ -1,0 +1,11 @@
+{
+  "source": "human current chat",
+  "mac_distance_requested_m": [
+    0.5,
+    1
+  ],
+  "user_reply": "рядом",
+  "city_visible": true,
+  "tail_moving": true,
+  "dell_reboot_authorized": false
+}

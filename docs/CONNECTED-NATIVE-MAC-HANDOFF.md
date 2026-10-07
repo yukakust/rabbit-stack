@@ -4848,3 +4848,17 @@ driverfault/range/coexistencecause. Full55asset/pending unchanged; cannotadmit56
 UseraskedtoverifyMac0.5–1m fromDell (notjustsamehouse/7m), no reboot/USBchange.
 Nextafterproximityanswer: solepassive/freshread; ifstillabsent need preserve
 blockedhardwarediagnostics andexplicit recoverydecision, no forcedrestart.
+
+### 2026-10-07: close-range Rabbit absent; recovery preparation only
+
+User movedMacnearrequested0.5–1m. Solepassive20sprobe133advertisements,
+Rabbitcandidates0/connected0, no connections/writes. Archivedclose-range-no-rabbit.
+City/tail liveuserconfirmation stands; no proofWiFiprogress sinceBOOT258.
+No activecontroller, preservefull55signedassets/native/state/pending/raws.
+Cannot repair receiver overunavailableBLE. Root assigned NEWreboot-retirement55-v1
+OFFLINE preparation ONLY: exactpublicsignatures/642closure/world17+explicit
+ownerreboot AND freshactualEMPTY0 beforeany retirement; no modelsasphysical,
+no state/privatekeys/radio/reboot. Prepareconcretereviewablecityrecoveryplan,
+nextcounter56conditional; offlineHTT56 isdeferred, neverautoconsume/replay.
+UserhasNOTauthorizedrebootexception. Mustreviewrecoveryroute beforeasking.
+Productionmemoryowner softwarework independentlycontinues.
