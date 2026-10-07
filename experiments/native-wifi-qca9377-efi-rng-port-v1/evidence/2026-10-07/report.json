@@ -1,0 +1,30 @@
+{
+  "status": "EFI-RNG-PORT-BOUNDED-MOCK-ABI-ASAN-COFF-PASS",
+  "checks": 557,
+  "source_sha256": {
+    "rng_port.c": "d53039e52d010ac76b5de781bcb03f21a33a41bde117fb6dd746a958e3be6cfe",
+    "rng_port.h": "e5bedc66fabd34b89daac7404f3293c8bc550d85ad6cd2079dbe80169cd9e260",
+    "rng_port_test.c": "9b0da96469122ded37f925d4afacfe969cbf443fba62e0fa95ff0625c5c7d98b",
+    "verify_rng.py": "34a5b3bd1b3a1ec0914f1ca6f08104a99b28aa769c26f8bce765631ddb3a9e01"
+  },
+  "edk2_commit": "fbe0805b2091393406952e84724188f8c1941837",
+  "reference_sha256": {
+    "RngProtocol.h": "a803ea796a9ea8579a81b05b55abef30f4f36bd775df07c85c39b32fd70fb5b5",
+    "RngGuid.h": "dce2cc8aba4a04a8388f6d163fac6f1eb667e46ad94ffe80517ae66fb540a755",
+    "UefiSpec.h": "411733fc1da5e084971f6a70c59b3699adee73a060fc5e7067eee3d2fb850db9"
+  },
+  "oracle_sha256": "1ddd9343c2c4c5b6b3a808313bf1b99dfc332f2a6ce9ee25b1fc1da5c8465bfe",
+  "boot_layout_oracle_sha256": "711f753a5655959140c92879a6120535ca1c4368a4a4173ce3487a6f31661dc5",
+  "log_sha256": "19612877386ece9b0bf809b85584b8ab386502e9e295b4064a015f1428913dd8",
+  "compiler": "clang version 20.1.8 (github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin\n",
+  "max_algorithm_count": 16,
+  "max_pool_bytes": 256,
+  "max_live_pool_allocations": 1,
+  "physical_rng_calls": 0,
+  "random_samples_exported": 0,
+  "private_key_operations": 0,
+  "provider_approved": false,
+  "entropy_quality_verified": false,
+  "native_integrated": false,
+  "candidate_counter_assigned": false
+}

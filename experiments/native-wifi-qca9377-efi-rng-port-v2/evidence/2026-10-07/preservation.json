@@ -1,0 +1,32 @@
+{
+  "native-wifi-qca9377-efi-rng-port-v1": {
+    "report_sha256": "45e750457c09d637e5e5d1966beb94678bbb8dea098a78ca9adbe40cfe16138a",
+    "checks": 557,
+    "source_sha256": {
+      "rng_port.c": "d53039e52d010ac76b5de781bcb03f21a33a41bde117fb6dd746a958e3be6cfe",
+      "rng_port.h": "e5bedc66fabd34b89daac7404f3293c8bc550d85ad6cd2079dbe80169cd9e260",
+      "rng_port_test.c": "9b0da96469122ded37f925d4afacfe969cbf443fba62e0fa95ff0625c5c7d98b",
+      "verify_rng.py": "34a5b3bd1b3a1ec0914f1ca6f08104a99b28aa769c26f8bce765631ddb3a9e01"
+    }
+  },
+  "native-wifi-qca9377-scan-observer-v3": {
+    "report_sha256": "a8dcf434e219a565dde3b4b79ad2305cee34b4fed9ce352700c3df1934d9277c",
+    "checks": 2855,
+    "source_sha256": {
+      "decode_scan.py": "627f583f9c2abcdb7c79ce07745df74aedf8ca5bc2a73fdb50f18f30e2897fca",
+      "collect.py": "84f9ada63ff3464f437ef8451dd164d217f178f0652426220620d2449e105bb8",
+      "read_scan.m": "8c1cc7455e08e84d373822fee3e275a0be7f36ddef06c1ca683034b8000d1d28",
+      "verify_observer.py": "996cd12676ba9292df681095fb85c63416f341942b6f0d23d4207d4f82253a58"
+    }
+  },
+  "native-wifi-qca9377-efi-rng-port-v2": {
+    "report_sha256": "80c78e27e657b935d664fec212099b08e35833d925fa6113e05ffc1fbdba0604",
+    "checks": 1742,
+    "source_sha256": {
+      "rng_port.c": "5ac751cc0d2e0feed19e7ed1e8bc4f2a92e9aaec729bbacc1b8c3368885f6752",
+      "rng_port.h": "c68480b6b5677d907d6b535fe1ead1d03ef4d27096cb5b56417415305bb9fd31",
+      "rng_port_test.c": "725c97754699f1847ce6059b337ff0de92001ebde4d1a21276d853eb06a4cd31",
+      "verify_rng.py": "0b1d94e8154b40da5634b01106acd600205739c1ef1698a03326930be340284b"
+    }
+  }
+}

@@ -4635,3 +4635,36 @@ notreservationofphysicalcounter; derivefutureHTT56onlyafternewscan55result.
 Rootnext55gate requires exact54failure/owner/rawproof + newcompleteproof before
 localkey/signature. Newobserver-v3 GEN55/110pages2x budget600s (actual54capture
 175.23s) preparesstrictreadonlycollector; no hardware/privatekeysbyagents.
+
+### 2026-10-07: observer55 ready; RNG and mature provisioning review archived
+
+Newscan-observer-v3 GEN55/22slots110pagestwice:2855staticnegative/ownercases
++MacObjCpreflight, exactsource/proofhashesverified. Usesactual55candidate and
+engine.last_release_report absolutepath, no guessedfuturepayload/session.
+Finite600sreader/620swrapper+90sstalled-progress; raw/partialpersistedBEFORE
+decode, staleaccepteddecodedinvalidated. Final55candidateproofstillrequired.
+No actual55radio byagent. Frozenv1/v2unchanged.
+
+RootRNGreviewfoundv1outputaliasintosession/review couldcorruptauthstate orplace
+random bytesinpublicmetadata. NEWefi-rng-port-v2 rejectsrangeoverflow/overlaps
+BEFOREcallback/statechange;1742ASAN/UBSAN+COFF mockedABIcases onYukabox passed,
+source/logverified. V1mock557proof retainedasbaselineNOTnative-approved.
+Arithmeticguards aren'tarbitraryEFIaddress validity, provideridentityapproval
+orentropy-quality proof. No physicalRNGcalls/randomsamples/realkeys exported.
+
+Reviewedprovisioning-review-v1:10743ASAN/UBSAN actualpinnedNoise-C checks and
+exactCacophonyNKvectors, source/logbindingsverified. NKfitsphysicallypinned
+RAMDellreceiver butdoesn'tauthenticateownerMac. OwnerordinaryEd25519AUTH
+boundtofinalhandshakehash/target/epoch/prologue mustbeinsidepostSplittransport
+withencryptedDellACK BEFOREcredentialread. No AUTHimplementation/physical
+fingerprint/RNG/fullEFI proof orprovisioning. Defaultbackend hosttext116677
++data2648 exceedsnative54headroomproxy74752; NOTapprovedfit.
+NEWnoise-monocypher-backend-v1 preparersuseexistingreviewedcrypto+unedited
+matureNoisehandshakestatemachine, exactIETFnonce/ChaChaPoly notXChaCha, no
+realkeys/RF/device/signing. Fullprotocol/nativefit/trustgates remainrequired.
+
+Scanv2GEN55 newactualnative19caseproofpassed incl physical54blocker replay,
+STARTED/FOREIGNvalue28/nonterminalreason6/opaqueextensions, wrongSSID→target
+andtargetduplicate→terminal, archive16/fullSTOP. FullrepeatEFI/QEMU/world/source
+proofstillinprogress. Donotsignuntilfinalfreeze/rootnegativeadmission/fresh54
+release/raw proof. HTT55offline remainsdeferredunchanged.

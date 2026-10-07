@@ -1,0 +1,14 @@
+{
+  "status": "LOCAL-COPIED-HOST-EVIDENCE-SOURCE-AND-LOG-BINDINGS-VERIFIED",
+  "sha256": {
+    "README.md": "e992b38d95dba79a0391f9173c0ac7b1e3017f141bed024b36b7f2a6a4bffb70",
+    "NOISE-LICENSE.txt": "f2c0cc36aa63c383fd1669b63eff210ee8cabb304dd818a9f442d93906eff587",
+    "noise_dummy.c": "0747185f03893cdf9400aa131037e280c39265a53dd759e8529df13639159fa1",
+    "noise_vector.h": "09b4cb8df36f87b9d04209cf5015ca7f0f1ae0e4a98618495bbf6a47b4f012fe",
+    "verify_noise.py": "aa109e8ee0c1855496b7788355a8be87cef1609d99b4bd02ed94f573af389e35",
+    "evidence/2026-10-07/report.json": "b18d68f0a4673de1f86630fe795558da6753f366d80787a0f664741e3a43babb",
+    "evidence/2026-10-07/host.log": "7bb31fd0552dcf9fd103efb99c7db0c5a74fdaad10a7cb2865c35e444ebd848b",
+    "evidence/2026-10-07/size.log": "06bd724873af7e145fb2094716b4cd5e0e90d07be186aed90b8eeecd71920ba8"
+  },
+  "hardware_or_credential_actions": false
+}

@@ -25,3 +25,7 @@ experiments/arm64-pill/pill
 /experiments/native-wifi-qca9377-htt-native-v1/runs/
 /experiments/native-wifi-qca9377-htt-native-profile-v1/runs/
 /experiments/native-wifi-qca9377-secure-provision-plan-v1/runs/
+/experiments/native-wifi-qca9377-efi-rng-port-v1/runs/
+/experiments/native-wifi-qca9377-efi-rng-port-v2/runs/
+/experiments/native-wifi-qca9377-provisioning-review-v1/runs/
+/experiments/native-wifi-qca9377-scan-observer-v3/runs/

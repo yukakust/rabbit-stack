@@ -1,0 +1,1 @@
+checks=10743 Noise-NK-library dummy handshake/transport/replay/mismatch PASS peak_heap=3968 allocations=1804 rng_calls=0
