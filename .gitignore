@@ -40,3 +40,7 @@ experiments/arm64-pill/pill
 /experiments/native-wifi-qca9377-runtime-efi-proof-v1/runs/
 
 /experiments/native-wifi-qca9377-owner-auth-frame-v2/runs/
+
+/experiments/native-wifi-qca9377-reboot-retirement55-v1/runs/
+
+/experiments/native-wifi-qca9377-production-memory-plan-v1/runs/

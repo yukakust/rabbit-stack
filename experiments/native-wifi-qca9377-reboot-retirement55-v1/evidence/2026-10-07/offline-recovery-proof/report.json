@@ -1,0 +1,59 @@
+{
+  "status": "READ-ONLY-FULL55-RECOVERY-PLAN-PLAINCITY56-HOST-PROOF-PASS",
+  "native_counter_candidate": 56,
+  "world_counter_candidate": 18,
+  "payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+  "restored_package_sha256": "f306120fdd548b6d4cc1d3915a13ae8cbe7848b162caa78528add353b9cb3f32",
+  "world_semantic_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "source_count_plain_city": 199,
+  "source_count_native55": 642,
+  "native_builds": 2,
+  "qemu_boot_modes": [
+    "populated-current-city",
+    "EMPTY-bootstrap"
+  ],
+  "host_world_checks": {
+    "city_core_sha256": "87118d150ae88002e5851410bbf1cb56c130f9f8b6933d70111cb80fe5504005",
+    "harness_sha256": "a5fe48377829fc0e9627464b8bcdea572536112127778595b2d8d8e44fa15b26",
+    "host_ticks": 120,
+    "roof_cat_timing": true,
+    "adversarial_camera_frames": 16,
+    "sanitizers": true,
+    "physical_execution_verified": false
+  },
+  "native56_reserved": false,
+  "old_htt56_consumed": false,
+  "owner_reboot_authorized": false,
+  "reboot_performed": false,
+  "production_state_read": false,
+  "state_mutations": 0,
+  "private_key_loads": 0,
+  "radio_operations": 0,
+  "fresh_receiver_evidence_present": false,
+  "pending_cleared": false,
+  "physical_admission": false,
+  "native55_all_owners_released_claimed": false,
+  "raw55_recovered": false,
+  "missing": [
+    "root archived exact pre-recovery state and BOOT/discovery logs",
+    "explicit owner controlled reboot authorization",
+    "actual reboot confirmation",
+    "fresh genuine known-peer EMPTY/counter0 plus query log",
+    "root separate locked retirement and recovery admission implementation"
+  ],
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/README.md": "e790f63f96155c512347135fef57e394ccff6373d8e1d18a82a4b13981cd128c",
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/archive_public.py": "3036048822555402d267d6b42ac1b1b7900d62bd894c635720f647ddf959ac1e",
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/gate.py": "0a7f456de49736d230a03786943adc34f79293e331eb74f4caa80a975fceb7cf",
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/test_gate.py": "911ef12809ef2ca91b247810720054232c5ea2c6a4b101597946b5ca7dd7b5b1",
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/test_public.py": "5c9d9f54f37fb6c9092dd24b5867f37843d24c57fdf798f7244eaf1ccb14ea96"
+  },
+  "evidence_sha256": {
+    "runs/public55/manifest.json": "fa4b0580b98cb42e4e25bb7b72197715cd118d01bcd9887879c7fbb9e610e763",
+    "runs/public-host-report.json": "70a0a206fab9ef0aae5eff09129eac758095a615059340fb9ac4ce210bd9e9a3",
+    "runs/public-host.log": "f1eebc997d038da29c56168aa5b323f7ca1fbdaecf3fea790acdea1bff5a2155",
+    "runs/gate-host.log": "c6b9b1f09add0403cc07e90bfdf272129b1ddfa2f8f7675ea8218862f2516371",
+    "runs/plain-city56-retry1/recovery-gate.json": "02a4624d3c52de98a66ec5a4a0f1bef57ca1206dfefcd27026115511e5765039",
+    "runs/plain-city-retry1.log": "5243e58fbb7d91eb134a793a2f85d1a1ff5e66bdb77ef6e443176413c909f1b0"
+  }
+}

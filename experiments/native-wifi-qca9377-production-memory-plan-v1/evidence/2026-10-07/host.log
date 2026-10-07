@@ -1,0 +1,1229 @@
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-fno-builtin", "-Dmemcpy=qca_memcpy", "-Dmemset=qca_memset", "-Dmemcmp=qca_memcmp", "-Dmemchr=qca_memchr", "-Dstrlen=qca_strlen", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/native_memory.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/memory.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runtime_test.c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/chkstk_bridge.S", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/probe_call.S", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/memory.o", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/memory-test"]
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/memory-test", "memory"]
+PASS 233521 real runtime memory shims ASAN/UBSAN
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-fno-builtin", "-Dmemcpy=qca_memcpy", "-Dmemset=qca_memset", "-Dmemcmp=qca_memcmp", "-Dmemchr=qca_memchr", "-Dstrlen=qca_strlen", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/native_memory.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/memory-plain.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runtime_test.c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/chkstk_bridge.S", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/probe_call.S", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/memory-plain.o", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/probe-test"]
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/probe-test"]
+PASS 65436 actual LLVM probe guarded-stack/register preservation/page-crossing
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/chkstk_bridge.S", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/chkstk.obj"]
+
+
+["nm", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/chkstk.obj"]
+0000000000000000 b .bss
+0000000000000000 d .data
+0000000000000000 t .text
+0000000000000000 T ___chkstk_ms
+0000000000000000 T __chkstk
+
+
+["python3", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/verify_port.py"]
+abi=33392,16,8,8,0,32768,33280,33344,33376,16,8
+checks=277113 Noise-NK-library dummy handshake/transport/replay/mismatch PASS peak_live_slots=18 allocations=18 rng_calls=0
+quarantine modes PASS ['foreign', 'interior', 'size', 'double', 'rng-uncertain']
+COFF 19 objects PASS; full EFI not linked
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-Wall", "-Wextra", "-Werror", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/dependencies/rng", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/pool_owner.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_owner.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/dependencies/rng", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/pool_owner.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_owner.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-Wall", "-Wextra", "-Werror", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/dependencies/rng", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/pool_target.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_target.o"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/dependencies/rng", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/pool_target.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_target.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/dependencies/rng", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-secure-provision-v1/reference", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/pool_test.c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_owner.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_target.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-6.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-4.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-8.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-11.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-0.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-15.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-16.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-7.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-1.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-3.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-17.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-9.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-5.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-10.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-14.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-12.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-13.o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/host-2.o", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test"]
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test"]
+PASS 534736 aligned genuine-ABI pool owner/wipe/detach/alias model
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test", "1"]
+PASS 6 pool failure mode1 retained/not-dereferenced
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test", "2"]
+PASS 6 pool failure mode2 retained/not-dereferenced
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test", "3"]
+PASS 9 pool failure mode3 retained/not-dereferenced
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test", "4"]
+PASS 9 pool failure mode4 retained/not-dereferenced
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test", "5"]
+PASS 10 pool failure mode5 retained/not-dereferenced
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test", "6"]
+PASS 33419 pool failure mode6 retained/not-dereferenced
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test", "7"]
+PASS 10 borrowed RNG owner mode7 blocks detach/wipe/free
+
+
+["/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool-test", "8"]
+PASS 10 borrowed RNG owner mode8 blocks detach/wipe/free
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/dependencies/rng", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/efi_smoke.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/efi-smoke.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/lld", "-flavor", "link", "/subsystem:efi_application", "/entry:efi_main", "/nodefaultlib", "/machine:x64", "/opt:ref", "/fixed:no", "/out:/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/public-vector-runtime.efi", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-0.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-1.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-2.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-3.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-4.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-5.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-6.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-7.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-8.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-9.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-10.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-11.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-12.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-13.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-14.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-15.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-16.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-17.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-18.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_owner.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_target.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/chkstk.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/efi-smoke.obj"]
+
+
+["objdump", "-dr", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/efi-smoke.obj"]
+
+/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/efi-smoke.obj:     file format pe-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <efi_main>:
+   0:	41 57                	push   %r15
+   2:	41 56                	push   %r14
+   4:	41 55                	push   %r13
+   6:	41 54                	push   %r12
+   8:	56                   	push   %rsi
+   9:	57                   	push   %rdi
+   a:	55                   	push   %rbp
+   b:	53                   	push   %rbx
+   c:	48 81 ec 08 02 00 00 	sub    $0x208,%rsp
+  13:	48 89 d3             	mov    %rdx,%rbx
+  16:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 1d <efi_main+0x1d>
+			19: IMAGE_REL_AMD64_REL32	??_C@_0BK@HGHLEHFA@QEMU?5PUBLIC?5VECTOR?5ENTRY?6?$AA@
+  1d:	e8 00 00 00 00       	call   22 <efi_main+0x22>
+			1e: IMAGE_REL_AMD64_REL32	emit
+  22:	66 0f 6f 05 00 00 00 	movdqa 0x0(%rip),%xmm0        # 2a <efi_main+0x2a>
+  29:	00 
+			26: IMAGE_REL_AMD64_REL32	__xmm@0f0e0d0c0b0a09080706050403020100
+  2a:	31 c0                	xor    %eax,%eax
+  2c:	66 0f 6f 0d 00 00 00 	movdqa 0x0(%rip),%xmm1        # 34 <efi_main+0x34>
+  33:	00 
+			30: IMAGE_REL_AMD64_REL32	__xmm@10101010101010101010101010101010
+  34:	66 0f 7f 84 04 60 01 	movdqa %xmm0,0x160(%rsp,%rax,1)
+  3b:	00 00 
+  3d:	48 83 c0 10          	add    $0x10,%rax
+  41:	66 0f fc c1          	paddb  %xmm1,%xmm0
+  45:	48 3d a0 00 00 00    	cmp    $0xa0,%rax
+  4b:	75 e7                	jne    34 <efi_main+0x34>
+  4d:	48 8d b4 24 62 01 00 	lea    0x162(%rsp),%rsi
+  54:	00 
+  55:	48 8d bc 24 c1 00 00 	lea    0xc1(%rsp),%rdi
+  5c:	00 
+  5d:	41 b8 7f 00 00 00    	mov    $0x7f,%r8d
+  63:	48 89 f9             	mov    %rdi,%rcx
+  66:	48 89 f2             	mov    %rsi,%rdx
+  69:	e8 00 00 00 00       	call   6e <efi_main+0x6e>
+			6a: IMAGE_REL_AMD64_REL32	memcpy
+  6e:	41 b8 7f 00 00 00    	mov    $0x7f,%r8d
+  74:	48 89 f9             	mov    %rdi,%rcx
+  77:	48 89 f2             	mov    %rsi,%rdx
+  7a:	e8 00 00 00 00       	call   7f <efi_main+0x7f>
+			7b: IMAGE_REL_AMD64_REL32	memcmp
+  7f:	85 c0                	test   %eax,%eax
+  81:	74 07                	je     8a <efi_main+0x8a>
+  83:	b0 11                	mov    $0x11,%al
+  85:	e6 f4                	out    %al,$0xf4
+  87:	f4                   	hlt
+  88:	eb fd                	jmp    87 <efi_main+0x87>
+  8a:	48 8d 8c 24 c4 00 00 	lea    0xc4(%rsp),%rcx
+  91:	00 
+  92:	41 b8 65 00 00 00    	mov    $0x65,%r8d
+  98:	ba 67 00 00 00       	mov    $0x67,%edx
+  9d:	e8 00 00 00 00       	call   a2 <efi_main+0xa2>
+			9e: IMAGE_REL_AMD64_REL32	memset
+  a2:	b8 04 00 00 00       	mov    $0x4,%eax
+  a7:	80 bc 04 c0 00 00 00 	cmpb   $0x67,0xc0(%rsp,%rax,1)
+  ae:	67 
+  af:	75 d2                	jne    83 <efi_main+0x83>
+  b1:	48 ff c0             	inc    %rax
+  b4:	48 83 f8 69          	cmp    $0x69,%rax
+  b8:	75 ed                	jne    a7 <efi_main+0xa7>
+  ba:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # c1 <efi_main+0xc1>
+			bd: IMAGE_REL_AMD64_REL32	??_C@_0P@GAGEDKLG@public?5fixture?$AA@
+  c1:	e8 00 00 00 00       	call   c6 <efi_main+0xc6>
+			c2: IMAGE_REL_AMD64_REL32	strlen
+  c6:	48 83 f8 0e          	cmp    $0xe,%rax
+  ca:	75 b7                	jne    83 <efi_main+0x83>
+  cc:	48 8d bc 24 60 01 00 	lea    0x160(%rsp),%rdi
+  d3:	00 
+  d4:	41 b8 a0 00 00 00    	mov    $0xa0,%r8d
+  da:	48 89 f9             	mov    %rdi,%rcx
+  dd:	ba 6f 00 00 00       	mov    $0x6f,%edx
+  e2:	e8 00 00 00 00       	call   e7 <efi_main+0xe7>
+			e3: IMAGE_REL_AMD64_REL32	memchr
+  e7:	48 8d 8c 24 cf 01 00 	lea    0x1cf(%rsp),%rcx
+  ee:	00 
+  ef:	48 39 c8             	cmp    %rcx,%rax
+  f2:	75 8f                	jne    83 <efi_main+0x83>
+  f4:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # fb <efi_main+0xfb>
+			f7: IMAGE_REL_AMD64_REL32	??_C@_0BO@MFFHJGIA@ACTUAL?5EFI?5MEMORY?5SHIMS?5PASS?6?$AA@
+  fb:	e8 00 00 00 00       	call   100 <efi_main+0x100>
+			fc: IMAGE_REL_AMD64_REL32	emit
+ 100:	e8 00 00 00 00       	call   105 <efi_main+0x105>
+			101: IMAGE_REL_AMD64_REL32	large_stack_probe
+ 105:	85 c0                	test   %eax,%eax
+ 107:	0f 84 76 ff ff ff    	je     83 <efi_main+0x83>
+ 10d:	31 f6                	xor    %esi,%esi
+ 10f:	48 89 74 24 38       	mov    %rsi,0x38(%rsp)
+ 114:	48 89 74 24 30       	mov    %rsi,0x30(%rsp)
+ 119:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 120 <efi_main+0x120>
+			11c: IMAGE_REL_AMD64_REL32	real_boot
+ 120:	48 89 d9             	mov    %rbx,%rcx
+ 123:	e8 00 00 00 00       	call   128 <efi_main+0x128>
+			124: IMAGE_REL_AMD64_REL32	qca_pool_api_from_system
+ 128:	41 b7 01             	mov    $0x1,%r15b
+ 12b:	85 c0                	test   %eax,%eax
+ 12d:	0f 84 f5 02 00 00    	je     428 <efi_main+0x428>
+ 133:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 13a <efi_main+0x13a>
+			136: IMAGE_REL_AMD64_REL32	real_boot
+ 13a:	48 8d 94 24 b0 00 00 	lea    0xb0(%rsp),%rdx
+ 141:	00 
+ 142:	48 89 02             	mov    %rax,(%rdx)
+ 145:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 14c <efi_main+0x14c>
+			148: IMAGE_REL_AMD64_REL32	observed_free
+ 14c:	48 89 42 08          	mov    %rax,0x8(%rdx)
+ 150:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 157 <efi_main+0x157>
+			153: IMAGE_REL_AMD64_REL32	pool
+ 157:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 15d:	e8 00 00 00 00       	call   162 <efi_main+0x162>
+			15e: IMAGE_REL_AMD64_REL32	qca_pool_acquire
+ 162:	85 c0                	test   %eax,%eax
+ 164:	0f 84 bc 02 00 00    	je     426 <efi_main+0x426>
+ 16a:	48 8b 35 18 00 00 00 	mov    0x18(%rip),%rsi        # 189 <efi_main+0x189>
+			16d: IMAGE_REL_AMD64_REL32	pool
+ 171:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 178 <efi_main+0x178>
+			174: IMAGE_REL_AMD64_REL32	??_C@_0CL@IMBDLLJL@REAL?5BOOTSERVICES?5POOL?5ALIGNED?5O@
+ 178:	e8 00 00 00 00       	call   17d <efi_main+0x17d>
+			179: IMAGE_REL_AMD64_REL32	emit
+ 17d:	48 8d 5c 24 38       	lea    0x38(%rsp),%rbx
+ 182:	48 89 d9             	mov    %rbx,%rcx
+ 185:	ba 01 52 00 00       	mov    $0x5201,%edx
+ 18a:	e8 00 00 00 00       	call   18f <efi_main+0x18f>
+			18b: IMAGE_REL_AMD64_REL32	qca_nk_new
+ 18f:	85 c0                	test   %eax,%eax
+ 191:	0f 85 91 02 00 00    	jne    428 <efi_main+0x428>
+ 197:	4c 8d 74 24 30       	lea    0x30(%rsp),%r14
+ 19c:	4c 89 f1             	mov    %r14,%rcx
+ 19f:	ba 02 52 00 00       	mov    $0x5202,%edx
+ 1a4:	e8 00 00 00 00       	call   1a9 <efi_main+0x1a9>
+			1a5: IMAGE_REL_AMD64_REL32	qca_nk_new
+ 1a9:	85 c0                	test   %eax,%eax
+ 1ab:	0f 85 77 02 00 00    	jne    428 <efi_main+0x428>
+ 1b1:	48 8b 4c 24 38       	mov    0x38(%rsp),%rcx
+ 1b6:	e8 00 00 00 00       	call   1bb <efi_main+0x1bb>
+			1b7: IMAGE_REL_AMD64_REL32	noise_handshakestate_get_remote_public_key_dh
+ 1bb:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 1c2 <efi_main+0x1c2>
+			1be: IMAGE_REL_AMD64_REL32	vec_init_remote_static
+ 1c2:	41 b8 20 00 00 00    	mov    $0x20,%r8d
+ 1c8:	48 89 c1             	mov    %rax,%rcx
+ 1cb:	e8 00 00 00 00       	call   1d0 <efi_main+0x1d0>
+			1cc: IMAGE_REL_AMD64_REL32	noise_dhstate_set_public_key
+ 1d0:	85 c0                	test   %eax,%eax
+ 1d2:	0f 85 50 02 00 00    	jne    428 <efi_main+0x428>
+ 1d8:	48 8b 4c 24 30       	mov    0x30(%rsp),%rcx
+ 1dd:	e8 00 00 00 00       	call   1e2 <efi_main+0x1e2>
+			1de: IMAGE_REL_AMD64_REL32	noise_handshakestate_get_local_keypair_dh
+ 1e2:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 1e9 <efi_main+0x1e9>
+			1e5: IMAGE_REL_AMD64_REL32	vec_resp_static
+ 1e9:	41 b8 20 00 00 00    	mov    $0x20,%r8d
+ 1ef:	48 89 c1             	mov    %rax,%rcx
+ 1f2:	e8 00 00 00 00       	call   1f7 <efi_main+0x1f7>
+			1f3: IMAGE_REL_AMD64_REL32	noise_dhstate_set_keypair_private
+ 1f7:	85 c0                	test   %eax,%eax
+ 1f9:	0f 85 29 02 00 00    	jne    428 <efi_main+0x428>
+ 1ff:	48 8b 4c 24 38       	mov    0x38(%rsp),%rcx
+ 204:	e8 00 00 00 00       	call   209 <efi_main+0x209>
+			205: IMAGE_REL_AMD64_REL32	noise_handshakestate_get_fixed_ephemeral_dh
+ 209:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 210 <efi_main+0x210>
+			20c: IMAGE_REL_AMD64_REL32	vec_init_ephemeral
+ 210:	41 b8 20 00 00 00    	mov    $0x20,%r8d
+ 216:	48 89 c1             	mov    %rax,%rcx
+ 219:	e8 00 00 00 00       	call   21e <efi_main+0x21e>
+			21a: IMAGE_REL_AMD64_REL32	noise_dhstate_set_keypair_private
+ 21e:	85 c0                	test   %eax,%eax
+ 220:	0f 85 02 02 00 00    	jne    428 <efi_main+0x428>
+ 226:	48 8b 4c 24 30       	mov    0x30(%rsp),%rcx
+ 22b:	e8 00 00 00 00       	call   230 <efi_main+0x230>
+			22c: IMAGE_REL_AMD64_REL32	noise_handshakestate_get_fixed_ephemeral_dh
+ 230:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 237 <efi_main+0x237>
+			233: IMAGE_REL_AMD64_REL32	vec_resp_ephemeral
+ 237:	41 b8 20 00 00 00    	mov    $0x20,%r8d
+ 23d:	48 89 c1             	mov    %rax,%rcx
+ 240:	e8 00 00 00 00       	call   245 <efi_main+0x245>
+			241: IMAGE_REL_AMD64_REL32	noise_dhstate_set_keypair_private
+ 245:	85 c0                	test   %eax,%eax
+ 247:	0f 85 db 01 00 00    	jne    428 <efi_main+0x428>
+ 24d:	48 8b 4c 24 38       	mov    0x38(%rsp),%rcx
+ 252:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 259 <efi_main+0x259>
+			255: IMAGE_REL_AMD64_REL32	vec_init_prologue
+ 259:	41 b8 09 00 00 00    	mov    $0x9,%r8d
+ 25f:	e8 00 00 00 00       	call   264 <efi_main+0x264>
+			260: IMAGE_REL_AMD64_REL32	noise_handshakestate_set_prologue
+ 264:	85 c0                	test   %eax,%eax
+ 266:	0f 85 bc 01 00 00    	jne    428 <efi_main+0x428>
+ 26c:	48 8b 4c 24 30       	mov    0x30(%rsp),%rcx
+ 271:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 278 <efi_main+0x278>
+			274: IMAGE_REL_AMD64_REL32	vec_init_prologue
+ 278:	41 b8 09 00 00 00    	mov    $0x9,%r8d
+ 27e:	e8 00 00 00 00       	call   283 <efi_main+0x283>
+			27f: IMAGE_REL_AMD64_REL32	noise_handshakestate_set_prologue
+ 283:	85 c0                	test   %eax,%eax
+ 285:	0f 85 9d 01 00 00    	jne    428 <efi_main+0x428>
+ 28b:	48 8b 4c 24 38       	mov    0x38(%rsp),%rcx
+ 290:	e8 00 00 00 00       	call   295 <efi_main+0x295>
+			291: IMAGE_REL_AMD64_REL32	noise_handshakestate_start
+ 295:	85 c0                	test   %eax,%eax
+ 297:	0f 85 8b 01 00 00    	jne    428 <efi_main+0x428>
+ 29d:	48 8b 4c 24 30       	mov    0x30(%rsp),%rcx
+ 2a2:	e8 00 00 00 00       	call   2a7 <efi_main+0x2a7>
+			2a3: IMAGE_REL_AMD64_REL32	noise_handshakestate_start
+ 2a7:	85 c0                	test   %eax,%eax
+ 2a9:	0f 85 79 01 00 00    	jne    428 <efi_main+0x428>
+ 2af:	41 b7 01             	mov    $0x1,%r15b
+ 2b2:	45 31 e4             	xor    %r12d,%r12d
+ 2b5:	b0 01                	mov    $0x1,%al
+ 2b7:	89 44 24 2c          	mov    %eax,0x2c(%rsp)
+ 2bb:	48 89 7c 24 58       	mov    %rdi,0x58(%rsp)
+ 2c0:	48 c7 44 24 60 00 00 	movq   $0x0,0x60(%rsp)
+ 2c7:	00 00 
+ 2c9:	48 c7 44 24 68 80 00 	movq   $0x80,0x68(%rsp)
+ 2d0:	00 00 
+ 2d2:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2d9 <efi_main+0x2d9>
+			2d5: IMAGE_REL_AMD64_REL32	vec_payload
+ 2d9:	4a 8b 2c e0          	mov    (%rax,%r12,8),%rbp
+ 2dd:	48 89 6c 24 40       	mov    %rbp,0x40(%rsp)
+ 2e2:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2e9 <efi_main+0x2e9>
+			2e5: IMAGE_REL_AMD64_REL32	vec_payload_len
+ 2e9:	4e 8b 2c e0          	mov    (%rax,%r12,8),%r13
+ 2ed:	4c 89 6c 24 50       	mov    %r13,0x50(%rsp)
+ 2f2:	4c 89 6c 24 48       	mov    %r13,0x48(%rsp)
+ 2f7:	f6 44 24 2c 01       	testb  $0x1,0x2c(%rsp)
+ 2fc:	4c 89 f0             	mov    %r14,%rax
+ 2ff:	48 0f 45 c3          	cmovne %rbx,%rax
+ 303:	48 8b 08             	mov    (%rax),%rcx
+ 306:	48 8d 54 24 58       	lea    0x58(%rsp),%rdx
+ 30b:	4c 8d 44 24 40       	lea    0x40(%rsp),%r8
+ 310:	e8 00 00 00 00       	call   315 <efi_main+0x315>
+			311: IMAGE_REL_AMD64_REL32	noise_handshakestate_write_message
+ 315:	85 c0                	test   %eax,%eax
+ 317:	0f 85 0b 01 00 00    	jne    428 <efi_main+0x428>
+ 31d:	4c 8b 44 24 60       	mov    0x60(%rsp),%r8
+ 322:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 329 <efi_main+0x329>
+			325: IMAGE_REL_AMD64_REL32	vec_ciphertext_len
+ 329:	4e 3b 04 e0          	cmp    (%rax,%r12,8),%r8
+ 32d:	0f 85 f5 00 00 00    	jne    428 <efi_main+0x428>
+ 333:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 33a <efi_main+0x33a>
+			336: IMAGE_REL_AMD64_REL32	vec_ciphertext.rel
+ 33a:	4a 63 14 a0          	movslq (%rax,%r12,4),%rdx
+ 33e:	48 01 c2             	add    %rax,%rdx
+ 341:	48 89 f9             	mov    %rdi,%rcx
+ 344:	e8 00 00 00 00       	call   349 <efi_main+0x349>
+			345: IMAGE_REL_AMD64_REL32	memcmp
+ 349:	85 c0                	test   %eax,%eax
+ 34b:	0f 85 d7 00 00 00    	jne    428 <efi_main+0x428>
+ 351:	48 8d 84 24 c0 00 00 	lea    0xc0(%rsp),%rax
+ 358:	00 
+ 359:	48 89 44 24 40       	mov    %rax,0x40(%rsp)
+ 35e:	48 c7 44 24 48 00 00 	movq   $0x0,0x48(%rsp)
+ 365:	00 00 
+ 367:	48 c7 44 24 50 40 00 	movq   $0x40,0x50(%rsp)
+ 36e:	00 00 
+ 370:	f6 44 24 2c 01       	testb  $0x1,0x2c(%rsp)
+ 375:	48 89 d8             	mov    %rbx,%rax
+ 378:	49 0f 45 c6          	cmovne %r14,%rax
+ 37c:	48 8b 08             	mov    (%rax),%rcx
+ 37f:	48 8d 54 24 58       	lea    0x58(%rsp),%rdx
+ 384:	4c 8d 44 24 40       	lea    0x40(%rsp),%r8
+ 389:	e8 00 00 00 00       	call   38e <efi_main+0x38e>
+			38a: IMAGE_REL_AMD64_REL32	noise_handshakestate_read_message
+ 38e:	85 c0                	test   %eax,%eax
+ 390:	0f 85 92 00 00 00    	jne    428 <efi_main+0x428>
+ 396:	4c 39 6c 24 48       	cmp    %r13,0x48(%rsp)
+ 39b:	0f 85 87 00 00 00    	jne    428 <efi_main+0x428>
+ 3a1:	48 8d 8c 24 c0 00 00 	lea    0xc0(%rsp),%rcx
+ 3a8:	00 
+ 3a9:	48 89 ea             	mov    %rbp,%rdx
+ 3ac:	4d 89 e8             	mov    %r13,%r8
+ 3af:	e8 00 00 00 00       	call   3b4 <efi_main+0x3b4>
+			3b0: IMAGE_REL_AMD64_REL32	memcmp
+ 3b4:	85 c0                	test   %eax,%eax
+ 3b6:	75 70                	jne    428 <efi_main+0x428>
+ 3b8:	41 bc 01 00 00 00    	mov    $0x1,%r12d
+ 3be:	f6 44 24 2c 01       	testb  $0x1,0x2c(%rsp)
+ 3c3:	c7 44 24 2c 00 00 00 	movl   $0x0,0x2c(%rsp)
+ 3ca:	00 
+ 3cb:	0f 85 ea fe ff ff    	jne    2bb <efi_main+0x2bb>
+ 3d1:	48 8b 4c 24 38       	mov    0x38(%rsp),%rcx
+ 3d6:	48 8d 94 24 90 00 00 	lea    0x90(%rsp),%rdx
+ 3dd:	00 
+ 3de:	41 b8 20 00 00 00    	mov    $0x20,%r8d
+ 3e4:	e8 00 00 00 00       	call   3e9 <efi_main+0x3e9>
+			3e5: IMAGE_REL_AMD64_REL32	noise_handshakestate_get_handshake_hash
+ 3e9:	85 c0                	test   %eax,%eax
+ 3eb:	75 3b                	jne    428 <efi_main+0x428>
+ 3ed:	48 8b 4c 24 30       	mov    0x30(%rsp),%rcx
+ 3f2:	48 8d 54 24 70       	lea    0x70(%rsp),%rdx
+ 3f7:	41 b8 20 00 00 00    	mov    $0x20,%r8d
+ 3fd:	e8 00 00 00 00       	call   402 <efi_main+0x402>
+			3fe: IMAGE_REL_AMD64_REL32	noise_handshakestate_get_handshake_hash
+ 402:	85 c0                	test   %eax,%eax
+ 404:	75 22                	jne    428 <efi_main+0x428>
+ 406:	48 8d 8c 24 90 00 00 	lea    0x90(%rsp),%rcx
+ 40d:	00 
+ 40e:	48 8d 54 24 70       	lea    0x70(%rsp),%rdx
+ 413:	41 b8 20 00 00 00    	mov    $0x20,%r8d
+ 419:	e8 00 00 00 00       	call   41e <efi_main+0x41e>
+			41a: IMAGE_REL_AMD64_REL32	memcmp
+ 41e:	85 c0                	test   %eax,%eax
+ 420:	41 0f 95 c7          	setne  %r15b
+ 424:	eb 02                	jmp    428 <efi_main+0x428>
+ 426:	31 f6                	xor    %esi,%esi
+ 428:	48 8b 4c 24 38       	mov    0x38(%rsp),%rcx
+ 42d:	48 85 c9             	test   %rcx,%rcx
+ 430:	74 05                	je     437 <efi_main+0x437>
+ 432:	e8 00 00 00 00       	call   437 <efi_main+0x437>
+			433: IMAGE_REL_AMD64_REL32	noise_handshakestate_free
+ 437:	48 8b 4c 24 30       	mov    0x30(%rsp),%rcx
+ 43c:	48 85 c9             	test   %rcx,%rcx
+ 43f:	74 05                	je     446 <efi_main+0x446>
+ 441:	e8 00 00 00 00       	call   446 <efi_main+0x446>
+			442: IMAGE_REL_AMD64_REL32	noise_handshakestate_free
+ 446:	31 c0                	xor    %eax,%eax
+ 448:	48 89 44 24 38       	mov    %rax,0x38(%rsp)
+ 44d:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
+ 452:	48 39 05 18 00 00 00 	cmp    %rax,0x18(%rip)        # 471 <efi_main+0x471>
+			455: IMAGE_REL_AMD64_REL32	pool
+ 459:	74 1a                	je     475 <efi_main+0x475>
+ 45b:	e8 00 00 00 00       	call   460 <efi_main+0x460>
+			45c: IMAGE_REL_AMD64_REL32	qca_native_live
+ 460:	48 85 c0             	test   %rax,%rax
+ 463:	75 10                	jne    475 <efi_main+0x475>
+ 465:	48 8b 05 18 00 00 00 	mov    0x18(%rip),%rax        # 484 <efi_main+0x484>
+			468: IMAGE_REL_AMD64_REL32	pool
+ 46c:	83 b8 50 82 00 00 00 	cmpl   $0x0,0x8250(%rax)
+ 473:	74 26                	je     49b <efi_main+0x49b>
+ 475:	48 83 3d 0f 00 00 00 	cmpq   $0x0,0xf(%rip)        # 48c <efi_main+0x48c>
+ 47c:	00 
+			478: IMAGE_REL_AMD64_REL32	pool
+ 47d:	74 15                	je     494 <efi_main+0x494>
+ 47f:	83 3d 3f 00 00 00 00 	cmpl   $0x0,0x3f(%rip)        # 4c5 <efi_main+0x4c5>
+			481: IMAGE_REL_AMD64_REL32	pool
+ 486:	75 0c                	jne    494 <efi_main+0x494>
+ 488:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 48f <efi_main+0x48f>
+			48b: IMAGE_REL_AMD64_REL32	pool
+ 48f:	e8 00 00 00 00       	call   494 <efi_main+0x494>
+			490: IMAGE_REL_AMD64_REL32	qca_pool_cleanup
+ 494:	b0 11                	mov    $0x11,%al
+ 496:	e6 f4                	out    %al,$0xf4
+ 498:	f4                   	hlt
+ 499:	eb fd                	jmp    498 <efi_main+0x498>
+ 49b:	8b 88 48 82 00 00    	mov    0x8248(%rax),%ecx
+ 4a1:	85 c9                	test   %ecx,%ecx
+ 4a3:	74 24                	je     4c9 <efi_main+0x4c9>
+ 4a5:	31 d2                	xor    %edx,%edx
+ 4a7:	45 31 c0             	xor    %r8d,%r8d
+ 4aa:	42 80 3c 00 00       	cmpb   $0x0,(%rax,%r8,1)
+ 4af:	75 24                	jne    4d5 <efi_main+0x4d5>
+ 4b1:	49 ff c0             	inc    %r8
+ 4b4:	49 81 f8 00 02 00 00 	cmp    $0x200,%r8
+ 4bb:	75 ed                	jne    4aa <efi_main+0x4aa>
+ 4bd:	ff c2                	inc    %edx
+ 4bf:	48 05 00 02 00 00    	add    $0x200,%rax
+ 4c5:	39 ca                	cmp    %ecx,%edx
+ 4c7:	75 de                	jne    4a7 <efi_main+0x4a7>
+ 4c9:	45 84 ff             	test   %r15b,%r15b
+ 4cc:	74 0e                	je     4dc <efi_main+0x4dc>
+ 4ce:	b0 11                	mov    $0x11,%al
+ 4d0:	e6 f4                	out    %al,$0xf4
+ 4d2:	f4                   	hlt
+ 4d3:	eb fd                	jmp    4d2 <efi_main+0x4d2>
+ 4d5:	b0 11                	mov    $0x11,%al
+ 4d7:	e6 f4                	out    %al,$0xf4
+ 4d9:	f4                   	hlt
+ 4da:	eb fd                	jmp    4d9 <efi_main+0x4d9>
+ 4dc:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 4e3 <efi_main+0x4e3>
+			4df: IMAGE_REL_AMD64_REL32	??_C@_0DE@EMCFKDLF@NK?5TWO?5PUBLISHED?5MESSAGES?5HASH?5A@
+ 4e3:	e8 00 00 00 00       	call   4e8 <efi_main+0x4e8>
+			4e4: IMAGE_REL_AMD64_REL32	emit
+ 4e8:	48 89 f1             	mov    %rsi,%rcx
+ 4eb:	e8 00 00 00 00       	call   4f0 <efi_main+0x4f0>
+			4ec: IMAGE_REL_AMD64_REL32	mock_rng_check
+ 4f0:	85 c0                	test   %eax,%eax
+ 4f2:	74 34                	je     528 <efi_main+0x528>
+ 4f4:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 4fb <efi_main+0x4fb>
+			4f7: IMAGE_REL_AMD64_REL32	??_C@_0DG@JIJFBAIH@EXPLICIT?5MOCK?5RNG?5CALLBACK?5SUCCE@
+ 4fb:	e8 00 00 00 00       	call   500 <efi_main+0x500>
+			4fc: IMAGE_REL_AMD64_REL32	emit
+ 500:	e8 00 00 00 00       	call   505 <efi_main+0x505>
+			501: IMAGE_REL_AMD64_REL32	cleanup_pool
+ 505:	85 c0                	test   %eax,%eax
+ 507:	74 26                	je     52f <efi_main+0x52f>
+ 509:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 510 <efi_main+0x510>
+			50c: IMAGE_REL_AMD64_REL32	??_C@_0CB@JDBPBKLJ@REAL?5POOL?5DETACH?5WIPE?5FREE?5PASS?6@
+ 510:	e8 00 00 00 00       	call   515 <efi_main+0x515>
+			511: IMAGE_REL_AMD64_REL32	emit
+ 515:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 51c <efi_main+0x51c>
+			518: IMAGE_REL_AMD64_REL32	??_C@_0CA@DGHCHFIL@QEMU?5RUNTIME?5EFI?5COMPLETE?5PASS?6?$AA@
+ 51c:	e8 00 00 00 00       	call   521 <efi_main+0x521>
+			51d: IMAGE_REL_AMD64_REL32	emit
+ 521:	b0 10                	mov    $0x10,%al
+ 523:	e6 f4                	out    %al,$0xf4
+ 525:	f4                   	hlt
+ 526:	eb fd                	jmp    525 <efi_main+0x525>
+ 528:	b0 11                	mov    $0x11,%al
+ 52a:	e6 f4                	out    %al,$0xf4
+ 52c:	f4                   	hlt
+ 52d:	eb fd                	jmp    52c <efi_main+0x52c>
+ 52f:	b0 11                	mov    $0x11,%al
+ 531:	e6 f4                	out    %al,$0xf4
+ 533:	f4                   	hlt
+ 534:	eb fd                	jmp    533 <efi_main+0x533>
+
+0000000000000536 <emit>:
+ 536:	80 39 00             	cmpb   $0x0,(%rcx)
+ 539:	74 2d                	je     568 <emit+0x32>
+ 53b:	45 31 c0             	xor    %r8d,%r8d
+ 53e:	66 ba fd 03          	mov    $0x3fd,%dx
+ 542:	ec                   	in     (%dx),%al
+ 543:	a8 20                	test   $0x20,%al
+ 545:	75 10                	jne    557 <emit+0x21>
+ 547:	41 8d 40 01          	lea    0x1(%r8),%eax
+ 54b:	41 81 f8 9f 86 01 00 	cmp    $0x1869f,%r8d
+ 552:	41 89 c0             	mov    %eax,%r8d
+ 555:	72 e7                	jb     53e <emit+0x8>
+ 557:	8a 01                	mov    (%rcx),%al
+ 559:	66 ba f8 03          	mov    $0x3f8,%dx
+ 55d:	ee                   	out    %al,(%dx)
+ 55e:	80 79 01 00          	cmpb   $0x0,0x1(%rcx)
+ 562:	48 8d 49 01          	lea    0x1(%rcx),%rcx
+ 566:	75 d3                	jne    53b <emit+0x5>
+ 568:	c3                   	ret
+
+0000000000000569 <large_stack_probe>:
+ 569:	b8 28 80 00 00       	mov    $0x8028,%eax
+ 56e:	e8 00 00 00 00       	call   573 <large_stack_probe+0xa>
+			56f: IMAGE_REL_AMD64_REL32	__chkstk
+ 573:	48 29 c4             	sub    %rax,%rsp
+ 576:	31 c0                	xor    %eax,%eax
+ 578:	b1 01                	mov    $0x1,%cl
+ 57a:	31 d2                	xor    %edx,%edx
+ 57c:	88 4c 04 20          	mov    %cl,0x20(%rsp,%rax,1)
+ 580:	44 8a 44 04 20       	mov    0x20(%rsp,%rax,1),%r8b
+ 585:	45 0f b6 c0          	movzbl %r8b,%r8d
+ 589:	44 01 c2             	add    %r8d,%edx
+ 58c:	48 05 00 10 00 00    	add    $0x1000,%rax
+ 592:	fe c1                	inc    %cl
+ 594:	48 3d 00 80 00 00    	cmp    $0x8000,%rax
+ 59a:	75 e0                	jne    57c <large_stack_probe+0x13>
+ 59c:	c6 84 24 1f 80 00 00 	movb   $0x53,0x801f(%rsp)
+ 5a3:	53 
+ 5a4:	31 c0                	xor    %eax,%eax
+ 5a6:	83 fa 24             	cmp    $0x24,%edx
+ 5a9:	75 1d                	jne    5c8 <large_stack_probe+0x5f>
+ 5ab:	8a 8c 24 1f 80 00 00 	mov    0x801f(%rsp),%cl
+ 5b2:	80 f9 53             	cmp    $0x53,%cl
+ 5b5:	75 11                	jne    5c8 <large_stack_probe+0x5f>
+ 5b7:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 5be <large_stack_probe+0x55>
+			5ba: IMAGE_REL_AMD64_REL32	??_C@_0BN@GHIAJAAI@REAL?5LARGE?5FRAME?5PROBE?5PASS?6?$AA@
+ 5be:	e8 00 00 00 00       	call   5c3 <large_stack_probe+0x5a>
+			5bf: IMAGE_REL_AMD64_REL32	emit
+ 5c3:	b8 01 00 00 00       	mov    $0x1,%eax
+ 5c8:	48 81 c4 28 80 00 00 	add    $0x8028,%rsp
+ 5cf:	c3                   	ret
+
+00000000000005d0 <observed_free>:
+ 5d0:	56                   	push   %rsi
+ 5d1:	48 83 ec 20          	sub    $0x20,%rsp
+ 5d5:	48 3b 0d 10 00 00 00 	cmp    0x10(%rip),%rcx        # 5ec <observed_free+0x1c>
+			5d8: IMAGE_REL_AMD64_REL32	pool
+ 5dc:	75 57                	jne    635 <observed_free+0x65>
+ 5de:	83 3d 43 00 00 00 00 	cmpl   $0x0,0x43(%rip)        # 628 <observed_free+0x58>
+			5e0: IMAGE_REL_AMD64_REL32	pool
+ 5e5:	75 4e                	jne    635 <observed_free+0x65>
+ 5e7:	83 3d 47 00 00 00 00 	cmpl   $0x0,0x47(%rip)        # 635 <observed_free+0x65>
+			5e9: IMAGE_REL_AMD64_REL32	pool
+ 5ee:	74 45                	je     635 <observed_free+0x65>
+ 5f0:	48 81 3d 1c 00 00 00 	cmpq   $0x827f,0x1c(%rip)        # 617 <observed_free+0x47>
+ 5f7:	7f 82 00 00 
+			5f3: IMAGE_REL_AMD64_REL32	pool
+ 5fb:	75 38                	jne    635 <observed_free+0x65>
+ 5fd:	48 89 ce             	mov    %rcx,%rsi
+ 600:	31 c0                	xor    %eax,%eax
+ 602:	80 3c 06 00          	cmpb   $0x0,(%rsi,%rax,1)
+ 606:	75 2d                	jne    635 <observed_free+0x65>
+ 608:	48 ff c0             	inc    %rax
+ 60b:	48 3d 7f 82 00 00    	cmp    $0x827f,%rax
+ 611:	75 ef                	jne    602 <observed_free+0x32>
+ 613:	c6 05 ff ff ff ff 01 	movb   $0x1,-0x1(%rip)        # 619 <observed_free+0x49>
+			615: IMAGE_REL_AMD64_REL32	observed_wipe
+ 61a:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 621 <observed_free+0x51>
+			61d: IMAGE_REL_AMD64_REL32	??_C@_0DB@HKNPONJC@ACTUAL?5WHOLE?5RAW?5POOL?5ZERO?5BEFOR@
+ 621:	e8 00 00 00 00       	call   626 <observed_free+0x56>
+			622: IMAGE_REL_AMD64_REL32	emit
+ 626:	48 89 f1             	mov    %rsi,%rcx
+ 629:	48 83 c4 20          	add    $0x20,%rsp
+ 62d:	5e                   	pop    %rsi
+ 62e:	48 ff 25 08 00 00 00 	rex.W jmp *0x8(%rip)        # 63d <observed_free+0x6d>
+			631: IMAGE_REL_AMD64_REL32	real_boot
+ 635:	b8 01 00 00 00       	mov    $0x1,%eax
+ 63a:	48 83 c4 20          	add    $0x20,%rsp
+ 63e:	5e                   	pop    %rsi
+ 63f:	c3                   	ret
+
+0000000000000640 <mock_rng_check>:
+ 640:	41 57                	push   %r15
+ 642:	41 56                	push   %r14
+ 644:	41 55                	push   %r13
+ 646:	41 54                	push   %r12
+ 648:	56                   	push   %rsi
+ 649:	57                   	push   %rdi
+ 64a:	55                   	push   %rbp
+ 64b:	53                   	push   %rbx
+ 64c:	48 81 ec d8 00 00 00 	sub    $0xd8,%rsp
+ 653:	0f 29 b4 24 c0 00 00 	movaps %xmm6,0xc0(%rsp)
+ 65a:	00 
+ 65b:	b0 01                	mov    $0x1,%al
+ 65d:	89 44 24 30          	mov    %eax,0x30(%rsp)
+ 661:	4c 8d 25 00 00 00 00 	lea    0x0(%rip),%r12        # 668 <mock_rng_check+0x28>
+			664: IMAGE_REL_AMD64_REL32	info
+ 668:	4c 8d 35 00 00 00 00 	lea    0x0(%rip),%r14        # 66f <mock_rng_check+0x2f>
+			66b: IMAGE_REL_AMD64_REL32	mock_provider
+ 66f:	48 8d 1d 00 00 00 00 	lea    0x0(%rip),%rbx        # 676 <mock_rng_check+0x36>
+			672: IMAGE_REL_AMD64_REL32	get
+ 676:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 67d <mock_rng_check+0x3d>
+			679: IMAGE_REL_AMD64_REL32	mock_session
+ 67d:	0f 57 f6             	xorps  %xmm6,%xmm6
+ 680:	4c 8d 7c 24 50       	lea    0x50(%rsp),%r15
+ 685:	48 8d 2d 00 00 00 00 	lea    0x0(%rip),%rbp        # 68c <mock_rng_check+0x4c>
+			688: IMAGE_REL_AMD64_REL32	mock_review
+ 68c:	45 31 ed             	xor    %r13d,%r13d
+ 68f:	ba 01 00 00 00       	mov    $0x1,%edx
+ 694:	48 89 ce             	mov    %rcx,%rsi
+ 697:	e8 00 00 00 00       	call   69c <mock_rng_check+0x5c>
+			698: IMAGE_REL_AMD64_REL32	qca_native_reset
+ 69c:	85 c0                	test   %eax,%eax
+ 69e:	0f 84 47 02 00 00    	je     8eb <mock_rng_check+0x2ab>
+ 6a4:	44 89 2d 00 00 00 00 	mov    %r13d,0x0(%rip)        # 6ab <mock_rng_check+0x6b>
+			6a7: IMAGE_REL_AMD64_REL32	mock_mode
+ 6ab:	4c 89 25 00 00 00 00 	mov    %r12,0x0(%rip)        # 6b2 <mock_rng_check+0x72>
+			6ae: IMAGE_REL_AMD64_REL32	mock_provider
+ 6b2:	48 89 1d 08 00 00 00 	mov    %rbx,0x8(%rip)        # 6c1 <mock_rng_check+0x81>
+			6b5: IMAGE_REL_AMD64_REL32	mock_provider
+ 6b9:	41 b8 70 01 00 00    	mov    $0x170,%r8d
+ 6bf:	48 89 f9             	mov    %rdi,%rcx
+ 6c2:	31 d2                	xor    %edx,%edx
+ 6c4:	e8 00 00 00 00       	call   6c9 <mock_rng_check+0x89>
+			6c5: IMAGE_REL_AMD64_REL32	memset
+ 6c9:	4c 89 35 00 00 00 00 	mov    %r14,0x0(%rip)        # 6d0 <mock_rng_check+0x90>
+			6cc: IMAGE_REL_AMD64_REL32	mock_review
+ 6d0:	48 c7 05 04 00 00 00 	movq   $0x1,0x4(%rip)        # 6df <mock_rng_check+0x9f>
+ 6d7:	01 00 00 00 
+			6d3: IMAGE_REL_AMD64_REL32	mock_review
+ 6db:	0f 10 05 00 00 00 00 	movups 0x0(%rip),%xmm0        # 6e2 <mock_rng_check+0xa2>
+			6de: IMAGE_REL_AMD64_REL32	rng_ctr_guid
+ 6e2:	0f 11 05 10 00 00 00 	movups %xmm0,0x10(%rip)        # 6f9 <mock_rng_check+0xb9>
+			6e5: IMAGE_REL_AMD64_REL32	mock_review
+ 6e9:	c6 05 1f 00 00 00 01 	movb   $0x1,0x1f(%rip)        # 70f <mock_rng_check+0xcf>
+			6eb: IMAGE_REL_AMD64_REL32	mock_review
+ 6f0:	0f 11 35 21 00 00 00 	movups %xmm6,0x21(%rip)        # 718 <mock_rng_check+0xd8>
+			6f3: IMAGE_REL_AMD64_REL32	mock_review
+ 6f7:	0f 11 35 30 00 00 00 	movups %xmm6,0x30(%rip)        # 72e <mock_rng_check+0xee>
+			6fa: IMAGE_REL_AMD64_REL32	mock_review
+ 6fe:	48 8b 05 e8 02 00 00 	mov    0x2e8(%rip),%rax        # 9ed <get+0x5a>
+			701: IMAGE_REL_AMD64_REL32	.rdata
+ 705:	48 89 44 24 60       	mov    %rax,0x60(%rsp)
+ 70a:	0f 10 05 d8 02 00 00 	movups 0x2d8(%rip),%xmm0        # 9e9 <get+0x56>
+			70d: IMAGE_REL_AMD64_REL32	.rdata
+ 711:	0f 29 44 24 50       	movaps %xmm0,0x50(%rsp)
+ 716:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 71c:	48 89 f9             	mov    %rdi,%rcx
+ 71f:	4c 89 fa             	mov    %r15,%rdx
+ 722:	e8 00 00 00 00       	call   727 <mock_rng_check+0xe7>
+			723: IMAGE_REL_AMD64_REL32	rng_discover
+ 727:	85 c0                	test   %eax,%eax
+ 729:	0f 84 bc 01 00 00    	je     8eb <mock_rng_check+0x2ab>
+ 72f:	48 89 f9             	mov    %rdi,%rcx
+ 732:	48 89 ea             	mov    %rbp,%rdx
+ 735:	e8 00 00 00 00       	call   73a <mock_rng_check+0xfa>
+			736: IMAGE_REL_AMD64_REL32	qca_native_rng_bind
+ 73a:	85 c0                	test   %eax,%eax
+ 73c:	0f 84 a9 01 00 00    	je     8eb <mock_rng_check+0x2ab>
+ 742:	48 89 fd             	mov    %rdi,%rbp
+ 745:	4c 89 ff             	mov    %r15,%rdi
+ 748:	48 c7 44 24 28 00 00 	movq   $0x0,0x28(%rsp)
+ 74f:	00 00 
+ 751:	48 8d 4c 24 28       	lea    0x28(%rsp),%rcx
+ 756:	ba 01 52 00 00       	mov    $0x5201,%edx
+ 75b:	e8 00 00 00 00       	call   760 <mock_rng_check+0x120>
+			75c: IMAGE_REL_AMD64_REL32	qca_nk_new
+ 760:	85 c0                	test   %eax,%eax
+ 762:	0f 85 83 01 00 00    	jne    8eb <mock_rng_check+0x2ab>
+ 768:	48 8b 4c 24 28       	mov    0x28(%rsp),%rcx
+ 76d:	e8 00 00 00 00       	call   772 <mock_rng_check+0x132>
+			76e: IMAGE_REL_AMD64_REL32	noise_handshakestate_get_remote_public_key_dh
+ 772:	41 b8 20 00 00 00    	mov    $0x20,%r8d
+ 778:	48 89 c1             	mov    %rax,%rcx
+ 77b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 782 <mock_rng_check+0x142>
+			77e: IMAGE_REL_AMD64_REL32	vec_init_remote_static
+ 782:	e8 00 00 00 00       	call   787 <mock_rng_check+0x147>
+			783: IMAGE_REL_AMD64_REL32	noise_dhstate_set_public_key
+ 787:	85 c0                	test   %eax,%eax
+ 789:	0f 85 5c 01 00 00    	jne    8eb <mock_rng_check+0x2ab>
+ 78f:	48 8b 4c 24 28       	mov    0x28(%rsp),%rcx
+ 794:	e8 00 00 00 00       	call   799 <mock_rng_check+0x159>
+			795: IMAGE_REL_AMD64_REL32	noise_handshakestate_start
+ 799:	85 c0                	test   %eax,%eax
+ 79b:	0f 85 4a 01 00 00    	jne    8eb <mock_rng_check+0x2ab>
+ 7a1:	48 8d 84 24 80 00 00 	lea    0x80(%rsp),%rax
+ 7a8:	00 
+ 7a9:	48 89 44 24 38       	mov    %rax,0x38(%rsp)
+ 7ae:	48 c7 44 24 40 00 00 	movq   $0x0,0x40(%rsp)
+ 7b5:	00 00 
+ 7b7:	48 c7 44 24 48 40 00 	movq   $0x40,0x48(%rsp)
+ 7be:	00 00 
+ 7c0:	48 8d 44 24 37       	lea    0x37(%rsp),%rax
+ 7c5:	48 89 44 24 68       	mov    %rax,0x68(%rsp)
+ 7ca:	0f 11 74 24 70       	movups %xmm6,0x70(%rsp)
+ 7cf:	44 8b 3d 00 00 00 00 	mov    0x0(%rip),%r15d        # 7d6 <mock_rng_check+0x196>
+			7d2: IMAGE_REL_AMD64_REL32	mock_calls
+ 7d6:	48 8b 4c 24 28       	mov    0x28(%rsp),%rcx
+ 7db:	48 8d 54 24 38       	lea    0x38(%rsp),%rdx
+ 7e0:	4c 8d 44 24 68       	lea    0x68(%rsp),%r8
+ 7e5:	e8 00 00 00 00       	call   7ea <mock_rng_check+0x1aa>
+			7e6: IMAGE_REL_AMD64_REL32	noise_handshakestate_write_message
+ 7ea:	41 ff c7             	inc    %r15d
+ 7ed:	44 39 3d 00 00 00 00 	cmp    %r15d,0x0(%rip)        # 7f4 <mock_rng_check+0x1b4>
+			7f0: IMAGE_REL_AMD64_REL32	mock_calls
+ 7f4:	0f 85 e7 00 00 00    	jne    8e1 <mock_rng_check+0x2a1>
+ 7fa:	41 89 c5             	mov    %eax,%r13d
+ 7fd:	4c 8b 7c 24 40       	mov    0x40(%rsp),%r15
+ 802:	f6 44 24 30 01       	testb  $0x1,0x30(%rsp)
+ 807:	74 1f                	je     828 <mock_rng_check+0x1e8>
+ 809:	48 8b 4c 24 28       	mov    0x28(%rsp),%rcx
+ 80e:	e8 00 00 00 00       	call   813 <mock_rng_check+0x1d3>
+			80f: IMAGE_REL_AMD64_REL32	noise_handshakestate_free
+ 813:	45 85 ed             	test   %r13d,%r13d
+ 816:	0f 85 cf 00 00 00    	jne    8eb <mock_rng_check+0x2ab>
+ 81c:	49 83 ff 30          	cmp    $0x30,%r15
+ 820:	0f 85 c5 00 00 00    	jne    8eb <mock_rng_check+0x2ab>
+ 826:	eb 3a                	jmp    862 <mock_rng_check+0x222>
+ 828:	41 81 fd 06 45 00 00 	cmp    $0x4506,%r13d
+ 82f:	0f 85 ac 00 00 00    	jne    8e1 <mock_rng_check+0x2a1>
+ 835:	4d 85 ff             	test   %r15,%r15
+ 838:	0f 85 a3 00 00 00    	jne    8e1 <mock_rng_check+0x2a1>
+ 83e:	48 8b 4c 24 28       	mov    0x28(%rsp),%rcx
+ 843:	e8 00 00 00 00       	call   848 <mock_rng_check+0x208>
+			844: IMAGE_REL_AMD64_REL32	noise_handshakestate_get_action
+ 848:	41 89 c5             	mov    %eax,%r13d
+ 84b:	48 8b 4c 24 28       	mov    0x28(%rsp),%rcx
+ 850:	e8 00 00 00 00       	call   855 <mock_rng_check+0x215>
+			851: IMAGE_REL_AMD64_REL32	noise_handshakestate_free
+ 855:	41 81 fd 03 41 00 00 	cmp    $0x4103,%r13d
+ 85c:	0f 85 89 00 00 00    	jne    8eb <mock_rng_check+0x2ab>
+ 862:	e8 00 00 00 00       	call   867 <mock_rng_check+0x227>
+			863: IMAGE_REL_AMD64_REL32	qca_native_live
+ 867:	48 85 c0             	test   %rax,%rax
+ 86a:	75 7f                	jne    8eb <mock_rng_check+0x2ab>
+ 86c:	f6 05 ff ff ff ff 01 	testb  $0x1,-0x1(%rip)        # 872 <mock_rng_check+0x232>
+			86e: IMAGE_REL_AMD64_REL32	mock_live
+ 873:	75 76                	jne    8eb <mock_rng_check+0x2ab>
+ 875:	83 be 50 82 00 00 00 	cmpl   $0x0,0x8250(%rsi)
+ 87c:	75 6d                	jne    8eb <mock_rng_check+0x2ab>
+ 87e:	48 89 f1             	mov    %rsi,%rcx
+ 881:	8b 86 48 82 00 00    	mov    0x8248(%rsi),%eax
+ 887:	85 c0                	test   %eax,%eax
+ 889:	74 2e                	je     8b9 <mock_rng_check+0x279>
+ 88b:	45 31 c9             	xor    %r9d,%r9d
+ 88e:	48 89 ca             	mov    %rcx,%rdx
+ 891:	45 31 c0             	xor    %r8d,%r8d
+ 894:	42 80 3c 02 00       	cmpb   $0x0,(%rdx,%r8,1)
+ 899:	75 50                	jne    8eb <mock_rng_check+0x2ab>
+ 89b:	49 ff c0             	inc    %r8
+ 89e:	49 81 f8 00 02 00 00 	cmp    $0x200,%r8
+ 8a5:	75 ed                	jne    894 <mock_rng_check+0x254>
+ 8a7:	41 ff c1             	inc    %r9d
+ 8aa:	48 81 c2 00 02 00 00 	add    $0x200,%rdx
+ 8b1:	41 39 c1             	cmp    %eax,%r9d
+ 8b4:	48 89 f1             	mov    %rsi,%rcx
+ 8b7:	75 d8                	jne    891 <mock_rng_check+0x251>
+ 8b9:	41 bd 01 00 00 00    	mov    $0x1,%r13d
+ 8bf:	f6 44 24 30 01       	testb  $0x1,0x30(%rsp)
+ 8c4:	c7 44 24 30 00 00 00 	movl   $0x0,0x30(%rsp)
+ 8cb:	00 
+ 8cc:	49 89 ff             	mov    %rdi,%r15
+ 8cf:	48 89 ef             	mov    %rbp,%rdi
+ 8d2:	48 8d 2d 00 00 00 00 	lea    0x0(%rip),%rbp        # 8d9 <mock_rng_check+0x299>
+			8d5: IMAGE_REL_AMD64_REL32	mock_review
+ 8d9:	0f 85 b0 fd ff ff    	jne    68f <mock_rng_check+0x4f>
+ 8df:	eb 0d                	jmp    8ee <mock_rng_check+0x2ae>
+ 8e1:	48 8b 4c 24 28       	mov    0x28(%rsp),%rcx
+ 8e6:	e8 00 00 00 00       	call   8eb <mock_rng_check+0x2ab>
+			8e7: IMAGE_REL_AMD64_REL32	noise_handshakestate_free
+ 8eb:	45 31 ed             	xor    %r13d,%r13d
+ 8ee:	44 89 e8             	mov    %r13d,%eax
+ 8f1:	0f 28 b4 24 c0 00 00 	movaps 0xc0(%rsp),%xmm6
+ 8f8:	00 
+ 8f9:	48 81 c4 d8 00 00 00 	add    $0xd8,%rsp
+ 900:	5b                   	pop    %rbx
+ 901:	5d                   	pop    %rbp
+ 902:	5f                   	pop    %rdi
+ 903:	5e                   	pop    %rsi
+ 904:	41 5c                	pop    %r12
+ 906:	41 5d                	pop    %r13
+ 908:	41 5e                	pop    %r14
+ 90a:	41 5f                	pop    %r15
+ 90c:	c3                   	ret
+
+000000000000090d <cleanup_pool>:
+ 90d:	48 83 ec 28          	sub    $0x28,%rsp
+ 911:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 918 <cleanup_pool+0xb>
+			914: IMAGE_REL_AMD64_REL32	pool
+ 918:	e8 00 00 00 00       	call   91d <cleanup_pool+0x10>
+			919: IMAGE_REL_AMD64_REL32	qca_pool_cleanup
+ 91d:	89 c1                	mov    %eax,%ecx
+ 91f:	31 c0                	xor    %eax,%eax
+ 921:	85 c9                	test   %ecx,%ecx
+ 923:	74 2c                	je     951 <cleanup_pool+0x44>
+ 925:	f6 05 ff ff ff ff 01 	testb  $0x1,-0x1(%rip)        # 92b <cleanup_pool+0x1e>
+			927: IMAGE_REL_AMD64_REL32	observed_wipe
+ 92c:	74 23                	je     951 <cleanup_pool+0x44>
+ 92e:	48 83 3d 0f 00 00 00 	cmpq   $0x0,0xf(%rip)        # 945 <cleanup_pool+0x38>
+ 935:	00 
+			931: IMAGE_REL_AMD64_REL32	pool
+ 936:	75 19                	jne    951 <cleanup_pool+0x44>
+ 938:	83 3d 43 00 00 00 00 	cmpl   $0x0,0x43(%rip)        # 982 <info+0x2c>
+			93a: IMAGE_REL_AMD64_REL32	pool
+ 93f:	75 10                	jne    951 <cleanup_pool+0x44>
+ 941:	e8 00 00 00 00       	call   946 <cleanup_pool+0x39>
+			942: IMAGE_REL_AMD64_REL32	qca_native_live
+ 946:	48 89 c1             	mov    %rax,%rcx
+ 949:	31 c0                	xor    %eax,%eax
+ 94b:	48 85 c9             	test   %rcx,%rcx
+ 94e:	0f 94 c0             	sete   %al
+ 951:	48 83 c4 28          	add    $0x28,%rsp
+ 955:	c3                   	ret
+
+0000000000000956 <info>:
+ 956:	b8 01 00 00 00       	mov    $0x1,%eax
+ 95b:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 962 <info+0xc>
+			95e: IMAGE_REL_AMD64_REL32	mock_provider
+ 962:	4c 39 c9             	cmp    %r9,%rcx
+ 965:	74 01                	je     968 <info+0x12>
+ 967:	c3                   	ret
+ 968:	4d 85 c0             	test   %r8,%r8
+ 96b:	74 14                	je     981 <info+0x2b>
+ 96d:	48 83 3a 10          	cmpq   $0x10,(%rdx)
+ 971:	75 f4                	jne    967 <info+0x11>
+ 973:	0f 10 05 00 00 00 00 	movups 0x0(%rip),%xmm0        # 97a <info+0x24>
+			976: IMAGE_REL_AMD64_REL32	rng_ctr_guid
+ 97a:	41 0f 11 00          	movups %xmm0,(%r8)
+ 97e:	31 c0                	xor    %eax,%eax
+ 980:	c3                   	ret
+ 981:	48 c7 02 10 00 00 00 	movq   $0x10,(%rdx)
+ 988:	48 b8 05 00 00 00 00 	movabs $0x8000000000000005,%rax
+ 98f:	00 00 80 
+ 992:	c3                   	ret
+
+0000000000000993 <get>:
+ 993:	56                   	push   %rsi
+ 994:	57                   	push   %rdi
+ 995:	53                   	push   %rbx
+ 996:	48 83 ec 20          	sub    $0x20,%rsp
+ 99a:	be 01 00 00 00       	mov    $0x1,%esi
+ 99f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 9a6 <get+0x13>
+			9a2: IMAGE_REL_AMD64_REL32	mock_provider
+ 9a6:	48 39 c1             	cmp    %rax,%rcx
+ 9a9:	75 68                	jne    a13 <get+0x80>
+ 9ab:	4c 89 cb             	mov    %r9,%rbx
+ 9ae:	4c 89 c7             	mov    %r8,%rdi
+ 9b1:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 9b8 <get+0x25>
+			9b4: IMAGE_REL_AMD64_REL32	rng_ctr_guid
+ 9b8:	41 b8 10 00 00 00    	mov    $0x10,%r8d
+ 9be:	48 89 d1             	mov    %rdx,%rcx
+ 9c1:	48 89 c2             	mov    %rax,%rdx
+ 9c4:	e8 00 00 00 00       	call   9c9 <get+0x36>
+			9c5: IMAGE_REL_AMD64_REL32	memcmp
+ 9c9:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 9d0 <get+0x3d>
+			9cc: IMAGE_REL_AMD64_REL32	mock_pool
+ 9d0:	48 39 cb             	cmp    %rcx,%rbx
+ 9d3:	75 3e                	jne    a13 <get+0x80>
+ 9d5:	48 83 ff 20          	cmp    $0x20,%rdi
+ 9d9:	75 38                	jne    a13 <get+0x80>
+ 9db:	85 c0                	test   %eax,%eax
+ 9dd:	75 34                	jne    a13 <get+0x80>
+ 9df:	ff 05 00 00 00 00    	incl   0x0(%rip)        # 9e5 <get+0x52>
+			9e1: IMAGE_REL_AMD64_REL32	mock_calls
+ 9e5:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 9ec <get+0x59>
+			9e8: IMAGE_REL_AMD64_REL32	mock_pool
+ 9ec:	41 b8 20 00 00 00    	mov    $0x20,%r8d
+ 9f2:	ba 6b 00 00 00       	mov    $0x6b,%edx
+ 9f7:	e8 00 00 00 00       	call   9fc <get+0x69>
+			9f8: IMAGE_REL_AMD64_REL32	memset
+ 9fc:	31 c0                	xor    %eax,%eax
+ 9fe:	83 3d ff ff ff ff 00 	cmpl   $0x0,-0x1(%rip)        # a04 <get+0x71>
+			a00: IMAGE_REL_AMD64_REL32	mock_mode
+ a05:	48 be 07 00 00 00 00 	movabs $0x8000000000000007,%rsi
+ a0c:	00 00 80 
+ a0f:	48 0f 44 f0          	cmove  %rax,%rsi
+ a13:	48 89 f0             	mov    %rsi,%rax
+ a16:	48 83 c4 20          	add    $0x20,%rsp
+ a1a:	5b                   	pop    %rbx
+ a1b:	5f                   	pop    %rdi
+ a1c:	5e                   	pop    %rsi
+ a1d:	c3                   	ret
+
+0000000000000a1e <loc>:
+ a1e:	56                   	push   %rsi
+ a1f:	57                   	push   %rdi
+ a20:	48 83 ec 28          	sub    $0x28,%rsp
+ a24:	be 01 00 00 00       	mov    $0x1,%esi
+ a29:	48 85 d2             	test   %rdx,%rdx
+ a2c:	75 25                	jne    a53 <loc+0x35>
+ a2e:	4c 89 c7             	mov    %r8,%rdi
+ a31:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # a38 <loc+0x1a>
+			a34: IMAGE_REL_AMD64_REL32	rng_protocol_guid
+ a38:	41 b8 10 00 00 00    	mov    $0x10,%r8d
+ a3e:	e8 00 00 00 00       	call   a43 <loc+0x25>
+			a3f: IMAGE_REL_AMD64_REL32	memcmp
+ a43:	85 c0                	test   %eax,%eax
+ a45:	75 0c                	jne    a53 <loc+0x35>
+ a47:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # a4e <loc+0x30>
+			a4a: IMAGE_REL_AMD64_REL32	mock_provider
+ a4e:	48 89 07             	mov    %rax,(%rdi)
+ a51:	31 f6                	xor    %esi,%esi
+ a53:	48 89 f0             	mov    %rsi,%rax
+ a56:	48 83 c4 28          	add    $0x28,%rsp
+ a5a:	5f                   	pop    %rdi
+ a5b:	5e                   	pop    %rsi
+ a5c:	c3                   	ret
+
+0000000000000a5d <alloc>:
+ a5d:	56                   	push   %rsi
+ a5e:	57                   	push   %rdi
+ a5f:	48 83 ec 28          	sub    $0x28,%rsp
+ a63:	b8 01 00 00 00       	mov    $0x1,%eax
+ a68:	83 f9 02             	cmp    $0x2,%ecx
+ a6b:	75 3f                	jne    aac <alloc+0x4f>
+ a6d:	4c 89 c6             	mov    %r8,%rsi
+ a70:	49 89 d0             	mov    %rdx,%r8
+ a73:	48 81 fa 00 01 00 00 	cmp    $0x100,%rdx
+ a7a:	77 30                	ja     aac <alloc+0x4f>
+ a7c:	f6 05 ff ff ff ff 01 	testb  $0x1,-0x1(%rip)        # a82 <alloc+0x25>
+			a7e: IMAGE_REL_AMD64_REL32	mock_live
+ a83:	75 27                	jne    aac <alloc+0x4f>
+ a85:	c6 05 ff ff ff ff 01 	movb   $0x1,-0x1(%rip)        # a8b <alloc+0x2e>
+			a87: IMAGE_REL_AMD64_REL32	mock_live
+ a8c:	4c 89 05 00 00 00 00 	mov    %r8,0x0(%rip)        # a93 <alloc+0x36>
+			a8f: IMAGE_REL_AMD64_REL32	mock_n
+ a93:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # a9a <alloc+0x3d>
+			a96: IMAGE_REL_AMD64_REL32	mock_pool
+ a9a:	48 89 f9             	mov    %rdi,%rcx
+ a9d:	ba 42 00 00 00       	mov    $0x42,%edx
+ aa2:	e8 00 00 00 00       	call   aa7 <alloc+0x4a>
+			aa3: IMAGE_REL_AMD64_REL32	memset
+ aa7:	48 89 3e             	mov    %rdi,(%rsi)
+ aaa:	31 c0                	xor    %eax,%eax
+ aac:	48 83 c4 28          	add    $0x28,%rsp
+ ab0:	5f                   	pop    %rdi
+ ab1:	5e                   	pop    %rsi
+ ab2:	c3                   	ret
+
+0000000000000ab3 <release>:
+ ab3:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # aba <release+0x7>
+			ab6: IMAGE_REL_AMD64_REL32	mock_pool
+ aba:	b8 01 00 00 00       	mov    $0x1,%eax
+ abf:	48 39 d1             	cmp    %rdx,%rcx
+ ac2:	75 30                	jne    af4 <release+0x41>
+ ac4:	f6 05 ff ff ff ff 01 	testb  $0x1,-0x1(%rip)        # aca <release+0x17>
+			ac6: IMAGE_REL_AMD64_REL32	mock_live
+ acb:	74 27                	je     af4 <release+0x41>
+ acd:	48 8b 0d 00 00 00 00 	mov    0x0(%rip),%rcx        # ad4 <release+0x21>
+			ad0: IMAGE_REL_AMD64_REL32	mock_n
+ ad4:	48 85 c9             	test   %rcx,%rcx
+ ad7:	74 12                	je     aeb <release+0x38>
+ ad9:	45 31 c0             	xor    %r8d,%r8d
+ adc:	41 80 3c 10 00       	cmpb   $0x0,(%r8,%rdx,1)
+ ae1:	75 11                	jne    af4 <release+0x41>
+ ae3:	49 ff c0             	inc    %r8
+ ae6:	4c 39 c1             	cmp    %r8,%rcx
+ ae9:	75 f1                	jne    adc <release+0x29>
+ aeb:	c6 05 ff ff ff ff 00 	movb   $0x0,-0x1(%rip)        # af1 <release+0x3e>
+			aed: IMAGE_REL_AMD64_REL32	mock_live
+ af2:	31 c0                	xor    %eax,%eax
+ af4:	c3                   	ret
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-DQCA_FORCE_NEGATIVE=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/dependencies/rng", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/efi_smoke.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/negative-entry.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/lld", "-flavor", "link", "/subsystem:efi_application", "/entry:efi_main", "/nodefaultlib", "/machine:x64", "/opt:ref", "/fixed:no", "/out:/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/negative-runtime.efi", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-0.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-1.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-2.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-3.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-4.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-5.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-6.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-7.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-8.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-9.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-10.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-11.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-12.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-13.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-14.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-15.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-16.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-17.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-18.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_owner.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_target.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/chkstk.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/negative-entry.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-DQCA_FREE_FAILURE=1", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/dependencies/rng", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-c", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/efi_smoke.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/free-failure-entry.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/lld", "-flavor", "link", "/subsystem:efi_application", "/entry:efi_main", "/nodefaultlib", "/machine:x64", "/opt:ref", "/fixed:no", "/out:/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/free-failure-runtime.efi", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-0.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-1.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-2.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-3.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-4.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-5.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-6.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-7.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-8.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-9.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-10.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-11.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-12.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-13.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-14.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-15.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-16.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-17.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/runs/port/coff-18.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_owner.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/pool_target.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/chkstk.obj", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/free-failure-entry.obj"]
+
+
+["qemu-system-x86_64", "-machine", "q35", "-m", "128M", "-display", "none", "-monitor", "none", "-serial", "file:/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/positive/serial.log", "-no-reboot", "-drive", "if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE_4M.fd", "-drive", "if=pflash,format=raw,file=/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/positive/vars.fd", "-drive", "format=raw,file=fat:rw:/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/positive/fat", "-device", "isa-debug-exit,iobase=0xf4,iosize=0x04"]
+
+
+[2J[001;001H[=3h[2J[001;001H[2J[001;001H[8;042;160t[2J[001;001H[2J[001;001H[8;056;240t[2J[001;001HBdsDxe: loading Boot0002 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x0,0xFFFF,0x0)
+BdsDxe: starting Boot0002 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x0,0xFFFF,0x0)
+QEMU PUBLIC VECTOR ENTRY
+ACTUAL EFI MEMORY SHIMS PASS
+REAL LARGE FRAME PROBE PASS
+REAL BOOTSERVICES POOL ALIGNED OWNED PASS
+NK TWO PUBLISHED MESSAGES HASH AND ARENA WIPE PASS
+EXPLICIT MOCK RNG CALLBACK SUCCESS FAILURE WIPE PASS
+ACTUAL WHOLE RAW POOL ZERO BEFORE FREE OBSERVED
+REAL POOL DETACH WIPE FREE PASS
+QEMU RUNTIME EFI COMPLETE PASS
+
+["qemu-system-x86_64", "-machine", "q35", "-m", "128M", "-display", "none", "-monitor", "none", "-serial", "file:/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/negative/serial.log", "-no-reboot", "-drive", "if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE_4M.fd", "-drive", "if=pflash,format=raw,file=/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/negative/vars.fd", "-drive", "format=raw,file=fat:rw:/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/negative/fat", "-device", "isa-debug-exit,iobase=0xf4,iosize=0x04"]
+
+
+[2J[001;001H[=3h[2J[001;001H[2J[001;001H[8;042;160t[2J[001;001H[2J[001;001H[8;056;240t[2J[001;001HBdsDxe: loading Boot0002 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x0,0xFFFF,0x0)
+BdsDxe: starting Boot0002 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x0,0xFFFF,0x0)
+QEMU PUBLIC VECTOR ENTRY
+ACTUAL EFI MEMORY SHIMS PASS
+REAL LARGE FRAME PROBE PASS
+REAL BOOTSERVICES POOL ALIGNED OWNED PASS
+DELIBERATE MAC TAG CORRUPTION
+ACTUAL WHOLE RAW POOL ZERO BEFORE FREE OBSERVED
+REAL POOL DETACH WIPE FREE PASS
+MAC FAILURE ZERO PAYLOAD FAILED STATE AND ARENA WIPE PASS
+
+["qemu-system-x86_64", "-machine", "q35", "-m", "128M", "-display", "none", "-monitor", "none", "-serial", "file:/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/free-failure/serial.log", "-no-reboot", "-drive", "if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE_4M.fd", "-drive", "if=pflash,format=raw,file=/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/free-failure/vars.fd", "-drive", "format=raw,file=fat:rw:/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/free-failure/fat", "-device", "isa-debug-exit,iobase=0xf4,iosize=0x04"]
+
+
+[2J[001;001H[=3h[2J[001;001H[2J[001;001H[8;042;160t[2J[001;001H[2J[001;001H[8;056;240t[2J[001;001HBdsDxe: loading Boot0002 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x0,0xFFFF,0x0)
+BdsDxe: starting Boot0002 "UEFI QEMU HARDDISK QM00001 " from PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x0,0xFFFF,0x0)
+QEMU PUBLIC VECTOR ENTRY
+ACTUAL EFI MEMORY SHIMS PASS
+REAL LARGE FRAME PROBE PASS
+REAL BOOTSERVICES POOL ALIGNED OWNED PASS
+NK TWO PUBLISHED MESSAGES HASH AND ARENA WIPE PASS
+EXPLICIT MOCK RNG CALLBACK SUCCESS FAILURE WIPE PASS
+ACTUAL WHOLE RAW POOL ZERO BEFORE FREE OBSERVED
+INJECTED FREEPOOL FAILURE RETAINS REAL ALLOCATION
+FREE FAILURE RETAINED NO RETRY NO BOUND DANGLING POINTER PASS
+
+["objdump", "-x", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/public-vector-runtime.efi"]
+
+/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/public-vector-runtime.efi:     file format pei-x86-64
+/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/public-vector-runtime.efi
+architecture: i386:x86-64, flags 0x0000012f:
+HAS_RELOC, EXEC_P, HAS_LINENO, HAS_DEBUG, HAS_LOCALS, D_PAGED
+start address 0x000000014000ed2c
+
+Characteristics 0x22
+	executable
+	large address aware
+
+Time/Date		Wed Oct  7 07:28:41 2026
+Magic			020b	(PE32+)
+MajorLinkerVersion	14
+MinorLinkerVersion	0
+SizeOfCode		000000000000ea00
+SizeOfInitializedData	0000000000002400
+SizeOfUninitializedData	0000000000000000
+AddressOfEntryPoint	000000000000ed2c
+BaseOfCode		0000000000001000
+ImageBase		0000000140000000
+SectionAlignment	00001000
+FileAlignment		00000200
+MajorOSystemVersion	6
+MinorOSystemVersion	0
+MajorImageVersion	0
+MinorImageVersion	0
+MajorSubsystemVersion	6
+MinorSubsystemVersion	0
+Win32Version		00000000
+SizeOfImage		00015000
+SizeOfHeaders		00000400
+CheckSum		00000000
+Subsystem		0000000a	(EFI application)
+DllCharacteristics	00008160
+					HIGH_ENTROPY_VA
+					DYNAMIC_BASE
+					NX_COMPAT
+					TERMINAL_SERVICE_AWARE
+SizeOfStackReserve	0000000000100000
+SizeOfStackCommit	0000000000001000
+SizeOfHeapReserve	0000000000100000
+SizeOfHeapCommit	0000000000001000
+LoaderFlags		00000000
+NumberOfRvaAndSizes	00000010
+
+The Data Directory
+Entry 0 0000000000000000 00000000 Export Directory [.edata (or where ever we found it)]
+Entry 1 0000000000000000 00000000 Import Directory [parts of .idata]
+Entry 2 0000000000000000 00000000 Resource Directory [.rsrc]
+Entry 3 0000000000000000 00000000 Exception Directory [.pdata]
+Entry 4 0000000000000000 00000000 Security Directory
+Entry 5 0000000000014000 000000dc Base Relocation Directory [.reloc]
+Entry 6 0000000000000000 00000000 Debug Directory
+Entry 7 0000000000000000 00000000 Description Directory
+Entry 8 0000000000000000 00000000 Special Directory
+Entry 9 0000000000000000 00000000 Thread Storage Directory [.tls]
+Entry a 0000000000000000 00000000 Load Configuration Directory
+Entry b 0000000000000000 00000000 Bound Import Directory
+Entry c 0000000000000000 00000000 Import Address Table Directory
+Entry d 0000000000000000 00000000 Delay Import Directory
+Entry e 0000000000000000 00000000 CLR Runtime Header
+Entry f 0000000000000000 00000000 Reserved
+
+
+PE File Base Relocations (interpreted .reloc section contents)
+
+Virtual Address: 00010000 Chunk size 192 (0xc0) Number of fixups 92
+	reloc    0 offset   68 [10068] DIR64
+	reloc    1 offset   80 [10080] DIR64
+	reloc    2 offset   98 [10098] DIR64
+	reloc    3 offset   b0 [100b0] DIR64
+	reloc    4 offset   c8 [100c8] DIR64
+	reloc    5 offset   e0 [100e0] DIR64
+	reloc    6 offset   f8 [100f8] DIR64
+	reloc    7 offset  110 [10110] DIR64
+	reloc    8 offset  128 [10128] DIR64
+	reloc    9 offset  140 [10140] DIR64
+	reloc   10 offset  158 [10158] DIR64
+	reloc   11 offset  170 [10170] DIR64
+	reloc   12 offset  188 [10188] DIR64
+	reloc   13 offset  1a0 [101a0] DIR64
+	reloc   14 offset  1b8 [101b8] DIR64
+	reloc   15 offset  1d0 [101d0] DIR64
+	reloc   16 offset  1e8 [101e8] DIR64
+	reloc   17 offset  200 [10200] DIR64
+	reloc   18 offset  218 [10218] DIR64
+	reloc   19 offset  230 [10230] DIR64
+	reloc   20 offset  248 [10248] DIR64
+	reloc   21 offset  260 [10260] DIR64
+	reloc   22 offset  278 [10278] DIR64
+	reloc   23 offset  290 [10290] DIR64
+	reloc   24 offset  2a8 [102a8] DIR64
+	reloc   25 offset  2c0 [102c0] DIR64
+	reloc   26 offset  2d8 [102d8] DIR64
+	reloc   27 offset  2f0 [102f0] DIR64
+	reloc   28 offset  308 [10308] DIR64
+	reloc   29 offset  320 [10320] DIR64
+	reloc   30 offset  338 [10338] DIR64
+	reloc   31 offset  350 [10350] DIR64
+	reloc   32 offset  368 [10368] DIR64
+	reloc   33 offset  380 [10380] DIR64
+	reloc   34 offset  398 [10398] DIR64
+	reloc   35 offset  3b0 [103b0] DIR64
+	reloc   36 offset  3c8 [103c8] DIR64
+	reloc   37 offset  3e0 [103e0] DIR64
+	reloc   38 offset  3f8 [103f8] DIR64
+	reloc   39 offset  410 [10410] DIR64
+	reloc   40 offset  428 [10428] DIR64
+	reloc   41 offset  440 [10440] DIR64
+	reloc   42 offset  458 [10458] DIR64
+	reloc   43 offset  470 [10470] DIR64
+	reloc   44 offset  488 [10488] DIR64
+	reloc   45 offset  4a0 [104a0] DIR64
+	reloc   46 offset  4b8 [104b8] DIR64
+	reloc   47 offset  4d0 [104d0] DIR64
+	reloc   48 offset  4e8 [104e8] DIR64
+	reloc   49 offset  500 [10500] DIR64
+	reloc   50 offset  518 [10518] DIR64
+	reloc   51 offset  530 [10530] DIR64
+	reloc   52 offset  710 [10710] DIR64
+	reloc   53 offset  718 [10718] DIR64
+	reloc   54 offset  720 [10720] DIR64
+	reloc   55 offset  728 [10728] DIR64
+	reloc   56 offset  730 [10730] DIR64
+	reloc   57 offset  738 [10738] DIR64
+	reloc   58 offset  740 [10740] DIR64
+	reloc   59 offset  748 [10748] DIR64
+	reloc   60 offset  750 [10750] DIR64
+	reloc   61 offset  758 [10758] DIR64
+	reloc   62 offset  760 [10760] DIR64
+	reloc   63 offset  768 [10768] DIR64
+	reloc   64 offset  770 [10770] DIR64
+	reloc   65 offset  778 [10778] DIR64
+	reloc   66 offset  780 [10780] DIR64
+	reloc   67 offset  788 [10788] DIR64
+	reloc   68 offset  808 [10808] DIR64
+	reloc   69 offset  810 [10810] DIR64
+	reloc   70 offset  818 [10818] DIR64
+	reloc   71 offset  820 [10820] DIR64
+	reloc   72 offset  828 [10828] DIR64
+	reloc   73 offset  830 [10830] DIR64
+	reloc   74 offset  888 [10888] DIR64
+	reloc   75 offset  890 [10890] DIR64
+	reloc   76 offset  898 [10898] DIR64
+	reloc   77 offset  8a0 [108a0] DIR64
+	reloc   78 offset  8a8 [108a8] DIR64
+	reloc   79 offset  8b0 [108b0] DIR64
+	reloc   80 offset  8b8 [108b8] DIR64
+	reloc   81 offset  8c0 [108c0] DIR64
+	reloc   82 offset  8c8 [108c8] DIR64
+	reloc   83 offset  8d0 [108d0] DIR64
+	reloc   84 offset  8d8 [108d8] DIR64
+	reloc   85 offset  8e0 [108e0] DIR64
+	reloc   86 offset  8e8 [108e8] DIR64
+	reloc   87 offset  988 [10988] DIR64
+	reloc   88 offset  990 [10990] DIR64
+	reloc   89 offset  998 [10998] DIR64
+	reloc   90 offset  9a0 [109a0] DIR64
+	reloc   91 offset  9a8 [109a8] DIR64
+
+Virtual Address: 00011000 Chunk size 28 (0x1c) Number of fixups 10
+	reloc    0 offset  c20 [11c20] DIR64
+	reloc    1 offset  c28 [11c28] DIR64
+	reloc    2 offset  c30 [11c30] DIR64
+	reloc    3 offset  c38 [11c38] DIR64
+	reloc    4 offset  c40 [11c40] DIR64
+	reloc    5 offset  c48 [11c48] DIR64
+	reloc    6 offset  e68 [11e68] DIR64
+	reloc    7 offset  e70 [11e70] DIR64
+	reloc    8 offset  e78 [11e78] DIR64
+	reloc    9 offset    0 [11000] ABSOLUTE
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         0000e821  0000000140001000  0000000140001000  00000400  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .rdata        00002162  0000000140010000  0000000140010000  0000ee00  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .data         00000000  0000000140013000  0000000140013000  00000000  2**4
+                  ALLOC, LOAD, DATA
+  3 .reloc        000000dc  0000000140014000  0000000140014000  00011000  2**2
+                  CONTENTS, LOAD, READONLY, DATA
+SYMBOL TABLE:
+no symbols
+
+
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-fstack-usage", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/handshakestate.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/handshakestate-stack.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-DWIN32=1", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Os", "-fstack-usage", "-I/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/dependencies/port/compat", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/include", "-I/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol", "-c", "/home/yuka/rabbit-world/parallel-provisioning-review-v1/noise-c/src/protocol/hashstate.c", "-o", "/home/yuka/rabbit-world/parallel-production-memory-plan-v1/source/runs/runtime/hashstate-stack.obj"]
+

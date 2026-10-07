@@ -4862,3 +4862,20 @@ no state/privatekeys/radio/reboot. Prepareconcretereviewablecityrecoveryplan,
 nextcounter56conditional; offlineHTT56 isdeferred, neverautoconsume/replay.
 UserhasNOTauthorizedrebootexception. Mustreviewrecoveryroute beforeasking.
 Productionmemoryowner softwarework independentlycontinues.
+
+### 2026-10-07: root archived55 bindings; recovery execution preparation
+
+Root exactstate_lock snapshot root-before-recovery/before-state.json copied;
+public_bundle +archived_state actual55 verificationPASS: real55signature/
+12assets/container/642sources/world17/pathbinding. root-preflight recordsSHA.
+LatestBOOT/discovery included; nolive statewrite/retirement/rebootauthority.
+Recovery55offline sources/evidence hashes rootverified; plaincity2equalEFI/
+ASAN/world17+normalEMPTYQEMU pass. Copiedexactofflineproof committedseparately.
+Actual executable lockedretirement/recoveryadmission adapter NEWroot-v1 still
+inpreparation; don'trequestrebootuntilreview. Needsactualhumanexception+fresh
+EMPTY0; cannotinventownerrelease, raw55lostmarkedunknown.
+
+Productionmemory-plan-v1 bindingsreviewed: genuineOVMF pool33407rawbytes aligned16,
+checkedderivative detach beforewipe/free;534736ASANpoolowner+8failureprocesses,
+3QEMU outcomes. File222208/mapped4177920 fitimmutablecaps, but testrootuncalled,
+strongrealRNG/physicalpin/nativecoordinator approval absent. NoDellwrite/signing.
