@@ -1,0 +1,13 @@
+{
+  "status": "FRESH-SCAN-120S-KNOWN-DELL-NOT-DISCOVERED",
+  "sha256": {
+    "fresh-scan55-result.log": "8261de97f6078d43a2f0fc770b3b78afc0d999b572cba5d037f4e5906e309ce0",
+    "fresh-scan55-job.json": "87ca491e63255617d5d3d0c0d41f7d7f0cef1c6949a99bd804737f0af5b51445",
+    "boot55.decoded.json": "e4d63f9524fe6ce7fc3fec485c65e848e5c3120a99dbc91c6d8b78e66fffd225",
+    "boot55-v3.log": "b4618d2b0d4867c246103fb22577d891d9761e7c8d7541e9e79a43a344db111d",
+    "controller55.json": "8976aaca821398749a2f2e29924bf8bf42b1e2b5f430eec83a7ea534b64e3d00"
+  },
+  "other_advertisements_received": true,
+  "device_boot_failure_proven": false,
+  "wifi_connected": false
+}

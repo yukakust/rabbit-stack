@@ -4820,3 +4820,17 @@ stackshim QEMUpositiveexit33 andMACtampernegativeexit35. WholeRabbitoffline
 composition220160file fits BUT mapped4206592>immutable4194304 by12288;
 REJECTED/noadmission. Requires reviewed callerownedarena placement, notlimit
 bypass. Oldnative54 reproduced byteexact; no countersigning/devicechanges.
+
+### 2026-10-07: physical55 fresh scan failed; user screen observation needed
+
+Previous observer-v2 controller78295 completed bounded retries andexited.
+Root sequential freshv3read afterexit/childcheck: Macpoweredon, scanreceiving
+advertisements, knownDell neverdiscovered before120sdeadline. No cachedconnect,
+no write/signing/replay. Exactlogs/meta/lastsuccessfulBOOT archived
+scan-admission-v2/evidence/2026-10-07/fresh-scan55-timeout. NOTproofDellcrash,
+rangeproblem ordrivercause. No activeBLEcontroller/read now; full55assets and
+hardware_trial_pending retained unchanged. LastsuccessfulBOOT completed258/
+phase17/all14DMAowned, no releaseproof, neverunload/sign56.
+Requireduseraction requested: observewhethercityvisible/cattailmoving, noreboot.
+Parallelsoftwarememoryowner preparation continues independently; hardware
+continuation requires restoreddiscovery/physicalobservation, nottimeoutincrease.

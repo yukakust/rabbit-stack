@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan-admission-v2/read_boot55_v3.py", line 10, in <module>
+    if run.returncode:raise RuntimeError(run.stderr)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: BOOT STAGE: powered-on
+BOOT STAGE: scan-fresh-advertisement
+BOOT SCAN: receiving advertisements
+BOOT READ FAILED stage=scan-fresh-advertisement: bounded 120 second timeout
+

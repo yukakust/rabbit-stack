@@ -1,0 +1,6 @@
+{
+  "pid": 80485,
+  "waiting_for_controller": 78295,
+  "radio_operations_until_previous_exit": 0,
+  "purpose": "single read-only fresh advertisement diagnostic"
+}

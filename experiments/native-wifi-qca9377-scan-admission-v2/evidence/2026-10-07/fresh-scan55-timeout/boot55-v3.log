@@ -1,0 +1,4 @@
+BOOT STAGE: powered-on
+BOOT STAGE: scan-fresh-advertisement
+BOOT SCAN: receiving advertisements
+BOOT READ FAILED stage=scan-fresh-advertisement: bounded 120 second timeout
