@@ -4441,3 +4441,37 @@ Native54 scanprofilepreparation continuesoffline onYukabox withactualentrypoint
 adapter/readonlyexport/model/wholeEFI/QEMU/world/sourceproof. UNSIGNED/not sent.
 RootRFadmission remainsseparate fromproposal andrequiresallprovenance/current
 policy/target/domain/caps/epoch/owner plusphysical53PASS.
+
+### 2026-10-07: passive native54 admitted, signed once and physical trial started
+
+NEW scan-native-profile-v1 frozen offlinecandidate187392 bytes SHA
+3eefea77fbab35bca609216e4a418c2abad695f1a8a83da8aa2ee147bbfefca3.
+10 actualnativePCI/CE/DMA entrypointmodel scenariosASAN/COFF (lowerbackend
+modeled), four equalEFI builds, normal+EMPTY real supervisorQEMU, world17ASAN
+120ticks/16cameras,628input closure verified. IndependentCMS/signedregdb
+rebuild/exactGE×unchanged108 passive13-row headerbinding verified; proposal
+RFfalse stays unchanged. Generatedcopies whitespace-onlynormalized forstrict
+compiler; originalfrozenmodules untouched andexactcompiledfixtures checked.
+
+Rootseparate scan-admission-v1 binds allproofs/policy/currentcity;17corruptions
+rejected withsecret/radio mockedunreachable. Freshsequentialzero-write53
+BOOT/QWIN/QWRX/QWOP confirmsactual allownersrelease,READY/MAC andcurrent
+regdomain108/capabilitybands. Explicitoldunknown2/unexportedlimit archived.
+Existinguserscan/connectauthorization permits ONE checked bounded25spassive
+trial. Target/owner/nextgeneration validatedbeforekeyaccess; nocredentials.
+
+Signedexactonce savedpci-native-1qq9s17x. Solecontroller52976/caffeinate52977,
+scan-admission-v1/continue54.py, runs/control/continue54.log/controller54.json.
+Native54 notyetAPPLIED at record. Finite exactnative resume -> NEWfirmware54
+session -> BOOTread-only ownerobservation -> QSCN+all40exportpages collected.
+Preserveexact savedbytes, neverreplay53 firmware/resign orsecondBLEowner.
+BOOT54 collector acceptsactualRAMrelease withoutchanginglegacydecoder; no
+successor pendingclear is inferred fromtime orDMAcompletion alone.
+
+New54 retainsALL8potentialrawslots (archive2/observation/orphan/dispatch2/RX2)
+as40readonlypages. Rootmustcapturealltwice withstablestatus, preserve exact
+bytes+hashes beforeanylaterunload. QSCN STARTED/terminal/SSID/credits/ownerstate
+are observational, not deviceattestation. MatchingSTARTED alone isn'tSSID;
+realacceptedMGMT_RX/rawexport andpolicy/epochbinding needed. Physicalscan/SSID
+notyetconfirmed, noassociation/IP/WAN. Macnativezero-writecollectorpreparation
+in NEW scan-observer-v1 delegated; noagenthardware/secretaccess.

@@ -1,0 +1,22 @@
+{
+  "status": "EXACT-PASSIVE54-ROOT-RF-ADMITTED-SIGNED-TRIAL-STARTED",
+  "native_counter": 54,
+  "payload_sha256": "3eefea77fbab35bca609216e4a418c2abad695f1a8a83da8aa2ee147bbfefca3",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-scan-admission-v1/read_boot54.py": "e50698d2fa58a2a03ee64b4c04bf5d75774c404340a5a2dfc59be3b3701a84f5",
+    "experiments/native-wifi-qca9377-scan-admission-v1/continue54.py": "778f114553398f118639b365bd8444f8c8aed3b6f4fce53dcbb3cdfb55632946",
+    "experiments/native-wifi-qca9377-scan-admission-v1/read_prior.py": "1d0d993e6eb6d63eea5379f9ea3ecbce4b8b8759d769d3292f561b8cc20cad51",
+    "experiments/native-wifi-qca9377-scan-admission-v1/scan_route.py": "756a2247a86ac76c53dc924c07e514424a9384c05c5d8a7088803b1a23c25894",
+    "experiments/native-wifi-qca9377-scan-admission-v1/test_gate.py": "bf35b7f2377f24c206239fe035b8c1907bc4edf046c7e2ef518e291e19a31a72"
+  },
+  "negative_cases": 17,
+  "physical_verified": false,
+  "station_associated": false,
+  "ip_verified": false,
+  "credentials_used": false,
+  "files_sha256": {
+    "prior53.json": "ff75755d0b370bbd024f9711516789ae7241fe391794e384ce96913da9f06d52",
+    "native54-trial-start.json": "3acaa707b888090349ba06403e608434f24396844e529ed927a0709191b2c4f6",
+    "controller54.json": "1ef0c008010b5bf21fca827b2e10453aff5708d9c42a240fa930d465efddb061"
+  }
+}
