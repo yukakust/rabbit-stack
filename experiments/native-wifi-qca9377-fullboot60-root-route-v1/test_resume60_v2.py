@@ -6,7 +6,7 @@ import resume_assets60_v2 as m
 class Resume(unittest.TestCase):
  def test_guard_delivery_and_failure_stop(self):
   with tempfile.TemporaryDirectory() as td:
-   root=Path(td);state=root/'state.json';session=root/'assets';session.mkdir();before=json.dumps({'hardware_trial_pending':str(session)}).encode();state.write_bytes(before)
+   root=Path(td).resolve();state=root/'state.json';session=root/'assets';session.mkdir();before=json.dumps({'hardware_trial_pending':str(session)}).encode();state.write_bytes(before)
    report={'completed_chunks':0,'sender_steps':[]};(session/'report.json').write_text(json.dumps(report));guards=[];calls=[]
    def guard(s,d):guards.append((s,d))
    def fake(cmd,**kwargs):calls.append(cmd);return subprocess.CompletedProcess(cmd,23)
