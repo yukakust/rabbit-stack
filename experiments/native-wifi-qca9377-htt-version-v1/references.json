@@ -1,0 +1,11 @@
+{
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "files": {
+    "htt.c": "aaeaa40bd765bbe94b8371bcd91720317fd0955d73fa32d06f3af1e0c17f29c0",
+    "htt.h": "0cbb9326399ac9685f2a863edfcd5e4ed3ee58885dfdb5053f536386311220f7",
+    "htt_rx.c": "cabc2774651d670d247defc5f5f405640436dd131a0fc2522e605c2d8e7fb4d8",
+    "htt_tx.c": "3f73bddf26ec9e4e79a46c143a2fce35bf80a441068adbbe9aa29145692b33a3",
+    "hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "htc.c": "ba19a833a986bcdc097550aff81c620501243db3792db248da34b39c145b9629"
+  }
+}

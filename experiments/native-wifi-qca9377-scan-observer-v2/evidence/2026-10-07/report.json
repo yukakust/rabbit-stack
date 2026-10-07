@@ -1,0 +1,28 @@
+{
+  "status": "SCAN54-OBSERVER-V2-TERMINAL-PROVENANCE-MAC-PREFLIGHT-PASS",
+  "checks": 2749,
+  "source_sha256": {
+    "decode_scan.py": "c8294504cfd01167b8c2e316f35a09e1fcde3a137ce335ff5586df5159deb28d",
+    "collect.py": "db5c03f8b6e33653e2b5fde637e62190fac4ef5078759d32fc8a1bf9b2610f5e",
+    "read_scan.m": "b4d48d187eaaf74fb711fb0d07449399e39364df15832d00794aab605a2f4fbe",
+    "verify_observer.py": "1c762af65458d9c59da5d72dddaca38a165ba0cc450c82685a078216d7a49ade"
+  },
+  "frozen_exports_sha256": "172752fd6fac91d102157a2d640d58c3244919a72f9b3f69ad519517ee95edf1",
+  "frozen_qemu_verifier_sha256": "34c0036d4951a37c09def15cda2d6430106f59ccb85a3cf32cbb1be131699875",
+  "qemu_record_sha256": "8fca843b6c07f8417cf2e4149de53f6de7a696128d40749fe1982e15437e7990",
+  "v1_preserved_report_sha256": "37fa34b002c1630804944b96477c1cd8d59dd8d1b9da027705b633a82d79b0d6",
+  "flow_state_lock_source_sha256": "ad3c8a711dc8c3d44028e404891731def299d4bf4a8a31fc436a985e79c37fd1",
+  "terminal_retained_frequency_tested": true,
+  "raw_before_decode": true,
+  "frozen_terminal_coordinator_sha256": "b7cfab3b07ce05fd8c69a904fb7d3f2473d2955a587c4125c06d378e4e0bf87e",
+  "public_verification_library": "44.0.3",
+  "rfc8032_public_verification_vector": true,
+  "private_keys_loaded": 0,
+  "signatures_created": 0,
+  "radio_reads": 0,
+  "radio_writes": 0,
+  "device_actions": 0,
+  "secret_loads": 0,
+  "physical_verified": false,
+  "preflight": "SCAN54 OBSERVER COMPILED; ZERO RADIO OPERATIONS; NO BLUETOOTH MANAGER/SECRET LOAD"
+}

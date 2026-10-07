@@ -1,0 +1,9 @@
+{
+  "experiments/native-wifi-qca9377-session-v1/htc_session.c": "6bb74d7ca5d18758c2048c41c27d1a994a5fcbc4570b0764ff275d050f777b50",
+  "experiments/native-wifi-qca9377-session-v1/htc_session.h": "d96693e30cf70574d01a6a5629f9013ea09995b87eb1449d805d8a44528b3754",
+  "experiments/native-wifi-qca9377-session-v1/htc_wire.h": "45af53b8d52ae30b77b05fc42daa1bcb8b6e2ddb4955a9d015b5fa6534f6ada4",
+  "experiments/native-wifi-qca9377-operating-v1/operating.c": "e168a1e9bfdddf4e18e1cd08bf76194c7e72b73c5c9a08de111433336a562b66",
+  "experiments/native-wifi-qca9377-v1/channels_core.c": "2608ec639794a084caef899d90f4ebe06052fe29a5f4fd4ed8a41a2c705d0eb5",
+  "experiments/native-wifi-qca9377-persistent-rx-v1/rx.c": "70a6c54ede04eaa10ce982b2a9bba799c5d32bdd66ee56db17a94c57b6619c48",
+  "experiments/native-wifi-qca9377-wmi-native-v5/evidence/2026-10-07/native52-control-result/operating52.decoded.json": "80f34e3863259c7a5a84eb9a93ea19d1f8de0b766f1d064e2c1f1c003c1d7e36"
+}

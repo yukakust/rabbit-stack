@@ -4502,3 +4502,37 @@ Existingfrozencontinue54 stillcalls v1 collect.py afteractualrelease; ifthat
 rejects retainedterminalbeacon, DONOTreplayassets/resign/clearpending. Onceold
 controllerexits, root mustrunv2collector--readsequentially, saveall40pagestwice
 andstableQSCN, thencombinedverdict. v2CLI samecollect.py--read innewscope.
+
+### 2026-10-07: reviewed terminal observer2, HTT codec and BSS eligibility
+
+Sole52976 stilllive. Savedfirmware54 g9g89amj advancing7completechunks plus
+eighthprefix61920 at heartbeat; use latestreport, no secondcontroller/resign.
+Physicalscan/SSID/association/IPnotyetconfirmed.
+
+Reviewedscan-observer-v2:2749staticnegative/terminalcases+MacObjCpreflight,
+sourcehashesverified, noactualradio. Preservesv1. Acceptsretainedterminalbeacon
+withlive_frequency0 onlyquiesced/released+STARTED/rawslot2/completionfloor/
+nonzeroepoch/exact13policy; nonzerolivefreqmustmatch. RawstdoutsavedBEFORE
+decode; oldpositivedecodedarchived/invalidatedonnewfailure. FinalassetDONE4/
+state2/digest/length/floor boundtoreal lastpacket; publicsignatures+allbodies/
+wholeFWdigest verifiedbeforeactualread. flowstate.lockcompatible.
+Afterfrozen54controllerfinishes, ifv1collectorrejects terminalobservation run
+ONLYnewv2collect.py--read sequentially; retainstableQSCN+all40pagestwice and
+combinedBOOT+receiptbeforependingclear/futureunload. Never replayfirmware.
+
+Reviewedhtt-version-v1:131677ASAN/UBSAN+COFF onYukabox, exactsource/logbindings.
+ReusesRUNNINGsession withactualHTTendpoint2; VERSION_REQ/CONF strictTLVop3/
+major2or3. CurrentoperatingALREADYconnectsHTT768; QWOP lacksmaxbytes sointernal
+validatedsessionrequired. HTTflowcontrol disabled, notWMIledger debit/refund.
+CE4buffers8/9 TX +singleCE1buffers2/3 control/HTTdemux needed; frozenRXpump
+rejectsendpoint2. VERSION_CONF alone isn'tdataplaneready.
+
+Reviewedbss-security-v1:117075ASAN/UBSAN+COFF, independentoriginalhostap2.11
+wpa_common.c oracle, exactsource/logbindings andBSDcoreretained. CopiedMGMT
+context+epoch/channel/policy + actuallegacy/basicrates + RSNsuites/PMF checked.
+Select onlyexplicitPSK/CCMP, rejectenterprise/SAE-only/TKIP/MFPR/truncation/
+duplicates/incompatiblerates. PSK/SAEtransition onlyactualPSK+CCMP withoutMFPR.
+Candidate meanseligibility, NOTauth/association ornetworkready. Credentials
+untouched. NextHOST-ONLYhtt-native-v1 actualPCI/CE/DMA owneradapter/model
+delegated: exclusiveCE1completionowner, CE4versionquery, nosecondRXowner,
+bounded3s andall14checkedquiesce/export. No hardware/candidate/signing.
