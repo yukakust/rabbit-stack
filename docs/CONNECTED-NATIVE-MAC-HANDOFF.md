@@ -4946,3 +4946,20 @@ nowobsoletecounter iffuturedeployment; derive newGEN57 ONLYnewproof/source.
 Beforeblindfulltrial rootparallel link-loss55-review-v1 investigates specific
 BLElossduringphase17mainFWloading withlivecity; causeunproved. Noadditional
 rebootauthority, USB/bootstrap untouched, credentials/privatekeyneverexported.
+
+### 2026-10-07: restored city visible; next bounded boot-prefix diagnosis
+
+Human“видны, делай давай дальше пожалуйста!”confirmsrestoredcity/catvisible;
+motionnotseparatelystated. Rootsingleknownpeerzero-write freshquery confirms
+exactworld18APPLIED/f306... samecurrentsession RSSI-65; baselinearchive saved
+actual-city56-world18/stable-baseline-read. Current56/world18 allpendingnull.
+
+Source triage(last55BOOT17/completed258/offset19592): phase17 is BMI_LZ_DATA
+MAINFWstream command14, beforeHTC/INIT/scan. SampleSTALE, no finalstopinferred.
+Boot/transport/native code55identical54; scan/archive16 notexecuteduntilACTIVE.
+Potential110GATTchars vs54 40 hostdiscovery pressure remains hypothesis, notcause.
+NEWboot-prefix57-native-v1 preparing bounded MAINprefix/noRF/INIT/scan +minimal
+GATT +visibleBLE/USB/CE/frame/offset telemetry andcheckedall14stop; fullsigned
+firmwarecontainer remainsrequired, no unsignedprefixshortcut. No57sign/counter/
+actualdeviceoperations yet. Need actualmodels/source/fullEFI/QEMU/world18gates
+beforeadmission; safechipnextinit afterpartialstop mustbeprovenorreportedgap.

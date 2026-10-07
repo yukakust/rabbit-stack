@@ -1,0 +1,12 @@
+{
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-reboot-recovery55-root-v1/runs/current56-world18-read/query-0.log",
+      "log_sha256": "086b7262532143f58248fa91bc8311aa677d1d6273e7865a81e925c19e97baa3"
+    }
+  ],
+  "purpose": "actual plaincity56/world18 stable known-peer baseline",
+  "status": "QUERYING"
+}
