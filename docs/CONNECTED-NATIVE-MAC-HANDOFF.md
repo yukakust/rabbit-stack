@@ -4749,3 +4749,14 @@ Root corrected only host controller peer-progress filter typo 310A55 -> actual
 controller63271, metadata controller55.json, same append-only continue55.log,
 same pci-native-ehv85hvp and firmware-ram-g4w7ruqs. No signing/key/credential
 access, reboot or world change. Radio scan/SSID/IP remain unconfirmed.
+
+### 2026-10-07: transfer6/12 confirmed; offline portability review
+
+Sole55 controller63271 now confirms6/12 chunks bitmap63. No scan/IP evidence yet.
+Root verified noise-native-port-v1 source/log/report hashes:277103 ASAN/UBSAN
+checks and19 actual COFF objects on Yukabox, borrowed mocked RNG, no credentials.
+Unresolved __chkstk and full EFI/actual RNG/AUTH/physical pin remain unapproved.
+Root found rng_bind can replace previous retained RNG pool when arena live0;
+BASELINE NOT ADMITTED. Agent preparing NEWport-v2 regression/fix plus runtime
+integration; old v1 preserved. Parallel NEWoffline HTT56 profile preparation
+from frozen HTT55; no physical admission until all55raw/release proof saved.

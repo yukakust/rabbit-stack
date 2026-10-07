@@ -1,0 +1,27 @@
+{
+  "status": "LOCAL-SOURCE-IMPORTED-STRICT-BACKEND-AND-COPIED-HOST-EVIDENCE-BINDINGS-VERIFIED",
+  "sha256": {
+    "NOISE-LICENSE.txt": "f2c0cc36aa63c383fd1669b63eff210ee8cabb304dd818a9f442d93906eff587",
+    "README.md": "40df0e40313ec6b0c41960bc9ab95dd9d74d72279d1838ce77f071c1410d2649",
+    "backend_entropy.h": "cbc02ff81fd02ddeacb714da28aac6a71f5d07a3bedc9ca3787990e1c3310111",
+    "cipher_monocypher.c": "b1559266548c82b77df10f8167d5d86bc2cc9490cc1d4504f7de0d6d92b3c790",
+    "compat/malloc.h": "40b12094d75e1976dc2d427d297b1b351d5e157bf2ce1c1009fe5b66a900721c",
+    "compat/stdlib.h": "a9204a113fee3c1f016e84c2227eb7a588122c65fe49c766649a4e18d4244951",
+    "compat/string.h": "056f358ab66524e50f1d37aad9f9ac6067daf55631b0000bd9059696495ca7a6",
+    "dependencies/rng/rng_port.c": "5ac751cc0d2e0feed19e7ed1e8bc4f2a92e9aaec729bbacc1b8c3368885f6752",
+    "dependencies/rng/rng_port.h": "c68480b6b5677d907d6b535fe1ead1d03ef4d27096cb5b56417415305bb9fd31",
+    "dh_monocypher.c": "4625b9203171bbee1341e3717d099112d29dfa0fc1d4cc8ae190aadf43401a2a",
+    "evidence/2026-10-07/host.log": "c13ea32470af06e1b3643872d19f34b1accc4ae5083a76283d00d0ae13f9e15d",
+    "evidence/2026-10-07/report.json": "0dcfd411eaf38f171c240608f73cfb113da71b969624303aa271e2e2ff3d12b6",
+    "native_abi_probe.c": "acaa2f5b0cc0eccdad9447fbecb51cd118abc4b6da3b5aec0a7ef127058ea534",
+    "native_factories.c": "63e4f866af54250a58ff9a4188bdd2e70ef978189f22371ed5d52043a6c3e46a",
+    "native_memory.c": "f13b9f85253ab1cbb9246158f916f551ed72f5bbc25cb8529b70307b3fffa575",
+    "native_port.c": "fc3240ad88fcee69393a439b55d5e126a2e17d664c37673d4fdebc6f5cec3069",
+    "native_port.h": "c39f6103555b66e47305f029de08649f5b84660556177bad16c0e6f5f298b06b",
+    "noise_vector.h": "09b4cb8df36f87b9d04209cf5015ca7f0f1ae0e4a98618495bbf6a47b4f012fe",
+    "port_model.h": "5cf7487738d7350f7c5d4e34d05efde10f7e04153722d1d25ac9a90208e7fa73",
+    "port_test.c": "1973f4a34afaf97cd0ca957c53f0636759cff7823293715d8a5635c000809fda",
+    "verify_port.py": "63d7a2099beaee8b5f668fb8b75204586bc4b2977d2c8f503f6e80f48ac02e59"
+  },
+  "physical_or_secret_actions": false
+}
