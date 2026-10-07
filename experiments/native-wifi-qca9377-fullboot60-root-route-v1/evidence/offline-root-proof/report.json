@@ -1,0 +1,26 @@
+{
+  "status": "ROOT60-FROZEN-SOURCE-PRIOR59-ARCHIVE-ADMISSION-GUARDS-PASS",
+  "transition_tests": 6,
+  "candidate_tests": 5,
+  "source_sha256": {
+    "continue60.py": "2aa7c40da8ee780d05a513ecbef7274376e147f27fd03f8736dc42dd6fafe043",
+    "assets60.py": "d43d10ed9508fcbac546ade5a89d27a8f91115ec9fd4784cdf96002af7466371",
+    "test_gate60.py": "32f237c200c9e2f98eda361b2af8a62632624f3490f3e54fdb5f067ed6e9595c",
+    "frozen.json": "9cfca754b6d371fdee2a5cfed2351ee852cf1c740ad52d834c5d2d8378d1a58e",
+    "host-tools.json": "0cdd8a33df81adef40a966cd74fd610e0baf471d108725fe2fb183c6777fc25e",
+    "collector_gate.py": "f1fcfa49d1c21764f8507e9e1794c9288d5ef7e099563a77d7c01a9aa08f75a7",
+    "test_transition.py": "72b58d268ba60ba9baf6e3e6f401fefc3fbf45581bfb17fd59193e0d93a02f39",
+    "resume_assets60.py": "00c6e100164fd5f9ddfab663a01427c8c2c3bb3611a5f086092f7bc050f95096",
+    "launch.py": "0cc2a9865c920a39e1cf748aa72ee100dd2343d2abc395c9af685d8c42f1c3b9",
+    "transition59.py": "9b058175ce2df47977f7c0a771c4facbd908feb84d2e181be3777f56aadb2809",
+    "observe59.py": "092bde47ed66c4a0a6af2ab3b9b042402a42f5c58860a2c8821e5083a0c6db1f"
+  },
+  "logs": {
+    "test_gate60.py.log": "957a7849aee4010ee1da825f37decfad3b2c5299fcf05184968a1271332a7e77",
+    "test_transition.py.log": "3e0f195ae424c14f83781a51d55c6794c4c1a0a09e632eae5af653f1d3c61d24"
+  },
+  "native60_signatures": 0,
+  "firmware60_signatures": 0,
+  "actual_retirement_executed": false,
+  "bluetooth_started": false
+}

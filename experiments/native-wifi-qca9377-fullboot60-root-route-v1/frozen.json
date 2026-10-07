@@ -1,0 +1,8 @@
+{
+  "native_counter": 60,
+  "report_sha256": "5e5b1be82bf69048d22cd02380e9dd850820e39befd24a7991ce653bd637e772",
+  "payload_sha256": "3984d3f5d1c9a3c3540bf2ef00972bea52406a6f78edc56bd215507110668fd6",
+  "report_status": "FULLBOOT60-REPEATED-EFI-QEMU-WORLD19-DIAGNOSTIC-PASS",
+  "native_status": "FULLBOOT60-ACTUAL-DRIVER-PCI-CE-USB-WMI-READY-ASAN-COFF-PASS",
+  "native_scenarios": 103
+}

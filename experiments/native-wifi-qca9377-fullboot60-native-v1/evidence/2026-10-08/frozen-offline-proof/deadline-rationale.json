@@ -1,0 +1,18 @@
+{
+  "schema": "FULLBOOT60-DEADLINE-RATIONALE-1",
+  "deadline_us": 5400000000,
+  "physical59_measurement_supplied_by_root": {
+    "elapsed_seconds": 255.354,
+    "descriptors": 312,
+    "MAIN_prefix_bytes": 32984
+  },
+  "actual_native60_model_plan_submitted": 3114,
+  "actual_native60_model_plan_completed": 3114,
+  "model_projected_seconds_at_observed59_pace": 2548.629346153846,
+  "deadline_margin_ratio": 2.118785930229194,
+  "native_report_sha256": "00fc467844ddda4111b3e639f74acb22beb6510ac4f22efe446aa563bffb3d6a",
+  "native_host_log_sha256": "acf9097e9265872222aeab15d390919889da7de1c868124f6c7da4211e60e629",
+  "individual_USB_HCI_BMI_HTC_WMI_deadlines_changed": false,
+  "physical60_execution_claimed": false,
+  "deterministic_boundary_tests": "deadline-1us active; deadline exact reason1; actual cleanup; rollback reason2; no32KiB stop across boot phases1/2/3/5"
+}

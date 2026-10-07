@@ -1,0 +1,121 @@
+--- observation59/init_probe.c
++++ fullboot60/init_probe.c
+@@ -28,7 +28,7 @@
+ QcaPrefix*qca_prefix_view(void){return &prefix;}
+ static unsigned prefix_released(void);
+ static QcaFirmwarePort ram;static SystemTable*ram_system;static unsigned ram_attempted,ram_closing;
+-static const QcaFirmwarePolicy ram_policy={.owner={98,43,36,140,66,130,154,208,102,229,174,66,142,163,14,149,92,117,14,76,63,34,21,83,187,52,98,84,232,37,69,172},.target={54,61,117,18,136,223,123,71,41,95,156,122,82,80,195,180,29,178,78,253,26,67,164,189,52,143,0,116,76,107,199,233},.digest={143,139,0,47,204,254,129,212,34,56,242,125,209,245,109,24,150,4,241,128,189,71,114,199,200,231,90,225,254,241,111,1},.total=751436ull,.type=8ull,.version=84017153ull,.kind=1ull,.generation=59ull};
++static const QcaFirmwarePolicy ram_policy={.owner={98,43,36,140,66,130,154,208,102,229,174,66,142,163,14,149,92,117,14,76,63,34,21,83,187,52,98,84,232,37,69,172},.target={54,61,117,18,136,223,123,71,41,95,156,122,82,80,195,180,29,178,78,253,26,67,164,189,52,143,0,116,76,107,199,233},.digest={143,139,0,47,204,254,129,212,34,56,242,125,209,245,109,24,150,4,241,128,189,71,114,199,200,231,90,225,254,241,111,1},.total=751436ull,.type=8ull,.version=84017153ull,.kind=1ull,.generation=60ull};
+ 
+ #define config_read setup.read
+ #define full_read config_read.full
+@@ -178,10 +178,21 @@
+      if(qca_prefix_tick(&prefix,now,boot.phase,boot.plan.phase,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.pending,boot.io.wire.phase,0))rc=-1;
+      else {
+       rc=qca_boot_native_poll(&boot,now);
+-      if(rc){qca_prefix_request(&prefix,rc<0?3:4,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.phase,boot.io.wire.phase);rc=-1;}
++      if(rc==1){
++       if(!operating.phase)rc=qca_operating_begin(&operating,&boot,now);
++       else {
++        rc=qca_operating_poll(&operating,now);
++        if(rc==1){
++         if(!startup.phase)rc=qca_wmi_startup_begin(&startup,&operating,now);
++         else rc=qca_wmi_startup_poll(&startup,now);
++        }
++        else if(rc<0&&startup.phase==1)(void)qca_wmi_startup_poll(&startup,now);
++       }
++      }
++      if(rc)qca_prefix_request(&prefix,rc<0?3:0,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.phase,boot.io.wire.phase);
+       else if(qca_prefix_tick(&prefix,now,boot.phase,boot.plan.phase,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.pending,boot.io.wire.phase,0))rc=-1;
+      }
+-     /* No operating/startup/HTC/INIT branch is reachable in this profile. */
++     /* Success requires actual WMI INIT TX completion and parsed WMI READY. */
+     }
+    }
+    if(rc){
+@@ -212,8 +223,12 @@
+ void qca_poll(uint64_t ms){
+  qca_hardware_poll(ms);
+  if(prefix.phase==2){
+-  if(prefix.stop_calls!=UINT32_MAX)prefix.stop_calls++;
+-  (void)qca_stop();
++  /* Successful WMI completion already started checked hardware teardown.
++   * Do not cancel that successful cleanup; release RAM only after hardware. */
++  if(prefix.reason||(qca_init_adapter_released(&adapter)&&!port.claimed)){
++   if(prefix.stop_calls!=UINT32_MAX)prefix.stop_calls++;
++   (void)qca_stop();
++  }
+   (void)qca_prefix_tick(&prefix,ms*1000,boot.phase,boot.plan.phase,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.pending,boot.io.wire.phase,prefix_released());
+  }
+  if(ram_closing){if(boot_round&&qca_boot_native_close(&boot))return;(void)qca_fwp_close(&ram);return;}
+@@ -234,6 +249,7 @@
+  }
+ }
+ int qca_stop(void){
++ qca_prefix_request(&prefix,7,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.phase,boot.io.wire.phase);
+  qca_wmi_startup_cancel(&startup);
+  ram_closing=1;int hardware=qca_hardware_stop();
+  if(boot_round&&qca_boot_native_close(&boot))return 1;
+@@ -318,7 +334,7 @@
+  const uint8_t magic[8]={'Q','P','F','X','0','0','0','1'};for(unsigned i=0;i<8;i++)out[i]=magic[i];
+  unsigned held=0;for(unsigned i=0;i<14;i++)if(adapter.channels.buffers[i].allocated||adapter.channels.buffers[i].mapped||adapter.channels.buffers[i].allocation_uncertain)held++;
+  const QcaPrefix*p=&prefix;
+- uint32_t f[58]={59,p->phase,p->reason,p->stop_calls,prefix_released(),p->stop_offset,p->stop_submitted,p->stop_completed,p->stop_plan,p->stop_io,
++ uint32_t f[58]={60,p->phase,p->reason,p->stop_calls,prefix_released(),p->stop_offset,p->stop_submitted,p->stop_completed,p->stop_plan,p->stop_io,
+  boot.phase,boot.error,boot.plan.phase,boot.plan.error,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.io.wire.phase,
+  stage,failed,adapter.phase,adapter.channels.cleanup_slot,held,port.dma_users,port.claimed,adapter.access.count,adapter.bus.owned,
+  boot.owns_pin,ram.asset.pinned,irq.owned,link.owned,wake.owned,reset.owned,
+--- observation59/prefix.c
++++ fullboot60/prefix.c
+@@ -5,16 +5,17 @@
+  s->reason=why;s->phase=2;s->stop_offset=offset;s->stop_submitted=submitted;s->stop_completed=completed;s->stop_plan=plan;s->stop_io=io;
+ }
+ int qca_prefix_tick(QcaPrefix*s,uint64_t now,uint32_t boot_phase,uint32_t plan,uint32_t offset,uint32_t submitted,uint32_t completed,uint32_t pending,uint32_t io,uint32_t actual_released){
++ (void)pending;
+  if(!s||!s->phase)return 0;
+  if(s->polls!=UINT32_MAX)s->polls++;
+  if(s->phase==3)return 0;
+  if(s->phase==2){s->last=now;if(actual_released==1){s->phase=3;s->raw_frozen=1;return 0;}return 1;}
+  if(now<s->last)qca_prefix_request(s,2,offset,submitted,completed,plan,io);
+  else if(now-s->started>=QCA_PREFIX_DEADLINE_US)qca_prefix_request(s,1,offset,submitted,completed,plan,io);
+- else if(boot_phase!=1)qca_prefix_request(s,4,offset,submitted,completed,plan,io);
++ else if(boot_phase!=1&&boot_phase!=2&&boot_phase!=3&&boot_phase!=5)qca_prefix_request(s,4,offset,submitted,completed,plan,io);
+  else if(s->raw_overflow)qca_prefix_request(s,5,offset,submitted,completed,plan,io);
+  else if(s->usb_fault)qca_prefix_request(s,6,offset,submitted,completed,plan,io);
+- else if(plan==17&&offset>=QCA_PREFIX_LIMIT&&!pending&&submitted==completed)qca_prefix_request(s,0,offset,submitted,completed,plan,io);
++
+  s->last=now;
+  return s->phase==2;
+ }
+@@ -44,7 +45,7 @@
+  for(unsigned i=0;i<n;i++){
+   unsigned at=offset+i;uint8_t value=0;
+   if(at<8){static const uint8_t m[8]={'Q','P','H','C','I','0','0','1'};value=m[at];}
+-  else if(at<64){const uint32_t v[14]={59,s->raw_count,s->raw_overflow,s->raw_frozen,s->phase,TOTAL,s->critical_count,s->routine_count,s->routine_head,s->routine_overwritten,(uint32_t)s->started,(uint32_t)(s->started>>32),(uint32_t)s->last,(uint32_t)(s->last>>32)};unsigned j=(at-8)/4;value=(uint8_t)(v[j]>>(8*((at-8)%4)));}
++  else if(at<64){const uint32_t v[14]={60,s->raw_count,s->raw_overflow,s->raw_frozen,s->phase,TOTAL,s->critical_count,s->routine_count,s->routine_head,s->routine_overwritten,(uint32_t)s->started,(uint32_t)(s->started>>32),(uint32_t)s->last,(uint32_t)(s->last>>32)};unsigned j=(at-8)/4;value=(uint8_t)(v[j]>>(8*((at-8)%4)));}
+   else if(s->raw_frozen){unsigned logical=(at-64)/288,pos=(at-64)%288;
+    unsigned valid=logical<4?logical<s->critical_count:logical-4<s->routine_count;
+    unsigned slot=logical<4?logical:4+((logical-4+(s->routine_count==12?s->routine_head:0))%12);
+--- observation59/overlay.h
++++ fullboot60/overlay.h
+@@ -39,7 +39,7 @@
+  QcaPrefix*p=qca_prefix_view();if(p->frames!=UINT32_MAX)p->frames++;
+  if(qca_diagnostic[4]!=15)return;
+  uint8_t bytes[240];qca_prefix_status(bytes);uint32_t f[58];for(unsigned i=0;i<58;i++)f[i]=le32(bytes+8+4*i);
+- unsigned scale=city_width>=960?3:2;char line[96];unsigned n=append(line,0,"PREFIX 57 FRAME ",p->frames);overlay_text(s,8,line,scale);
++ unsigned scale=city_width>=960?3:2;char line[96];unsigned n=append(line,0,"FULLBOOT 60 FRAME ",p->frames);overlay_text(s,8,line,scale);
+  n=append(line,0,"BOOT ",f[12]);n=append(line,n," MAIN ",f[14]);append(line,n," STOP ",f[2]);overlay_text(s,8+9*scale,line,scale);
+  n=append(line,0,"OWNERS ",f[22]);append(line,n," RELEASE ",f[4]);overlay_text(s,8+18*scale,line,scale);
+  n=append(line,0,"BLE ",p->ble_state);append(line,n," CMD ",p->pending);overlay_text(s,8+27*scale,line,scale);
+--- observation59/prefix.h
++++ fullboot60/prefix.h
+@@ -1,8 +1,7 @@
+ #ifndef RABBIT_BOOT_PREFIX57_H
+ #define RABBIT_BOOT_PREFIX57_H
+ #include <stdint.h>
+-#define QCA_PREFIX_LIMIT 32768u
+-#define QCA_PREFIX_DEADLINE_US 600000000ull
++#define QCA_PREFIX_DEADLINE_US 5400000000ull
+ #define QCA_PREFIX_HCI_SLOTS 16u
+ #define QCA_PREFIX_HCI_BYTES 257u
+ /* 0 idle,1 active,2 stop requested,3 actual host owners released. */

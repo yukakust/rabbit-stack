@@ -1,0 +1,39 @@
+{
+  "status": "FULLBOOT60-SCOPED-PRODUCTION-DIFF-PASS",
+  "baseline_payload_sha256": "eb38baaf0b8e2ee120290744a116d02c33ff7bf2f011a73e945a10e239d51e55",
+  "candidate_payload_sha256": "3984d3f5d1c9a3c3540bf2ef00972bea52406a6f78edc56bd215507110668fd6",
+  "generated_source_count": 162,
+  "production_source_count": 127,
+  "production_changes": {
+    "init_probe.c": {
+      "baseline_sha256": "afc0a5c0942b20878d6a8799ea6f41619d295cb9ed3b036deaa176401f532193",
+      "candidate_sha256": "0e523de36dabdc59f60d3d392dbaa576f9fd0f5fad309df7f6a2168e23c92acf"
+    },
+    "prefix.c": {
+      "baseline_sha256": "3eb1a7d09b4aac1c42609a03e5c57d967f9fee29f747de1794c6532508d8eaa3",
+      "candidate_sha256": "139a0d0412466c3ea2753b892f4389265479d440814bb1438dbc5bc012f72a7f"
+    },
+    "overlay.h": {
+      "baseline_sha256": "a7fdacfed92fc0b63e8dc26004f4759e7b5bee8474674964c12a50939ab20127",
+      "candidate_sha256": "e822d8fbfb22a7f0169fb2924c50cf2dd94507dc6ebca75b2099dc0022d58742"
+    },
+    "prefix.h": {
+      "baseline_sha256": "908fdaecf2e35943f687b181854fd7f0cb1246840b11bc27aca4453ffba69384",
+      "candidate_sha256": "771a44f98cff722665461a8d767888d013dab030b23bd02569673debdf5f309c"
+    }
+  },
+  "diff_sha256": "6c8f360993ec0b0968832887f5b038789111cefbaf3c0cf8c86970a80a45125e",
+  "absolute_include_root_relocations": [
+    "connected_abi.h",
+    "gatt_core.h",
+    "loop.c",
+    "file_core.h",
+    "hci_link.h"
+  ],
+  "relocation_only_referenced_sources_verified": true,
+  "USB_HCI_resident_unchanged": true,
+  "baseline_report_sha256": "030bafe91d289a71264e5c7af86753517ad33dfc890ff2cf4c32508e877acf3a",
+  "candidate_report_sha256": "5e5b1be82bf69048d22cd02380e9dd850820e39befd24a7991ce653bd637e772",
+  "signing_admitted": false,
+  "device_operations": 0
+}
