@@ -46,3 +46,5 @@ experiments/arm64-pill/pill
 /experiments/native-wifi-qca9377-production-memory-plan-v1/runs/
 
 /experiments/native-wifi-qca9377-reboot-recovery55-root-v1/runs/
+
+/experiments/native-wifi-qca9377-boot-prefix57-native-v1/runs/

@@ -4994,3 +4994,20 @@ proofs; newworld18freshquery≤300 requiredbeforelocalkey, oldEMPTY onlyhistoric
 atretirement chronology. Rootusesuntouchednative_route.prepare/deliver with
 scopedgates andexplicit57owner/target/gen checks. Do notsignuntilfreeze/model/
 QEMU/currentworld18/admission rootreviewPASS. Current56/world18 unchanged.
+
+### 2026-10-07: prefix57 ordinary native8 modelPASS; fullproof underway
+
+persistent_radio agentturnstopped byautomaticpossiblecyberriskflag; no retry/
+rephrasingblockedagent. Rootcontinued ordinaryauthorizedoffline driver
+compilation onYukabox. Missingpci_identity.c testlinkinput fixedunfrozen
+verify_native.py; overlaystrictindentationwarningfixedbraces, native8 actual
+PCI/CE/USB/overlay ASAN/COFF rerunPASS. Rootverified hostlog+allcompiledfixture
+source hashes; archivedBASELINE only, notfinalcandidate/fullsource admission.
+
+prove_prefix.py producer sourcechanged afterinitialsnapshot; strictproducer
+correctlyrejectedstalenative sourcehash. Scan_pipeline nowreruns verifier to
+bindfinalproducer then4EFI/fullQEMU/currentworld18/sourcecaps proof, onlyits
+file/outputdir ownership. Sourceworld18.json copiedpublic: canonicalfa5,
+decodedpacketdropsnames(hashdifferent). Signaturecreator03a107...531b8,
+NOTnativeowner622b. Frozenobserver-v1 worldauthoritywrong; NEWv2 beforeactual
+read, no silentfrozenedits. Native56RRT stillowner622b. No57sign/BLE/reservation.
