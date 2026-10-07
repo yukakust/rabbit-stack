@@ -4977,3 +4977,20 @@ no134thMAINpublish/BMI_DONE/HTC (completion+nextpublishsamepoll couldbypassouter
 pending0 guard). Prefixlimit32984bytes/133MAINchunks; hostall14release isNOT
 chipROM/LZready. Nextreuse requiresfreshcheckedchipreset/ROM, no Dellreboot
 permission implied. New57 notsigned/sent/reserved. Current56/world18 stable.
+
+### 2026-10-07: prefix57 preflight/reader preparation in parallel
+
+Userexplicitlyauthorizes finishstop/overlaychecks/build/send. Newscope still
+unsigned/unfrozen, actualnative/driver/overlaymodels inprogress. Rootreview
+uint32 prefix_clock_ms()*1000 overflow71.58min before uint64assignment; requested
+cast-before-multiply andactualdriver boundary+rollback tests. Rootverified
+BluetoothSIG Core5.4 ATT3.2.9 maxattribute512:
+https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-54/out/en/host/attribute-protocol--att-.html
+Single4672rawchar unacceptable; requested10boundedread-onlypages9×512+64,
+one240status, no110charwholearchive. Newprefix57-observer-v1 preparer waits
+frozencontract, zeroactualBLE. Newprefix57-admission-v1 purepreflight validates
+candidate/source/fullEFI/models andprioractual56/world18/55retirement public
+proofs; newworld18freshquery≤300 requiredbeforelocalkey, oldEMPTY onlyhistorical
+atretirement chronology. Rootusesuntouchednative_route.prepare/deliver with
+scopedgates andexplicit57owner/target/gen checks. Do notsignuntilfreeze/model/
+QEMU/currentworld18/admission rootreviewPASS. Current56/world18 unchanged.
