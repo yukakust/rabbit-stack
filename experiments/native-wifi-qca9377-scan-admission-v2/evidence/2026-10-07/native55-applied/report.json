@@ -1,0 +1,14 @@
+{
+  "status": "EXACT-NATIVE55-APPLIED-ASSET-STAGING-IN-PROGRESS",
+  "native_counter": 55,
+  "payload_sha256": "cc8d7fec39a812273c1af5d52711fe6dc281b48873925aec2136cf3cb8533297",
+  "asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g4w7ruqs",
+  "controller_pid_snapshot": 61367,
+  "scan_verified": false,
+  "ssid_verified": false,
+  "ip_verified": false,
+  "files_sha256": {
+    "initial55.json": "eb9cee7a0630e037afb63761177f86d60732d5fee07b0e63c4a4da49922eeaaf",
+    "receipt.json": "66f4c2756b40f43ed5f34b76be53f4df2a7546bdfc8bdc25ca09f309b6e6e77a"
+  }
+}

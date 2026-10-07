@@ -32,3 +32,4 @@ experiments/arm64-pill/pill
 /experiments/native-wifi-qca9377-scan-admission-v2/runs/
 /experiments/native-wifi-qca9377-scan-native-profile-v2/runs/
 /experiments/native-wifi-qca9377-scan-event-v2/runs/
+/experiments/native-wifi-qca9377-noise-monocypher-backend-v1/runs/

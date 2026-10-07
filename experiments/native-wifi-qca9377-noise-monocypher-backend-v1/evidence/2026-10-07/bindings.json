@@ -1,0 +1,17 @@
+{
+  "status": "LOCAL-SOURCE-AND-COPIED-HOST-EVIDENCE-BINDINGS-VERIFIED",
+  "sha256": {
+    "NOISE-LICENSE.txt": "f2c0cc36aa63c383fd1669b63eff210ee8cabb304dd818a9f442d93906eff587",
+    "README.md": "8f0738334de1e10b94393a30ca9de9e9106635dcd11aeb20904b3899acc73552",
+    "backend_entropy.h": "cbc02ff81fd02ddeacb714da28aac6a71f5d07a3bedc9ca3787990e1c3310111",
+    "cipher_monocypher.c": "b1559266548c82b77df10f8167d5d86bc2cc9490cc1d4504f7de0d6d92b3c790",
+    "dh_monocypher.c": "cc35850d5a17d2f048f6d0eec73625c2dd3d88c64016aeda503dfb600ea46846",
+    "differential.h": "56436caf1d630ad6a82c12bd3f22056ee0bccd3fe570a353e073f4e193c8b408",
+    "evidence/2026-10-07/host.log": "343009d6de7b1fbb8aa451c1b8a87695a3935a5cdc0e55634c55148a0c70ada1",
+    "evidence/2026-10-07/report.json": "138807137caae8915d5ec59c95c923da5fba1be918de24b4472237c932acc13a",
+    "noise_dummy.c": "05ae890acc761f8fc35d20227209ad2f0dc5fea32503380a544d970223fb3cc8",
+    "noise_vector.h": "09b4cb8df36f87b9d04209cf5015ca7f0f1ae0e4a98618495bbf6a47b4f012fe",
+    "verify_backend.py": "ef95647c8d416af847bc1a80be4c3e0e256e45a1189efdc84e6e066451472cab"
+  },
+  "physical_or_secret_actions": false
+}

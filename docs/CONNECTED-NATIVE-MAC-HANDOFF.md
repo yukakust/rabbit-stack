@@ -4700,3 +4700,25 @@ ImmediategoalphysicalmatchingSSID andgenuineSTARTED/terminal/raw/ownerproof;
 DMAcomplete alone notsuccess. NextstageHTT55offline remainsdeferred; counter55
 is NOWassignedthisactualscantrial, derivefutureHTT56fromfrozensourcewithnew
 proof/policy onlyafterall55rawsaved. Noassociation/IP/WANclaimed.
+
+### 2026-10-07: native55 applied; compact crypto reference reviewed
+
+Exact55 APPLIED receipt archived scan-admission-v2/evidence/2026-10-07/
+native55-applied. Solecontroller61367 live; NEWfirmware55 savedsession
+firmware-ram-g4w7ruqs, firstfullchunk andsecondprefix57600 at heartbeat.
+Preserve savedbytes/checkpoints; nosecondBTowner/resign/replay54.
+Physicalfixedscan/SSID/IPresultnotyetavailable.
+
+Reviewednoise-monocypher-backend-v1 source/logbindings,3,672,371ASAN/UBSAN
+adapterdifferentialchecks+10743compactchecks onYukabox, exactpublishedNKvectors.
+UnmodifiedmatureNoisehandshake, existingMonocypherX25519+exactChaChaPolyIETF
+nonce(4zero||LE64), freshcontext/rekeydiscard+wipe. Hosttext45575/data2640
+versusreference116677; NOTCOFF/fullEFI/nativefit/entropy/AUTHapproval.
+LegacyNoise permitsnull/low-orderzeroDH; rootreviewcaught mismatch withour
+fail-closedprovisioningboundary. NEWbackend-v2 hardensinvalidinput only,
+nulls_allowed0+zeroSharedKeywipe/error, requireactualhandshakeFAILED/noSplit.
+Keepvalidvectorsunchanged andoldreferenceproof frozen. Genericupstreammix_dh
+mixeswipedzerotransientlyevenonerror; doNOTclaimnointernalKDF, prohibitfailed
+stateuse. Realcredentials/keys/signatures/device/provisioning untouched.
+Upstreamconstructorerror mayleavenonnullalreadyfreedoutput: nativewrapper
+MUSTnullerroroutput, neverfree/dereferenceit. No liveprotectedchannel yet.
