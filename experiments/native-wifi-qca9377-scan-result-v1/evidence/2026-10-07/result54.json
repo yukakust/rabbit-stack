@@ -1,0 +1,47 @@
+{
+  "status": "PHYSICAL54-SCAN-DISPATCH-FAULT-RAW-PRESERVED-ALL-OWNERS-RELEASED",
+  "native_counter": 54,
+  "native_payload_sha256": "3eefea77fbab35bca609216e4a418c2abad695f1a8a83da8aa2ee147bbfefca3",
+  "all_raw_pages_saved_twice": true,
+  "all_hardware_owners_released": true,
+  "firmware_matching_started_observed": true,
+  "firmware_matching_channel_observed": 2412,
+  "firmware_events": [
+    {
+      "completion": 9,
+      "type": 1,
+      "opaque_reason": 6,
+      "frequency": 0,
+      "request": 40968,
+      "scan": 40967,
+      "vdev": 0,
+      "suffix_hex": "00000000"
+    },
+    {
+      "completion": 10,
+      "type": 8,
+      "opaque_reason": 6,
+      "frequency": 2412,
+      "request": 40968,
+      "scan": 40967,
+      "vdev": 0,
+      "suffix_hex": "00000000"
+    }
+  ],
+  "native_started_processed": false,
+  "physical_ssid_discovered": false,
+  "wifi_connected": false,
+  "ip_verified": false,
+  "device_attestation": false,
+  "cause": "two archive slots full of retained boot/debug traffic blocked dispatcher; owned STOP deadline fault. Independent scan codec incompatibility: actual28-byte prefix/nonterminal opaque reason6 versus old exact24/reason checks.",
+  "files_sha256": {
+    "capture54.json": "5888ffcbaa6edf793e4df2396d61f5559222f35a638f045488eae47aad6dfe87",
+    "capture54.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "capture54-v2.decoded.json": "e8cd52f0e0468c581600e5be2cbeb6e4e271791c60248de5ee067e44c6f9dd8f",
+    "boot54.decoded.json": "933ae2ff036450d452658a50d8ddbc183204242a31387cfa902444a822400312",
+    "boot54.json": "0e874ec123b3d6ac74a8babc022769bc63e65dcbab25e84086ae9064e9a2c9a0",
+    "capture54-v1.decoded.json": "6896c937ff5688281a87ca6042d6e52f0b727d6ef3aae0b1bc832e2d67ec70a6",
+    "native54-receipt.json": "60e1521b523e9539e7e47536641d0bbcb3ed5fc7df4458f05263befa21a4a864",
+    "asset54-report.json": "fd68a83e54fd8ffcc1e11207d6346dd60880c5f66ea6f8bd3f85f083b1308150"
+  }
+}

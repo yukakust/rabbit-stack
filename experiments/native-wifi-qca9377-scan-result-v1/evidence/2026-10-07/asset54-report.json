@@ -1,0 +1,467 @@
+{
+  "status": "EXACT-FULL-FIRMWARE-CONTAINER-IN-RAM",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan-native-profile-v1/runs/checked-candidate",
+  "native_counter": 54,
+  "native_payload_sha256": "3eefea77fbab35bca609216e4a418c2abad695f1a8a83da8aa2ee147bbfefca3",
+  "world_counter": 17,
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "policy": {
+    "owner": "622b248c42829ad066e5ae428ea30e955c750e4c3f221553bb346254e82545ac",
+    "target": "363d751288df7b47295f9c7a5250c3b41db24efd1a43a4bd348f00744c6bc7e9",
+    "digest": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+    "total": 751436,
+    "type": 8,
+    "version": 84017153,
+    "kind": 1,
+    "generation": 54
+  },
+  "gate": {
+    "report_sha256": "2a49d00f93ea68f6412241043f2589c84340cd0f92943e88019f79908231307a",
+    "reproduction_sha256": "2a49d00f93ea68f6412241043f2589c84340cd0f92943e88019f79908231307a",
+    "profile_status": "SCAN54-REPEATED-FULL-EFI-QEMU-WORLD17-OWNED-EXPORT-PASS",
+    "baseline_gate": {
+      "report_sha256": "cb2a253f309f96ddb0a88fa0c88cca9e0e9f45c135c52da6f4a081d447bdc136",
+      "reproduction_sha256": "1907fcf527314fc8b9711c244fd8a44007c819fc0a2f6dd3a269d98a896f3f55",
+      "profile_status": "WMI-INIT-CANDIDATE-TWO-REBUILDS-UEFI-QEMU-PASS",
+      "baseline_gate": {
+        "report_sha256": "cc043f79b5a974a591d9b4aaae2e6732032a370079f005fb2ecdf47063c983c5",
+        "reproduction_sha256": "ee0cfdc640ee0c6d1b364d52d6dc6ecb56f99e527ed68d6dde921fd0e1d76168",
+        "profile_status": "QCA-EXACT-RAM-MAIN-BOOT-CITY-PROFILE-GATES-PASS"
+      }
+    },
+    "admission_source_sha256": "756a2247a86ac76c53dc924c07e514424a9384c05c5d8a7088803b1a23c25894",
+    "passive_policy_binding_sha256": "6c98ae5ecde7cc1f8debafa83093db022b4586cf0ffb797f984a09e57b67a273"
+  },
+  "diagnostic_sha256": "12700b27d3f51e4065dd016114b785077bb714a28a2251ea8ba9391f5be4dde4",
+  "packets": [
+    {
+      "file": "chunk-0.bin",
+      "packet_sha256": "b236215b9c396bdd05352eae361ce26055685002bd6617f9e6c6fa2405044884",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 0,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-1.bin",
+      "packet_sha256": "40aa1ed3b492376abae3c6d0de7f58e5b9e0f0d15418709cfec32b97d8e61840",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 65536,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-2.bin",
+      "packet_sha256": "07497920d871ec7e2cbe055edc7aee08d33a2df676a5f3453bb15446635ad83c",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 131072,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-3.bin",
+      "packet_sha256": "bfec6f5d092c89555daf6645f7953ccaa07bfb88858622153d9b03d3bb8f2f14",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 196608,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-4.bin",
+      "packet_sha256": "5cea368ef06764c7543961496e916b7e0bdc7948aa287112be7bd8b20de11382",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 262144,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-5.bin",
+      "packet_sha256": "ad66e9f4519934c8d1e15b190c4e7d2af536d48ed70330a9f87dd13d66c134da",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 327680,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-6.bin",
+      "packet_sha256": "815fef19c7b95e4bbdc5de37de9e3fd8d695849c320e0da2d0120b2a3315a096",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 393216,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-7.bin",
+      "packet_sha256": "972983d90d39a65443a5ac902504d7a82b6887840f5b72190e075bdee0158a74",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 458752,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-8.bin",
+      "packet_sha256": "0e2dd25c48049d6bfdc38b037912dd7f16fb024487a271bfa81e1f28150d0c58",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 524288,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-9.bin",
+      "packet_sha256": "b9cc6749ca8fd8b502db61c589cd536744b604394d897bb0879bcd595d220c54",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 589824,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-10.bin",
+      "packet_sha256": "a4fb69d0987d127e58b66152c4c79adf98d3866feb650c7060f65420bf956983",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 655360,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-11.bin",
+      "packet_sha256": "d23b57e126bdb6796f68b22287c848bd8532f0bf3d576fb3bf07a8bc5ebca33a",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 720896,
+      "asset_bytes": 751436,
+      "generation": 54,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    }
+  ],
+  "completed_chunks": 12,
+  "sender_steps": [
+    {
+      "chunk": 0,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-0-0.log"
+    },
+    {
+      "chunk": 0,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-0-1.log"
+    },
+    {
+      "chunk": 0,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-0-2.log"
+    },
+    {
+      "chunk": 0,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-0-3.log"
+    },
+    {
+      "chunk": 1,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-1-4.log"
+    },
+    {
+      "chunk": 1,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-1-5.log"
+    },
+    {
+      "chunk": 1,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-1-6.log"
+    },
+    {
+      "chunk": 1,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-1-7.log"
+    },
+    {
+      "chunk": 2,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-2-8.log"
+    },
+    {
+      "chunk": 2,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-2-9.log"
+    },
+    {
+      "chunk": 2,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-2-10.log"
+    },
+    {
+      "chunk": 2,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-2-11.log"
+    },
+    {
+      "chunk": 3,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-3-12.log"
+    },
+    {
+      "chunk": 3,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-3-13.log"
+    },
+    {
+      "chunk": 3,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-3-14.log"
+    },
+    {
+      "chunk": 3,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-3-15.log"
+    },
+    {
+      "chunk": 4,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-4-16.log"
+    },
+    {
+      "chunk": 4,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-4-17.log"
+    },
+    {
+      "chunk": 4,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-4-18.log"
+    },
+    {
+      "chunk": 4,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-4-19.log"
+    },
+    {
+      "chunk": 5,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-5-20.log"
+    },
+    {
+      "chunk": 5,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-5-21.log"
+    },
+    {
+      "chunk": 5,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-5-22.log"
+    },
+    {
+      "chunk": 5,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-5-23.log"
+    },
+    {
+      "chunk": 6,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-6-24.log"
+    },
+    {
+      "chunk": 6,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-6-25.log"
+    },
+    {
+      "chunk": 6,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-6-26.log"
+    },
+    {
+      "chunk": 6,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-6-27.log"
+    },
+    {
+      "chunk": 7,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-7-28.log"
+    },
+    {
+      "chunk": 7,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-7-29.log"
+    },
+    {
+      "chunk": 7,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-7-30.log"
+    },
+    {
+      "chunk": 7,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-7-31.log"
+    },
+    {
+      "chunk": 8,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-8-32.log"
+    },
+    {
+      "chunk": 8,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-8-33.log"
+    },
+    {
+      "chunk": 8,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-8-34.log"
+    },
+    {
+      "chunk": 8,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-8-35.log"
+    },
+    {
+      "chunk": 9,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-9-36.log"
+    },
+    {
+      "chunk": 9,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-9-37.log"
+    },
+    {
+      "chunk": 9,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-9-38.log"
+    },
+    {
+      "chunk": 9,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-9-39.log"
+    },
+    {
+      "chunk": 10,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-10-40.log"
+    },
+    {
+      "chunk": 10,
+      "mode": "--send",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-10-41.log"
+    },
+    {
+      "chunk": 10,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-10-42.log"
+    },
+    {
+      "chunk": 10,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-10-43.log"
+    },
+    {
+      "chunk": 11,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-11-44.log"
+    },
+    {
+      "chunk": 11,
+      "mode": "--send",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj/chunk-11-45.log"
+    }
+  ],
+  "firmware_upload": false,
+  "firmware_started": false,
+  "boot_trial_trigger_authorized": true,
+  "wifi_association": false,
+  "last_receipt": {
+    "action": 4,
+    "bitmap": 4095,
+    "confirmed_floor": 30764,
+    "device_attestation": false,
+    "error": 0,
+    "firmware_started": false,
+    "length": 30764,
+    "packet_sha256": "d23b57e126bdb6796f68b22287c848bd8532f0bf3d576fb3bf07a8bc5ebca33a",
+    "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+    "ready": 1,
+    "received": 30764,
+    "state": 2
+  }
+}

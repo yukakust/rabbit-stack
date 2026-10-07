@@ -4598,3 +4598,40 @@ No realkey/credentialread/export orsigning. IndependentNEWefi-rng-port-v1
 preparesboundedofficialprotocol/provider/length/failure/zeroizetests; diagnostic
 exportsNEVERrandomsamples. NEWprovisioning-review-v1 checksmatureAKE reuse
 (e.g.Noise-C) versuscustomcomposition, no actualprovisioning/hardware.
+
+### 2026-10-07: physical54 real scan responses; dispatch/STOP fault isolated
+
+Sole52976 finished; no liveBTcontroller. ALL40rawpagestwice+three stableQSCN
+savedbyv1; rootdecodedwithv2offline andvalidatedALL12packetpublicsignatures/
+body/layout/wholeFWdigest/finalreceipt. Exactraw/status/receipt/BOOT/hashes
+archived scan-result-v1/evidence/2026-10-07. Actualall14ownersreleased,life4
+noerror,READY/TXseen1; hardware_trial_pending clearedONLYaftercombinedproof.
+World17unchanged. NoSSID/association/IP/WAN.
+
+QSCNnativeFAULT5/error6,coorFAULT5/error15,stage5,all5commands actualDMAcomplete
+(includingSTART_SCAN/STOP), pendingSCAN_WAIT7/STARTEDnotprocessed,STOPFAULT7/
+terminal0/TXcomplete1. Archive2full:completion1debug0x1d011,2event0x1d019;
+dispatch2stillownedcomp3event0x16006 andcomp4debug0x1d011. RX2holds genuine
+matchingSTARTEDcomp9 andFOREIGNcomp10. Bufferblockage behindretainedunknowns
+causedownedSTOPdeadlinefailure; no proofolddecoderreachedtheseSCANevents.
+
+ExactSTARTEDpayload36bytes(tag36/value28) hex
+013000001c00240001000000060000000000000008a0000007a000000000000000000000
+FOREIGNpayload36bytes hex
+013000001c00240008000000060000006c09000008a0000007a000000000000000000000
+IDsrequesta008/scana007/VDEV0 andFOREIGN2412matchsubmittedtrial. Preserve
+reason6opaqueonSTARTED/FOREIGN; nevercallitcompletionreasonorclaimSSID.
+PinnedLinuxpolicyminsizeofwmi_scan_event24/pull6-wordprefix, STARTED/FOREIGN
+handlers ignorereason. Existingexact24/reason<=4/STARTEDreason0 code would
+rejectthesevalidnonterminalextendedevents independentlyofqueueblockage.
+
+Immediatepriority NEWscan-native-profile-v2 GEN55 + scan-event-v2: pinned
+boundedminimum-prefixcodec, nonterminalreasonopaque, terminalnonzeroconservative
+failure; generatedprivateoldmodules untouched. Archive16 forobservedbootdebug
+burst, no packetdiscard; truefullcapacitySTOP/deadline, ALL22slots110pages
+export. Physical54rawregression+actualnative/ASAN/COFF/EFI/QEMU/world/source
+proofinprogressonYukabox. HTT55offlinecandidate remainsFROZEN/UNSIGNED/DEFERRED,
+notreservationofphysicalcounter; derivefutureHTT56onlyafternewscan55result.
+Rootnext55gate requires exact54failure/owner/rawproof + newcompleteproof before
+localkey/signature. Newobserver-v3 GEN55/110pages2x budget600s (actual54capture
+175.23s) preparesstrictreadonlycollector; no hardware/privatekeysbyagents.

@@ -1,0 +1,6 @@
+{
+  "status": "EXACT-PHYSICAL54-FAULT-EXPORT-PRODUCER-BOUND",
+  "result_sha256": "aee4092a6b9f7b58ae7bb85672fa2555798a5c4cd75ff86540de39a9d643f817",
+  "producer_sha256": "7ad6f60fe97f7c69be737442352030582678694b94d930945f286a1957f5a4f1",
+  "no_credentials": true
+}
