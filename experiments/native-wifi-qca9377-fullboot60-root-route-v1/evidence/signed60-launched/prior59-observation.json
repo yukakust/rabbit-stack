@@ -1,0 +1,10 @@
+{
+  "status": "ACTUAL59-CHECKED-RELEASE-PRE60-OBSERVATION",
+  "writes": 0,
+  "observed_at": 1791404825.9202292,
+  "state_sha256": "b7bf274edfd94b46cce9d52dd0caec86599ce3f19659aa284b2fe74e2dbbbccd",
+  "inputs": {
+    "receipt.log": "f894375f3fdaa7f99a1d65305b09b9e8ebc7de97c51891657d0bd537ac6829bf",
+    "prefix.log": "355615825c1b0e7960e525037ef9f8698624cb268351d4f60a4a6d9552e8dc93"
+  }
+}

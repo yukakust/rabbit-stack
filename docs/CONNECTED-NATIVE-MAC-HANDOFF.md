@@ -5304,3 +5304,27 @@ statechange/retirement/radioyet atthisentry. Next: freshknownpeerRFS59+QPFX59all
 released → archiveactual59session → once-sign60 → solecontinue60.py. New RAMassets
 willbeonce-signedafteractualAPPLIED60+freshQPD18setup; observer/boundedresumes then
 one-connectionfullbootmonitor untilcheckedrelease, fixedQWBT/QWOP/QWIN capture.
+
+### 2026-10-08: actualprior59 released archived;60 signedONCE/solecontroller launched
+
+Fresh locked knownpeerRFS59 exactpackage5462ada... +240QPFX59 phase3/reason0/all14
+released/32984confirmed, publicall12/native59sigverified. Rootdurablyarchived
+everyactual59native/assetpacket/log/hash underfullboot60-root-route-v1/runs/retired59
+(fsyncallfiles+alldirectories+parent BEFOREpendingclear). ClearedONLYcompleted
+hardware_trial_pending, preserved59/19 counters/payload/world andretirementrecord.
+NoDellreboot/USB/bootstrap/flash/OTP/credentials.
+
+Then signed60 ONCE exactsession runs/text-world/pci-native-84rxxr3h. Solelive
+controllerPID26509: fullboot60-root-route-v1/continue60.py; logruns/control/continue60.log,
+metadatacontroller60.json. Nativepacedstage started,notAPPLIEDyet; assets60NOTsigned
+at snapshot. Actualstate/currentreceipts priority. No secondcontroller, noresign.
+Controller handlesnative→QPD18exact0Dread→sign12assets once→boundedprogressing
+same-sessiontimeoutresumes→ONEconnectionQPFXmonitor30s up to5460s→QWBT/QWOP/QWIN.
+Anytransport/diagnostic/no-progress faultstops+preservesevidence. Wi-Fi/IPnotproven.
+Publicretirement/sign/launch snapshots evidence/signed60-launched. Source/rootproof
+commits9c36c53 and3ac0b1a; collector/audit095466f.
+
+Independent observation59 agent nowprepares UNSIGNEDscan61/currentworld19 using
+frozen60+existingmature55scan components, persistentadoptBEFOREdiagnosticstop,
+explicitGATTlayoutresolution. OnlyYukaboxmodels/sourceproof, notphysicaladmission
+andno61sign/state/BLE. Mustfirstcapture/classifyactual60rawresultbefore61hardware.

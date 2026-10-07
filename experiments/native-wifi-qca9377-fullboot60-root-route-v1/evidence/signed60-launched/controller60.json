@@ -1,0 +1,10 @@
+{
+  "pid": 26509,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h",
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/runs/control/continue60.log",
+  "controller_sha256": "2aa7c40da8ee780d05a513ecbef7274376e147f27fd03f8736dc42dd6fafe043",
+  "started_at": 1791404919.957686,
+  "native_signatures_created": 1,
+  "firmware_signatures_created": 0,
+  "one_controller": true
+}

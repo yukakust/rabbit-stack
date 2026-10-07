@@ -1,0 +1,15 @@
+{
+  "observed_at": 1791405018.638161,
+  "status": "SENDING-PACED-STAGE",
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h",
+  "native_counter_signed": 60,
+  "native_counter_saved": 59,
+  "world_counter": 19,
+  "payload_sha256": "3984d3f5d1c9a3c3540bf2ef00972bea52406a6f78edc56bd215507110668fd6",
+  "native_package_sha256": "b12c2ee8ae3eac069adfc5b907b65f1b8edf442884e72510d3c9badd382b087e",
+  "native_session_sha256": "859baa633f0bb5ef1d773b332ea9b961af44a343a8df341f9acff10b74b5224f",
+  "applied": false,
+  "firmware60_signed": false,
+  "wifi_connected": false,
+  "scan": false
+}

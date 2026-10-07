@@ -1,0 +1,23 @@
+{
+  "candidate": {
+    "report_sha256": "5e5b1be82bf69048d22cd02380e9dd850820e39befd24a7991ce653bd637e772",
+    "payload_sha256": "3984d3f5d1c9a3c3540bf2ef00972bea52406a6f78edc56bd215507110668fd6",
+    "profile_status": "FULLBOOT60-REPEATED-EFI-QEMU-WORLD19-DIAGNOSTIC-PASS",
+    "receiver_policy": {
+      "owner": "622b248c42829ad066e5ae428ea30e955c750e4c3f221553bb346254e82545ac",
+      "target": "363d751288df7b47295f9c7a5250c3b41db24efd1a43a4bd348f00744c6bc7e9",
+      "digest": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "total": 751436,
+      "type": 8,
+      "version": 84017153,
+      "kind": 1,
+      "generation": 60
+    },
+    "native_counter": 60,
+    "world_package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+    "source_model_verified": true
+  },
+  "retirement": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/runs/retired59/retirement.json",
+  "retirement_sha256": "195c4140511396bcc8bc02de14e8e7e4487f2567adea6dd0e6ac96d269fd7222",
+  "prior_state_sha256": "351ae6abeb0566e79dafbbc50e7de60429dd3979232c1a17410b97451508b93a"
+}
