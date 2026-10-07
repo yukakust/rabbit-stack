@@ -4322,3 +4322,33 @@ scan events. Plan has empty selected frequencies and no RF admission.
 Independent necessary offline work assigned in NEW channel-wire-v1 serializers
 and regulatory-policy-v1 provenance/filter. No hardware, candidate, signatures
 or credentials delegated; actual53 completion is prerequisite for next trial.
+
+### 2026-10-07: native53 assets advance; offline channel and policy proofs reviewed
+
+Sole controller46741 still live. Exactfirmware53 session firmware-ram-8sztj97t
+confirmed7/12 chunks, eighth prefix57600 at heartbeat; native53 already APPLIED.
+No concurrent radio operation, no retransmission/resigning of oldsessions.
+Physical bounded RX/owner result still pending, router/IP/WAN absent.
+
+Reviewed new channel-wire-v1:77367 differential/negative ASAN/UBSAN+COFF checks
+on Yukabox, exact source/log bindings. Pure SCAN_CHAN_LIST/PDEV_SET_REGDOMAIN
+serializers, explicit authenticated-policy input boundary, passivelegacy20,
+limits/flags/units/overlap/target guards; max63 rows at actualWMIlimit1784.
+Pinned mature caller ath10k_regd_update passes combinedregdomain to allthree
+domain fields, then separate perbandCTL; forWORC_WORLD108 this is108/108/108,
+NO_CTL255/255. This mapping must be independently bound before RF admission.
+
+Reviewed new regulatory-policy-v1:199278 purefilter ASAN/UBSAN+COFF checks on
+Yukabox, exact sources/log/proposal bindings. Officialregdb2026.09.03 CMS uses
+only pinnedLinuxwens signer; officialdb.txt rebuild byte-identical to signeddb,
+altereddata/signature rejected. Trust is pinnedkey/HTTPS, not PKIX/time or
+archiveOpenPGP validation; no primaryGElegal instrument independently verified.
+ExplicitownerlocationGE intersected with unchangedworld108 and actualcapabilities:
+13 candidate passivelegacy20 channels2412..2472,20dBm ceiling;12/13 retainNO_IR.
+No countryoverride, probes,5GHz/DFS,RFadmission or nativepublication. Mature
+signeddatabase is engineeringreference; caller must validate completeprovenance
+and actualcurrenttarget/lifecycle before one native trial.
+
+Independent next necessary preparation delegated to persistent_radio in NEW
+persistent-tx-v1: actualserializedCE3 owner/publication using sharedRXHTCledger,
+no DMAcreditrefund, ambiguityretaineduntilactualstop. Nohardware/candidate/secrets.

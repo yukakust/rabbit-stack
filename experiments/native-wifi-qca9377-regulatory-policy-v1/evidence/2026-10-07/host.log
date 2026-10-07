@@ -1,0 +1,58 @@
+["openssl", "x509", "-inform", "DER", "-in", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/trusted-wens.der", "-out", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/trusted-wens.pem"]
+
+
+["openssl", "cms", "-verify", "-binary", "-inform", "DER", "-certfile", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/trusted-wens.pem", "-nointern", "-noverify", "-in", "/home/yuka/rabbit-world/parallel-regulatory-v1/reference/wireless-regdb-2026.09.03/regulatory.db.p7s", "-content", "/home/yuka/rabbit-world/parallel-regulatory-v1/reference/wireless-regdb-2026.09.03/regulatory.db", "-out", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/verified.db"]
+
+CMS Verification successful
+
+["python3", "/home/yuka/rabbit-world/parallel-regulatory-v1/reference/wireless-regdb-2026.09.03/db2fw.py", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/rebuilt.db", "/home/yuka/rabbit-world/parallel-regulatory-v1/reference/wireless-regdb-2026.09.03/db.txt"]
+
+
+["openssl", "cms", "-verify", "-binary", "-inform", "DER", "-certfile", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/trusted-wens.pem", "-nointern", "-noverify", "-in", "/home/yuka/rabbit-world/parallel-regulatory-v1/reference/wireless-regdb-2026.09.03/regulatory.db.p7s", "-content", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/altered-data", "-out", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/rejected.bin"]
+
+CMS Verification failure
+40B764B092750000:error:02000068:rsa routines:ossl_rsa_verify:bad signature:../crypto/rsa/rsa_sign.c:441:
+40B764B092750000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:../providers/implementations/signature/rsa_sig.c:1035:
+40B764B092750000:error:030000EA:digital envelope routines:EVP_PKEY_verify:provider signature failure:../crypto/evp/signature.c:1174:RSA verify:
+40B764B092750000:error:1700009E:CMS routines:CMS_SignerInfo_verify_content:verification failure:../crypto/cms/cms_sd.c:1110:
+40B764B092750000:error:1700006D:CMS routines:CMS_verify:content verify error:../crypto/cms/cms_smime.c:462:
+
+["openssl", "cms", "-verify", "-binary", "-inform", "DER", "-certfile", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/trusted-wens.pem", "-nointern", "-noverify", "-in", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/altered-signature", "-content", "/home/yuka/rabbit-world/parallel-regulatory-v1/reference/wireless-regdb-2026.09.03/regulatory.db", "-out", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/rejected.bin"]
+
+CMS Verification failure
+4077C2D5AD770000:error:0200008A:rsa routines:RSA_padding_check_PKCS1_type_1:invalid padding:../crypto/rsa/rsa_pk1.c:78:
+4077C2D5AD770000:error:02000072:rsa routines:rsa_ossl_public_decrypt:padding check failed:../crypto/rsa/rsa_ossl.c:788:
+4077C2D5AD770000:error:1C880004:Provider routines:rsa_verify_directly:RSA lib:../providers/implementations/signature/rsa_sig.c:1035:
+4077C2D5AD770000:error:030000EA:digital envelope routines:EVP_PKEY_verify:provider signature failure:../crypto/evp/signature.c:1174:RSA verify:
+4077C2D5AD770000:error:1700009E:CMS routines:CMS_SignerInfo_verify_content:verification failure:../crypto/cms/cms_sd.c:1110:
+4077C2D5AD770000:error:1700006D:CMS routines:CMS_verify:content verify error:../crypto/cms/cms_smime.c:462:
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "--version"]
+clang version 20.1.8 (github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-std=c11", "-Wall", "-Wextra", "-Werror", "-fsanitize=address,undefined", "-g", "/home/yuka/rabbit-world/parallel-regulatory-v1/source/passive_policy.c", "/home/yuka/rabbit-world/parallel-regulatory-v1/source/passive_policy_test.c", "-o", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/policy-test"]
+
+
+["/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/policy-test"]
+CHANNEL 2412 0 20 20 0
+CHANNEL 2417 0 20 20 0
+CHANNEL 2422 0 20 20 0
+CHANNEL 2427 0 20 20 0
+CHANNEL 2432 0 20 20 0
+CHANNEL 2437 0 20 20 0
+CHANNEL 2442 0 20 20 0
+CHANNEL 2447 0 20 20 0
+CHANNEL 2452 0 20 20 0
+CHANNEL 2457 0 20 20 0
+CHANNEL 2462 0 20 20 0
+CHANNEL 2467 2 20 20 0
+CHANNEL 2472 2 20 20 0
+PASS 199278 offline passive metadata checks
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "--target=x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-std=c11", "-Wall", "-Wextra", "-Werror", "-c", "/home/yuka/rabbit-world/parallel-regulatory-v1/source/passive_policy.c", "-o", "/home/yuka/rabbit-world/parallel-regulatory-v1/runs/verified/policy.obj"]
+

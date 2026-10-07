@@ -1,0 +1,12 @@
+{
+  "country_alpha2": "GE",
+  "country_name": "Georgia",
+  "source_kind": "explicit-owner-conversation-statement",
+  "statement": "каким кабелем? yukabox в Польше, а монитор и dell в Грузии:)",
+  "applies_to": "physical Dell and attached monitor",
+  "recorded_for_review_date": "2026-10-07",
+  "inferred_from_ssid": false,
+  "inferred_from_mac_location": false,
+  "independent_geolocation_verified": false,
+  "note": "Uses owner's explicit location, not Wi-Fi SSID or Yukabox location; remains invalid after moving Dell to another country."
+}

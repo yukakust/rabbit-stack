@@ -1,0 +1,30 @@
+{
+  "status": "CHANNEL-REGDOMAIN-PINNED-WIRE-ASAN-COFF-PASS",
+  "checks": 77367,
+  "build_host": "yukabox",
+  "source_sha256": {
+    "channel_wire.c": "90ab9bebdbbc6b92c7065d4dfadc8fe6f453e7714a8e55502e7ce0b41e0d468d",
+    "channel_wire.h": "6cb5435ee2b253b37ab647ef7bea0378ede08d1bc3cd8c86680a35e0d47d4600",
+    "channel_test.c": "70bdac8f9b3af6be06e92da0da3ecc7a5ef6ca45f9283d0ae387ea642b4deb27",
+    "verify_channel.py": "c49caf28448814ca055e96be7b1098e32ff99501d7f1fbe62e610ec414c52733",
+    "README.md": "3173a639c8012e7c50ab617842f77398e3c20898493abb13ae625f320f2d3f28"
+  },
+  "reference_sha256": {
+    "wmi-tlv.c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "wmi-tlv.h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+    "wmi.h": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c",
+    "ath10k-mac.c": "e99b6749933719a39037645385ea88be181b380f1135d62aea07c0b474a8236c",
+    "ath10k-wmi.c": "68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4"
+  },
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "oracle_sha256": "b20ee95bc2698d6540db464e8db27b98a94f1a6aa35c4830c3b8ce0790fff849",
+  "host_log_sha256": "23ffd240a1dfbd39e27eb85f09462b071e8b02abad17cd5572f9427941452faf",
+  "reviewed_authority_input_required": true,
+  "authority_authenticated_by_serializer": false,
+  "default_channels": [],
+  "native_integrated": false,
+  "physical_verified": false,
+  "rf_admission_granted": false,
+  "rf_command_sent": false,
+  "wifi_connected": false
+}

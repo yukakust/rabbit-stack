@@ -1,0 +1,18 @@
+{
+  "status": "SIGNED-REGDB-REBUILD-PURE-PASSIVE-FILTER-ASAN-COFF-PASS",
+  "checks": 199278,
+  "compiler": "clang version 20.1.8 (github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin\n",
+  "proposal_sha256": "a5ce1d3e2fdf8aefc2f862c77239cd2fbff1077371763c59c1b7a10d86ae3148",
+  "log_sha256": "3ff7d76ce6b901b03bdef9ecc25d91d0c4512631f9df8570073fcddf391f4167",
+  "sources_sha256": {
+    "passive_policy.c": "4479212401bd1bd094fbe254b33018d33bd9c860bbe998e3b3efda9f7533ce91",
+    "passive_policy.h": "9b13922af135beac1b5ebd56071d494ff2375e1a52105edf5b69da3a04bb22d0",
+    "passive_policy_test.c": "5e2cd72e4943093e77df0c83ab2cd20513354ea7b2836b3c7c7f3044942da937",
+    "verify_policy.py": "1f88e74d08f05d7341fce8c733b54302c47bc90efa2dc6adb807f0311b90b2ce",
+    "location.json": "0789d74c4b8e2e788bf2e67296190b01673daf42274935a43f14335c47c96027"
+  },
+  "rf_admission_granted": false,
+  "native_integrated": false,
+  "wifi_connected": false,
+  "device_action_count": 0
+}
