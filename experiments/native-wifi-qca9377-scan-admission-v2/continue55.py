@@ -45,7 +45,7 @@ if json.loads((assets/'report.json').read_text())['completed_chunks']<12:
    for line in log.read_text().splitlines():
     try:v=json.loads(line)
     except ValueError:continue
-    if v.get("packet_sha256")==r["packets"][n]["packet_sha256"] and v.get("error")==0 and v.get("peripheral","").upper()=="F45BFCB2-ABC2-AB4E-BB0F-310A55D424AF":floor=max(floor,n*65556+max(0,v.get("received",0)-224))
+    if v.get("packet_sha256")==r["packets"][n]["packet_sha256"] and v.get("error")==0 and v.get("peripheral","").upper()=="F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF":floor=max(floor,n*65556+max(0,v.get("received",0)-224))
   stalls=stalls+1 if floor<=last else 0;last=floor
   if stalls>=2:raise SystemExit("STOP two no-progress attempts; preserve saved session")
  else:raise SystemExit("STOP bounded firmware resume limit")

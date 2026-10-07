@@ -4738,3 +4738,14 @@ withboundedownedarena, constructorerrornulling/no doublefree, cleanupwiping/
 quarantine andborrowedreviewedrng-port-v2; explicitMS-x64COFF portability.
 NoUnixrandomfallback oractualdevice/providerapproval. No counter/candidate/
 hardware/state/privatekeys. Solephysical55controller61367 unaffected.
+
+### 2026-10-07: exact55 firmware transfer resumed after Bluetooth timeout
+
+Physical receipts confirmed 5/12 chunks (bitmap31). Sixth saved packet reached
+49920/65760 bytes, then connection timed out. Controller61367 exited after
+bounded no-progress attempts. No live sender/controller remained before restart.
+Root corrected only host controller peer-progress filter typo 310A55 -> actual
+310A54; signed native payload and asset packets remain unchanged. Sole resumed
+controller63271, metadata controller55.json, same append-only continue55.log,
+same pci-native-ehv85hvp and firmware-ram-g4w7ruqs. No signing/key/credential
+access, reboot or world change. Radio scan/SSID/IP remain unconfirmed.
