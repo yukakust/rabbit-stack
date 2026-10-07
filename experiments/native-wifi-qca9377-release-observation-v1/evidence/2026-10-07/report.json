@@ -1,0 +1,26 @@
+{
+  "status": "PHYSICAL-NATIVE53-BOUNDED-PERSISTENT-RX-READY-OWNER-RELEASE-PASS",
+  "negative_decoder_cases": 56,
+  "cached_unknown_event_count": 2,
+  "cached_unknown_payloads_exported": false,
+  "physical_ssid_discovered": false,
+  "wifi_connected": false,
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-release-observation-v1/test_decode.py": "d2306228892c97e51440f201a945524a5bf00b66463e1c8ce560814caaa4d630",
+    "experiments/native-wifi-qca9377-release-observation-v1/decode_release.py": "623111e7e1c00df383a9d2892e32fd4fe7caba73a13f3f1d8859e9d20f1e3fe9",
+    "experiments/native-wifi-qca9377-release-observation-v1/complete.py": "54196249ecdb587c5de881ae61318d7db107ffeaa3058f1d9ad8044b3ee32b24"
+  },
+  "files_sha256": {
+    "profile53.json": "47a833d2d62807cadd695b881b2f998de84beff24eb1d24f4df2e4e000bafc57",
+    "startup53.decoded.json": "353d01e4445ac703ccec0bf9d14c5d76717ecddd8286d818adecbc44db37631c",
+    "profile53.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "startup53.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result53.json": "c6c50ee7d425ddbd952d96725f136a131b09caf61ea1ac1d9ff0b03a427514f6",
+    "asset-session-report.json": "e882626b85fbb676ea5f5e42498a0cd7ec49a74fde1fec790eb09189f69b3e75",
+    "boot53.decoded.json": "8af1f0636986cbc7b40fbd98420910e9b36bda6316a58caabccbff0b6cb1cfc6",
+    "profile53.decoded.json": "5a0f8a27bb4f8b21b24a5963d6eabd1d42a31f8cc5b911dd7b95966a0ea3e50e",
+    "boot53.json": "0e874ec123b3d6ac74a8babc022769bc63e65dcbab25e84086ae9064e9a2c9a0",
+    "boot53.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "startup53.json": "e7662ee169d2468e6ee3a4e83b8e1dc58e4ae587cb9d8d905eaf0694a93e6ce4"
+  }
+}

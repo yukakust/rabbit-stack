@@ -4409,3 +4409,35 @@ FIFO owned andquiesce underbackpressure. Separate rootRFadmission must verify
 signedregdb/rebuild/target/domain/caps/owner/epoch and passive13rows/CTL255;
 proposalartifact stays RFfalse. Useralreadyauthorized scan/connect; this is
 deterministicadmission, not a newuserapprovalstep. Credentials untouched.
+
+### 2026-10-07: physical native53 bounded persistent RX succeeds; actual release
+
+FreshQWINREADY/MAC/TX complete1, error0. QWRXtrialDONE3/error0, expired1,stop1,
+lifecycleRELEASED4/errors0, polls45, RXcompleted2/posts3, credits2/outstanding0/
+reserved0. Actualall14 buffer/DMA/PCI/wake/link/IRQ/pin/bus/accessowners0,
+adapter12/cleanup14. Genuine10sboundedreceive-and-stop trial PASS. Router/IP/WAN
+and SSIDstillabsent; no newscenevisualobservation claimed.
+
+FrozenlegacyBOOTdecoder expectedassetready1/bitmap4095 afterphase5; actual
+qca_stop rightlyreleasedRAM: phase0/assetready0/bitmap0 whilecachedboot5/20
+3114/3114 remains, native6/error8448 controlledstop. Do NOT relaxolddecoder.
+NEW release-observation-v1 strict exact53 tuple binds priorcorrelated12chunk
+acceptance + freshQWIN/QWRX actualreleasedinventory,56negativecases, zero-write.
+Result/rawbytes/receipt/sourcehashes archived evidence/2026-10-07.
+Hardware_trial_pending cleared ONLY aftercombinedproof understate lock.
+Old46741 exited and recoveryobserver51276 stopped afterdecoderissue; no live
+radio controller aftermanualsequentialcombinedread. Noassetsreplayed/resigned.
+
+RXphase1/postedRX1/queue2/backpressure1 are retainedcachedbookkeeping after
+actualquiesce, not liveDMAowners. Two unknowncopiedeventpayloads are NOT exposed
+by53QWRX and NOT exported/consumed/identified. Nextadmission must explicitly
+bindthisdocumentedobservationlimit; neverinventrawbytesorSSID. No arbitrary
+memoryreadbypass. Native54 preparation adds stable read-only rawexport ofall
+retainedslots afteractualquiesce; rootmustsaveexactbytes/hashes beforefuture
+unload. Replacingtheauthorizedboundedtrial afterallhardwareownersreleased
+needs nonewuserapproval; preserveworld17.
+
+Native54 scanprofilepreparation continuesoffline onYukabox withactualentrypoint
+adapter/readonlyexport/model/wholeEFI/QEMU/world/sourceproof. UNSIGNED/not sent.
+RootRFadmission remainsseparate fromproposal andrequiresallprovenance/current
+policy/target/domain/caps/epoch/owner plusphysical53PASS.

@@ -1,0 +1,15 @@
+{
+  "status": "PHYSICAL53-BOUNDED-RX-READY-ALL-OWNER-RELEASE-PASS",
+  "native_counter": 53,
+  "native_payload_sha256": "261649e8cd7ab2bd59621f8ee559c421c36cc5e54c5d19238b558e55dc55a522",
+  "asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-8sztj97t",
+  "router_connected": false,
+  "ip_verified": false,
+  "device_attestation": false,
+  "files_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-release-observation-v1/runs/control/boot53.json": "0e874ec123b3d6ac74a8babc022769bc63e65dcbab25e84086ae9064e9a2c9a0",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-persistent-admission-v1/runs/control/startup53.json": "e7662ee169d2468e6ee3a4e83b8e1dc58e4ae587cb9d8d905eaf0694a93e6ce4",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-persistent-admission-v1/runs/control/profile53.json": "47a833d2d62807cadd695b881b2f998de84beff24eb1d24f4df2e4e000bafc57"
+  },
+  "decoder_sha256": "623111e7e1c00df383a9d2892e32fd4fe7caba73a13f3f1d8859e9d20f1e3fe9"
+}
