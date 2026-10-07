@@ -1,0 +1,31 @@
+--- prefix57/init_probe.c
++++ observation59/init_probe.c
+@@ -28,7 +28,7 @@
+ QcaPrefix*qca_prefix_view(void){return &prefix;}
+ static unsigned prefix_released(void);
+ static QcaFirmwarePort ram;static SystemTable*ram_system;static unsigned ram_attempted,ram_closing;
+-static const QcaFirmwarePolicy ram_policy={.owner={98,43,36,140,66,130,154,208,102,229,174,66,142,163,14,149,92,117,14,76,63,34,21,83,187,52,98,84,232,37,69,172},.target={54,61,117,18,136,223,123,71,41,95,156,122,82,80,195,180,29,178,78,253,26,67,164,189,52,143,0,116,76,107,199,233},.digest={143,139,0,47,204,254,129,212,34,56,242,125,209,245,109,24,150,4,241,128,189,71,114,199,200,231,90,225,254,241,111,1},.total=751436ull,.type=8ull,.version=84017153ull,.kind=1ull,.generation=57ull};
++static const QcaFirmwarePolicy ram_policy={.owner={98,43,36,140,66,130,154,208,102,229,174,66,142,163,14,149,92,117,14,76,63,34,21,83,187,52,98,84,232,37,69,172},.target={54,61,117,18,136,223,123,71,41,95,156,122,82,80,195,180,29,178,78,253,26,67,164,189,52,143,0,116,76,107,199,233},.digest={143,139,0,47,204,254,129,212,34,56,242,125,209,245,109,24,150,4,241,128,189,71,114,199,200,231,90,225,254,241,111,1},.total=751436ull,.type=8ull,.version=84017153ull,.kind=1ull,.generation=59ull};
+ 
+ #define config_read setup.read
+ #define full_read config_read.full
+@@ -318,7 +318,7 @@
+  const uint8_t magic[8]={'Q','P','F','X','0','0','0','1'};for(unsigned i=0;i<8;i++)out[i]=magic[i];
+  unsigned held=0;for(unsigned i=0;i<14;i++)if(adapter.channels.buffers[i].allocated||adapter.channels.buffers[i].mapped||adapter.channels.buffers[i].allocation_uncertain)held++;
+  const QcaPrefix*p=&prefix;
+- uint32_t f[58]={57,p->phase,p->reason,p->stop_calls,prefix_released(),p->stop_offset,p->stop_submitted,p->stop_completed,p->stop_plan,p->stop_io,
++ uint32_t f[58]={59,p->phase,p->reason,p->stop_calls,prefix_released(),p->stop_offset,p->stop_submitted,p->stop_completed,p->stop_plan,p->stop_io,
+  boot.phase,boot.error,boot.plan.phase,boot.plan.error,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.io.wire.phase,
+  stage,failed,adapter.phase,adapter.channels.cleanup_slot,held,port.dma_users,port.claimed,adapter.access.count,adapter.bus.owned,
+  boot.owns_pin,ram.asset.pinned,irq.owned,link.owned,wake.owned,reset.owned,
+--- prefix57/prefix.c
++++ observation59/prefix.c
+@@ -44,7 +44,7 @@
+  for(unsigned i=0;i<n;i++){
+   unsigned at=offset+i;uint8_t value=0;
+   if(at<8){static const uint8_t m[8]={'Q','P','H','C','I','0','0','1'};value=m[at];}
+-  else if(at<64){const uint32_t v[14]={57,s->raw_count,s->raw_overflow,s->raw_frozen,s->phase,TOTAL,s->critical_count,s->routine_count,s->routine_head,s->routine_overwritten,(uint32_t)s->started,(uint32_t)(s->started>>32),(uint32_t)s->last,(uint32_t)(s->last>>32)};unsigned j=(at-8)/4;value=(uint8_t)(v[j]>>(8*((at-8)%4)));}
++  else if(at<64){const uint32_t v[14]={59,s->raw_count,s->raw_overflow,s->raw_frozen,s->phase,TOTAL,s->critical_count,s->routine_count,s->routine_head,s->routine_overwritten,(uint32_t)s->started,(uint32_t)(s->started>>32),(uint32_t)s->last,(uint32_t)(s->last>>32)};unsigned j=(at-8)/4;value=(uint8_t)(v[j]>>(8*((at-8)%4)));}
+   else if(s->raw_frozen){unsigned logical=(at-64)/288,pos=(at-64)%288;
+    unsigned valid=logical<4?logical<s->critical_count:logical-4<s->routine_count;
+    unsigned slot=logical<4?logical:4+((logical-4+(s->routine_count==12?s->routine_head:0))%12);

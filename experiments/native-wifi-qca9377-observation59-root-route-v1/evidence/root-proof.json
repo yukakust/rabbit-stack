@@ -1,0 +1,18 @@
+{
+  "status": "ROOT59-OBSERVATION-PUBLIC-GUARDS-PASS",
+  "guard_tests": 7,
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-observation59-root-route-v1/route.py": "33c42f7fd836329b9c3bcc54964c72dbc943a0ce1a944c913405dcbcf6cf98d9",
+    "experiments/native-wifi-qca9377-observation59-root-route-v1/assets.py": "4d907e481a20aa553bcc2a5842ab4baf4e8231135a9a403d7746777bb3c6bec6",
+    "experiments/native-wifi-qca9377-observation59-root-route-v1/continue59.py": "9cb4008a3ae2a1fd3a5ca0d60027ca5d0362eb8fb0148c719cdae2d6d3218e6d",
+    "experiments/native-wifi-qca9377-observation59-root-route-v1/test_route.py": "94fd5785ce1c1d8902b7d6a1a522a0776eca347a1e53b997f79c89e6aad1d30c",
+    "experiments/native-wifi-qca9377-v1/boot_asset_route.py": "ef49cb4f90959efc67b57fd43322c1cce76c5c57795802c92abd0fadea5e4e7e",
+    "experiments/native-wifi-qca9377-operating-v1/runs/control/read-pci43": "226c9be5c51b15c21f4531cb2499da8e3e0e868be904b85d578a2cae638bbea5",
+    "experiments/native-wifi-qca9377-gatt-read-diagnostic-v1/runs/physical57/read-gatt": "5deb5f7b33dc58adf1ce207c7c78db33c0d21a284fd44d4f58dc65b9f16f3fd9"
+  },
+  "signed": false,
+  "radio_started": false,
+  "timer_fix": false,
+  "max_MAIN_bytes": 32984,
+  "wifi_connected": false
+}

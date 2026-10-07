@@ -1,0 +1,32 @@
+{
+  "status": "EXACT-THREE-GENERATION-CONSTANTS-PASS",
+  "baseline_payload_sha256": "9c63e6622c10190a8a17de2ff01ee03f72de95e93fd7326ca4da6e2c429be161",
+  "candidate_payload_sha256": "eb38baaf0b8e2ee120290744a116d02c33ff7bf2f011a73e945a10e239d51e55",
+  "generated_source_count": 162,
+  "production_source_count": 127,
+  "production_changes": {
+    "init_probe.c": {
+      "baseline_sha256": "15329f19a39534b596bd658d4aca8eefb052d63387a1e1f54fd8ef9e02f2dc8d",
+      "candidate_sha256": "afc0a5c0942b20878d6a8799ea6f41619d295cb9ed3b036deaa176401f532193"
+    },
+    "prefix.c": {
+      "baseline_sha256": "392a5f1051d7fe8b72440941e2f7b5d72e32631bd2d5d600194e15985a1a9bff",
+      "candidate_sha256": "3eb1a7d09b4aac1c42609a03e5c57d967f9fee29f747de1794c6532508d8eaa3"
+    }
+  },
+  "diff_sha256": "43d0b7f5b804cafd74907029ea78c85c8b1ba74e111cd75f03ea390303a514de",
+  "source_changes": 3,
+  "absolute_include_root_relocations": [
+    "connected_abi.h",
+    "gatt_core.h",
+    "loop.c",
+    "file_core.h",
+    "hci_link.h"
+  ],
+  "relocation_only_referenced_sources_verified": true,
+  "USB_HCI_watchdog_unchanged": true,
+  "baseline_report_sha256": "c362eb73bdfa96cef85962db9d625d6aa9664476f8b47b44fb60756f6f5099d1",
+  "candidate_report_sha256": "030bafe91d289a71264e5c7af86753517ad33dfc890ff2cf4c32508e877acf3a",
+  "signing_admitted": false,
+  "device_operations": 0
+}

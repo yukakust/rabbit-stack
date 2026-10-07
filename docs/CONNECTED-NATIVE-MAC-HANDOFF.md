@@ -5149,3 +5149,36 @@ evidence/2026-10-07/host-reset57-timeline-city19-readback/bindings.json. Fullsel
 Mac logs remainlocalignoredruns; no credentials/privatekey accessed/exported.
 Rejectedtimer preparation was NOT retried/renamed/deployed. GitHubpush53fdfcc
 attempts returnedremoteInternalServerError; localcommits preserved, retrypushlater.
+
+### 2026-10-07: new59 observation-only candidate prepared, not timer fix
+
+Owner requires bare-metal Dell only; no Linux installation on Dell. Yukabox remains
+the native build/test host and Mac the command/signing station. Rejected HCI timer
+preparation remains untracked, not retried or included. Current actual state58/world19,
+all pending null; actual owner city/cat visible. No Wi-Fi association/IP evidence.
+
+Frozen transport-observation59-native-v1 payload eb38baaf0b8e2ee120290744a116d02c33ff7bf2f011a73e945a10e239d51e55,150528file/4083712mapped bytes.
+Report030bafe91d289a71264e5c7af86753517ad33dfc890ff2cf4c32508e877acf3a.
+Independent exactdiff127 production C/H shows only3 generation57→59 constants;
+5 absolute include-root relocations, no USB/HCI/watchdog/timer logic change.
+Yukabox8nativePCI/CE/USB/overlay models, ASAN currentworld19/120ticks/16camera,
+3equalEFI,normal+EMPTYactualsupervisorQEMU PASS; host/model notphysicalproof.
+Scope remains bounded prefix32984MAINbytes/133descriptors/noBMI_DONE/noHTC_INITscan,
+600s,all14checkedstop. Visible PREFIX57 is familylabel; rawgeneration59.
+
+Frozen host asset-observer-v1:41callback/sequence+260decoder/preflight checksPASS.
+Same knownpeer/oneCBCentralManager; after each true64byteRFCS saves checkpoint,
+reads raw240QPFX in same connection, fsyncs diagnostic before next transport action.
+Exact failed-connect/disconnect/timeout NSError saved. Invalid/missing prefix stops
+without NEXT/replay. Extra ATTread/fsync changes host timing, not timer fix.
+Host-proof18548e99bff3447b5df490bde84c882a2b51c809b095ece3950c3406b62651db.
+
+New observation59-root-route-v1 checks419source/162generated inputs/public58signature,
+world19receipt, productiondiff and policy before fresh<=300s knownpeerRFS query/key.
+7offline mutation guardtests PASS; assets derivative preserves original immutable
+packets/signatures/floors and adds serialized host diagnostics. Original prepare and
+signed sources unchanged. continue59.py one native send, initialQPD18, sign12once,
+assetdeliver once; any failure stops (no reconnectloop); full12 thenquiet660s/read.
+At this entry no59 signature/reservation/radio trial yet. Resume only actual saved
+state/session; never replay retired57. Rootproof includes pinned helper/executable
+hashes. Next step fresh liveworld19 query → exact local59 signing → solecontroller.
