@@ -1,0 +1,32 @@
+{
+  "status": "PREFIX57-PURE-PUBLIC-HISTORICAL-BINDINGS-NEGATIVES-PASS",
+  "checks": 269,
+  "source_sha256": {
+    "gate.py": "0c59f99aa5580c9c87a4115518dd7fff283a9d2ac3f89a0c2c4948a6615e77a8",
+    "test_gate.py": "0c56b5e94a2b4d905f27d556e6c04d6eb6bd9969db80cebfa0e7060f6ef35684"
+  },
+  "physical_admission": false,
+  "actual_candidate57_tested": true,
+  "actual_candidate": {
+    "candidate_report_sha256": "c362eb73bdfa96cef85962db9d625d6aa9664476f8b47b44fb60756f6f5099d1",
+    "payload_sha256": "9c63e6622c10190a8a17de2ff01ee03f72de95e93fd7326ca4da6e2c429be161",
+    "payload_bytes": 150528,
+    "mapped_bytes": 4083712,
+    "source_count": 417,
+    "native_report_sha256": "fde93615e7ce540f3ed6e01a6ab22a73eb4c6bf3769fe4ff0e83a4cc03be55df",
+    "profile_status": "BOOT-PREFIX57-REPEATED-EFI-QEMU-WORLD18-DIAGNOSTIC-PASS",
+    "counter_candidate": 57,
+    "private_key_loads": 0,
+    "physical_admission": false
+  },
+  "source_world18_creator_verified": true,
+  "unsigned_source_reproduction": true,
+  "test_clock_only_in_function_cases": true,
+  "actual_cli_clock_override": false,
+  "radio_operations": 0,
+  "private_key_loads": 0,
+  "signatures_created": 0,
+  "state_written": false,
+  "conditional_candidate_contract_pending": false,
+  "rfs_oracle_sha256": "53026b3cbee9e6e592119d9ba08549b3a8374dd4b07a4b75f12c8c21a67618d7"
+}

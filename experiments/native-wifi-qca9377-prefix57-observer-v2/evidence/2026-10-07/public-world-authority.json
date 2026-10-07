@@ -1,0 +1,12 @@
+{
+  "status": "EXISTING-PUBLIC-WORLD18-CREATOR-AUTHORITY-PASS",
+  "world_sha256": "f306120fdd548b6d4cc1d3915a13ae8cbe7848b162caa78528add353b9cb3f32",
+  "world_source_sha256": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+  "canonical_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "creator_public_hex": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8",
+  "runtime_owner_rejected": true,
+  "tampered_signature_and_body_rejected": true,
+  "signatures_created": 0,
+  "private_key_loads": 0,
+  "physical_verified": false
+}

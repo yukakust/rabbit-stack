@@ -1,0 +1,15 @@
+{
+  "status": "ACTUAL-READONLY-CLI-OLD-QUERY-CORRECTLY-REJECTED",
+  "reason": "new actual world18 query must be fresh<=300s; no oldreceipt age reset",
+  "actual_wall_clock_used": true,
+  "input_observed_at": 1791368519.70359,
+  "observation_age_seconds": 4157.660365104675,
+  "candidate57_checks_passed_before_freshness": true,
+  "gate_sha256": "0c59f99aa5580c9c87a4115518dd7fff283a9d2ac3f89a0c2c4948a6615e77a8",
+  "physical_admission": false,
+  "clock_override": false,
+  "private_key_loads": 0,
+  "signatures_created": 0,
+  "state_written": false,
+  "radio_operations": 0
+}

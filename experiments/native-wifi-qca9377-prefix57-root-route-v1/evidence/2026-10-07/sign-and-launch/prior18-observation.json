@@ -1,0 +1,19 @@
+{
+  "observed_at": 1791372884.046435,
+  "writes": 0,
+  "receiver": {
+    "outcome": "applied",
+    "state": 2,
+    "error": 0,
+    "received": 2128,
+    "length": 2128,
+    "counter": 18,
+    "sha256": "f306120fdd548b6d4cc1d3915a13ae8cbe7848b162caa78528add353b9cb3f32",
+    "session_matches": true,
+    "raw_hex": "52465301c5309d3e7789277450080000500800000200000012000000f306120fdd548b6d4cc1d3915a13ae8cbe7848b162caa78528add353b9cb3f32",
+    "device_attestation": false
+  },
+  "native_counter": 56,
+  "world_counter": 18,
+  "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF"
+}

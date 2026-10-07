@@ -1,0 +1,12 @@
+{
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-prefix57-root-route-v1/runs/prior56-world18/query-0.log",
+      "log_sha256": "9da537e466b3de4ec375c42192964810391942336ca04eaae4badd27d84febe9"
+    }
+  ],
+  "purpose": "fresh exact prior56 world18 root admission",
+  "status": "QUERYING"
+}

@@ -1,0 +1,52 @@
+{
+  "status": "CONDITIONAL-PREFIX57-PUBLIC-PREPARATION-BINDINGS-PASS",
+  "candidate": {
+    "candidate_report_sha256": "c362eb73bdfa96cef85962db9d625d6aa9664476f8b47b44fb60756f6f5099d1",
+    "payload_sha256": "9c63e6622c10190a8a17de2ff01ee03f72de95e93fd7326ca4da6e2c429be161",
+    "payload_bytes": 150528,
+    "mapped_bytes": 4083712,
+    "source_count": 417,
+    "native_report_sha256": "fde93615e7ce540f3ed6e01a6ab22a73eb4c6bf3769fe4ff0e83a4cc03be55df",
+    "profile_status": "BOOT-PREFIX57-REPEATED-EFI-QEMU-WORLD18-DIAGNOSTIC-PASS",
+    "counter_candidate": 57,
+    "private_key_loads": 0,
+    "physical_admission": false
+  },
+  "baseline56": {
+    "plan_path": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/native56-city-recovery-plan",
+    "plan_report_sha256": "437ef5c35d623f26380d9f78f70a004548e41b889e6e11216a643169e654ba79",
+    "payload_sha256": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+    "packet_sha256": "dbb0c8b918c924386cbcf959a63cabd1c456c42f2121d23c43c333e5b685f09d",
+    "world_session_id_hex": "c5309d3e77892774",
+    "world_package_bytes": 2096,
+    "world_stream_bytes": 2128,
+    "one_saved_signed_packet_verified": true,
+    "signer_invocation_count_proved": false
+  },
+  "retirement55": {
+    "retirement_sha256": "9b6dd7f431d1eec131cd808a552ecbe8bcaf80519669641d567f96ba0d74233f",
+    "historical_reboot_empty_verified": true,
+    "actual_all14_owner_release_claimed": false,
+    "raw55_lost": true
+  },
+  "fresh_world18": {
+    "observation_age_seconds": 0.09723281860351562,
+    "query_log_sha256": "9da537e466b3de4ec375c42192964810391942336ca04eaae4badd27d84febe9",
+    "receiver_counter": 18,
+    "device_attestation": false
+  },
+  "state_sha256": "677c58d78c3530a71489d6389c3c34b5d7e7c216b15470a73b5e07fe416cf542",
+  "observation_sha256": "9a3a0f3988d54cd09f4c8441b590e6e205a16164d06fac80c0a76304263ee740",
+  "query_report_sha256": "9b6386c67764cff2401de7ae048eeecfde17eb2545bdff1edd7e6162366d2cd5",
+  "physical_admission": false,
+  "operation_lock_review_required": true,
+  "fresh_root_observation_required": true,
+  "counter_reserved": false,
+  "signed": false,
+  "sent": false,
+  "private_key_loads": 0,
+  "state_written": false,
+  "device_operations": 0,
+  "station_ready": false,
+  "wifi_connected": false
+}

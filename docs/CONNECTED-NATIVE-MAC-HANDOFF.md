@@ -5011,3 +5011,36 @@ file/outputdir ownership. Sourceworld18.json copiedpublic: canonicalfa5,
 decodedpacketdropsnames(hashdifferent). Signaturecreator03a107...531b8,
 NOTnativeowner622b. Frozenobserver-v1 worldauthoritywrong; NEWv2 beforeactual
 read, no silentfrozenedits. Native56RRT stillowner622b. No57sign/BLE/reservation.
+
+### 2026-10-07: frozenprefix57 admitted/signONCE; sequential physical launch
+
+Finalprefix57 reportc362eb73bdfa96cef85962db9d625d6aa9664476f8b47b44fb60756f6f5099d1,
+EFI150528 SHA9c63e6622c10190a8a17de2ff01ee03f72de95e93fd7326ca4da6e2c429be161,
+mapped4083712;3equalEFI+actualnormal/EMPTYsupervisorQEMU EXACTworld18+ASAN.
+417sources/162generated/native8 actualdriverPCI/CE/USB/frame/status/clock/ATT
+models, no134thMAIN/BMI_DONE/HTC; rootcandidate gateactual269casesPASS.
+Rootnewknownpeeractualworld18zero-writequeryconfirmedf306/current56, genuine
+freshobservation +unchangedstate/owner/target/source/gates underlock beforekey.
+LocalSIGNONCE saved pci-native-bq9nq_ik; native57notyetAPPLIED atrecord.
+Firstpacedstage300stimeout after77900; genuinequery80300/150816 retained,
+secondresumesSAMEsignedsession to88500+; no resign or discard.
+
+SoleforegroundnativePID4153 execsession73398; continuationPID4424/caffeinate
+waitsfor4153exit beforeANYBLE, root-route-v1/continue57.py andruns/control/
+controller57.json/continue57.log. Itresumesexactnativebounded6, thenfreshQPD18
+initialall14setup/ROM/teardown gate andnewgen57fullfirmware13? EXACT12packets
+signedONCE byassetprepare. No actualfirmwaresession yet atrecord; statepriority.
+Controllerassetresume30bound+samepacketfloor(nopeer typo), stop2no-progress,
+no otherBLEowner. Afterall12 accepted wait660squiet(30ssteps) toavoidnormal
+connect/disconnect fillingprotectedHCI4 duringboot, thenobserver-v2all10pages2x/
+3status underoperationlock. ContextschemaPREFIX57-PUBLIC-CONTEXT-2 corrected
+beforewaitingcontroller launch; oldwaitingno-radio4327replaced, nochildoverlap.
+
+Native modelprintf OWNERS=get(240) is aPCIconfigword, NOTactualowner count;
+rootreviewreliesactual14allocation/free/unmap assertions+240statusall14release,
+notthatmislabel. Frozen reportradio_backend MOCKUSBONLY describesmodel backend;
+productioncompile has noRABBIT_PREFIX_DRIVER_MODEL flag, realUEFIUSB remains.
+Newobserver-v2 propercreator03a1+sourceJSON, frozenv1 retainedNOTforactualread.
+Raw55lost acknowledged, no old55firmwarereplay; partialchipstate after57stop
+NOTROM-ready proof, nextreuse requiresfreshcheckedchipreset. No additional
+Dellrebootauthority. World18 preserved, credentials/privatekeyneverexported.

@@ -1,0 +1,24 @@
+{
+  "status": "HOST-ONLY-PREFIX57-OBSERVER-PREFLIGHT-AND-PARSER-PASS",
+  "actual_bluetooth_operations": 0,
+  "private_key_loads": 0,
+  "signatures_created": 0,
+  "state_reads_or_writes": 0,
+  "device_attestation": false,
+  "full_positive_context_tested": false,
+  "physical_verified": false,
+  "source_sha256": {
+    "collect.py": "fbda59a98c81062f1d09e80243d5ed79e385f4a21920027f903072b25145ba50",
+    "read_prefix.m": "6b3a60324a3947b33cedb13e71abfa408ba43a1da22f95648db6f13fcc3200b6",
+    "decode_prefix.py": "65fe2fb9451ae5be2333cacbd87af37f509f051d21efe04efbb25f23b6cadd2a",
+    "test_decode.py": "15fecdd49dae9c81eaef4ded486e21da258aadc23fc0560c161586ab8b11dee7",
+    "README.md": "ea87305c068fce60a3714ca0871b4df97bd0fc4c570a8e71702ac30496c58113",
+    "context.py": "3ff19504bfed5aafdfd990ca04201f7a3b4c100635818946080ef1c037c9883b",
+    "test_context.py": "ca9467999c95fd924ca9c40baf0b174f248bad11cf800e704f4e5baca616d046"
+  },
+  "log_sha256": {
+    "mac-preflight.log": "36f508aa7133508b30ebe00aa00c3dcb070ae42bac419d5690c37f280790fc85",
+    "context-tests.log": "cbe4b84d897ac017db0552ccb3a31855ff0fb172bc344c967c4c4c92eb19e624",
+    "parser-tests.log": "209637c5270ea62667d3505f25f6e8e713fd220b3020983b799e40ff6ae4138a"
+  }
+}

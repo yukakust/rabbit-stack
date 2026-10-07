@@ -1,0 +1,26 @@
+{
+  "status": "HOST-ONLY-PREFIX57-OBSERVER-V2-PUBLIC-WORLD-AUTHORITY-PREFLIGHT-PASS",
+  "actual_bluetooth_operations": 0,
+  "private_key_loads": 0,
+  "signatures_created": 0,
+  "state_reads_or_writes": 0,
+  "device_attestation": false,
+  "full_positive_context_tested": false,
+  "physical_verified": false,
+  "source_sha256": {
+    "collect.py": "fbda59a98c81062f1d09e80243d5ed79e385f4a21920027f903072b25145ba50",
+    "read_prefix.m": "6b3a60324a3947b33cedb13e71abfa408ba43a1da22f95648db6f13fcc3200b6",
+    "decode_prefix.py": "65fe2fb9451ae5be2333cacbd87af37f509f051d21efe04efbb25f23b6cadd2a",
+    "test_decode.py": "15fecdd49dae9c81eaef4ded486e21da258aadc23fc0560c161586ab8b11dee7",
+    "README.md": "a8fa336428211aca3ef5da5e20f3747275bbde94b8cabde9e0cfc92976698de2",
+    "context.py": "a17b73c01fbcab84a8f1634ffc6941168c79ffed5045028871edc73ccbd4986b",
+    "check_world_authority.py": "7e6d6c68404185a6c7e72c8b364be374319be81ffd4c4d082cf9b34442421830",
+    "test_context.py": "b24f9bd216caab6bdf045638918c92f1f0559d2c43d02bb84bb4e13344e5575b"
+  },
+  "evidence_sha256": {
+    "mac-preflight.log": "36f508aa7133508b30ebe00aa00c3dcb070ae42bac419d5690c37f280790fc85",
+    "context-tests.log": "6f283ee6225d2cef4c0127d95456a6f954c45141c92b97dd89016cb1c630e8f4",
+    "public-world-authority.json": "3e25f2240001516bf0e82ae5771e4befbc209e7204b9b61fd70bd97e8108a40a",
+    "parser-tests.log": "0d6653413f55f7cf64dbfab59b6b29c640ade8e63585414ab2a44a0892a5ed0a"
+  }
+}
