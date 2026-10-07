@@ -1,0 +1,18 @@
+{
+  "status": "LOCAL-SOURCE-AND-COPIED-HOST-EVIDENCE-BINDINGS-VERIFIED",
+  "sha256": {
+    "NOISE-LICENSE.txt": "f2c0cc36aa63c383fd1669b63eff210ee8cabb304dd818a9f442d93906eff587",
+    "README.md": "5f863745e1f4c03bce4e106f250af74258d461e3a0c73412cb6016556a556484",
+    "backend_entropy.h": "cbc02ff81fd02ddeacb714da28aac6a71f5d07a3bedc9ca3787990e1c3310111",
+    "cipher_monocypher.c": "b1559266548c82b77df10f8167d5d86bc2cc9490cc1d4504f7de0d6d92b3c790",
+    "dh_monocypher.c": "4625b9203171bbee1341e3717d099112d29dfa0fc1d4cc8ae190aadf43401a2a",
+    "differential.h": "da85a28ba898dcf1a5e4cb062e6ef3ffc9198d34175d9c978a625b34ee837d64",
+    "evidence/2026-10-07/host.log": "b38b8fcb4ddca314e4931265631479ef9adf23ea935cf7060a3744ebfd876ff9",
+    "evidence/2026-10-07/report.json": "e98cbb33ea282e5a45e14a8a9261bbe9d7c803e0afd81b44cfbb1a717bee37d8",
+    "noise_dummy.c": "ccbc15c5b96b53ed76a212980c00fc2b7c89abc2f2c0b4b0dbcd9884e56db985",
+    "noise_vector.h": "09b4cb8df36f87b9d04209cf5015ca7f0f1ae0e4a98618495bbf6a47b4f012fe",
+    "strict_handshake.h": "1b211a0f15077c4c8c6eb9081ffe451f1b26c34542f5365a2b34e123b2a2bb6b",
+    "verify_backend.py": "69429173b50e204f831e3063848078d1495b0b76e942b9fe733474343558ebbe"
+  },
+  "physical_or_secret_actions": false
+}

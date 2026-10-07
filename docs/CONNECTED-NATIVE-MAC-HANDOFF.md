@@ -4722,3 +4722,19 @@ mixeswipedzerotransientlyevenonerror; doNOTclaimnointernalKDF, prohibitfailed
 stateuse. Realcredentials/keys/signatures/device/provisioning untouched.
 Upstreamconstructorerror mayleavenonnullalreadyfreedoutput: nativewrapper
 MUSTnullerroroutput, neverfree/dereferenceit. No liveprotectedchannel yet.
+
+### 2026-10-07: strict Noise backend2 proof reviewed (no native admission)
+
+Newnoise-monocypher-backend-v2 preservesv1source/proof. Rootverified source/log
+bindings for3,672,981ASAN/UBSAN checks onYukabox: validpublishedNKvectors still
+byteidentical, allzero/low-orderDH rejected+wiped, nulls_allowed0 preventscore
+erroroverride. Actualfailedhandshake output0/FAILED, Splitforbidden. Upstream
+transientmix_key-on-wipedzero stilloccursbeforeerror; no claimabsenceofKDF.
+NoCOFF/fullEFI/allocator/actualRNG/ownerAUTH/physicalfingerprint/provisioning
+claim; no realkeys/credentials/signatures loaded.
+
+NextNEWnoise-native-port-v1 HOST-ONLY actualunchangedlibrary/compactbackend
+withboundedownedarena, constructorerrornulling/no doublefree, cleanupwiping/
+quarantine andborrowedreviewedrng-port-v2; explicitMS-x64COFF portability.
+NoUnixrandomfallback oractualdevice/providerapproval. No counter/candidate/
+hardware/state/privatekeys. Solephysical55controller61367 unaffected.
