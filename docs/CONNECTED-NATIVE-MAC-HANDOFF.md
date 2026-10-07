@@ -4906,3 +4906,19 @@ reboot, genuinefreshEMPTY0, archiveandretireexact55lostRAM(noall14/rawproof),
 guardedplaincity56/world18signonce/restore receipts+physicalcitytail. FullRAM
 firmware mustredeliver later; Bluetoothrecoverynotguaranteedbyhostproof.
 OfflineHTT56unconsumed; ifcity56used futureHTTneedsnewcounter. Waitowneranswer.
+
+### 2026-10-07: owner authorized controlled manual reboot; awaiting confirmation
+
+Human explicitly said“разрешаю, но разве это не я должен делать??”after root
+reviewPASS/permissionquestion. Rootrecordedauthorization boundexactbefore-state
+SHA89711c57e22e8771a10d5adee7b323f501fba9b4406c89737babcac5e8c6916e,
+actioncontrolled-dell-reboot-for-native55-recovery. Savedruns/owner-recovery/
+authorization.json andevidencecopy; timestamp/hash authenticuserreference.
+Exception permits ONLYthiscontrolledrecovery, notfutureautomaticreboots.
+Rootexplainedphysicalreset mustbedonebyuser(no remote power capability), then
+human“перезагрузил”confirmation needed BEFOREactualreboot observation/EMPTY.
+0812heartbeat exactstateunchanged/noactiveBLE/noobservationyet. Permission
+isNOTrebootproof; no pendingretirement/signature/transmission alloweduntil
+confirmation+genuinefreshknownpeerEMPTY0. DoNOTrepeatpermissionquestion.
+Nextuserrebootconfirmation: recordactualtime, freshquery/log, strictrootroute
+retire/admit/guardedprepare56 thenoriginalrestore exactsavedpackets.

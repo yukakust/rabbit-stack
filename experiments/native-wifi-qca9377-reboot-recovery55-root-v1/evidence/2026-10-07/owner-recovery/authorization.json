@@ -1,0 +1,9 @@
+{
+  "action": "controlled-dell-reboot-for-native55-recovery",
+  "explicit_owner_authorization": true,
+  "native_counter": 55,
+  "state_before_sha256": "89711c57e22e8771a10d5adee7b323f501fba9b4406c89737babcac5e8c6916e",
+  "authorized_at": 1791360358.4644978,
+  "owner_message_reference": "current chat human: разрешаю, но разве это не я должен делать??",
+  "reboot_performed": false
+}
