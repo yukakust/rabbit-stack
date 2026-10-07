@@ -1,0 +1,6 @@
+{
+  "status": "EXACT-ACTUAL55-ARCHIVED-STATE-PUBLIC-BINDING-PASS",
+  "before_state_sha256": "89711c57e22e8771a10d5adee7b323f501fba9b4406c89737babcac5e8c6916e",
+  "reboot_authorized": false,
+  "state_written": false
+}

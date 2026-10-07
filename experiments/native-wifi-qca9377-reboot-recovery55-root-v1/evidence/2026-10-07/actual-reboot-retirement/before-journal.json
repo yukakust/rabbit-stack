@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "requests": [
+    "2ecaf0169622463cb365cc76e08018f2",
+    "9ee3a9ca93b746fab50a15af8c50cad6",
+    "4123b5ab48144e9aa09f22060e7e2830",
+    "be610cbfeecc47a7b094b93707de19e4",
+    "cd702b0ef80843c08fe54836c160f87b",
+    "33465d109f924f4ab1d4ccaf66b6bc00",
+    "344fd6778ea74b549c9ec75f59414a7b",
+    "9b96e91d81c346cea5cbea3793a31d21",
+    "38ec29ea66ea4bd3a4ff5bdf01935c5b",
+    "8a4b49fe0ce7423a9cb67bade41c7dd9",
+    "e89617582d0a41c79590d26b1d951070",
+    "d8acb167bc674feab9fe28a635c2b309",
+    "1ea6ef03261d495d92abed518e53c704",
+    "5e4b061b48464b7c945cc4cca6fe883b",
+    "a83860a9190a4117b0c274b7527e8e19"
+  ],
+  "active": null,
+  "versions": [
+    {
+      "id": "initial",
+      "request": "Исходный кот в шапке",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-0866els1/world.json",
+      "world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-0866els1/world.rup",
+      "package_sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+      "world_counter": 3,
+      "native_counter": 3,
+      "background": "121826"
+    },
+    {
+      "id": "2ecaf0169622463cb365cc76e08018f2",
+      "request": "Сделай фон тёмно-синим 203050. Кота, шапку и движение не меняй.",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-0866els1/world.json",
+      "world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-0866els1/world.rup",
+      "package_sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+      "world_counter": 3,
+      "native_counter": 4,
+      "background": "203050"
+    },
+    {
+      "id": "9ee3a9ca93b746fab50a15af8c50cad6",
+      "request": "Восстановить версию initial",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-0866els1/world.json",
+      "world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-0866els1/world.rup",
+      "package_sha256": "8761fa34ce8af4365864f7b668cd66e5a3ecede02ac81a5a0edabbcbf37b71c3",
+      "world_counter": 3,
+      "native_counter": 5,
+      "background": "121826"
+    },
+    {
+      "id": "4123b5ab48144e9aa09f22060e7e2830",
+      "request": "Добавь маленькую мышку справа от кота в шапке; пусть кот её догоняет. Сохрани кота и фон.",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-ybxzh6mv/world.json",
+      "world_sha256": "d6d7a6df8152617c1d3fae013999355edec0ec8a2642b1d25aaf5f1123959460",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-ybxzh6mv/world.rup",
+      "package_sha256": "6156cd3385b8a064f8307e00ae547ef733337fc1ede8bc03bc729f84c24d4c73",
+      "world_counter": 4,
+      "native_counter": 5,
+      "background": "121826"
+    },
+    {
+      "id": "be610cbfeecc47a7b094b93707de19e4",
+      "request": "Восстановить версию initial",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-9rgnbciu/world.json",
+      "world_sha256": "b8379392c9c34a0d5050430cb03aadeb696b89fa570254c6e33bc6edd4b98af9",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-9rgnbciu/world.rup",
+      "package_sha256": "b27d1c33d7a3b60d9ac92095b498905dedc802ea17473aa6265d9fdff28ef3b2",
+      "world_counter": 5,
+      "native_counter": 5,
+      "background": "121826"
+    },
+    {
+      "id": "cd702b0ef80843c08fe54836c160f87b",
+      "request": "Кот идёт вдвое быстрее. Шапку и фон сохрани.",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-13yeqc6r/world.json",
+      "world_sha256": "cf4c5e7695a567cdde11bfc01f57d850035abd409d0f204f8d45a98f8660a8f4",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-13yeqc6r/world.rup",
+      "package_sha256": "b616a128f37e96add5478cb8196879ed9bc44d69d64df823bb7eaf2c9daf1d4e",
+      "world_counter": 6,
+      "native_counter": 5,
+      "background": "121826"
+    },
+    {
+      "id": "33465d109f924f4ab1d4ccaf66b6bc00",
+      "request": "Добавь коту ещё пожалуйста мышку",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-l52otmzs/world.json",
+      "world_sha256": "f23221209136181ccb4f34cb2103ca59f09669a15f0c0a70399d7984da217de9",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-l52otmzs/world.rup",
+      "package_sha256": "f0aa574eab53d00c72da60a48e5f67651beb4d0ac868c538cd857546827faf76",
+      "world_counter": 7,
+      "native_counter": 5,
+      "background": "121826"
+    },
+    {
+      "id": "38ec29ea66ea4bd3a4ff5bdf01935c5b",
+      "request": "Замени только рисунок существующей мышки на детальную гладкую коричневую мышку из каталога, без пиксельного стиля. Покажи её размером 40 на 40, внутри экрана. Кота в шапке, его скорость, фон и поведение мышки сохрани.",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-767hcena/world.json",
+      "world_sha256": "69884c522068fc6bc35d54204e3517c7c55f2bd51beb57d6c43ac43427804f47",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-767hcena/world.rup",
+      "package_sha256": "1cce0f120a5f7a9359451ca5bba901c76361f8398fd331d27a8a6e46561d9537",
+      "world_counter": 8,
+      "native_counter": 5,
+      "background": "121826"
+    },
+    {
+      "id": "8a4b49fe0ce7423a9cb67bade41c7dd9",
+      "request": "Создай первый 3D-мир: улица с пятью домами на весь экран.",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-j_g41mbg/world.json",
+      "world_sha256": "028e09c2f80b23f649900b86efa2febdaaf04b478744a2582f0f8c09ccf392a8",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-j_g41mbg/world.rup",
+      "package_sha256": "269b1ee529e6d68ce54d2f5229499b16fb004f5a4aefe3bac29358fda0c9d790",
+      "world_counter": 9,
+      "native_counter": 6,
+      "background": "121826"
+    },
+    {
+      "id": "e89617582d0a41c79590d26b1d951070",
+      "request": "Добавь ещё один дом справа от улицы. Все существующие дома, улицу, цвета и камеру сохрани.",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-f5j958er/world.json",
+      "world_sha256": "5ded4584ff2b9f62b6ec738b10032f9fee2e7c2436987d9c720357c1521d9fdc",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-f5j958er/world.rup",
+      "package_sha256": "7dcccc1c82783e2c8bb61327f78171f76f88df0dffede4103d5785a665074306",
+      "world_counter": 10,
+      "native_counter": 6,
+      "background": "121826"
+    },
+    {
+      "id": "d8acb167bc674feab9fe28a635c2b309",
+      "request": "Продвинь камеру вперёд по улице на 2 метра. Все здания, улицу, цвета и направление камеры сохрани.",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-cxjw3mik/world.json",
+      "world_sha256": "320cf795fd7ea99fc6d5779e034301cbda7b4f90a3a4b73b8c559bd76b59c17e",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-cxjw3mik/world.rup",
+      "package_sha256": "65be69f96606865ee43985ee1df03257d8e69a956eb5c645edac61b0ecfd966c",
+      "world_counter": 11,
+      "native_counter": 6,
+      "background": "121826"
+    },
+    {
+      "id": "a83860a9190a4117b0c274b7527e8e19",
+      "request": "пусть котик сидит на крыше одного из домов, свесив хвост и болтая этим самым хвостом и раз в 10 секунд улыбался, а через 1 секунду улыбка пропадала. Сохрани все дома, улицу, цвета и камеру.",
+      "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-suafjbbp/world.json",
+      "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+      "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/edit-suafjbbp/world.rup",
+      "package_sha256": "6414d1bae588acfef261d8c6befc8fc1edb96fb76892a33c47f8d3b2c05bb180",
+      "world_counter": 12,
+      "native_counter": 7,
+      "background": "121826"
+    }
+  ]
+}

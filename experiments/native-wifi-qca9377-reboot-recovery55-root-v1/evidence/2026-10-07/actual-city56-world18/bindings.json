@@ -1,0 +1,33 @@
+{
+  "status": "PHYSICAL-EXACT56-ENGINE-AND18-WORLD-RECEIPTS-CONFIRMED",
+  "sha256": {
+    "query.log": "ecabec05d54d7c4da72e65bdefbbfb5002081dbb4dee5349055754061be933c5",
+    "after-state.json": "677c58d78c3530a71489d6389c3c34b5d7e7c216b15470a73b5e07fe416cf542",
+    "observation.json": "5d079cc787ae9960376c424d839876d7818c6d6bdcaaa57dd847690aaa4dbd7d",
+    "human-reboot-confirmation.json": "48297f01479ca3780e5b1549712664e515833c7a03b15f10698acc39dbd4fdba",
+    "authorization.json": "d60bbcb5fdef55e3d0532e719f40a5c5aa1d85a629f347dc24c1d2cc67fe658f",
+    "active-plan.json": "097221128542cc1e8f1b3be97f40d6033d726a7c54a7adb93ef5e97d2801e507",
+    "admission.json": "c0df06f434f9d2cf3f1497346ec8d9402d18704bc687dff7d312fd66264d9d76",
+    "saved-plan/commit-2.log": "99f87556cf8ec481b15ec7abfaaf363cc46abb32326fdf0760bb37bbfc05b1e7",
+    "saved-plan/paced-stage-1.log": "de4be96dd3bd6ae43d4038aedeb529cf16c8e56a07b27ab53be666d35395eca0",
+    "saved-plan/session.json": "efdd6ae25b2ef0e4191757ff1926ffbf0bdec98aa1f4eaa604b0cb6b96a1fbd4",
+    "saved-plan/before-state.json": "5be4795e8897ff61e40ed849e75ee9dcf93d9a45eff76c486fd7f5b4cd9ffd76",
+    "saved-plan/plan.json": "b7ec564c0762116d9c62041f90f5e2a77dcccb12acfcacfb9f9ace823cb4d244",
+    "saved-plan/report.json": "437ef5c35d623f26380d9f78f70a004548e41b889e6e11216a643169e654ba79",
+    "saved-plan/world.rup": "f306120fdd548b6d4cc1d3915a13ae8cbe7848b162caa78528add353b9cb3f32",
+    "saved-plan/world-session.json": "39ae1b13e3e732997f842e79de3e467e3c3a07dc2eb1901fe46cef7222ba905e",
+    "saved-plan/payload.efi": "0fb9fa6c1c307e8ca0fe51b4b29e3cd815c3e2881f9c1ceba6d01d80ce52b4ce",
+    "saved-plan/query-0.log": "2464cb431ea5c1506d14db8bebf0434a8309dce30f39801626d96f67abbf241b",
+    "saved-plan/native.rrt": "dbb0c8b918c924386cbcf959a63cabd1c456c42f2121d23c43c333e5b685f09d",
+    "saved-plan/world.json": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91",
+    "saved-plan/restored-world/commit-2.log": "7cec0c71f9b2ad76ad5470e1fddd5ab8b6909bdec0ce9761a64752e5c8e7ee11",
+    "saved-plan/restored-world/paced-stage-1.log": "942215446410ffe36d34859ed81c8882baca3ca689bbe94abccd9c0deaff9225",
+    "saved-plan/restored-world/session.json": "39ae1b13e3e732997f842e79de3e467e3c3a07dc2eb1901fe46cef7222ba905e",
+    "saved-plan/restored-world/report.json": "19281f391122b94c4ea78112cd1ae64c35c3d2ec383544c96e5593318664f358",
+    "saved-plan/restored-world/world.rup": "f306120fdd548b6d4cc1d3915a13ae8cbe7848b162caa78528add353b9cb3f32",
+    "saved-plan/restored-world/query-0.log": "cedf429690f0ea5b8086148e4b85d64ca8f25d699ec601425cef03f0b3a2e0e6",
+    "saved-plan/restored-world/world.json": "003718a57ed4d3ca5a5d5b6c3770af6538c6071f7bea4953bec0d4a618021b91"
+  },
+  "visual_confirmation_pending": true,
+  "wifi_connected": false
+}

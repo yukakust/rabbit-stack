@@ -1,0 +1,15 @@
+{
+  "status": "PLAINCITY56-OWNER-REBOOT-RECOVERY-READONLY-ADMISSION-PASS",
+  "state_sha256": "5be4795e8897ff61e40ed849e75ee9dcf93d9a45eff76c486fd7f5b4cd9ffd76",
+  "journal_sha256": "15755161641fedb39ffa305a897d7695e61d8a13019d3e8cfc976045395faebe",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-reboot-retirement55-v1/runs/plain-city56-retry1",
+  "gate_sha256": "02a4624d3c52de98a66ec5a4a0f1bef57ca1206dfefcd27026115511e5765039",
+  "native_counter_candidate": 56,
+  "world_counter_candidate": 18,
+  "physical_admission": false,
+  "signing_performed": false,
+  "device_writes": 0,
+  "private_key_loads": 0,
+  "old_htt56_consumed": false,
+  "next_action": "ROOT separately rechecks identical state/journal under original prepare lock, then existing reboot_recovery.prepare; never direct native55 replay"
+}

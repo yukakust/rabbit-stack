@@ -4922,3 +4922,27 @@ isNOTrebootproof; no pendingretirement/signature/transmission alloweduntil
 confirmation+genuinefreshknownpeerEMPTY0. DoNOTrepeatpermissionquestion.
 Nextuserrebootconfirmation: recordactualtime, freshquery/log, strictrootroute
 retire/admit/guardedprepare56 thenoriginalrestore exactsavedpackets.
+
+### 2026-10-07: owner reboot actual; Bluetooth restored; city56/world18 applied
+
+Humanconfirmed“перезагрузил”. Rootactualknownpeerzero-write freshEMPTYcounter0
+receipt/log boundauthorization/reboottimestamp. Reviewedrootroute actualretire
+archives55native/full12signedassets/world17/BOOT/discovery beforeatomicpending
+retirement. Raw55unexportedlost, NOall14release/scan-successclaimed. Original
+signed55reports/payload/packets unchanged; no oldfirmwarereplay.
+
+Rootread-onlyadmissionPASS then guardedprepare56localowner SIGNONCE exact
+native56-city-recovery-plan, usingYukaboxplaincity199closure/gates. Original
+restore freshEMPTYgate +pacedstage47904/commit reconnect => genuineexactAPPLIED56;
+restoredworld2128/commit=>exactAPPLIED18. reportAPPLIED engine_done/world_done true.
+Semanticfa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74
+unchanged, worldpackagef306120fdd548b6d4cc1d3915a13ae8cbe7848b162caa78528add353b9cb3f32.
+State native56/world18 allpendingnull. Allrealreceipts/savedplans archived
+root-v1/evidence/2026-10-07/actual-city56-world18. No activeBLEcontroller now.
+Humanphysicalcity/tailconfirmation requested; notinferredfromreceipts.
+
+Currentengineplaincity56 hasNO WiFiprobe; prior55firmwareRAMlost. HTT56offline
+nowobsoletecounter iffuturedeployment; derive newGEN57 ONLYnewproof/source.
+Beforeblindfulltrial rootparallel link-loss55-review-v1 investigates specific
+BLElossduringphase17mainFWloading withlivecity; causeunproved. Noadditional
+rebootauthority, USB/bootstrap untouched, credentials/privatekeyneverexported.

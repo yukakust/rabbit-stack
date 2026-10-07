@@ -1,0 +1,21 @@
+{
+  "owner_confirmed_reboot": true,
+  "observed_at": 1791368213.086153,
+  "reboot_confirmed_at": 1791368210.3901088,
+  "authorization_sha256": "d60bbcb5fdef55e3d0532e719f40a5c5aa1d85a629f347dc24c1d2cc67fe658f",
+  "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+  "writes": 0,
+  "receiver": {
+    "outcome": "idle",
+    "state": 0,
+    "error": 0,
+    "received": 0,
+    "length": 0,
+    "counter": 0,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": false,
+    "raw_hex": "524653010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  },
+  "log_sha256": "ecabec05d54d7c4da72e65bdefbbfb5002081dbb4dee5349055754061be933c5"
+}
