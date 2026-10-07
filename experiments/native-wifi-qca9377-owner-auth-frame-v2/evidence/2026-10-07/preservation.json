@@ -1,0 +1,30 @@
+{
+  "native-wifi-qca9377-owner-auth-frame-v1": {
+    "report_sha256": "f6075fb68bc4306bf6cad2d005955a2ee515f3376d82fdef019d48ebbc87a6d4",
+    "checks": 1538,
+    "source_sha256": {
+      "auth_frame.c": "a0cea1e95eb0b55d6dab9617abb87bcc1b0c801eb0efc964ea95079ba7c264b4",
+      "auth_frame.h": "9a07037b069a65640249468d1c4c59f4a483c30b689c8df31f81a3d82f6038b9",
+      "auth_test.c": "1dad9c02e0318b1d15f033522a0af4d131d44660a13a3bb84d10496eb31da311",
+      "factory.c": "d1e35d248659d939626a29dd6d75614a05ce832b433419a8707b1d6191618166",
+      "verify_auth.py": "c25defa1cbed8877736b047f6527cc5a0d6428d7001095d30605ef42a7cd7cc2",
+      "compat/malloc.h": "141b6dc79b8b3c96ebd6c2a9a7cb8d278cc82361ecabdc21269bc4aaf579a794",
+      "public-fixture-request.json": "650a8f19771434be4815469307877b0eb906360775f242121b20c72a6458a4ff"
+    }
+  },
+  "native-wifi-qca9377-owner-auth-frame-v2": {
+    "report_sha256": "0271b42d8fa7b1fa7cc39f11da4a12394810037ab1fe031c49168ec3507a08f9",
+    "checks": 2650,
+    "source_sha256": {
+      "auth_frame.c": "a0cea1e95eb0b55d6dab9617abb87bcc1b0c801eb0efc964ea95079ba7c264b4",
+      "auth_frame.h": "9a07037b069a65640249468d1c4c59f4a483c30b689c8df31f81a3d82f6038b9",
+      "auth_test.c": "7b408ee9378128794894f3c94cf75bb71d6f32cc6739d31c7b6fbcb74f0028ac",
+      "factory.c": "69cd3f3335ad590b2ba3ff902339346ae2ce278483dcabc896bca5a820df6a67",
+      "verify_auth.py": "1825db2eea259326ccdd29e2bfb80431bcb212117ef365d313e9cc7ca917755d",
+      "compat/malloc.h": "141b6dc79b8b3c96ebd6c2a9a7cb8d278cc82361ecabdc21269bc4aaf579a794",
+      "public-fixture-request.json": "650a8f19771434be4815469307877b0eb906360775f242121b20c72a6458a4ff",
+      "fixture_noise.h": "088da148d7c9fb304f6dc0d33ce25cbd46345269f8da8ad39329ca5dc4437b36",
+      "fixture_probe.c": "a7fdc2bff748eabb1be4a3b0699b2bd0d219ab267a61ec993fc3df0ebc57a7e4"
+    }
+  }
+}

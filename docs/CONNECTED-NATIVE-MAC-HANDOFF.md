@@ -4801,3 +4801,22 @@ Waiter metadata/log runs/control/resume-observer-v2.*. No signing/newfirmware,
 credentials/reboot/worldchange. Timeoutcause still unknown; last successful
 BOOT completed258,phase17; repeated disconnect/60stimeout. Stage2 diagnosis
 will distinguish connection wait from slow service/read;120s not connectionproof.
+
+### 2026-10-07:120s proves connection-stage stall; fresh scan prepared
+
+Observer-v2 activated solePID78295 after63271 exited; repeated120s timeouts
+stage=connect-cached-peer, BEFOREservice/envelope. Longerread not sufficient.
+NEWread_boot55_v3.m/py scans fresh advertisements(no cachedconnect), knownpeer
+only allowedconnection, logs genericadvertisement arrival+knownRSSI,120sbound,
+160byteexact/read-onlyvalidation. Compiled/preflight only sofar; MUSTwait78295
+andallchildren exit beforev3read. No signing/firmwarereplay/hardwarechange.
+
+Root reviewed owner-auth-frame-v2 hashes/log2650ASAN/COFF actualpublishedNK/
+Split/context+realEd25519 PUBLICdummyAUTH→encryptedACK. Frozenadapteridentical
+v1. Realphysicalpin/RNG/keys/nativecredentials remain unapproved.
+
+Runtime-efi-proof-v1 rootsource/logbindingschecked: genuineNK/wipe/mockRNG/
+stackshim QEMUpositiveexit33 andMACtampernegativeexit35. WholeRabbitoffline
+composition220160file fits BUT mapped4206592>immutable4194304 by12288;
+REJECTED/noadmission. Requires reviewed callerownedarena placement, notlimit
+bypass. Oldnative54 reproduced byteexact; no countersigning/devicechanges.
