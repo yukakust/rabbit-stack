@@ -4536,3 +4536,33 @@ Candidate meanseligibility, NOTauth/association ornetworkready. Credentials
 untouched. NextHOST-ONLYhtt-native-v1 actualPCI/CE/DMA owneradapter/model
 delegated: exclusiveCE1completionowner, CE4versionquery, nosecondRXowner,
 bounded3s andall14checkedquiesce/export. No hardware/candidate/signing.
+
+### 2026-10-07: all54 assets accepted; HTT actual-owner adapter reviewed
+
+Sole52976 live; exactfirmware54 g9g89amj all12acceptedbitmap4095/RAMready1.
+Actualchipmainloading advancingoffset121024/submitted667/completed667 at
+heartbeat, noerror, real14owners+pin retained. No otherBLEowner orassetsreplay.
+Physicalscan/SSID/association/IPresultstillpending.
+
+Reviewedhtt-native-v1 exactsource/log+112compiledfixturebindings:21 actual
+PCI/CE/DMA entrypointmodels ASAN/UBSAN+COFF onYukabox. DerivedprivateRX gives
+ONECE1/CE2completionowner withendpoint0/control+negotiatedHTT2 andWMI1, exact
+mappings/trailers/credits. HTTCE4request usesbuffers8/9, exclusivehtt_ownertoken,
+currentendpoint/session/epoch andpublicationwatermark; noWMIcreditdebit/refund.
+RequiresactualDMA plusgenuineVERSION_CONF, notoneorfakedACK. SixrawHTCslots
+response/archive2/FIFO2/rejected includecredit-onlytrailers; allcopiesretained.
+Clock/owner/fault distinctions: actualadapterrelease separatefromlifecycle
+unloadpermission; faultremainsretained. Checkedcurrenttimequiesce before
+legacyqca_stop preventsfalseclockrollback. Model-only, nowholeEFI/physical.
+
+NextNEWhtt-native-profile-v1 preparesproductionloop/readonlyframedexports/
+authenticatedfirmwareIE6 HTT-op provenance/wholeEFI+QEMU+world+sourceproof on
+Yukabox. Counter55provisionalUNSIGNED, hardwareblockeduntil54combinedresult
+andALLrawexportssaved. Rehashretainedowner-signedcontainer andbindmain/helper
+planpointers beforeparsedTLV3 query; nohardcodedguess orRF/dataplanereadyclaim.
+
+Independentsecure-provision-plan-v1 preparation: matureECDH/AEAD/ownertranscript
+andexplicitdeviceauthentication+secureRNG boundary. ExistingBLEUUID/signature/
+targetreceipts aren'tdeviceattestation. No realpassword/keyread/export. Ifno
+existingpinnedDellidentity, physicalSAScomparison is eventualrequiredstep
+beforesecrets; donotbypasswhileusersleeps. No approvalrequestneedednow.
