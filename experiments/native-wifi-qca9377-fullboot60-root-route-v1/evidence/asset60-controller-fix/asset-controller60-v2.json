@@ -1,0 +1,9 @@
+{
+  "pid": 35102,
+  "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-6fuyx2jq",
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/runs/control/assets60-v2.log",
+  "controller_sha256": "fdfdb0265f78ae528a807b2868d3b296816ed586b4c010e6f40d0b6a054514f2",
+  "started_at": 1791408391.426474,
+  "new_signatures": 0,
+  "one_controller": true
+}

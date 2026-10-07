@@ -5352,3 +5352,15 @@ null,enginecounter60/payload3984d3...,world19retained. NoWMIREADY/association/IP
 SolePID34914 continue60.py nowinitialexact0D/QPD18checks thenoriginalassets60prepare
 /sign12once andstaging+monitor. Inspectlatestactualstate/log; do notstartanother
 controller orsign60again. PublicactualAPPLIED report evidence/applied60.
+
+Actual60initialQPD18 passed; originalprepare signed12assets ONCE session
+runs/text-world/firmware-ram-6fuyx2jq. continue60 PID34914 thenstopped BEFOREany
+assetwrite duehostcontroller AttributeError assets60.current (missingalias);
+no sendersteps/no60firmwarebytes transmitted atfailure. Frozen/signedsources
+untouched. NEW hostonly resume_assets60_v2.py one-lineinterfacefix route.current
+(actual60guard), copied-public actualentrypoint test/mocknonordinaryfailstopPASS;
+reproducibleregression test_resume60_v2.py PASS, no hardware/keys/statewriteintest.
+SoleactualassetcontrollerPID35102 nowresume_assets60_v2.py SAMEsaved12packets,
+noresign; metadataasset-controller60-v2.json/logassets60-v2.log. Originalfailed
+controller/source preservedforaudit. Lateststate/receipts/livepidoverrideearlier
+PID34914entry; doNOTrestartcontinue60.py orsign60assetsagain.

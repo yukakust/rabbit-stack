@@ -1,0 +1,72 @@
+MAC SENDER COMPILED; SOURCE SHA256=ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e
+STATUS VALIDATOR SHA256=0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-83; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+READ-ONLY QUERY: no BEGIN, DATA, COMMIT or ABORT
+CONNECTED RSSI=-82 error=none (local radio measurement, not attestation)
+RFS STATUS HEX=52465301e38eacae765f55724865020020810200010000003b0000000000000000000000000000000000000000000000000000000000000000000000
+READ-ONLY STATUS (NOT ATTESTATION): state=1 error=0 received=157000 length=164128 receipt_counter=59 saved_session_matches=yes
+MAC SENDER COMPILED; SOURCE SHA256=ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e
+STATUS VALIDATOR SHA256=0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f
+STAGING DIAGNOSTIC DATA DELAY=50 ms; NO COMMIT
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-85; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=157000/164128
+STAGING CHECKPOINT=161100/164128 (not applied)
+STAGING CHECKPOINT=164128/164128 (not applied)
+STAGED-NOT-APPLIED: deliberate stop; keep Dell powered and rerun SAME saved session without --stage-only-bytes
+MAC SENDER COMPILED; SOURCE SHA256=ac6edb0351e8427b798a0431f6fb386c7d6ce4447fb6cb931089c381e4ce7b8e
+STATUS VALIDATOR SHA256=0effa86b79fb69e27b0252fc3ff327e8b89d96da1f78c05b0fe50ed626457b2f
+DATA CHUNK LIMIT=100 bytes (excluding offset)
+SCANNING FOR RABBIT FILE SERVICE (not identity authentication)
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-84; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+RESUME OFFSET=164128/164128
+CONTROL ACK: phase=3; reading application status
+DISCONNECTED: phase=3 offset=164128/164128 domain=CBErrorDomain code=7 reason=The specified device has disconnected from us.
+RECONNECT: delivery unknown; querying retained session, not assuming application
+DISCOVERED: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF RSSI=-72; connecting
+CONNECTED: discovering file service
+SERVICE DISCOVERY: count=1 error=none
+CHARACTERISTIC DISCOVERY: count=3
+BEGIN: acknowledged write; maximum value bytes=512
+CONTROL ACK: phase=1; reading application status
+FILE APPLIED RECEIPT (NOT ATTESTATION): exact SHA256/session/counter matched
+TRANSFER ELAPSED=14.571 seconds (including reconnects)
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-6fuyx2jq
+Traceback (most recent call last):
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/resume_assets60.py", line 43, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/resume_assets60.py", line 25, in main
+    s=route.flow.read_json(STATE);route.need(s.get('hardware_trial_pending')==str(session),'exact pending session changed');assets.current(s,route.CHECKED)
+                                                                                                                            ^^^^^^^^^^^^^^
+AttributeError: module 'assets60' has no attribute 'current'
+Traceback (most recent call last):
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/continue60.py", line 31, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/continue60.py", line 29, in main
+    launch.t.need(result.returncode==0,'exact60 radio result unconfirmed; keep packets/floors/diagnostics')
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/transition59.py", line 10, in need
+    def need(ok,why):prior.need(ok,why)
+                     ~~~~~~~~~~^^^^^^^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observation59-root-route-v1/route.py", line 20, in need
+    if not ok:raise ValueError(why)
+              ^^^^^^^^^^^^^^^^^^^^^
+ValueError: exact60 radio result unconfirmed; keep packets/floors/diagnostics
