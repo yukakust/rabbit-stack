@@ -4785,3 +4785,19 @@ Owner-auth-frame-v1 reviewed1538actualnegative/KAT+syntheticACK cases; positive
 signedAUTH chain explicitly unproved. NEWv2 uses only published RFC8032 dummy
 seed for offline test signing+actualNoise handshake/Split positiveproof;
 no real key/credential/device/RNG/signing access or provisioning approval.
+
+### 2026-10-07: bounded diagnostic read120s with stage logging
+
+User asked whether timeout should expand. New read_boot55_v2.m copied from
+frozen observer with120s overall bound and stage logs: powered-on/cached-peer
+connect/service/characteristic/envelope. Exactknownpeer160byte/read-only gates
+unchanged; compiled Mac ObjC/preflight, no manager started during preparation.
+NEWread_boot55_v2.py130s wrapper/continue55_v2.py preserve full55asset session.
+Current63271 read active; NOT interrupted or overlapped. Sole non-radio waiter
+77697 resume_observer_v2.py waits bounded900s for previous controller exit,
+checks controller identity/no prior read, then records newsolePID in
+controller55.json and resumes observation only (12 assets alreadyaccepted).
+Waiter metadata/log runs/control/resume-observer-v2.*. No signing/newfirmware,
+credentials/reboot/worldchange. Timeoutcause still unknown; last successful
+BOOT completed258,phase17; repeated disconnect/60stimeout. Stage2 diagnosis
+will distinguish connection wait from slow service/read;120s not connectionproof.
