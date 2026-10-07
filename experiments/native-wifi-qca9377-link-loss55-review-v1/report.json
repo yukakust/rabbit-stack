@@ -1,0 +1,132 @@
+{
+  "status": "NATIVE55-LOSTLINK-SOURCE-AND-SAVED-BYTES-REVIEW",
+  "cause_proved": false,
+  "exact_last_BOOT55": {
+    "phase": 1,
+    "error": 0,
+    "plan_phase": 17,
+    "plan_error": 0,
+    "submitted": 259,
+    "completed": 258,
+    "board_address": 4202432,
+    "calibration_result": 3,
+    "offset": 19592,
+    "ready_bytes": 0,
+    "credit_count": 0,
+    "credit_size": 0,
+    "max_endpoints": 0,
+    "boot_round": 1,
+    "ram_phase": 4,
+    "ram_error": 0,
+    "asset_ready": 1,
+    "asset_pinned": 1,
+    "native_stage": 18,
+    "native_error": 0,
+    "adapter_phase": 4,
+    "cleanup_slots": 0,
+    "dma_users": 14,
+    "bmi_version": 84017153,
+    "bmi_type": 8,
+    "board_phase": 5,
+    "board_error": 0,
+    "board_result": 0,
+    "asset_bitmap": 4095,
+    "boot_attempted": 1,
+    "all_loader_resources_released": false,
+    "device_attestation": false,
+    "wifi_connected": false
+  },
+  "MAIN_bytes_per_chunk": 248,
+  "MAIN_completed_chunks_at_last_sample": 79,
+  "pending_request_at_last_sample": 1,
+  "lastsample_is_not_finalstate": true,
+  "native54_vs_native55_sources": {
+    "driver.c": {
+      "native54": "ff1cb49827d80b087e2f42da851473542466fcdcd4d6bb551d822365948487ff",
+      "native55": "ff1cb49827d80b087e2f42da851473542466fcdcd4d6bb551d822365948487ff",
+      "identical": true
+    },
+    "usb_port.c": {
+      "native54": "2319a00a940bb52b51ac6d50fff6aac54807d0662c16999ad4d583a4e140db09",
+      "native55": "2319a00a940bb52b51ac6d50fff6aac54807d0662c16999ad4d583a4e140db09",
+      "identical": true
+    },
+    "usb_port.h": {
+      "native54": "b484a26e8333d001f343e188df0120854ee65e387f8b17b0a18e9047196ecb17",
+      "native55": "b484a26e8333d001f343e188df0120854ee65e387f8b17b0a18e9047196ecb17",
+      "identical": true
+    },
+    "ble_recovery_link.c": {
+      "native54": "1be2817c5df0a8a2cc117fed1fda5e38a5568d5f1980d70803da5fd2192e973e",
+      "native55": "1be2817c5df0a8a2cc117fed1fda5e38a5568d5f1980d70803da5fd2192e973e",
+      "identical": true
+    },
+    "bt_event_stream.c": {
+      "native54": "4d1c8aa7013ca0048dd582ce12a89a776afe91d93088a97ec9b6a2512bce895b",
+      "native55": "4d1c8aa7013ca0048dd582ce12a89a776afe91d93088a97ec9b6a2512bce895b",
+      "identical": true
+    },
+    "boot_image.c": {
+      "native54": "bc308f4851caa0573264365c62f72bd986ac2a6d8db699b0e625291b3e3ae29c",
+      "native55": "bc308f4851caa0573264365c62f72bd986ac2a6d8db699b0e625291b3e3ae29c",
+      "identical": true
+    },
+    "boot_transport.c": {
+      "native54": "1cb3c9724c942827f2920cbcbe50720d0538b60c758ba8500bcd4d151519892b",
+      "native55": "1cb3c9724c942827f2920cbcbe50720d0538b60c758ba8500bcd4d151519892b",
+      "identical": true
+    },
+    "boot_native.c": {
+      "native54": "e22296bcaf0e77d7115da11b452842a99315e3c661d3a3a8630e57fa50aa1491",
+      "native55": "e22296bcaf0e77d7115da11b452842a99315e3c661d3a3a8630e57fa50aa1491",
+      "identical": true
+    },
+    "bmi_loader.c": {
+      "native54": "f80f595c4e022c19f797e85909950c8b3a6c915453672e30f093490c3d174fc0",
+      "native55": "f80f595c4e022c19f797e85909950c8b3a6c915453672e30f093490c3d174fc0",
+      "identical": true
+    },
+    "bmi_probe.c": {
+      "native54": "ac6bdbacb46b9f885859fdd3e5850719751687d1a5e70ef5378e5ef89d94b8f4",
+      "native55": "ac6bdbacb46b9f885859fdd3e5850719751687d1a5e70ef5378e5ef89d94b8f4",
+      "identical": true
+    },
+    "init_probe.c": {
+      "native54": "91fcc5bc296e1579c07508038cce8c56dc5b3d7998c32c2ced3a1978aa7e42d2",
+      "native55": "f1251d7290084bc71d3d458c2c34ef8b9ff5c0f8502d1f0193b89018ca0062f9",
+      "identical": false
+    },
+    "scan_native.c": {
+      "native54": "3944ccb195925afd48876e632ba29f2e9996dcb7f6255025d4e869701fe885d5",
+      "native55": "51d980f5f9768f31e91f5b093e8b2e9f4bb3840627741c60149f8105ceec7758",
+      "identical": false
+    }
+  },
+  "evidence_sha256": {
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/evidence/2026-10-07/root-before-recovery/before-state.json": "89711c57e22e8771a10d5adee7b323f501fba9b4406c89737babcac5e8c6916e",
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/evidence/2026-10-07/root-before-recovery/root-preflight.json": "940a08469139b21c7ec3de5ff1f61bf143ebf2b270fe9e914ba87d4ed8ca7a25",
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/evidence/2026-10-07/root-before-recovery/boot55.json": "76837166ed25184a5bc5d9f986962997b06cff7018249e1b1fff5d0679430e9d",
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/evidence/2026-10-07/root-before-recovery/boot55.decoded.json": "e4d63f9524fe6ce7fc3fec485c65e848e5c3120a99dbc91c6d8b78e66fffd225",
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/evidence/2026-10-07/root-before-recovery/passive-near55.json": "0341b99a7f2b7e2976afb91c68982de278374731acaf7a7612773ec73b769596",
+    "experiments/native-wifi-qca9377-reboot-retirement55-v1/evidence/2026-10-07/root-before-recovery/public-bundle.json": "0b1fab2602e1042dec8b5ab9fee4ade227c54c05dbf5136762d1cacf01d97fd4",
+    "experiments/native-wifi-qca9377-scan-result-v1/evidence/2026-10-07/boot54.decoded.json": "933ae2ff036450d452658a50d8ddbc183204242a31387cfa902444a822400312"
+  },
+  "inferences": [
+    "MAIN BMI_LZ_DATA streaming at last observed sample; no HTC READY at sample",
+    "scan archives/codec execute only after validated INIT persistent ACTIVE; not executing at sample",
+    "continued physical tail movement is user observation, not USB proof; supervisor fatal would stop subsequent scene ticks",
+    "missing disconnect or controller state mismatch can silently leave RL_CONNECTED/pending0 while USB timeouts and animation continue",
+    "generated sole USB reader already uses split/coalesced HCI event stream; do not claim that missing integration caused55 loss"
+  ],
+  "unproved_candidates": [
+    "controller/link state mismatch or lost USB event/completion",
+    "USB/PCI cooperative-loop latency or event FIFO overload",
+    "GATT discovery load:55 110 export chars vs54 40",
+    "shared QCA PCIe/USB power/coexistence state; no direct BT reset by boot code proved",
+    "memory/DMA corruption not excluded by host tests; no physical address snapshot at loss"
+  ],
+  "next_scope": "ROOT authorized offline native57 bounded authenticated MAIN prefix32768, no BMI_DONE/INIT/scan/RF, minimalGATT/localoverlay/rawHCI + checkedall14 stop; subsequent chip reuse requires new fresh reset/init proof",
+  "device_operations": 0,
+  "private_key_loads": 0,
+  "signatures_created": 0
+}
