@@ -1,0 +1,88 @@
+{
+  "kind": "native-read-only-pci",
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 60,
+  "base_runtime_sha256": "eb38baaf0b8e2ee120290744a116d02c33ff7bf2f011a73e945a10e239d51e55",
+  "base_world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "world_package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "payload_sha256": "3984d3f5d1c9a3c3540bf2ef00972bea52406a6f78edc56bd215507110668fd6",
+  "package_sha256": "b12c2ee8ae3eac069adfc5b907b65f1b8edf442884e72510d3c9badd382b087e",
+  "session_sha256": "859baa633f0bb5ef1d773b332ea9b961af44a343a8df341f9acff10b74b5224f",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-native-v1/runs/checked-candidate",
+  "gate": {
+    "report_sha256": "5e5b1be82bf69048d22cd02380e9dd850820e39befd24a7991ce653bd637e772",
+    "payload_sha256": "3984d3f5d1c9a3c3540bf2ef00972bea52406a6f78edc56bd215507110668fd6",
+    "profile_status": "FULLBOOT60-REPEATED-EFI-QEMU-WORLD19-DIAGNOSTIC-PASS",
+    "receiver_policy": {
+      "owner": "622b248c42829ad066e5ae428ea30e955c750e4c3f221553bb346254e82545ac",
+      "target": "363d751288df7b47295f9c7a5250c3b41db24efd1a43a4bd348f00744c6bc7e9",
+      "digest": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "total": 751436,
+      "type": 8,
+      "version": 84017153,
+      "kind": 1,
+      "generation": 60
+    },
+    "native_counter": 60,
+    "world_package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+    "source_model_verified": true
+  },
+  "sender_steps": [
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h/query-0.log",
+      "log_sha256": "7b6c257bc5a463d0ea443c532a37db2283fd84377d800bef2cc9d802b7816ba7"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h/paced-stage-1.log",
+      "log_sha256": "3d9529d22610f56bb721d5b64e337019222a51165cf63a3057d99ba9bad3aacd"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h/query-2.log",
+      "log_sha256": "aa18e41c77e68e22447b6e58a3d9646a2c59cd99ff241e0638253b2a7e434af0"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 1,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h/paced-stage-3.log",
+      "log_sha256": "4c5669e0e0510a9bfb76d6027f212da4b8036359d035f7de49666e55c48e6fdd"
+    },
+    {
+      "name": "query",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h/query-4.log",
+      "log_sha256": "f7c80ca4baa5dc532af2d6e416106d972b00f97b6e00d6dcb22a531cdb07d3ab"
+    },
+    {
+      "name": "paced-stage",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h/paced-stage-5.log",
+      "log_sha256": "90edf547b6da3f95309af4ccc53c197a70dca73652d11509afd0b79be4dbba17"
+    },
+    {
+      "name": "commit",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h/commit-6.log",
+      "log_sha256": "1fa00d54d95f90c8b161961507252b086abad6ab78a78b8669bdd5a21d091e09"
+    }
+  ],
+  "receiver_reported_applied": true,
+  "confirmed_received": 164128,
+  "last_receiver_status": {
+    "outcome": "staging",
+    "state": 1,
+    "error": 0,
+    "received": 157000,
+    "length": 164128,
+    "counter": 59,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_matches": true,
+    "raw_hex": "52465301e38eacae765f55724865020020810200010000003b0000000000000000000000000000000000000000000000000000000000000000000000",
+    "device_attestation": false
+  }
+}

@@ -5346,3 +5346,9 @@ remainexplicitgate, notimplicitlyadmitted bytechnicalproof. Rawactual60READY/
 resourcesnotcapturedyet. 61collector495fakecallbacks+794purechecks, proof
 3ee5a595e0c3d2206ab02310c03cc42095bb1aed6ce8670086c8287b444434f9; actual61
 positivebindingstillRootrequired. Frozen60andUSB/HCI/residentunchanged.
+
+Native60 same-signature resume succeeded actualEXACT-APPLIED-RECEIPT60; native_pending
+null,enginecounter60/payload3984d3...,world19retained. NoWMIREADY/association/IPclaim.
+SolePID34914 continue60.py nowinitialexact0D/QPD18checks thenoriginalassets60prepare
+/sign12once andstaging+monitor. Inspectlatestactualstate/log; do notstartanother
+controller orsign60again. PublicactualAPPLIED report evidence/applied60.
