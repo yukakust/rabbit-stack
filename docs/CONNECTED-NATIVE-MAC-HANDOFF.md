@@ -5028,7 +5028,7 @@ secondresumesSAMEsignedsession to88500+; no resign or discard.
 SoleforegroundnativePID4153 execsession73398; continuationPID4424/caffeinate
 waitsfor4153exit beforeANYBLE, root-route-v1/continue57.py andruns/control/
 controller57.json/continue57.log. Itresumesexactnativebounded6, thenfreshQPD18
-initialall14setup/ROM/teardown gate andnewgen57fullfirmware13? EXACT12packets
+initialall14setup/ROM/teardown gate andnewgen57fullfirmware EXACT12packets
 signedONCE byassetprepare. No actualfirmwaresession yet atrecord; statepriority.
 Controllerassetresume30bound+samepacketfloor(nopeer typo), stop2no-progress,
 no otherBLEowner. Afterall12 accepted wait660squiet(30ssteps) toavoidnormal
@@ -5044,3 +5044,15 @@ Newobserver-v2 propercreator03a1+sourceJSON, frozenv1 retainedNOTforactualread.
 Raw55lost acknowledged, no old55firmwarereplay; partialchipstate after57stop
 NOTROM-ready proof, nextreuse requiresfreshcheckedchipreset. No additional
 Dellrebootauthority. World18 preserved, credentials/privatekeyneverexported.
+
+### 2026-10-07: physicalnative57 applied; soleasset controller active
+
+Foregroundnative4153 finished exactAPPLIED57 receipt; stateworld18unchanged,
+native_pendingnull. Continuation4424 nowSOLEactiveBTowner (caffeinate4425;
+actualmetadata authoritative). FreshinitialQPD18 realsetup/ROM/all14closed gate
+passed. NEWfirmware57session firmware-ram-efn8f6wx SIGNEDONCE/all12saved packets,
+firstdeliveryactive. Preserveexactsession, no old55 replay, no secondcontroller.
+Native57APPLIED/initialQPD18/publiclogs/preparedasset report archivedroot-route-v1/
+evidence/2026-10-07/applied57. Fullfirmwareaccept/bootprefix/USBHCIdiag NOTyet
+confirmed. Tinyoverlayexpectedonphysicalcity; notclaimedvisuallyconfirmed.
+Controller quiet660safterall12beforeobserver2read underlock; notrouter/IPproof.

@@ -1,0 +1,195 @@
+{
+  "status": "CHECKED-SIGNED-NOT-SENT",
+  "checked_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-boot-prefix57-native-v1/runs/checked-candidate",
+  "native_counter": 57,
+  "native_payload_sha256": "9c63e6622c10190a8a17de2ff01ee03f72de95e93fd7326ca4da6e2c429be161",
+  "world_counter": 18,
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "policy": {
+    "owner": "622b248c42829ad066e5ae428ea30e955c750e4c3f221553bb346254e82545ac",
+    "target": "363d751288df7b47295f9c7a5250c3b41db24efd1a43a4bd348f00744c6bc7e9",
+    "digest": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+    "total": 751436,
+    "type": 8,
+    "version": 84017153,
+    "kind": 1,
+    "generation": 57
+  },
+  "gate": {
+    "candidate_report_sha256": "c362eb73bdfa96cef85962db9d625d6aa9664476f8b47b44fb60756f6f5099d1",
+    "payload_sha256": "9c63e6622c10190a8a17de2ff01ee03f72de95e93fd7326ca4da6e2c429be161",
+    "payload_bytes": 150528,
+    "mapped_bytes": 4083712,
+    "source_count": 417,
+    "native_report_sha256": "fde93615e7ce540f3ed6e01a6ab22a73eb4c6bf3769fe4ff0e83a4cc03be55df",
+    "profile_status": "BOOT-PREFIX57-REPEATED-EFI-QEMU-WORLD18-DIAGNOSTIC-PASS",
+    "counter_candidate": 57,
+    "private_key_loads": 0,
+    "physical_admission": false,
+    "report_sha256": "c362eb73bdfa96cef85962db9d625d6aa9664476f8b47b44fb60756f6f5099d1",
+    "receiver_policy": {
+      "owner": "622b248c42829ad066e5ae428ea30e955c750e4c3f221553bb346254e82545ac",
+      "target": "363d751288df7b47295f9c7a5250c3b41db24efd1a43a4bd348f00744c6bc7e9",
+      "digest": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "total": 751436,
+      "type": 8,
+      "version": 84017153,
+      "kind": 1,
+      "generation": 57
+    }
+  },
+  "diagnostic_sha256": "a47f73f98d3edba6f1abfebcf90eb4010adfcda0e2d9f183e30715da7dfbfc72",
+  "packets": [
+    {
+      "file": "chunk-0.bin",
+      "packet_sha256": "02f1a2e44791752d8007d5ba111ad8857a22e0c0490b5a052a3bcd009d7bf967",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 0,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-1.bin",
+      "packet_sha256": "d753f52694d9aa62085a776e2d100d38f76df49543d0f4243c55098627b289af",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 65536,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-2.bin",
+      "packet_sha256": "27c3ba49d37c15eb4701d0ae9b369374f6beb60cad20216846ca0571d015246b",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 131072,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-3.bin",
+      "packet_sha256": "76eb0a8f08d1648cde14291c18de07434459469a74615f97df9a92c26b8e1937",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 196608,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-4.bin",
+      "packet_sha256": "1a1a8b76402e3e26eaee75292a0528be482eaa100aca2807aaf881aa313939c6",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 262144,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-5.bin",
+      "packet_sha256": "46d8a63bc1c3d9bdf94d0cbd10b98e9518d5006a07f4968b115f015c1e680cf8",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 327680,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-6.bin",
+      "packet_sha256": "e7b8375f7792dc475a0ccfc23300670d708d00da434c99bbb6ddc309d08e737a",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 393216,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-7.bin",
+      "packet_sha256": "6b266b5fd53fe0bc9146a4fc35c61aca0908792d3513da6139c0da2038504ef8",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 458752,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-8.bin",
+      "packet_sha256": "d622833e799a29563e556eefa92de496230a47880e19c2b08638782f8db7aa87",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 524288,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-9.bin",
+      "packet_sha256": "242fb2e9946092ae8d0f44472ab01ff613d8819e3ab9f1e2dc6cf8a4226a0b92",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 589824,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-10.bin",
+      "packet_sha256": "82d7d737789a1deb8c9bcc2aaf1d56fdd90951e3cfc93c9e4eef6ab5c37890b6",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 655360,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "file": "chunk-11.bin",
+      "packet_sha256": "d8712d8b2a59444e7d8e4aadaa7fa431ca0bf705e2427a954f9d62491e787c61",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 720896,
+      "asset_bytes": 751436,
+      "generation": 57,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    }
+  ],
+  "completed_chunks": 0,
+  "sender_steps": [
+    {
+      "chunk": 0,
+      "mode": "--query-only",
+      "exit_code": 0,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-0-0.log"
+    },
+    {
+      "chunk": 0,
+      "mode": "--send",
+      "exit_code": null,
+      "log": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx/chunk-0-1.log"
+    }
+  ],
+  "firmware_upload": false,
+  "firmware_started": false,
+  "boot_trial_trigger_authorized": true,
+  "wifi_association": false
+}
