@@ -60,8 +60,12 @@ def retire(state_path,s,q,candidate_admission):
  shutil.copytree(q,directory/'fresh-observation');(directory/'before-state.json').write_bytes(before)
  report={'status':'ACTUAL59-FULL-ASSET-CHECKED-RELEASE-ARCHIVED','native_counter':59,'world_counter':19,'session':str(assets_dir),'inventory':manifests,'prior_state_sha256':flow.sha(before),'fields':fields,'new_candidate':candidate_admission,'reboot_command':False,'new_signatures':0}
  flow.save(directory/'retirement.json',report)
- with (directory/'retirement.json').open('rb') as f:os.fsync(f.fileno())
- fd=os.open(directory,os.O_RDONLY);os.fsync(fd);os.close(fd)
+ for p in directory.rglob('*'):
+  if p.is_file():
+   with p.open('rb') as f:os.fsync(f.fileno())
+ for p in sorted([directory,*[p for p in directory.rglob('*') if p.is_dir()]],key=lambda p:len(p.parts),reverse=True):
+  fd=os.open(p,os.O_RDONLY);os.fsync(fd);os.close(fd)
+ fd=os.open(directory.parent,os.O_RDONLY);os.fsync(fd);os.close(fd)
  need(state_path.read_bytes()==before,'state changed before retirement')
  after=dict(s);after['hardware_trial_pending']=None;after['last_hardware_trial_retirement']=str(directory/'retirement.json');flow.save(state_path,after)
  return after,directory

@@ -12,7 +12,7 @@
     "test_transition.py": "72b58d268ba60ba9baf6e3e6f401fefc3fbf45581bfb17fd59193e0d93a02f39",
     "resume_assets60.py": "00c6e100164fd5f9ddfab663a01427c8c2c3bb3611a5f086092f7bc050f95096",
     "launch.py": "0cc2a9865c920a39e1cf748aa72ee100dd2343d2abc395c9af685d8c42f1c3b9",
-    "transition59.py": "9b058175ce2df47977f7c0a771c4facbd908feb84d2e181be3777f56aadb2809",
+    "transition59.py": "cd4cac608fe89d7c29f50648feac058abb8a2fbd80df665bedd185c435c967fe",
     "observe59.py": "092bde47ed66c4a0a6af2ab3b9b042402a42f5c58860a2c8821e5083a0c6db1f"
   },
   "logs": {
@@ -22,5 +22,6 @@
   "native60_signatures": 0,
   "firmware60_signatures": 0,
   "actual_retirement_executed": false,
-  "bluetooth_started": false
+  "bluetooth_started": false,
+  "all_archive_files_and_directories_fsynced_before_state_change": true
 }
