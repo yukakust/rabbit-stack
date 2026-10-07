@@ -5328,3 +5328,21 @@ Independent observation59 agent nowprepares UNSIGNEDscan61/currentworld19 using
 frozen60+existingmature55scan components, persistentadoptBEFOREdiagnosticstop,
 explicitGATTlayoutresolution. OnlyYukaboxmodels/sourceproof, notphysicaladmission
 andno61sign/state/BLE. Mustfirstcapture/classifyactual60rawresultbefore61hardware.
+
+Native60 controller26509 exited ordinary300s hoststagingtimeout atconfirmed
+156200/164128bytes; noDISCONNECTED inlaststage. Actualstate still59/world19,
+exactnative_pendingpci-native-84rxxr3h, no60assetsyet. Same-source rootgatePASS.
+SolecontinuationPID34914 nowcontinue60.py sameexactnativepacket, query-before-resume;
+metadata controller60-resume1.json/logcontinue60-resume1.log. Noresign. Snapshot
+at evidence/native60-staging-timeout-resume. Inspectlivepid/newstate beforeBLE.
+
+Unsignedscan61 technicalcandidate/hostobserver nowfrozen byindependentagents: no
+actual61signature/BLE/state. Candidate report0188ad2b1663804fbc6cf663beef4fb3cba2daa05c06eee2fe48fabece5dc388;
+payload305d0171c3c2e296fdf00f82a01cc838d67c0a1f3ffa836a847f4f12770ce074,
+191488file/4177920mapped.19scan/native models+293policy+199278regdbchecks/repeatedEFI
+world19ASANnormalEMPTYQEMU/ATTgap29..31 passed. Samepassive13channels/exactSSID,
+QSCN+110rawpagesonly,noassociation/credentials. RFadmission/GElegalprimaryfalse
+remainexplicitgate, notimplicitlyadmitted bytechnicalproof. Rawactual60READY/
+resourcesnotcapturedyet. 61collector495fakecallbacks+794purechecks, proof
+3ee5a595e0c3d2206ab02310c03cc42095bb1aed6ce8670086c8287b444434f9; actual61
+positivebindingstillRootrequired. Frozen60andUSB/HCI/residentunchanged.

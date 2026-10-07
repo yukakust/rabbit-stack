@@ -1,0 +1,9 @@
+{
+  "pid": 34914,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-84rxxr3h",
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/runs/control/continue60-resume1.log",
+  "started_at": 1791408237.951503,
+  "reason": "ordinary300s host staging limit; exact saved signed packet; query-before-resume",
+  "new_signatures": 0,
+  "one_controller": true
+}
