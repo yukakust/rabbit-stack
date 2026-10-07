@@ -1,0 +1,32 @@
+{
+  "status": "SCAN-NATIVE-REFERENCE-PLAN-CHECK-PASS",
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "reference_sha256": {
+    "regd.c": "928582bfaa3d72574eb40a69e6bc8f268ff7d37f87de805ec21c2c24beedc5c4",
+    "regd.h": "17ddca22d3e35d396cc6dc9005f364157dc34937d609156c80c48d37c7afc73f",
+    "regd_common.h": "95eca0ec1ab9e7ea248b4b9cc4ad3081cc9f61eb036e7faa9959acb49b356941",
+    "ath10k-mac.c": "e99b6749933719a39037645385ea88be181b380f1135d62aea07c0b474a8236c",
+    "ath10k-wmi.c": "68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4"
+  },
+  "source_sha256": {
+    "README.md": "35e0a633cf5d5e21093d67910a1cfa3305b67f0f926c7fa697b028733b5257e6",
+    "references.json": "5d42094fd0a280f05599ac80008150ee126979f8951ddc0424c0c3a0f04d563d",
+    "verify_plan.py": "66af06cfa312f1861bb5364902c423def73282b62b1691152a56ff1fd0d831ee"
+  },
+  "physical52_evidence_sha256": {
+    "report.json": "a694b7855358a895443f5d10a0e0fe80b71c132811e631bff14da6eb638b7520",
+    "operating52.decoded.json": "80f34e3863259c7a5a84eb9a93ea19d1f8de0b766f1d064e2c1f1c003c1d7e36",
+    "startup52.decoded.json": "353d01e4445ac703ccec0bf9d14c5d76717ecddd8286d818adecbc44db37631c",
+    "boot52.decoded.json": "643b2084e1779883a999bc5ea67fa19e075eeb2abe339280b1c5e29d1f625269"
+  },
+  "regdomain108": "WORC_WORLD",
+  "approved_policy_exists": false,
+  "selected_frequencies": [],
+  "native_integrated": false,
+  "candidate_generated": false,
+  "rf_admission_granted": false,
+  "rf_command_sent": false,
+  "wifi_connected": false,
+  "blocker": "Missing reviewed policy provenance and native policy/channel/CE3 integration; capability bands are not channel permission.",
+  "host_log_sha256": "0ad19aa84d38d9d6481b838cc27fb3e3a34c8be47a09ade494048340ce23262e"
+}

@@ -1,0 +1,30 @@
+{
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "sources": [
+    {
+      "file": "regd.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/regd.c",
+      "sha256": "928582bfaa3d72574eb40a69e6bc8f268ff7d37f87de805ec21c2c24beedc5c4"
+    },
+    {
+      "file": "regd.h",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/regd.h",
+      "sha256": "17ddca22d3e35d396cc6dc9005f364157dc34937d609156c80c48d37c7afc73f"
+    },
+    {
+      "file": "regd_common.h",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/regd_common.h",
+      "sha256": "95eca0ec1ab9e7ea248b4b9cc4ad3081cc9f61eb036e7faa9959acb49b356941"
+    },
+    {
+      "file": "ath10k-mac.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/mac.c",
+      "sha256": "e99b6749933719a39037645385ea88be181b380f1135d62aea07c0b474a8236c"
+    },
+    {
+      "file": "ath10k-wmi.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi.c",
+      "sha256": "68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4"
+    }
+  ]
+}

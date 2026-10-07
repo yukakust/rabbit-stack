@@ -1,0 +1,16 @@
+{
+  "status": "EXACT-NATIVE53-APPLIED-FIRMWARE-STAGING-IN-PROGRESS",
+  "native_counter": 53,
+  "native_payload_sha256": "261649e8cd7ab2bd59621f8ee559c421c36cc5e54c5d19238b558e55dc55a522",
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-0iwr2hpw",
+  "asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-8sztj97t",
+  "completed_chunks_snapshot": 2,
+  "asset_report_live": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-8sztj97t/report.json",
+  "controller_pid_snapshot": 46741,
+  "physical_rx_trial_verified": false,
+  "router_connected": false,
+  "files_sha256": {
+    "initial53.json": "9be09358c1c58287dfcca3f39bb0d704301a273391c03dfd7ecca212d1e9bd0c",
+    "receipt.json": "9b8d75e69b79e0d0c05376dc78b3c3f22b6592b8929853010420e2e15f07c101"
+  }
+}

@@ -4302,3 +4302,23 @@ trial; not proof of sustained station traffic. No station/RF/credentials.
 Owned-scan-stop-v1 reviewed100568 ASAN/COFF checks; matching terminal + genuine
 STOP TX completion, retained unknown/foreign ownership, deadlines/overflow
 fault without credit refund. ENDED alone NEVER permits DMA unload. Host only.
+
+### 2026-10-07: native53 applied; firmware53 transfer progressing
+
+Exact53 APPLIED receipt archived in persistent-admission-v1/evidence/2026-10-07/
+native53-applied. Sole controller46741 live; native_pending cleared, NEW exact
+firmware53 saved session firmware-ram-8sztj97t, hardware_trial_pending remains.
+At heartbeat two complete chunks accepted and third confirmed prefix30240.
+Use latest report/checkpoints, preserve exact bytes; no second BLE owner.
+Bounded physical RX result not yet available, Wi-Fi/router/IP absent.
+
+Reviewed scan-native-plan-v1 reference/source/log/physical52 evidence bindings.
+Pinned ath maps regdomain108=0x6c to WORC_WORLD, not Georgia; actual GE country
+mapping distinct. Capability bands alone cannot select channel permissions.
+Linux integration order: filtered SCAN_CHAN_LIST then PDEV_SET_REGDOMAIN,
+actual CE3 TX plus one RX credit owner, owned dispatch/STOP and all14 teardown.
+Real SSID proof additionally requires management/HTT beacon/BSS RX, not only
+scan events. Plan has empty selected frequencies and no RF admission.
+Independent necessary offline work assigned in NEW channel-wire-v1 serializers
+and regulatory-policy-v1 provenance/filter. No hardware, candidate, signatures
+or credentials delegated; actual53 completion is prerequisite for next trial.
