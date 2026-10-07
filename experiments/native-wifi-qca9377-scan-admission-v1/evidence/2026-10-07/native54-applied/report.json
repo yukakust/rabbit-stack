@@ -1,0 +1,13 @@
+{
+  "status": "EXACT-NATIVE54-APPLIED-ASSET-STAGING-IN-PROGRESS",
+  "native_counter": 54,
+  "payload_sha256": "3eefea77fbab35bca609216e4a418c2abad695f1a8a83da8aa2ee147bbfefca3",
+  "asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g9g89amj",
+  "controller_pid_snapshot": 52976,
+  "scan_verified": false,
+  "ip_verified": false,
+  "files_sha256": {
+    "initial54.json": "12700b27d3f51e4065dd016114b785077bb714a28a2251ea8ba9391f5be4dde4",
+    "receipt.json": "60e1521b523e9539e7e47536641d0bbcb3ed5fc7df4458f05263befa21a4a864"
+  }
+}

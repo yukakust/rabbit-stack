@@ -4475,3 +4475,30 @@ are observational, not deviceattestation. MatchingSTARTED alone isn'tSSID;
 realacceptedMGMT_RX/rawexport andpolicy/epochbinding needed. Physicalscan/SSID
 notyetconfirmed, noassociation/IP/WAN. Macnativezero-writecollectorpreparation
 in NEW scan-observer-v1 delegated; noagenthardware/secretaccess.
+
+### 2026-10-07: native54 applied; association/key reference correction
+
+Exact54 APPLIED receipt archived under scan-admission-v1/evidence/2026-10-07/
+native54-applied. Sole52976 stilllive; NEW firmware54 session firmware-ram-
+g9g89amj, full2chunks and thirdprefix21600 at heartbeat. Preserve exactpacket/
+checkpoint, no newradioowner. Physicalscan/SSIDnotyetavailable, Wi-Fi/IPabsent.
+
+Reviewedstation-association-plan-v1:28422 pinnedPEER_CREATE DEFAULT peer oracle
+ASAN/UBSAN+COFF checks onYukabox, exact source/logbindings. Purewire block, no
+peer/association/DMAACK claim. PinnedWMI KEY_COMPLETE handler is debug-only;
+actualmature install_key_done usesHTT SEC_IND withpeer/session/keyvalidation.
+PEER_ASSOC config doesNOTperform actualoverairAPassociation.
+CurrentphysicalQWOP alreadyopensHTTservice768 endpoint2; nextindependent
+htt-version-v1 mustreuse validatedconnection, negotiateactualVERSION_CONF/
+opmapping/CE4TX+dataRX routes, not blindlyCONNECTagain orclaimdataplane-ready.
+NoRF/secret/hardwaredelegated.
+
+Scanobserver-v1 reviewedsource/static2722/preflight proof, NOactualradio. Root
+foundterminaldecoderfalse-rejection: coordinatorclearslive_frequency onterminal
+butretainedacceptedbeacon persists. NEWscan-observer-v2 preparesfix+negative
+tests preservingv1proof/source: validateexactpolicyfreqandSTARTED/slot/floor/
+epoch, requirelivefreqequalityonlywhen nonzero. Preserve rawcaptureBEFOREdecode.
+Existingfrozencontinue54 stillcalls v1 collect.py afteractualrelease; ifthat
+rejects retainedterminalbeacon, DONOTreplayassets/resign/clearpending. Onceold
+controllerexits, root mustrunv2collector--readsequentially, saveall40pagestwice
+andstableQSCN, thencombinedverdict. v2CLI samecollect.py--read innewscope.

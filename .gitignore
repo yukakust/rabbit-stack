@@ -17,3 +17,6 @@ experiments/arm64-pill/pill
 /experiments/native-wifi-qca9377-release-observation-v1/runs/
 /experiments/native-wifi-qca9377-scan-native-profile-v1/runs/
 /experiments/native-wifi-qca9377-scan-admission-v1/runs/
+/experiments/native-wifi-qca9377-station-association-plan-v1/runs/
+/experiments/native-wifi-qca9377-scan-observer-v1/runs/
+/experiments/native-wifi-qca9377-scan-observer-v2/runs/

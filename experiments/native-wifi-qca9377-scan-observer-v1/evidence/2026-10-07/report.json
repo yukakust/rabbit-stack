@@ -1,0 +1,19 @@
+{
+  "status": "SCAN54-OBSERVER-STATIC-CORRUPTION-MAC-PREFLIGHT-PASS",
+  "checks": 2722,
+  "source_sha256": {
+    "decode_scan.py": "1069641748e0b2b6298afc39992cd7ad474bd118a34e68b18535eb164d420420",
+    "collect.py": "5439f802b8e80c460d0c0d19cc83275372160354a2d2c179596b4b88a00f0e32",
+    "read_scan.m": "b4d48d187eaaf74fb711fb0d07449399e39364df15832d00794aab605a2f4fbe",
+    "verify_observer.py": "9e2bb28b5a8c00d5f3833ad63a8686b645a16e2bac5157f247a11b0de16c3033"
+  },
+  "frozen_exports_sha256": "172752fd6fac91d102157a2d640d58c3244919a72f9b3f69ad519517ee95edf1",
+  "frozen_qemu_verifier_sha256": "34c0036d4951a37c09def15cda2d6430106f59ccb85a3cf32cbb1be131699875",
+  "qemu_record_sha256": "8fca843b6c07f8417cf2e4149de53f6de7a696128d40749fe1982e15437e7990",
+  "radio_reads": 0,
+  "radio_writes": 0,
+  "device_actions": 0,
+  "secret_loads": 0,
+  "physical_verified": false,
+  "preflight": "SCAN54 OBSERVER COMPILED; ZERO RADIO OPERATIONS; NO BLUETOOTH MANAGER/SECRET LOAD"
+}

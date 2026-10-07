@@ -1,0 +1,17 @@
+{
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "files": {
+    "htc.h": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963",
+    "htt.c": "aaeaa40bd765bbe94b8371bcd91720317fd0955d73fa32d06f3af1e0c17f29c0",
+    "htt.h": "0cbb9326399ac9685f2a863edfcd5e4ed3ee58885dfdb5053f536386311220f7",
+    "htt_rx.c": "cabc2774651d670d247defc5f5f405640436dd131a0fc2522e605c2d8e7fb4d8",
+    "htt_tx.c": "3f73bddf26ec9e4e79a46c143a2fce35bf80a441068adbbe9aa29145692b33a3",
+    "mac.c": "e99b6749933719a39037645385ea88be181b380f1135d62aea07c0b474a8236c",
+    "txrx.c": "58d707e349ab6efeb4a447c8f7189a9150a4e4d5d92ce5b8f8209b03e45ac477",
+    "wmi-tlv.c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "wmi-tlv.h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+    "wmi.c": "68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4",
+    "wmi.h": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c"
+  },
+  "source_url_prefix": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/"
+}
