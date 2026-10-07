@@ -1,0 +1,29 @@
+{
+  "status": "PHYSICAL59-FULL-RAM-ASSET-AND-BOUNDED-PREFIX-CHECKED-STOP",
+  "native_counter": 59,
+  "world_counter": 19,
+  "accepted_chunks": 12,
+  "bitmap": 4095,
+  "ready": 1,
+  "MAIN_bytes": 32984,
+  "all_transport_submitted": 312,
+  "all_transport_completed": 312,
+  "main_descriptor_cap": 133,
+  "radio_owners_released_reported": true,
+  "cleanup_slot": 14,
+  "usb_fault": 0,
+  "raw_overflow": 0,
+  "stop_deliberate": true,
+  "full_MAIN_executed": false,
+  "BMI_DONE": false,
+  "wifi_association": false,
+  "IP": false,
+  "inputs": {
+    "prefix-11-45.jsonl": "6b6da2e016e0a1c2fd24f4e4d40a1918fbbd41a36ce22ce385f8278f672a6173",
+    "asset-report.json": "c1e7ef9bceeb062646a0ff1cf389484679e7c431d8364b7f3660299b32c5144e",
+    "final-prefix59-resume.log": "09af5a1e9fb38d7f6289bc02fc6d95f74e4ee9ae19373c13ed8904a79fe7509a",
+    "chunk-11-45.log": "6cd517fec62e74f80d4b0719cd6acb5fbb3e21e9800e21a0547a1c086a3e54ca",
+    "bounded-assets59.log": "b5197212c2275a4856dc48a01d55865505a3ae4b0d6a2640e79bede95e91c637",
+    "final-prefix59-decoded.json": "4949d354bad244284d07de70b24b97c10f6ba7c67186b00f593717be70c65e36"
+  }
+}

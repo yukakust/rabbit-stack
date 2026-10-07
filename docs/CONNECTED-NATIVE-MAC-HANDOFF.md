@@ -5228,3 +5228,23 @@ Disconnected/servicefault/invaliddiagnostic/no-progress stops, noresign/reboot.
 ActualtimeoutguardPASS pluscopied disconnected/no-progress/badgeneration reject.
 Afterfull12/ready1 quiet660s thenrawprefix; no earlyWi-Fi/IPclaim. Signed59 source
 and timerintervals unchanged. Check thislivecontroller before anyBLEoperation.
+
+### 2026-10-08: physical59 all12 received; bounded MAIN prefix checkedstop
+
+PID12867 completed/exited. Sameexactassetse66kaqfm all12 accepted bitmap4095/ready1;
+full751436bytefirmwarecontainer retainedRAM. Afterquiet660s actualknownpeer240QPFX
+generation59: phase3/reason0/released1, offset32984, submitted312/completed312
+(these count alltransport, not133 MAINcap), stage6/failed8448 (deliberatestop path),
+adapterclosed12/cleanup_slot14; held/DMA/claimed/access/bus/pins/IRQ/link/wake/reset0;
+usb_fault0/raw_overflow0. NoBluetoothreset observed duringthisfullcontainer delivery.
+Physicalprefixlimit reached andreportedreal14ownerrelease; rawchecked source
+prefix_released requiresall14buffersclosed. Evidence/classification under
+observation59-root-route-v1/evidence/full-assets-and-checked-prefix.
+
+This59 profile deliberately STOPSafter32984MAINbytes, BEFOREfullMAIN/BMI_DONE/HTC
+INIT/scan; notWi-Fi firmwareboot or association/IPsuccess. Do notresumecompleted
+assetroute/replayfirmware intochipstate orclaimearlierresetcausefixed. Session
+hardware_trial_pending stillpreserved forROOTclassification/retirement, notactive
+controller. Next reviewedisolatedgeneration needsfullMAIN/bootcontinuation with
+samehostobservability/currentworld19 andfreshchipROM/reset-lifetimechecks; no
+Dellreboot/USB/bootstrap/OTP/flash permitted. Rejectedtimerfix remainsuntouched.

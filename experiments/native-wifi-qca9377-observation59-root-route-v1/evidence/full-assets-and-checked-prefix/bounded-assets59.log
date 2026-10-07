@@ -1,0 +1,43 @@
+EXACT59 QUERY-BEFORE-RESUME 1 confirmed aggregate 108960
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk2/12 bitmap=3 ready=0
+Chunk2 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm/chunk-2-9.log
+EXACT59 QUERY-BEFORE-RESUME 2 confirmed aggregate 174720
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk3/12 bitmap=7 ready=0
+Chunk3 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm/chunk-3-13.log
+EXACT59 QUERY-BEFORE-RESUME 3 confirmed aggregate 240480
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk4/12 bitmap=15 ready=0
+Chunk4 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm/chunk-4-17.log
+EXACT59 QUERY-BEFORE-RESUME 4 confirmed aggregate 306240
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk5/12 bitmap=31 ready=0
+Chunk5 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm/chunk-5-21.log
+EXACT59 QUERY-BEFORE-RESUME 5 confirmed aggregate 372000
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk6/12 bitmap=63 ready=0
+Chunk6 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm/chunk-6-25.log
+EXACT59 QUERY-BEFORE-RESUME 6 confirmed aggregate 437760
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk7/12 bitmap=127 ready=0
+Chunk7 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm/chunk-7-29.log
+EXACT59 QUERY-BEFORE-RESUME 7 confirmed aggregate 503520
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk8/12 bitmap=255 ready=0
+Chunk8 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm/chunk-8-33.log
+EXACT59 QUERY-BEFORE-RESUME 8 confirmed aggregate 569280
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk9/12 bitmap=511 ready=0
+Chunk9 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm/chunk-9-37.log
+EXACT59 QUERY-BEFORE-RESUME 9 confirmed aggregate 635040
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk10/12 bitmap=1023 ready=0
+Chunk10 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm/chunk-10-41.log
+EXACT59 QUERY-BEFORE-RESUME 10 confirmed aggregate 700800
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Confirmed RAM chunk11/12 bitmap=2047 ready=0
+Confirmed RAM chunk12/12 bitmap=4095 ready=1
+EXACT FULL RAM STAGING VERIFIED; BOOT TRIAL MAY BE ACTIVE; READ QWBT BEFORE ENGINE CHANGE
+ALL12 accepted; quiet660s, no reconnect polling
+Final physical59 raw saved; classification required; no Wi-Fi/IP claim
