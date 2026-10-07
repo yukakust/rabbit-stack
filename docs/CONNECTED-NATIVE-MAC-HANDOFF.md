@@ -5218,3 +5218,13 @@ query-only before write, noresign; metadataasset-controller59-resume1.json,
 logassets59-resume1.log. Actualnewstate/receipts priority. After ordinarytimeout
 with progress mayqueryandresumeexactsession; anydisconnect/invalidservice/loss
 needsdiagnosis first. Full12/boot/Wi-Fi/IP notconfirmed.
+
+Assets59 chunk0 fullyaccepted(bitmap1/ready0); chunk1 confirmed43200/65760 then
+ordinaryhost240s timeout. PID11665exited. New host-only resume_assets59.py starts
+soleboundedcontroller (actualpid runs/control/bounded-asset-controller59.json,
+logbounded-assets59.log). Up to24 same-session resumes ONLYafter validgeneration59
+240QPFXchain, ordinaryhosttimeout, forwardprogress; query-before-write everytry.
+Disconnected/servicefault/invaliddiagnostic/no-progress stops, noresign/reboot.
+ActualtimeoutguardPASS pluscopied disconnected/no-progress/badgeneration reject.
+Afterfull12/ready1 quiet660s thenrawprefix; no earlyWi-Fi/IPclaim. Signed59 source
+and timerintervals unchanged. Check thislivecontroller before anyBLEoperation.
