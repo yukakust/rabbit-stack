@@ -1,5 +1,0 @@
-#ifndef QCA_HTT_AUTHENTICATED_POLICY_H
-#define QCA_HTT_AUTHENTICATED_POLICY_H
-#include <stdint.h>
-static const uint8_t qca_htt_container_digest[32]={143,139,0,47,204,254,129,212,34,56,242,125,209,245,109,24,150,4,241,128,189,71,114,199,200,231,90,225,254,241,111,1};
-#endif
