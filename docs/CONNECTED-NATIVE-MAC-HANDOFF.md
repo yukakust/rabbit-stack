@@ -4381,3 +4381,31 @@ policy/channel + station/ownedSTOP + beaconjoin. Oldstationprepare/post/STOP
 reservecredits too: newcoordinator MUST use purewire bodies and soleactualTX
 owner, reflect publication/DMAordering into pendingstate without doublecredits.
 No frozenedits/nativecandidate/RF/hardware/secrets delegated.
+
+### 2026-10-07: Bluetooth observer recovered; scan coordinator model reviewed
+
+Old solecontroller46741 exited on BOOT read disconnected while chipmainloading
+at offset218488. Firmware was alreadyfullyaccepted; native53 unchanged.
+Sequential zero-write reconnect confirmed loading699608 with noerror. Noasset
+replay, noresign, noreboot. NEW observer-v1/observe53.py solecontroller51276 +
+caffeinate51277 resumes ONLY BOOT/OP/QWIN/QWRX reads with finite retries.
+Metadata/log/results in observer-v1/runs/control. Latest BOOT phase5/error0
+3114/3114+HTCready20, all14maps/pin stillheld beforeboundedtrialresult.
+Use final result53.json and actualrelease, not time/progresssnapshots.
+
+Reviewed scan-coordinator-v1 source/logbindings:15scenarios1376ASAN/UBSAN+COFF
+onYukabox. Real TX/RX/CEbookkeeping/lifecycle/v5READY linked; loweroperating/
+MMIO/devicebackend mocked, NOT actualfullnative orphysicalproof. Purewirebody
+commands use solepersistentTX creditowner; actualPOSTED/DMA_DONE projects
+matchingpendingrequest/bytes. RXtrailers appliedonce, foreign/controlretained,
+naturalterminal cancels only unpostedTX, rollback/timeouts guarded. SSID only
+acceptedMGMT_RX aftermatchingSTARTED/FOREIGN_CHANNEL withselectedpolicy+epoch.
+Exact14modelrelease versus14retainedonwrong_epoch.
+
+Next NEW scan-native-profile-v1 actualentrypointadapter/wholeEFIproof delegated
+to persistent_radio; counter54 provisional, no signing/hardware until actual53
+allownerPASS. Bounded setup/scan/STOP/overalllimits in newsource only, keepunknown
+FIFO owned andquiesce underbackpressure. Separate rootRFadmission must verify
+signedregdb/rebuild/target/domain/caps/owner/epoch and passive13rows/CTL255;
+proposalartifact stays RFfalse. Useralreadyauthorized scan/connect; this is
+deterministicadmission, not a newuserapprovalstep. Credentials untouched.

@@ -1,0 +1,11 @@
+{
+  "pid": 51276,
+  "caffeinate_pid": 51277,
+  "controller": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observer-v1/observe53.py",
+  "controller_sha256": "c0911bd5821f9ae7564910dc7e6f6ef2abc7a01df15fb1820aff80aa07468fe5",
+  "native_counter": 53,
+  "asset_session": "firmware-ram-8sztj97t",
+  "writes": 0,
+  "signed_again": false,
+  "resumed_observation_only": true
+}
