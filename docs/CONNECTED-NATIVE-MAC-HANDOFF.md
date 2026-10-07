@@ -4891,3 +4891,18 @@ fsync bottom-up +failuretest BEFOREatomicstatecommit, notjustfile/topdirfsync.
 Agentcopied-state/mocktests stillinprogress; nosigning/retirement/rebootallowed.
 Guardedprepare mustrecheck state/journal/counter55/source/freshness insideoriginal
 lock immediately beforeload_private. Don'taskrebootuntilfinalrootreviewPASS.
+
+### 2026-10-07: executable recovery ROOTreviewPASS; owner exception pending
+
+FinalNEWreboot-recovery55-root-v1 routeSHA65e50887ef9f7b8ff36700cdc9bd413607fde631c8b1d1080e3e1201ed26d0b8.
+Root verifiedallsource/evidence/hostlog hashes andactualstate stillSHA89711c57...
+12copied-state testsPASS Yukabox; realoriginalprepare reaches mockedraising key
+boundary only, rejects counter/freshness/source/journal changes beforekey under
+originallock. Nestedarchive dirs+parent fsync BEFOREatomicstatecommit tested;
+failurespreserveoldpending. ROOTreview/source/durability proof committed.
+No actualreboot/retirement/signing/keys/BLE. Ownerpermissionmustexception prior
+no-rebootconstraint. Concreteplan: authorizecontrolledreboot, humanconfirmactual
+reboot, genuinefreshEMPTY0, archiveandretireexact55lostRAM(noall14/rawproof),
+guardedplaincity56/world18signonce/restore receipts+physicalcitytail. FullRAM
+firmware mustredeliver later; Bluetoothrecoverynotguaranteedbyhostproof.
+OfflineHTT56unconsumed; ifcity56used futureHTTneedsnewcounter. Waitowneranswer.

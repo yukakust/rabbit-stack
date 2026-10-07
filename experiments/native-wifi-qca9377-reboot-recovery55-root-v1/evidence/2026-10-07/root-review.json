@@ -1,0 +1,8 @@
+{
+  "status": "ROOT-SOURCE-LOG-STATE-BINDINGS-AND-DURABILITY-REVIEW-PASS",
+  "report_sha256": "44147bc12ac1833d784c348e28c27d517195a80eb4c102599a04a968edc53c5f",
+  "state_unchanged": true,
+  "owner_reboot_authorization_present": false,
+  "device_operations": 0,
+  "private_key_loads": 0
+}
