@@ -5209,3 +5209,12 @@ Do not restart continue59.py or signagain. Check livepid/newreceipts beforeanyth
 Bluetooth. On failure retain exactpackets/checkpoints/diagnostics; no automatic
 reconnectloop. After all12accepted/ready1 allow660s quiet before prefixread.
 Wi-Fi association/IP stillunconfirmed; city/catvisual59 notyetnewownerobservation.
+
+Assets59 firstsend reachedconfirmed43200/65760bytes ofchunk0, nochunkcomplete.
+Stopped onlyhost240s boundedtimeout;13durableobserverrows includeexacttimeout
+RabbitAssetObserver/code1, precedingprefixreadsvalid; no disconnectcallback.
+PID10417exited. Reviewed same-session continuationPID11665 now assets.py deliver,
+query-only before write, noresign; metadataasset-controller59-resume1.json,
+logassets59-resume1.log. Actualnewstate/receipts priority. After ordinarytimeout
+with progress mayqueryandresumeexactsession; anydisconnect/invalidservice/loss
+needsdiagnosis first. Full12/boot/Wi-Fi/IP notconfirmed.

@@ -1,0 +1,9 @@
+{
+  "pid": 11665,
+  "asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-e66kaqfm",
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observation59-root-route-v1/runs/control/assets59-resume1.log",
+  "started_at": 1791395722.054563,
+  "reason": "confirmed transport progress; bounded host240s timeout; exact query before any resume write",
+  "native_signatures_created": 0,
+  "firmware_signatures_created": 0
+}
