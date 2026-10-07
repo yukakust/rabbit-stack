@@ -29,3 +29,6 @@ experiments/arm64-pill/pill
 /experiments/native-wifi-qca9377-efi-rng-port-v2/runs/
 /experiments/native-wifi-qca9377-provisioning-review-v1/runs/
 /experiments/native-wifi-qca9377-scan-observer-v3/runs/
+/experiments/native-wifi-qca9377-scan-admission-v2/runs/
+/experiments/native-wifi-qca9377-scan-native-profile-v2/runs/
+/experiments/native-wifi-qca9377-scan-event-v2/runs/

@@ -1,0 +1,24 @@
+{
+  "status": "EXACT-PASSIVE55-ADMITTED-SIGNED-TRIAL-STARTED",
+  "native_counter": 55,
+  "payload_sha256": "cc8d7fec39a812273c1af5d52711fe6dc281b48873925aec2136cf3cb8533297",
+  "negative_cases": 55,
+  "native_scenarios": 19,
+  "event_codec_checks": 8967,
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-scan-admission-v2/read_boot55.py": "8ca6918ace5c490ec132210c3a27ad1dd130ce25ec3175ccb36ada38e45499ee",
+    "experiments/native-wifi-qca9377-scan-admission-v2/continue55.py": "3b4c3e0351dc0877cf1a9ecf3f66e5e273f6fed7cd00ef8ea13b504b94d968cc",
+    "experiments/native-wifi-qca9377-scan-admission-v2/scan_route.py": "d332914ff81eb743dac992d352e22b44eb56f03df62217721977a77b2b07c75f",
+    "experiments/native-wifi-qca9377-scan-admission-v2/test_gate.py": "36efb9038a6d45eea4932342244e160860945dc35dadc5834b49afa9128a365f",
+    "experiments/native-wifi-qca9377-scan-admission-v2/test_fresh.py": "80e19ea33b1ee39bcfb32d5add65d3909fcf228ccae16728a14cfa3f5f785baa"
+  },
+  "physical_verified": false,
+  "physical_ssid_discovered": false,
+  "ip_verified": false,
+  "credentials_used": false,
+  "files_sha256": {
+    "prior54.json": "ae4d507806ad77fb4244fa946ab545a9fe5fc7c47074bee1e45707205062d83e",
+    "native55-trial-start.json": "f94f0eedba4b75bc8e74416008a085d7de517416fe6dfaf3400180d9fe8880a2",
+    "controller55.json": "f8df8ca22a26d668be4421803735b8217af0bfb8da7726fcc7db1e0fc4ace413"
+  }
+}

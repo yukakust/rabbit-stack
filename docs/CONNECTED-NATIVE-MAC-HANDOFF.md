@@ -4668,3 +4668,35 @@ STARTED/FOREIGNvalue28/nonterminalreason6/opaqueextensions, wrongSSID→target
 andtargetduplicate→terminal, archive16/fullSTOP. FullrepeatEFI/QEMU/world/source
 proofstillinprogress. Donotsignuntilfinalfreeze/rootnegativeadmission/fresh54
 release/raw proof. HTT55offline remainsdeferredunchanged.
+
+### 2026-10-07: fixed passive scan55 admitted and signed physical trial started
+
+FrozenNEWscan-native-profile-v2 GEN55 EFI187392 SHA
+cc8d7fec39a812273c1af5d52711fe6dc281b48873925aec2136cf3cb8533297.
+19actualnativePCI/CE/DMA modelcases incl exact54debugblocker+real28/reason6
+SCANreplay, archive16/fullSTOP, wrongSSID→target/duplicate→terminal. Newshared
+scan-event-v2 minimum24prefix/nonterminalopaquereason followspinnedLinux;
+8967ASAN/COFFcodecchecks. FourequalfullEFI+normal/EMPTYsupervisorQEMU+world17
+ASAN120ticks/16camera,642sourceclosure/138compiledfixtures/hashbindingsPASS.
+Signedregdb/exact13GE×unchanged108 headerbindingrechecked; unchangedproposal
+RFfalse. Allold54/HTT55sources/frozenproofs untouched.
+
+RootNEWscan-admission-v2 gates:17candidatecorruptions+38offlinecopied-fixture
+negatives (TOTAL55) reject beforekey/radio. ActualfreshsequentialBOOT54 +
+newv2collectorALL40pagestwice confirmsunchangedexactretained54raw/QSCN and
+actualall14/lifecycle/READYrelease; copiedfixtures NOTusedforadmission.
+Full54assetpublicsignatures/digest/target/layout+failedtrialrawproof bound.
+Owner/target/nextgenerationcheckedbeforelocalkeyaccess; no realcredentials.
+
+SignedONCEsaved pci-native-ehv85hvp. Solecontroller61367/caffeinate61368:
+scan-admission-v2/continue55.py, runs/control/continue55.log/controller55.json.
+Native55 NOTyetAPPLIED atrecord. Finiteexactnative resume -> NEWfirmware55
+session -> exactBOOTallownerobservation -> scan-observer-v3/collect.py--read.
+Collector3 actualGEN55/22slots/110pagesTWICE,600/620sbound; retainallrawbefore
+futureunload. Controller's missingcollectorerrorstillmentions40 (legacytext
+only); actualcollectorcontract110. NootherBLEowner/resign/replay54.
+
+ImmediategoalphysicalmatchingSSID andgenuineSTARTED/terminal/raw/ownerproof;
+DMAcomplete alone notsuccess. NextstageHTT55offline remainsdeferred; counter55
+is NOWassignedthisactualscantrial, derivefutureHTT56fromfrozensourcewithnew
+proof/policy onlyafterall55rawsaved. Noassociation/IP/WANclaimed.

@@ -1,0 +1,12 @@
+{
+  "pid": 61367,
+  "caffeinate_pid": 61368,
+  "controller": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan-admission-v2/continue55.py",
+  "controller_sha256": "3b4c3e0351dc0877cf1a9ecf3f66e5e273f6fed7cd00ef8ea13b504b94d968cc",
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-ehv85hvp",
+  "native_counter": 55,
+  "signed_once": true,
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan-admission-v2/runs/control/continue55.log",
+  "no_credentials": true,
+  "collector": "scan-observer-v3/collect.py --read"
+}

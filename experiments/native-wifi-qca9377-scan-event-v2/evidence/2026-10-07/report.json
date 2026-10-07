@@ -1,0 +1,24 @@
+{
+  "status": "SCAN-EVENT-V2-PINNED-MIN-PREFIX-OPAQUE-REASON-ASAN-COFF-PASS",
+  "checks": 8967,
+  "build_host": "yukabox",
+  "source_sha256": {
+    "scan_event_v2.c": "a15461fa6c524220cf3773b491b722098864159bc2ef0db86bc82ec42fc5458f",
+    "README.md": "fdc79a3cd2c818e6546f7f9848224153bbd1bc179439df0491a5223e3ccbbbf5",
+    "event_test.c": "5552bd96574fcb092c66adc53ea3ed0d30d3aff26799bf21881724ffbf40f65a",
+    "scan_event_v2.h": "7bd66857e08feab0847122cc7db218f1df46d7db0fffd7d2edcb3dc6f1ecb788",
+    "verify.py": "4915ab90fafc8c8b6e16321e2498ae449a9d7a2719dcebdf9857c8610ed79422"
+  },
+  "dependency_sha256": {
+    "wmi_scan.c": "2d8708b3dfcf5122fce82e6ae6724876e9b265a32587fa6ed31831e88be15a0b",
+    "wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3"
+  },
+  "reference_sha256": {
+    "wmi-tlv.c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "wmi.h": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c"
+  },
+  "physical54_regression_sha256": "572f354d82c9f5aafc578bdc89b3e08b6dfa7e813ae4b4e8c42e9d3b017a0d3e",
+  "oracle_sha256": "b3961009262eabae6a1850afd931a28de8b421aa2b61974243bbe492064bc760",
+  "host_log_sha256": "0a285eb551586692e42562a7a92cf1debc98702259b5e01e872f07b7ab569e45",
+  "physical_verified": false
+}
