@@ -1,0 +1,15 @@
+{
+  "status": "ACTUAL61-SAME-SIGNED-SESSION-RETAINED-RESUMED",
+  "previous_controller_pid": 73430,
+  "previous_controller_exited": true,
+  "sole_new_controller_pid": 74229,
+  "same_native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-6gw77kuj",
+  "same_packet_sha256": "ecd2703c73c1bc92e266542cf08241ef03c613ad4cfba75dcf6942ad0812d71c",
+  "receiver_confirmed_floor": 156900,
+  "no_new_native_signature": true,
+  "runtime_counter_at_snapshot": 60,
+  "actual_APPLIED61": false,
+  "SSID_found": false,
+  "IP": false,
+  "raw_query_sha256": "eee9ee8fccf9474afad7da125bdd4b9718b2cbf351d7ef75144aacf325ee4187"
+}

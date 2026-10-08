@@ -5553,3 +5553,18 @@ fullphysicalWPA. Scan61 cleansall14, nextstationneedsnewlive acquisition and
 actualHTTVERSIONCONF; no duplicateHTTCONNECT. EFI61headroom16KB requiresreviewed
 nextversionmemorylayout. Credential provisioning stillrequiresphysicalentropy
 andpinnedrecipient/channelproof; no credentialread/plainBLE shortcut.
+
+Native61 twohost300s intervals completed atconfirmed156400; PID73430 exited
+DELIVERY-NOT-CONFIRMED (ordinaryboundedtimeout, noBLEfault/receiverloss).
+Rootguard checkedimmutablepacket/query/loghashes+positiveprogress, allpriorPIDs
+gone; ONLYnewcontrollerPID74229 nowcontinue61.py viaresume_native61.py, log
+runs/control/continue61-resume1.log andcontroller61-resume-74229.json. Actual
+newknownpeerread-onlyquery counter60/sessionmatchesyes retains156900/191776
+(500previouslyunACKbytesreconciled). Samepci-native-6gw77kuj/signature/packet,
+noresign/newcounter/reboot. DoNOTstartsecondcontrollerwhile74229alive.
+AfterAPPLIED61 itcontinuesfreshinitial→12once-signedassets→progress/rawmonitor
+automatically. Atthissnapshot61notAPPLIED, noSSID/WPA/IPproof. Evidence
+native61-resumed-query.json/log. Rawarchive hostreader has600s internalbound;
+currentcontrollerouter240s canstopwithpartialcapture, preservepartial and
+Rootcanrerunread-onlyaftercheckedquiescencewith>=660shostboundifneeded; never
+usepartial110pages/status asSSIDsuccess. No frozenreader/runtimeedit needed.
