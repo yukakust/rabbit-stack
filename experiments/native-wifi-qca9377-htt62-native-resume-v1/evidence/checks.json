@@ -1,0 +1,11 @@
+{
+  "status": "EXACT62-PROGRESSING-HOST-TIMEOUT-RESUME-STARTED",
+  "previous_floor": 156400,
+  "packet_bytes": 173856,
+  "prior_log_sha256": "e29fe556b5eed4449ed5d6b53a65647227624f06d58e61d6f802fa2d2a801e19",
+  "same_native_packet_sha256": "874b02081c58525bc2fb2efaec0dd3f3b53d84b8a64f8955ab93dcd17fb27ca5",
+  "new_native_signatures": 0,
+  "incorrect_state_rejections": 3,
+  "old_PID90808_exited": true,
+  "new_PID": 92963
+}

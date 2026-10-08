@@ -5770,3 +5770,14 @@ SSID/association/keys/IPclaim. Maccachemayneed supportedrefresh ifnewGATT
 missing; noblindreplay. Evidence root62-prepared storespublicmanifest/
 retirement/freshread/hashes. Ownerhotspot iPhone (9) enabled; remainsNEXTscan
 target only, HTT62 doesnot scan. Passwordnotcollected. Dellnotrebooted.
+
+Native62 controller90808 exited ordinary progressing300s native-stage timeout;
+lastconfirmed156400/173856 aftertwooriginalpaced attempts (logs1/3), noactual
+disconnect/CBError/regression. Exactsessionpci-native-7meuoneq/statesaved,
+engine61 remainsuntilAPPLIED. NEWisolated htt62-native-resume-v1/resume62.py
+validatesstoppedlog hash/exactpacket/currentgate andrequiresoldPIDsgone, then
+execsame frozencontinue62.py queryingbeforewrites. Sole newPID92963, metadata
+htt62-root-route-v1/runs/control/controller62-resume-92963.json; log
+htt62-native-resume-v1/runs/resume62.log. Zero newnative signatures.
+No secondBLE/nofirmware62signedyet/noDellreboot. CheckactualPID/state/logs
+beforeanotheroperation. Wrongstatus/counter/nonprogress rejected in3checks.

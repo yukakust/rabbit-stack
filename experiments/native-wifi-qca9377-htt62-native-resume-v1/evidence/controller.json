@@ -1,0 +1,11 @@
+{
+  "pid": 92963,
+  "started_at": 1791464492.6731122,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7meuoneq",
+  "native_packet_sha256": "874b02081c58525bc2fb2efaec0dd3f3b53d84b8a64f8955ab93dcd17fb27ca5",
+  "previous_confirmed_floor": 156400,
+  "script": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-root-route-v1/continue62.py",
+  "script_sha256": "e58092e17f84a0c0f4929d0d9d4e76f177b1c131e33e30416a5a1b53488f1656",
+  "new_native_signatures": 0,
+  "requires_query_before_write": true
+}

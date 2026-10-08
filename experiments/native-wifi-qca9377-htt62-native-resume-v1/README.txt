@@ -1,0 +1,1 @@
+Resume exact once-signed62 native package only after sole old controller exits and actual progressing300s host timeout; validate public exact packet/gates/host proofs, query before writes. No new native signature, changed frozen controller, firmware replay, cache edit, Dell reboot, credentials or native code compile. Root prior protocol primitives own the same saved session.
