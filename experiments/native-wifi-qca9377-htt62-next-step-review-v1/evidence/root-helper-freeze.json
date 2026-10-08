@@ -1,0 +1,8 @@
+{
+  "status": "READ-ONLY-ROOT62-CONTROLLER-MONITOR-CLASSIFIER-TECHNICAL-PASS",
+  "sha256": {
+    "test_root_helpers.py": "7ced5a777ade30c6053d99069c084b0151bd3393cea9fc4082b0445270b19f4f",
+    "evidence/root-helper-tests.json": "035c13d113a33b8b13c615f6a88e32c55025cf0f71e302aeeecd670440ca9549",
+    "evidence/root-controller-review.json": "636d40339d91ea1f6e21345c8960418160bd6751e1b3f8a5cfab401ffb441a6a"
+  }
+}

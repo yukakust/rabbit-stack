@@ -1,0 +1,27 @@
+{
+  "status": "MONITOR62-ACTUAL-NATIVE-GATT-STATUS-LAYOUT-PASS",
+  "candidate": {
+    "status": "HTT62-PUBLIC-SOURCE-CLOSED-TECHNICAL-GATE-PASS",
+    "report_sha256": "9345001639d4eda7d224a8b5d2a7571324ee481f7f3e4c14b33df7f4e8ae46ce",
+    "payload_sha256": "22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81",
+    "native_report_sha256": "21d120ee9a4cf9702574cf71591c988f8729975dda0d90295fc731b0a0602c99",
+    "gate_source_sha256": "d50c50ec5d2eea57a0b2d6d0c4940245234f51c0f9732288cac24a13efa6a171",
+    "source_count": 433,
+    "generated_count": 176,
+    "physical_admission": false,
+    "actual61_raw_release_review_required": true,
+    "new_counter_reserved": false,
+    "device_operations": 0,
+    "key_accesses": 0,
+    "request_is_rf": false
+  },
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/profile_gatt.c": "958a4c63da2b9bda2069298e01366272d6a5cad33f0d1094d141b6b3caca0349",
+    "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/boot_gatt.c": "1af1a23b94272603286f516f40459692171b72ab6da9743a01f59de69efad3a9",
+    "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/init_probe.c": "6f1d694b0b7fdfadbe36ec87c18a695621c2947555f0db32f432c50a339d5d5f",
+    "experiments/native-wifi-qca9377-htt62-progress-monitor-v1/collector.m": "096b7136b6c6506338096c8428b21eb575859179ea601c76de79a23055c603a7",
+    "experiments/native-wifi-qca9377-htt62-progress-monitor-v1/native_binding.py": "dc4477ba991c98ab078551322d13edd1edd0bce8aff2b5b0fbc44fa9d050f429"
+  },
+  "manager_started": false,
+  "physical_read": false
+}

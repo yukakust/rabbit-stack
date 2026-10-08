@@ -1,0 +1,15 @@
+{
+  "status": "HTT62-PINNED-HOST-GATE-OFFLINE-TAMPER-TESTS-PASS",
+  "checks": 55,
+  "gate_source_sha256": "4fa0995774b781c27309300890f671b9f34b98a77053b3aa3c4b42d3efba5714",
+  "test_source_sha256": "f1b4f2480f82547b26cea6e6e41b0406e6c593c20b164f6748848be724588231",
+  "helpers": {
+    "native-wifi-qca9377-htt62-staging-observer-v1": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-staging-observer-v1/runs/control/sender",
+    "native-wifi-qca9377-htt62-observer-v2": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-observer-v2/runs/control/read-htt62"
+  },
+  "physical_admission": false,
+  "frozen_files_modified": false,
+  "manager_started": false,
+  "state_key_accesses": 0,
+  "gate_py_dependency": false
+}

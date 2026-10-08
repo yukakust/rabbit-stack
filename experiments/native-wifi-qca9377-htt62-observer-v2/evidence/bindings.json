@@ -1,0 +1,26 @@
+{
+  "status": "FROZEN-HTT62-HOST-OFFLINE-HELPER",
+  "proof_sha256": "ece549b036cc55e2c29cd66ae1ad16843b93e005308126145235f92be0822ce4",
+  "executable_path": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-observer-v2/runs/control/read-htt62",
+  "executable_sha256": "1ff8a6a94d855aad44a6f336dd29e89e8a7791c5676a63cb3922dfe7db1b0794",
+  "source_sha256": {
+    "host_test.m": "b8f18c5b06a02e4075b012d1b15c26f6485a30c8817c6c9c0daacb1db3a0c008",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "read_htt.m": "87f73e80311cdaaf8dc6b0952cca79131a381b9a062bdcdf2a0ed6e1a64cd269",
+    "bindings.py": "b7e4e15b2fdc8fcdcbf15b2e4813c40dffdea9ddd92c58102cb988f44903f652",
+    "native_binding.py": "1dd08722655c937b86fc2cbe1d4e1c6fa40007a0fe6c3d57e2804a72d20799df",
+    "verify_host.py": "22c0494278f89d4f2a9064df91726acf74bac4c0714244e9ff851599c36a17fc",
+    "README.txt": "f1cf93411f8237780bf25b6656d10de737f1fe4fcbf95519ddc9a82bc29fdfa9",
+    "decode_htt.py": "43f3fdde1e3220c4fee5e7e853e2a39411a6ab76c1aeb6aef759c93fdee6699c",
+    "fixtures.py": "5599e8c7cb1f58b1dae3f32ad0bd958eb27d052dce1daaae7c8a04a4be0c4cce"
+  },
+  "native_candidate_report_sha256": "9345001639d4eda7d224a8b5d2a7571324ee481f7f3e4c14b33df7f4e8ae46ce",
+  "native_payload_sha256": "22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81",
+  "native_boot_gatt_sha256": "1af1a23b94272603286f516f40459692171b72ab6da9743a01f59de69efad3a9",
+  "physical_admission": false,
+  "actual_APPLIED62": "PENDING ROOT",
+  "controller_permission": "ROOT separately admits exactly one controller",
+  "native_source_modified": false,
+  "private_key_accesses": 0,
+  "device_operations": 0
+}

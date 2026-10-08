@@ -5740,3 +5740,33 @@ iPhone(9) for nextscan; retain exactspacedSSID, passwordnotcollected. Prepared
 unsignedHTT62 VERSIONREQ/CONF candidate mayhelp establishtransportbaseline;
 requiresRootphysical61archive/publicclosure and separateadmission before
 signing/deployment. No new62counter reserved or signingperformed here.
+
+### 2026-10-08: exact HTT62 signed once; sole sequential controller started
+
+Freshphysical61 RFS APPLIED/counter61/ecd270... plus currentGATT2a/2bQSCN
+actualrelease14/READY/status byteequal completed227raw capture PASS. Public
+all12firmware and native61 signature checked; durable untouchedcopies assets/
+native/freshobservation/fullphysicalscan saved runs/retired61 beforeclearing
+completedhardwarepending. Exact new62report934500... payload22cde47...433source/
+176generated/130fixture/native24/threeEFI/normalEMPTYQEMU/world19 gatesPASS.
+USB/HCI/resident unchanged. No retry deniedHCI generationtimer scope.
+Hostobserver-v2 fixes productionHTT pipe1 event0 vsWMIeventword/creditonly0;
+175fakecallbacks/451purePASS, hostgate55negatives, monitor75fakecases+actual
+f56/nativeGATT2e/2f ABI; transition10offline tests, independentreview26checks.
+Model resultsNOTphysicalHTTsuccess. Versionquery only/nonRF/noSSID/password.
+
+Native62 locallysignedONCE saved pci-native-7meuoneq; exactpackageSHA
+874b02081c58525bc2fb2efaec0dd3f3b53d84b8a64f8955ab93dcd17fb27ca5.
+SolecontrollerPID90808 htt62-root-route-v1/continue62.py,
+metadata runs/control/controller62.json/logcontinue62.log. FIRST inspectPID/
+state/receipts beforeanyaction; nosecondBLEcontroller/noresign. Atthissnapshot
+queried priorphysical61 receipt, native62notyetconfirmedAPPLIED. Controller
+thenexactdeliver→freshQPD18→sign12gen62firmwareonce→query/resumeonlyordinary
+progressingtimeout→QWBTphase5→QHTTgen62actualall14release→30rawpages twice/
+3statuses/67callbacks→Rootclassifier. Realdisconnect/no progressstops/saves.
+Rawouter660s; bootstrap5580s hostbound unchanged. QHTTfailure stillrawexport
+diagnostics, VERSIONpass requires actualowned raw/IE6/op3; noHTTdataplane/
+SSID/association/keys/IPclaim. Maccachemayneed supportedrefresh ifnewGATT
+missing; noblindreplay. Evidence root62-prepared storespublicmanifest/
+retirement/freshread/hashes. Ownerhotspot iPhone (9) enabled; remainsNEXTscan
+target only, HTT62 doesnot scan. Passwordnotcollected. Dellnotrebooted.

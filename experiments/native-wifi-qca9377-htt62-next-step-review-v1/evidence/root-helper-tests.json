@@ -1,0 +1,43 @@
+{
+  "status": "READ-ONLY-ROOT62-CLASSIFIER-CALLBACK-REVIEW-PASS",
+  "fixture_kind": "synthetic-host-only",
+  "physical_admission": false,
+  "checks": [
+    "exact63reads_shape_accepted",
+    "fixture_raw_rejected",
+    "fixture_row_rejected",
+    "write_rejected",
+    "peer_rejected",
+    "error_rejected",
+    "cached_rejected",
+    "wrong_uuid_rejected",
+    "wrong_phase_rejected",
+    "wrong_page_rejected",
+    "raw_bytes_rejected",
+    "missing_callback_rejected",
+    "swapped_callbacks_rejected",
+    "raw_json_mismatch_rejected",
+    "unsupported_raw_major_rejected",
+    "status_raw_major_mismatch_rejected",
+    "VERSION_wrong_pipe_rejected",
+    "stale_completion_floor_rejected",
+    "released_fault_never_version_success",
+    "signature_base_exact_actual61",
+    "only_real_sender_timeout_with_forward_RFCS_floor_shape",
+    "progress_disconnect_rejected",
+    "progress_same_floor_rejected",
+    "progress_wrong_sender_mode_rejected",
+    "progress_wrong_timeout_domain_rejected",
+    "progress_wrong_boot_digest_rejected"
+  ],
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-htt62-next-step-review-v1/test_root_helpers.py": "7ced5a777ade30c6053d99069c084b0151bd3393cea9fc4082b0445270b19f4f",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/classify_htt62.py": "dafdebd2081736ac0c4d43bf08d0e9a1cf7ec87c595fa2f0bb1aac6bbf15a54d",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/continue62.py": "e58092e17f84a0c0f4929d0d9d4e76f177b1c131e33e30416a5a1b53488f1656",
+    "experiments/native-wifi-qca9377-htt62-observer-v2/decode_htt.py": "43f3fdde1e3220c4fee5e7e853e2a39411a6ab76c1aeb6aef759c93fdee6699c",
+    "experiments/native-wifi-qca9377-htt62-observer-v2/fixtures.py": "5599e8c7cb1f58b1dae3f32ad0bd958eb27d052dce1daaae7c8a04a4be0c4cce"
+  },
+  "device_operations": 0,
+  "state_operations": 0,
+  "key_accesses": 0
+}

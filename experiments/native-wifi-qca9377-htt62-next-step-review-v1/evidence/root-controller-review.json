@@ -1,0 +1,51 @@
+{
+  "status": "READ-ONLY-ROOT62-CONTROLLER-MONITOR-CLASSIFIER-TECHNICAL-PASS",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/gate.py": "3da6c628a8cc992ce746154b7efa9a335280d6a5ce931e01d5e93a1faff2d5e8",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/admission.py": "e2d2a29e49d58ef41f3792b96b8dd23e8f92ca1bfbd7622bb854781b8b64c5fe",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/root_route.py": "ee1dfc2ccbe12c8ff7f1d1c41f6b435b150454c3ea3ddd838895639cf0db7fe8",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/assets62.py": "774925245e89fbe2a16752d791225f94749369aaf53c83ff48217e4265c5c13b",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/continue62.py": "e58092e17f84a0c0f4929d0d9d4e76f177b1c131e33e30416a5a1b53488f1656",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/classify_htt62.py": "dafdebd2081736ac0c4d43bf08d0e9a1cf7ec87c595fa2f0bb1aac6bbf15a54d",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/host_gate.py": "4fa0995774b781c27309300890f671b9f34b98a77053b3aa3c4b42d3efba5714",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/monitor_gate.py": "3f6f31e9bb409288bc1746448e20f3d371241ff4fa925e1c4ca9a14b2078ac43",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/transition61.py": "9c661e4913ec3dd8a9cec4f1f7fb50222fadbdfcfa88208492ce89ae83dfcd3c",
+    "experiments/native-wifi-qca9377-htt62-progress-monitor-v1/collector.m": "096b7136b6c6506338096c8428b21eb575859179ea601c76de79a23055c603a7",
+    "experiments/native-wifi-qca9377-htt62-progress-monitor-v1/native_binding.py": "dc4477ba991c98ab078551322d13edd1edd0bce8aff2b5b0fbc44fa9d050f429",
+    "experiments/native-wifi-qca9377-htt62-progress-monitor-v1/evidence/host-proof.json": "a8b5899ae01874690df88604a4a06986929658eee33a82aa75609ae7f472ee0a",
+    "experiments/native-wifi-qca9377-htt62-progress-monitor-v1/evidence/native-binding.json": "8c0f84f34ed1be58d1c988d998f1dc6350076eb69748e25feeb4fefe553d927e"
+  },
+  "root_helper_test_report_sha256": "035c13d113a33b8b13c615f6a88e32c55025cf0f71e302aeeecd670440ca9549",
+  "pure_test_checks": 26,
+  "pure_import_checked": true,
+  "pure_admission_host_monitor_checks": "PASS, no actual manager/key/state operation",
+  "blocking_bug_found": false,
+  "technical_verdict": "Within existing owner authorization, Root can proceed with its separately gated once-sign62 and sole controller. This review does not grant user authorization or assert physical VERSION success.",
+  "key_boundaries": [
+    "Root prepare performs reviewed host/monitor admission before private-key load; actual61 freshrelease and durable retirement remain Root responsibility.",
+    "Assets/current checks exact native62/world19/APPLIED gate before signed firmware delivery.",
+    "Signed native62 public verifier now binds actual61 payload305d0171c3c2e296fdf00f82a01cc838d67c0a1f3ffa836a847f4f12770ce074 and basecounter61, not old60.",
+    "Monitor QWBT is progress only/no generation; Root external exact62 binding required. QHTT must have generation62 and actualrelease/all9zero/CLOSED/fulladaptercleanup before raw collector.",
+    "Monitor permits released VERSION faults deliberately; classifier requires corrected decoder version_only_pass for success.",
+    "Exact67callbacks join fullcapture:63sequential reads with rawbytes/UUID/stage/pass order and stable statuses/pages; wrong peer/error/write/cache/fixture/tamper rejected.",
+    "Controller actual disconnect or nonforward/foreign error resumes rejected; finite existing timeout shape only.",
+    "No controller HCI/native timer edits or replay/signing primitive changes."
+  ],
+  "regression_cases": [
+    "Unsupported raw major",
+    "Raw/status major mismatch",
+    "VERSION wrongpipe",
+    "Stale response floor",
+    "Released fault never version pass",
+    "Actual61 public signature base",
+    "Wrong peer/write/error/cached/fixture/UUID/page/stage/order/rawbytes and callback count",
+    "Resume disconnect/samefloor/wrongmode/wrongNSErrorDomain/wrongbootdigest"
+  ],
+  "original_native_review_sha256": "d5c9326db81a1870d1df3b374a8255b19d9fd1bdb6638665f7669d55e58c14dc",
+  "original_native_review_unchanged": true,
+  "device_operations": 0,
+  "key_accesses": 0,
+  "state_operations": 0,
+  "frozen_native_edits": 0,
+  "physical_admission": false
+}

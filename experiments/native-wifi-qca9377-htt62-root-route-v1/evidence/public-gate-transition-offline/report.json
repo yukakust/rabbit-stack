@@ -1,0 +1,15 @@
+{
+  "status": "PUBLIC62-EXACT-GATE-TRANSITION61-OFFLINE-PASS",
+  "tests": 10,
+  "source_sha256": {
+    "gate.py": "3da6c628a8cc992ce746154b7efa9a335280d6a5ce931e01d5e93a1faff2d5e8",
+    "transition61.py": "9c661e4913ec3dd8a9cec4f1f7fb50222fadbdfcfa88208492ce89ae83dfcd3c",
+    "test_transition61.py": "5b267ac9ea7c206762c8c954c218a3a4a7d24dc04842997b9b9f1e8d5306f787",
+    "README.md": "4849d0d54c38da3dcaffb16ca714612e1bfcba9c500c64673584e1fade8a57a2"
+  },
+  "host_log_sha256": "44218f34457d1d6eb3c57fd87a89230ff13cb2eafc252f9dd1236cbac159b5ab",
+  "actual_state_retired": false,
+  "key_loads": 0,
+  "device_operations": 0,
+  "physical62": false
+}

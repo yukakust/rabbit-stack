@@ -1,0 +1,9 @@
+{
+  "pid": 90808,
+  "started_at": 1791461662.199584,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7meuoneq",
+  "controller_sha256": "e58092e17f84a0c0f4929d0d9d4e76f177b1c131e33e30416a5a1b53488f1656",
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-root-route-v1/runs/control/continue62.log",
+  "sole_controller": true,
+  "new_native_signatures": 1
+}

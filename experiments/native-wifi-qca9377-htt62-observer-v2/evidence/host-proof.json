@@ -1,0 +1,55 @@
+{
+  "status": "OFFLINE-HTT62-OBSERVER-RAW-VERSION-IE6-CALLBACK-PREFLIGHT-PASS",
+  "python_checks": 451,
+  "host_result": "PASS 175 HOST HTT62 callback cases; NO MANAGER/WRITES",
+  "reader_path": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-observer-v2/runs/control/read-htt62",
+  "reader_executable_sha256": "1ff8a6a94d855aad44a6f336dd29e89e8a7791c5676a63cb3922dfe7db1b0794",
+  "compiler_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-observer-v2/read_htt.m": "87f73e80311cdaaf8dc6b0952cca79131a381b9a062bdcdf2a0ed6e1a64cd269",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "test_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-observer-v2/read_htt.m": "87f73e80311cdaaf8dc6b0952cca79131a381b9a062bdcdf2a0ed6e1a64cd269",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-observer-v2/host_test.m": "b8f18c5b06a02e4075b012d1b15c26f6485a30c8817c6c9c0daacb1db3a0c008",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "source_sha256": {
+    "read_htt.m": "87f73e80311cdaaf8dc6b0952cca79131a381b9a062bdcdf2a0ed6e1a64cd269",
+    "host_test.m": "b8f18c5b06a02e4075b012d1b15c26f6485a30c8817c6c9c0daacb1db3a0c008",
+    "decode_htt.py": "43f3fdde1e3220c4fee5e7e853e2a39411a6ab76c1aeb6aef759c93fdee6699c",
+    "fixtures.py": "5599e8c7cb1f58b1dae3f32ad0bd958eb27d052dce1daaae7c8a04a4be0c4cce",
+    "native_binding.py": "1dd08722655c937b86fc2cbe1d4e1c6fa40007a0fe6c3d57e2804a72d20799df",
+    "verify_host.py": "22c0494278f89d4f2a9064df91726acf74bac4c0714244e9ff851599c36a17fc",
+    "bindings.py": "b7e4e15b2fdc8fcdcbf15b2e4813c40dffdea9ddd92c58102cb988f44903f652"
+  },
+  "public_firmware_fixture_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+  "native_binding": {
+    "status": "HOST-HTT62-NATIVE-UUID-FIELD-JOIN-PASS",
+    "candidate_report_sha256": "9345001639d4eda7d224a8b5d2a7571324ee481f7f3e4c14b33df7f4e8ae46ce",
+    "payload_sha256": "22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81",
+    "status_service": "2e",
+    "status_value": "2f",
+    "status_ATT_handle": 31,
+    "raw_service": "30",
+    "raw_values": "80..9d",
+    "raw_pages": 30,
+    "status_bytes": 320,
+    "physical_admission": false,
+    "source_sha256": {
+      "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/profile_gatt.c": "958a4c63da2b9bda2069298e01366272d6a5cad33f0d1094d141b6b3caca0349",
+      "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/init_probe.c": "6f1d694b0b7fdfadbe36ec87c18a695621c2947555f0db32f432c50a339d5d5f",
+      "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/firmware_op.c": "35d8034ac7e5c05d38de5948b935bbf8907111fb2a4f6de4d77d997d43c23d41",
+      "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/version.c": "5d6ba1c8588283b4d6cfc536e34b5440ec66a1fd2e17f3e16eb89aca4a455f4c",
+      "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/htt_native.c": "667a98c1f94d835b53441d807a1897e665cb64cc6b1565ef63d19856a4cb4921",
+      "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/rx.c": "3ca3c3647bfaf73f27ff204b86e92149a5fb10318fd737309bb0cb6447d8b2bb"
+    }
+  },
+  "host_log_sha256": "948b1012321b1df8afd49e8fdb08ce9bbdc1bceb5d5aa59ab7f4095a324e8d86",
+  "bluetooth_manager_started": false,
+  "writes": 0,
+  "private_key_loads": 0,
+  "physical_admission": false,
+  "actual_APPLIED62": "PENDING ROOT",
+  "association": false,
+  "IP": false
+}

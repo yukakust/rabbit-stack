@@ -1,0 +1,107 @@
+{
+  "status": "READ-ONLY-HTT62-NEXT-STEP-REVIEW-COMPLETE",
+  "review_date": "2026-10-08",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/report.json": "9345001639d4eda7d224a8b5d2a7571324ee481f7f3e4c14b33df7f4e8ae46ce",
+    "experiments/native-wifi-qca9377-htt62-native-v1/components/htt_native.c": "667a98c1f94d835b53441d807a1897e665cb64cc6b1565ef63d19856a4cb4921",
+    "experiments/native-wifi-qca9377-htt62-native-v1/components/version.c": "5d6ba1c8588283b4d6cfc536e34b5440ec66a1fd2e17f3e16eb89aca4a455f4c",
+    "experiments/native-wifi-qca9377-htt62-native-v1/components/rx.c": "3ca3c3647bfaf73f27ff204b86e92149a5fb10318fd737309bb0cb6447d8b2bb",
+    "experiments/native-wifi-qca9377-htt62-native-v1/components/persistent.c": "95566f01b3a46c234d7e0ad4725754d44efda757d22bb40e0fc02c9e79612c9e",
+    "experiments/native-wifi-qca9377-htt62-native-v1/components/lifecycle.c": "d22d48e10434db0cf2774a24667b121256a16ecd6b2a0f0bfd011a51cd403c8c",
+    "experiments/native-wifi-qca9377-htt62-native-v1/htt_build.py": "9ffdaac97607a14efdcef5213a5ed59a3a63ec0cec5c32d609d9afb2986ab251",
+    "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/init_probe.c": "6f1d694b0b7fdfadbe36ec87c18a695621c2947555f0db32f432c50a339d5d5f",
+    "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/htc_credit.c": "53e5cc0482490daeccc05fc1b7b21069f47e16ffdfc05a3586bab722cd28bf2a",
+    "experiments/native-wifi-qca9377-htt62-root-route-v1/gate.py": "3da6c628a8cc992ce746154b7efa9a335280d6a5ce931e01d5e93a1faff2d5e8",
+    "experiments/native-wifi-qca9377-htt62-observer-v2/decode_htt.py": "43f3fdde1e3220c4fee5e7e853e2a39411a6ab76c1aeb6aef759c93fdee6699c",
+    "experiments/native-wifi-qca9377-htt62-observer-v2/evidence/host-proof.json": "ece549b036cc55e2c29cd66ae1ad16843b93e005308126145235f92be0822ce4",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/evidence/physical61-complete-scan/classification.json": "26338237712c60ae7fa24efbbc979afa28d496d03e1413439e6e34a11d607d8d",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/evidence/physical61-complete-scan/archive-events.json": "f4b68eeb70eb12e93815a3e9c75e6c2669beb6eac3efb9eb61002bd2da702157",
+    "experiments/native-wifi-qca9377-htt-version-v1/references.json": "2921269e9a17fb92cb1e552ca353e87a50b6aa7883886d35b7789bf98f31e0fe"
+  },
+  "candidate": {
+    "report_sha256": "9345001639d4eda7d224a8b5d2a7571324ee481f7f3e4c14b33df7f4e8ae46ce",
+    "payload_sha256": "22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81",
+    "payload_bytes": 173568,
+    "mapped_bytes": 4132864,
+    "native_counter": 62
+  },
+  "physical61_baseline": {
+    "status": "PHYSICAL61-COMPLETE-SCAN-CAPTURE-NO-ACCEPTED-TARGET",
+    "target_SSID_observed": false,
+    "retained_MGMT_0x7001_count": 0,
+    "all14_released": true,
+    "cause_of_no_observation_proven": false
+  },
+  "next_step": {
+    "VERSION_REQ_CONF_is_reasonable_bounded_prerequisite": true,
+    "claim": "Tests actual negotiated HTT command/response route and declared TLV dialect on current authenticated firmware; not a beacon-cause hypothesis proof.",
+    "required_bindings": [
+      "Actual INIT TX complete + READY and all14 retained owners before query.",
+      "Pinned full firmware digest/IE6op3 plus actual boot MAIN/helper pointers/lengths.",
+      "Negotiated distinct HTT/WMI endpoints and max_bytes.",
+      "One CE4 request publisher and single combined CE1/2 RX owner.",
+      "Current epoch + drained completion watermark; exact four-byte VERSION_CONF major2/3 plus CE4 DMA completion.",
+      "Explicit quiesce, actual bus/BME/IRQ release, lifecycleCLOSED/full resource/pool inventory.",
+      "Root sole-controller admission; exact APPLIED packet and stable raw exported evidence before results."
+    ],
+    "does_not_prove": [
+      "Physical zero-TX",
+      "Cause of missing scan beacons",
+      "SSID/BSSID/security association",
+      "PEER_MAP/HTT RX-ring configuration/SEC_IND/key installation",
+      "DHCP/IP/internet"
+    ],
+    "physical_admission": false
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "blocking-observer-v1-false-rejection",
+      "source": "htt62-native-v1/components/rx.c:117-125; htt62-observer-v1/decode_htt.py metadata join",
+      "finding": "HTT pipe1 event metadata is0 in actual production; frozen observer v1 compared payloadword to event for all pipes. Version bytes necessarily have nonzero major and wrongly fail. Host fixture used nonproduction HTT eventword.",
+      "proof": "Both major2/3 production-shaped synthetic raw captures fail exactly HTC raw metadata join; old-shaped fixture passes.",
+      "resolution": "Separate observer-v2 implements pipe1event0 and pipe2eventword/creditonly0 with actual-source join, 175 fake callbacks +451 pure checks per retained host proof. Frozenv1 unchanged. Root outerhost gate must pin/usev2.",
+      "resolved_in_new_scope": true,
+      "resolution_proof_sha256": "ece549b036cc55e2c29cd66ae1ad16843b93e005308126145235f92be0822ce4"
+    },
+    {
+      "id": "F2",
+      "severity": "contained-inner-checker-limit",
+      "finding": "Inner public technical checker accepts changed receiver_policy.kind, duplicate normalQEMU gates, or emptiedsource+alignedreproduction manifests. It is not a self-authenticating admission checker.",
+      "proof": "Three explicit purePython tamper cases; seven standard corruptions rejected.",
+      "resolution": "Current Root gate pins exact candidate report digest, checks policy-file/report/fullbaseline equality, and distinct expected normal/EMPTY reports. Lines32/47/51.",
+      "resolved_in_root_gate_snapshot": true
+    },
+    {
+      "id": "F3",
+      "severity": "bounded-diagnostic-limitation",
+      "source": "htt62-native-v1/components/htt_native.c:99-105",
+      "finding": "Two unrelated archive slots only: a third unexpected/debug/creditonly response faults11 rather than continuing indefinitely. Remaining queue/raw slots stay owned. Busy firmware may therefore prevent VERSION success.",
+      "safety": "Not false success; preserve exported raw graph and classify bounded abort honestly. No native modification requested."
+    },
+    {
+      "id": "F4",
+      "severity": "telemetry-limitation",
+      "source": "htt62-native-v1/components/rx.c:97 before104-109",
+      "finding": "Invalid completion cookie/length<8/length>2048 faults7 before rejectedraw capture. Such faults may lack rawbytes after release. Valid-length rejected HTC/trailer frames are copied beforedecode.",
+      "safety": "No false VERSION admission; reason/status remains available. No promise every malformed DMA completion has raw archive."
+    }
+  ],
+  "lifetime_review": {
+    "generated_release_predicate": "persistent.life.phase==QCA_RADIO_CLOSED && prefix_released()",
+    "weak_component_predicate_replaced_in_generated_candidate": true,
+    "no_duplicate_HTT_CONNECT": true,
+    "HTT_query_does_not_debit_WMI_credit": true,
+    "credit_trailer_validated_before_ledger_commit": true,
+    "archive_slot_overflow_faults_instead_of_drop": true,
+    "version_conf_is_not_dma_completion": true,
+    "native_blocking_bug_demonstrated_by_this_review": false,
+    "physical_lifetimes_not_exercised_by_child": true
+  },
+  "test_report_sha256": "aee87189b072e6dbe0e12ff448a4350138f8156b45f00a2f77210abdfcebe035",
+  "physical_verified_by_child": false,
+  "device_operations": 0,
+  "native_edits": 0,
+  "key_accesses": 0,
+  "state_operations": 0
+}

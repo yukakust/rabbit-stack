@@ -1,0 +1,66 @@
+{
+  "status": "READ-ONLY-HTT62-REVIEW-OBSERVER-MISMATCH-REPRODUCED",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-htt62-next-step-review-v1/test_review.py": "42122215f12abce8ce273a299c2cac5ae059b701ca93ed2a1ac78acc8a625da7",
+    "experiments/native-wifi-qca9377-htt62-native-v1/checks/admission_gate.py": "d50c50ec5d2eea57a0b2d6d0c4940245234f51c0f9732288cac24a13efa6a171",
+    "experiments/native-wifi-qca9377-htt62-native-v1/htt_build.py": "9ffdaac97607a14efdcef5213a5ed59a3a63ec0cec5c32d609d9afb2986ab251",
+    "experiments/native-wifi-qca9377-htt62-native-v1/components/rx.c": "3ca3c3647bfaf73f27ff204b86e92149a5fb10318fd737309bb0cb6447d8b2bb",
+    "experiments/native-wifi-qca9377-htt62-native-v1/components/htt_native.c": "667a98c1f94d835b53441d807a1897e665cb64cc6b1565ef63d19856a4cb4921",
+    "experiments/native-wifi-qca9377-htt62-native-v1/components/version.c": "5d6ba1c8588283b4d6cfc536e34b5440ec66a1fd2e17f3e16eb89aca4a455f4c",
+    "experiments/native-wifi-qca9377-htt62-native-v1/components/lifecycle.c": "d22d48e10434db0cf2774a24667b121256a16ecd6b2a0f0bfd011a51cd403c8c",
+    "experiments/native-wifi-qca9377-htt62-observer-v1/decode_htt.py": "548280509a25901ac8697b2dcfa21c4567747c4e0b96d381f6d2ede1249d0a3f",
+    "experiments/native-wifi-qca9377-htt62-observer-v1/fixtures.py": "5d19726dc31fdce41a28a530d73c0a7e33502bb0a35e44f511c81931af4b9baf"
+  },
+  "candidate_report_sha256": "9345001639d4eda7d224a8b5d2a7571324ee481f7f3e4c14b33df7f4e8ae46ce",
+  "candidate_payload_sha256": "22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81",
+  "checks": [
+    {
+      "case": "actual_technical_gate",
+      "result": "HTT62-PUBLIC-SOURCE-CLOSED-TECHNICAL-GATE-PASS",
+      "physical_admission": false
+    },
+    {
+      "case": "actual_production_HTT_event0_major2",
+      "unexpected_rejection": "HTC raw metadata join",
+      "fixture_inconsistency_reproduced": true
+    },
+    {
+      "case": "actual_production_HTT_event0_major3",
+      "unexpected_rejection": "HTC raw metadata join",
+      "fixture_inconsistency_reproduced": true
+    }
+  ],
+  "rejected_corruptions": [
+    "generation",
+    "world",
+    "physical_fixture",
+    "signing",
+    "payload",
+    "source",
+    "generated"
+  ],
+  "technical_checker_limits": [
+    {
+      "mutation": "receiver_policy_kind_mismatch",
+      "technical_gate_accepts": true,
+      "outer_exact_report_hash_required": true,
+      "physical_admission": false
+    },
+    {
+      "mutation": "duplicate_normal_QEMU",
+      "technical_gate_accepts": true,
+      "outer_exact_report_hash_required": true,
+      "physical_admission": false
+    },
+    {
+      "mutation": "empty_source_manifest",
+      "technical_gate_accepts": true,
+      "outer_exact_report_hash_required": true,
+      "physical_admission": false
+    }
+  ],
+  "physical_admission": false,
+  "device_operations": 0,
+  "credential_reads": 0,
+  "native_edits": 0
+}
