@@ -1,0 +1,71 @@
+{
+  "status": "HOST-ONLY-SINGLE-DATA-CAP100-DERIVATIVE-PASS",
+  "host_callback_checks": 65,
+  "data_payload_cap": 100,
+  "offset_prefix_bytes": 4,
+  "max_ATT_value_bytes": 104,
+  "pacing_ms": 50,
+  "send_timeout_seconds": 240,
+  "query_timeout_seconds": 60,
+  "resume_floor_fixture": 18480,
+  "next_offset_fixture": 18580,
+  "confirmed_floor_after_synthetic_RFCS": 18680,
+  "final_short_payload_fixture": 37,
+  "exact100byte_final_fixture": true,
+  "whole_packet_unchanged": true,
+  "original_source_sha256": {
+    "experiments/native-wifi-qca9377-asset-observer-v1/sender.m": "ae634e79cd61ebb2b98a702256b40f3d2a3bb4b0e746c5ef6d4465ab8ef6c777",
+    "experiments/native-wifi-qca9377-asset-observer-v1/sequence.h": "15458fbdd378df3ad1ba00357ff400c6acab68eb7d890372369220ca7e5a43b1",
+    "experiments/native-wifi-qca9377-asset-observer-v1/observer.py": "dd52d788eadcdf403ef1ddca9cf61ef3a2d4b3127e8ff07cc7e7ee9454164a2a",
+    "experiments/native-wifi-qca9377-asset-observer-v1/decode_prefix.py": "dc5fcf0feaa5d3cfdab7fbe8d39211bd7f986a8dc48bd2009800bc1aedab5a29",
+    "experiments/native-wifi-qca9377-asset-observer-v1/host_test.m": "19eeb0036abeec6f50c7c3ea8e38bcacea36b7021d34370d344a2dd046077ed3"
+  },
+  "source_sha256": {
+    "sender.m": "f86f50806b4959de5441c21eb26840891c934a487786a6da527febf3ee66cca9",
+    "sequence.h": "15458fbdd378df3ad1ba00357ff400c6acab68eb7d890372369220ca7e5a43b1",
+    "observer.py": "dd52d788eadcdf403ef1ddca9cf61ef3a2d4b3127e8ff07cc7e7ee9454164a2a",
+    "host_test.m": "80b54b946223e9dcd37c2009df614a87926a75e021e44d164ee34994deffba9a",
+    "decode_prefix.py": "dc5fcf0feaa5d3cfdab7fbe8d39211bd7f986a8dc48bd2009800bc1aedab5a29",
+    "verify_host.py": "ce86660ed63ea9e2eb01f5462302615b47dda1ec402a988f6d53c71780ae0658"
+  },
+  "compiler_input_sha256": {
+    "experiments/native-wifi-qca9377-asset-observer-small-data-v1/sender.m": "f86f50806b4959de5441c21eb26840891c934a487786a6da527febf3ee66cca9",
+    "experiments/native-wifi-qca9377-asset-observer-small-data-v1/sequence.h": "15458fbdd378df3ad1ba00357ff400c6acab68eb7d890372369220ca7e5a43b1",
+    "experiments/native-wifi-qca9377-asset-observer-small-data-v1/host_test.m": "80b54b946223e9dcd37c2009df614a87926a75e021e44d164ee34994deffba9a",
+    "experiments/native-wifi-qca9377-v1/firmware_sender_core.c": "67de5c5fa1a575f91a8128db7aa6759897f9f5c7b57f1339e221831bd431878d",
+    "experiments/native-wifi-qca9377-v1/firmware_sender_core.h": "440fb7f6e0d62c7f28396ce2984b9c98b95f2280a4c25e1074af4071f2a734d4",
+    "experiments/x86-64-uefi-runtime-supervisor-v1/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+    "experiments/x86-64-uefi-runtime-supervisor-v1/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+    "experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "host_test_executable_sha256": "efafb59fdc53865d0c61446e3c02ec3bd37783f2237ce1a646337e7cf5093251",
+  "compile_report": {
+    "status": "HOST-OBJC-PACKET-LAYOUT-CHECKPOINT-PREFLIGHT-NO-MANAGER",
+    "source_sha256": {
+      "experiments/native-wifi-qca9377-asset-observer-small-data-v1/sender.m": "f86f50806b4959de5441c21eb26840891c934a487786a6da527febf3ee66cca9",
+      "experiments/native-wifi-qca9377-asset-observer-small-data-v1/sequence.h": "15458fbdd378df3ad1ba00357ff400c6acab68eb7d890372369220ca7e5a43b1",
+      "experiments/native-wifi-qca9377-v1/firmware_sender_core.c": "67de5c5fa1a575f91a8128db7aa6759897f9f5c7b57f1339e221831bd431878d",
+      "experiments/native-wifi-qca9377-v1/firmware_sender_core.h": "440fb7f6e0d62c7f28396ce2984b9c98b95f2280a4c25e1074af4071f2a734d4",
+      "experiments/x86-64-uefi-runtime-supervisor-v1/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+      "experiments/x86-64-uefi-runtime-supervisor-v1/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+      "experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+    },
+    "executable_path": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-asset-observer-small-data-v1/runs/control/sender",
+    "executable_sha256": "3be9ee14f72136d8af474eada3f6ec9be3d2d156795aa5581313dd3c17856935",
+    "bluetooth_manager_started": false,
+    "private_key_loads": 0,
+    "signatures_created": 0,
+    "native_code_modified": false,
+    "production_admission": "ROOT separate reviewed route required",
+    "public_packet_signature_verified": false
+  },
+  "host_log_sha256": "e1f7ad64d014eba62aa7e0143be52501f188b1f7b77506481d8c603a47e0a1bf",
+  "bluetooth_manager_started": false,
+  "private_key_loads": 0,
+  "signatures_created": 0,
+  "native_code_modified": false,
+  "state_modified": false,
+  "physical_trial_performed": false,
+  "linkloss_cause_proven": false,
+  "actual_production_admission": "Root sole-controller freshgen60/currentasset context required"
+}
