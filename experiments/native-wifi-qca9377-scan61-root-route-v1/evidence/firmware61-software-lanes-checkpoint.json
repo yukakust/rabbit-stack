@@ -1,0 +1,28 @@
+{
+  "status": "PHYSICAL61-EXACT-FIRMWARE-TRANSFER-CONTINUES",
+  "controller_pid": 74229,
+  "native_counter": 61,
+  "asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-ko8zoixg",
+  "completed_chunks": 9,
+  "current_chunk": 9,
+  "current_receipt": {
+    "action": 2,
+    "bitmap": 511,
+    "confirmed_floor": 60000,
+    "device_attestation": false,
+    "error": 0,
+    "firmware_started": false,
+    "length": 65760,
+    "packet_sha256": "a792e608a18c787ede4dd9903754cb8161ea7212a954e0abdeccea158f9016c3",
+    "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+    "ready": 0,
+    "received": 60000,
+    "state": 1
+  },
+  "source_log_sha256": "5e068e0e8b9c92064001c1d7863a144404c400762f04317f395d2ecb3df0e904",
+  "native62_signed": false,
+  "DHCP_library_physical": false,
+  "WPA_library_physical": false,
+  "SSID_discovered": false,
+  "IP": false
+}
