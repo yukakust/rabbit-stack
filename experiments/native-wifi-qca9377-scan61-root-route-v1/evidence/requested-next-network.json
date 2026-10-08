@@ -1,0 +1,16 @@
+{
+  "ssid": "iPhone (9)",
+  "ssid_utf8_hex": "6950686f6e6520283929",
+  "owner_reports_hotspot_enabled": true,
+  "credentials_collected": false,
+  "current_native_generation": 61,
+  "current_candidate_target": "SILK_56E35E_Plus",
+  "current_scan_terminal": true,
+  "new_scan_started": false,
+  "required_next_steps": [
+    "refresh Mac GATT inventory and obtain complete retained native61 export",
+    "prepare isolated next scan candidate with iPhone target and deterministic Yukabox gates",
+    "root admission and sequential once-signed physical trial",
+    "verify actual iPhone BSS before secure provisioning or association"
+  ]
+}

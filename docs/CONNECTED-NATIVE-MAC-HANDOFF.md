@@ -5707,3 +5707,11 @@ fresh full inventory and raw capture; do not change frozen61/replay assets.
 SystemSettings shows Dell is not a paired MyDevice; no scoped Forget action.
 Asked owner for 20s Mac Bluetooth off/on (accessories temporarily disconnect);
 not yet performed. Do not reset Dell/USB/bootstrap or edit system cache DB.
+
+Owner selected alternate hotspot iPhone (9) and reports it enabled. No password
+collected. Current frozen61 still targets SILK_56E35E_Plus and its bounded scan
+is terminal; enabling hotspot does not start another scan. Next target recorded
+in evidence/requested-next-network.json, not a deployment/configuration claim.
+New isolated candidate/gates needed for changed target; no frozen edits/replay.
+Mac Bluetooth off/on consent remains unanswered; do not infer it from hotspot
+enabled. First preserve/read full61 raw before retiring completed generation.
