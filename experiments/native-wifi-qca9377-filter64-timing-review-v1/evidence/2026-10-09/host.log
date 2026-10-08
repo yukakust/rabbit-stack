@@ -1,0 +1,3 @@
+SYNTHETIC frozen63: exact physical Echo bytes queued; global poll rejects before consume, DMA3 not invented
+SYNTHETIC frozen63: exact Echo observed within global budget plus actual modeled DMA3 passes
+SYNTHETIC frozen63: Echo alone does not bypass unobserved DMA or expired deadline

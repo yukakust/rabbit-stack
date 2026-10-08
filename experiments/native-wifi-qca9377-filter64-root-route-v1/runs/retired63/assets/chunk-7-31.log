@@ -1,0 +1,3 @@
+{"action":2,"bitmap":127,"confirmed_floor":47040,"device_attestation":false,"error":0,"firmware_started":false,"length":65760,"packet_sha256":"682026410c636e87b1ea96d414745ebe7ebefa6541935a32e9151033b16e4590","peripheral":"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF","ready":0,"received":47040,"state":1}
+{"action":2,"bitmap":127,"confirmed_floor":51360,"device_attestation":false,"error":0,"firmware_started":false,"length":65760,"packet_sha256":"682026410c636e87b1ea96d414745ebe7ebefa6541935a32e9151033b16e4590","peripheral":"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF","ready":0,"received":51360,"state":1}
+FIRMWARE CHUNK STOPPED: The connection has timed out unexpectedly.; preserve packet/checkpoint, no activation inferred

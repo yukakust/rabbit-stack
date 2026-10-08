@@ -1,0 +1,24 @@
+{
+  "status": "ACTUAL63-FRESH-RELEASE14-ARCHIVED-NATIVE64-SIGNED-ONCE-DELIVERY-ACTIVE",
+  "controller_pid": 18456,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-b_3xwpds",
+  "counter": 64,
+  "payload_sha256": "d40efd8c0b08a9289f0caaa64d931519a253559c53ef732af8961ed91ad49965",
+  "packet_sha256": "5932e4dc92aacb821aecd346ad8c718a07e42852a469d0d605f75679f1530298",
+  "native64_applied": false,
+  "firmware64_signatures": 0,
+  "native_signatures": 1,
+  "world_counter": 19,
+  "reboot": false,
+  "credentials_read": false,
+  "inputs": {
+    "report.json": "b2ad39dc71d598737c11f54bbec47e558ffa1e7710af63242c29f87a4e2a256c",
+    "fresh63-receipt.log": "818863a75253bc035848f970f45eefb12e27894a260f7f6840360d1093428699",
+    "root-admission.json": "c8dd702b02ab7ccfcfd5ff571ead3ddd79b5033cbb7351bc42341bab94121e68",
+    "fresh63-monitor.jsonl": "008c584fd4b8a756e97c704611712b88cd92f160665befb3d5e78e0213e8febc",
+    "fresh63-report.json": "eb2894a7093cba73e5488020db1c2ebc9f444695b3afdb95ad55f96e2f7654a6",
+    "retired63-retirement.json": "039ba6b9af6e7507c8968203b9b1f707da49059c64e4c4a7290435e14f767160",
+    "root-before-state.json": "3272ed3d11a4515c6603756d3cac3ee851c57726bb43bc904a47b9f53a07942d",
+    "fresh63-monitor.log": "bf7fc54fc096d973beacf76f49c2df88011aca891e2f59039e74247273b78853"
+  }
+}

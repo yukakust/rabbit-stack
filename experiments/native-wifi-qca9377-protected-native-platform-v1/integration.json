@@ -1,0 +1,92 @@
+{
+  "status": "PROTECTED-NATIVE-PLATFORM-FEASIBILITY-PARTIAL-NOT-ADMITTED",
+  "platform_report_sha256": "276efe424f975ef9fe1a2e9c5dc46b0807b21a403d6225d1d37aaa346ea15f39",
+  "source_sha256": {
+    "platform.c": "0986b8cd3d2987ea8cf90e8adfe4b3acacfee6e9ff9cc9a472621cc4cda18dfb",
+    "platform.h": "080f52a09c903e52ced5918d10c22c4cff85e12c920050beadcf4cd88b00ea28",
+    "rng_port.c": "5ac751cc0d2e0feed19e7ed1e8bc4f2a92e9aaec729bbacc1b8c3368885f6752",
+    "rng_port.h": "c68480b6b5677d907d6b535fe1ead1d03ef4d27096cb5b56417415305bb9fd31",
+    "test.c": "72b924747da1c3bbb07e7481915122788f7f17049c772c775dee783fa1986638",
+    "link_probe.c": "6918b60aad229f486259dca4fc2ad4210f11204c3a65cf63112d9a3c718e6dbb",
+    "verify.py": "f952a1c19d4d3c0964462fd54be9a781114ae79e2c5af33073ce7ae386f62ec5",
+    "oracle-boot.h": "711f753a5655959140c92879a6120535ca1c4368a4a4173ce3487a6f31661dc5"
+  },
+  "references_sha256": {
+    "experiments/native-wifi-qca9377-efi-rng-port-v2/evidence/2026-10-07/report.json": "80c78e27e657b935d664fec212099b08e35833d925fa6113e05ffc1fbdba0604",
+    "experiments/native-wifi-qca9377-production-memory-plan-v1/pool_target.c": "e83ad41c0ea4a6940eb34bebaf754e0d8c91d41b449cd9845a3146b3a684ebe9",
+    "experiments/native-wifi-qca9377-production-memory-plan-v1/README.md": "bbb4c155484634335a60410c2f9d0007668887eeacd04acd5e1c23e320522cda",
+    "experiments/native-wifi-qca9377-supplicant-native-v2/evidence/2026-10-08/coff/report.json": "0035519e363ca454cc84d63a3a8036c95261b5798edb2850f584cdfef36dbe0b",
+    "experiments/native-wifi-qca9377-network-nosys-v1/evidence/hardened/report.json": "6407225292e43566293798097194b863e8b6616fefcf7d41e113bc1377213fd5",
+    "experiments/native-wifi-qca9377-filter63-native-v1/runs/checked-candidate/report.json": "ba46f2c04021b71744a45a0fc31769d93629062422b8a6fbf878e66d8767fe37"
+  },
+  "native63": {
+    "mapped_bytes": 4194304,
+    "mapped_cap": 4194304,
+    "text_page_slack": 2928,
+    "module_text_bytes": 3955,
+    "module_rdata_bytes": 64,
+    "module_bss_bytes": 0,
+    "combined_whole_image_fit": false
+  },
+  "RNG": {
+    "interface": "protected_boot_api\u2192rng_discover(GetInfo)\u2192rng_diagnostic whitelist",
+    "SystemTable_bootservices_offset": 96,
+    "SystemTable_minbytes": 120,
+    "BootServices_minbytes": 328,
+    "AllocatePool_offset": 64,
+    "FreePool_offset": 72,
+    "LocateProtocol_offset": 320,
+    "GetRNG_called": false,
+    "physical_provider_approved": false,
+    "bootstrap_modification_required_for_ABI": false,
+    "physical_method_lifetime_verified": false
+  },
+  "arena": {
+    "max_pool_bytes": 2097152,
+    "memory_type": 4,
+    "concurrent_loan_limit": 1,
+    "ambiguity_retains_owner": true,
+    "native_all_owner_integration": false,
+    "TLS_supplicant_lwIP_simultaneous_partitions_proven": false
+  },
+  "interfaces": [
+    {
+      "component": "MbedTLS3.6.7 TLS13 overBLE",
+      "prepared": "Platform callbacks and bounded allocation owner only. This scope has no TLS build.",
+      "missing": [
+        "actual freestanding TLS link",
+        "heap/stack/record peaks",
+        "bounded serialized BLE callbacks",
+        "approved device RNG",
+        "full SPKI physical QR comparison",
+        "no0RTT/noresumption config",
+        "mutually authenticated completion before credentials"
+      ]
+    },
+    {
+      "component": "supplicant-native-v2",
+      "prepared": "24 real crypto COFF objects, actual patched mature hostinterop",
+      "missing": [
+        "31 real runtime/eloop/entropy APIs for final link",
+        "native association/EAPOL/HTT key install confirmation",
+        "real local controlled-port proof",
+        "bounded shared lifetime/rekey allocation"
+      ]
+    },
+    {
+      "component": "hardened lwIP",
+      "prepared": "339 synthetic actual DHCP/ARP/port tests; code25520/BSS32361/rdata2813/data2; DHCP server-ID hardening",
+      "missing": [
+        "TCP/DNS configured and tested (currently disabled)",
+        "freestanding runtime link",
+        "actual HTT Ethernet ownership/backpressure",
+        "association/key-confirmed authorization",
+        "monotonic timer integration"
+      ]
+    }
+  ],
+  "device_operations": 0,
+  "key_accesses": 0,
+  "signing_admitted": false,
+  "physical_admission": false
+}

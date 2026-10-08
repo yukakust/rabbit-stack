@@ -1,0 +1,32 @@
+{
+  "status": "READONLY-SCAN64-SECURITY-INTEGRATION-REQUIREMENTS",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-filter63-observer-v2/scan_decode.py": "184dae3baa2388bc1e06d84155d7ae802b75b50df6513a8e5ab47b5f56088b72",
+    "experiments/native-wifi-qca9377-filter63-observer-v2/decode_filter.py": "518e4aa37ae824df087cd2a3d62965304f8bbd9f33eace74e123fd0f79d301b5",
+    "experiments/native-wifi-qca9377-bss61-historical-eligibility-v1/historical.c": "1b6158d8ab319ecebe95795d4bbe6d5b0bc7ec54fe27a28652458578b8492aa6",
+    "experiments/native-wifi-qca9377-bss61-historical-eligibility-v1/bridge.py": "dcea3e6940185bb3cc2bc27dba0ebfa27d01fb47f439ec2a7c979851d1a61b95",
+    "experiments/native-wifi-qca9377-bss61-historical-eligibility-v1/copied/bss_security.c": "e95c67534328cfe2505610ac35c6917fbf416d63f638793a2b99c7009058dc63",
+    "experiments/native-wifi-qca9377-filter64-timing-review-v1/references/wmi.c": "68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4"
+  },
+  "requested_SSID_hex": "6950686f6e6520283929",
+  "requested_SSID_bytes": 10,
+  "SSID_matching": "Exact ten bytes including space; iPhone(9) is nine bytes and a different SSID.",
+  "current_scan_decoder": {
+    "RSN": "Only checks privacy flag, RSN version1/minlength2 and duplicate IE; does not validate cipher/AKM/PMF/PMKID/security negotiation. security_validated=False.",
+    "BSSID": "Requires transmitter address==BSSID, nonzero unicast, raw/status exact join. Does not pin a trusted expected AP BSSID or authenticate advertisements.",
+    "rates": "Supported Rates IE1 and Extended Supported Rates IE50 are not evaluated by current scan decoder. raw WMI rate is not negotiated basic-rate compatibility.",
+    "RSSI": "Raw SNR/PHY/rate/four RSSI words preserved. No calibrated dBm/ranking/acceptance threshold is inferred. Pinned ath10k derives signal from SNR+default noise floor and excludes invalid/zero chain samples.",
+    "freshness": "Released scan live_frequency0 is historical. observed frequency remains separate; new live BSS revalidation required before association."
+  },
+  "independent_integration_needed": [
+    "Owned raw MGMT payload through mature bss_security/RSN parser and checked native capability/basic-rate mask; historical61 bridge must be newly adapted for64, not called with fabricated generation61/livefrequency.",
+    "Select/revalidate exact BSSID, raw full RSN suites/caps/PMF/RSNX and basic rates under actual legal channel/band policy. No advertised-only capability can authorize association.",
+    "Actual radio RX ring/startup/data-plane, management association control and persistent packet ownership remain separate components. Current64 partial filter/version/passive scan has no RX_RING_CFG/AGGR.",
+    "Supplicant/native crypto, fresh entropy, explicit secure credential provisioning, confirmed PTK/GTK installation and controlled port; only then DHCP/IP/data exchange. No credentials needed for this assessment."
+  ],
+  "network_authenticated": false,
+  "association_authority": false,
+  "IP_authority": false,
+  "state_key_BLE_accesses": 0,
+  "frozen_source_changes": 0
+}

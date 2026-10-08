@@ -6055,3 +6055,46 @@ User chose eventual isolated Funnel10000 endpoint preserving443/8443. Publish
 only at real protected Dell WAN test, close after correlated nonce proof.
 Frozen63 and denied HCI generation scope unchanged; no secrets read/exported,
 Dell reboot, USB/bootstrap/OTP/flash changes. Existing automation stays active.
+
+### 2026-10-09: Root64 admitted; fresh63 release archived; one signed64 native delivery active
+
+Final independent64 review768bace8be0f6e67d569218831d91d0bf903ed597e5c72f20d110ccbec068f5e,
+952 exact repo-relative bindings, no blocking findings; normalized admission body
+c1967b865ccc7bf4d7429521e29d100f1f66c172c35eede9c676e1d51af5f530.
+Root adopted only REVIEW_SHA literal. Candidate37bde700.../payloadd40efd8c...,
+actual18 C scenarios+92 handover/15COFF/3 equalEFI/normalEMPTYQEMU/world19 PASS
+ONLYYukabox;202752file/mapped4194304. New stage3s/ECHO3s from actualPOSTED/
+overall12s keeps TX2s/DMA/epoch/credit/exactreply guards. New QF640001544 timing
+ledger; raw22x5/110pages retained. Host/oracle5actualC cases inclslowpoll and
+missingDMA/ECHO,59tamper/module-restoration checks; independent review PASS.
+This is stillpartial filter→HTTversion→passive13ch, NOTRXring/association/IP.
+
+First fresh63 read obtained exact63receipt but monitor did not start because
+Root passed relative log path (exit2/no callback/statechange). Original helper
+unchanged; repeated with absolute paths in pre64-observation-2: exactAPPLIED63+
+boot5/error0+full448 status byteequal retained RELEASE14 fault, zero writes/cache/
+errors. Allold controllers dead. Completed63 native/assets/publicraw/fresh proof
+copied/inventoried+allfile/directoryfsync in filter64-root-route-v1/runs/retired63
+before clearing only hardware_trial_pending. Original63 artifacts retained.
+Create-only durableprepare64-intent and immediate private-load fresh/state guard
+passed; one new64 signature saved pci-native-b_3xwpds. PacketSHA
+5932e4dc92aacb821aecd346ad8c718a07e42852a469d0d605f75679f1530298.
+Evidence native64-prepared records exactpublicadmission/fresh/archive hashes.
+
+Sole native64 PID18456 live: continue64.py native SAMEpci-native-b_3xwpds;
+metadata runs/control/controller64-18456.json, native64-start.log. FIRSTinspect
+actualPID/state/receipts; never secondBLE/resign/nativeprepare. Native64 NOTyet
+APPLIED; no firmware64 signatures at thissnapshot. Next after exactAPPLIED64 and
+PIDexit: route.current+same applieddirectory, optional authorizedMacGATTrefresh
+ONLYaftercontrollerexits, then sole continue64.py firmware SAMEdirectory. It
+signs12gen64assetsonce onlyifhardwarependingabsent; restart uses savedexactsession.
+Realdisconnectstops; ordinaryprogress query-before-resume only. DoNOTreplay63.
+
+Independent nextsoftware lanes: persistentHTT47realowner inventory/runtimepool
+and strictfreshBSS/RSN/rate compatibility. Platform4769 ASAN/COFF/standaloneEFI
+proves genuineBootServices interface extraction/GetInfo-only inventory and bounded
+pool patterns ONLY; physicalRNGprovenance/TLS/nativefit notconfirmed. Owner's
+optional iPhone hotspot2.4GHz/MaxCompatibility question pending; no credentialread.
+No Dell reboot/USB/bootstrap/OTP/flash changes; city19 source preservation verified,
+newphysicalrender observation after64 stillpending. WiFi/IP/YukaboxexchangeNO;
+automation staysACTIVE, obsolete native51 snapshot never overrides actualstate.

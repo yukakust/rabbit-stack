@@ -1,0 +1,12 @@
+{
+  "experiments/native-wifi-qca9377-filter-barrier-v1/filter_barrier.c": "22c3656cfeade659f9a65195d65e3cab0b23b19c8c2b5caf63ea2016b05b1ae1",
+  "experiments/native-wifi-qca9377-filter-barrier-v1/filter_barrier.h": "b838eb3bc45602e897504677d3c96477c4839798f12cee85f175c942cc836f4e",
+  "experiments/native-wifi-qca9377-filter-barrier-v1/dependencies/wmi_scan.c": "eda085596e6eba21e34dd07d8ea6b845352b2b0c8095933de6b54fd4a455a213",
+  "experiments/native-wifi-qca9377-filter-barrier-v1/dependencies/htc_credit.c": "53e5cc0482490daeccc05fc1b7b21069f47e16ffdfc05a3586bab722cd28bf2a",
+  "experiments/native-wifi-qca9377-filter-barrier-v1/dependencies/wmi_boot_info.h": "59c71b834bd43bfe5626bfef6062a88476c43762be2b10b8cf4861c67255f262",
+  "experiments/native-wifi-qca9377-filter-barrier-v1/dependencies/htc_wire.c": "1ea19b85b8cd3e52f8165eb39a69346aca26c60a2fa3a52402bb547634080374",
+  "experiments/native-wifi-qca9377-filter-barrier-v1/dependencies/wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3",
+  "experiments/native-wifi-qca9377-filter-barrier-v1/dependencies/htc_credit.h": "330c272ea2cd73bb684a72997d1eba82af30a84dc8f2ec409a6fcd5a5ed6b9a7",
+  "experiments/native-wifi-qca9377-filter-barrier-v1/dependencies/htc_wire.h": "45af53b8d52ae30b77b05fc42daa1bcb8b6e2ddb4955a9d015b5fa6534f6ada4",
+  "experiments/native-wifi-qca9377-filter-barrier-v1/dependencies/wmi_boot_info.c": "bb90ce0d55fbe650c4729f71573f5e7eafebc6367acc689c5f1000b460303e6c"
+}

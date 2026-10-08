@@ -1,0 +1,170 @@
+{
+  "status": "OFFLINE-FILTER64-FROZEN-NATIVE-TIMING-RAW-CALLBACK-PREFLIGHT-PASS",
+  "python_checks": 1296,
+  "host_result": "PASS 511 HOST FILTER64 callback cases; NO MANAGER/WRITES",
+  "reader_path": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter64-observer-v1/runs/control/read-filter64",
+  "reader_executable_sha256": "f988f256243e49e0e7850a55982c814fa1113a3049e6e2ef800905118c5ccfb0",
+  "test_executable_sha256": "c393293f30e3d4585fa09b42733f0388fe8258acdab4d2961508ead1a3e60f65",
+  "compiler_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter64-observer-v1/read_filter.m": "7709183af94154c5d95f30287f3cd6f3282700da422eb0a4aef936530e7171e2",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "test_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter64-observer-v1/read_filter.m": "7709183af94154c5d95f30287f3cd6f3282700da422eb0a4aef936530e7171e2",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter64-observer-v1/host_test.m": "faef9b3a05814d26d12f85475b3d147d67158c59c00196a059f92f790d6d165d",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "source_sha256": {
+    "read_filter.m": "7709183af94154c5d95f30287f3cd6f3282700da422eb0a4aef936530e7171e2",
+    "host_test.m": "faef9b3a05814d26d12f85475b3d147d67158c59c00196a059f92f790d6d165d",
+    "scan_decode.py": "0b261fc99d6ec644a3276b809df4946f7ab94c3f1a2e67ccc3773656b079a7a2",
+    "htc_codec.py": "7478962f50afca2d178d8d5da72c1807151b0ca6d89d55651c20e74c04456985",
+    "decode_filter.py": "c11fc53a82bd3d965b34e7a3bfd31025440657f54c7b4bf916d7fa6808c38ce3",
+    "fixtures.py": "f51defe547ea910a512cec08d4a2ca05a79bd9e4e1b5777962eb534198f18783",
+    "native_binding.py": "d64b2fd91e4632a1770990039148668c81af1ce6d74e9ec22de8a618afd48062",
+    "verify_host.py": "0e743ba71714ebedd71f369f488f91ea8a8e41d796a8ef14ef28d03bc6e0515d",
+    "bindings.py": "283bee9fc1a6a9fcca5fe388cb17e3965c8623980113ca996a2dd9619e46adf1"
+  },
+  "native_binding": {
+    "status": "ROOT-PINNED-FROZEN63-HOST-NATIVE-ABI-JOIN-PASS",
+    "source_sha256": {
+      "experiments/native-wifi-qca9377-filter64-native-v1/components/pipeline_status.inc": "ce6caba93871bfe33f2bb41b33c11ef5279b1224195736eafae529533e1e5988",
+      "experiments/native-wifi-qca9377-filter64-native-v1/components/pipeline_gatt.c": "7911bafc4e5abab0feb1c45b2c52c5610e1a46c185b6fdc05b035889cb187248",
+      "experiments/native-wifi-qca9377-filter64-native-v1/components/scan_status.inc": "833b701c13c285f64fa81889a5c78c1917cea781b9381ebbf9daec8021b6f156",
+      "experiments/native-wifi-qca9377-filter64-native-v1/components/scan_gatt.c": "44bc36eb3beafc56c493e9890a84780c582624d9e5af579537b1b04d8f85be8d",
+      "experiments/native-wifi-qca9377-filter64-native-v1/components/scan_native.c": "a9513208ea75a25944e7926d7b61e99d9810dd147548e8861f2d182121dc2d32",
+      "experiments/native-wifi-qca9377-filter64-native-v1/components/rx.c": "25fc4e58a593c7404696e6d61f92825614c91c4ddbf6694c63f4dd866b4d68df",
+      "experiments/native-wifi-qca9377-filter64-native-v1/filter64_build.py": "ab679a21728694b076ea66a4fe7c8d5ad4df5a3b9fef0db0f66fadbdea445477"
+    },
+    "pipeline_service": "2e",
+    "pipeline_value": "2f",
+    "pipeline_bytes": 544,
+    "scan_service": "2a",
+    "scan_value": "2b",
+    "scan_bytes": 416,
+    "raw_service": "2c",
+    "raw_values": "80..ed",
+    "raw_pages": 110,
+    "last_page_bytes": 56,
+    "native_binding_frozen": true,
+    "physical_admission": false,
+    "report_sha256": "37bde7009088c6a783940f642b3dfddbbe2fdeabea671fa17d7f498234f45866",
+    "payload_sha256": "d40efd8c0b08a9289f0caaa64d931519a253559c53ef732af8961ed91ad49965"
+  },
+  "actual_C_producer_oracle_report_sha256": "7d688aee27bab84090b0164536f1a1fa605310ce70df18de5faa6d6d7e3f41d2",
+  "actual_C_producer_cases": [
+    {
+      "case": 0,
+      "capture_sha256": "2f020ea5f883d735d3133665b4612d457b85200c2b6b42fa7066b79c92f7ba52",
+      "pipeline_completed": true,
+      "target_observed": true,
+      "timing": {
+        "started_us": 21565000,
+        "overall_deadline_us": 33565000,
+        "stage_started_us": 21570000,
+        "stage_deadline_us": 24570000,
+        "echo_posted_us": 21572000,
+        "echo_deadline_us": 24572000,
+        "last_poll_us": 21573000,
+        "maximum_poll_gap_us": 1000,
+        "tx_complete_observed_us": 21573000,
+        "echo_observed_us": 21573000,
+        "timeout_observed_us": 0,
+        "effective_deadline_us": 24572000
+      },
+      "physical": false
+    },
+    {
+      "case": 4,
+      "capture_sha256": "3add47aeec4eb8ca73b57e6aaf9d5b44902b9cb9cb9904de5c77c657872db85b",
+      "pipeline_completed": true,
+      "target_observed": true,
+      "timing": {
+        "started_us": 21566000,
+        "overall_deadline_us": 33566000,
+        "stage_started_us": 21571000,
+        "stage_deadline_us": 24571000,
+        "echo_posted_us": 21573000,
+        "echo_deadline_us": 24573000,
+        "last_poll_us": 21574000,
+        "maximum_poll_gap_us": 1000,
+        "tx_complete_observed_us": 21574000,
+        "echo_observed_us": 21574000,
+        "timeout_observed_us": 0,
+        "effective_deadline_us": 24573000
+      },
+      "physical": false
+    },
+    {
+      "case": 8,
+      "capture_sha256": "aa8319914ac0d3a1adc9ce3f5f5429047ecff99f8f8583b00cf53b28065d0171",
+      "pipeline_completed": true,
+      "target_observed": true,
+      "timing": {
+        "started_us": 21565000,
+        "overall_deadline_us": 33565000,
+        "stage_started_us": 23566000,
+        "stage_deadline_us": 26566000,
+        "echo_posted_us": 24566000,
+        "echo_deadline_us": 27566000,
+        "last_poll_us": 25066000,
+        "maximum_poll_gap_us": 500000,
+        "tx_complete_observed_us": 25066000,
+        "echo_observed_us": 25066000,
+        "timeout_observed_us": 0,
+        "effective_deadline_us": 27566000
+      },
+      "physical": false
+    },
+    {
+      "case": 9,
+      "capture_sha256": "cc0bb70cee58e8ecc2e8c7fd46e129479b68299f02a2425bf5cfdba0f72785f9",
+      "pipeline_completed": false,
+      "target_observed": false,
+      "timing": {
+        "started_us": 21565000,
+        "overall_deadline_us": 33565000,
+        "stage_started_us": 23566000,
+        "stage_deadline_us": 26566000,
+        "echo_posted_us": 24566000,
+        "echo_deadline_us": 27566000,
+        "last_poll_us": 26066000,
+        "maximum_poll_gap_us": 500000,
+        "tx_complete_observed_us": 23566000,
+        "echo_observed_us": 25066000,
+        "timeout_observed_us": 0,
+        "effective_deadline_us": 27566000
+      },
+      "physical": false
+    },
+    {
+      "case": 2,
+      "capture_sha256": "94b1bc577ceaea9b11a80d6a4e0349e01c106607e17f6bd5d3f8a936e07f48e9",
+      "pipeline_completed": false,
+      "target_observed": false,
+      "timing": {
+        "started_us": 21565000,
+        "overall_deadline_us": 33565000,
+        "stage_started_us": 21570000,
+        "stage_deadline_us": 24570000,
+        "echo_posted_us": 21572000,
+        "echo_deadline_us": 24572000,
+        "last_poll_us": 24572000,
+        "maximum_poll_gap_us": 1000,
+        "tx_complete_observed_us": 21573000,
+        "echo_observed_us": 0,
+        "timeout_observed_us": 24572000,
+        "effective_deadline_us": 24572000
+      },
+      "physical": false
+    }
+  ],
+  "host_log_sha256": "2b2f8effaf3cf8b1a439b15fc13118bf1922ac4f1f720c9a00fffd16cf01f364",
+  "native_binding_frozen": true,
+  "bluetooth_manager_started": false,
+  "writes": 0,
+  "private_key_loads": 0,
+  "physical_admission": false,
+  "association": false,
+  "IP": false
+}

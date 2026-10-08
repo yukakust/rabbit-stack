@@ -1,0 +1,19 @@
+{
+  "status": "ROOT64-PUBLIC-SOURCE-GATE-TRANSITION-FRESHNESS-NEGATIVES-PASS",
+  "test_methods": 10,
+  "archive_fault_scenarios": 12,
+  "fresh_report_negatives": 10,
+  "native_tamper_fields": 6,
+  "hash_tamper_targets": 5,
+  "source_sha256": {
+    "test_gate.py": "fe4a5626db8733c6335bdedeb1c811e96b3d1b6b5bc4ea996cb49595b6dc515a",
+    "test_prior63.py": "8ce95cb1a73fca671bf4a450e3a24c2baf285dae9c0f06e8d98c47467fadae39",
+    "test_retirement.py": "11c39b59310ff7c1017a4c48fc2af452bb067b802b43f703bcf9c60e7e4f2ba3",
+    "test_fresh.py": "d935d05d66851b68302c058f3315e46c922b70ab3ec0073dfa2b43fdf363effc"
+  },
+  "physical_operations": 0,
+  "state_mutations": 0,
+  "private_key_loads": 0,
+  "new_signatures": 0,
+  "physical64": false
+}

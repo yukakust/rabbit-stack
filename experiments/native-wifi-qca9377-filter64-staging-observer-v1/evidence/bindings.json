@@ -1,0 +1,23 @@
+{
+  "status": "FROZEN-FILTER64-HOST-OFFLINE-PROOF",
+  "proof_sha256": "efce3f5c1b46b8825f64ddfdf7983136d9d8c9b6212ae68a4a27f50395600f78",
+  "executable": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter64-staging-observer-v1/runs/control/sender",
+  "executable_sha256": "ab8daeed82768bd6163097a2cde54b0839948153edbcfde2482c49271fead5c6",
+  "source_sha256": {
+    "observer.py": "d8e9d88c531b212491b341198fb94c6189e7c76add954d5226c82603d653d26a",
+    "decode_boot.py": "885b9fc10a8f4617533eb6426cbba736e52f53a8ca6960c27d758bdd335e3840",
+    "host_test.m": "62212c87598bb7774d5dd1a6f61c049be3b21006d6ad0568a46cdf85a3dbd297",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "sequence.h": "15458fbdd378df3ad1ba00357ff400c6acab68eb7d890372369220ca7e5a43b1",
+    "verify_host.py": "6b9bd11e84973f969a8952c2f4e9384df28871a7f132c029de80c3152506caa3",
+    "README.txt": "874a28235298d6c391ed572b27f3fbea63ed8533a71558ba28a6907cdd5b07aa",
+    "sender.m": "221e2da6d100a70b1e7d5a38de3f81322ec24f7464b503f3c36fb27d45c2ad1e"
+  },
+  "native_report_sha256": "37bde7009088c6a783940f642b3dfddbbe2fdeabea671fa17d7f498234f45866",
+  "native_payload_sha256": "d40efd8c0b08a9289f0caaa64d931519a253559c53ef732af8961ed91ad49965",
+  "native_abi_sha256": "3ce199a281689be068afc306c5b01c973787c028db006a27330a8fb3fdf44c94",
+  "physical_admission": false,
+  "actual_APPLIED64": "PENDING ROOT",
+  "device_operations": 0,
+  "private_key_accesses": 0
+}

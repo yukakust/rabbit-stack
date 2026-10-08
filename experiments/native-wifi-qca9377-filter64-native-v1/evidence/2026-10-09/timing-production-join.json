@@ -1,0 +1,129 @@
+{
+  "status": "FILTER64-TIMING-PRODUCTION-PROOF-JOIN-PASS",
+  "candidate_report_sha256": "37bde7009088c6a783940f642b3dfddbbe2fdeabea671fa17d7f498234f45866",
+  "native_report_sha256": "1689fc687e78f23c752be7dd35a8b14e8c8ea6fa3e4f24ec7cabe3ac58bac86c",
+  "reproduction_sha256": "dc442f8d666ef387a651efdabd7f0db807643ce4910f222cba85b27ff32e647e",
+  "timing_component_report_sha256": "621c0470b158508b0305d521f20f8d536ce82e040aac3bcbfd5e1fc5e94911e8",
+  "native_abi_sha256": "3ce199a281689be068afc306c5b01c973787c028db006a27330a8fb3fdf44c94",
+  "component_c_sha256": "ad0bbc8ac84e45db86a57cf03c1755f313e50241ee6a8f19397b41897d154f70",
+  "component_h_sha256": "a9db43b7cf2deef8ce64c99e4aa9d297424cd842d03f5b1cc9296eebbcc680c8",
+  "compiled_component_c_sha256": "4769d6ebd98f096190a2d78433eb8874a4311609533c31211fefb1e3ac107dfd",
+  "native_component_source_equal": true,
+  "protected63_byte_equality": {
+    "driver.c": "554109ea5bc7b7803d41ced5068c326e4ff0ce3222a4a51611ccecac5cd5e354",
+    "usb_port.c": "8f8e0dba759cc9efa7179ace8ebe25fec616575088a72398ba995c8b1c07de75",
+    "bt_event_stream.c": "4d1c8aa7013ca0048dd582ce12a89a776afe91d93088a97ec9b6a2512bce895b",
+    "ble_recovery_link.c": "1be2817c5df0a8a2cc117fed1fda5e38a5568d5f1980d70803da5fd2192e973e",
+    "pci_identity.c": "6165711757f55b5bb9be9a1df11abbf4af406ee7dc29298d98ab587ce46b5611",
+    "tx.c": "b48957bbf411e5a0c0768607d4986241ddce30a78d3828a60fe5446f09363996"
+  },
+  "native_scenario_pairs": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      9,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      0,
+      9
+    ]
+  ],
+  "native_scenarios": 18,
+  "handover_checks": 92,
+  "coff_objects": 15,
+  "slowpoll_actual_producer": true,
+  "missing_third_DMA_rejected": true,
+  "repo_source_count": 470,
+  "generated_source_count": 207,
+  "compiled_fixture_source_count": 161,
+  "file_bytes": 202752,
+  "mapped_bytes": 4194304,
+  "payload_sha256": "d40efd8c0b08a9289f0caaa64d931519a253559c53ef732af8961ed91ad49965",
+  "budgets_us": {
+    "per_command_stage": 3000000,
+    "echo_from_actual_post": 3000000,
+    "overall": 12000000,
+    "unchanged_TX": 2000000
+  },
+  "abi_timing_u64": [
+    "started_us",
+    "overall_deadline_us",
+    "stage_started_us",
+    "stage_deadline_us",
+    "echo_posted_us",
+    "echo_deadline_us",
+    "last_poll_us",
+    "maximum_poll_gap_us",
+    "tx_complete_observed_us",
+    "echo_observed_us",
+    "timeout_observed_us",
+    "effective_deadline_us"
+  ],
+  "physical": false,
+  "signing_admitted": false,
+  "device_operations": 0,
+  "wifi_connected": false
+}

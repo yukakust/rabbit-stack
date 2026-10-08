@@ -1,0 +1,32 @@
+{
+  "status": "PROTECTED-NATIVE-PLATFORM-ABI-POOL-INVENTORY-ASAN-COFF-LINK-PASS",
+  "build_host": "yukabox",
+  "checks": 4769,
+  "GetRNG_calls": 0,
+  "source_sha256": {
+    "platform.c": "0986b8cd3d2987ea8cf90e8adfe4b3acacfee6e9ff9cc9a472621cc4cda18dfb",
+    "platform.h": "080f52a09c903e52ced5918d10c22c4cff85e12c920050beadcf4cd88b00ea28",
+    "rng_port.c": "5ac751cc0d2e0feed19e7ed1e8bc4f2a92e9aaec729bbacc1b8c3368885f6752",
+    "rng_port.h": "c68480b6b5677d907d6b535fe1ead1d03ef4d27096cb5b56417415305bb9fd31",
+    "test.c": "72b924747da1c3bbb07e7481915122788f7f17049c772c775dee783fa1986638",
+    "link_probe.c": "6918b60aad229f486259dca4fc2ad4210f11204c3a65cf63112d9a3c718e6dbb",
+    "verify.py": "f952a1c19d4d3c0964462fd54be9a781114ae79e2c5af33073ce7ae386f62ec5",
+    "oracle-boot.h": "711f753a5655959140c92879a6120535ca1c4368a4a4173ce3487a6f31661dc5"
+  },
+  "objects_sha256": {
+    "platform": "fa96e7c130fde2793b44809b2d41e2ae576cd11d673d650f12998a90d27fcf9c",
+    "rng_port": "9aa649df59982da1634d4d642e45e7f6e2f3ada5ac54ab40f5711ed03390d5e4",
+    "link_probe": "8addbb91a2f8e7e035a4a13520341eafa71e67f28ae4478f1f94cd1d3a4f8bfb"
+  },
+  "test_executable_sha256": "c899464d48446162d59c44f27224232a31e477b134c6d6e18488e6b9584ea58b",
+  "link_only_efi_sha256": "2a801eb0d62b01911024f6ca884a90c7155e6855583dbeadedf9995282173e3a",
+  "link_only_mapped_bytes": 12288,
+  "imports": [],
+  "complete_log_sha256": "e1305f809d452712201c8b4614892be7d8f66c389c7915661119cfe83d61d226",
+  "linked_into_native63": false,
+  "native63_fit_verified": false,
+  "physical_provider_approved": false,
+  "physical_calls": 0,
+  "signing_admitted": false,
+  "TLS_ready": false
+}

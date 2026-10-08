@@ -1,0 +1,67 @@
+{
+  "status": "HOST-FILTER64-PROGRESS-QUIESCENCE-PREFLIGHT-PASS",
+  "executable": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter64-progress-monitor-v1/runs/control/collector",
+  "executable_sha256": "67ef3c8f8c52b3dabb21b5887203cc58da939ba45d3aec86793b19e53733f391",
+  "compiler_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter64-progress-monitor-v1/collector.m": "bc8a3c16a515646414e84832304cd8aec621f0d229c5e31a563270dcda8a940f",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "test_executable_sha256": "ceea5928d7a93f2df460715471e5b0c053fa3cf40dc42048b1799a53936f9941",
+  "test_inputs": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter64-progress-monitor-v1/collector.m": "bc8a3c16a515646414e84832304cd8aec621f0d229c5e31a563270dcda8a940f",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter64-progress-monitor-v1/host_test.m": "270ad0321db6e8d3f7124d27d62414eb124d53d1b26fed005404df1708af8d2f",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "host_log_sha256": "71540f9b480972452bb6c8dfc43425679f91faed0bc8f3214f5afc1efbbd6665",
+  "host_result": "PASS 100 HOST progress collector cases; NO REAL MANAGER/WRITE",
+  "bluetooth_manager_started": false,
+  "writes": 0,
+  "private_key_loads": 0,
+  "physical_readiness_proven": false,
+  "source_sha256": {
+    "collector.m": "bc8a3c16a515646414e84832304cd8aec621f0d229c5e31a563270dcda8a940f",
+    "host_test.m": "270ad0321db6e8d3f7124d27d62414eb124d53d1b26fed005404df1708af8d2f",
+    "compile_host.py": "4e9fab18be332704533104d993ac200d8f6a84efa00cf2b3695d21e16b572257",
+    "native_binding.py": "393276688405383de0f0ee75feec797ed3e92867baf8335bb227cb4489f8836d"
+  },
+  "native_binding": {
+    "status": "ROOT-PINNED-FROZEN63-PROGRESS-ABI-JOIN-PASS",
+    "native": {
+      "status": "ROOT-PINNED-FROZEN63-HOST-NATIVE-ABI-JOIN-PASS",
+      "source_sha256": {
+        "experiments/native-wifi-qca9377-filter64-native-v1/components/pipeline_status.inc": "ce6caba93871bfe33f2bb41b33c11ef5279b1224195736eafae529533e1e5988",
+        "experiments/native-wifi-qca9377-filter64-native-v1/components/pipeline_gatt.c": "7911bafc4e5abab0feb1c45b2c52c5610e1a46c185b6fdc05b035889cb187248",
+        "experiments/native-wifi-qca9377-filter64-native-v1/components/scan_status.inc": "833b701c13c285f64fa81889a5c78c1917cea781b9381ebbf9daec8021b6f156",
+        "experiments/native-wifi-qca9377-filter64-native-v1/components/scan_gatt.c": "44bc36eb3beafc56c493e9890a84780c582624d9e5af579537b1b04d8f85be8d",
+        "experiments/native-wifi-qca9377-filter64-native-v1/components/scan_native.c": "a9513208ea75a25944e7926d7b61e99d9810dd147548e8861f2d182121dc2d32",
+        "experiments/native-wifi-qca9377-filter64-native-v1/components/rx.c": "25fc4e58a593c7404696e6d61f92825614c91c4ddbf6694c63f4dd866b4d68df",
+        "experiments/native-wifi-qca9377-filter64-native-v1/filter64_build.py": "ab679a21728694b076ea66a4fe7c8d5ad4df5a3b9fef0db0f66fadbdea445477"
+      },
+      "pipeline_service": "2e",
+      "pipeline_value": "2f",
+      "pipeline_bytes": 544,
+      "scan_service": "2a",
+      "scan_value": "2b",
+      "scan_bytes": 416,
+      "raw_service": "2c",
+      "raw_values": "80..ed",
+      "raw_pages": 110,
+      "last_page_bytes": 56,
+      "native_binding_frozen": true,
+      "physical_admission": false,
+      "report_sha256": "37bde7009088c6a783940f642b3dfddbbe2fdeabea671fa17d7f498234f45866",
+      "payload_sha256": "d40efd8c0b08a9289f0caaa64d931519a253559c53ef732af8961ed91ad49965"
+    },
+    "monitor_source_sha256": "bc8a3c16a515646414e84832304cd8aec621f0d229c5e31a563270dcda8a940f",
+    "physical_admission": false,
+    "native_binding_frozen": true
+  },
+  "wrong_ABI_negatives": 3,
+  "actual_final_JSON_checks": 4,
+  "native_binding_frozen": true,
+  "terminal_results": [
+    "RELEASED_PARTIAL_PIPELINE",
+    "RELEASED_DIAGNOSTIC_FAILURE"
+  ],
+  "raw_read_requires_release14": true
+}

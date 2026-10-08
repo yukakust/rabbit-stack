@@ -1,0 +1,81 @@
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-Wall", "-Wextra", "-Werror", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "platform.c", "rng_port.c", "test.c", "-o", "/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/test"]
+
+
+["/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/test"]
+PASS 4769 platform pool/inventory checks; GetRNG calls=0
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Os", "-Wall", "-Wextra", "-Werror", "-c", "platform.c", "-o", "/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/platform.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Os", "-Wall", "-Wextra", "-Werror", "-c", "rng_port.c", "-o", "/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/rng_port.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Os", "-Wall", "-Wextra", "-Werror", "-c", "link_probe.c", "-o", "/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/link_probe.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/lld", "-flavor", "link", "/subsystem:efi_application", "/entry:link_entry", "/nodefaultlib", "/include:protected_arena_open", "/include:protected_arena_borrow", "/include:protected_arena_return", "/include:protected_arena_close", "/include:protected_rng_inventory", "/out:/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/link-only.efi", "/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/platform.obj", "/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/rng_port.obj", "/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/link_probe.obj"]
+
+
+["objdump", "-p", "/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/link-only.efi"]
+
+/home/yuka/rabbit-world/parallel-protected-native-platform-v1/runs/link-only.efi:     file format pei-x86-64
+
+Characteristics 0x22
+	executable
+	large address aware
+
+Time/Date		Thu Oct  8 20:30:47 2026
+Magic			020b	(PE32+)
+MajorLinkerVersion	14
+MinorLinkerVersion	0
+SizeOfCode		0000000000001000
+SizeOfInitializedData	0000000000000200
+SizeOfUninitializedData	0000000000000000
+AddressOfEntryPoint	0000000000001f8e
+BaseOfCode		0000000000001000
+ImageBase		0000000140000000
+SectionAlignment	00001000
+FileAlignment		00000200
+MajorOSystemVersion	6
+MinorOSystemVersion	0
+MajorImageVersion	0
+MinorImageVersion	0
+MajorSubsystemVersion	6
+MinorSubsystemVersion	0
+Win32Version		00000000
+SizeOfImage		00003000
+SizeOfHeaders		00000400
+CheckSum		00000000
+Subsystem		0000000a	(EFI application)
+DllCharacteristics	00008160
+					HIGH_ENTROPY_VA
+					DYNAMIC_BASE
+					NX_COMPAT
+					TERMINAL_SERVICE_AWARE
+SizeOfStackReserve	0000000000100000
+SizeOfStackCommit	0000000000001000
+SizeOfHeapReserve	0000000000100000
+SizeOfHeapCommit	0000000000001000
+LoaderFlags		00000000
+NumberOfRvaAndSizes	00000010
+
+The Data Directory
+Entry 0 0000000000000000 00000000 Export Directory [.edata (or where ever we found it)]
+Entry 1 0000000000000000 00000000 Import Directory [parts of .idata]
+Entry 2 0000000000000000 00000000 Resource Directory [.rsrc]
+Entry 3 0000000000000000 00000000 Exception Directory [.pdata]
+Entry 4 0000000000000000 00000000 Security Directory
+Entry 5 0000000000000000 00000000 Base Relocation Directory [.reloc]
+Entry 6 0000000000000000 00000000 Debug Directory
+Entry 7 0000000000000000 00000000 Description Directory
+Entry 8 0000000000000000 00000000 Special Directory
+Entry 9 0000000000000000 00000000 Thread Storage Directory [.tls]
+Entry a 0000000000000000 00000000 Load Configuration Directory
+Entry b 0000000000000000 00000000 Bound Import Directory
+Entry c 0000000000000000 00000000 Import Address Table Directory
+Entry d 0000000000000000 00000000 Delay Import Directory
+Entry e 0000000000000000 00000000 CLR Runtime Header
+Entry f 0000000000000000 00000000 Reserved
+
+

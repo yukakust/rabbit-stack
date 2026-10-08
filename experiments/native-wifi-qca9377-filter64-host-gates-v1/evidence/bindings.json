@@ -1,0 +1,12 @@
+{
+  "status": "FROZEN-FILTER64-HOST-ORACLE-GATES-OFFLINE",
+  "files_sha256": {
+    "host_gate.py": "f122ed85fa93f7c7a7c9c675d138e3e9433f06c9878ee8b126ca237cc4ce41cf",
+    "oracle_gate.py": "8b343d87b8167e5c177581d828ce7ea25aeb1daa81b7243fc933f3910b28e2e9",
+    "checks/test_host_gate.py": "cb350454a8adfc9d199316db9be12ca31ad7d6b8bb1474445787600af042bb12",
+    "evidence/host64-gate/report.json": "86f8f1bc45b1b7c167e44513f41b18dbf2a432c506886f184339ed50ba1034ac"
+  },
+  "physical_admission": false,
+  "device_operations": 0,
+  "private_key_accesses": 0
+}

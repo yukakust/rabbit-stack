@@ -1,0 +1,29 @@
+{
+  "status": "FILTER64-STAGE3-ECHO3-OVERALL12-UNCHANGED-TX2-ASAN-COFF-PASS",
+  "source_sha256": {
+    "timing_test.c": "32aad0ae63b5b3ab940ab2cd944b0d2bfcbe52d8ff443dff31e6aab348d6c375",
+    "filter_barrier.h": "a9db43b7cf2deef8ce64c99e4aa9d297424cd842d03f5b1cc9296eebbcc680c8",
+    "filter_barrier.c": "ad0bbc8ac84e45db86a57cf03c1755f313e50241ee6a8f19397b41897d154f70",
+    "oracle.h": "75adbfbe31300a79aeddd422b2b539c92188401d9e6547c59b71493dc5f17812",
+    "verify.py": "2d7f493403bc8a60a497828d3e5a9eddda2b7134050d5b9d0582400d71448db8",
+    "filter_test.c": "c44d424dfd5f3d37638bc592d984ffb4daa6d3a5acb974acbbc9b5fa6becf9fc",
+    "dependencies/htc_wire.c": "1ea19b85b8cd3e52f8165eb39a69346aca26c60a2fa3a52402bb547634080374",
+    "dependencies/wmi_boot_info.c": "bb90ce0d55fbe650c4729f71573f5e7eafebc6367acc689c5f1000b460303e6c",
+    "dependencies/wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3",
+    "dependencies/wmi_boot_info.h": "59c71b834bd43bfe5626bfef6062a88476c43762be2b10b8cf4861c67255f262",
+    "dependencies/htc_credit.c": "53e5cc0482490daeccc05fc1b7b21069f47e16ffdfc05a3586bab722cd28bf2a",
+    "dependencies/htc_wire.h": "45af53b8d52ae30b77b05fc42daa1bcb8b6e2ddb4955a9d015b5fa6534f6ada4",
+    "dependencies/wmi_scan.c": "eda085596e6eba21e34dd07d8ea6b845352b2b0c8095933de6b54fd4a455a213",
+    "dependencies/htc_credit.h": "330c272ea2cd73bb684a72997d1eba82af30a84dc8f2ec409a6fcd5a5ed6b9a7"
+  },
+  "host_log_sha256": "a5035c289311455b39d1f70dc89f81c3aea26ac023decfd0801798eb8136718c",
+  "coff_objects_sha256": {
+    "htc_wire.obj": "cf05b0848eeec627f8585117be2dc319d515f74929fdf9ef7434197f3e819b08",
+    "filter_barrier.obj": "491401bd381ecc0010661f653855951d0556aa5fb94b89cf4eb71aa0f2e33d92",
+    "htc_credit.obj": "541e4b6ffb197bafab43e45e7a0abeed61c19fb3a567d6efdc0beb992b0f4d37",
+    "wmi_scan.obj": "34952136ff5059d6c44e7da15815f68c17c2fea55dd312fb7c9c7eac534c2200",
+    "wmi_boot_info.obj": "fcc4dc690747f930946ec55cb22058e5930e4033d022e4e9059f32d69b1a9f8d"
+  },
+  "physical": false,
+  "device_operations": 0
+}

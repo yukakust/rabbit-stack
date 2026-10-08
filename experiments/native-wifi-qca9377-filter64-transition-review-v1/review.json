@@ -1,0 +1,45 @@
+{
+  "status": "ROOT64-TRANSITION-DRAFT-INDEPENDENT-READONLY-REVIEW",
+  "physical_admission": false,
+  "reviewed_source_sha256": {
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/prior63.py": "7f4a08f06440e4b58981b2190409cb58a1a161ee0832e43e60ea07a639b7f997",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/observe63.py": "b206c106f56d64184aa2c3c86c502662067900b8cba4f12608c0aa8b3fa469d9",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/transition63.py": "9f5eb70384728d5ccd8a0054db45e93f8e234332ec28061d7b562fcfa2f66037",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/root_route.py": "14f38ffd1d459d8477e1389667cc3d33ff71e208ba71c55eb716b629fff5b824",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/test_prior63.py": "8ce95cb1a73fca671bf4a450e3a24c2baf285dae9c0f06e8d98c47467fadae39"
+  },
+  "tests": "python3 -m unittest test_prior63: 3 PASS, including immutable actual63 public replay and copied state/evidence corruption; no device/state/key operations",
+  "positive_properties": [
+    "Exact physical63 verdict SHA and every evidence input hash; exact current state bytes; independent frozen63 classifier output byte equality.",
+    "Prior classifier verifies native63 signature on62 and complete signed firmware plus owned14-release fault; failed pipeline not called successful scan.",
+    "Fresh receipt compares exact public native63 packet hash and counter; full448 status must equal retained physical owner-release snapshot.",
+    "Transition checks exact candidate admission before durable full source/native/assets archive; fsync tree and parent before clearing pending hardware.",
+    "Main Root64 route acquires actual state.lock across observation retirement and unchanged prepare/delivery."
+  ],
+  "findings": [
+    {
+      "id": "FRESHNESS-TO-KEY",
+      "severity": "operational-safety",
+      "description": "Fresh <=300sec checked before potentially lengthy archive and fsync; no subsequent check before state clear/private prepare. Recheck after archive and immediately before key."
+    },
+    {
+      "id": "RETIRED-BEFORE-RESERVATION-CRASH",
+      "severity": "recoverability",
+      "description": "Retire clears hardware pending before prepare. Crash/key/prepare failure before native_pending leaves state differing from original frozen63 verdict and retired63 directory exists, so normal prepare rejects. Need explicit immutable-retirement recovery, never blind retire or resign."
+    },
+    {
+      "id": "EXPLICIT-SYNTHETIC-MARKERS",
+      "severity": "malformed-evidence",
+      "description": "Fresh report and callbacks only reject fixture_kind on rows. Reject synthetic_only/test_clock/model_capture/fixture_kind on both report and rows; strict type int for writes; bind observe63 source digest."
+    },
+    {
+      "id": "API-LOCK-CONTRACT",
+      "severity": "defense-in-depth",
+      "description": "transition63.retire relies on locked CLI caller; no internal assertion matching held state.lock. A callable API should verify lock identity before writing."
+    }
+  ],
+  "limitations": [
+    "No Root64 candidate/admission freeze yet; this is interim draft review, not final candidate gate.",
+    "No physical attestation inferred from local callback logs/time metadata; trusted Root collects actual helper callbacks."
+  ]
+}

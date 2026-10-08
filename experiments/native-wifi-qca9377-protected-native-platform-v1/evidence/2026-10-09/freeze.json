@@ -1,0 +1,15 @@
+{
+  "source_sha256": {
+    "platform.c": "0986b8cd3d2987ea8cf90e8adfe4b3acacfee6e9ff9cc9a472621cc4cda18dfb",
+    "platform.h": "080f52a09c903e52ced5918d10c22c4cff85e12c920050beadcf4cd88b00ea28",
+    "rng_port.c": "5ac751cc0d2e0feed19e7ed1e8bc4f2a92e9aaec729bbacc1b8c3368885f6752",
+    "rng_port.h": "c68480b6b5677d907d6b535fe1ead1d03ef4d27096cb5b56417415305bb9fd31",
+    "test.c": "72b924747da1c3bbb07e7481915122788f7f17049c772c775dee783fa1986638",
+    "link_probe.c": "6918b60aad229f486259dca4fc2ad4210f11204c3a65cf63112d9a3c718e6dbb",
+    "verify.py": "f952a1c19d4d3c0964462fd54be9a781114ae79e2c5af33073ce7ae386f62ec5",
+    "oracle-boot.h": "711f753a5655959140c92879a6120535ca1c4368a4a4173ce3487a6f31661dc5",
+    "README.md": "c21ad3ed8c9c42d4615c14ec130a270d35f52df24f812a902480e35d77e2b301",
+    "integration.json": "48225550b00eef1637d8ad3c62864b0d3f35bae4b309f1c8507450605bc1f5a9"
+  },
+  "platform_report_sha256": "276efe424f975ef9fe1a2e9c5dc46b0807b21a403d6225d1d37aaa346ea15f39"
+}

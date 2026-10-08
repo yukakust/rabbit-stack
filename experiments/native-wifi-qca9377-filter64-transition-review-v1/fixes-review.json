@@ -1,0 +1,32 @@
+{
+  "status": "ROOT64-TRANSITION-FIXES-INDEPENDENT-REVIEW-PASS",
+  "physical_admission": false,
+  "blocking_findings": [],
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/prior63.py": "b00fd704ffe589c1627606d08ad223085a492cb65b20815622019f38fd7c8537",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/observe63.py": "37aa20879fad16a02e0fd0d20b13ca1b9c880a9bc5bf90adcce033c7264017bd",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/transition63.py": "81754c3ca09273863823ae4bc655ddfbb3f53259cd68c9adb459d5d8deec2e18",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/root_route.py": "7d2eca16e909a34a175fbf97d209c2858d6af8fda590b6fe6b7d6911f70f4b3e",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/README.md": "e2a7055aa89af9783f49a839f010b2702acf14a30d0a649fdb8090dadecbefa3",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/test_prior63.py": "8ce95cb1a73fca671bf4a450e3a24c2baf285dae9c0f06e8d98c47467fadae39",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/test_retirement.py": "11c39b59310ff7c1017a4c48fc2af452bb067b802b43f703bcf9c60e7e4f2ba3",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/test_gate.py": "fe4a5626db8733c6335bdedeb1c811e96b3d1b6b5bc4ea996cb49595b6dc515a",
+    "experiments/native-wifi-qca9377-filter64-root-route-v1/gate.py": "24b32c0d7564417e7543cac270ae9df1606614b20a4831a7dc8bdf8597e0e9ed"
+  },
+  "checks": [
+    "Root unittest test_gate/test_retirement/test_prior63:9 PASS",
+    "New isolated test_fresh_guards.py:14 pure validation scenarios PASS; receipt parser mocked, no physical observation generated"
+  ],
+  "closed_findings": {
+    "FRESHNESS-TO-KEY": "Rechecked after durable archive fsync; guarded engine.load_private rechecks exact state and fresh physical63 observation immediately before reading key.",
+    "RETIRED-BEFORE-RESERVATION-CRASH": "Explicit documented fail-closed recovery boundary; durable create-only/fsynced prepare intent prevents blind repeated private access. No automatic recovery falsely infers not-signed.",
+    "EXPLICIT-SYNTHETIC-MARKERS": "All4 markers on report/callback rejected; writes strict int; observer-sourceSHA plus helper/hash binding. Tested.",
+    "API-LOCK-CONTRACT": "Correct held state.lock regular-file inode/device and actual exclusive flock required before any retirement write."
+  },
+  "remaining_before_final_admission": [
+    "Exact host64/oracle freezes and semantic native producer join; final source closure review.",
+    "Fresh Root actual63 receipt+full448all14release proof before any signing.",
+    "Mechanically normalized admission source pin excluding only final REVIEW_SHA assignment value."
+  ],
+  "recovery_boundary": "If interrupted after retirement before complete signed-session reservation, preserve retired63 + prepareintent + all pci-native artifacts; read-only inventory/public-signature review must resolve outcome. No deleting intent/rewinding/re-signing. No automatic CLI recovery claim."
+}

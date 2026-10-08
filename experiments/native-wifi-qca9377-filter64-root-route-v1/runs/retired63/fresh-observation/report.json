@@ -1,0 +1,13 @@
+{
+  "status": "ACTUAL63-RELEASE14-PRE64-OBSERVATION",
+  "observed_at": 1791492233.9280498,
+  "state_sha256": "f68db4fc6c3e56fd294e7b5eff8a3b50a2bd97611642f00d861a21b6596917c2",
+  "observer_source_sha256": "37aa20879fad16a02e0fd0d20b13ca1b9c880a9bc5bf90adcce033c7264017bd",
+  "receipt_reader_sha256": "5deb5f7b33dc58adf1ce207c7c78db33c0d21a284fd44d4f58dc65b9f16f3fd9",
+  "monitor_sha256": "2390cc9887e64f53a7d86a645261f42e6fae20b0478f465efad2dbbdd9eca99a",
+  "writes": 0,
+  "inputs": {
+    "receipt.log": "818863a75253bc035848f970f45eefb12e27894a260f7f6840360d1093428699",
+    "monitor.jsonl": "008c584fd4b8a756e97c704611712b88cd92f160665befb3d5e78e0213e8febc"
+  }
+}

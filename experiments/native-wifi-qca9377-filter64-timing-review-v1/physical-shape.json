@@ -1,0 +1,13 @@
+{
+  "verdict_sha256": "13c9fd8c3e735f520232d0efe61b3f9318d933f93c3db620daf80ba9d9ff702c",
+  "raw_capture_sha256": "d730b2601d35986974c405a748d92ef24053e13f67a763dc4bb25635010eb3e4",
+  "owned_echo_completion": 8,
+  "echo_floor": 6,
+  "raw_echo_hex": "01000c00000d000001d001000400360001000063",
+  "raw_credit_hex": "00020800080e0000010400030101d007",
+  "echo_arrival_us": null,
+  "echo_dma_completion_us": null,
+  "frozen_global_deadline_us": 3000000,
+  "timestamps_measured": false,
+  "replay_timings": "invented synthetic schedule, not physical timing"
+}

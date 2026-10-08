@@ -1,0 +1,1 @@
+Mac host-only sequential QWBT then QFILTER64 release monitor. Does not interpret VERSION_CONF or authorize data plane. QHTT generation62, actual release1, adapter12/cleanup14/lifecycle4 and zero9 owners required. Original frozen monitor untouched. No write/signature/RF. Root current62 exact APPLIED required before actual invocation.
