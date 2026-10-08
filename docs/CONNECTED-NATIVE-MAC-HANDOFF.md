@@ -5954,3 +5954,33 @@ but neverdeclaresWiFi; observer-v2/classifierrequire232actualcallbacks/3stable
 QF63+QSCN/two110pagepasses/public63signatureon62/all12asset receipts/signatures.
 Physicalpartialfilter/ECHO/HTT/passivescan iPhone(9) stillnotrunconfirmed;
 WiFi/association/keys/IP/Yukaboxexchange STILLNO. FullRXring/aggregationabsent.
+
+### 2026-10-08: physical63 EXACT APPLIED; firmware63 solecontroller8689 active
+
+Native63 exactpacket55d2a292.../sessionpci-native-fe6ebz_c/APPLIEDcounter63
+confirmedactualreceiver; stateengine63/payloada636b40f.../nativependingnull,
+world19 unchanged. Firsttwo300s pacedstages madeactualforwardprogress and
+query-before-resume; thirdstage+commit exactreceipt matched. One signature,
+no replay/Dellreboot. Controller8034 exitedverified. PublicAPPLIED report/
+allstep logshashes/evidence inphysical63-APPLIED.
+
+Userpreviouslyauthorized20s MacBluetoothOFF/ON doneviaCUA SystemSettings
+AFTERnativecontrollerexited; ON visiblyrestored. No BLEoperationduringreset.
+Nextsolefirmwarecontroller PID8689 actuallylive; continue63.py firmware exact
+sameAPPLIEDnative directory. Metadata controller63-8689.json, log
+firmware63-start.log, attempt_directory inmetadata. Freshactualinitial63 QPD18
+setup/BMI/all14teardown passedbeforeprivatematerial; exact12gen63firmware
+packets signedONCE sessionfirmware-ram-d7zhmz9c, policy8f8b002f.../751436.
+Firstprefixdeliveryactive; inspectactualstate/report/log beforeanythingelse.
+No secondcontroller/resign/assetreplay/reboot/USB/OTP/flash/credential read.
+
+Firmwarecontroller automaticallyquery-before-resumes onlyordinaryprogress,
+then afterall12exactreceipts readsboot+filter/HTT/scan release viafrozen
+monitor-v2. Releasedfault permitsrawdiagnostics, notsuccess. Fullobserver-v2
+captures232callbacks/3stableQF63+QSCN/two110pages; classify_filter63.py validates
+actualpublicnative63on62/all12signedassets/rawECHO+HTT+beacon joins. Ordinary
+policy13channelpassive iPhone(9) scan stillnotphysicalconfirmed. RX_RING_CFG/
+AGGRabsentpartialstartup; association/keys/IP/Yukaboxdataexchange STILLNO.
+Iftransferkeepsacknowledging/noindependentnecessarywork, heartbeat staysquiet;
+actualcontroller/receipt/logs outrankoldautomationnative51 snapshot. After
+terminal checkactuallivePIDandclassification; realfaultstop preservedsession.

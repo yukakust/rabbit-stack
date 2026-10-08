@@ -1,0 +1,9 @@
+{
+  "pid": 8689,
+  "started_at": 1791480830.4221172,
+  "action": "firmware",
+  "exact_native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-fe6ebz_c",
+  "script_sha256": "bb4c304ffdc87cfda7c308471b801c06f946f5031c7dd5e1cba9c1fa1dee86f8",
+  "attempt_directory": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-root-route-v1/runs/control/attempt-1791480830171873000",
+  "new_native_signatures": 0
+}

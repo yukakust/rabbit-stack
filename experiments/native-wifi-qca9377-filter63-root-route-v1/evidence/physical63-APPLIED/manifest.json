@@ -1,0 +1,18 @@
+{
+  "status": "PHYSICAL63-EXACT-APPLIED-RECEIPT",
+  "native_counter": 63,
+  "native_packet_sha256": "55d2a292e08011dc4377d104f333e59f40cc4537d5906604f838f8beb193a90f",
+  "payload_sha256": "a636b40f10103a90879bad00a55de173fa36ab2b7a4fd4f38262825191bf4442",
+  "world_package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "applied_report_sha256": "2916214db6af4fa9711739aa62eb1677cbacaf63ccd7769e637be817bf28e1a3",
+  "applied_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-fe6ebz_c",
+  "new_native_signatures": 1,
+  "initial_native_controller_pid": 8034,
+  "initial_native_controller_exited": true,
+  "Mac_Bluetooth_cache_refreshed_20_seconds": true,
+  "Mac_Bluetooth_restored_ON": true,
+  "new_firmware_controller_pid": 8689,
+  "wifi_connected": false,
+  "IP": false,
+  "physical_render_observation_this_step": false
+}
