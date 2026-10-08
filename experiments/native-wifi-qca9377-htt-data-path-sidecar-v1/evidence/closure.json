@@ -1,0 +1,17 @@
+{
+  "status": "EXACT-FROZEN-PLAIN-PROOF-SIDECAR",
+  "source_freeze_sha256": "9ad21a28d51ef768f8f8d386f760006737598cf4c848ab84a2edb7ec74770953",
+  "source_report_sha256": "3fe1f134b177c9486736ed8ea695c47f0e27e23640ad9d720ffa562d016ef2e2",
+  "files_sha256": {
+    "native-report.json": "2c03671a7c2d5e28c3c345f8c0dfb43c638978e6df339ee490991d0bb820b5ed",
+    "image-report.json": "c66f127f886976375721dcd3ee3148b0f3692fdb0f9e6bf2c4a42a2412a79ebc",
+    "native-host.log": "57b19a0fd31cacb761155b91201727c08064c936e3073582a03b7a6e089db243",
+    "data-producer-fixture.c": "dedce85f5cab88d7ef1bad2c646c7e5e300f719cb5969cea6dd0df62985a5fce",
+    "primary-oracle.h": "0782028a3806a6ba23a7466b35498680633d48d209e71ea61c95f81ed353577d"
+  },
+  "actual_compiler_source_root": "../native-wifi-qca9377-htt-data-path-v1/runs/native-proof",
+  "actual_unsigned_image_root": "../native-wifi-qca9377-htt-data-path-v1/runs/native-image",
+  "full_preserved_archive": "../native-wifi-qca9377-htt-data-path-v1/runs/evidence.tgz",
+  "archive_sha256": "5808d49388a17999dd2acd07621e5b90d1697aab6ae6f49a1af03648857297ac",
+  "physical": false
+}

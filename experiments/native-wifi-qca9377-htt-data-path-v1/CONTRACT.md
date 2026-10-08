@@ -1,0 +1,13 @@
+# Persistent HTT data-path integration boundary
+
+Primary source remains ath10k at commit 6b5a2b7d9bc156e505f09e698d85d6a1547c1206. This new component imports the completed runtime47 scope unchanged. It must use real `QcaHttRuntime.extra` allocations and existing CE4/page9, not a fake count or newly guessed DMA address.
+
+SERVICE_READY full-reorder admission re-decodes the owned retained `QcaOperating.service_frame`, HTC WMI endpoint, exact existing service parser and service65 (`words[65/4] & (1 << (65%4))`). Version3.56 does not grant service65. Header/service ownership and actual ACTIVE persistent epoch/owner47 must remain current. The component will keep captured raw SERVICE_READY and observed capability separately from association/IP authority.
+
+RX_RING_CFG is the existing exact 40-byte serializer; publication records the actual RX completion floor before the real CE4 doorbell. All maps/buffers/index are real, 32-bit bounded, and initial1023 buffers have real attention clear/index writes. A successful CE4 completion proves transfer, not firmware acceptance. Actual owned RX_IN_ORD indications and coherent completed descriptor copies are required to claim/refill buffers. Unsupported fragments, offload, chained MSDU, RX_IND FIFO assumptions and insufficient owned output capacity must not be swallowed.
+
+TX uses the exact 32-bit low-latency descriptor. Primary `htt.c` prefetch is50 bytes rounded to4 (=52 maximum), rather than a guessed512-byte policy. One inline 2-entry fragment table + HTC8 + HTTcmd1 + packed descriptor15 can live in existing page9, with a disjoint packet area. Raw protected frames requiring unresolved MIC/key ownership are not admitted. The CE4 DMA owner and a fresh owned type7 HTT TX completion for the exact single outstanding MSDU ID must both close before the common page can be reused. NO_ACK/DISCARD can close owners but cannot claim successful transmission. Completion does not prove association, controlled port, IP or AP reachability.
+
+A published RX ring requires actual target halt + callback quiescence + BME-off/device-write fence before mappings can be freed. Existing CE halt is insufficient. Until a target-stop backend is integrated and reviewed, stop after publication is explicit retained/quarantined ownership. No compatibility adapter may convert this into ordinary release success.
+
+No native64 changes, key/credential operations, BLE, signing, device operations or physical readiness are authorized within this lane. All C/native tests run only on Yukabox. Synthetic source models will be labeled accordingly. This is a working scope, not a frozen or hardware-admitted candidate.

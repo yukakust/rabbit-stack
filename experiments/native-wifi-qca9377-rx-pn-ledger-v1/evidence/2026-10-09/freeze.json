@@ -1,0 +1,11 @@
+{
+  "status": "FROZEN-OWNED-PN-METADATA-ONLY",
+  "report_sha256": "ec5578900242eb4ef05e8b01c162e97f0c9cc0d0fbb74967fc0d4c848809c3f0",
+  "pn_c_sha256": "aa26ca55cbbc47d10dfa805f42f87c8441def0f11b841c7882c47813eb987faa",
+  "pn_h_sha256": "ed7acdc54121a5927e44fea47abf76174bcb6d20378a2ec3a9c88b641d5c83da",
+  "source_files": 109,
+  "physical_admission": false,
+  "native_integrated": false,
+  "protected_quarantine_required": true,
+  "authenticated_commit_backend": "MISSING"
+}

@@ -1,0 +1,154 @@
+{
+  "status": "PHYSICAL64-FULL12-RAM-RECEIPT-AND-IMMUTABLE-SIGNATURES-VERIFIED",
+  "generation": 64,
+  "native_payload_sha256": "d40efd8c0b08a9289f0caaa64d931519a253559c53ef732af8961ed91ad49965",
+  "firmware_bytes": 751436,
+  "firmware_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+  "report_sha256": "00ed413ce09d74c83faa3dbd274f111e1c0aa8ed00c5af4e08c7461451837a9c",
+  "packets": [
+    {
+      "packet_sha256": "511865ed63637a9f3b0fb546beb092dd950f9be1ab051cd2cf84157be59fb8cc",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 0,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "8df180e063f5aaf0af9cfa38f3bb7d197881fcd96ba2d89c4da574a3a34eee1f",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 65536,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "b783323476a86257a98d6e5d3a54ae05361071bce6c41c23d6733ffdd6f84a0e",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 131072,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "b4fffed61f0d6b95c0b241627c384a64f1057e2242655c37608af326bcd771ef",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 196608,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "6b6b145e0ca4138780a206d536037631593fc2a80e9d2ea8a03043a32e770e72",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 262144,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "94ad22de8126ee7af51cd8537d607edf5c09677d5bc7d60443893544ea277f7a",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 327680,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "b928976f9cbf73e04a199b8ee610aaf16950a30102825e87593432fd95f03be1",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 393216,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "c3a2863b663c453528f6cb612bb2520e02c80d4306ec2011e07beaa857c8c01a",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 458752,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "b04342af084d634a0fc03ed7713ebc86a63df91d8088b90a5ddeb4b68a07920d",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 524288,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "c6ca2e5c446c97bd8ec8ad01b6204e77ac4e164228897f9b0fcb5ce35ab3cd65",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 589824,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "ee9995b2871922d24ea07533f994563682a3f1225a9fce26d1bf16f48e353cb3",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 655360,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    },
+    {
+      "packet_sha256": "b3a2788f68be2ffdc835f261ad8e5aefb93f487a389400faa2e0d7af7584ff93",
+      "asset_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "offset": 720896,
+      "asset_bytes": 751436,
+      "generation": 64,
+      "target_type": 8,
+      "target_version": 84017153,
+      "kind": 1
+    }
+  ],
+  "last_receipt": {
+    "action": 4,
+    "bitmap": 4095,
+    "confirmed_floor": 30764,
+    "device_attestation": false,
+    "error": 0,
+    "firmware_started": false,
+    "length": 30764,
+    "packet_sha256": "b3a2788f68be2ffdc835f261ad8e5aefb93f487a389400faa2e0d7af7584ff93",
+    "peripheral": "F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF",
+    "ready": 1,
+    "received": 30764,
+    "state": 2
+  },
+  "boot_complete": false,
+  "ECHO_verified": false,
+  "HTT_verified": false,
+  "SSID_verified": false,
+  "association": false,
+  "IP": false,
+  "WAN": false,
+  "device_attestation": false,
+  "private_key_loads": 0,
+  "BLE_operations_by_this_verifier": 0
+}

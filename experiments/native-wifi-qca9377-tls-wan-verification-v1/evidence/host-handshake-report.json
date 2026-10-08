@@ -1,0 +1,20 @@
+{
+  "status": "YUKABOX-HOST-ACTUAL-MBEDTLS-TLS13-CA-NAME-TIME-HANDSHAKE-PASS",
+  "result": "PASS actual Yukabox-host MbedTLS TLS13 CA/name/time CertificateVerify/Finished; HTTP status=200; NOT Dell/WAN-proof",
+  "source_sha256": {
+    "host_handshake.c": "38bf6880cf6519d494566be00c6fd8a483e5842a7984496fee554340229fec54",
+    "host_handshake.py": "28eed310b45cda53534c9dad97860881224f4f5abcdf5758160d04ccb2b7803d"
+  },
+  "verification_report_sha256": "91d904a0e734a6c3c3fe8530f8d93926198dfaded33bf6165fd63568c177d9d7",
+  "host_log_sha256": "f963a8e1358e1b41f80a94510f27557fee157c1c57c3fcad91c24158bc64d218",
+  "build_host": "yukabox",
+  "strong_entropy_provider": "Linux getrandom HOST HARNESS ONLY",
+  "trusted_UTC_provider": "Yukabox-host system UTC HOST HARNESS ONLY",
+  "private_Tailnet_route": true,
+  "HTTP_route": "GET /rabbit-wifi-certificate-check read-only missing route",
+  "Funnel_changes": 0,
+  "physical_Dell": false,
+  "native_provider_supplied": false,
+  "credentials_or_secrets_logged": false,
+  "Dell_to_Yukabox_proved": false
+}

@@ -1,0 +1,1 @@
+PASS actual Yukabox-host MbedTLS TLS13 CA/name/time CertificateVerify/Finished; HTTP status=200; NOT Dell/WAN-proof

@@ -1,0 +1,15 @@
+{
+  "status": "NEW-HTT-DATA-PATH-UNSIGNED-NATIVE-COMPILE-ONLY",
+  "file_bytes": 223744,
+  "mapped_bytes": 4165632,
+  "fits": true,
+  "payload_sha256": "5db27b6b80d8a1d88048e87e363ab09f89276d7d750b9bd7573942c99a978b1e",
+  "counter_not_reserved": true,
+  "signing_admitted": false,
+  "physical": false,
+  "target_halt_backend_integrated": false,
+  "published_ring_release_allowed": false,
+  "association_authority": false,
+  "IP_authority": false,
+  "GetRNG_calls": 0
+}

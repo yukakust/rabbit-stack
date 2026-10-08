@@ -1,0 +1,29 @@
+{
+  "status": "FROZEN_SOFTWARE_ONLY",
+  "report_sha256": "3fe1f134b177c9486736ed8ea695c47f0e27e23640ad9d720ffa562d016ef2e2",
+  "source_sha256": {
+    "CONTRACT.md": "3ce23704a262b0180e52e4b6e03c06be6b6784d9797e15db5c97bff8f844e9e3",
+    "verify_native.py": "f6ea3e8859801637dd000b88b402ea3eadea5eb475d27dfed0fc5596c097555d",
+    "data_path.h": "8601420d959b41c585220c9cfb9f4d5dfdcf2428e3578cdefc4068e3ad97ec46",
+    "README.md": "406550e3f2ae5c989190fc718cffdc5d8b86fb838966f9642b09bbac63d1e480",
+    "oracle.py": "e0820fe2c01b14dcd064593d900bbc84883c733ecd736deb6ff051b749a39a34",
+    "data_native_prototype.py": "17a2a034b709e3a3e3a2974b50bb90dded55572feeecb847b1d3cb18710937b8",
+    "data_path.c": "ae498e377eea0a06150fc687ae89cac8e0b9cbd100a644b968b46072bb7e9d3f",
+    "QUIESCENCE-PLAN.md": "70dcbc1841ad81a8e362fe8e8c72a7c4a33b5f5fff21bf7ece2f041a7019e917",
+    "references/pci.c": "e5c8f5aec5312eb83bef7372706cdb7c979fcf81e423bb4fced3f18591e994fd",
+    "references/htt_tx.c": "3f73bddf26ec9e4e79a46c143a2fce35bf80a441068adbbe9aa29145692b33a3",
+    "references/pin.json": "0e8b3234fbdce1aa58557c9ff4352949bb798c1abd9a1f3036a02d348339dbdb",
+    "references/htc.h": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963",
+    "references/htt.c": "aaeaa40bd765bbe94b8371bcd91720317fd0955d73fa32d06f3af1e0c17f29c0",
+    "references/htt.h": "0cbb9326399ac9685f2a863edfcd5e4ed3ee58885dfdb5053f536386311220f7",
+    "references/htt_rx.c": "cabc2774651d670d247defc5f5f405640436dd131a0fc2522e605c2d8e7fb4d8",
+    "references/wmi-tlv.h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9"
+  },
+  "native_report_sha256": "2c03671a7c2d5e28c3c345f8c0dfb43c638978e6df339ee490991d0bb820b5ed",
+  "image_report_sha256": "c66f127f886976375721dcd3ee3148b0f3692fdb0f9e6bf2c4a42a2412a79ebc",
+  "payload_sha256": "5db27b6b80d8a1d88048e87e363ab09f89276d7d750b9bd7573942c99a978b1e",
+  "logs_sha256": {
+    "runs/native-proof/host.log": "57b19a0fd31cacb761155b91201727c08064c936e3073582a03b7a6e089db243"
+  },
+  "no_hardware_admission": true
+}

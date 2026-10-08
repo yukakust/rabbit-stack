@@ -1,0 +1,42 @@
+{
+  "status": "FROZEN-WAN-MATURE-CERTIFICATE-AND-ACTUAL-YUKABOX-HOST-TLS13-PROOF",
+  "source_sha256": {
+    ".gitignore": "85692effe09c613296b462a4d501d220b3839b81ca499923485c708e77e2e645",
+    "README.md": "1f708bc5f06955945184cf284469207b2dd774869115d1761e61cff02ecececb",
+    "check.py": "05bb880fb1003841c67b64ed9cfa7a94e9154143ade7d207ea1da5545a485f1b",
+    "fixtures/isrg-root-x2.pem": "a13d881e11fe6df181b53841f9fa738a2d7ca9ae7be3d53c866f722b4242b013",
+    "fixtures/metadata.json": "f9f9aaf6ed468cd869f3587b40fdd7e2cfcf5339b4c096529e1c07069316922c",
+    "fixtures/served-0.pem": "474b841e18606d552f7cbd7d457561c350ab154c30f44501f15c61db3b94a4e5",
+    "fixtures/served-1.pem": "30028f6eecdb9ba45b1a2440187278be1bc08c360da6611f21b4b3e74b103981",
+    "fixtures/served-2.pem": "2681e97e939cab7cde4fad1dc733fc7c99e39a203190e8f298e1c02ab431b1e9",
+    "fixtures/served-3.pem": "4dadd67f1de699b79466b1e672187e6caef5e0fdab4404d649ad8188a1b2d9a1",
+    "freestanding/time.h": "5b19ce23a01baca26929426d3e4d8118435f1cad429b9a6ce627dd3d0d1bf9f5",
+    "host_handshake.c": "38bf6880cf6519d494566be00c6fd8a483e5842a7984496fee554340229fec54",
+    "host_handshake.py": "28eed310b45cda53534c9dad97860881224f4f5abcdf5758160d04ccb2b7803d",
+    "inputs.json": "7aa1ffc686edae3836d99053571e4d8f3a9faed14fd30c99667156a3b6a4f81b",
+    "run.py": "8b1b73a48be82477afa70060b94bb0b178c1febaf5f81e88b38401787a1e71f9",
+    "test_verify.c": "81c2347e7480a34db5439bb5fd576d3d7ef98fba23f56f78e4f15c0d5dff2ec7",
+    "trusted_utc.c": "4b7b41ffc024eedb960bda4911cbf4f46b59e1c7c3144d949dd2a386e7f8d553",
+    "trusted_utc.h": "0d9d54db705bc931752056e0f55dc5c4a5c9afb6ca22a970cbf9b44612e8d98f",
+    "verify_certificate.c": "08c35a1df1ea62e1d22570addf9b73135fee0dc4baee12581b0e37059989943e",
+    "verify_certificate.h": "b57da0cbf01f942b6b0a984dd48aa029dd5276369bba783d20c38d3ed6ae56cd",
+    "wan_config.h": "9f1413241fc430295ac4a0be9a561e67b4fb462eb72c787393894b469acc0988"
+  },
+  "evidence_sha256": {
+    "evidence/compiler.log": "4bc9a7b670ae31c528ca9fce952b1d9b16909aeec88881cca04e74030b882bc5",
+    "evidence/host-handshake-report.json": "56621701a27715fbbff369389a7afd0ccbbbd8f544f45679c430fca3d8b7f791",
+    "evidence/host-handshake.log": "f963a8e1358e1b41f80a94510f27557fee157c1c57c3fcad91c24158bc64d218",
+    "evidence/report.json": "91d904a0e734a6c3c3fe8530f8d93926198dfaded33bf6165fd63568c177d9d7"
+  },
+  "base_freeze_sha256": "c905721899f294034aa44a75adfc97f83dc17c806c10c414e9fad670f4d1ced8",
+  "served_der_sha256": [
+    "f493b8212a43b749dabea25bcfad8ff8ee6fe3be1b4bb1b49ba3d19849318f37",
+    "a2372d06431e9716365eeed47ec020351497d182fcc038e457e58168a03cac07",
+    "0fc0901cca2bae9e9fdbb02d50d02f1094f7b36672086991b9e897626dc485f0",
+    "ee5f7abd6981bb0255632cd8f49283451b4b18844d12040b44ee00f07b8fe2c6"
+  ],
+  "physical_Dell": false,
+  "native_entropy_authority": false,
+  "native_UTC_authority": false,
+  "signing_admitted": false
+}

@@ -1,0 +1,6 @@
+{
+  "base_config_sha256": "5434cc62fc1ecfc7f08c7c37a39c2f5df03930a44bbbf5c95eeca4e9b44a5bc2",
+  "base_freeze_sha256": "c905721899f294034aa44a75adfc97f83dc17c806c10c414e9fad670f4d1ced8",
+  "profile": "CA-chain/name/trusted-UTC verification; no BLE pin override",
+  "physical_admission": false
+}

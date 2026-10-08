@@ -1,0 +1,13 @@
+{
+  "primary_trust_anchor_uri": "https://letsencrypt.org/certs/isrg-root-x2.pem",
+  "anchor_der_sha256": "69729b8e15a86efc177a57afb7171dfc64add28c2fca8cf1507e34453ccb1470",
+  "public_chain_source": "Host default-CA verified TLS to private Tailnet; NOT Dell/WAN",
+  "source_sha256": {
+    "isrg-root-x2.pem": "a13d881e11fe6df181b53841f9fa738a2d7ca9ae7be3d53c866f722b4242b013",
+    "chain-2.der": "0fc0901cca2bae9e9fdbb02d50d02f1094f7b36672086991b9e897626dc485f0",
+    "chain-0.der": "f493b8212a43b749dabea25bcfad8ff8ee6fe3be1b4bb1b49ba3d19849318f37",
+    "chain-1.der": "a2372d06431e9716365eeed47ec020351497d182fcc038e457e58168a03cac07"
+  },
+  "physical_IP": false,
+  "physical_Dell_TLS": false
+}

@@ -1,0 +1,11 @@
+{
+  "status": "EXACT-TEXTUAL-INCLUDE-SIDECAR",
+  "includes": {
+    "experiments/native-wifi-qca9377-v1/port_test.c": "fc3012e1c177047e4fe4542e85588992bdc9c856ce7014f1c948bc00d917bb08",
+    "experiments/native-wifi-qca9377-htt-data-path-v1/runs/native-proof/scene_module.c": "e86792b2d67e4f01132d2dad010289961eb78d156d8d85eea557e04151bfb1cf"
+  },
+  "compiled_fixture_sha256": "dedce85f5cab88d7ef1bad2c646c7e5e300f719cb5969cea6dd0df62985a5fce",
+  "compiled_driver_sha256": "cf500a3d57801910aefa9991a4f1a64fe602eaeceedcb03320afafd6e2df4512",
+  "prior_frozen_manifest_sha256": "9ad21a28d51ef768f8f8d386f760006737598cf4c848ab84a2edb7ec74770953",
+  "no_original_report_edits": true
+}

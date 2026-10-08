@@ -6201,3 +6201,45 @@ The SAME sole controller21465 confirmed all12 chunks: bitmap4095/ready1, EXACT-F
 Root checked all source/proof/admin hash pins of newly frozen scopes: module-artifact-v1 (263536 bytewise/scenario assertions incl262144 wipebytes,18 injectedfirmwaremodes/5COFF, actualOVMF authenticated RFCfixture→LoadImage→StartImage→privateoptions→close→UnloadImage→wipe); tls-server-child-v1 (genuine7 child-entry plus9upstreamTLS/260SPKI,113COFF,117248file/159744mapped, childde85a60de2627f24552f4de8869965583bee23ca9a63ef948a9a485f75da9769,aggregate2383872); cpuid-inventory-v1 (14injectedCcases/ASAN/COFF,text902/rdata20/BSS0, QRNG0001/public256bytes, genuineCPUID compiled NEVER invoked, approvedentropy0); station-wire-v1 (11277source-exact WMIgenerator/ASAN/4COFF checks, currentNONZERO_RSC rejection awaiting NEWPNpolicy, not a targetlimitation). All are unsigned preparation, no physical/RNG/credential/controlledport authority.
 
 Primary Intel RDSEED/SRBDS assessment is in rdseed-prerequisite-v1; actualCPUID/microcode/mitigation unknown. No seed sampling, GetRNG, RDSEED, MSR instruction or fallback occurred. NEWparent glue underway will retain privatechild/pool/provider lifetimes, actualpublicCPUID+GetInfo-onlyinventory, noentropyapproval. Role1 loader staysfrozen; supplicant/network modularroles need a NEWextension because combinedsinglefile exceeds262144. Pendingphysicalcity/tail+hotspot answers remain mandatory before nextnativephysicaltrial. Endpoint/Funnel unpublished; WPA2/IP/WAN stillunproved.
+
+
+### Continued native64 chip upload and frozen real-producer / WAN certificate preparation
+
+Sole PID21465 still owns exact firmware-ram-j45u3fkd; all12/4095/ready1
+public receipt and owner-signature/full751436-byte container proof retained
+in filter64-root-route-v1/evidence/native64-full-firmware/report.json.
+Latest raw QWBT remains phase1/error0, plan17/error0, main firmware offset
+above520304 and14 actual DMA owners held. Fresh logs override this snapshot.
+No terminal ECHO/HTT/SSID/IP proof; never replay/sign/parallel BLE while live.
+Physical city/cat/tail and hotspot2.4GHz questions remain unanswered.
+
+NEW frozen preparations checked against source/proof hash closures:
+- htt-data-path-v1:19 actual full-producer source-exact synthetic cases/15COFF,
+  RX2048/fill1023 +33extra/14CE=47 owners, genuine SERVICE_READY65/HTTop3,
+  DMA+HTT TX completion joins, scan LIVE_DONE retains47. Protected data stays
+  quarantined; target-stop interface missing. Anchored unsigned223744/4165632
+  image, no normalEMPTY/world19/admission. Sidecar preserves actual fixture,
+  nested textual compiler inputs, reports and log; generated binaries excluded.
+- rx-pn-ledger-v1:214522 actual C assertions/4COFF; source-exact descriptor/
+  48-bit per-key/TID PN and epoch/owner metadata. PN acceptance is NOT plaintext
+  authentication or controlled-port permission. Authentic LL RX glue underway.
+- module-parent-v1:40 source/8 evidence pins,10 genuine glue fixture cases/5COFF,
+  THREE identical224256file/2232320mapped parent builds. Real OVMFnormalEMPTY/
+  world19/replacement/rollback pass with mock USB/RF. Reachable private72B UEFI
+  protocol, owner-signedRABMOD01 dispatch and lifetime guards; public CPUID/
+  GetInfo only. Epoch1 UNRESERVED; BLE inventory/module route absent, signing
+  admission false. No actual Dell RNG/keygen/TLSopen authority. Aggregate mapped
+  parent+TLS2392064 fits4MiB; external bounded pools reported separately, not
+  a claim that all runtime RAM fits4MiB. NEW physical inventory route underway.
+- tls-wan-verification-v1:NEW distinct MbedTLS3.6.7 WAN CA/name/authenticated-UTC
+  profile, official ISRGRootX2 anchor, actual four-certificate server chain
+  (P384/SHA384 + final RSA/SHA256 cross-signature),2153ASAN assertions/all-library
+  COFF. Genuine Yukabox-host MbedTLS TLS13 CertificateVerify/Finished + required
+  CA/name/date verification and read-only GET succeeded using HOSTgetrandom/UTC.
+  No Dell provider, IP or Dell→Yukabox proof. Freeze31379f74baa55b7768411c06ec617e20ada2c215dae377b5e2c3cef3a1e5aba7.
+  No issuer/name/date failure override or BLE pin policy reused for WAN.
+
+Funnel/endpoint unpublished and existing443/8443 unchanged. Actual station key
+publication/authenticatedRX/native module routes remain under integration.
+Do not request/read credentials before genuine strongDellRNG+full physical
+QR binding and protected provisioning. AutomationACTIVE; WiFi/IP/WAN unproved.
