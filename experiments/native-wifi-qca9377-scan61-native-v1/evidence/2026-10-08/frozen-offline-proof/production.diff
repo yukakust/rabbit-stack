@@ -1,0 +1,203 @@
+--- fullboot60/init_probe.c
++++ scan61/init_probe.c
+@@ -14,6 +14,9 @@
+ #include "operating.h"
+ #include "startup.h"
+ #include "prefix.h"
++#include "persistent.h"
++#include "scan_native.h"
++#include "scan_policy.h"
+ #include "boot_assets.h"
+ void*qca_image;
+ static QcaUefiPort port;static QcaWake wake;static QcaReset reset;
+@@ -25,10 +28,12 @@
+ static QcaOperating operating;
+ static QcaWmiStartup startup;
+ static QcaPrefix prefix;
++static QcaPersistentNative persistent;
++static QcaNativeScan native_scan;
+ QcaPrefix*qca_prefix_view(void){return &prefix;}
+ static unsigned prefix_released(void);
+ static QcaFirmwarePort ram;static SystemTable*ram_system;static unsigned ram_attempted,ram_closing;
+-static const QcaFirmwarePolicy ram_policy={.owner={98,43,36,140,66,130,154,208,102,229,174,66,142,163,14,149,92,117,14,76,63,34,21,83,187,52,98,84,232,37,69,172},.target={54,61,117,18,136,223,123,71,41,95,156,122,82,80,195,180,29,178,78,253,26,67,164,189,52,143,0,116,76,107,199,233},.digest={143,139,0,47,204,254,129,212,34,56,242,125,209,245,109,24,150,4,241,128,189,71,114,199,200,231,90,225,254,241,111,1},.total=751436ull,.type=8ull,.version=84017153ull,.kind=1ull,.generation=60ull};
++static const QcaFirmwarePolicy ram_policy={.owner={98,43,36,140,66,130,154,208,102,229,174,66,142,163,14,149,92,117,14,76,63,34,21,83,187,52,98,84,232,37,69,172},.target={54,61,117,18,136,223,123,71,41,95,156,122,82,80,195,180,29,178,78,253,26,67,164,189,52,143,0,116,76,107,199,233},.digest={143,139,0,47,204,254,129,212,34,56,242,125,209,245,109,24,150,4,241,128,189,71,114,199,200,231,90,225,254,241,111,1},.total=751436ull,.type=8ull,.version=84017153ull,.kind=1ull,.generation=61ull};
+ 
+ #define config_read setup.read
+ #define full_read config_read.full
+@@ -185,8 +190,14 @@
+         if(rc==1){
+          if(!startup.phase)rc=qca_wmi_startup_begin(&startup,&operating,now);
+          else rc=qca_wmi_startup_poll(&startup,now);
++         if(rc==1){
++          if(!persistent.life.phase)rc=qca_persistent_begin(&persistent,&startup,1,now);
++          else rc=qca_persistent_poll(&persistent,now);
++          if(rc==1)rc=0; /* Adopt before60 success teardown. */
++         }
+         }
+         else if(rc<0&&startup.phase==1)(void)qca_wmi_startup_poll(&startup,now);
++        if(rc<0&&persistent.life.phase)(void)qca_persistent_poll(&persistent,now);
+        }
+       }
+       if(rc)qca_prefix_request(&prefix,rc<0?3:0,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.phase,boot.io.wire.phase);
+@@ -220,8 +231,10 @@
+ 
+ static void clear(void*p,size_t n){volatile uint8_t*b=p;while(n--)*b++=0;}
+ /* The hardware owner closes FIRST. RAM assets never borrow DMA mappings. */
++static void qca_profile_step(uint64_t);
+ void qca_poll(uint64_t ms){
+  qca_hardware_poll(ms);
++ qca_profile_step(ms*1000);
+  if(prefix.phase==2){
+   /* Successful WMI completion already started checked hardware teardown.
+    * Do not cancel that successful cleanup; release RAM only after hardware. */
+@@ -231,9 +244,16 @@
+   }
+   (void)qca_prefix_tick(&prefix,ms*1000,boot.phase,boot.plan.phase,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.pending,boot.io.wire.phase,prefix_released());
+  }
+- if(ram_closing){if(boot_round&&qca_boot_native_close(&boot))return;(void)qca_fwp_close(&ram);return;}
++ if(ram_closing){
++  if(boot_round&&qca_boot_native_close(&boot)){
++   (void)qca_persistent_poll(&persistent,ms*1000);return;
++  }
++  (void)qca_persistent_poll(&persistent,ms*1000);
++  (void)qca_fwp_close(&ram);return;
++ }
+  if(boot_round){
+   if(qca_init_adapter_released(&adapter)&&!port.claimed)(void)qca_boot_native_close(&boot);
++  if(persistent.life.phase&&persistent.life.phase!=QCA_RADIO_ACTIVE)(void)qca_persistent_poll(&persistent,ms*1000);
+   return;
+  }
+  if(stage!=5||failed||cancelled)return;
+@@ -249,6 +269,7 @@
+  }
+ }
+ int qca_stop(void){
++ (void)qca_persistent_quiesce(&persistent,last_now);
+  qca_prefix_request(&prefix,7,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.phase,boot.io.wire.phase);
+  qca_wmi_startup_cancel(&startup);
+  ram_closing=1;int hardware=qca_hardware_stop();
+@@ -334,7 +355,7 @@
+  const uint8_t magic[8]={'Q','P','F','X','0','0','0','1'};for(unsigned i=0;i<8;i++)out[i]=magic[i];
+  unsigned held=0;for(unsigned i=0;i<14;i++)if(adapter.channels.buffers[i].allocated||adapter.channels.buffers[i].mapped||adapter.channels.buffers[i].allocation_uncertain)held++;
+  const QcaPrefix*p=&prefix;
+- uint32_t f[58]={60,p->phase,p->reason,p->stop_calls,prefix_released(),p->stop_offset,p->stop_submitted,p->stop_completed,p->stop_plan,p->stop_io,
++ uint32_t f[58]={61,p->phase,p->reason,p->stop_calls,prefix_released(),p->stop_offset,p->stop_submitted,p->stop_completed,p->stop_plan,p->stop_io,
+  boot.phase,boot.error,boot.plan.phase,boot.plan.error,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.io.wire.phase,
+  stage,failed,adapter.phase,adapter.channels.cleanup_slot,held,port.dma_users,port.claimed,adapter.access.count,adapter.bus.owned,
+  boot.owns_pin,ram.asset.pinned,irq.owned,link.owned,wake.owned,reset.owned,
+@@ -344,3 +365,42 @@
+  (uint32_t)p->started,(uint32_t)(p->started>>32),(uint32_t)p->last,(uint32_t)(p->last>>32)};
+  for(unsigned j=0;j<58;j++)for(unsigned k=0;k<4;k++)out[8+4*j+k]=(uint8_t)(f[j]>>(8*k));
+ }
++
++const QcaPersistentNative*qca_persistent_view(void){return &persistent;}
++static unsigned actual_released(void){return persistent.life.phase==QCA_RADIO_CLOSED&&prefix_released();}
++static void qca_profile_step(uint64_t now){
++ if(!native_scan.phase&&qca_radio_accepts_work(&persistent.life)){
++  if(!qca_native_scan_begin(&native_scan,&persistent,now)){
++   native_scan.quiesce_requested=1;qca_prefix_request(&prefix,3,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.phase,boot.io.wire.phase);(void)qca_stop();
++  }
++ }
++ if(native_scan.phase&&!native_scan.quiesce_requested&&qca_native_scan_poll(&native_scan,now)){
++  qca_prefix_request(&prefix,native_scan.error?3:0,boot.plan.offset,boot.plan.submitted,boot.plan.completed,boot.plan.phase,boot.io.wire.phase);(void)qca_stop();
++ }
++ if(native_scan.quiesce_requested&&actual_released()&&!native_scan.error)native_scan.phase=QCA_NATIVE_SCAN_RELEASED;
++}
++const QcaNativeScan*qca_scan_native_view(void){return &native_scan;}
++unsigned qca_scan_export(unsigned page,uint8_t*out,unsigned cap){return qca_native_scan_export(&native_scan,page,out,cap);}
++void qca_scan_status(uint8_t out[416]){
++ for(unsigned j=0;j<416;j++)out[j]=0;
++ const uint8_t magic[8]={'Q','S','C','N','0','0','0','1'};for(unsigned j=0;j<8;j++)out[j]=magic[j];
++ const QcaNativeScan*s=&native_scan;const QcaScanCoordinator*c=&s->scan;const QcaPersistentTx*t=&s->tx;const QcaPersistentRx*r=&persistent.rx;
++ uint32_t held=0;for(unsigned j=0;j<14;j++)if(adapter.channels.buffers[j].allocated||adapter.channels.buffers[j].mapped||adapter.channels.buffers[j].allocation_uncertain)held++;
++ uint32_t f[64]={s->phase,s->error,s->stop_requested,s->quiesce_requested,actual_released(),
++ c->phase,c->error,c->stage,c->request,t->phase,t->error,t->request,t->attempted,t->completed,
++ c->pending.phase,c->pending.result,c->pending.started,c->pending.last_event.type,c->pending.last_event.reason,
++ c->pending.last_event.frequency,c->pending.last_event.request_id,c->pending.last_event.scan_id,c->pending.last_rx,
++ c->start_floor,c->live_frequency,c->stop.stop.phase,c->stop.stop.terminal_seen,c->stop.stop.tx_complete,
++ c->stop.terminal_completion,c->ssid_seen,c->has_observation,c->has_orphan,c->dispatch.count,s->archive_count,
++ r->phase,r->error,r->completed,r->posted_count,r->count,r->backpressure,
++ operating.control.credit.available,operating.control.credit.outstanding,operating.control.credit.reserved,operating.control.credit.total,
++ held,port.dma_users,port.claimed,wake.owned,link.owned,irq.owned,boot.owns_pin,adapter.bus.owned,adapter.access.count,
++ adapter.phase,adapter.channels.cleanup_slot,persistent.life.phase,persistent.life.error,persistent.error,
++ startup.transaction.ready_seen,startup.transaction.tx_complete,61,13,0,0};
++ for(unsigned j=0;j<64;j++)for(unsigned k=0;k<4;k++)out[8+4*j+k]=(uint8_t)(f[j]>>(8*k));
++ for(unsigned j=0;j<32;j++){out[264+j]=scan_policy.reviewed_digest[j];out[296+j]=scan_policy.ruleset_digest[j];out[328+j]=scan_policy.location_digest[j];}
++ if(c->has_observation){const QcaBeaconInfo*b=&c->observation.parsed.bss;out[360]=(uint8_t)b->ssid_bytes;
++  for(unsigned j=0;j<32;j++)out[364+j]=j<b->ssid_bytes?b->ssid[j]:0;
++  for(unsigned j=0;j<6;j++)out[396+j]=b->bssid[j];
++ }
++}
+--- fullboot60/prefix.c
++++ scan61/prefix.c
+@@ -45,7 +45,7 @@
+  for(unsigned i=0;i<n;i++){
+   unsigned at=offset+i;uint8_t value=0;
+   if(at<8){static const uint8_t m[8]={'Q','P','H','C','I','0','0','1'};value=m[at];}
+-  else if(at<64){const uint32_t v[14]={60,s->raw_count,s->raw_overflow,s->raw_frozen,s->phase,TOTAL,s->critical_count,s->routine_count,s->routine_head,s->routine_overwritten,(uint32_t)s->started,(uint32_t)(s->started>>32),(uint32_t)s->last,(uint32_t)(s->last>>32)};unsigned j=(at-8)/4;value=(uint8_t)(v[j]>>(8*((at-8)%4)));}
++  else if(at<64){const uint32_t v[14]={61,s->raw_count,s->raw_overflow,s->raw_frozen,s->phase,TOTAL,s->critical_count,s->routine_count,s->routine_head,s->routine_overwritten,(uint32_t)s->started,(uint32_t)(s->started>>32),(uint32_t)s->last,(uint32_t)(s->last>>32)};unsigned j=(at-8)/4;value=(uint8_t)(v[j]>>(8*((at-8)%4)));}
+   else if(s->raw_frozen){unsigned logical=(at-64)/288,pos=(at-64)%288;
+    unsigned valid=logical<4?logical<s->critical_count:logical-4<s->routine_count;
+    unsigned slot=logical<4?logical:4+((logical-4+(s->routine_count==12?s->routine_head:0))%12);
+--- fullboot60/diagnostic_gatt.c
++++ scan61/diagnostic_gatt.c
+@@ -2,7 +2,7 @@
+  * The adapter must supply complete reassembled PDUs from ONE connected bearer. */
+ #include "gatt_core.h"
+ #include "pci_collect.h"
+-size_t qca_prefix_att(uint16_t,const uint8_t*,size_t,uint8_t*,size_t);
++size_t qca_scan_att(uint16_t,const uint8_t*,size_t,uint8_t*,size_t);
+ size_t qca_boot_att(uint16_t,const uint8_t*,size_t,uint8_t*,size_t);
+ size_t qca_operating_att(uint16_t,const uint8_t*,size_t,uint8_t*,size_t);
+ size_t qca_wmi_att(uint16_t,const uint8_t*,size_t,uint8_t*,size_t);
+@@ -19,7 +19,7 @@
+ void rg_init_shared(RgServer*s,RfFile*f){s->shared=f;s->mtu=23;}
+ void rg_disconnected(RgServer*s){s->mtu=23;}
+ size_t rg_att(RgServer*s,const uint8_t*p,size_t n,uint8_t*r,size_t capacity){
+- if(s){size_t diag=qca_prefix_att(s->mtu,p,n,r,capacity);if(diag!=SIZE_MAX)return diag;}
++ if(s){size_t diag=qca_scan_att(s->mtu,p,n,r,capacity);if(diag!=SIZE_MAX)return diag;}
+  if(s){size_t init=qca_wmi_att(s->mtu,p,n,r,capacity);if(init!=SIZE_MAX)return init;}
+  if(s){size_t op=qca_operating_att(s->mtu,p,n,r,capacity);if(op!=SIZE_MAX)return op;}
+  if(s){size_t boot=qca_boot_att(s->mtu,p,n,r,capacity);if(boot!=SIZE_MAX)return boot;}
+--- fullboot60/overlay.h
++++ scan61/overlay.h
+@@ -39,7 +39,7 @@
+  QcaPrefix*p=qca_prefix_view();if(p->frames!=UINT32_MAX)p->frames++;
+  if(qca_diagnostic[4]!=15)return;
+  uint8_t bytes[240];qca_prefix_status(bytes);uint32_t f[58];for(unsigned i=0;i<58;i++)f[i]=le32(bytes+8+4*i);
+- unsigned scale=city_width>=960?3:2;char line[96];unsigned n=append(line,0,"FULLBOOT 60 FRAME ",p->frames);overlay_text(s,8,line,scale);
++ unsigned scale=city_width>=960?3:2;char line[96];unsigned n=append(line,0,"PASSIVE 61 FRAME ",p->frames);overlay_text(s,8,line,scale);
+  n=append(line,0,"BOOT ",f[12]);n=append(line,n," MAIN ",f[14]);append(line,n," STOP ",f[2]);overlay_text(s,8+9*scale,line,scale);
+  n=append(line,0,"OWNERS ",f[22]);append(line,n," RELEASE ",f[4]);overlay_text(s,8+18*scale,line,scale);
+  n=append(line,0,"BLE ",p->ble_state);append(line,n," CMD ",p->pending);overlay_text(s,8+27*scale,line,scale);
+--- fullboot60/wmi_scan.c
++++ scan61/wmi_scan.c
+@@ -1,6 +1,6 @@
+ #include "wmi_scan.h"
++#include "scan_event_v2.h"
+ static unsigned le16(const uint8_t*p){return p[0]|((unsigned)p[1]<<8);}
+-static uint32_t le32(const uint8_t*p){return le16(p)|((uint32_t)le16(p+2)<<16);}
+ static void put16(uint8_t*p,unsigned x){p[0]=x;p[1]=x>>8;}
+ static void put32(uint8_t*p,uint32_t x){put16(p,x);put16(p+2,x>>16);}
+ static void tag(uint8_t*p,unsigned t,unsigned n){put16(p,n);put16(p+2,t);}
+@@ -12,19 +12,7 @@
+  v.tag=le16(p+pos+2);v.value=p+pos+4;v.bytes=len;
+  *offset=pos+4+len;*out=v;return 1;
+ }
+-int qca_wmi_scan_event(const uint8_t*p,unsigned n,unsigned scan,unsigned request,QcaWmiScanEvent*out){
+- QcaWmiScanEvent v={0};QcaWmiTlv t;unsigned pos=0,found=0;int result;
+- if(!p||!out||n<4||n>4096||le32(p)!=0x3001||!scan||scan>0xfff||!request||request>0xfff)return 0;
+- while((result=qca_wmi_tlv(p+4,n-4,&pos,&t))==1){
+-  if(t.tag==36){
+-   if(found++||t.bytes!=24)return 0;
+-   v.type=le32(t.value);v.reason=le32(t.value+4);v.frequency=le32(t.value+8);
+-   v.request_id=le32(t.value+12);v.scan_id=le32(t.value+16);v.vdev=le32(t.value+20);
+-  }
+- }
+- if(result<0||found!=1||v.vdev||v.scan_id!=(0xa000|scan)||v.request_id!=(0xa000|request)||!v.type||(v.type&(v.type-1))||(v.type&~0x1ffu)||v.reason>4)return 0;
+- *out=v;return 1;
+-}
++int qca_wmi_scan_event(const uint8_t*p,unsigned n,unsigned scan,unsigned request,QcaWmiScanEvent*out){return qca_scan_event_v2_match(p,n,scan,request,out);}
+ static int frequency(unsigned n){return (n>=2412&&n<=2472&&(n-2412)%5==0)||(n>=5180&&n<=5825&&n%5==0);}
+ unsigned qca_wmi_passive_scan(uint8_t*p,unsigned cap,unsigned scan,unsigned request,const uint16_t*freq,unsigned count){
+  unsigned size,base;

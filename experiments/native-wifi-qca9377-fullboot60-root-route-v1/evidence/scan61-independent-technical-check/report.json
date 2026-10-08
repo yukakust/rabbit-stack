@@ -1,0 +1,14 @@
+{
+  "status": "ROOT61-SOURCE-GENERATED-FIXTURE-QEMU-TECHNICAL-ONLY-PASS",
+  "candidate_report_sha256": "0188ad2b1663804fbc6cf663beef4fb3cba2daa05c06eee2fe48fabece5dc388",
+  "source_inputs": 480,
+  "generated_inputs": 194,
+  "compiled_fixtures": 149,
+  "payload_sha256": "305d0171c3c2e296fdf00f82a01cc838d67c0a1f3ffa836a847f4f12770ce074",
+  "actual60_READY_checked": false,
+  "physical_admission": false,
+  "signing_admitted": false,
+  "RF_admission": false,
+  "state_modified": false,
+  "private_key_loads": 0
+}

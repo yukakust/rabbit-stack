@@ -1,0 +1,9 @@
+{
+  "status": "INDEPENDENT-SIGNED-REGDB-EXACT-GE-WORLD108-PROPOSAL-HEADER-PASS",
+  "proposal_sha256": "a5ce1d3e2fdf8aefc2f862c77239cd2fbff1077371763c59c1b7a10d86ae3148",
+  "header_sha256": "4adc39b5bbb7b224ed6e8f40aa269e17248583e0819269eab7bbe2acf8975a6a",
+  "report_sha256": "c7c51a0936cc41b3c761bb82d3ea121b0cbcdfcc9e0cbbf3116ccc7ae7016b13",
+  "host_log_sha256": "2391138cdf1ca0c5568c9fbf60f523e87dc864c8321bcb3e59c012b07af16424",
+  "rf_admission_granted": false,
+  "physical53_success_assumed": false
+}

@@ -1,0 +1,33 @@
+{
+  "status": "OFFLINE-SCAN61-OBSERVER-DECODER-CALLBACK-PREFLIGHT-PASS",
+  "python_checks": 794,
+  "host_result": "PASS 495 HOST SCAN61 callback cases; NO MANAGER/WRITES",
+  "source_sha256": {
+    "read_scan.m": "04898d22209d2ffaf4ff358a3a68de38c3e4c3d35edeff177f7f1242294f5e34",
+    "host_test.m": "751d198938333678f1e4687d7117eb5c00c82cc2831fc79d24a018ff0268eb7c",
+    "decode_scan.py": "abd638a1d3ea0a5d62d45cd9f66d93d6a1a21595dbf3bbae156e4ac7fc065775",
+    "fixtures.py": "c774efa0850ce8e25464543618076af114e55fda2bc1b0b2b1c9380762a9c3f0",
+    "bindings.py": "6b8d8c9c9a8816e240d5eadba5d5f1d663badaae3708498e200789b420f5a1f0",
+    "verify_host.py": "22960adae7f663a83df43579b34c10af39645c1c2ca8f3cebec2c96f8840625f"
+  },
+  "reader_executable_sha256": "e32fbf7374acb5ce9aa6b3acaa4fde147b65b3a38930d610e04a1292bf820410",
+  "reader_path": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-observer-v1/runs/control/read-scan61",
+  "compiler_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-observer-v1/read_scan.m": "04898d22209d2ffaf4ff358a3a68de38c3e4c3d35edeff177f7f1242294f5e34",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "test_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-observer-v1/read_scan.m": "04898d22209d2ffaf4ff358a3a68de38c3e4c3d35edeff177f7f1242294f5e34",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-observer-v1/host_test.m": "751d198938333678f1e4687d7117eb5c00c82cc2831fc79d24a018ff0268eb7c",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "host_log_sha256": "cd0bb86fe839a818d39fb8d7315cf1342b1d86a139c53587cfe3ea4ec7fa5d76",
+  "bluetooth_manager_started": false,
+  "writes": 0,
+  "private_key_loads": 0,
+  "physical_admission": false,
+  "physical_ssid_discovered": false,
+  "candidate_pins": "PENDING ROOT FROZEN61",
+  "actual_APPLIED61_positive_test": "PENDING ACTUAL61",
+  "native_public_positive_test": "PENDING ACTUAL61"
+}

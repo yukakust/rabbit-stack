@@ -1,0 +1,77 @@
+{
+  "status": "SCAN61-SCOPED-INTEGRATION-DIFF-FROZEN60-PASS",
+  "baseline_payload_sha256": "3984d3f5d1c9a3c3540bf2ef00972bea52406a6f78edc56bd215507110668fd6",
+  "candidate_payload_sha256": "305d0171c3c2e296fdf00f82a01cc838d67c0a1f3ffa836a847f4f12770ce074",
+  "production_changes": {
+    "init_probe.c": {
+      "baseline_sha256": "0e523de36dabdc59f60d3d392dbaa576f9fd0f5fad309df7f6a2168e23c92acf",
+      "candidate_sha256": "8e710c0c2499d85217592cfbba27551089b702b7435e1764311dbc12135fd454"
+    },
+    "prefix.c": {
+      "baseline_sha256": "139a0d0412466c3ea2753b892f4389265479d440814bb1438dbc5bc012f72a7f",
+      "candidate_sha256": "c20b9a68a5a5bb952f1f70bc32b77983c1a5c6bc6f900459841ff0793900b861"
+    },
+    "diagnostic_gatt.c": {
+      "baseline_sha256": "b0395477daf944601e0b6fe6fb6eaa0b86870e1da4d39210914d78cac2ef46cd",
+      "candidate_sha256": "05fa7922203d4c0480fb9da5e132d74cbf4a837d3d1f8aac2db8fc2df5749fbb"
+    },
+    "overlay.h": {
+      "baseline_sha256": "e822d8fbfb22a7f0169fb2924c50cf2dd94507dc6ebca75b2099dc0022d58742",
+      "candidate_sha256": "e7060626c926d64cb1bd3ce37eca43730270cdb4b485740c6b0f149a1eb22d7d"
+    },
+    "wmi_scan.c": {
+      "baseline_sha256": "eda085596e6eba21e34dd07d8ea6b845352b2b0c8095933de6b54fd4a455a213",
+      "candidate_sha256": "5bb731eff3d3a39f02533999a34d84a8e9a65bda765700fb7ae520d0f1dd571e"
+    }
+  },
+  "added_frozen_scan55_components": {
+    "scan_event_v2.h": "7bd66857e08feab0847122cc7db218f1df46d7db0fffd7d2edcb3dc6f1ecb788",
+    "scan_policy.h": "4adc39b5bbb7b224ed6e8f40aa269e17248583e0819269eab7bbe2acf8975a6a",
+    "beacon_info.c": "10001c0b5c54748370aaa713be275ebe0476f282d2686f40a0267d4f1ab5d38c",
+    "channel_wire.c": "eb5aa8afea3cfa350eb5d2211b0ce3ba2cc5989b2dafe82f50ab274fc60b749d",
+    "scan_native.c": "51d980f5f9768f31e91f5b093e8b2e9f4bb3840627741c60149f8105ceec7758",
+    "rx.h": "374b7a2f5d8743b1e4f869b551edd22d6df29dae433e4cca28d4ed3c00ebe883",
+    "tx.h": "250ad7a827371e5c5333abc4ecaeb4fa506bc44d993e253cb274f23c82ce0c9c",
+    "owned_stop.c": "7d90a48554557e6dcd76fe47f44ad6c5e300cd813a132a552bb7e892d6f53f6d",
+    "scan_stop.c": "af08941315143785c5182735643179cbca9a1cccc46dd9d93f9e3d84c35afa89",
+    "station_scan.c": "7c609f2232d55e8e281f286a98f9793030d4fd3485c3fae6ee6398dcb8e81a45",
+    "dispatch.h": "b25014f1b0428ccbf61b086993bc2604b9e3ec4e86d9d7ecb53db0ab1dd496d1",
+    "beacon_rx.h": "606fcbc85a3deebef20a4902b2314daf68d879ebed4d6800b74b7c07b9a1afb4",
+    "coordinator.h": "b0d88f2a76b873b58e8883cf42e21bbf5390ea19ee5e5c752d8f355359792c92",
+    "vdev_wire.h": "c9ff94ab1c84b607ec96d6b225b4e3c3ac450d735a9ac0b347614e08620f0300",
+    "scan_gatt.c": "8b763663600193a7b70ce49b86fc5ab56f322a15052c0bb676efee4bafd4b6c6",
+    "scan_stop.h": "f544cd402ebd920cf02de64c792e9768854bb434769ca1516576c74678292994",
+    "beacon_rx.c": "f86d0f8e09d86267be397ef7c3a6a1e90352edf7367ad84f1e1b4f13b4901f6c",
+    "scan_event_v2.c": "7fc8b8b851d538263c57984c242c5a42bba72f980dad6597c0141ef7ff0232c3",
+    "owned_stop.h": "221b35efb0990fb3efbbcf9c302d0a191f8d4d551da65e7c3efaa84dcb7f8779",
+    "coordinator.c": "e8cd77ea793a53f9b02b7eeb45717d9e144c12add2cbd50485b8a291e893e7c9",
+    "lifecycle.c": "d22d48e10434db0cf2774a24667b121256a16ecd6b2a0f0bfd011a51cd403c8c",
+    "dispatch.c": "838513a67bdc220ef6c45aae8122118e59f464a8e6b6b5d422102d8c4809f501",
+    "vdev_wire.c": "5cfe3ee24f18d0bbd355fe204a363d9f3ea90b8bf5e1aaa2a119cd34f4c5f8cc",
+    "scan_native.h": "877c45249ad1596fb3e6b7c7359c0b8759d6462c2227e32c97a8ce385c4d42a7",
+    "channel_wire.h": "6cb5435ee2b253b37ab647ef7bea0378ede08d1bc3cd8c86680a35e0d47d4600",
+    "beacon_info.h": "98edfe74b4ff64292ab1e8279dced824d06aa8b98639792387b72b732f197a30",
+    "persistent.h": "807caabef12ddbb2a3e5d69e5c9ef9c6709817a9f5f41ca758990f1f1cd25af2",
+    "station_scan.h": "07f41732f5c3c075f507082a9212903952ca471513362b11ea8d978eeabfed6a",
+    "rx.c": "70a6c54ede04eaa10ce982b2a9bba799c5d32bdd66ee56db17a94c57b6619c48",
+    "persistent.c": "95566f01b3a46c234d7e0ad4725754d44efda757d22bb40e0fc02c9e79612c9e",
+    "lifecycle.h": "a0a9c60bb33ff9dcc09337a51ef961a7995e25e5ae1c54b67c63af3447bfb258",
+    "tx.c": "7fc135bf76afa590f6bda7a222c87a9edcf2c0149636f70979fb0a6d9ba09d22"
+  },
+  "diff_sha256": "0b1023ee2014defa0146ec7d9638609a4cd623bc595708e015372bcf2fd4ff3a",
+  "absolute_include_root_relocations": [
+    "connected_abi.h",
+    "gatt_core.h",
+    "loop.c",
+    "file_core.h",
+    "hci_link.h"
+  ],
+  "USB_HCI_resident_unchanged": true,
+  "frozen60_all_source_hashes_verified": true,
+  "prefix_ATT_removed": true,
+  "ATT_discovery29_31_holes_resolved": true,
+  "max_raw_handle": 255,
+  "RF_admission_granted": false,
+  "signing_admitted": false,
+  "device_operations": 0
+}

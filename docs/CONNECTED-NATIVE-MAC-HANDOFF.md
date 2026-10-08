@@ -5452,3 +5452,16 @@ Same6fuyx2jq/same12signatures, no extraWi-Fi-offinterval/permissions assumed.
 Anynewrealdisconnect stops; ordinaryprogressing240shosttimeouts handledv2.
 Noactiveothercontroller/fullMAIN/Wi-FiDell/IPclaim yet. Evidence
 wifi-quiet60-result-and-on-continuation. Actualnewreceipts/livepidpriority.
+
+Owner “Давай, делай, всё подтверждаю” authorizescontinued existingWi-Fi plan;
+prior noDellreboot/USB/bootstrap/OTP/flash/privatekeyorplaintextcredentials
+boundaries remain. ActualsolePID64363 stillnormalMacWi-FiON delivery; chunks3/12
+fullyaccepted(bitmap7), chunk3confirmed12960 atcheck, forwardprogress. No new
+controller/signature. All12→fullboot+oneconnectionrawREADY monitoringautomatic.
+
+Rootindependent readonlyscan61technicalcheck PASS:480source/194generated/149native
+compiledfixture hashes+logs/reproduction/normalEMPTYQEMU/wholeEFIcaps+world19
+match. Report0188ad2b...,payload305d017...,191488file/4177920mapped. RF/GEprimary
+flags stillfalse, actual60READYpending, no61physical/signingadmission. Preserved
+code/evidence fornextstep; this technicalcheck doesNOTsubstituteactualREADY
+orprimarypolicy/RFproof. scan61-independent-technical-check/report.json.
