@@ -5377,3 +5377,13 @@ resume (noresign). SolePID57474 nowthisscript, checked-disconnect60-controller.j
 logchecked-disconnect60-resume.log. Thereafterv2allowsONLYprogressingordinary
 timeout; anotherdisconnectstops/investigate, no blindreconnectloop. Evidence
 disconnect60-retained-and-resume. Actualstate/newreceipts/livepidpriority.
+
+ReviewedresumePID57474 alsoSTOPPED: secondactualCBErrorDomain/code6 ~1.53s
+aftervalidQPFX60read beforeanynewcheckpoint (lastconfirmed18480); secondchunk
+notcomplete/fullbootnotstarted. Noordinarytimeout/resumeallowed; noactiveBT
+controller. Exact native60/asset6fuyx2jq packets/checkpoints preserved; noresign.
+Evidence repeated-disconnect60-no-new-receipt. Actualpost-secondlosscontext
+notyetnewread, don'tinferresetorzeroadditionalbytesfrommissingACK. Repeated
+realdisconnectcauseunproved; do not blindlyretry. Askedowner Mac<=1m +current
+city/movingcat confirmation throughasyncquestion, pendingreply. Independent
+Macradio-log analysis maycontinue withoutBLEwrites; no reboot/USB/bootstrap.

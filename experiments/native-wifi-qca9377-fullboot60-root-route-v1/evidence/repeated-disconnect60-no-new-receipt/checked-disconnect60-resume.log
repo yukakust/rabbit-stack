@@ -1,0 +1,31 @@
+REVIEWED exact60 native/prefix/retainedchunk; single query-before-resume
+HOST-OBJC-OBSERVER-COMPILED-NO-MANAGER
+Chunk1 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-6fuyx2jq/chunk-1-7.log
+Traceback (most recent call last):
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/resume_assets60_v2.py", line 43, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/resume_assets60_v2.py", line 28, in main
+    progress=retry_progress(report,session) if report['sender_steps'] else 0;route.need(progress>previous,'no forward progress; stop');previous=progress
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/resume_assets60_v2.py", line 16, in retry_progress
+    route.need(v['stage']=='bounded-timeout' and v['NSError_domain']=='RabbitAssetObserver' and v['NSError_code']==1,'non-timeout requires investigation')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observation59-root-route-v1/route.py", line 20, in need
+    if not ok:raise ValueError(why)
+              ^^^^^^^^^^^^^^^^^^^^^
+ValueError: non-timeout requires investigation
+Traceback (most recent call last):
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/continue_assets60_after_checked_disconnect.py", line 29, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/continue_assets60_after_checked_disconnect.py", line 28, in main
+    launch.t.need(r.returncode==0,'continued60 outcome unconfirmed; preserve exact packets and diagnostics')
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/transition59.py", line 10, in need
+    def need(ok,why):prior.need(ok,why)
+                     ~~~~~~~~~~^^^^^^^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observation59-root-route-v1/route.py", line 20, in need
+    if not ok:raise ValueError(why)
+              ^^^^^^^^^^^^^^^^^^^^^
+ValueError: continued60 outcome unconfirmed; preserve exact packets and diagnostics
