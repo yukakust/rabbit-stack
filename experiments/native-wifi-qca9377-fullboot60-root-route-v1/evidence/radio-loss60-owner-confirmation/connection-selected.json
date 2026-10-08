@@ -1,0 +1,174 @@
+[
+  {
+    "timestamp": "2026-10-08 10:33:29.700188+0400",
+    "message": "Setting minimum RSSI level for connection to 0 for device F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:29.700201+0400",
+    "message": "Connecting device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" for session \"sender-central-57484-153\" with options (connect:0 disconnect:0 notify:0 delay:0 wantsObjectDiscoverData:0 transportBridging:0 disableLeGATT:0 ancsRequired:0)"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:29.730147+0400",
+    "message": "Le topology - {adv-addr: C0:B5:D7:78:C3:FC-Public, resolved-addr: 00:00:00:00:00:00-Public, lmhandle: 0x51, interval: 30, latency: 0, lsto: 72, minCE: 0, maxCE: 12, role: central, state: CONNECTED, ready-state: LE_READY_CONNECTION_COMPLETE, enc-state: OFF, phyStatsEnabled: 0}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:29.737854+0400",
+    "message": "BLE Connection Completed Unspecified F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:29.737977+0400",
+    "message": "Connection Complete: setting LE device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" connection threshold to 18 events with interval 24, LSTO 72"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:30.986384+0400",
+    "message": "Disconnecting device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" for session \"sender-central-57484-153\""
+  },
+  {
+    "timestamp": "2026-10-08 10:33:30.986387+0400",
+    "message": "App disconnecting - {cbuuid: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF, bundle: sender}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:30.986390+0400",
+    "message": "App disconnected - {cbuuid: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF, bundle: sender, reconnecting: N}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:30.986506+0400",
+    "message": "Device disconnecting - {cbuuid: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF, ledisconnectionreason: Unused}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:30.986612+0400",
+    "message": "Disconnecting connected device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\""
+  },
+  {
+    "timestamp": "2026-10-08 10:33:30.986654+0400",
+    "message": "Le topology - {adv-addr: C0:B5:D7:78:C3:FC-Public, resolved-addr: 00:00:00:00:00:00-Public, lmhandle: 0x51, interval: 30, latency: 0, lsto: 72, minCE: 0, maxCE: 12, role: central, state: DISCONNECTED, ready-state: LE_READY_IDLE, enc-state: OFF, phyStatsEnabled: 0}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:31.014489+0400",
+    "message": "PowerLogger device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" disconnect for bundleIDs \"sender\" peerType Other"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:31.015252+0400",
+    "message": "Disconnected from device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" successfully (locally-initiated)"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:31.015543+0400",
+    "message": "Device disconnected - {cbuuid: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF, devicename: , lmHandle: 0x51, adv-addr: C0:B5:D7:78:C3:FC-Public, resolved-addr: , result: 0}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:31.016019+0400",
+    "message": "BLE Disconnected Unspecified F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF reason 722"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:31.016082+0400",
+    "message": "GattGateway device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" is disconnected"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:31.016150+0400",
+    "message": "GATT Device F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF disconnected"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:31.113939+0400",
+    "message": "Setting minimum RSSI level for connection to 0 for device F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:31.113953+0400",
+    "message": "Connecting device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" for session \"sender-central-57489-154\" with options (connect:0 disconnect:0 notify:0 delay:0 wantsObjectDiscoverData:0 transportBridging:0 disableLeGATT:0 ancsRequired:0)"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.163366+0400",
+    "message": "Le topology - {adv-addr: C0:B5:D7:78:C3:FC-Public, resolved-addr: 00:00:00:00:00:00-Public, lmhandle: 0x52, interval: 30, latency: 0, lsto: 72, minCE: 0, maxCE: 12, role: central, state: CONNECTED, ready-state: LE_READY_CONNECTION_COMPLETE, enc-state: OFF, phyStatsEnabled: 0}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.166481+0400",
+    "message": "BLE Connection Completed Unspecified F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.166586+0400",
+    "message": "Connection Complete: setting LE device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" connection threshold to 18 events with interval 24, LSTO 72"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.364142+0400",
+    "message": "PowerLogger device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" disconnect for bundleIDs \"sender\" peerType Other"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.369516+0400",
+    "message": "BLE Disconnected Unspecified F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF reason 762"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.369606+0400",
+    "message": "GattGateway device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" is disconnected"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.369667+0400",
+    "message": "GATT Device F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF disconnected"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.480031+0400",
+    "message": "Le topology - {adv-addr: C0:B5:D7:78:C3:FC-Public, resolved-addr: 00:00:00:00:00:00-Public, lmhandle: 0x53, interval: 30, latency: 0, lsto: 72, minCE: 0, maxCE: 12, role: central, state: CONNECTED, ready-state: LE_READY_CONNECTION_COMPLETE, enc-state: OFF, phyStatsEnabled: 0}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.484544+0400",
+    "message": "BLE Connection Completed Unspecified F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.484648+0400",
+    "message": "Connection Complete: setting LE device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" connection threshold to 18 events with interval 24, LSTO 72"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.664235+0400",
+    "message": "PowerLogger device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" disconnect for bundleIDs \"sender\" peerType Other"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.669577+0400",
+    "message": "BLE Disconnected Unspecified F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF reason 762"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.669657+0400",
+    "message": "GattGateway device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" is disconnected"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.669715+0400",
+    "message": "GATT Device F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF disconnected"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.688903+0400",
+    "message": "Le topology - {adv-addr: C0:B5:D7:78:C3:FC-Public, resolved-addr: 00:00:00:00:00:00-Public, lmhandle: 0x54, interval: 30, latency: 0, lsto: 72, minCE: 0, maxCE: 12, role: central, state: CONNECTED, ready-state: LE_READY_CONNECTION_COMPLETE, enc-state: OFF, phyStatsEnabled: 0}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.693691+0400",
+    "message": "BLE Connection Completed Unspecified F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:32.693798+0400",
+    "message": "Connection Complete: setting LE device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" connection threshold to 18 events with interval 24, LSTO 72"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:35.541697+0400",
+    "message": "Disconnect connection handle: 0x54 (84) wakeUp: No\nSNR: 29 15 10 15 22 22 17 31 30 22 19 22 30 23 29 23 19 31 29 17 29 31 30 14 19 29 30 30 19 30 \nRSSI: -80 -80 -85 -85 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 -78 \nRetransmission Rx: No-Sync Good No-Sync Good Good No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync \nRetransmission Tx: No-Sync NACK No-Sync NACK NACK No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync No-Sync \nPacket Type Rx: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None \nPacket Type Tx: LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE LE"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:35.542336+0400",
+    "message": "PowerLogger device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" disconnect for bundleIDs \"sender\" peerType Other"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:35.543832+0400",
+    "message": "Device disconnected - {cbuuid: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF, devicename: , lmHandle: 0x54, adv-addr: C0:B5:D7:78:C3:FC-Public, resolved-addr: , result: 307}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:35.543844+0400",
+    "message": "App disconnected - {cbuuid: F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF, bundle: sender, reconnecting: N}"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:35.544156+0400",
+    "message": "BLE Disconnected Unspecified F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF reason 708"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:35.544189+0400",
+    "message": "GattGateway device \"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF\" is disconnected"
+  },
+  {
+    "timestamp": "2026-10-08 10:33:35.544232+0400",
+    "message": "GATT Device F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF disconnected"
+  }
+]

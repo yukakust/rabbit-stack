@@ -5387,3 +5387,14 @@ notyetnewread, don'tinferresetorzeroadditionalbytesfrommissingACK. Repeated
 realdisconnectcauseunproved; do not blindlyretry. Askedowner Mac<=1m +current
 city/movingcat confirmation throughasyncquestion, pendingreply. Independent
 Macradio-log analysis maycontinue withoutBLEwrites; no reboot/USB/bootstrap.
+
+Owner “да и да”: Mac<=1m, city+movingcat visible aftersecondloss. NoDellreboot
+needed/authorized. Macbluetoothd exactpeerF45…: 10:33:32.693+0400 handle0x54
+connected, 10:33:35.54 disconnected; LSTO72, RSSI-78..-85/SNR10..31, NACK/
+No-Sync history; hostradio synchronizationlost, rootcausenotproven. Onlyselected
+exactpeer recordspublic, fullotherdevicelogs localignored. NoactiveBTcontroller.
+Independent secure_connection prepares NEW host-only small-data100B derivative
+fromfrozenassetobserver, exactone-token DATAcap240→100, same50mspacing/240stimeout
+andbyte-exactsavedpacket/status/diagnostics. No native/HCI/resident/timerfix.
+Awaitmodel+source/executable proofandfresh60/retainedassetbeforeonesinglehardware
+trial; noresign/blindreconnect. Nothingnewtransmittedduringthisanalysis.
