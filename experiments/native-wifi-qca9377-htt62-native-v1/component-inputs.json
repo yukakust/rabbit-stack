@@ -1,0 +1,20 @@
+{
+  "baseline_report_sha256": "6b678192dd4b750ab3db92b49927730b0a9d3f2ca30cbc4051ae412971d37d0a",
+  "components_sha256": {
+    "persistent.c": "95566f01b3a46c234d7e0ad4725754d44efda757d22bb40e0fc02c9e79612c9e",
+    "persistent.h": "648e02f0f76d153360afb5e01bef1441d053adc34c79d1b1a891c1956211283c",
+    "lifecycle.c": "d22d48e10434db0cf2774a24667b121256a16ecd6b2a0f0bfd011a51cd403c8c",
+    "lifecycle.h": "a0a9c60bb33ff9dcc09337a51ef961a7995e25e5ae1c54b67c63af3447bfb258",
+    "rx.c": "3ca3c3647bfaf73f27ff204b86e92149a5fb10318fd737309bb0cb6447d8b2bb",
+    "rx.h": "1a17351aab63b21f585f78ab5179cb93270f44784f95ff78b524679f25ab3305",
+    "htt_native.c": "667a98c1f94d835b53441d807a1897e665cb64cc6b1565ef63d19856a4cb4921",
+    "htt_native.h": "d621dc71524bbd8cde299cbd599576c4691d8d3e0957f5d126ca3c9f8ee9e6d3",
+    "version.c": "5d6ba1c8588283b4d6cfc536e34b5440ec66a1fd2e17f3e16eb89aca4a455f4c",
+    "version.h": "ea0de3d45329cfb590c5dbf0aa586814b680c62371a58540d625eb0fe479a291",
+    "firmware_op.c": "35d8034ac7e5c05d38de5948b935bbf8907111fb2a4f6de4d77d997d43c23d41",
+    "firmware_op.h": "5f31eb91bdbcccd2ba3532e7bd48791b5d902fdde5590abaff92af1207b3d66d",
+    "firmware_policy.h": "ad2e6ad83a4f2cab49d7f23ba20bb783a4c6686836708e3ced664aada8c27923",
+    "profile_gatt.c": "958a4c63da2b9bda2069298e01366272d6a5cad33f0d1094d141b6b3caca0349",
+    "htt_profile.inc": "8b54e717ed77a11ebdc694b177ad4f263d3cb17324e315b638cf3ed705e4a422"
+  }
+}

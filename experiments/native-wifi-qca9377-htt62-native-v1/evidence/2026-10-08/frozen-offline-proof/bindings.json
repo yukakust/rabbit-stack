@@ -1,0 +1,15 @@
+{
+  "status": "HTT62-FROZEN-PUBLIC-OFFLINE-EVIDENCE",
+  "files_sha256": {
+    "public-gate.json": "c488353d186c39a257d70766e1bb4689cf797310709ee8e0ab152b21a75a0fd1",
+    "reproduction.json": "36f23cac19bf35fa46d859d12824986ce67f29ef6a797be0e220ef48ea1f21f4",
+    "report.json": "9345001639d4eda7d224a8b5d2a7571324ee481f7f3e4c14b33df7f4e8ae46ce",
+    "native-host.log": "86333bde0c973c588d1e30067d7cdb57e238274e429cf68bf9c1ed90f7687b3c",
+    "native-report.json": "21d120ee9a4cf9702574cf71591c988f8729975dda0d90295fc731b0a0602c99"
+  },
+  "gate_source_sha256": "d50c50ec5d2eea57a0b2d6d0c4940245234f51c0f9732288cac24a13efa6a171",
+  "payload_sha256": "22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81",
+  "physical_admission": false,
+  "generation_reserved": false,
+  "version_is_not_association_or_IP": true
+}

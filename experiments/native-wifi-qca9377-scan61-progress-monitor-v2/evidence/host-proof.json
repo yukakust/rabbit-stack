@@ -1,0 +1,26 @@
+{
+  "status": "HOST-SCAN61-PROGRESS-QUIESCENCE-PREFLIGHT-PASS",
+  "executable": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-progress-monitor-v2/runs/control/collector",
+  "executable_sha256": "97fa02e6e86589f16dd5dcef49edee0b4bb747e69f762e6a6eb48dfb09a8f45b",
+  "compiler_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-progress-monitor-v2/collector.m": "cdbf7dc08c7c851d70d416a39fc64056b3f11cfe9a21e8eb81326188e6b44e81",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "test_executable_sha256": "daaba3759bfe1148e0b1cae770d569d381f5b06c09192318b183b8db57587508",
+  "test_inputs": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-progress-monitor-v2/collector.m": "cdbf7dc08c7c851d70d416a39fc64056b3f11cfe9a21e8eb81326188e6b44e81",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-progress-monitor-v2/host_test.m": "de18cc866634d7533f6528683d8ca49139350ebf5f25f9770c9512ce19210824",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "host_log_sha256": "ae8028be759a652788e111c5820092230dd3118f19035bde259f04f7e9318bff",
+  "host_result": "PASS 75 HOST progress collector cases; NO REAL MANAGER/WRITE",
+  "bluetooth_manager_started": false,
+  "writes": 0,
+  "private_key_loads": 0,
+  "physical_readiness_proven": false,
+  "source_sha256": {
+    "collector.m": "cdbf7dc08c7c851d70d416a39fc64056b3f11cfe9a21e8eb81326188e6b44e81",
+    "host_test.m": "de18cc866634d7533f6528683d8ca49139350ebf5f25f9770c9512ce19210824",
+    "compile_host.py": "79e290699bff0e85aa04699fd880cbba0e6b95681faa4a93bf16b5ae515faedf"
+  }
+}

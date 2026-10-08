@@ -1,0 +1,26 @@
+{
+  "status": "ROOT-PUBLIC-SOURCE-LOG-REVIEW-PASS",
+  "htt62": {
+    "status": "HTT62-PUBLIC-SOURCE-CLOSED-TECHNICAL-GATE-PASS",
+    "report_sha256": "9345001639d4eda7d224a8b5d2a7571324ee481f7f3e4c14b33df7f4e8ae46ce",
+    "payload_sha256": "22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81",
+    "native_report_sha256": "21d120ee9a4cf9702574cf71591c988f8729975dda0d90295fc731b0a0602c99",
+    "gate_source_sha256": "d50c50ec5d2eea57a0b2d6d0c4940245234f51c0f9732288cac24a13efa6a171",
+    "source_count": 433,
+    "generated_count": 176,
+    "physical_admission": false,
+    "actual61_raw_release_review_required": true,
+    "new_counter_reserved": false,
+    "device_operations": 0,
+    "key_accesses": 0,
+    "request_is_rf": false
+  },
+  "network_report_sha256": "6407225292e43566293798097194b863e8b6616fefcf7d41e113bc1377213fd5",
+  "network_source_files_verified": 187,
+  "network_host_result": "PASS 339 SYNTHETIC DHCP/ARP/PORT checks sends=54 arp=45",
+  "physical62_admission": false,
+  "network_physical_IP": false,
+  "private_key_reads": 0,
+  "native_C_compilation_on_Mac": false,
+  "state_modified": false
+}

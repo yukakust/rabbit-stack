@@ -1,0 +1,18 @@
+{
+  "status": "LOCAL-PUBLIC-SOURCE-CLOSURE-PASS",
+  "checks": 368,
+  "build_report_sha256": "4fcefe497386a9a99a2d3758fca21d37753d5ae1c95944549263fdf3b020803c",
+  "upstream_pin_sha256": "7dace47ef67d6c8b68394318c7764127cfac712af17a72d829fb57e622ccf0c1",
+  "local_source_sha256": {
+    "network.c": "ed5b82cc12425835dda23455c0ee1a531d2ef373c859a9d9fe2e62ff9ad9d9cd",
+    "network.h": "9f9789e326c243e343ab65c9bae2dc9e8fa68ac9a97f3dea64c4c37d0cfc4844",
+    "fixture.c": "f93a4bcef48d3736e833c4049aca573c8831e1980637816c4de483ca9e470579",
+    "run_remote.py": "c2b342bc279ae3c56a15342f7d30682041d31ad2ecdb272e197b65fbf5076d31",
+    "include/lwipopts.h": "a313979611c63c1281c22e9c6c4d2142a597f37ec87d2d01b5215b69aec3f1e2",
+    "include/arch/cc.h": "b7cf1fc40f8880b26543e31da30a4383c52da330a661ab60e85e50efdf6a7759"
+  },
+  "actual_network": false,
+  "private_key_loads": 0,
+  "physical_IP": false,
+  "signing_admitted": false
+}

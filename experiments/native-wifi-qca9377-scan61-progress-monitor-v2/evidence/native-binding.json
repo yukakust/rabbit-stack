@@ -1,0 +1,19 @@
+{
+  "status": "HOST-MONITOR-NATIVE61-UUID-ABI-JOIN-PASS",
+  "candidate_report_sha256": "0188ad2b1663804fbc6cf663beef4fb3cba2daa05c06eee2fe48fabece5dc388",
+  "native_status_service_UUID": "2a",
+  "native_status_value_UUID": "2b",
+  "native_status_ATT_handle": 34,
+  "raw_export_service_UUID": "2c",
+  "boot_service_UUID": "22",
+  "boot_value_UUID": "23",
+  "physical_read": false,
+  "native_source_changed": false,
+  "incorrect_v1_UUID_rejected": true,
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-scan61-progress-monitor-v2/native_binding.py": "4e1e7174a2e26ad22e4d95ab94db02e1299bfe2d6e575a662807f591655a1d55",
+    "experiments/native-wifi-qca9377-scan61-progress-monitor-v2/collector.m": "cdbf7dc08c7c851d70d416a39fc64056b3f11cfe9a21e8eb81326188e6b44e81",
+    "experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/scan_gatt.c": "8b763663600193a7b70ce49b86fc5ab56f322a15052c0bb676efee4bafd4b6c6",
+    "experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/boot_gatt.c": "1af1a23b94272603286f516f40459692171b72ab6da9743a01f59de69efad3a9"
+  }
+}

@@ -5584,3 +5584,53 @@ DoNOTcreateanothercontroller/connection; doNOTuse60PREFIXcollector on61:
 PREFIX29..51 removed, QWBT160 hasnogeneration. Actual61APPLIED sourcebinding
 isRoot prerequisite. Evidence native61-APPLIED.json/initial61-setup.json/
 firmware61-staging-start.json. SSID/association/WPA/DHCP/IPnotyetconfirmed.
+
+### 2026-10-08: active61 staging; corrected postboot host ABI; parallel network preparation
+
+SolePID74229 stillcontinue61.py firmware61ko8zoixg; actualchunks4/12accepted
+atthissnapshot, currentreport/logspriority. Normalprogressing240shosttimeouts
+query/resumeexactpackets, noresign/nosecondBLE/enginechange. Bootnotyettriggered
+untilall12 bitmap4095/ready1. Preservecurrentcity19/noDellreboot/USB/flash.
+
+RootfoundHOST-only v1progressmonitor bug: QSCN serviceUUID2a VALUEUUID2b at
+ATT34;2c isRAWEXPORTSERVICE, notstatusvalue. V1collector requested2c andwill
+stopmissing-characteristic AFTERQWBTphase5; this doesNOTerase retainedscanraw.
+Frozenv1/native61 untouched. NEWprogress-monitor-v2 onlyhostconstant2b,75fake
+callbacksPASS plusindependent actualgeneratednativeGATT/reader UUIDjoin.
+Native-bindingproof6d61b383..., hostproof41adef14...; incorrectv1 explicitly
+rejected. NEWfinish_scan61_v2.py MUSTNOTRUNwhile74229(oranycontroller61PID)
+alive. AfteroldcontrollerexitANDactualall12complete, itreusescurrent61/APPLIED/
+all12signature+contiguous/fullbodydigest underone statelock, correctedone
+connectionQWBT→QSCN, thenfrozenrawreader with660shostbound(600sinternal).
+Noextra signature/firmwareupload/nativecounter. CLI:
+python3 experiments/native-wifi-qca9377-scan61-root-route-v1/finish_scan61_v2.py --state experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/state.json --output /ABS/NEW_OUTPUT_DIRECTORY
+Useonlyfreshnewdirectory. classify_scan61.py independentlyjoins227callbacks
+(4discoveries+223reads),3stablestatuses/110pages2x, actualcurrentnative61+exact12
+firmware signatures/container, policy/epoch/ownedrawMGMT beforeSSIDclaim.
+Purefixtures/partial/cached/error/UUID/order mismatchesreject. Native/security/
+association/IP remainseparate. Independentreviewcorrectedhelper15negativecases
+PASS; rootpurecapture10rejectionsPASS. Noexistinghardwarefailureyet.
+
+ParallelUNSIGNEDsoftwareprepared: htt62-native-v1 actual24productionASAN/COFF,
+3equalEFI/currentworld19normalEMPTYQEMU;433sources/176generatedcheckedRoot.
+Report9345001639d4eda7d224a8b5d2a7571324ee481f7f3e4c14b33df7f4e8ae46ce;
+payload22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81,
+173568file/4132864mapped. VERSION_REQ/CONF only, noRFdata/duplicateCONNECT;
+future62UNRESERVED/notadmitted/not signed. Requireactual61raw/releasearchive
+andseparatehost62 layout/sourcebinding beforephysical62. Frozen60/61unchanged.
+
+network-nosys-v1 pinnedlwIP2.2.0 source181files, hardened339realstack synthetic
+ASAN/UBSAN checks+18freestandingCOFFunits onYukabox. Root187source/loghashes
+verified; report6407225292e43566293798097194b863e8b6616fefcf7d41e113bc1377213fd5.
+NEWadapter rejectsACKwrongserverinREQUESTING/RENEWING, allowsREBINDINGserver
+onlyafteractuallwIPacceptance. Vendorunchanged; originalupstreamgap preserved.
+ACKserverIDpresence isstricterRabbitprofile, notuniversalRFCrequirement.
+25,520text+32,361BSS+2,813rdata: notblindlyfitinto61remaining16KB; futurecomplete
+EFI/allpool/lifetime proof required. No real IP/DHCP/HTT/portauthority created.
+Supplicant-linked-v1 realhostap2.11supplicant+authenticator/realOpenSSL M1-M4
+syntheticpassed, moreproofongoing; hostABI/native and2026PMKSAsecuritybaseline
+fix remainunresolved. APauthorized isNOTlocalIPauthority: M4 canprecedefailed
+localkeyinstall; requirelocalconfirmedPTK+GTK/currentassociation/noquarantine.
+Alllibraries independentsoftwareonly; no privatekey/credentials/device ops.
+No retryofdeniedHCI timer/preparation scope. Hashpinnedcopied/vendor whitespace
+preserved (19files); allnewauthored-file whitespacechecksPASS.

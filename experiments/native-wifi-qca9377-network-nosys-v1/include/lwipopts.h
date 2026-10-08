@@ -1,0 +1,39 @@
+#ifndef RABBIT_LWIPOPTS
+#define RABBIT_LWIPOPTS
+#define NO_SYS 1
+#define SYS_LIGHTWEIGHT_PROT 0
+#define MEM_ALIGNMENT 8
+#define MEM_SIZE 16384
+#define MEM_LIBC_MALLOC 0
+#define MEMP_MEM_MALLOC 0
+#define MEMP_NUM_PBUF 8
+#define MEMP_NUM_UDP_PCB 2
+#define MEMP_NUM_SYS_TIMEOUT 8
+#define PBUF_POOL_SIZE 8
+#define PBUF_POOL_BUFSIZE 1600
+#define LWIP_IPV4 1
+#define LWIP_IPV6 0
+#define LWIP_ARP 1
+#define LWIP_ETHERNET 1
+#define LWIP_UDP 1
+#define LWIP_TCP 0
+#define LWIP_RAW 0
+#define LWIP_ICMP 0
+#define LWIP_IGMP 0
+#define LWIP_DNS 0
+#define LWIP_AUTOIP 0
+#define LWIP_DHCP 1
+#define DHCP_DOES_ARP_CHECK 1
+#define LWIP_NETCONN 0
+#define LWIP_SOCKET 0
+#define LWIP_STATS 0
+#define LWIP_NETIF_HOSTNAME 0
+#define LWIP_NETIF_STATUS_CALLBACK 0
+#define LWIP_NETIF_LINK_CALLBACK 0
+#define IP_REASSEMBLY 0
+#define IP_FRAG 0
+#define LWIP_DHCP_CHECK_LINK_UP 1
+#define DHCP_CREATE_RAND_XID 1
+unsigned int rabbit_network_rand(void);
+#define LWIP_RAND() rabbit_network_rand()
+#endif

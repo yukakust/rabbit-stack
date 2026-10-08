@@ -1,0 +1,33 @@
+{
+  "status": "INDEPENDENT-SCAN61-V2-ROOT-READONLY-REVIEW-PASS",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/classify_scan61.py": "806c83143ead2fb1b6dc8c69443fd38163c7d81b1a12db2b2e2a9d875fbd6488",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/finish_scan61_v2.py": "5e0987822045c06a027eb97279c0dadf6c4fb2db55fe1c6780f2b8af563207a8",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/monitor_gate_v2.py": "a8a5dbeefdc12f1baf54da904ca8cc6849d96eb7a1190b6c3a23f88f9cbfa036",
+    "experiments/native-wifi-qca9377-scan61-progress-monitor-v2/native_binding.py": "4e1e7174a2e26ad22e4d95ab94db02e1299bfe2d6e575a662807f591655a1d55",
+    "experiments/native-wifi-qca9377-scan61-progress-monitor-v2/collector.m": "cdbf7dc08c7c851d70d416a39fc64056b3f11cfe9a21e8eb81326188e6b44e81",
+    "experiments/native-wifi-qca9377-scan61-progress-monitor-v2/evidence/host-proof.json": "41adef14f69e07b893b062bf86be9060fa56241e4c02c885ab005c7269779023",
+    "experiments/native-wifi-qca9377-scan61-progress-monitor-v2/evidence/native-binding.json": "6d61b383c4392864e162b77abdc1a095cbec2d928e815e9f64fe441665c88696",
+    "experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/scan_gatt.c": "8b763663600193a7b70ce49b86fc5ab56f322a15052c0bb676efee4bafd4b6c6",
+    "experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/boot_gatt.c": "1af1a23b94272603286f516f40459692171b72ab6da9743a01f59de69efad3a9",
+    "experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/init_probe.c": "8e710c0c2499d85217592cfbba27551089b702b7435e1764311dbc12135fd454"
+  },
+  "ABI": "QWBT22/value23/160; QSCN2a/value2b/ATT34/416; raw2c/80..ed/110pages",
+  "callbacks": 227,
+  "sequential_reads": 223,
+  "callback_positive": 1,
+  "callback_negative": 10,
+  "asset_precheck_positive": 1,
+  "asset_precheck_negative": 5,
+  "concrete_fix": "NEW finish helper verifies exactly12 packets, native payload, generation61 contiguous offsets and whole body digest BEFORE monitor; classifier already verifies these after capture.",
+  "native_or_frozen_monitor_modified": false,
+  "synthetic_tests_not_physical": true,
+  "monitor_gate_PASS": true,
+  "state_key_BLE_accesses": 0,
+  "physical_claim": false,
+  "limitations": [
+    "Host callbacks are not device attestation.",
+    "Root must wait prior controller exit and complete12 accepted actual assets.",
+    "No actual state/receipt review performed here."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "status": "HARDENED-PUBLIC-SOURCE-CLOSURE-PASS",
+  "checks": 188,
+  "build_report_sha256": "6407225292e43566293798097194b863e8b6616fefcf7d41e113bc1377213fd5",
+  "source_sha256": {
+    "network_hardened.c": "f44e1dbae35fa990135326eb6c2e15c5718d6b2c3da5cae9dd40ce6b400f4eaa",
+    "dhcp_policy.c": "d683aa1adca3243917a24c9f4a38b25eda69d5a446947e34e3ce4406e3a2dfb4",
+    "dhcp_policy.h": "547195bd7a3b36e64fca6b7737e46cb3531982e695265dcba25ff3b4b1de9e8d",
+    "fixture_hardened.c": "8ad94fd67f17673d5a25abc70299e49c4ae1f821f24704eb5e942006f6992ade",
+    "run_hardened.py": "7b4a461e082d2461c9b60dec85792245f4a7eb3c395e30bfba5e9792c8499bdf"
+  },
+  "upstream_unchanged": true,
+  "signing_admitted": false,
+  "physical_IP": false
+}
