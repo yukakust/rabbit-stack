@@ -5421,3 +5421,15 @@ Rootassignedobservation59 read-only audit of actual frozen60 ATT→DATA→RAM ow
 andHCIACL path at18480; no deniedtimerfix ornewhardwarecandidate, no privatekey.
 Do not blindlyretry. IndependentMaclogs/sourceauditcontinue; fullMAIN/Wi-Fi/IP
 stillnotstarted/confirmed.
+
+Preparedwifi_quiet60_trial.py (NOTRUN): single60sMacen0Wi-Fi-off/Bluetooth
+experiment, explicit --human-authorized-wifi-off required; initialOncheck,
+finallyrestore+verifyOn, independent75srestorewatchdog; no new signature.
+3fake restoration normal/timeout/error casesPASS, no actualnetwork/BLEactions.
+RootaskeduserapprovalbecauseMacinternet/chattemporarilyinterrupted; pending
+reply, doNOTinfer fromtimeelapsed orpreviousMac-nearby answer. Noairportpower
+change yet (readonlyinitialpowerOn). Afterapprovalfreshnative60/QPFXphase0/
+exactRFCSretention/allsourcegates beforeone trial. FullWi-Fi/Dellstillnotready.
+Read-onlyaudit: nineproductiondata/BTfiles59↔60byteequal, chunk1payload/18480..18719
+bytesidenticaltoalreadyaccepted59; DATAcopyonly, crypto/firmware/MMIO later.
+No currentproofwhether inboundACL/outboundACK/creditstall orradio itselfcausesloss.
