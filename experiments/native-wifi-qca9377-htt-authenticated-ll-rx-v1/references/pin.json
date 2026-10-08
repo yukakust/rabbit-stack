@@ -1,0 +1,33 @@
+{
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "files": {
+    "htt_rx.c": {
+      "sha256": "cabc2774651d670d247defc5f5f405640436dd131a0fc2522e605c2d8e7fb4d8",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/htt_rx.c"
+    },
+    "htt.h": {
+      "sha256": "0cbb9326399ac9685f2a863edfcd5e4ed3ee58885dfdb5053f536386311220f7",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/htt.h"
+    },
+    "htc.h": {
+      "sha256": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/htc.h"
+    },
+    "wmi-tlv.h": {
+      "sha256": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi-tlv.h"
+    },
+    "rx_desc.h": {
+      "sha256": "fa3d9957d11ea1b48c54e40646c0b003228fad72009871b2f7e3f32d497a418e",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/rx_desc.h"
+    },
+    "hw.h": {
+      "sha256": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/hw.h"
+    },
+    "core.c": {
+      "sha256": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/core.c"
+    }
+  }
+}

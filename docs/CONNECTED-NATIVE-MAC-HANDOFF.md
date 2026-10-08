@@ -6278,3 +6278,47 @@ separate typed sources and logs. Main7094d754.../freezef571ce4b.../closurec518c1
 Not complete nativeEFI/mature handshake/protecteddata/controlledport authority.
 All47 genuine target-stop and role2 child integration still underway.
 Automation staysACTIVE; no physicalWiFi/IP/Yukabox roundtrip yet.
+
+
+### Native65 inventory admitted once; physical delivery in progress
+
+NEW inventory65 source frozen1e8d4c9492c371fc8297d829a8bcafe3485fdfa38ac90825e39031e61f37ee21,
+EFI84b28939af3774620ec57e19e3fd09fc4315edaeb69e572f7fa982c648284d20,
+60928file/2031616mapped. Actual5 GetInfo owner cases/967ATT/45Mac callback
+checks/9corruption gates/3same EFI/normalEMPTYworld19 checks pass. Public CPU
+CPUID + EFI_RNG.GetInfo only; NO RNG samples/RDSEED/MSR/RF/credential operations.
+
+Root65 exact admission independently replays actual64 classifier/signatures,
+binds all65 compiler/source/freeze/PE/collector/public owner/target proofs,
+and reads fresh actual64 RFS+QWBT160+exactQF544/all14released under commonlock.
+First controller37862 failed BEFORE retirement/key/sign because Root compared
+RFS signed-packet digest with innerEFI digest. Preserved failed logs; corrected
+NEW root route to exactnonce/wirelength/package+32/outcome/counter/packetSHA,
+8 actual RFS mutations reject. Frozen64/65 native inputs unchanged.
+
+Sole replacement controller38164 now exact native65 session pci-native-q2c6mv6y,
+packetSHA c5d40f573248ee9f66a352b910d3cda1b3450088a117670466afed38da8d61eb,
+stream61216 bytes. Root once-intent+durable archived64 assets/native/evidence
+retirement exists; no further signature/reprepare. Follow actual state/session/
+logs in inventory65-root-route-v1/runs/control. New native65 not yet APPLIED
+at this checkpoint. No65 firmware asset upload is planned; after actual APPLIED,
+same controller sequentially reads RFS65 and public512/448 inventory.
+
+Root shared callback check rejects boolwrites/modelmarkers/cache/error/wronglen;
+entropy_approved remains false even after public actual CPU/GetInfo observation.
+Signing crash between native_pending and Root metadata requires inspected saved
+artifact recovery, never re-sign. Retry budget checked between individually
+bounded operations, not a promised hard one-hour wall limit. No parallelBLE.
+
+NEW htt-authenticated-ll-rx-v1 frozena48f882d/aggregateb1a6960e:422348 core ASAN
+checks/5COFF plus actual producer103 C /195 baseline and scenario30/3COFF.
+Actual modeled current47 CommonBuffer/DMA + genuine keyop SEC/epoch/RSC joins,
+RAW CCMP classification/decap/output+PN atomic commit/replay/alias/closed-port
+negatives. Separate sidecar fb80a41a retains actual103+5textual+195baseline
+compiler closure checked by Root. Software fixtures remain modeled; no physical
+mature handshake/RX/controlledport/IP/wholeEFI/protectedTX/targetstop claim.
+
+Role2 genuine mature child and NEW parent/loader/QEMU extension,47-owner warm
+stop integration still prepared independently. Strong Dell entropy remains
+unapproved; algorithm advertisements alone never suffice. Physical full QR
+pairing mandatory before password. AutomationACTIVE; IP/WAN not complete.

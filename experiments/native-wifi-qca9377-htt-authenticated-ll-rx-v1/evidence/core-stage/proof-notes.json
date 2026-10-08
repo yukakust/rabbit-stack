@@ -1,0 +1,9 @@
+{
+  "status": "OFFLINE_RAW_CLASSIFICATION_STAGED_PN_ONLY",
+  "core_report_sha256": "a15acbd2e318354c458fde18c4bc8d6962476a6f7654e7af0260f51d3e1e66b6",
+  "native_wrapper_not_in_core_fixture": true,
+  "wrapper_actual_producer_ASAN_pending": true,
+  "PN_original_commit_implemented": false,
+  "physical_verified": false,
+  "controlled_port_created": false
+}
