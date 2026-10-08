@@ -1,0 +1,10 @@
+{
+  "state_sha256": "4471c39d5cf3da3c1b0ff759d5e809e7edc407c7206b59dbf7159802f2c96e18",
+  "observed_at": 1791441128.9002628,
+  "writes": 0,
+  "logs": {
+    "asset.log": "cb179035ced29e6a176e1b275ca9965e466600e5c35cb9efcdb384f92fd1ef29",
+    "receipt.log": "7e8e4c15684946cb34763116372242ec00b4396f76ce145403399a597eeb30e5",
+    "prefix.log": "baf9d079fcc656b01cbf5168eec33680f9a6abd3ef0600433710840032f851fe"
+  }
+}

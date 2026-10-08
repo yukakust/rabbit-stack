@@ -5364,3 +5364,16 @@ SoleactualassetcontrollerPID35102 nowresume_assets60_v2.py SAMEsaved12packets,
 noresign; metadataasset-controller60-v2.json/logassets60-v2.log. Originalfailed
 controller/source preservedforaudit. Lateststate/receipts/livepidoverrideearlier
 PID34914entry; doNOTrestartcontinue60.py orsign60assetsagain.
+
+60assets firstchunkaccepted(bitmap1), secondlastconfirmed17280 thenactual
+CBErrorDomain/code6 disconnected; PID35102 stopped asrequired(non-timeout).
+ROOTfreshserializedknownpeerreadonlyRFS60 exactnativepkg b12c2ee8ae3eac069adfc5b907b65f1b8edf442884e72510d3c9badd382b087e,
+QPFX60phase0/usb_fault0/overflow0, actualRFCS64 state1/error0/len65760/received18480
+/exactchunk1packetSHA478cb587.../bitmap1/ready0. Engine/partialassetretained; no
+resetobserved; disconnectcauseunproved. Originalstate/signedpacketsunchanged.
+Newhostonly continue_assets60_after_checked_disconnect.py ROOTfreshretentionguard
+validatedallrawcallbacks/statehash+<=300s underlock, thenone exactsavedquery-before
+resume (noresign). SolePID57474 nowthisscript, checked-disconnect60-controller.json/
+logchecked-disconnect60-resume.log. Thereafterv2allowsONLYprogressingordinary
+timeout; anotherdisconnectstops/investigate, no blindreconnectloop. Evidence
+disconnect60-retained-and-resume. Actualstate/newreceipts/livepidpriority.
