@@ -5465,3 +5465,16 @@ match. Report0188ad2b...,payload305d017...,191488file/4177920mapped. RF/GEprimar
 flags stillfalse, actual60READYpending, no61physical/signingadmission. Preserved
 code/evidence fornextstep; this technicalcheck doesNOTsubstituteactualREADY
 orprimarypolicy/RFproof. scan61-independent-technical-check/report.json.
+
+### 2026-10-08: physical60 all12 accepted; fullMAIN active
+
+Actual6fuyx2jq all12accepted bitmap4095/ready1; exactfullcontainerinRAM. Sole
+PID64363 nowoneconnectioncollector --monitor; DO NOTopenanotherBLEconnection
+whileprotectedfullbootactive. Latestrawsnapshot gen60 phase3, MAINoffset0/727128,
+submitted3114/completed3114, boot/planerror0, failed0, USBfault0/overflow0,
+held/DMA14 ownersretained asrequired whiletransferactive. NotREADY/association/IP
+proof. Sourcefullbootbounded5400s, collector5460s, actualelapsedfromsnapshot
+~2501.300s (samehighword); progressstillvalid.
+Evidence full-assets-and-MAIN-progress. ReadonlysavedmonitorJSONL mayinspect
+withoutnewconnection; afterphase3/released1 collectorwillcaptureQWBT/QWOP/QWIN
+andexit, thenRootclassifyactualINIT/READY/MAC/ownerrelease beforeenginechange.
