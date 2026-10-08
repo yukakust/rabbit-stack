@@ -1,0 +1,8 @@
+["gcc", "-std=c11", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-fno-omit-frame-pointer", "-Ireference", "provenance.c", "test_provenance.c", "reference/sha256.c", "-o", "/home/yuka/rabbit-world/rng-provenance-v1/source/runs/test"]
+
+["/home/yuka/rabbit-world/rng-provenance-v1/source/runs/test"]
+PROVENANCE injected firmware boundary: 363 assertions; public=288; no entropy/native physical proof
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Ireference", "-c", "provenance.c", "-o", "/home/yuka/rabbit-world/rng-provenance-v1/source/runs/provenance.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-Ireference", "-c", "reference/sha256.c", "-o", "/home/yuka/rabbit-world/rng-provenance-v1/source/runs/sha256.c.obj"]

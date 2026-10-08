@@ -1,0 +1,85 @@
+{
+  "status": "GENUINE-ROLE2-CHILD-ABI-MATURE-ASAN-INTEROP-PASS",
+  "fixture_kind": "synthetic-actual-mature-C-child-dispatch",
+  "modes": [
+    {
+      "mode": 0,
+      "log_sha256": "1b536fc616b05479c844bcb9d511c45dc770a9bd1beaf4b65abf7503c28189ca"
+    },
+    {
+      "mode": 1,
+      "log_sha256": "01838f94fa07bb0aef2093bcc9ff5e46c9a177ec0873adf43dafd4951b473e89"
+    },
+    {
+      "mode": 2,
+      "log_sha256": "a99d2e93833198067cdda33d6abdf6db376b5ebc04e544555e6292d65bbb6836"
+    },
+    {
+      "mode": 3,
+      "log_sha256": "551440f6b47917c59ff51021fcbdda14bac49c052df6e7e6ea1bc6f016a160fc"
+    },
+    {
+      "mode": 4,
+      "log_sha256": "bd67d067101b769d4d2465cb056daafb495f6846415c2e9f6f7307dcfb090f3a"
+    },
+    {
+      "mode": 5,
+      "log_sha256": "78fd82fcfc80da2f85cea19500b2322c427ebad2a03e811e4652d8a9c42e4890"
+    },
+    {
+      "mode": 6,
+      "log_sha256": "e6c96b58811a40fd6c9240693fb666d0806a2a0b4e017c59e4bd71f08b402513"
+    },
+    {
+      "mode": 7,
+      "log_sha256": "b671e3fb16f6335d2ac225ae45bd7a82e7b410fdb1727c48c3600770c0ac29d0"
+    },
+    {
+      "mode": 8,
+      "log_sha256": "850cd45bae6c83aa7f2ada5a78b7c9c118dc95b04b4e0f2fbb6d92a2c111c3cc"
+    },
+    {
+      "mode": 9,
+      "log_sha256": "f81cb3adf447cfcb77bfbff6d5ceaa622bf1ede062e5705cb5bd753fc1079549"
+    },
+    {
+      "mode": 10,
+      "log_sha256": "6b20a4edd56929d8071d91a99c75d1df153b488839ae6baa23089088755adb13"
+    },
+    {
+      "mode": 11,
+      "log_sha256": "fdf3d7d8463f5bd3d6a016d1ef11454704de4f48c40ee23dfdb60a7c96590705"
+    },
+    {
+      "mode": 12,
+      "log_sha256": "b8320bfba01c1e4ce195874ecf54d77805a6d06d3e8488b2bd2c835fe23c157a"
+    },
+    {
+      "mode": 20,
+      "log_sha256": "bce9e399de3d2d84bc5b29cad1195a473d6d5ab9419c07f293e218d214e5498b"
+    },
+    {
+      "mode": 21,
+      "log_sha256": "7ca6e7f66ef0446b9da823974eb852346cf8440eb11346491207398333b17b3b"
+    },
+    {
+      "mode": 22,
+      "log_sha256": "534f5d2b065305e49aab717350d7db79251a0263e1903fc2e9557df7a4fb7ada"
+    },
+    {
+      "mode": 23,
+      "log_sha256": "6a8a52fbdfa22c1c7d0071433dbfc22a9054eb96bb8a1167737071a927f43dc4"
+    }
+  ],
+  "actual_child_UEFI_entry_fake_protocol": true,
+  "actual_child_OPEN_EAPOL_POLL_CLOSE": true,
+  "physical": false,
+  "real_radio_key_confirmation": false,
+  "test_sha256": "6a59b5bc62ef5b712bc8e7cb4a7a0cd014bb2a11ad2174712f729d3d500f41a7",
+  "fixture_sha256": "722b5f4bb40ff37fedaa3747e87e04eca6c6646299178e7f0a2a8178768fe913",
+  "compile_log_sha256": "287637d8589507dda3a298fce07b9d18c292ccf7e0a1d56276cd20328d3ed5db",
+  "child_source_sha256": "be11c97328e92523f59d2d9185721b9eff63da39c5ef2a901b84df2f1c829896",
+  "child_header_sha256": "a9367320f9079e9993d2d7f82d581365225dca874693e7fea84b1e733139dce0",
+  "driver": "explicit synthetic-public-key-storage callbacks, not actual SEC_IND",
+  "RNG": "explicit insecure public fixture, not production"
+}

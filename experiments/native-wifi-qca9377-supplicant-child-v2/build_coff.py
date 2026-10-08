@@ -1,0 +1,16 @@
+from pathlib import Path
+import os,subprocess,json,hashlib,struct
+R=Path(__file__).resolve().parent
+CC=Path('/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang')
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+out=R/'runs/coff';out.mkdir(parents=True,exist_ok=True);tree=R/'runs/tree'
+units=['rsn_supp/wpa.c','rsn_supp/wpa_ie.c','rsn_supp/pmksa_cache.c','common/wpa_common.c','utils/common.c','utils/wpabuf.c','common/ieee802_11_common.c','crypto/aes-internal.c','crypto/aes-internal-enc.c','crypto/aes-internal-dec.c','crypto/aes-wrap.c','crypto/aes-unwrap.c','crypto/aes-omac1.c','crypto/sha1.c','crypto/sha1-internal.c','crypto/sha1-pbkdf2.c','crypto/sha256.c','crypto/sha256-internal.c','crypto/md5.c','crypto/md5-internal.c','crypto/rc4.c','crypto/sha1-prf.c','crypto/sha256-prf.c','crypto/sha1-tprf.c']
+flags=['-I'+str(R),'-I'+str(R/'platform'),'-target','x86_64-pc-win32-coff','-ffreestanding','-fno-builtin','-fno-stack-protector','-mno-red-zone','-Os','-DRABBIT_FREESTANDING','-DOS_NO_C_LIB_DEFINES','-DCONFIG_NO_STDOUT_DEBUG','-DCONFIG_NO_WPA_MSG','-DCONFIG_NO_TKIP','-DCONFIG_NO_RANDOM_POOL','-DCONFIG_SHA256','-DCONFIG_CRYPTO_INTERNAL','-isystem',str(tree),'-isystem',str(tree/'utils')]
+objects=[];log='';compiled={}
+for j,n in enumerate(units+['platform/runtime.c','platform/primitives.c','platform/adapter.c','child.c']):
+ p=tree/n if j<len(units) else R/n;o=out/f'{j}.obj';cmd=[str(CC),*flags,*(['-DIEEE8021X_EAPOL'] if n=='rsn_supp/pmksa_cache.c' else []),*(['-Wall','-Wextra','-Werror'] if j>=len(units) else []),'-c',str(p),'-o',str(o)];run=subprocess.run(cmd,capture_output=True,text=True);log+=json.dumps(cmd)+'\n'+run.stdout+run.stderr;(out/'compile.log').write_text(log);assert run.returncode==0,run.stderr;objects.append(o);compiled[n]=sha(p)
+cmd=[str(CC.with_name('lld')),'-flavor','link','/subsystem:efi_boot_service_driver','/entry:rsn_child_entry','/nodefaultlib','/include:rsn_child_entry','/export:rsn_child_entry','/out:'+str(out/'supplicant.efi'),*map(str,objects)];p=subprocess.run(cmd,capture_output=True,text=True);(out/'link.log').write_text(json.dumps(cmd)+'\n'+p.stdout+p.stderr);assert p.returncode==0,p.stdout+p.stderr
+image=out/'supplicant.efi';data=image.read_bytes();pe=struct.unpack_from('<I',data,0x3c)[0];opt=pe+24;assert data[pe:pe+4]==b'PE\0\0' and struct.unpack_from('<H',data,opt)[0]==0x20b
+assert struct.unpack_from('<II',data,opt+120)==(0,0);mapped=struct.unpack_from('<I',data,opt+56)[0];assert len(data)<=262144 and mapped<=4194304
+report={'status':'ROLE2-GENUINE-SUPPLICANT-ENTRY-COFF-LINK-PASS','build_host':'yukabox','units':len(objects),'file_bytes':len(data),'mapped_bytes':mapped,'image_sha256':sha(image),'OS_imports':False,'compiled_sources_sha256':compiled,'objects_sha256':{p.name:sha(p) for p in objects},'compile_log_sha256':sha(out/'compile.log'),'link_log_sha256':sha(out/'link.log'),'physical':False,'genuine_child_ABI_interop_verified':False,'UEFI_loader_QEMU_verified':False,'parent_integrated':False}
+(out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(report['status'], 'units='+str(report['units']), 'file='+str(report['file_bytes']), 'mapped='+str(report['mapped_bytes']), 'image='+report['image_sha256'])

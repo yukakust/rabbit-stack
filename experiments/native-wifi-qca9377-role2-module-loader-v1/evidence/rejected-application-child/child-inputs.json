@@ -1,0 +1,10 @@
+{
+  "frozen_child_inputs_sha256": {
+    "experiments/native-wifi-qca9377-supplicant-child-v1/child.h": "a9367320f9079e9993d2d7f82d581365225dca874693e7fea84b1e733139dce0",
+    "experiments/native-wifi-qca9377-supplicant-child-v1/child.c": "be11c97328e92523f59d2d9185721b9eff63da39c5ef2a901b84df2f1c829896",
+    "experiments/native-wifi-qca9377-supplicant-child-v1/module_abi.h": "1c225129fa9589d9268b8729b67f029a054e58e203833ee50a217f12b0cf25dc",
+    "experiments/native-wifi-qca9377-supplicant-child-v1/evidence/2026-10-09/freeze.json": "75e9d29668af118fd719e0e8a534f307890cea98713a805248caf372ca179eca",
+    "experiments/native-wifi-qca9377-supplicant-child-v1/runs/coff/supplicant.efi": "96eeb89e81601186115cc96f545b2afe286854844c960c59c805fd9438f78081"
+  },
+  "physical_admission": false
+}

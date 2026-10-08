@@ -1,0 +1,14 @@
+{
+  "status": "ROLE2-SIGNED-MODULE-PARENT-OVMF-SOFTWARE-CLOSURE-PASS",
+  "physical_admission": false,
+  "entropy_approved": false,
+  "provider_authority": false,
+  "payload_sha256": "516ea21b0bc005e660e44e25b0d74c3381daf0a5e5c5ab22aa3197030e0669a0",
+  "child_payload_sha256": "3a0743ab27a4cb508e1ad71b6248705e6f9c3917ea740e99deb86b17777c1278",
+  "aggregate_mapped_bytes": 2359296,
+  "global_external_pool_budget_not_implemented": true,
+  "freeze_sha256": "4c9b4bab1f56c3c4a83ac762e4c2488c8f8e0364bb5545d033dfa39a29ef678d",
+  "native_report_sha256": "70dc900be5bee4786d4e9c248283bb5c7dd3ef40a9859e7ec54d05b3570c2b9a",
+  "qemu_child_report_sha256": "5a196d75ea28fc37db466c768a317825d12bddca7f26efe36f4eef089f2a9989",
+  "parent_qemu_report_sha256": "e62b2d5d32cc7abdb66631f5f6e81ba5facda286fe02bac64c2b1ff96931d731"
+}

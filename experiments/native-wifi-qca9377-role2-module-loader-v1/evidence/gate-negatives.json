@@ -1,0 +1,7 @@
+{
+  "status": "ROLE2-READONLY-COPIED-PROOF-NEGATIVES-PASS",
+  "cases": 7,
+  "source_sha256": "9f04ad1755cb4d199f8e9d966e9054603794d7ed679add0ba083b079eb5ffcc1",
+  "physical_calls": 0,
+  "key_reads": 0
+}

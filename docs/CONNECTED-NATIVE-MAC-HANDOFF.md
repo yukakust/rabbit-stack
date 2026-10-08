@@ -6348,3 +6348,38 @@ QR/password remains future hard gate; no protected provisioning/IP/WAN yet.
 Frozen native65/root source/signature preserved; no new66 packet/intent yet.
 Role2 loader/child, real47 warm-stop and protectedTX prepared independently.
 AutomationACTIVE; do not re-run retired38164/sign65.
+
+
+### Software integration advances; trusted-only RDSEED branch reviewed
+
+Actual physical65 state/CPU/GetInfo/zero-owned pools remains latest. No live
+controller, no66 intent or signed package. Strong source still not implemented
+or physically tested. Missing SRBDS_CTRL forbids claiming mitigation or reading
+MSR123; it is NOT an entropy-quality failure or an absolute RNG wall. Intel
+explicitly permits the trusted-execution/no-untrusted-software case. NEW source
+approval must bind actual65 Intel/RDSEED/noHV evidence plus trusted firmware,
+all owner-admitted code/cores, no untrusted guests, bounded CF/failure and mature
+DRBG lifetime. Future foreign-world executable modules cannot inherit it.
+Primary: https://www.intel.com/content/www/us/en/developer/articles/technical/software-security-guidance/technical-documentation/special-register-buffer-data-sampling.html
+Optional rng-provenance-v1 now363 injected-boundary ASAN/UBSAN checks+2COFF;
+no sampling/provenance hardware/admission. Its physical trial is not required
+if the reviewed trusted-only RDSEED adapter supplies the approved source.
+
+NEW frozen supplicant-child-v2 corrects subsystem11 independently of frozenv1:
+PE3a0743ab27a4cb508e1ad71b6248705e6f9c3917ea740e99deb86b17777c1278,
+102400file/122880mapped;17 genuine mature ASAN modes/28COFF/626 mature inputs.
+Role2 loader/parent freeze4c9b4bab1f56c3c4a83ac762e4c2488c8f8e0364bb5545d033dfa39a29ef678d:
+263550 assertions/18 fault modes/6COFF +10 parent lease cases/6COFF; genuine
+OVMF signed-fixture LoadImage/StartImage/matureOPEN/reentry/unload refusal/wipe/
+UnloadImage passes. Whole city parent225792file/2236416mapped+child122880,
+3same EFI516ea21b0bc005e660e44e25b0d74c3381daf0a5e5c5ab22aa3197030e0669a0,
+normalEMPTYworld19 passes. Root replayed actual hash closure and PE facts.
+These are software fixtures only, not physical authentication/port/IP evidence.
+No global4MiB external-RAM limit is invented; immutable mapped-image cap holds.
+
+Active independent prep: real47-owner stop/persistent native parent; protected
+Ethernet HTT TX with explicit nonQoS policy; trustedRDSEED/DRBG and Dell-internal
+TLS identity creation; NEW deferred public signed-module BLE chunk transport.
+Frozen scopes remain unchanged; module BLE/credential provisioning/native whole
+integration not yet proved. No credential read, private key export, QR pairing,
+WiFi/IP or WAN success. AutomationACTIVE.

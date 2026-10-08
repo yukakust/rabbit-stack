@@ -1,0 +1,21 @@
+{
+  "status": "PUBLIC-PROVENANCE-INJECTED-BOUNDARY-ASAN-UBSAN-COFF-PASS",
+  "result": "PROVENANCE injected firmware boundary: 363 assertions; public=288; no entropy/native physical proof\n",
+  "source_sha256": {
+    "provenance.c": "374967a03c5e9c49486a7f5fc311d32f250d0eb9b1405ed61ff8d87cb36fbfce",
+    "provenance.h": "6e84a893d8de294a91f37a3433524929b0c33304f5a42d6fd32f0097f6abf041",
+    "test_provenance.c": "4bafd100384d9dd12596287e0e22846b98f03f15446d13137d50d3329b014d7f",
+    "verify.py": "646cf927f04317891825390b00811804c0a0efb4839e24f7ad77c2e5d7750d44",
+    "reference/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+    "reference/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b"
+  },
+  "log_sha256": "8ee5327ab462236bf59a9f15f94f472005a9194b545564f1dfd8a46cb30d2f9c",
+  "coff_sha256": {
+    "sha256.c.obj": "108f0a9e361efa2570bd1ad3b6e910083640d7b1bfd851d4e615df7c63eac235",
+    "provenance.c.obj": "962516d47ea581e697439fa47196f71e43c5c9be851b40c6b7a62b40b11e224a"
+  },
+  "entropy_approved": false,
+  "physical_provenance_identified": false,
+  "physical_delivery_admitted": false,
+  "GetRNG_RDSEED_MSR_calls": 0
+}

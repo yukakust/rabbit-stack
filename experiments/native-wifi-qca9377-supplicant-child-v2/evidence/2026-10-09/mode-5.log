@@ -1,0 +1,2 @@
+HOST INTEROP mode5 state9 frames7/7 PTK1/1 GTK3/2 authorized1 tampered0 ambiguous0 backend1 blocked0 localdata1 PASS; synthetic only
+GROUP ap=3 before=2 sta=2 ptk=1 state=9 fault=0 queue=0 timers=1

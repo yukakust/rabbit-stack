@@ -1,0 +1,20 @@
+{
+  "experiments/native-wifi-qca9377-supplicant-runtime-v1/runtime.c": "223aabd8e833fe6e1ecebe5dc7d5c838555a906b4d3fd92678aa7420f16233fa",
+  "experiments/native-wifi-qca9377-supplicant-runtime-v1/runtime.h": "f242975bf3fc7965b1e07df5b5b6d6f50fa9151e00355b1fbe157bde576e189d",
+  "experiments/native-wifi-qca9377-supplicant-runtime-v1/primitives.c": "ef92d7944e4830026b49c0ce5776b3615282316508d10b0f13236a7138fd091e",
+  "experiments/native-wifi-qca9377-supplicant-runtime-v1/adapter.c": "802503f22923a3c193f9d3808a4750ffbb02fd371a0408a4b1955b51ab11ae86",
+  "experiments/native-wifi-qca9377-supplicant-runtime-v1/adapter.h": "052dd641a4c668a20a85843165b0d36c728583bf2fb60cbb3de93a3fd3eecc28",
+  "experiments/native-wifi-qca9377-supplicant-runtime-v1/native_abi.h": "5aa4a2da4af1d7dd155aaeeebd6657b5423763ae3f18568aa72e72fa10376599",
+  "experiments/native-wifi-qca9377-module-artifact-v1/module_abi.h": "1c225129fa9589d9268b8729b67f029a054e58e203833ee50a217f12b0cf25dc",
+  "experiments/native-wifi-qca9377-module-artifact-v1/reference/uefi_abi.h": "a337006b799f4d974997952fa7bb1b31a522b49880a1966410db7400bb73ffb4",
+  "experiments/native-wifi-qca9377-supplicant-runtime-v1/interop.c": "7d3942245fc9645b65d03290dcbf08f2e7e88467382bdcc698d46c2041bb2db0",
+  "experiments/native-wifi-qca9377-supplicant-child-v1/child.c": "be11c97328e92523f59d2d9185721b9eff63da39c5ef2a901b84df2f1c829896",
+  "experiments/native-wifi-qca9377-supplicant-child-v1/child.h": "a9367320f9079e9993d2d7f82d581365225dca874693e7fea84b1e733139dce0",
+  "experiments/native-wifi-qca9377-supplicant-child-v1/platform/runtime.c": "223aabd8e833fe6e1ecebe5dc7d5c838555a906b4d3fd92678aa7420f16233fa",
+  "experiments/native-wifi-qca9377-supplicant-child-v1/platform/runtime.h": "f242975bf3fc7965b1e07df5b5b6d6f50fa9151e00355b1fbe157bde576e189d",
+  "experiments/native-wifi-qca9377-supplicant-child-v1/platform/primitives.c": "ef92d7944e4830026b49c0ce5776b3615282316508d10b0f13236a7138fd091e",
+  "experiments/native-wifi-qca9377-supplicant-child-v1/platform/adapter.c": "802503f22923a3c193f9d3808a4750ffbb02fd371a0408a4b1955b51ab11ae86",
+  "experiments/native-wifi-qca9377-supplicant-child-v1/platform/adapter.h": "052dd641a4c668a20a85843165b0d36c728583bf2fb60cbb3de93a3fd3eecc28",
+  "experiments/native-wifi-qca9377-supplicant-child-v1/module_abi.h": "1c225129fa9589d9268b8729b67f029a054e58e203833ee50a217f12b0cf25dc",
+  "experiments/native-wifi-qca9377-supplicant-child-v1/reference/uefi_abi.h": "a337006b799f4d974997952fa7bb1b31a522b49880a1966410db7400bb73ffb4"
+}

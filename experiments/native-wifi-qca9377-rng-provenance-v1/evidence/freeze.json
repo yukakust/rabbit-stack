@@ -1,0 +1,17 @@
+{
+  "status": "FROZEN-OPTIONAL-PUBLIC-PROVENANCE-SOFTWARE",
+  "source_sha256": {
+    "provenance.c": "374967a03c5e9c49486a7f5fc311d32f250d0eb9b1405ed61ff8d87cb36fbfce",
+    "README.md": "dcf7ee534b5c79b0769d8dcff1f29572d1d1782c0d8838bc26f1e822cf1de8c5",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "verify.py": "646cf927f04317891825390b00811804c0a0efb4839e24f7ad77c2e5d7750d44",
+    "test_provenance.c": "4bafd100384d9dd12596287e0e22846b98f03f15446d13137d50d3329b014d7f",
+    "provenance.h": "6e84a893d8de294a91f37a3433524929b0c33304f5a42d6fd32f0097f6abf041",
+    "reference/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+    "reference/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12"
+  },
+  "report_sha256": "0e19de7048a14c489a2fb726e43a0a2142b33aea8f8b6d59dc6bdf2284abc517",
+  "entropy_approved": false,
+  "physical_delivery_admitted": false,
+  "required_next_physical_trial": false
+}
