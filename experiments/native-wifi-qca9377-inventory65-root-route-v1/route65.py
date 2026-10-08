@@ -1,6 +1,6 @@
 """Exact inventory65 admission/transition. One lock; immutable64/65 sources."""
 from pathlib import Path
-import argparse,hashlib,importlib.util,json,os,shutil,struct,subprocess,sys,time
+import argparse,base64,hashlib,importlib.util,json,os,shutil,struct,subprocess,sys,time
 ROOT=Path(__file__).resolve().parent
 REPO=ROOT.parent.parent
 OLD=REPO/'experiments/native-wifi-qca9377-filter64-root-route-v1'
@@ -25,6 +25,11 @@ MARKERS=('fixture_kind','synthetic_only','model_capture','test_clock','synthetic
 def actual_callback(row):
  need(row['peripheral'].upper()==g.base60.prior.PEER and type(row['writes']) is int and row['writes']==0 and row['NSError_code']==0 and not row['NSError_domain'] and not row.get('cached_value_possible') and not any(k in row for k in MARKERS),'actual zero-write callback required')
  raw=bytes.fromhex(row['raw_hex']);need(type(row['raw_bytes']) is int and len(raw)==row['raw_bytes'],'actual callback bytes length');return raw
+def applied_receipt(receipt,session):
+ # RFS hashes the signed packet, not its inner EFI payload. Correlate every
+ # field with the saved immutable transport session, including its nonce.
+ wire_bytes=len(base64.b64decode(session['stream_base64']));need(wire_bytes==session['package_bytes']+32,'exact transport header size')
+ need(len(receipt)==60 and receipt[:4]==b'RFS\1' and receipt[4:12]==base64.b64decode(session['session_base64']) and struct.unpack_from('<IIII',receipt,12)==(wire_bytes,wire_bytes,2,session['counter']) and receipt[28:].hex()==session['sha256'],'exact fresh APPLIED session/packet receipt')
 def sync_file(path):
  with Path(path).open('rb') as h:os.fsync(h.fileno())
  fd=os.open(Path(path).parent,os.O_RDONLY)
@@ -78,7 +83,7 @@ def fresh_validate(folder,before):
  reader,monitor=helpers();need(r['reader_sha256']==sha(reader) and r['monitor_sha256']==sha(monitor) and r['source_sha256']==sha(__file__),'fresh observer identities')
  for name,h in r['inputs'].items():need(sha(folder/name)==h,'fresh file '+name)
  receipt=g.base60.t.raw_callback(folder/'receipt.log',60)
- need(receipt[:4]==b'RFS\1' and receipt[20:24]==b'\2\0\0\0' and int.from_bytes(receipt[24:28],'little')==64 and receipt[28:].hex()==g.PAYLOAD,'fresh actual64 APPLIED')
+ prior_state=json.loads(before);native=Path(prior_state['engine']['last_release_report']).parent;session=flow.validate_session(flow.read_json(native/'session.json'));need(session['counter']==64 and session['sha256']==flow.read_json(EVIDENCE/'classification64.json')['native_packet_sha256'],'exact64 saved packet');applied_receipt(receipt,session)
  rows=[json.loads(line) for line in (folder/'monitor.jsonl').read_text().splitlines() if line.startswith('{')]
  for row in rows:actual_callback(row)
  values=[row for row in rows if row['stage']=='value-read'];need(len(values)==2 and [v['index'] for v in values]==[0,1],'two ordered64 values')
@@ -132,7 +137,7 @@ def collect(statepath):
  r=flow.read_json(s['engine']['last_release_report']);need(r['status']=='EXACT-APPLIED-RECEIPT' and r['receiver_reported_applied'] and r['counter']==65 and r['gate']==gates(CHECKED,(CHECKED/'payload.efi').read_bytes(),Path(s['package']).read_bytes()),'exact65 applied gates')
  out=ROOT/'runs'/('physical65-'+str(time.time_ns()));out.mkdir(parents=True)
  before=Path(statepath).read_bytes();reader,_=helpers();child(reader,['receipt'],out/'receipt.log')
- receipt=g.base60.t.raw_callback(out/'receipt.log',60);need(receipt[:4]==b'RFS\1' and receipt[20:24]==b'\2\0\0\0' and int.from_bytes(receipt[24:28],'little')==65 and receipt[28:].hex()==PAYLOAD,'fresh65 correlated APPLIED')
+ receipt=g.base60.t.raw_callback(out/'receipt.log',60);session=flow.validate_session(flow.read_json(Path(s['engine']['last_release_report']).parent/'session.json'));need(session['counter']==65 and session['sha256']==r['package_sha256'],'exact65 signed packet');applied_receipt(receipt,session)
  child(SCOPE/'runs/control/collector',['--collect',out/'callbacks.jsonl','--root-authorized-read'],out/'collector.log')
  rows=[json.loads(line) for line in (out/'callbacks.jsonl').read_text().splitlines() if line.startswith('{')]
  for row in rows:actual_callback(row)
