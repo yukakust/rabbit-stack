@@ -1,0 +1,15 @@
+{
+  "status": "FROZEN-UNSIGNED-SOFTWARE-PREPARATION",
+  "source_sha256": {
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "README.md": "5dad114fb0fad82189aa61ad0d4644e43379e8aea5297e0c718c77ef42d20dbb",
+    "check.py": "ee5020ad4b6a40e84d69b80f12373a041f76d4b3ec47dffa25727f124a64e9ce",
+    "derive.py": "16562395fa69d690ae489c55f0638e8b8747b2ecd9385e43ed10eabfc1d73b5b",
+    "entropy_fixture.inc": "e6ca360dd4234833abb59e93b97f058bcd103233619ed7213e28ffbf051cda8d",
+    "run.py": "4e70df8f1356b87168100ae863cf4fe62d50138c99b979bdec4aeb198ab5cd68"
+  },
+  "report_sha256": "e45cb84f4d880b0d61918b7dd4d5b8bf19ea1b054bee87c4374054a941a9c776",
+  "physical_proved": false,
+  "entropy_authority_proved": false,
+  "signing_admitted": false
+}

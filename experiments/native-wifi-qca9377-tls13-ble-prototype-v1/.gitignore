@@ -1,0 +1,6 @@
+runs/
+*.obj
+*.o
+*.efi
+*.tar.gz
+__pycache__/

@@ -1,0 +1,7 @@
+# Fallible entropy boundary for the real lwIP projection
+
+NEW derived source preserves frozen network-wan-v1. Its random32 callback returns status separately from its uint32 output: a successful zero is valid, and failure never supplies fallback authority. The failure latch immediately hides IP/association epoch and prevents link output; safe public-call boundaries revoke the port, close TCP, wipe the BIO arena and stop DHCP after lwIP unwinds. Failed association epochs cannot be retried; a later verified association can start a new epoch. Initial lwIP initialization completes exactly once before fault cleanup, avoiding partial reinitialization.
+
+Yukabox actual instrumented C proof: 380 synthetic DHCP/ARP/lease/controlled-port/DNS/TCP checks, early entropy failure and later failure with established lease/TCP, plus 23 actual freestanding COFF objects (131709 aggregate object bytes). Fixture entropy is synthetic. No real Dell RNG, radio, lease, TLS or Internet exchange is proved. No native EFI/signing admission exists here; the changed callback ABI requires a NEW explicitly bound provider.
+
+The first development trial exposed a model hang on retry after entropy failure inside lwip_init; it was stopped and the initialization ordering corrected. The final bounded early/zero and full suite rerun passed. Frozen/signed sources are unchanged. Source generation/checking can run offline; every native compile and sanitizer run is restricted to Yukabox.

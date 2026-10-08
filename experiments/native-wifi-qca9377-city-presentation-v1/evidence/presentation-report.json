@@ -1,0 +1,14 @@
+{
+  "status": "ORIGINAL-CACHED-PRESENTATION-SERVICE-SYNTHETIC-ASAN-UBSAN-COFF-PASS",
+  "build_host": "yukabox",
+  "source_sha256": {
+    "presentation.c": "7ea758b72fdc677fbe207d887171e43cb6ab1aa8367339eee8e5cd0522e328ba",
+    "presentation.h": "419fe6bf86d6fa8b541d481ae34ee9d243fa99781748406f067b0b8f9b2527fa",
+    "test_presentation.c": "e96965e199b2368854ed2b72910176a2a4ab1ea9d657e62dc64401aadc892f39",
+    "verify.py": "cc01c70aa7dc129569f545d7d18d36950f5901c2e2f506dc141963c0fca14dcd"
+  },
+  "result": "PASS 105 original/cached presentation/alias/service/reentry checks;20 frame cases",
+  "object_sha256": "eb4ab053bd015356e0fb9c073dee4f1c47572fd476915a01e95aa8c5b6ba677d",
+  "physical_proved": false,
+  "network_service_integrated": false
+}

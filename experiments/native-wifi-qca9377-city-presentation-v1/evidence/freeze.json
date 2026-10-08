@@ -1,0 +1,28 @@
+{
+  "status": "FROZEN-UNSIGNED-SOFTWARE-PREPARATION",
+  "source_sha256": {
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "README.md": "f95f3e4096da56ef0dca11210f9e80f035aab6821448eafdcae042ef668c2be1",
+    "check.py": "4eaab03e19a456f804fa743fbfa1d5a20a7272ab05c4a93b6b6872105f7f187c",
+    "native_build.py": "ca6b6e3e7e469a7210f561110e0a7691a8f16dbe8ceb0bc4ee978e943f4a354a",
+    "presentation.c": "7ea758b72fdc677fbe207d887171e43cb6ab1aa8367339eee8e5cd0522e328ba",
+    "presentation.h": "419fe6bf86d6fa8b541d481ae34ee9d243fa99781748406f067b0b8f9b2527fa",
+    "test_presentation.c": "e96965e199b2368854ed2b72910176a2a4ab1ea9d657e62dc64401aadc892f39",
+    "test_renderer.c": "676032c7b761482c16e4184d02705b4e3f89f5d220e629edd21e5018f1b985cf",
+    "verify.py": "cc01c70aa7dc129569f545d7d18d36950f5901c2e2f506dc141963c0fca14dcd",
+    "verify_qemu.py": "752fe21e03572151d7a4e7d1f5238e8d25a8177d904b222ee74e39bad24817af",
+    "verify_renderer.py": "11cbe88abe0568a665fc9e6a5a48ce07fbdd149ebefd8303f795d09b2ee63b04"
+  },
+  "evidence_sha256": {
+    "native-report.json": "13140196657f49a0f1d1f0e0b0680d89c957a39e6d004a2dbd590c4819f88683",
+    "presentation-report.json": "e7a7330bab1018f7dd5747f8a4a9b78c049f8c31744258ea74ff1d76af42ca96",
+    "qemu-empty.log": "d295e7400ba535ec115771d92db021c81d1e0350f853aa0ae178c872f6f1ddde",
+    "qemu-normal.log": "d295e7400ba535ec115771d92db021c81d1e0350f853aa0ae178c872f6f1ddde",
+    "qemu-report.json": "5cee079bb3fbdf9f84e0a2a9e161dc8fbe0caa6063ef48bdc4731f953c08bb03",
+    "renderer-report.json": "3776a6a0a27a79e073ca66d12f26dfbf3b315c35f0c744fbab18fb911d63f257",
+    "reproduction.json": "81691ebbcc50927236cd8f7b83ab55b7bb828bb88739d893025052436150d879"
+  },
+  "base_freeze_sha256": "e9bea83c820ba7158407df1c4896df7dd3d7cc24aef894072b2e3d36fca9126c",
+  "physical_proved": false,
+  "signing_admitted": false
+}

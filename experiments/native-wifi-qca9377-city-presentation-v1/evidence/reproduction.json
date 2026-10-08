@@ -1,0 +1,10 @@
+{
+  "build_host": "yukabox",
+  "payload_sha256": [
+    "24dbe243a94edb909cbfb5071c4b0995f3c3c57cc970fefd7a255d496d124f8f",
+    "24dbe243a94edb909cbfb5071c4b0995f3c3c57cc970fefd7a255d496d124f8f",
+    "24dbe243a94edb909cbfb5071c4b0995f3c3c57cc970fefd7a255d496d124f8f"
+  ],
+  "qemu_report_sha256": "5cee079bb3fbdf9f84e0a2a9e161dc8fbe0caa6063ef48bdc4731f953c08bb03",
+  "physical_proved": false
+}

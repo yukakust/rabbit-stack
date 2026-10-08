@@ -6179,3 +6179,16 @@ serializers, and genuine TLSchild loader/provisioning. Publishedring release
 mustretain/quarantine until actualtarget-quiescence proof; CEhalt alone is not
 targetstop. No newcandidate signing/delivery while64firmwarecontroller active.
 Automation staysACTIVE; oldnative51 snapshot obsolete. WiFi/IP/WANsuccessNO.
+
+
+### Continuation: native64 firmware 11/12; unsigned presentation/entropy/TLS preparation
+
+Live sole controller remains PID21465 (continue64.py firmware), exact parent pci-native-b_3xwpds and once-signed firmware-ram-j45u3fkd. Latest persisted log confirms chunk11/12, bitmap2047, ready0; next is the short final chunk. Aggregate transport floor700800. Do not start a second controller or mutate/sign/replay these sessions. Fresh state/receipts beat this snapshot. Boot/ECHO/HTT/SSID/IP/WAN still not physically confirmed. Pending user observations (city/cat/tail and hotspot maximum compatibility) remain unanswered.
+
+NEW frozen city-presentation-v1: cached coordinate maps and guarded QCA-only4ms service between drawing rows preserve city geometry/world19. 105 ASAN/UBSAN/COFF checks,20 byte-identical differential world19 frames,17 animation changes,26651 synthetic service opportunities. Three identical unsigned EFI213504 file/2224128 mapped, SHA24dbe243a94edb909cbfb5071c4b0995f3c3c57cc970fefd7a255d496d124f8f. Actual OVMF normal/EMPTY LoadImage/StartImage/world19 replacement/rollback gates pass; USB/RF synthetic, not physical or signing admitted.
+
+NEW frozen network-entropy-v1: derives without modifying frozen network-wan. int random32(ctx,uint32_t*) separates failure from successful zero. Failure immediately hides IP/epoch and suppresses link output; after lwIP unwinds revoke/TCP close/BIOwipe. Failed epoch cannot restart. Initial lwIP initialization finishes once before cleanup; an initial development retry hang was stopped, ordering fixed, bounded final early/zero/full cases pass. Real Yukabox380 synthetic lwIP ASAN checks +23COFF; native provider ABI/actual RNG authority remain absent. Offline check reconstructs all pinned generated inputs.
+
+Frozen tls13-ble-prototype-v1: all306 source pins/report/3logs verified. Official MbedTLS3.6.7,9 genuine both-endpoint instrumented TLS13 cases +260 full-SPKI mutation checks; narrow P256/SHA256/AES128GCM noCA/time policy only for later physical pin. No approved Dell RNG, QR, provisioning, native execution or credentials. Ordinary combined image exceeds caps; NEW child/loader being prepared independently. Do not treat standalone size or model pin as admission. WAN requires separate issuer-chain/name/trusted-time profile.
+
+Remaining independent scopes in progress: htt-data-path-v1 (47real owners, real source-exact RXCFG/TXCOMPL and fail-closed protected RX/quiescence), station-wire-v1 (actual WMI MLME/key wire +host replay provenance), module-artifact-v1 +tls-server-child-v1 (genuine owner-signed private UEFI child +entropy/close lifetime). No new physical signature is authorized by software proof alone; wait exact64 raw diagnostics and all admission gates. Full physical RNG/QR and local password input remain mandatory before protected provisioning.

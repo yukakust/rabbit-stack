@@ -1,0 +1,26 @@
+[
+  {
+    "variant": "both-Oz",
+    "standalone_file": 120320,
+    "standalone_mapped": 135168,
+    "combined_file": 321024,
+    "combined_mapped": 4313088,
+    "both_caps": false
+  },
+  {
+    "variant": "server-Oz",
+    "standalone_file": 114688,
+    "standalone_mapped": 131072,
+    "combined_file": 315392,
+    "combined_mapped": 4308992,
+    "both_caps": false
+  },
+  {
+    "variant": "client-Oz",
+    "standalone_file": 114688,
+    "standalone_mapped": 131072,
+    "combined_file": 315904,
+    "combined_mapped": 4308992,
+    "both_caps": false
+  }
+]

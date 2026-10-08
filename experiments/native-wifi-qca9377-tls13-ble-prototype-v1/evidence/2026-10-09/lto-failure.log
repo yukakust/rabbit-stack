@@ -1,0 +1,12 @@
+/home/yuka/rabbit-world/parallel-filter64-native-v1/source/experiments/native-wifi-qca9377-filter64-native-v1/runs/checked-candidate/overlay.h:1:16: error: type of ‘qca_diagnostic’ does not match original declaration [-Werror=lto-type-mismatch]
+    1 | extern uint8_t qca_diagnostic[888];
+      |                ^
+/home/yuka/rabbit-world/parallel-filter64-native-v1/source/experiments/native-wifi-qca9377-filter64-native-v1/runs/checked-candidate/pci_collect.c:5:9: note: array types have different bounds
+    5 | uint8_t qca_diagnostic[QCA_DIAGNOSTIC_SIZE];
+      |         ^
+/home/yuka/rabbit-world/parallel-filter64-native-v1/source/experiments/native-wifi-qca9377-filter64-native-v1/runs/checked-candidate/pci_collect.c:5:9: note: ‘qca_diagnostic’ was previously declared here
+lto1: all warnings being treated as errors
+lto-wrapper: fatal error: /usr/bin/x86_64-w64-mingw32-gcc returned 1 exit status
+compilation terminated.
+/usr/bin/x86_64-w64-mingw32-ld.bfd: error: lto-wrapper failed
+collect2: error: ld returned 1 exit status

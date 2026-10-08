@@ -1,0 +1,1 @@
+PASS 9 genuine TLS13 both-endpoint synthetic cases + 260 actual SPKI callback checks; heap_peak=20096 endpoint_bytes=17880 heap_metadata=12328; no secret output
