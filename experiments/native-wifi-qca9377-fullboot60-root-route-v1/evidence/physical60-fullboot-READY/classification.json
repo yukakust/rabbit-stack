@@ -1,0 +1,29 @@
+{
+  "status": "PHYSICAL60-FULL-MAIN-HTC-INIT-READY-MAC-ALL14-CHECKED-RELEASE",
+  "generation": 60,
+  "MAIN_total_bytes": 727128,
+  "all_transport_submitted": 3114,
+  "all_transport_completed": 3114,
+  "INIT_TX_completed": true,
+  "WMI_READY": true,
+  "raw_READY_frame_bytes": 68,
+  "READY_TLV_bytes": 52,
+  "ABI_minor": 574,
+  "MAC": "c0:b5:d7:78:c3:fb",
+  "SERVICE_READY_regdomain": 108,
+  "SERVICE_READY_bands": [
+    2312,
+    2732,
+    4920,
+    6100
+  ],
+  "memory_requests": 0,
+  "all14_owners_released": true,
+  "decoder_frame_sha256": "0a1b20ca3e98a407251e307093d53f64a1625cc461e0e090dc5d65319c91275e",
+  "monitor_sha256": "a2a39579256ccf6d10066acb2b158ba7240ac84d62b17268043f0b687a19dfd4",
+  "association": false,
+  "DHCP": false,
+  "IP": false,
+  "Yukabox_exchange": false,
+  "scan_performed": false
+}

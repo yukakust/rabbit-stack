@@ -5478,3 +5478,25 @@ proof. Sourcefullbootbounded5400s, collector5460s, actualelapsedfromsnapshot
 Evidence full-assets-and-MAIN-progress. ReadonlysavedmonitorJSONL mayinspect
 withoutnewconnection; afterphase3/released1 collectorwillcaptureQWBT/QWOP/QWIN
 andexit, thenRootclassifyactualINIT/READY/MAC/ownerrelease beforeenginechange.
+
+### 2026-10-08: physical60 FULL MAIN / HTC / INIT / WMI READY CONFIRMED
+
+SolePID64363 finishedcollector/exited. Actualraw240QPFX60phase3/reason0/released1,
+stage5/failed0/adapterCLOSED12/cleanup14; ALLheld/DMA/claim/access/bus/pins/IRQ/
+link/wake/reset0, USBfault/overflow0. QWBT160 bootphase5/plan20/error0, all3114
+transportsubmitted==completed, HTCready20bytes. QWOP488 operatingphase2/error0,
+SERVICE_READYvalid1/memoryreq0/domain108/bands2312..2732,4920..6100. QWIN244
+startupphase2/error0/transactionphase4/INITtx_count1/ready_seen1/tx_complete1,
+ABIminor574, MACc0:b5:d7:78:c3:fb. ExactownedHTC/WMIrawREADYframe68bytes,
+endpoint1/payload60/event2/tag35/value52/ABImajor01000000/namespacesvalid/status0;
+Rootindependentlyparsedframe andMACmatch, notmerelystatusboolean. Checked14
+ownersactuallyreleased AFTERconfirmedREADY; runtime60didnotretainactivestation.
+Publiccompletecallbacklog/rawQPFX/QWBT/QWOP/QWIN/classification at
+evidence/physical60-fullboot-READY. Native60/asset6fuyx2jq stillpreserved in
+statehardwarepending forRootretirement; don'treplayorresigncompletedfirmware.
+
+FULLradiofirmwarebootstrap/INIT/READY nowphysicallyproven. SCAN/association/
+credentials/DHCP/IP/Yukaboxexchange NOTperformed/notproven. Nextscan61 needs
+independentpolicy/RFadmission plusfreshphysical60releasedcontext+archivebefore
+newsign; frozenunsignedtechnical61proof alone notauthorization. Preservecitycat,
+noDellreboot/USB/bootstrap/OTP/flash/privatekeyexport/plainBLEcredentials.
