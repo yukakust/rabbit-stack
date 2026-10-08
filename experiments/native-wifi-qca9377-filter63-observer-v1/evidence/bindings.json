@@ -1,0 +1,26 @@
+{
+  "status": "FROZEN-FILTER63-HOST-OFFLINE-PROOF",
+  "proof_sha256": "f237c127c9f7a689d01d7725c7e40e17ed4f058e8027908914ae21325ca2c68c",
+  "executable": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-observer-v1/runs/control/read-filter63",
+  "executable_sha256": "fb701c5476ff5ddc3ec408c1f06872f1fbf1e4937b495ba7fbe8746d09057b9d",
+  "source_sha256": {
+    "read_filter.m": "deb1a9586bbff3b2f12665694405c860a8a2426a9e1c7a4276777ba151bc6133",
+    "host_test.m": "3ca589590e9194e254622596c09273c967e8a1a560f56bbeb8d6ae5899a5c1d8",
+    "scan_decode.py": "184dae3baa2388bc1e06d84155d7ae802b75b50df6513a8e5ab47b5f56088b72",
+    "decode_filter.py": "1f76a5fea46c236807cfe9cdb6b3b4bc4f910aea2bba75a02bab1e640d7f8676",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "htc_codec.py": "7478962f50afca2d178d8d5da72c1807151b0ca6d89d55651c20e74c04456985",
+    "bindings.py": "3e6b1acb9f3e390da88aa306944751a453a3ece457acadb6247cff8a6538d1ce",
+    "native_binding.py": "d874d2dddcd660982978de8354dd8489444f3cf790f3cac91723a9daec658053",
+    "verify_host.py": "9380940474dec6bafe772f49f928261c1df9e3d073b4439dd12aef6e8fbeecfb",
+    "README.txt": "741ae58ad3f27024289670312e36cf601d617c393a807dee11a4a53ad043a3bc",
+    "fixtures.py": "7c82b04570cd60b135582efa906b5c4fbe63d6b27b823281dd5121ee155f25ab"
+  },
+  "native_report_sha256": "ba46f2c04021b71744a45a0fc31769d93629062422b8a6fbf878e66d8767fe37",
+  "native_payload_sha256": "a636b40f10103a90879bad00a55de173fa36ab2b7a4fd4f38262825191bf4442",
+  "native_abi_sha256": "527f0337d41ee5167cbed8ef0510afefce128910a356b38e42be2ed2a8b3de0d",
+  "physical_admission": false,
+  "actual_APPLIED63": "PENDING ROOT",
+  "device_operations": 0,
+  "private_key_accesses": 0
+}

@@ -1,0 +1,86 @@
+{
+  "status": "OFFLINE-FILTER63-FROZEN-NATIVE-RAW-FORENSIC-CALLBACK-PREFLIGHT-PASS",
+  "python_checks": 1189,
+  "host_result": "PASS 511 HOST FILTER63 callback cases; NO MANAGER/WRITES",
+  "reader_path": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-observer-v2/runs/control/read-filter63",
+  "reader_executable_sha256": "fb701c5476ff5ddc3ec408c1f06872f1fbf1e4937b495ba7fbe8746d09057b9d",
+  "test_executable_sha256": "20e51d1d500da2c9a3c5d2cdd63df03cb1844666dc556b884a141eca358c7c4b",
+  "compiler_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-observer-v2/read_filter.m": "deb1a9586bbff3b2f12665694405c860a8a2426a9e1c7a4276777ba151bc6133",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "test_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-observer-v2/read_filter.m": "deb1a9586bbff3b2f12665694405c860a8a2426a9e1c7a4276777ba151bc6133",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-observer-v2/host_test.m": "3ca589590e9194e254622596c09273c967e8a1a560f56bbeb8d6ae5899a5c1d8",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "source_sha256": {
+    "read_filter.m": "deb1a9586bbff3b2f12665694405c860a8a2426a9e1c7a4276777ba151bc6133",
+    "host_test.m": "3ca589590e9194e254622596c09273c967e8a1a560f56bbeb8d6ae5899a5c1d8",
+    "scan_decode.py": "184dae3baa2388bc1e06d84155d7ae802b75b50df6513a8e5ab47b5f56088b72",
+    "htc_codec.py": "7478962f50afca2d178d8d5da72c1807151b0ca6d89d55651c20e74c04456985",
+    "decode_filter.py": "518e4aa37ae824df087cd2a3d62965304f8bbd9f33eace74e123fd0f79d301b5",
+    "fixtures.py": "eeac27ceabb79f2a973f4dbe20b792a6ce993d74341f609f9fd64cb72b9cd508",
+    "native_binding.py": "d874d2dddcd660982978de8354dd8489444f3cf790f3cac91723a9daec658053",
+    "verify_host.py": "036143ab3e07464af36ce9fd4b21b15736e4eebd8e9b9c8a2fc0d053af56dd6f",
+    "bindings.py": "3e6b1acb9f3e390da88aa306944751a453a3ece457acadb6247cff8a6538d1ce"
+  },
+  "native_binding": {
+    "status": "ROOT-PINNED-FROZEN63-HOST-NATIVE-ABI-JOIN-PASS",
+    "source_sha256": {
+      "experiments/native-wifi-qca9377-filter63-native-v1/components/pipeline_status.inc": "6757ee6554508d59fe595e82b2d6cf3ad0beec04b2737ba709714ca0e6be72f3",
+      "experiments/native-wifi-qca9377-filter63-native-v1/components/pipeline_gatt.c": "f709716b7fdb77a6f78f4265a47b6b03da897c1affc12e8b7e886472791dec85",
+      "experiments/native-wifi-qca9377-filter63-native-v1/components/scan_status.inc": "1baa1a9fb7b2c2e0f1077bd4a86e7b82e48b47a456ef9d7b82675af9a3f54447",
+      "experiments/native-wifi-qca9377-filter63-native-v1/components/scan_gatt.c": "44bc36eb3beafc56c493e9890a84780c582624d9e5af579537b1b04d8f85be8d",
+      "experiments/native-wifi-qca9377-filter63-native-v1/components/scan_native.c": "a9513208ea75a25944e7926d7b61e99d9810dd147548e8861f2d182121dc2d32",
+      "experiments/native-wifi-qca9377-filter63-native-v1/components/rx.c": "25fc4e58a593c7404696e6d61f92825614c91c4ddbf6694c63f4dd866b4d68df",
+      "experiments/native-wifi-qca9377-filter63-native-v1/filter63_build.py": "64de4566fff078e47b43c00224369aaea725d198d215c7a949dd3348987f5d02"
+    },
+    "pipeline_service": "2e",
+    "pipeline_value": "2f",
+    "pipeline_bytes": 448,
+    "scan_service": "2a",
+    "scan_value": "2b",
+    "scan_bytes": 416,
+    "raw_service": "2c",
+    "raw_values": "80..ed",
+    "raw_pages": 110,
+    "last_page_bytes": 56,
+    "native_binding_frozen": true,
+    "physical_admission": false,
+    "report_sha256": "ba46f2c04021b71744a45a0fc31769d93629062422b8a6fbf878e66d8767fe37",
+    "payload_sha256": "a636b40f10103a90879bad00a55de173fa36ab2b7a4fd4f38262825191bf4442"
+  },
+  "actual_C_producer_oracle_report_sha256": "535a1dc3898d2f6f2d615f3aec1804b62ff5ca641ebbba49c76196f9a626e4d3",
+  "actual_C_producer_cases": [
+    {
+      "case": 0,
+      "capture_sha256": "4a970b5b5db2f0231fe76c584050438f8ee98eaa236c7e5e2c2bcde91e6745bc",
+      "decoded_pipeline_completed": true,
+      "target_observed": true,
+      "physical": false
+    },
+    {
+      "case": 4,
+      "capture_sha256": "81f1b52a020cad909d247f2c9fa451024ce7a1a0327a74d392ea33ad86f0f847",
+      "decoded_pipeline_completed": true,
+      "target_observed": true,
+      "physical": false
+    },
+    {
+      "case": 2,
+      "capture_sha256": "ebd0dfe7c5ca821065e8430bdcdec4e976a326e7d94bd59fc00b0dfe4c8785aa",
+      "decoded_pipeline_completed": false,
+      "target_observed": false,
+      "physical": false
+    }
+  ],
+  "host_log_sha256": "83ab213ad6e9596534cf2cee3a89f1b8728d7eef4ef9fb19e419ffc26efc7865",
+  "native_binding_frozen": true,
+  "bluetooth_manager_started": false,
+  "writes": 0,
+  "private_key_loads": 0,
+  "physical_admission": false,
+  "association": false,
+  "IP": false
+}

@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse,importlib.util,json,sys
 import gate,assets63,host_gate
 ROOT=Path(__file__).resolve().parent
-SCOPE=gate.REPO/'experiments/native-wifi-qca9377-filter63-observer-v1'
+SCOPE=gate.REPO/'experiments/native-wifi-qca9377-filter63-observer-v2'
 def module(name,path):
  paths=list(sys.path);names=('scan_decode','htc_codec');saved={n:sys.modules.get(n) for n in names}
  try:

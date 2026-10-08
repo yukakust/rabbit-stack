@@ -5893,3 +5893,28 @@ Gatealone cannotauthorize signing; admission UNFROZEN stillrejects. Final
 hostbindings mustjoin exactproducer448QF63/416QSCN/22x2104QFEX before fresh62
 observation, durablearchive, one localsignature and sequentialphysical trial.
 Fresh62read NOTyetinvoked; preservecompleted firmware62hardwarepending.
+
+### 2026-10-08: actual62 fresh read; native63 host semantic correction
+
+Realzero-write pre63-observation-1 confirmed exactAPPLIED62/currentstateSHA
+bc39c023... and unchanged ownedHTT3.56/release14; archivedpublicevidence. Its
+300s freshness expires normally; MUSTreread beforefinalprepare ifexpired.
+Noactualretirement/newcounter/signature/BLEwrite; actual62world19 unchanged.
+
+Rootfound frozenobserver-v1 treated filter.tx_completed (last-commandBOOL1)
+as cumulative3 and frozenmonitor-v1 finalJSON mislabeledgeneration62. V1
+scopes retained unchanged/notused. Newobserver-v2 proof fdbb11cd...511fake+
+1189pure; monitor-v2 proofce28833b...100fake+4 actualfinalJSON63cases; hostgate
+55tampercasesPASS. Rootusesv2 only. New independent native63-host-oracle-v1
+report535a1dc3898d2f6f2d615f3aec1804b62ff5ca641ebbba49c76196f9a626e4d3,
+ONLYYukaboxASAN/UBSAN3actualproducer cases+COFF, exact160frozenmodelcompiler
+inputs+8candidate supplements. C emits tx_count3/tx_completed1; ordinary+
+earlyREADY→purev2completed/target/ownedtrue, missingECHO→allfalse. ALLcaptures
+explicitlysynthetic-actual-C-producer; physicalcallbackgate rejects them.
+Rootoracle/hostgates recheck exactinput/capture/executable/hash joins.
+
+Final independent63 source/model/orchestration review currentlyrunning.
+Rootadmission literal UNFROZEN; no63physicaloperation untiladopted. Exact
+producerreport/payload/softwareclosure remain ba46f2c0.../a636b40f.../473/207;
+no newCnativebuild/firmware replay justbecause hostdecoder changed. NoSSID/IP
+physicalclaim; fullRXring/aggregationstill absent inthisboundedpartialtrial.
