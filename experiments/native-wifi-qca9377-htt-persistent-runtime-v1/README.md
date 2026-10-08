@@ -1,0 +1,22 @@
+# Phase-owned HTT runtime resource prototype
+
+This isolated software scope derives an unsigned producer from frozen native64. It does not reserve generation/counter64, sign a package, touch a device, or alter any native64 source. `runtime_native_prototype.py` is an allocation/lifecycle prototype, not an admitted Wi-Fi data-plane trial.
+
+The existing fourteen CE CommonBuffer owners remain in their original array and CE access contract. Before BME is enabled, the prototype uses the original UEFI DMA primitive with a new allocation-range guard to allocate/map thirty-two 16-page RX slabs and one 3-page ring/index mapping. The actual port count reaches 47 through individual successful allocations. `owner47.c` recomputes object ownership, allocated count, map uncertainty and port identity; it never substitutes a count or manufactures addresses. The extra mappings consume 2,109,440 bytes outside the PE image. Every map remains within 32-bit DMA bounds.
+
+The 146,560-byte aligned phase arena contains runtime ownership metadata, native scan capture, filter coordinator and GetInfo-only public RNG inventory. Its allocation uses bounded BootServices AllocatePool, with a separate singleton holder outside the pool. Readers must close before retirement. Actual all-owner CLOSED proof precedes queue clear, reference detach, volatile wipe and FreePool. Failed or uncertain cleanup retains ownership. Raw scan/HTT/filter capture remains available after hardware cleanup until explicit retirement. Empty getters return planned metadata and absent raw records; they cannot produce READY, release, BSS or IP authority.
+
+The producer has two acquisitions: the initial pre-firmware probe and the firmware runtime. Reuse of the extra owner after the probe requires every mapping closed, no target ring publication or borrowed work, and filter/query/scan not begun. It then clears only the detached runtime subobject and performs genuine allocations again. The phase pool and capture subobjects are preserved.
+
+`verify_producer.py` compiles the actual derived producer on Yukabox under ASAN/UBSAN. Its synthetic PCI/UEFI fixture models fourteen original CE buffers plus thirty-three separately allocated buffers in both acquisitions. It runs positive, READY-before-final-DMA, slow-poll, missing final DMA and missing ECHO cases. The same actual producer retains capture and proves detach-before-pool-free. `verify.py` separately exercises allocator/uncertain map/stop/BME/Flush/Unmap/Free guards, 47-to-14 owner transitions, reader lifetime and GetInfo-only callbacks. Neither proof is a physical Dell result.
+
+The unsigned whole image is built only on Yukabox with a real compiler-rt stack probe. The additive static-BSS projection exceeded the mapped cap by 8192 bytes; phase ownership removes the duplicate static capture and provides measured fit. Object sums are not whole-image fit or future aggregate fit. No QEMU/world visual regression proof or physical admission is claimed for this resource prototype.
+
+## Unresolved integration
+
+* Actual SERVICE_READY service65 must be decoded from the retained TLV four-low-bits-per-word bitmap. HTT version 3.56 is not that capability proof.
+* The default ring2048/fill1023 serializer/refill and address-owner ledger exist, but the combined producer intentionally does not publish RX_RING_CFG or aggregation. It lacks the separately proven target halt/callback quiescence backend needed to release a published ring. CE halt alone cannot substitute for this proof.
+* INORD address ownership decoding is bounded and transactional. Legacy RX_IND MPDU counts cannot be treated as FIFO MSDU ownership; fragmented/chained/AMSDU/reorder data admission remains unsupported.
+* A data TX serializer and fresh HTT TX completion join are still required. CE4 DMA completion alone cannot release or confirm a Wi-Fi packet. Existing CE4 page can support a bounded one-outstanding prototype, subject to exact descriptor/prefetch/packet layout and hardware proof.
+* Native basic-rate/PSK/CCMP capability and live selection freshness remain unresolved. Allocation ownership creates no association, key or controlled-port authority. Only the current local STA's confirmed PTK/GTK and nonfailed current association epoch can grant IP; AP authorization alone cannot.
+* RNG inventory uses LocateProtocol/GetInfo only. GetRNG call count is zero. Provider advertisement, code hash, RDRAND and algorithm names create no entropy provenance. The protected boot API's protocol authenticity remains a separately reviewed caller obligation.

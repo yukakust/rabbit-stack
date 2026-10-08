@@ -1,0 +1,45 @@
+{
+  "status": "FREESTANDING-PLATFORM-ASAN-UBSAN-PROVIDER-TIMER-REVOKE-PASS",
+  "build_host": "yukabox",
+  "checks": {
+    "runtime": 8612,
+    "adapter": 72
+  },
+  "host_log_sha256": {
+    "runtime": "8b8b886940acabd87299a4448b62a160a048a53048e38c0b80b6fa7acacc01a3",
+    "adapter": "409d4b99be6461fb1708d82ad8d5a4805fa794af20499dce3d2e845acb058101"
+  },
+  "source_sha256": {
+    "frozen-inputs.json": "80a0cc4699e04e0b0dd281229719a76097e25f90e2bb1bcdc713bab48b3cd2bd",
+    "runtime_test.c": "12d59ae608f8d539f16a52bbc78e3b007455c58a963b12d26cf0ac39ab092a1e",
+    "adapter.h": "052dd641a4c668a20a85843165b0d36c728583bf2fb60cbb3de93a3fd3eecc28",
+    "adapter_test.c": "eba501610c72b577af5dee1fb76c696b015ce0d7cbd7b45dbd13a5fcf42eaed0",
+    "check.py": "09a7ca56b08aa0d2f83bc9cee30f87387e7d02ba6c8396ad09d15546958b65be",
+    "verify_platform.py": "cf8a649386766850ad62205bb6a183058cc21d1c51b5bdd95a84f97bcc956e03",
+    "README.md": "e0597a568e756ac08319c61bce130ebfe9bec131f604e02301fcd8fe4fba05b0",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "runtime.c": "223aabd8e833fe6e1ecebe5dc7d5c838555a906b4d3fd92678aa7420f16233fa",
+    "build_coff.py": "2be88901ef127ddd26f23d77b139036374e584988cbc330ca3b3b2726dc0639c",
+    "native_abi.h": "5aa4a2da4af1d7dd155aaeeebd6657b5423763ae3f18568aa72e72fa10376599",
+    "adapter.c": "802503f22923a3c193f9d3808a4750ffbb02fd371a0408a4b1955b51ab11ae86",
+    "references.json": "3bee5f5602e18fc81982423af70ac1b49e524cf4a0c24de24089346addfbfb5a",
+    "runtime.h": "f242975bf3fc7965b1e07df5b5b6d6f50fa9151e00355b1fbe157bde576e189d",
+    "verify_interop.py": "187e145997667c821cdd80d39a891ecb3bdd35dcac778e2b03f18d3727db22da",
+    "interop.c": "7d3942245fc9645b65d03290dcbf08f2e7e88467382bdcc698d46c2041bb2db0",
+    "INTEGRATION-CONTRACT.md": "a5806edee0b920162f506cc5983c85d6c26cad1c8650fa0b21ea102fba1392cc",
+    "primitives.c": "ef92d7944e4830026b49c0ce5776b3615282316508d10b0f13236a7138fd091e",
+    "copied/native_abi.h": "2b7b104af7c51bd706e8fe56831ecd2786a3d54c635d3dc623ad19d8620779e5",
+    "copied/coff_probe.py": "62a6d104fc431c8b2c33c8878b3cc973c204d85bbad154c5c6d1eeb92f9d0ffb",
+    "copied/verify.py": "cb632b796e6ac60c42f39cdfeadd663e1adc1bb0a6422c6a6cc52d3320bc50e5",
+    "copied/interop.c": "76d53d80e0111ad44bd1f4d2d8c54e76486be6f622d688314f2d6293b4d2a569",
+    "copied/HOSTAP-LICENSE-README.txt": "f1b5992bbdd015c3ccb7faaadd62ef58ed821e15b9329bf2ceb27511ccc3f562",
+    "copied/official-pmksa.patch": "d22504f166b006fa204da6ed1cbe1c4d7023bb829194478ce32c62854333dacb",
+    "references/nanoprintf.h": "24d28854d22ff5954090a00a1e41e404c94a9f85be8b75b13f8d9348e60912e3"
+  },
+  "interop_report_sha256": "b61f64758c4d8b746c5bf1974889d79de7ee604bccd658c9daefc75fc293b1a5",
+  "native_admitted": false,
+  "physical_verified": false,
+  "credential_reads": 0,
+  "native_radio_capability": "UNKNOWN",
+  "production_providers_approved": false
+}

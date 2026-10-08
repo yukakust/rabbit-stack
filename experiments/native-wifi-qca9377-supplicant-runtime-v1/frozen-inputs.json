@@ -1,0 +1,8 @@
+{
+  "experiments/native-wifi-qca9377-supplicant-native-v2/interop.c": "76d53d80e0111ad44bd1f4d2d8c54e76486be6f622d688314f2d6293b4d2a569",
+  "experiments/native-wifi-qca9377-supplicant-native-v2/verify.py": "cb632b796e6ac60c42f39cdfeadd663e1adc1bb0a6422c6a6cc52d3320bc50e5",
+  "experiments/native-wifi-qca9377-supplicant-native-v2/coff_probe.py": "62a6d104fc431c8b2c33c8878b3cc973c204d85bbad154c5c6d1eeb92f9d0ffb",
+  "experiments/native-wifi-qca9377-supplicant-native-v2/native_abi.h": "2b7b104af7c51bd706e8fe56831ecd2786a3d54c635d3dc623ad19d8620779e5",
+  "experiments/native-wifi-qca9377-supplicant-native-v2/official-pmksa.patch": "d22504f166b006fa204da6ed1cbe1c4d7023bb829194478ce32c62854333dacb",
+  "experiments/native-wifi-qca9377-supplicant-native-v2/HOSTAP-LICENSE-README.txt": "f1b5992bbdd015c3ccb7faaadd62ef58ed821e15b9329bf2ceb27511ccc3f562"
+}

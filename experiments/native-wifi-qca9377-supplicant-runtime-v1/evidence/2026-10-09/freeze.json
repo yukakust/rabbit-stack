@@ -1,0 +1,26 @@
+{
+  "status": "MATURE-SUPPLICANT-REAL-FREESTANDING-LINK-FROZEN-OFFLINE",
+  "coff_report_sha256": "6cc1ebe370c2c9f23ddc2aaee7828c42a6e3bd3ed9e8f79c2322cbfc682e2fe4",
+  "interop_report_sha256": "b61f64758c4d8b746c5bf1974889d79de7ee604bccd658c9daefc75fc293b1a5",
+  "platform_report_sha256": "0430ab6fbd26a45da9e7645f6aaa35d7979a0d35c023d9dcffee0b7cbd398f7b",
+  "DLL_sha256": "40914c117a1e03b759e64b85e4e7f8042cdafbeb722bd9ceef0a71b840a6218f",
+  "file_bytes": 97792,
+  "size_of_image": 110592,
+  "external_runtime_bytes": 7816,
+  "external_native_io_bytes": 376,
+  "external_arena_bytes_max": 1048576,
+  "coff_objects": 27,
+  "original_unresolved_functions_closed": 31,
+  "remaining_unresolved": [],
+  "interop_modes": 13,
+  "platform_checks": {
+    "runtime": 8612,
+    "adapter": 72
+  },
+  "native_radio_capability": "UNKNOWN",
+  "native_admitted": false,
+  "production_providers_approved": false,
+  "physical_verified": false,
+  "credential_reads": 0,
+  "generation_reserved": false
+}

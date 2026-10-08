@@ -1,0 +1,23 @@
+{
+  "status": "SYNTHETIC-WORLD19-ORIGINAL-ARENA-DIFFERENTIAL-PASS",
+  "build_host": "yukabox",
+  "frozen_input_sha256": {
+    "city_core.c": "87118d150ae88002e5851410bbf1cb56c130f9f8b6933d70111cb80fe5504005",
+    "city_core.h": "32a5c95574bd3a022df954b4af57a56ee27e20d372085efc31a77a5297aabbf8",
+    "monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+    "monocypher-ed25519.h": "3a3035181f991a158d0e1c7567258f0bae8ba0f1f23c5512b4a1db1b3c9730ce",
+    "monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "monocypher.h": "fcaf6ed771358bb4f40fba016f6518ae86ec02b1b877d2cc35ad92d3a26fd7b3",
+    "world19.rup": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7"
+  },
+  "derived_source_sha256": "3650e2d3dbbf366766433e9de69e8eb07d2f894246ee0bc724d98a0ae5e94f5d",
+  "source_sha256": {
+    "city_arena.c": "5b074fa4c9c9a2ad7a44f3920064ec53b2e7b7201a7d212a09219c31687b8c85",
+    "city_arena.h": "b02e2de4cd28bf4635d43c05dd8e755ce5b2225814089534be62f68243fd7d80",
+    "test_renderer.c": "677ffce5a28f4e0d5900d89a7dafcb5938fd1243165e53a57f260efcad8dcb3e",
+    "verify_renderer.py": "7c1f17c1cca24cfdbf20b5b747c36984108584da0e00932e8afca2f4bef605b1"
+  },
+  "result": "PASS 20 original/arena world19 renderer frames; animation changes 17 frames; exact legacy copy",
+  "physical_proved": false,
+  "integrated": false
+}

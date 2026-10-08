@@ -1,0 +1,18 @@
+{
+  "status": "SYNTHETIC-CITY-ARENA-ASAN-UBSAN-COFF-PASS",
+  "build_host": "yukabox",
+  "source_sha256": {
+    "city_arena.c": "5b074fa4c9c9a2ad7a44f3920064ec53b2e7b7201a7d212a09219c31687b8c85",
+    "city_arena.h": "b02e2de4cd28bf4635d43c05dd8e755ce5b2225814089534be62f68243fd7d80",
+    "test_arena.c": "90a5ae30614497155b031dcf946eb342ba52253d62d607f1eb2a60380812dd3a",
+    "verify.py": "7b5e53b8b63ebcc2ba35cedad60d587e69974b7071a2942c64e68a57f1636d9b"
+  },
+  "result": "PASS 21 SYNTHETIC CITY ARENA ownership/alias/wipe/uncertainty checks",
+  "compiler_sha256": "e6166786aee0388cc170ab761d8d51d6e0d708cc5ca533b0330f356ca99468cf",
+  "object_sha256": "fc97814bab0fecc7e517d47b8d72440eae40b4e3611628f02df773ee528f4c2b",
+  "allocation_bytes": 1958415,
+  "depth_bytes": 1440000,
+  "legacy_picture_bytes": 518400,
+  "physical_proved": false,
+  "integrated": false
+}

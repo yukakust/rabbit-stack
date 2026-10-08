@@ -1,0 +1,23 @@
+{
+  "status": "STATION-INTEGRATION-PREPARATION-FROZEN-OFFLINE",
+  "native_report_sha256": "14a816138594dce80a0c48a3b5f428ccd638b58b581db014f695a90f6411264b",
+  "interop_report_sha256": "ea390a9a9be1c7f89cb52cc171d1711d77318ae25765497b5abb80c9edd1b15b",
+  "checks": 180447,
+  "mature_compiled_units": 31,
+  "compiled_fixture_files": 294,
+  "source_files": 109,
+  "station_sha256": "19b2e7fb09be30039aa6c7a0ed8040e7866ae3df113246f071400c96632ab621",
+  "interface_sha256": "ee1264a4f36efaa3b16658d612ce1d653f3180c67b4d2a730f45c73ecd6293d4",
+  "native_integrated": false,
+  "native_capabilities_proven": false,
+  "physical_verified": false,
+  "rf_admission_granted": false,
+  "controlled_port_is_actual_open": false,
+  "credential_reads": 0,
+  "generation_reserved": false,
+  "cipher_translation": {
+    "hostap_WPA_ALG_CCMP": 3,
+    "wmi_AES_CCM": 4,
+    "htt_SEC_IND_AES_CCMP": 6
+  }
+}

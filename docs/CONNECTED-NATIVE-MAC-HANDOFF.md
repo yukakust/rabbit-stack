@@ -6125,3 +6125,57 @@ notfullreachableEFI fit/physicalIP/HTTPS. NoTLSclient/certtime/noncehardwareproo
 Persistent47owner/runtimearena, TLS13BLE and maturestationadapters independent
 softwarepreparation stillunderway; nohardwareauthority/pseudoentropy/credentials.
 AutomationACTIVE. Success requiresreallease/router+protectednonceYukaboxroundtrip.
+
+### 2026-10-09 local / 2026-10-08 21:39UTC: exact64 delivery progressing; next software joins frozen
+
+Solefirmware64 PID21465 remains live, SAMEpci-native-b_3xwpds and exact once
+signedfirmware-ram-j45u3fkd. Latest log confirms7/12 RAMparts/bitmap127/ready0;
+chipboot/ECHO/HTT/SSID/association/IP/WAN NOTyet confirmed. Ordinary300s sender
+timeouts retain progress and query-before-resume the exact unconfirmed remainder;
+no secondcontroller/signature. Always inspect newer log/state/receipt first.
+Post64 physical city/cat/tail and hotspot2.4GHz questions remain unanswered.
+No Dell reboot or additional Bluetooth toggle while21465 is live.
+
+New frozen software-only preparations, native C/ASAN/COFF ONLYYukabox:
+- station-integration-v1:180447 parser/owner checks,31 maturepatched units,
+ 6 actualcore-callback fixture modes; exact PEER_MAP/SEC_IND/key no-reinstall
+ joins. Report14a81613.../interopea390a9a...; actualnative MLME/key transport absent.
+- supplicant-runtime-v1:27 COFFobjects genuinelylinked, original31 undefined
+ symbolsclosed, no OSimports.97792file/110592mapped; externalruntime7816+IO376,
+ separatelybounded callerarena≤1MiB.13 originalmatureinterop modes;8612platform+
+ 72adapter checks. No fallbackRNG or successstubs. COFFreport6cc1ebe3...;
+ interopb61f6475.../platform0430ab6f.../freezeb71c25cf... . NativeprovidersUNKNOWN.
+- htt-persistent-runtime-v1:two genuine47-map syntheticproducer acquisitions,
+ 5 paths/12 changedCOFF+11arenaCOFF.14CE+33extraDMA=47; extra2109440bytes,
+ phasepool146567. Capturesretaineduntil CLOSED/detach/wipe/free. GetInfo-only
+ Locate1/GetInfo2/GetRNG0/providerprovenanceUNKNOWN. Unsigned211456file/
+ 4153344mapped, reportcca99edb.../payload7127e2a4... . NOpublishedRXring,
+ target-stop backend/dataRXTX/actualservice65/QEMUproof for thatprototype.
+- https-protocol-v1:817 genuineC boundedframing/nonce/epoch/replay/response
+ tests+COFF; report08283f78... . CallerTLSauthentication/strongnonce/trustedtime
+ mandatory; parser grants no WAN capability. ExistingYukabox9784 handler still
+ NOT running/published. Funnel443/8443 configuration unchanged.
+- city-arena-v1:NEW unsignedderivative, depth1440000+legacy518400 in owned
+ BootServicespool1958415; renderholdersdetachedbeforewipe/free.21ASAN/COFF,
+ 20 signedworld19 original-vs-pointer frames byteequal (17animationdifferences).
+ THREE identicalEFI212480file/2195456mapped, payload75b613ecbd2c13641a5808f537f1ac47862d8185c59f15370ad54c448a34a131.
+ RealOVMFnormalEMPTY/world19/target-clockcat/replacement/rollback PASS; USB/RF
+ synthetic, NOTDell/signingadmission. ActualQEMU exposed original47prototype's
+ refusal to retire untouchedzero runtime whenQCAabsent. NEWprojection permits
+ only canonicalall-zero-unused ledger or originalCLOSEDowners; frozenprototype
+ unchanged. Failedattemptlogs retained remote; finalpublicQEMUlogs hashbound.
+
+TLS13BLE standalonegenuinecrypto profile works in software, but monolithic
+parent+TLS exceeds262144file limit. No cap increase or crypto deletion. New
+cityownedpool resolvesmappedBSS pressure; measured separateparent+server child
+mapped2326528 fitsaggregate4MiB and eachfilefits. NEW independentlysignedartifact
+policy/privatechildregistration/standardEFI LoadImage ownership still being
+implemented; existingbootstrap is not assumed to supply a TLSplugininterface.
+ActualstrongDellRNG and fullphysicalQR SPKI binding remain mandatory before
+credentialread. No Wi-Fi secret/privatekey exported or plainBLE credentials.
+
+Next independent lanes: exact HTTop3 persistentRX/TX/coordinator, matureMLME WMI
+serializers, and genuine TLSchild loader/provisioning. Publishedring release
+mustretain/quarantine until actualtarget-quiescence proof; CEhalt alone is not
+targetstop. No newcandidate signing/delivery while64firmwarecontroller active.
+Automation staysACTIVE; oldnative51 snapshot obsolete. WiFi/IP/WANsuccessNO.

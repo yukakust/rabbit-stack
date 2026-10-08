@@ -1,0 +1,13 @@
+{
+  "status": "FROZEN-SOFTWARE-ONLY",
+  "source_sha256": {
+    "probe_protocol.c": "06bc4923dd8354cb72d613568a973ebf3da896d2c7edf74fa7efae8d6b7973c3",
+    "README.md": "0df90639790ac94731679a75b6e1e3401088da71591d957aba72f2afdb6c8af9",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "test_protocol.c": "9ae89cd138b8b96d56faeb9c2d1cd34d79775258e4c6034c4f5aeb70f22961f6",
+    "probe_protocol.h": "a15011fc2238b43e350841b17fd2e4d07440e5bd88dd6d536a34a8b29e1d1759",
+    "verify.py": "f42e87c778ae936cdd5de2e41d79f4fec8bc30e066c51f648ca42cc099a12abe",
+    "freestanding/string.h": "1da61f0164516e689dedd3a0644bb2a7b3c67bab0ecbb001d854de6cfb816c3b"
+  },
+  "report_sha256": "08283f780fb85fceddadc47c655b1b742fa3e86a7fd8394fd2dd5da74407039a"
+}

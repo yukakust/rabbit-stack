@@ -1,0 +1,12 @@
+{
+  "producer_source_closure": true,
+  "compiled_C_fixture_closure": true,
+  "all_producer_COFF": true,
+  "allocator_phase_source_closure": true,
+  "payload_hash": true,
+  "report_sha256": "cca99edb600ffbcf0231f3deb07067feec974710c95a19b98de7a5ed472b8107",
+  "proof_logs": {
+    "runs/proof/host.log": "5dc7ca7295685d3fac43b503b4e0b3d78282ba6ac1470faba847437c59065510",
+    "runs/producer-proof/host.log": "188a6bf9f98210c68c1b08c53c544e98b6f280f47863db9007d6e26f0793d91d"
+  }
+}

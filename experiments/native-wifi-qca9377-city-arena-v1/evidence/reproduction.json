@@ -1,0 +1,12 @@
+{
+  "status": "THREE-EQUAL-UNSIGNED-CITY-ARENA-EFI-BUILDS",
+  "build_host": "yukabox",
+  "payload_sha256": [
+    "75b613ecbd2c13641a5808f537f1ac47862d8185c59f15370ad54c448a34a131",
+    "75b613ecbd2c13641a5808f537f1ac47862d8185c59f15370ad54c448a34a131",
+    "75b613ecbd2c13641a5808f537f1ac47862d8185c59f15370ad54c448a34a131"
+  ],
+  "qemu_report_sha256": "403695f7df6d7312b04912407b72cc52b3f85693a15d8dc934b2e05a6580d0ab",
+  "physical_proved": false,
+  "signing_admitted": false
+}

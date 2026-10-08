@@ -1,0 +1,35 @@
+{
+  "status": "UNSIGNED-CITY-ARENA-NORMAL-EMPTY-QEMU-WORLD19-PASS",
+  "build_host": "yukabox",
+  "gates": [
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "75b613ecbd2c13641a5808f537f1ac47862d8185c59f15370ad54c448a34a131",
+      "empty_boot": false,
+      "background": "121826",
+      "observed_log_sha256": "d295e7400ba535ec115771d92db021c81d1e0350f853aa0ae178c872f6f1ddde",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "c5adf4fe212f6c136297fe8d4c850c00ae595a2f091c40848f686560a4da1963"
+    },
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "75b613ecbd2c13641a5808f537f1ac47862d8185c59f15370ad54c448a34a131",
+      "empty_boot": true,
+      "background": "121826",
+      "observed_log_sha256": "d295e7400ba535ec115771d92db021c81d1e0350f853aa0ae178c872f6f1ddde",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "04f4d108c82df918e86f7619a30313841def2c95f14c45f48d0625c08d1b9407"
+    }
+  ],
+  "payload_sha256": "75b613ecbd2c13641a5808f537f1ac47862d8185c59f15370ad54c448a34a131",
+  "world19_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "test_source_sha256": "1a6fde8b5bd90f79d6a67e1eba845af76ec4af6f4d92f241da06a7f28e231420",
+  "inherited_fixture_sha256": "77bcfaa53c9b326d0b9842bfe2dcbaba317c6e50563a6be6e1e8d41540545546",
+  "physical_proved": false,
+  "signing_admitted": false,
+  "radio_backend": "MOCK USB ONLY"
+}
