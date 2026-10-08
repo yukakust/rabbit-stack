@@ -5918,3 +5918,39 @@ Rootadmission literal UNFROZEN; no63physicaloperation untiladopted. Exact
 producerreport/payload/softwareclosure remain ba46f2c0.../a636b40f.../473/207;
 no newCnativebuild/firmware replay justbecause hostdecoder changed. NoSSID/IP
 physicalclaim; fullRXring/aggregationstill absent inthisboundedpartialtrial.
+
+### 2026-10-08: Root63 admitted, signed once; sole native delivery8034 live
+
+Final independent review2086622c2c37b946d5ac8cdccddbaeade5d57e900165b2d8d069fa6525fb4434,
+727source/proof bindings/blocking_findings empty. Rootadopted ONLYREVIEW_SHA
+literal, independentlychecked normalizedadmission b4062475...; Roottechnical/
+host-v2/oracle/policy/admission/prior62 gatesPASS. Freshactual62observation2
+confirmed APPLIED62+owned3.56/release14 underunchangedstate immediatelybefore
+prepare. Completed62 native/assets/fresh/fullownedraw durablycopied+fsync in
+filter63-root-route-v1/runs/retired62 beforeclearingonlyhardware_trial_pending.
+Original62files retained. Exactone newnative63 localsignature saved session
+pci-native-fe6ebz_c, packet55d2a292e08011dc4377d104f333e59f40cc4537d5906604f838f8beb193a90f,
+payload a636b40f.../202240,mapped4194304, currentworld19 unchanged.
+Publicmanifest/evidence native63-prepared retained signing/admission/retirement/
+fresh2 hashes; no private material exported. NOfirmware63 signaturesyet.
+
+Solecontroller PID8034 actuallylive: continue63.py native exactsaved session;
+metadata runs/control/controller63-8034.json; log native63-start.log. Initial
+nohup-shell attempt neverstarted(noPID/noBLE/emptynative63.log); detachedPython
+Popen start_new_session launched8034, nosecondsignature/session. ActualFSquery
+connectedknownDell andmatchedold62receipt. Controllerordinary300s progressing
+native timeouts resume SAMEpacket/querybeforewrite up to8attempts; realfault
+stops/logspreserved. InspectlivePID/actualstate/report beforeanythingelse.
+DO NOTprepare/resign/replay orstartsecondBLE while8034live.
+
+NextafterEXACT63 APPLIED and8034 exits: validate root_route.current +same
+native fe6ebz_c. Refresh MacGATT cache with previouslyauthorized20s Bluetooth
+OFF/ON onlyifneeded (newstatus/rawdatabase; oldv1cachedservice invalidhandles
+seenin62). NEVERrebootDell. Then start sole continue63.py firmware with same
+native directory; itchecksactualinitialQPD andsignsexact12gen63assetsONLYifno
+hardware_trial_pending; restart ALWAYSusesexistingexactasset session. No new
+native signature. Monitor-v2 allows actualrelease14 diagnosticfailure rawread
+but neverdeclaresWiFi; observer-v2/classifierrequire232actualcallbacks/3stable
+QF63+QSCN/two110pagepasses/public63signatureon62/all12asset receipts/signatures.
+Physicalpartialfilter/ECHO/HTT/passivescan iPhone(9) stillnotrunconfirmed;
+WiFi/association/keys/IP/Yukaboxexchange STILLNO. FullRXring/aggregationabsent.

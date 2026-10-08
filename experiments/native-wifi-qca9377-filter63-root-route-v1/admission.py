@@ -3,7 +3,7 @@ import gate,host_gate,monitor_gate,oracle_gate
 AUDIT=gate.REPO/'experiments/native-wifi-qca9377-scan61-root-route-v1/evidence/policy-audit.json'
 AUDIT_SHA='8a2bc075fc398b3c69d60e3b9d0161da172fae66f8e7aa79c2b4de603f2ee585'
 REVIEW=gate.ROOT/'evidence/final-independent-review.json'
-REVIEW_SHA='UNFROZEN'
+REVIEW_SHA='2086622c2c37b946d5ac8cdccddbaeade5d57e900165b2d8d069fa6525fb4434'
 def checked():
  gate.need(len(REVIEW_SHA)==64 and gate.sha(REVIEW)==REVIEW_SHA,'final independent63 review not adopted')
  r=gate.flow.read_json(REVIEW)

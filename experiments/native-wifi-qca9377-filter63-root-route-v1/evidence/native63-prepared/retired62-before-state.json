@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "counter": 19,
+  "world": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/native58-observed-bootstrap-city-plan/restored-world/world.json",
+  "package": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/native58-observed-bootstrap-city-plan/restored-world/world.rup",
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "authority": "installed-public-development-world-creator-NOT-owner-native",
+  "runtime_core_sha256": "6b612076f1b435d6baf76e9445861dff98c9623d330bc3c402b5981fcec9a851",
+  "installed_report_sha256": "bd4ad736c5d39e2e1f0cfb16163837e460fecaf32960f60050047559cb7bf527",
+  "pending": null,
+  "bootstrap_basis": "operator-supplied current package; not device attestation",
+  "engine": {
+    "schema_version": 1,
+    "family": "reviewed-city-v2",
+    "background": "121826",
+    "native_counter": 62,
+    "payload_sha256": "22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81",
+    "installed_gate": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/owner-gate-s0bxi9d8/report.json",
+    "installed_gate_sha256": "bd4ad736c5d39e2e1f0cfb16163837e460fecaf32960f60050047559cb7bf527",
+    "basis": "exact correlated applied receipt; PCI telemetry and physical scene observation separate",
+    "city_core_sha256": "1821479446600df4fc4604a099eed3108e2b6b181c4045b094c7a2b675fb14b3",
+    "last_release_report": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-7meuoneq/report.json",
+    "actor_core_sha256": "87118d150ae88002e5851410bbf1cb56c130f9f8b6933d70111cb80fe5504005",
+    "diagnostic_profile": "HTT62-REPEATED-EFI-QEMU-WORLD19-DIAGNOSTIC-PASS"
+  },
+  "native_pending": null,
+  "recovery_pending": null,
+  "retired_native_sessions": [
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-yhzzk0k_",
+      "files": {
+        "native.rrt": "d60cd22b59398bb73f7a6ff4b42761af8f68ceaf840bd63ab211ce4661a0e24e",
+        "session.json": "92a3eba379ba8950e85b342e73fa0a9f024fd5b2a0311b4ca59550447108b2f5",
+        "payload.efi": "0beeb5450db864eba62710cfe7df7e0ba3d19594d9e480b6b50129f99225b4a6",
+        "report.json": "74cfbeab2bb80c9405a940ad25f00030e1498946f821d666e7f29d3e8ac5fdff"
+      },
+      "reason": "owner-confirmed-reboot-and-fresh-zero-receiver",
+      "replacement_counter": 16
+    },
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/reboot-recovery-native16",
+      "files": {
+        "native.rrt": "cb142356c22c5e155739e587e042724a7fd5ac1890a079429049211b2b2569fb",
+        "session.json": "185ac329bae89565b6bd0cddc56336c5960f08945c47f8f9ec49869868819033",
+        "payload.efi": "0bd6291bb65312b8e33afeb5187839bb4da09cfb10069f2eba4837c9cc438f62",
+        "report.json": "c5586038a741db16afde253047356d3ae4a724d13d059e1a6bf89d50e1061b01"
+      },
+      "reason": "owner-confirmed-reboot-and-fresh-zero-receiver",
+      "replacement_counter": 17
+    },
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-wg2f6n8n",
+      "files": {
+        "native.rrt": "3b0748f9cdec1a0b369e1d631bfe20bae6fa59657cd0a3d8e41aa3dab8de3d18",
+        "session.json": "7f9b9a21ce75c232a8591e324ad4d80456d7a572c278bd71de9c7ac0d789a1a0",
+        "payload.efi": "d8a6dd6805c3862e201b43a05cdf860e71895227b6c94f471af391c33f4cd583",
+        "report.json": "80de972392bf9c7163c5a7d6a14679eaa10ddf54198ff91ea089cb06eb22587f"
+      },
+      "reason": "owner-confirmed-reboot-and-fresh-zero-receiver",
+      "replacement_counter": 27
+    },
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-0iphq475",
+      "files": {
+        "native.rrt": "71c131d5c045ea1251a9ffd05f88312e50ce5bba2b064e575f81e52b9990473a",
+        "session.json": "1da8c35a6a3cafb7051c532a44cdf8752a66d5164a2577f377b49fdf8198f43f",
+        "payload.efi": "654629798fd72bc5a6e2d9d645e3bd6323d35436d0cbace9bc77e5167e0e8e77",
+        "report.json": "d5236b55bc3ffa168032b66aecb163a2ee2e96e50ba325c2e64004a5b832e23e"
+      },
+      "reason": "owner-confirmed-reboot-and-fresh-zero-receiver",
+      "replacement_counter": 36
+    },
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-f_6ar4mr",
+      "files": {
+        "native.rrt": "310175ba926c1653d7c6d25483b2ff451cec6923f5027e1505db1990f141005c",
+        "session.json": "769c4fa05b11ced903bfb3c25eed605d0bea3ab3cf70098598307d6ce331305c",
+        "payload.efi": "663b6833e7dc216eba2274dfec15dfa848e132da25a6ff678445d7ac89db3c06",
+        "report.json": "603830cc69b8632b4864cffaae0686565aba2098bf93d06bb95075d367781630"
+      },
+      "reason": "owner-confirmed-reboot-and-fresh-zero-receiver",
+      "replacement_counter": 40
+    },
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-_pg_zhuu",
+      "files": {
+        "native.rrt": "af54c78ff7bc25ca6d941f8689e38f13d347c1dae3beb636191d017fe2a74c2e",
+        "session.json": "4f548a1566008632872f634ce958196d3db3c19be4611b3904710408546fe47b",
+        "payload.efi": "76e5db52405f86e60a7d6d95791289f4e73b09213f8e5302d58d131a31b3f910",
+        "report.json": "e92fe22904b3892805b1205fdc9030f978cc60c8879909735f8bb14c57049edc"
+      },
+      "reason": "owner-confirmed-reboot-and-fresh-zero-receiver",
+      "replacement_counter": 48
+    },
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-ehv85hvp",
+      "files": {
+        "native.rrt": "f18b905f124b1d513f93862d9e31fd1e33768af7ea9885c48eac685fc16e33c8",
+        "session.json": "792fed6531602ed6763e10543588590e821c0c5747c84bfc74cd409d8dcd9547",
+        "payload.efi": "cc8d7fec39a812273c1af5d52711fe6dc281b48873925aec2136cf3cb8533297",
+        "report.json": "66f4c2756b40f43ed5f34b76be53f4df2a7546bdfc8bdc25ca09f309b6e6e77a"
+      },
+      "reason": "owner-confirmed-reboot-and-fresh-zero-receiver",
+      "replacement_counter": 56
+    },
+    {
+      "directory": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-bq9nq_ik",
+      "files": {
+        "native.rrt": "9a559eb9f547ff573a7ce5450caecc1e000b6ae43a95a4b8cdd12f1f00ca198d",
+        "session.json": "b05e161ce72babb76345af2933acb38f3ae8187bd7bfa9e3be4084a4a6a06139",
+        "payload.efi": "9c63e6622c10190a8a17de2ff01ee03f72de95e93fd7326ca4da6e2c429be161",
+        "report.json": "9878337a6dab263c49560dbfc34169c60df014a86da516d07959186c88dc6e1e"
+      },
+      "reason": "observed-bootstrap-context-and-fresh-empty-receiver-NO-manual-reboot-claim",
+      "replacement_counter": 58
+    }
+  ],
+  "hardware_trial_pending": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-8wiq3vc5",
+  "retired_hardware_trials": [
+    {
+      "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-ytrkhw7x",
+      "retirement_sha256": "b51d1fb61be6b05aab4179c34f9224196a327d3a13dce94466857f96b173420d",
+      "native_counter": 41,
+      "next_counter": 42
+    },
+    {
+      "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-xa_97zti",
+      "native_counter": 47,
+      "reason": "owner-confirmed-reboot-and-fresh-empty-bootstrap",
+      "retirement_sha256": "701113cd183cea5cbad6e3cb4c37104b3659bbfeff8510fd3eb175e78bbeb13d"
+    },
+    {
+      "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-g4w7ruqs",
+      "native_counter": 55,
+      "reason": "authorized-owner-reboot-and-fresh-empty-bootstrap-full12-raw55-lost",
+      "retirement_sha256": "9b6dd7f431d1eec131cd808a552ecbe8bcaf80519669641d567f96ba0d74233f",
+      "retirement_report": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-reboot-recovery55-root-v1/evidence/2026-10-07/actual-reboot-retirement/retirement.json"
+    },
+    {
+      "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-efn8f6wx",
+      "native_counter": 57,
+      "reason": "observed-bootstrap-empty-partial57-retired-cause-unknown-NO-human-reboot",
+      "retirement_sha256": "6588905cfdc9cf9b58cca8dff8ccfe53dd2637ab8927b72463f1f428e411e715",
+      "retirement_report": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-observed-reset57-recovery-v1/runs/actual-recovery58/retirement/retirement.json"
+    }
+  ],
+  "last_hardware_trial_retirement": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt62-root-route-v1/runs/retired61/retirement.json"
+}
