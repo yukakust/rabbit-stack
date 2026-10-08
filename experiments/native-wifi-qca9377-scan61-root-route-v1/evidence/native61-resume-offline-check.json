@@ -1,0 +1,11 @@
+{
+  "status": "HOST-ONLY-NATIVE61-RESUME-GUARDS-PASS",
+  "tests": 3,
+  "positive": "copied public session/query with progressing floor and synthetic bounded-timeout trailer",
+  "disconnect_rejected": true,
+  "live_status_rejected": true,
+  "physical_resumed": false,
+  "actual_controller_interrupted": false,
+  "new_signatures": 0,
+  "key_loads": 0
+}
