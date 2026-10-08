@@ -1,0 +1,13 @@
+{
+  "status": "RDSEED-PRIMARY-PREREQUISITE-ASSESSMENT-NO-HARDWARE",
+  "physical_admission": false,
+  "entropy_approved": false,
+  "hardware_instructions": 0,
+  "test_methods": 2,
+  "source_sha256": {
+    "README.md": "9183643ee9aea3feadcf4566ea8bbd396f51adecd1be694c6f03eeaa3c8a9ed1",
+    "inventory.py": "e91f1a274098e5d754e123db8eedcb79a226de8ea907b8ec54ee6eac2ee37cc6"
+  },
+  "actual_inventory_missing": true,
+  "mature_drbg_backend_missing": true
+}

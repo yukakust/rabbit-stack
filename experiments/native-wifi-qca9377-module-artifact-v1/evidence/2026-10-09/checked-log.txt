@@ -1,0 +1,22 @@
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-I/home/yuka/rabbit-world/parallel-module-artifact-v1", "/home/yuka/rabbit-world/parallel-module-artifact-v1/artifact.c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/loader.c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/reference/sha256.c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/reference/monocypher.c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/reference/monocypher-ed25519.c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/test_module.c", "-o", "/home/yuka/rabbit-world/parallel-module-artifact-v1/runs/checked/test"]
+
+
+["/home/yuka/rabbit-world/parallel-module-artifact-v1/runs/checked/test"]
+PASS genuine owner-signature chunks + injected UEFI ownership/failure models; physical_calls=0
+checks=263536
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Oz", "-I/home/yuka/rabbit-world/parallel-module-artifact-v1", "-c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/artifact.c", "-o", "/home/yuka/rabbit-world/parallel-module-artifact-v1/runs/checked/artifact.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Oz", "-I/home/yuka/rabbit-world/parallel-module-artifact-v1", "-c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/loader.c", "-o", "/home/yuka/rabbit-world/parallel-module-artifact-v1/runs/checked/loader.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Oz", "-I/home/yuka/rabbit-world/parallel-module-artifact-v1", "-c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/reference/sha256.c", "-o", "/home/yuka/rabbit-world/parallel-module-artifact-v1/runs/checked/sha256.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Oz", "-I/home/yuka/rabbit-world/parallel-module-artifact-v1", "-c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/reference/monocypher.c", "-o", "/home/yuka/rabbit-world/parallel-module-artifact-v1/runs/checked/monocypher.obj"]
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-Oz", "-I/home/yuka/rabbit-world/parallel-module-artifact-v1", "-c", "/home/yuka/rabbit-world/parallel-module-artifact-v1/reference/monocypher-ed25519.c", "-o", "/home/yuka/rabbit-world/parallel-module-artifact-v1/runs/checked/monocypher-ed25519.obj"]
+

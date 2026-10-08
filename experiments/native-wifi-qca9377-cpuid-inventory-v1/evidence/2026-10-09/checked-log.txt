@@ -1,0 +1,27 @@
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-O1", "-g", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "/home/yuka/rabbit-world/parallel-cpuid-inventory-v1/inventory.c", "/home/yuka/rabbit-world/parallel-cpuid-inventory-v1/test.c", "-o", "/home/yuka/rabbit-world/parallel-cpuid-inventory-v1/runs/checked/test"]
+
+
+["/home/yuka/rabbit-world/parallel-cpuid-inventory-v1/runs/checked/test"]
+PASS 14 injected CPUID inventory cases; real_CPUID=0 MSR=0 RDSEED=0 entropy_output=0
+
+
+["/home/yuka/rabbit-world/unreal-yukabox-v1/engine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v26_clang-20.1.8-rockylinux8/x86_64-unknown-linux-gnu/bin/clang", "-target", "x86_64-pc-win32-coff", "-Oz", "-ffreestanding", "-fno-stack-protector", "-mno-red-zone", "-c", "/home/yuka/rabbit-world/parallel-cpuid-inventory-v1/inventory.c", "-o", "/home/yuka/rabbit-world/parallel-cpuid-inventory-v1/runs/checked/inventory.obj"]
+
+
+["objdump", "-h", "/home/yuka/rabbit-world/parallel-cpuid-inventory-v1/runs/checked/inventory.obj"]
+
+/home/yuka/rabbit-world/parallel-cpuid-inventory-v1/runs/checked/inventory.obj:     file format pe-x86-64
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         00000386  0000000000000000  0000000000000000  000000dc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .data         00000000  0000000000000000  0000000000000000  000004da  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  0000000000000000  0000000000000000  00000000  2**2
+                  ALLOC
+  3 .rdata        00000014  0000000000000000  0000000000000000  000004da  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .llvm_addrsig 00000000  0000000000000000  0000000000000000  000004ee  2**0
+                  CONTENTS, READONLY, EXCLUDE, NOREAD
+

@@ -1,0 +1,7 @@
+#include "inventory.h"
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+static unsigned calls,fail_at;static uint32_t max=7,ext=0x80000004,flags;
+static int INV_API fake(void*ctx,uint32_t leaf,uint32_t sub,InvLeaf*out){(void)ctx;assert(!sub);calls++;if(calls==fail_at)return -1;*out=(InvLeaf){0};if(leaf==0)*out=(InvLeaf){max,0x756e6547,0x6c65746e,0x49656e69};else if(leaf==1)*out=(InvLeaf){0x906ea,0,flags,0};else if(leaf==7)*out=(InvLeaf){0,1<<18,0,1<<9};else if(leaf==0x80000000)*out=(InvLeaf){ext,0,0,0};else assert(leaf>=0x80000002&&leaf<=0x80000004);return 0;}
+int main(void){InvRecord out;uint8_t hash[32]={1};unsigned checks=0;for(unsigned failure=0;failure<=7;failure++){calls=0;fail_at=failure;memset(&out,0x5a,sizeof(out));InvRecord before=out;int r=inv_capture(&out,fake,0,64,hash);if(failure)assert(r<0&&!memcmp(&out,&before,sizeof(out)));else assert(!r&&out.flags==11&&out.leaf_count==7&&!out.entropy_approved&&!out.msr_status);checks++;}fail_at=0;calls=0;max=0;ext=0x80000000;assert(!inv_capture(&out,fake,0,64,hash)&&calls==2&&out.flags==1);checks++;max=7;flags=1u<<31;assert(!inv_capture(&out,fake,0,64,hash)&&out.flags==15&&!out.entropy_approved);checks++;assert(inv_capture(&out,fake,0,0,hash)<0);assert(inv_capture(&out,fake,0,64,(uint8_t*)&out)<0);assert(inv_capture(&out,fake,&out,64,hash)<0);memset(hash,0,32);assert(inv_capture(&out,fake,0,64,hash)<0);checks+=4;printf("PASS %u injected CPUID inventory cases; real_CPUID=0 MSR=0 RDSEED=0 entropy_output=0\n",checks);return 0;}

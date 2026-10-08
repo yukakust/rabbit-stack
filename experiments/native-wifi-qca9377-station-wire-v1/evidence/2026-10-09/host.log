@@ -1,0 +1,1 @@
+checks=11277 exact-original-WMI-generators + owned auth/assoc coordinator PASS synthetic-only

@@ -1,0 +1,22 @@
+{
+  "status": "PUBLIC-CPUID-INVENTORY-MOCK-ASAN-COFF-PASS",
+  "physical_admission": false,
+  "actual_cpuid_calls": 0,
+  "msr_reads_writes": 0,
+  "rng_calls": 0,
+  "entropy_approved": false,
+  "result": "PASS 14 injected CPUID inventory cases; real_CPUID=0 MSR=0 RDSEED=0 entropy_output=0\n",
+  "source_sha256": {
+    "inventory.c": "6f1c4f165eba7634514d34a090c6915c4b5ad33b6e249facf5e86067fc101342",
+    "README.md": "b69ec8bd824443134ab2105ffef16a491fb977667fadc59877f896c006230c0c",
+    "test.c": "6c7f40f9bed1e206fd7e34d56652127139ab97d17bd2c9c35cf18c03b844c852",
+    "verify.py": "2b36497d5a9243bf4572a66c4033ec073a1061b9cee521ebcd8b3bd0a5ee20e8",
+    "inventory.h": "4a4a71a5ed79e0b1c7e67a482bc05d94615dc5ba34f172d0d39cf91a94f0c890"
+  },
+  "artifact_sha256": {
+    "test": "318a04b66ce95dfa07f6ee2c45f835040419930eed7e1a8d583495c009bc2543",
+    "size.log": "507bdc93f814b881021069cba50bb601abee166890ca8e873cd169932e7a2a59",
+    "full.log": "0b7ccef959718ae66c810ef2493a18748f0861be26f55a91f716697439091eb0",
+    "inventory.obj": "65c44d55ecb830d7ca2feff300e164464fb3fb6ee1055751b9bd10d92a858b4e"
+  }
+}

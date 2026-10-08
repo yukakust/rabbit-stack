@@ -1,0 +1,12 @@
+{
+  "status": "STATION-WIRE-FROZEN-OFFLINE",
+  "report_sha256": "a1ea4bf9f61c146a1f09b327bc95653a2bcbcd325d24c4e18a08a839f7789e7a",
+  "checks": 11277,
+  "wire_sha256": "a11d7297cb9e92c98f83b3b8be3ebdfdc98690d85329710582ec386fa3d3c003",
+  "coordinator_sha256": "45efcfb0d46a2bdb037e19dba480bd347bcec5cfbeead638bb4187eceb1830c6",
+  "physical_verified": false,
+  "rf_admission_granted": false,
+  "native_radio_capability": "UNKNOWN",
+  "nonzero_rx_sequence_supported": false,
+  "generation_reserved": false
+}

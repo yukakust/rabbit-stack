@@ -1,0 +1,21 @@
+{
+  "status": "FROZEN-SOFTWARE-ONLY-MODULE-PROOF",
+  "physical_admission": false,
+  "reports_sha256": {
+    "checked": "d28d924658a763f768aec531468d6b1ae3cee2b9cc7896046d868eb5e5d1a280"
+  },
+  "source_sha256": {
+    "inventory.c": "6f1c4f165eba7634514d34a090c6915c4b5ad33b6e249facf5e86067fc101342",
+    "README.md": "b69ec8bd824443134ab2105ffef16a491fb977667fadc59877f896c006230c0c",
+    "test.c": "6c7f40f9bed1e206fd7e34d56652127139ab97d17bd2c9c35cf18c03b844c852",
+    "verify.py": "2b36497d5a9243bf4572a66c4033ec073a1061b9cee521ebcd8b3bd0a5ee20e8",
+    "inventory.h": "4a4a71a5ed79e0b1c7e67a482bc05d94615dc5ba34f172d0d39cf91a94f0c890"
+  },
+  "proof_sha256": {
+    "checked-report.json": "d28d924658a763f768aec531468d6b1ae3cee2b9cc7896046d868eb5e5d1a280",
+    "checked-log.txt": "0b7ccef959718ae66c810ef2493a18748f0861be26f55a91f716697439091eb0"
+  },
+  "administrative_source_sha256": {
+    ".gitignore": "31eb9c895293dbb9b58b0b58e0eec0b58780a6131cca2b18f247926cec822dc1"
+  }
+}

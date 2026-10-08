@@ -1,0 +1,37 @@
+{
+  "status": "MODULE-ARTIFACT-OWNER-VERIFY-UEFI-MOCK-ASAN-COFF-PASS",
+  "physical_admission": false,
+  "physical_calls": 0,
+  "synthetic_firmware": true,
+  "result": "PASS genuine owner-signature chunks + injected UEFI ownership/failure models; physical_calls=0\nchecks=263536\n",
+  "coff_units": 5,
+  "source_sha256": {
+    "loader.h": "85d55f097230437cecd9dd4b51d7eba031a0c02ef7b696b16c76b11cbbe3fb57",
+    "artifact.h": "bda143ebbb479af4ac44a84ef2c59a0ad152f4768307f5c09fe95fe0e0f73a01",
+    "README.md": "98ad82afe00c3ffe41a25452cb032f79d2a5d946ac8ae0f2931397bc8450ad92",
+    "test_module.c": "8263b4dac63cb1db28c594838623102e7834bfdbde8fd7afda2cfc33a73327fa",
+    "loader.c": "2550015a379dbd77719405742434bc8b069b86d5e14f574513264c3772e58231",
+    "qemu_probe.py": "0352dfd7db934b2fc13f71b78de03305e9752c09be8763dcf6eab4c16535fcde",
+    "artifact.c": "36d79f6f07e6a28033820f9678b8005fca657f6324888fbfc6ad5f727d0a52da",
+    "qemu_parent.c": "b375e49cb9f6bdfc42f83b539dc886a4fcbc7e97b1002324295786cb52c516c2",
+    "module_abi.h": "1c225129fa9589d9268b8729b67f029a054e58e203833ee50a217f12b0cf25dc",
+    "verify.py": "73ae2f7422c4b446b3d82ffddf3b3f48b3a655630a450270b2475a4e1c18f34f",
+    "reference/monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+    "reference/monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "reference/monocypher.h": "fcaf6ed771358bb4f40fba016f6518ae86ec02b1b877d2cc35ad92d3a26fd7b3",
+    "reference/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+    "reference/uefi_abi.h": "a337006b799f4d974997952fa7bb1b31a522b49880a1966410db7400bb73ffb4",
+    "reference/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+    "reference/memory_bridge.c": "f24078fed0ce13fd7f867d494bc3e9cf89b40adbf7c2e04d9aaf15bf5cfe38ae",
+    "reference/monocypher-ed25519.h": "3a3035181f991a158d0e1c7567258f0bae8ba0f1f23c5512b4a1db1b3c9730ce"
+  },
+  "artifact_sha256": {
+    "artifact.obj": "b0f4d56b5f01b735ad3eac53df199c4ed121c6030b85a54219b12b5c5430ef96",
+    "test": "0a820dffcb662fd5646842b458291b0e34aabb0446b2d093776fd32231cd93f3",
+    "monocypher.obj": "d182d54dfb9c47d08a8b98c35e91b7c3de7192f63ee5d643119408e463d1c9fc",
+    "full.log": "a39eabe5ac5f3f292169edb493807b46bf5e333d37d951fa3f435830e6964538",
+    "monocypher-ed25519.obj": "da8de26aa63e9cf2cd1c1a12308888b2d0ad2c8ad8a0c842554d0747250ffcc6",
+    "sha256.obj": "0051d5e5a3c326eaff6e7d29251cd846bac378e420ed04c69302a4b1187c811e",
+    "loader.obj": "0eb532a3eb945b9cef8175acd14d2bac16cb1418e505e90f6643a71d2e7e3917"
+  }
+}
