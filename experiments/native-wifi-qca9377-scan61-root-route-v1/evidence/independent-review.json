@@ -1,0 +1,117 @@
+{
+  "status": "INDEPENDENT61-GATE-ADMISSION-TRANSITION-HOST-REVIEW-PASS",
+  "baseline_exact61_gate": true,
+  "bounded_passive_admission": true,
+  "integrity_rejection_cases": [
+    {
+      "case": "payload corruption",
+      "rejected": true
+    },
+    {
+      "case": "world corruption",
+      "rejected": true
+    },
+    {
+      "case": "wrong checked path",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/report.json",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/reproduction.json",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/production-diff-report.json",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/production.diff",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/init_probe.c",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/components/scan_policy.h",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/native-host/report.json",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/native-host/host.log",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/actors-qemu/observed.log",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/actors-empty-boot-qemu/observed.log",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/world19-source.json",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/policy-binding/report.json",
+      "rejected": true
+    },
+    {
+      "case": "integrity experiments/native-wifi-qca9377-scan61-native-v1/runs/policy-binding/host.log",
+      "rejected": true
+    },
+    {
+      "case": "primary admission audit integrity",
+      "rejected": true
+    }
+  ],
+  "integrity_rejection_count": 17,
+  "retirement_and_fresh_tests": "11 unittest methods PASS; copied temporary states only",
+  "unique_root_route_import": true,
+  "module_origins": {
+    "gate": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-root-route-v1/gate.py",
+    "admission": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-root-route-v1/admission.py",
+    "base60": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/launch.py",
+    "primitive": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-v1/native_route.py"
+  },
+  "corrected_findings": [
+    {
+      "issue": "unbound mutable production diff report",
+      "resolution": "exact51ba report hash plus bothpayload/perfilebaseline/candidate and actual policy report/log/header checks"
+    },
+    {
+      "issue": "single-row or explicit fixture metadata accepted as fresh physical-format boundary",
+      "resolution": "exact actualstatus/noexplicitfixture markers +four ordered/sized envelopes +helper/source provenance +QWBTfullboot and QWINactualINIT/rawREADY; physical attestation still not claimed"
+    },
+    {
+      "issue": "generic route import collided with frozen59 dependency",
+      "resolution": "new entrypoint renamedroot_route; direct fresh-process import now passes"
+    }
+  ],
+  "known_limitations": [
+    "This is a host/code/public-evidence review, not an actual BLE or owner-key test.",
+    "Parent reports actual fresh60 reviewed observation passed; child did not read the device or real state.",
+    "host_gate/controller production tooling remains Root separate admission responsibility."
+  ],
+  "private_key_loads": 0,
+  "real_state_operations": 0,
+  "device_operations": 0,
+  "native_edits": 0,
+  "source_sha256": {
+    "gate.py": "f7e650643e552021860ccc7c2c4be39deee910ba90f54c9f534263694e38585a",
+    "admission.py": "3bce9bd47d58ebd21cace29d60d8657e6e3c85f33f214e0b09fc3dd8c8dbfd11",
+    "root_route.py": "2802919379e5822818c3e968a8e40d17b5e52299c8c9c17ad05f31223916d76a",
+    "transition60.py": "1a35611106999fa2bd3b0c1607dc5f9e9d67c7df305938b1f46fd7f5dff0fcb4",
+    "test_transition60.py": "c8b1b7de3d4ff1af0b22b9833c3ac32bfc014f09e6a8b4c405c3d78a8f6b644c",
+    "observe60.py": "8bc90e32967f00c3fc80c64d01e0897e3d99c94235fa89e1de8f3db205073142",
+    "review_checks.py": "264c5d171ff9f60b29c3d256e414bcf609dd4df6b6f1da08b572b41d10a52f45"
+  },
+  "test_log_sha256": "e6de06692e5881bbabcd8ea9febf8621b8274e988b7e9f1426448b49f88e70ac"
+}

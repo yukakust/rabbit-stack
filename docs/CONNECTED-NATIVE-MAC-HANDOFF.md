@@ -5500,3 +5500,38 @@ credentials/DHCP/IP/Yukaboxexchange NOTperformed/notproven. Nextscan61 needs
 independentpolicy/RFadmission plusfreshphysical60releasedcontext+archivebefore
 newsign; frozenunsignedtechnical61proof alone notauthorization. Preservecitycat,
 noDellreboot/USB/bootstrap/OTP/flash/privatekeyexport/plainBLEcredentials.
+
+### 2026-10-08: Root bounded passive scan61 signed and sequential controller launched
+
+New scope native-wifi-qca9377-scan61-root-route-v1. Exact unsigned61 technical
+proof rechecked480sources/194generated/149fixtures, native19models, policy/header
+logs, normal/EMPTYQEMU/world19. Independent review17rejections+11retirement/fresh
+testsPASS; fixed newroute diffreport binding, four-envelope fresh provenance and
+Pythonnamecollision by root_route.py (frozen59/60 unchanged). Current2026GE
+primaryreference reviewed; SEPARATE bounded strict-passive13channels2412..2472
+20MHz/25s admission. FrozenRF/primary/probe/antenna flags remainfalse; no physical
+zeroTX or antenna measurement claimed. Firmware assumed honors passive request.
+
+Actualfresh knownpeerRFS60 + fixedcollector4envelopesQPFX/QWBT/QWOP/QWIN passed,
+all14released/rawREADY retained. Exact60 native+all12assets+allrawproofs durably
+archived at newscope/runs/retired60 BEFORE clearing completedhardwarepending.
+Signednative61 ONCE: pci-native-6gw77kuj, package
+ecd2703c73c1bc92e266542cf08241ef03c613ad4cfba75dcf6942ad0812d71c, payload
+305d0171c3c2e296fdf00f82a01cc838d67c0a1f3ffa836a847f4f12770ce074.
+Solecontroller PID73430 continue61.py, runs/control/controller61.json and
+continue61.log. Liveactualstate/logs takepriority; doNOTstartsecondcontroller,
+resignnative61 orreusecompleted60assets.
+
+Hostnewstaging41callback+216offline, progressmonitor75callback, fullscanreader
+495callback+794pure checksPASS; allsource/exe/log pins checkedbeforekey. Staging
+uses QWBT160 ratherthan removedPREFIX29..51; QWBT has NOgeneration. Root exact61
+current/APPLIED binding mandatory. Unchanged QFS/signedpackets/checkpoints/240DATA
+/50mspacing/240s-send/60s-query andquery-before-write reused. Only ordinary
+progressing hosttimeout resumesbounded24; realdisconnect/error STOPpreserves
+exactsignedsession. After actual61APPLIED+freshQPD18 setup, controller signs12
+firmware61 once, stagessequentially, waitsoneconnectionQWBT→QSCN/all14released,
+then captures110pages2x withfrozenread-scan61. Root mustparseactualownedMGMT/raw
+beforeSSIDclaim. Atlaunch61APPLIED/SSID/association/WPA/DHCP/IP/Yukaboxnotclaimed.
+NoDellreboot/USB/bootstrap/OTP/flash, noWi-Ficredentialsread/plainBLEprovisioning.
+Currentcity19 preserved. Anyrealcontrollerfault requiresreadlogs/exactsession;
+do not blindlyretry. This supersedes staleautomationnative51 snapshot.

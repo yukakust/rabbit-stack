@@ -1,0 +1,32 @@
+{
+  "status": "ROOT61-EXACT-SIGNED-NATIVE-CONTROLLER-LAUNCHED",
+  "native_counter_candidate": 61,
+  "native_packet_sha256": "ecd2703c73c1bc92e266542cf08241ef03c613ad4cfba75dcf6942ad0812d71c",
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-6gw77kuj",
+  "controller_pid": 73430,
+  "candidate_payload_sha256": "305d0171c3c2e296fdf00f82a01cc838d67c0a1f3ffa836a847f4f12770ce074",
+  "world_counter": 19,
+  "world_package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "sole_controller": true,
+  "physical61_APPLIED_confirmed_at_snapshot": false,
+  "physical_SSID_discovery": false,
+  "association": false,
+  "IP": false,
+  "host_tools": {
+    "native-wifi-qca9377-scan61-staging-observer-v1": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-staging-observer-v1/runs/control/sender",
+    "native-wifi-qca9377-scan61-progress-monitor-v1": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-progress-monitor-v1/runs/control/collector",
+    "native-wifi-qca9377-scan61-observer-v1": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-observer-v1/runs/control/read-scan61"
+  },
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/admission.py": "3bce9bd47d58ebd21cace29d60d8657e6e3c85f33f214e0b09fc3dd8c8dbfd11",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/assets61.py": "e5e83a82bbee5ded8e13f40a8461aeec88a750f868245352435d8f2d89c96a13",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/continue61.py": "82e78d074193e66d2e5f7a6d165aecfbb8c746af44e4bbfc3af688e0be79d43e",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/gate.py": "f7e650643e552021860ccc7c2c4be39deee910ba90f54c9f534263694e38585a",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/host_gate.py": "3c24078f5634f0423f1c83475b1e448fef3d1f222bd733f76123c7942e62fd43",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/observe60.py": "8bc90e32967f00c3fc80c64d01e0897e3d99c94235fa89e1de8f3db205073142",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/review_checks.py": "264c5d171ff9f60b29c3d256e414bcf609dd4df6b6f1da08b572b41d10a52f45",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/root_route.py": "2802919379e5822818c3e968a8e40d17b5e52299c8c9c17ad05f31223916d76a",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/test_transition60.py": "c8b1b7de3d4ff1af0b22b9833c3ac32bfc014f09e6a8b4c405c3d78a8f6b644c",
+    "experiments/native-wifi-qca9377-scan61-root-route-v1/transition60.py": "1a35611106999fa2bd3b0c1607dc5f9e9d67c7df305938b1f46fd7f5dff0fcb4"
+  }
+}

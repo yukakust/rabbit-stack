@@ -1,0 +1,154 @@
+{
+  "status": "READ-ONLY-PRIMARY-GE-POLICY-AND-STRICT-PASSIVE-INTENT-AUDIT",
+  "audited_on": "2026-10-08",
+  "scope": "bounded strict-passive13-channel2.4GHz scan candidate61",
+  "audit_operations": {
+    "device_operations": 0,
+    "bluetooth_operations": 0,
+    "private_key_loads": 0,
+    "credential_reads": 0,
+    "state_writes": 0,
+    "native_source_edits": 0,
+    "frozen_flag_edits": 0,
+    "compilation": false
+  },
+  "primary_instrument": {
+    "authority": "Georgian Communications Commission (ComCom)",
+    "number": 4,
+    "adopted_on": "2026-07-30",
+    "effective_clause": "Article2: on publication",
+    "official_url": "https://comcom.ge/ge/legal-acts/resolutions/2026-4-.page",
+    "gazette_url": "https://www.matsne.gov.ge/ka/document/view/6960074",
+    "annex1_url": "https://www.matsne.gov.ge/ka/document/download/6960074/0/2",
+    "annex_bytes": 93887,
+    "annex_sha256": "375521dbc40214d1435bce35203e97179b33e1dff35d28de2ce4a3d84a110116",
+    "annex_retrieval": "official HTTPS; downloaded to memory only; DOCX word/document.xml parsed without execution",
+    "annex_title_summary": "SRD interface requirements in spectrum designated for general authorization",
+    "table": 3,
+    "application": "broadband data transmission including WAS/RLAN",
+    "band_mhz": [
+      2400,
+      2483.5
+    ],
+    "maximum_EIRP_mW": 100,
+    "maximum_EIRP_dBm": 20,
+    "non_FHSS_maximum_EIRP_density_mW_per_MHz": 10,
+    "referenced_standard": "EN300328",
+    "note3_1_summary": "adequate spectrum sharing mechanism",
+    "primary_source_scope": "current primary spectrum reference, not certificate/legal approval of modified Dell or measured EIRP",
+    "ComCom_page_published_on": "2026-08-18",
+    "legal_effective_date_not_independently_derived": true
+  },
+  "engineering_policy": {
+    "proposal_path": "experiments/native-wifi-qca9377-regulatory-policy-v1/evidence/2026-10-07/policy-proposal.json",
+    "proposal_sha256": "a5ce1d3e2fdf8aefc2f862c77239cd2fbff1077371763c59c1b7a10d86ae3148",
+    "profile": "authenticated pinned Linux wireless-regdb GE intersected with actual board world108",
+    "country_override": false,
+    "board_override": false,
+    "candidate_centres_mhz": [
+      2412,
+      2417,
+      2422,
+      2427,
+      2432,
+      2437,
+      2442,
+      2447,
+      2452,
+      2457,
+      2462,
+      2467,
+      2472
+    ],
+    "width_mhz": 20,
+    "occupied_band_edges_mhz": [
+      2402,
+      2482
+    ],
+    "all_channels_passive": true,
+    "active_probe_intent": false,
+    "antenna_gain_db0_semantics": "source metadata/default, not measured zero-gain antenna"
+  },
+  "command_intent": {
+    "scan_control_flags_hex": "0x21",
+    "passive_flag_hex": "0x01",
+    "TLV_inverted_filter_probe_request_flag_hex": "0x20",
+    "add_broadcast_probe_request_flag_hex": "0x02",
+    "add_broadcast_probe_request_present": false,
+    "SSID_BSSID_probe_IE_lists": "empty",
+    "channel_passive_bit": 128,
+    "phy": "legacy20MHz",
+    "num_probes_parameter": 3,
+    "num_probes_semantics": "upstream-compatible parameter; PASSIVE intent prohibits active scan, value alone is not evidence of actual probes",
+    "association_or_host_mgmt_data_TX_path": false,
+    "firmware_behavior_assumption": "authenticated mature firmware honors checked passive command and configured channel policy",
+    "physical_zero_TX_guarantee": false,
+    "pinned_upstream_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+    "upstream_header_url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi.h",
+    "upstream_TLV_url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi-tlv.c"
+  },
+  "technical_source_bindings": {
+    "candidate_report_path": "experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/report.json",
+    "candidate_report_sha256": "0188ad2b1663804fbc6cf663beef4fb3cba2daa05c06eee2fe48fabece5dc388",
+    "candidate_payload_sha256": "305d0171c3c2e296fdf00f82a01cc838d67c0a1f3ffa836a847f4f12770ce074",
+    "wmi_scan_source_path": "experiments/native-wifi-qca9377-scan61-native-v1/components/wmi_scan.c",
+    "wmi_scan_source_sha256": "5bb731eff3d3a39f02533999a34d84a8e9a65bda765700fb7ae520d0f1dd571e",
+    "channel_source_path": "experiments/native-wifi-qca9377-scan61-native-v1/components/channel_wire.c",
+    "channel_source_sha256": "eb5aa8afea3cfa350eb5d2211b0ce3ba2cc5989b2dafe82f50ab274fc60b749d"
+  },
+  "parent_supplied_actual60_context": {
+    "source": "Root actual collector/classification; not independently re-read by audit agent",
+    "evidence_directory": "experiments/native-wifi-qca9377-fullboot60-root-route-v1/evidence/physical60-fullboot-READY",
+    "QPFX_generation": 60,
+    "prefix_phase": 3,
+    "prefix_reason": 0,
+    "all14_released": true,
+    "QWBT_done": 3114,
+    "regdomain": 108,
+    "band_capability_mhz": {
+      "2GHz": [
+        2312,
+        2732
+      ],
+      "5GHz": [
+        4920,
+        6100
+      ]
+    },
+    "WMI_INIT_tx_complete": true,
+    "WMI_READY": true,
+    "READY_ABI_minor": 574,
+    "READY_MAC": "c0:b5:d7:78:c3:fb",
+    "capabilities_are_channel_permission": false
+  },
+  "gate_semantics": {
+    "frozen_artifact_RF_admission": false,
+    "frozen_artifact_primary_GE_verified": false,
+    "frozen_artifact_probe_absence_physically_verified": false,
+    "frozen_artifact_antenna_gain_measured": false,
+    "frozen_flags_changed": false,
+    "new_primary_reference_found_in_this_audit": true,
+    "all_four_flags_must_be_true_before_first_receive_intent_trial": "not established by existing source; flags describe evidence limits, not native conjunction",
+    "first_trial_probe_absence_proof_requirement": "would require an independent measurement/enforcement gate, not substitution of host wire tests",
+    "antenna_measurement_scope": "transmit EIRP assessment, not an independently established prerequisite for receive-only command intent",
+    "trial_authority": "Root separate reviewed bounded admission",
+    "parent_decision": "Root accepts a separate bounded strict-passive trial intent without a promise of physical zero-TX"
+  },
+  "root_still_must_bind": [
+    "fresh actual60 installed packet/session and all-owner-release context",
+    "exact61 source/generated/native/QEMU/policy and payload closure",
+    "current immutable world19 package/source/reproduction",
+    "sole controller/state.lock and current transport owner state",
+    "public native signature and actual APPLIED61 receipt after delivery",
+    "complete public firmware assets/signatures/body digest and receiver receipts",
+    "bounded25second scan/finite STOP and actual owner-release proof",
+    "stable full110-page2x raw capture and accepted MGMT provenance before SSID claim"
+  ],
+  "limitations": [
+    "The audit supplies primary references and command-intent evidence only; it grants no physical admission or device certificate.",
+    "Host passive flags and empty probe lists do not prove absence of physical firmware transmissions.",
+    "Probe absence and antenna gain were not measured; their frozen false flags remain unchanged.",
+    "No new approval flow, RF measurement, antenna value or legal exemption was invented.",
+    "Discovery is not association/WPA/DHCP/IP/Yukabox connectivity."
+  ]
+}
