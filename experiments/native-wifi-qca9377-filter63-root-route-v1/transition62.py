@@ -75,3 +75,45 @@ def fresh(folder,before):
  need(len(boot)==values[0]['raw_bytes']==160 and boot[:8]==b'QWBT0001' and int.from_bytes(boot[8:12],'little')==5 and not int.from_bytes(boot[12:16],'little') and not int.from_bytes(boot[20:24],'little'),'fresh62 bootstrap completed without error')
  _,capture62,_=capture();need(len(status)==values[1]['raw_bytes']==320 and status.hex()==capture62['status_hex'][0],'fresh62 status differs from complete stable owned export')
  return {'status_sha256':g.flow.sha(status),'physical_counter':62,'all14_released':True}
+
+def inventory(directory):
+ directory=Path(directory);need(directory.is_dir() and not directory.is_symlink(),'real archive source required');out={}
+ for p in directory.rglob('*'):
+  need(not p.is_symlink(),'archive symlink forbidden')
+  if p.is_file():out[str(p.relative_to(directory))]=sha(p)
+ return out
+
+def sync_tree(directory):
+ import os
+ for p in directory.rglob('*'):
+  if p.is_file():
+   with p.open('rb') as handle:os.fsync(handle.fileno())
+ for p in sorted([directory,*[p for p in directory.rglob('*') if p.is_dir()]],key=lambda p:len(p.parts),reverse=True):
+  fd=os.open(p,os.O_RDONLY)
+  try:os.fsync(fd)
+  finally:os.close(fd)
+ fd=os.open(directory.parent,os.O_RDONLY)
+ try:os.fsync(fd)
+ finally:os.close(fd)
+
+def retire(state_path,state,observation,candidate_admission):
+ """Root sole-lock API; requires separately frozen actual63 gate to exist."""
+ import shutil
+ # Not available until Root implements/adopts the exact tested63 gate. Merely
+ # supplying a dictionary with successful booleans cannot authorize retirement.
+ g63=load('_filter63_exact_candidate_gate',ROOT/'gate.py')
+ actual=g63.gates(g63.CHECKED,(g63.CHECKED/'payload.efi').read_bytes(),Path(state['package']).read_bytes())
+ need(actual['native_counter']==63 and actual['source_model_verified'] is True and all(candidate_admission.get(k)==v for k,v in actual.items()),'independent exact63 source gate required')
+ state_path=Path(state_path);before=state_path.read_bytes();route=prior();flow=route.gate.flow
+ need(flow.read_json(state_path)==state,'state changed before retirement')
+ verified=verify(state);fields=fresh(observation,before)
+ directory=ROOT/'runs/retired62';need(not directory.exists(),'retirement already exists; inspect instead of overwriting');directory.mkdir(parents=True)
+ sources={'native':Path(verified['native_directory']),'assets':Path(verified['asset_directory']),'fresh-observation':Path(observation),'physical62-evidence':REPO/'experiments/native-wifi-qca9377-htt62-root-route-v1/evidence/physical62-HTT-VERSION-CONF'};manifests={}
+ for name,source in sources.items():
+  expected=inventory(source);shutil.copytree(source,directory/name);need(inventory(source)==expected and inventory(directory/name)==expected,'archive changed '+name);manifests[name]=expected
+ (directory/'before-state.json').write_bytes(before)
+ flow.save(directory/'retirement.json',{'status':'ACTUAL62-HTT3.56-RELEASE14-DURABLY-ARCHIVED','native_counter':62,'world_counter':19,'inventory':manifests,'prior_state_sha256':flow.sha(before),'fresh':fields,'candidate':candidate_admission,'new_signatures':0,'reboot_command':False})
+ sync_tree(directory);need(state_path.read_bytes()==before,'state changed before durable transition')
+ for name,source in sources.items():need(inventory(source)==manifests[name] and inventory(directory/name)==manifests[name],'source/archive changed '+name)
+ after=dict(state);after['hardware_trial_pending']=None;after['last_hardware_trial_retirement']=str(directory/'retirement.json');flow.save(state_path,after)
+ return after,directory

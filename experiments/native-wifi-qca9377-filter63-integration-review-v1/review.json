@@ -1,0 +1,53 @@
+{
+  "status": "CONDITIONAL-SOURCE-REVIEW-NOT-PHYSICAL-ADMISSION",
+  "physical_admission": false,
+  "native_actual_producer_asan_verified_by_this_review": false,
+  "source_sha256": {
+    "components/pipeline.inc": "0730c0eaf999048e7ab12b7e6ea89d0d895e9a1bd460a386eb145ecd3a59cc42",
+    "components/htt_native.c": "690fe00db5888effe202c6ced4fc827c96ef3ebb1bb92bc7302fee5cee564f31",
+    "components/htt_native.h": "fe9d4e50244e6009384b92ba2f64d3c042fa3968f855d5d76ffbf7d5571739ad",
+    "components/pipeline_status.inc": "6757ee6554508d59fe595e82b2d6cf3ad0beec04b2737ba709714ca0e6be72f3",
+    "components/coordinator.c": "12569748f5fbf959ee687fbe163705a6c0e5cbe9744c4b4f1e0edb4da62434af",
+    "components/scan_native.c": "a9513208ea75a25944e7926d7b61e99d9810dd147548e8861f2d182121dc2d32",
+    "components/rx.c": "25fc4e58a593c7404696e6d61f92825614c91c4ddbf6694c63f4dd866b4d68df",
+    "components/rx.h": "b3e2544925e336b189b7355564825f17736e62a4536de86b2c41918fdfbea331",
+    "components/tx.c": "b48957bbf411e5a0c0768607d4986241ddce30a78d3828a60fe5446f09363996",
+    "components/pipeline_gatt.c": "f709716b7fdb77a6f78f4265a47b6b03da897c1affc12e8b7e886472791dec85"
+  },
+  "checks_sha256": "41cba3ee099c4a456ec049e64a339c1214c44dfe69268cdcc6e482602d6c3f1b",
+  "accepted_source_properties": [
+    "BODY-only filter reuses single CE3 QcaPersistentTx and shared ledger; filter_post immediately follows POSTED before subsequent RX pump.",
+    "Echo exact raw/epoch/completion/floor precedes HTT; CREATE/DELETE DMA are not falsely described as firmware ACK.",
+    "HTT success requires READY phase5, actual response_completion, DMA completion, actual version3.56 and same epoch before native_scan_begin.",
+    "Shared staging response13/archive14,15 copies response first then archives to lower/equal destinations; all 84 count combinations preserve bytes in pure model.",
+    "Pointers revoked after handover; status maps raw via saved scalar completion, never later query pointers.",
+    "Already validated credit-only and pipe1 HTT archived without second credit application or pretending to be WMI scan events.",
+    "QFEX full raw export bounds raw_bytes and retains actual HTC trailer; RX union holds owned bytes, no borrowed DMA pointers.",
+    "Fault HTT response/archive transfer now precedes failure decision; archive16 saturation explicitly faults.",
+    "Success remains partial startup; RX_RING_CFG/AGGR absent and status partial flag1 prevents full-startup claim."
+  ],
+  "findings": [
+    {
+      "id": "READY-WITNESS-LIFETIME",
+      "severity": "false-failure-risk",
+      "status": "OPEN-REQUIRES-ACTUAL-PRODUCER-MODEL-OR-BOUNDED-FIX",
+      "files": [
+        "components/pipeline.inc:23",
+        "runs/generated/startup.c:59",
+        "runs/generated/init_transaction.c:38"
+      ],
+      "description": "Filter admission uses startup.prefix as raw READY witness, but startup receive overwrites prefix on every accepted RX. Early READY before INIT DMA completion followed by valid credit-only then TX completion reaches RUNNING with prefix credit-only, causing fault101. This is rejection of a valid startup, not false READY success. Producer notified; keep original frozen sources unchanged."
+    }
+  ],
+  "remaining_required_proofs": [
+    "Whole production pipeline actual coherent producer models on Yukabox ASAN/UBSAN, including READY/credit-only order and alias staging at count13.",
+    "COFF and repeated whole EFI exact immutable mapped<=4194304 and file cap; latest previous mapped4202496 was over cap before shared storage.",
+    "Actual generated/source closure pins, coherent raw-union consumer ABI oracle, normal/EMPTY world19 QEMU and unchanged HCI/USB/resident protected bytes.",
+    "Root exact public admission and sole hardware ownership."
+  ],
+  "limitations": [
+    "Pure Python storage/source guards do not execute native C, validate C ABI, emulate firmware, establish physical radio reception, or authorize signing.",
+    "Snapshot source is mutable producer draft; recheck after final producer freeze.",
+    "No keys, credential files, state writes, radio access or native compilation performed."
+  ]
+}

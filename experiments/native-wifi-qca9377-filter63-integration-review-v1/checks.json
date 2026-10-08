@@ -1,0 +1,19 @@
+{
+  "status": "PURE-STORAGE-HANDOVER-AND-SOURCE-GUARDS-PASS",
+  "cases": 98,
+  "native_abi_tested": false,
+  "actual_producer_asan_tested": false,
+  "physical_admission": false,
+  "source_sha256": {
+    "components/pipeline.inc": "0730c0eaf999048e7ab12b7e6ea89d0d895e9a1bd460a386eb145ecd3a59cc42",
+    "components/htt_native.c": "690fe00db5888effe202c6ced4fc827c96ef3ebb1bb92bc7302fee5cee564f31",
+    "components/htt_native.h": "fe9d4e50244e6009384b92ba2f64d3c042fa3968f855d5d76ffbf7d5571739ad",
+    "components/pipeline_status.inc": "6757ee6554508d59fe595e82b2d6cf3ad0beec04b2737ba709714ca0e6be72f3",
+    "components/coordinator.c": "12569748f5fbf959ee687fbe163705a6c0e5cbe9744c4b4f1e0edb4da62434af",
+    "components/scan_native.c": "a9513208ea75a25944e7926d7b61e99d9810dd147548e8861f2d182121dc2d32",
+    "components/rx.c": "25fc4e58a593c7404696e6d61f92825614c91c4ddbf6694c63f4dd866b4d68df",
+    "components/rx.h": "b3e2544925e336b189b7355564825f17736e62a4536de86b2c41918fdfbea331",
+    "components/tx.c": "b48957bbf411e5a0c0768607d4986241ddce30a78d3828a60fe5446f09363996",
+    "components/pipeline_gatt.c": "f709716b7fdb77a6f78f4265a47b6b03da897c1affc12e8b7e886472791dec85"
+  }
+}

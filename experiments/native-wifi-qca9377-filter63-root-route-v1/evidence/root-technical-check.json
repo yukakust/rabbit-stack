@@ -1,0 +1,32 @@
+{
+  "status": "ROOT63-EXACT-PUBLIC-TECHNICAL-GATE-PASS",
+  "candidate": {
+    "report_sha256": "ba46f2c04021b71744a45a0fc31769d93629062422b8a6fbf878e66d8767fe37",
+    "payload_sha256": "a636b40f10103a90879bad00a55de173fa36ab2b7a4fd4f38262825191bf4442",
+    "profile_status": "FILTER63-REPEATED-EFI-QEMU-WORLD19-DIAGNOSTIC-PASS",
+    "receiver_policy": {
+      "owner": "622b248c42829ad066e5ae428ea30e955c750e4c3f221553bb346254e82545ac",
+      "target": "363d751288df7b47295f9c7a5250c3b41db24efd1a43a4bd348f00744c6bc7e9",
+      "digest": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+      "total": 751436,
+      "type": 8,
+      "version": 84017153,
+      "kind": 1,
+      "generation": 63
+    },
+    "native_counter": 63,
+    "world_package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+    "source_model_verified": true
+  },
+  "checks": [
+    "exact final source/model/PE/COFF/QEMU/world PASS",
+    "wrong payload rejected",
+    "wrong world rejected",
+    "unreviewed directory rejected"
+  ],
+  "gate_source_sha256": "7773f4c330106cba477551560476db5ca9d0628b51230ea79d2a28a146e31cce",
+  "signing_admitted": false,
+  "device_operations": 0,
+  "key_accesses": 0,
+  "state_mutations": 0
+}

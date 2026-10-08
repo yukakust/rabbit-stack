@@ -1,0 +1,27 @@
+{
+  "status": "SYNTHETIC-RETIRE62-FS-SYNC-ORDER-FAILCLOSED-REVIEW-PASS",
+  "checks": [
+    "missing-gate rejected without state save",
+    "dict-only rejected without state save",
+    "wrong-candidate rejected without state save",
+    "gate-failed rejected without state save",
+    "synthetic archive+allfile/directoryfsync precede final syntheticstate save",
+    "source-corrupt rejected without state save",
+    "archive-corrupt rejected without state save",
+    "source-symlink rejected without state save",
+    "archive-exists rejected without state save",
+    "state-before-race rejected without state save",
+    "state-after-sync-race rejected without state save",
+    "fsync-failed rejected without state save"
+  ],
+  "source_sha256": {
+    "review_retirement.py": "1d58b49cab55cacb4742ecf91891fedbe1d33a676db7d5f94fb21f2c98fedf0d",
+    "transition62.py": "4bae1bed8a1ad20bc445b4d2c4e48fd30b9c3e9896bf43f87b2ccf0f4718d6af"
+  },
+  "actual_gate_or_state_accessed": false,
+  "real_state_writes": 0,
+  "BLE_operations": 0,
+  "private_key_accesses": 0,
+  "signatures_created": 0,
+  "synthetic_fixture_not_physical_retirement": true
+}

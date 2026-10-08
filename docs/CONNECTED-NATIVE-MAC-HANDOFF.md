@@ -5866,3 +5866,30 @@ bythispreparation. New63gate/retirement/controller notready. Preservecompleted
 firmware62pending; neverclear/replay/re-sign withoutrevieweddurabletransition.
 DoNOTretrydeniedHCI generation/timerscope; Maccommand/sign only, nativeC
 ASAN/COFF/QEMU ONLYYukabox, noLinuxDell/USB/bootstrap/OTP/flash/reboot.
+
+### 2026-10-08: isolated filter63 actual software pipeline/whole EFI verified
+
+Physical62/world19 unchanged; no live BLE controller, new63 signature/counter,
+retirement or firmware operation. New filter63-native-v1 final unsigned producer
+passed sixteen actual driver/native synthetic ASAN/UBSAN scenarios,92 actual C
+query-handover checks and15 COFF modules ONLYYukabox. Includes earlyREADY52-byte
+retention across latest16-byte credit-only input before INIT DMA, wrong/missing
+ECHO,unsupportedHTT,wrongSSID,scan faults,mixedHTT and archive16 overflow.
+Whole EFI202240/mapped4194304 exactly immutable4MiB; three builds identical;
+normal/EMPTY QEMU distinct images, exact world19 timing/semantics PASS.
+Candidate report ba46f2c04021b71744a45a0fc31769d93629062422b8a6fbf878e66d8767fe37;
+payload a636b40f10103a90879bad00a55de173fa36ab2b7a4fd4f38262825191bf4442;
+native report ca983db6fb2e9723a0f4371442307c2f3684cf5244fc6a22e1008167c9e543cc;
+reproduction931d3174122b73cc60a4856c5a165273e951528a684fd3ddf9e1dd7a4f08f4f0.
+Root exact public technical gate verifies473repo/207generated/161compiled
+fixture inputs,15COFF/twoactualsanitizer executables,fullPE/QEMU/world19.
+This remainsPARTIALstartup: noRX_RING_CFG/AGGR/association/keys/IP. Frozen
+oldproduction untouched; noHCI generation/timer forbidden scope retry.
+
+Root63 draftgate/route/assets/controller/classifier prepared; final independent
+review/host63 freeze/admission stillpending. Retirement12syntheticFS testsPASS
+includingfsyncbeforestate-save/corruption/symlink/race; NOTactualretirement.
+Gatealone cannotauthorize signing; admission UNFROZEN stillrejects. Final
+hostbindings mustjoin exactproducer448QF63/416QSCN/22x2104QFEX before fresh62
+observation, durablearchive, one localsignature and sequentialphysical trial.
+Fresh62read NOTyetinvoked; preservecompleted firmware62hardwarepending.

@@ -1,0 +1,45 @@
+{
+  "status": "SOURCE-AND-PURE-MODEL-UNION-CONDITIONAL-REVIEW",
+  "source_sha256": {
+    "experiments/native-wifi-qca9377-rx63-union-review-v1/review.py": "b80fdfa10296635165e798b4c09f7e72bea8f21b5532ed586c53d4aa626de3d9",
+    "experiments/native-wifi-qca9377-filter63-native-v1/components/rx.h": "a9ead03a3c3896a89aca69f6df8c52d088388a887f5bbe91fcd58db4a4b376d5",
+    "experiments/native-wifi-qca9377-filter63-native-v1/components/rx.c": "25fc4e58a593c7404696e6d61f92825614c91c4ddbf6694c63f4dd866b4d68df",
+    "experiments/native-wifi-qca9377-filter63-native-v1/components/scan_native.c": "51d980f5f9768f31e91f5b093e8b2e9f4bb3840627741c60149f8105ceec7758",
+    "experiments/native-wifi-qca9377-filter63-native-v1/components/dispatch.c": "838513a67bdc220ef6c45aae8122118e59f464a8e6b6b5d422102d8c4809f501",
+    "experiments/native-wifi-qca9377-filter63-native-v1/components/coordinator.c": "e8cd77ea793a53f9b02b7eeb45717d9e144c12add2cbd50485b8a291e893e7c9",
+    "experiments/native-wifi-qca9377-htt62-native-v1/runs/checked-candidate/htc_wire.c": "1ea19b85b8cd3e52f8165eb39a69346aca26c60a2fa3a52402bb547634080374"
+  },
+  "pure_model_checks": 4081,
+  "cases": [
+    {
+      "trailer": false,
+      "payload_lengths": 2041
+    },
+    {
+      "trailer": true,
+      "payload_lengths": 2033
+    }
+  ],
+  "actual_C_producer_or_ABI_tested_by_child": false,
+  "safe_proposal_under_conditions": true,
+  "all_HTC_dialects_supported": false,
+  "payload_pointer_is_embedded_bytes": true,
+  "dangling_pointer_in_embedded_event_copy": false,
+  "raw_trailer_preserved_in_model": true,
+  "current_unbounded_normalized_export": true,
+  "bound_present_in_current_source": false,
+  "requirements": [
+    "Exact offsetof payload==offsetof raw+8 and 2048/2040 sizes static_assert on actual native ABI.",
+    "Raw-only actual producer copy, no writes or normalized memset beyond payload length.",
+    "Serialized QEXP must virtual-zero padding beyond bytes without changing owned raw trailer.",
+    "Rebuild all event consumers/oracle/fixtures together; no old-object ABI mixing.",
+    "Actual full RX/CE producer and owned copy tested, never incompatible fabricated raw/payload stores.",
+    "Mixed credit-only/HTT records need explicit owned routing, strict scan validation preserved.",
+    "New host decoder must accept/review present credit-only zero-payload records; frozen old decoder rejects them.",
+    "Proof raw full HTC records separate from normalized QEXP when trailer evidence is claimed."
+  ],
+  "native_admission": false,
+  "device_operations": 0,
+  "key_accesses": 0,
+  "state_operations": 0
+}
