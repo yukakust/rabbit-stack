@@ -1,0 +1,258 @@
+{
+  "status": "READ-ONLY-ASSOCIATION-HTT-RSN-PROVISIONING-IP-NEXT-STAGE-MATRIX",
+  "audited_on": "2026-10-08",
+  "native61_physical_context": "Root sole controller delivering signed61; this audit did not query hardware and does not claim61 APPLIED/SSID",
+  "rows": [
+    {
+      "stage": "real BSS selection",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-scan61-observer-v1/decode_scan.py",
+        "experiments/native-wifi-qca9377-bss-security-v1/bss_security.h",
+        "experiments/native-wifi-qca9377-bss-security-v1/bss_security.c",
+        "experiments/native-wifi-qca9377-bss-security-v1/rsn_core.c"
+      ],
+      "prepared": [
+        "accepted owned raw MGMT/SSID/BSSID/frequency/epoch/floor decoder",
+        "host-only copied BSS/rates + mature hostap RSN eligibility adapter; narrow legacy20 WPA2-PSK/CCMP, optional PMF only"
+      ],
+      "missing_or_unconfirmed": [
+        "actual61 SSID/raw export not yet observed by this audit",
+        "BSS security adapter not integrated into native61; AP security/rates must come from actual IEs, not SSID or Mac padlock",
+        "terminal61 live_frequency0 needs an honest retained-frequency/provenance bridge; do not relabel it active",
+        "new association acquisition must revalidate selected BSS in its own live epoch"
+      ],
+      "next_bounded_gate": "capture stable110pages2x after actual61 release, parse supported real BSS/rates/RSN and reject unsupported profiles"
+    },
+    {
+      "stage": "radio lifetime handoff",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-persistent-native-v1/persistent.c",
+        "experiments/native-wifi-qca9377-persistent-rx-v1/rx.c",
+        "experiments/native-wifi-qca9377-persistent-tx-v1/tx.c",
+        "experiments/native-wifi-qca9377-scan61-native-v1/scan_build.py"
+      ],
+      "prepared": [
+        "persistent owner/RX/CE3 TX bridges and once-applied credits prepared/model-tested",
+        "scan61 retains14 maps during bounded scan then quiesces and releases them"
+      ],
+      "missing_or_unconfirmed": [
+        "scan61 is not a persistent association runtime after terminal",
+        "historical READY/BSS copies cannot act as a live ring/credit/owner token",
+        "future profile needs repeated verified boot/new acquisition or separately reviewed persistent stage handoff, not reuse of released61 owners"
+      ],
+      "next_bounded_gate": "new source-closed profile adopts live READY before stop and inventories every new owner; do not edit/deploy frozen61"
+    },
+    {
+      "stage": "HTT protocol discovery",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/htc_session.c",
+        "experiments/native-wifi-qca9377-htt-version-v1/version.h",
+        "experiments/native-wifi-qca9377-htt-native-v1/htt_native.h",
+        "experiments/native-wifi-qca9377-htt-native-profile-v2/profile_build.py",
+        "experiments/native-wifi-qca9377-htt-native-profile-v2/firmware_op.c"
+      ],
+      "prepared": [
+        "current bootstrap already negotiates separate HTT CONNECT_SERVICE; do not send duplicate CONNECT or assume WMI endpoint",
+        "host-only version codec/query + sole CE4 publisher and combined CE1/CE2 RX proof",
+        "profile-v2 binds HTT op from authenticated firmware IE6, not literal3; accepts supported actual VERSION_CONF major2/3"
+      ],
+      "missing_or_unconfirmed": [
+        "actual HTT VERSION_CONF not physically proved",
+        "old profile56/world17 identity and ATT layout cannot be installed unchanged as next generation",
+        "profile56 raw30pages/handles32..92 collide with61 scan exports if simply composed"
+      ],
+      "next_bounded_gate": "small separate current-generation/world19 HTT-version-only candidate with copied raw response, negotiated endpoint/op/version and actual all-owner release; no association/RF data intent"
+    },
+    {
+      "stage": "HTT packet data plane",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-htt-native-v1/htt_native.c",
+        "experiments/native-wifi-qca9377-station-association-plan-v1/README.md"
+      ],
+      "prepared": [
+        "version request/response ownership contract and pinned ath10k data-plane implementation references"
+      ],
+      "missing_or_unconfirmed": [
+        "PCI QCA9377 fragment-bank/RX-ring setup, TX descriptors/buffer cookies/refill/drain not implemented",
+        "actual op/major-specific T2H decoding, PEER_MAP, SEC_IND, RX decapsulation and packet-number/security handling missing",
+        "WMI CE2 MGMT receiver is not HTT data RX; HTT version success is not packet transport"
+      ],
+      "next_bounded_gate": "actual supported ring/buffer formats with explicit DMA owner budget, malformed/stale/duplicate/timeout tests and independent raw captures"
+    },
+    {
+      "stage": "STA management association",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-vdev-wire-v1/vdev_wire.c",
+        "experiments/native-wifi-qca9377-station-association-plan-v1/peer_wire.h",
+        "experiments/native-wifi-qca9377-station-association-plan-v1/peer_wire.c",
+        "experiments/native-wifi-qca9377-station-association-plan-v1/references.json"
+      ],
+      "prepared": [
+        "STA VDEV_CREATE serializer and host-only PEER_CREATE24byte serializer (DEFAULT peer type)"
+      ],
+      "missing_or_unconfirmed": [
+        "VDEV_START/UP, PEER_ASSOC and key command serializers/driver adapters absent",
+        "real bounded 802.11 authentication/association management TX/RX FSM, AP status/AID/DTIM/timeout/teardown missing",
+        "PEER_CREATE must await actual HTT PEER_MAP; DMA completion is not peer creation",
+        "WMI PEER_ASSOC configures firmware after AP association; it is not the over-air association exchange",
+        "select actual firmware MGMT_TX_WMI or version-specific HTT mgmt path; do not guess a universal descriptor"
+      ],
+      "next_bounded_gate": "synthetic source-pinned management state machine/command adapters first; later separately admitted TX policy and actual AP responses/AID/peer map before association claim"
+    },
+    {
+      "stage": "mature RSN/WPA supplicant",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-supplicant-port-v1/README.md",
+        "experiments/native-wifi-qca9377-supplicant-port-v1/verify.py",
+        "experiments/native-wifi-qca9377-supplicant-port-v1/ptk_boundary_test.c",
+        "experiments/native-wifi-qca9377-security-plan-v1/eapol_frame.h",
+        "experiments/native-wifi-qca9377-security-plan-v1/eapol_frame.c"
+      ],
+      "prepared": [
+        "pinned hostap2.11 unedited wpa.c host ELF object compiled;47direct unresolved symbols",
+        "mature PTK installer/no-reinstall boundary1038host tests",
+        "bounded EAPOL-Key framing201477host tests"
+      ],
+      "missing_or_unconfirmed": [
+        "full RSN core not linked or freestanding COFF ported; complete M1-M4/group handshake/replay/MIC/rekey not tested",
+        "real AES unwrap/RSN MIC/PTK derivation, RNG/timers/memory/config/PMKSA and driver callbacks unresolved; do not use stubs that report success",
+        "historical hostap reference needs deployment/security-fix review; no current security-approved baseline claimed"
+      ],
+      "next_bounded_gate": "small pinned freestanding mature-core adapter + real crypto/entropy and synthetic mature authenticator interoperability before credential use"
+    },
+    {
+      "stage": "WMI key command / HTT key confirmation",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-station-association-plan-v1/README.md",
+        "experiments/native-wifi-qca9377-supplicant-port-v1/ptk_boundary_test.c"
+      ],
+      "prepared": [
+        "exact pinned ath10k completion contract documented; extracted mature PTK guard tested with synthetic definite failure/success"
+      ],
+      "missing_or_unconfirmed": [
+        "WMI VDEV_INSTALL_KEY publisher and actual HTT SEC_IND decoder/join absent",
+        "SEC_IND must match current peer-id/vdev/cipher/unicast-group/epoch/fresh RX watermark and sole pending operation; no invented nonce",
+        "hostap set_key is synchronous: queue/DMA success cannot return success; bounded backend pumping must defer EAPOL and prohibit supplicant reentry",
+        "ambiguous install timeout may already have changed firmware state; quarantine/definite teardown before any retry to avoid PN reset",
+        "GTK/group-key replay/no-reinstall and controlled-port authorization are not supplied by the PTK-only fixture"
+      ],
+      "next_bounded_gate": "confirmed actual key-install adapter with synthetic ordering/ambiguity/reinstall/PN tests; no port authorization before genuine completion"
+    },
+    {
+      "stage": "authenticated encrypted credential provisioning",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-efi-rng-port-v2/rng_port.h",
+        "experiments/native-wifi-qca9377-efi-rng-port-v2/rng_port.c",
+        "experiments/native-wifi-qca9377-noise-monocypher-backend-v2/strict_handshake.h",
+        "experiments/native-wifi-qca9377-noise-native-port-v2/native_port.c",
+        "experiments/native-wifi-qca9377-owner-auth-frame-v2/auth_frame.h",
+        "experiments/native-wifi-qca9377-owner-auth-frame-v2/auth_frame.c",
+        "experiments/native-wifi-qca9377-production-memory-plan-v1/pool_owner.h",
+        "experiments/native-wifi-qca9377-production-memory-plan-v1/pool_owner.c"
+      ],
+      "prepared": [
+        "fail-closed EFI RNG ABI/range/overlap adapter, strict mature Noise/Monocypher backend, bounded memory port",
+        "genuine host NK→Split→owner Ed25519 AUTH→encrypted recipient ACK positive/negative fixture",
+        "caller-owned33407byte EFI pool allocation/wipe/detach/release model and QEMU proof; corrected offline composition fits immutable bounds"
+      ],
+      "missing_or_unconfirmed": [
+        "actual Dell provider/algorithm/provenance entropy approval absent; protocol presence/nonzero bytes are not quality proof",
+        "native recipient identity/physical fingerprint/QR enrollment and complete application coordinator not integrated",
+        "full source-closed combined native execution/stack/BootServices/arena+RNG owners and retained-failure recovery missing",
+        "actual credential record/schema/once-apply encrypted ACK flow and secret-store bridge not implemented; AUTH/ACK predicate alone sends no credential",
+        "BLE UUID/owner signatures/target hashes do not authenticate recipient or encrypt secrets"
+      ],
+      "next_bounded_gate": "synthetic integrated protocol/lifecycle first; real credential access only after approved physical recipient/entropy, ordinary owner AUTH and exact encrypted ACK; no credential read now"
+    },
+    {
+      "stage": "authorized Ethernet/ARP/DHCP/IP",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-security-plan-v1/README.md"
+      ],
+      "prepared": [
+        "primary DHCP/lwIP NO_SYS architecture references only"
+      ],
+      "missing_or_unconfirmed": [
+        "no native ARP/DHCP/IP/UDP or lwIP implementation found in experiments inventory",
+        "netif output/input, packet allocation/decapsulation/checksums/MTU/timers/lease state/random DHCP transaction ID/DNS/gateway missing",
+        "IP traffic must remain blocked until association and mature RSN controlled-port authorization; EAPOL is a separate restricted path"
+      ],
+      "next_bounded_gate": "select/pin a mature NO_SYS network stack and prove synthetic DHCP/ARP adapter before actual lease/renewal/address and Yukabox exchange"
+    },
+    {
+      "stage": "immutable code and dynamic-RAM budget",
+      "existing_files": [
+        "experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/report.json",
+        "experiments/native-wifi-qca9377-production-memory-plan-v1/pool_target.c",
+        "experiments/native-wifi-qca9377-production-memory-plan-v1/pool_owner.c",
+        "experiments/native-wifi-qca9377-production-memory-plan-v1/README.md"
+      ],
+      "prepared": [
+        "actual61 PE mapped4177920 of4194304 leaves16384bytes; file191488 of262144 leaves70656bytes",
+        "caller-owned EFI pool pattern exists; previous static Noise arena composition failed mapped cap then pool placement fitted in a separate native54-based offline test"
+      ],
+      "missing_or_unconfirmed": [
+        "adding STA/supplicant/HTT/network code to61 is not covered by16KB headroom; host wpa.c object text29624 is not a final native size prediction",
+        "new generation needs measured modular/link layout; data pools can move BSS/queues/state, not magically remove executable code",
+        "extra pool/DMA/secret/RNG owners must be inventoried, zeroized, detached and genuinely freed on unload; failed/uncertain free remains retained",
+        "33407byte pool is additional realRAM, not free capacity; old all14 release gate cannot silently cover it",
+        "do not enlarge mapped cap/change bootstrap or execute arbitrary downloaded modules without a separately validated loader/target contract"
+      ],
+      "next_bounded_gate": "measure complete new candidate file/mapped/code/data/stack/pools and all-owner failure lifecycle before any signing"
+    }
+  ],
+  "preferred_next_bounded_software_step": "after genuine61 supportedBSS evidence, current-generation/world19 HTT version-only integration; in parallel mature RSN synthetic linkage and provisioning coordinator/entropy review, without reading credentials",
+  "hardware_authority": "Root only; no second BLE/controller",
+  "operations": {
+    "device_operations": 0,
+    "BLE_operations": 0,
+    "private_key_or_credential_reads": 0,
+    "state_operations": 0,
+    "native_edits": 0,
+    "compilation": false,
+    "commit": false
+  },
+  "source_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-bss-security-v1/bss_security.c": "e95c67534328cfe2505610ac35c6917fbf416d63f638793a2b99c7009058dc63",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-bss-security-v1/bss_security.h": "bbcc0da124531f1a8677e0b06152bc667d1429237e5a7171aebced59a74798c0",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-bss-security-v1/rsn_core.c": "4c2576282074d2c779107b46ae80f9ce3d72e5387d79f89ea2d8a2f167c4af39",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-efi-rng-port-v2/rng_port.c": "5ac751cc0d2e0feed19e7ed1e8bc4f2a92e9aaec729bbacc1b8c3368885f6752",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-efi-rng-port-v2/rng_port.h": "c68480b6b5677d907d6b535fe1ead1d03ef4d27096cb5b56417415305bb9fd31",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt-native-profile-v2/firmware_op.c": "95f58e63568b616665450834ec16e3106a8827b5450bcecbbd2e1756076b4647",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt-native-profile-v2/profile_build.py": "3e8cec65817c5502b320cefb5fbe17bda4ca80d255dc1594004316c98d1d05c2",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt-native-v1/htt_native.c": "f9ed759e96558c8ed51c1bf9eb10701dbe2e486e1ab31960f0e544029191e977",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt-native-v1/htt_native.h": "d621dc71524bbd8cde299cbd599576c4691d8d3e0957f5d126ca3c9f8ee9e6d3",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-htt-version-v1/version.h": "ea0de3d45329cfb590c5dbf0aa586814b680c62371a58540d625eb0fe479a291",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-noise-monocypher-backend-v2/strict_handshake.h": "1b211a0f15077c4c8c6eb9081ffe451f1b26c34542f5365a2b34e123b2a2bb6b",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-noise-native-port-v2/native_port.c": "e58ad1df82bda070d8a96aec0d72644a9a6e342d490e2bfecd508f149b266349",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-owner-auth-frame-v2/auth_frame.c": "a0cea1e95eb0b55d6dab9617abb87bcc1b0c801eb0efc964ea95079ba7c264b4",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-owner-auth-frame-v2/auth_frame.h": "9a07037b069a65640249468d1c4c59f4a483c30b689c8df31f81a3d82f6038b9",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-persistent-native-v1/persistent.c": "55b271400c3e1e34353d9648bd32dd70404aea6c3889573c088b4d6054c53455",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-persistent-rx-v1/rx.c": "70a6c54ede04eaa10ce982b2a9bba799c5d32bdd66ee56db17a94c57b6619c48",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-persistent-tx-v1/tx.c": "9c42b09eb0c02aed9dc047798ad97ab0db29552b07028602ba2d727032761810",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-production-memory-plan-v1/README.md": "bbb4c155484634335a60410c2f9d0007668887eeacd04acd5e1c23e320522cda",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-production-memory-plan-v1/pool_owner.c": "cc39249b386822dea7d9fa90988b9c127f64d743e9ab4afd0d4d564dd3a7fbd0",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-production-memory-plan-v1/pool_owner.h": "813041394a58866487b7f9c11008cdf14866598d2f8960548201d94136e26cfa",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-production-memory-plan-v1/pool_target.c": "e83ad41c0ea4a6940eb34bebaf754e0d8c91d41b449cd9845a3146b3a684ebe9",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/htc_session.c": "8fd45a3eb54cbbadefe7d15484864811fd170af65658658035403ebc49634cb7",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-native-v1/runs/checked-candidate/report.json": "0188ad2b1663804fbc6cf663beef4fb3cba2daa05c06eee2fe48fabece5dc388",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-native-v1/scan_build.py": "c61ca6040899e66135476bb9c7184a17c15f3e83ea10c8bed441b870e02dfe2e",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-observer-v1/decode_scan.py": "abd638a1d3ea0a5d62d45cd9f66d93d6a1a21595dbf3bbae156e4ac7fc065775",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-security-plan-v1/README.md": "b44e3cf069263943dd15b3db3bd9480f1a2ed589fd167e693370af9446574b78",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-security-plan-v1/eapol_frame.c": "3a5d3fd7494f2d0cc895364efeb529eed8008b08071cc5074f4a6d4ceaec0e66",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-security-plan-v1/eapol_frame.h": "a57cf93e4b5667aaf9327cd3632544343b615ad8652bd17956cf866be0f41775",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-station-association-plan-v1/README.md": "d3758d526db9df9b936050f366f6f26bf9b5db620a3930e148f24ff409c16c8a",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-station-association-plan-v1/peer_wire.c": "83079e9920800c676a90bcbd1a8dba84b7d151d8c52303e235a17faeafd9d081",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-station-association-plan-v1/peer_wire.h": "3bf15e7869adc551f64fa9a83ccd3ce772bb0b597cb2d8e6c1c90920588cf0e2",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-station-association-plan-v1/references.json": "1f59f1f353df311d0c5925f1168f8d127c1c807eff12dd5bc750a127f16339d4",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-supplicant-port-v1/README.md": "09ddf33c66cd9526f044872a9bf74bbd5bc02e3b7352e592a9082b6769d65980",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-supplicant-port-v1/ptk_boundary_test.c": "aeda8913d25f58c2540880a4ef2c5253e993162bd1e7001fc28dbf1b1a8794a8",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-supplicant-port-v1/verify.py": "7896e4fdc08f54e7465dbd2e4a14d22f0f061b4b01055f7844f14b529acf68f3",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-vdev-wire-v1/vdev_wire.c": "7644187bbb928a5f1214a878c58df1141fa201dd2db8a0daacb912ff38b8f365"
+  },
+  "physical_association": false,
+  "physical_SSID_observed_by_audit": false,
+  "WiFi_connected": false,
+  "IP_obtained": false,
+  "Yukabox_exchange": false
+}

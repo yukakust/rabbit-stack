@@ -5535,3 +5535,21 @@ beforeSSIDclaim. Atlaunch61APPLIED/SSID/association/WPA/DHCP/IP/Yukaboxnotclaime
 NoDellreboot/USB/bootstrap/OTP/flash, noWi-Ficredentialsread/plainBLEprovisioning.
 Currentcity19 preserved. Anyrealcontrollerfault requiresreadlogs/exactsession;
 do not blindlyretry. This supersedes staleautomationnative51 snapshot.
+
+Native61 physicalpaced transfer confirmed41000 thenmorebytes; native sender has
+existing300s hostinterval andflowonlytwo resumableattempts percall. This isnot
+Dell/firmwaredeadline. Atordinaryprogressingnative hosttimeout flowfirstqueries
+sameexactsession,thenresumeswithoutsigning. IfPID73430 eventuallyexits with
+DELIVERY-NOT-CONFIRMED andnative_pending still6gw77kuj, NEWresume_native61.py
+maycontinueONLYafterALLcontroller61*.json PIDs gone, exactpacket/loghashes, last
+FAILonly300sboundedtimeout, noBLE/receiverfault, andpositivefloorabovepriorquery.
+Itreusescontinue61.py; no newnativecounter/signature. Never runwhilePIDalive.
+Actualcurrentstate/receiverquery priority; pending/rejection/recovery/fault are
+NOTordinarytimeouts andmustbeinvestigated.
+Nextstage read-only matrix evidence/association-next-stage.json binds36existing
+files: realHTTpacket/PEERMAP/SECIND,airassociation,keyinstall/coordinator and
+ARP/DHCP/IP arestillgaps. Existinghostapsupplicant models/compiledobjectsareNOT
+fullphysicalWPA. Scan61 cleansall14, nextstationneedsnewlive acquisition and
+actualHTTVERSIONCONF; no duplicateHTTCONNECT. EFI61headroom16KB requiresreviewed
+nextversionmemorylayout. Credential provisioning stillrequiresphysicalentropy
+andpinnedrecipient/channelproof; no credentialread/plainBLE shortcut.
