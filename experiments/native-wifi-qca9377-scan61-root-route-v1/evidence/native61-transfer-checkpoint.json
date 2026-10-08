@@ -1,0 +1,13 @@
+{
+  "status": "ACTUAL61-NATIVE-TRANSFER-CHECKPOINT",
+  "checked_at": 1791451098.8393412,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-6gw77kuj",
+  "native_packet_sha256": "ecd2703c73c1bc92e266542cf08241ef03c613ad4cfba75dcf6942ad0812d71c",
+  "received_floor": 24600,
+  "total_stream_bytes": 191776,
+  "engine_at_snapshot": 60,
+  "physical61_APPLIED": false,
+  "SSID_discovery": false,
+  "IP": false,
+  "log_sha256": "b70b97702264c97e78eb0b05ba9788e223c5e4d313b817b0670f04c21b576563"
+}
