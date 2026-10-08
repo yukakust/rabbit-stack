@@ -1,0 +1,19 @@
+{
+  "status": "ROOT65-OFFLINE-EXACT-ADMISSION-CHECK-PASS",
+  "source_sha256": {
+    "continue65.py": "787406e84cf96e7da4d5d9372f2cb63488b7cde7818f7ff33adb9714c3124231",
+    "route65.py": "e839f650c8a4caaa25fdedcea3ef2f795f4331cfd9941912b3ed77b2047a3f7c"
+  },
+  "native65_freeze_sha256": "1e8d4c9492c371fc8297d829a8bcafe3485fdfa38ac90825e39031e61f37ee21",
+  "native65_payload_sha256": "84b28939af3774620ec57e19e3fd09fc4315edaeb69e572f7fa982c648284d20",
+  "independent_actual64_classification_replay": true,
+  "compiled_input_and_PE_size_checked": true,
+  "tampered_payload_world_directory_rejected": true,
+  "installed_owner_target_public_binding": true,
+  "device_operations": 0,
+  "private_key_loads": 0,
+  "physical65": false,
+  "entropy_approved": false,
+  "IP": false,
+  "actual_callback_type_marker_length_corruptions_rejected": 7
+}

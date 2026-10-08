@@ -1,0 +1,9 @@
+{
+  "status": "THREE-IDENTICAL-UNSIGNED-INVENTORY65-PASS",
+  "payload_sha256": [
+    "84b28939af3774620ec57e19e3fd09fc4315edaeb69e572f7fa982c648284d20",
+    "84b28939af3774620ec57e19e3fd09fc4315edaeb69e572f7fa982c648284d20",
+    "84b28939af3774620ec57e19e3fd09fc4315edaeb69e572f7fa982c648284d20"
+  ],
+  "physical_admission": false
+}

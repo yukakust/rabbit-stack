@@ -1,0 +1,26 @@
+{
+  "status": "HOST-INVENTORY65-SEQUENTIAL-DIAGNOSTIC-PREFLIGHT-PASS",
+  "executable": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-inventory65-native-v1/runs/control/collector",
+  "executable_sha256": "f09120114b07b1b5803e0112e47de8369a8fc015808f7730b47fcacfbdf84023",
+  "compiler_input_sha256": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-inventory65-native-v1/collector.m": "3fb07fc3644c7fc7a3e1b671fe997a37387e66b5bd160104dc276dc845355625",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "test_executable_sha256": "57e3269f9b18dc54037059fcf639c4cfe263a2537ce6d02ffb7bbe8c7b388ba4",
+  "test_inputs": {
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-inventory65-native-v1/collector.m": "3fb07fc3644c7fc7a3e1b671fe997a37387e66b5bd160104dc276dc845355625",
+    "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-inventory65-native-v1/host_test.m": "0ff6dd6dddd41e0641c966d832b80d4da65a8caeb3c12811c9c8e574ac81991d",
+    "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "host_log_sha256": "5076ab2fb8b11f126799d7d0e4c6ec9c5a2290fe98068ba6105ace0af395ddb6",
+  "host_result": "PASS 45 HOST collector cases; NO REAL MANAGER/WRITE",
+  "bluetooth_manager_started": false,
+  "writes": 0,
+  "private_key_loads": 0,
+  "physical_readiness_proven": false,
+  "source_sha256": {
+    "collector.m": "3fb07fc3644c7fc7a3e1b671fe997a37387e66b5bd160104dc276dc845355625",
+    "host_test.m": "0ff6dd6dddd41e0641c966d832b80d4da65a8caeb3c12811c9c8e574ac81991d",
+    "compile_host.py": "9c0c33daba49f8b9faa0e6027b688fc23b99235716e705ac602665513f783656"
+  }
+}

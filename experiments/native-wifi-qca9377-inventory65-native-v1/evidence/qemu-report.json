@@ -1,0 +1,33 @@
+{
+  "status": "INVENTORY65-EXACT-WORLD19-NORMAL-EMPTY-QEMU-PASS",
+  "gates": [
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "84b28939af3774620ec57e19e3fd09fc4315edaeb69e572f7fa982c648284d20",
+      "empty_boot": false,
+      "background": "121826",
+      "observed_log_sha256": "ae5c82fb5f84dbdbd80ee9cbab5d952779712676e314f2a11f0b57990587c7d4",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "038286a8252ab0904e8af00bf3ac537fcd07c09fd6b72ecd1fdd3e8aca1eb71e"
+    },
+    {
+      "status": "EXACT-ACTORS-QEMU-LOAD-SNAPSHOTS-CLOCK-FULLSCREEN-RESTORE-REJECTION-PASS",
+      "payload_sha256": "84b28939af3774620ec57e19e3fd09fc4315edaeb69e572f7fa982c648284d20",
+      "empty_boot": true,
+      "background": "121826",
+      "observed_log_sha256": "ae5c82fb5f84dbdbd80ee9cbab5d952779712676e314f2a11f0b57990587c7d4",
+      "physical_verified": false,
+      "bluetooth_verified": false,
+      "controller": "mock USB only",
+      "fixture_image_sha256": "cef21983c15788809f69f8e756b654b6ed1196ff5a21e3310624da41bac883f6"
+    }
+  ],
+  "payload_sha256": "84b28939af3774620ec57e19e3fd09fc4315edaeb69e572f7fa982c648284d20",
+  "world_package_sha256": "89ffda340552cf33a4c732597388f4fea358d47b0850f7720bdce51a2b3968b7",
+  "test_source_sha256": "0e11e632081f1b57b34131a2e6777247fc0fe8a2847b84f62cc5c49cfd85d6a6",
+  "physical_admission": false,
+  "RNG_entropy_approved": false,
+  "USB_backend": "SYNTHETIC-QEMU-FIXTURE"
+}
