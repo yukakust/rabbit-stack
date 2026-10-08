@@ -1,0 +1,4 @@
+{"action":2,"bitmap":1,"confirmed_floor":18580,"device_attestation":false,"error":0,"firmware_started":false,"length":65760,"packet_sha256":"478cb587d02b72b1abb570994cc840c98058f4183c61555891a6d8d3ccd4c3f3","peripheral":"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF","ready":0,"received":18580,"state":1}
+{"action":2,"bitmap":1,"confirmed_floor":22900,"device_attestation":false,"error":0,"firmware_started":false,"length":65760,"packet_sha256":"478cb587d02b72b1abb570994cc840c98058f4183c61555891a6d8d3ccd4c3f3","peripheral":"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF","ready":0,"received":22900,"state":1}
+{"action":2,"bitmap":1,"confirmed_floor":27220,"device_attestation":false,"error":0,"firmware_started":false,"length":65760,"packet_sha256":"478cb587d02b72b1abb570994cc840c98058f4183c61555891a6d8d3ccd4c3f3","peripheral":"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF","ready":0,"received":27220,"state":1}
+CONTROLLED60s LIMIT: outcome unknown; preserve checkpoint, query before further delivery

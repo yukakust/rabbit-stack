@@ -1,0 +1,239 @@
+{
+  "status": "READ-ONLY-DATA60-SOURCE-AUDIT-NO-CAUSAL-PROOF",
+  "native60_report_sha256": "5e5b1be82bf69048d22cd02380e9dd850820e39befd24a7991ce653bd637e772",
+  "native60_payload_sha256": "3984d3f5d1c9a3c3540bf2ef00972bea52406a6f78edc56bd215507110668fd6",
+  "generated_sources": {
+    "driver.c": {
+      "native60_sha256": "554109ea5bc7b7803d41ced5068c326e4ff0ce3222a4a51611ccecac5cd5e354",
+      "native59_identical": true
+    },
+    "diagnostic_gatt.c": {
+      "native60_sha256": "b0395477daf944601e0b6fe6fb6eaa0b86870e1da4d39210914d78cac2ef46cd",
+      "native59_identical": true
+    },
+    "firmware_gatt.c": {
+      "native60_sha256": "39da0bb334a71ecef3979dd3c1bc00aae7cf7a6552955d96c7a88818d7974989",
+      "native59_identical": true
+    },
+    "firmware_channel.c": {
+      "native60_sha256": "1f563dae553244c6fbc9781a7d987de0d30b301945430111b544b52f918bb10d",
+      "native59_identical": true
+    },
+    "firmware_port.c": {
+      "native60_sha256": "0299837bb7ac1bab5dec73d8bbe31598d126cfaf1c4566088c6d15ebebc41e93",
+      "native59_identical": true
+    },
+    "firmware_chunks.c": {
+      "native60_sha256": "093fb59a143a60753785bb4ceddefc5827480c085361c898ad63f999cca6a26c",
+      "native59_identical": true
+    },
+    "ble_recovery_link.c": {
+      "native60_sha256": "1be2817c5df0a8a2cc117fed1fda5e38a5568d5f1980d70803da5fd2192e973e",
+      "native59_identical": true
+    },
+    "usb_port.c": {
+      "native60_sha256": "8f8e0dba759cc9efa7179ace8ebe25fec616575088a72398ba995c8b1c07de75",
+      "native59_identical": true
+    },
+    "bt_event_stream.c": {
+      "native60_sha256": "4d1c8aa7013ca0048dd582ce12a89a776afe91d93088a97ec9b6a2512bce895b",
+      "native59_identical": true
+    }
+  },
+  "public_packets": {
+    "59_sha256": "f2d638bd3dbbb7946362cfd2397e746fd8ab860d6e7700d12adbe396dcb6a651",
+    "60_sha256": "478cb587d02b72b1abb570994cc840c98058f4183c61555891a6d8d3ccd4c3f3",
+    "59_generation": 59,
+    "60_generation": 60,
+    "payload_identical_after224": true,
+    "window240_sha256": "9bf8db2f9c681ee16b9644886fd514cbb25ff0907188d923b89a8552b3e34360",
+    "window100_sha256": "a82de3466b839c21ad81ab748bb921f60befcb924e9c6539d76931398dcd7b3e"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "level": "source-and-public-packet-identity",
+      "finding": "Nine audited DATA/driver/USB/HCI source files are byte-identical to59. Real signed59/60 chunk1 payload and offset18480 window are identical; only generation/signature header bytes differ. Baseline59 full12 success is supplied by Root; this audit does not re-attest hardware.",
+      "files": [
+        "driver.c",
+        "diagnostic_gatt.c",
+        "firmware_gatt.c",
+        "firmware_channel.c",
+        "firmware_port.c",
+        "firmware_chunks.c",
+        "ble_recovery_link.c",
+        "usb_port.c",
+        "bt_event_stream.c"
+      ]
+    },
+    {
+      "id": "F2",
+      "level": "source-deterministic",
+      "finding": "ATT DATA handle17/op0x12 reaches qca_fc_data through prefix/WMI/operating/boot delegation and qca_ram_att (boot_round0). At received18480, valid240/100 bytes require only guard checks, bounded copy and received advance to18720/18580; no SHA/signature, firmware execution, PCI/MMIO or offset-special/content parsing.",
+      "sources": [
+        {
+          "file": "firmware_gatt.c",
+          "line": 57
+        },
+        {
+          "file": "firmware_channel.c",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "id": "F3",
+      "level": "source-deterministic",
+      "finding": "DATA reject yields ATT Error0x80; it does not directly disconnect Bluetooth. Duplicate-below-floor input compares exact bytes; new-equal-floor input does not inspect data contents. Offset18480 is77*240, not a65760/65536/4096 boundary (page offset2096)."
+    },
+    {
+      "id": "F4",
+      "level": "source-deterministic",
+      "finding": "All12 bitmap/ready is the boot activation gate. Bitmap1/ready0 cannot enter full MAIN/BMI_DONE/HTC/WMI path or arm prefix watchdog. At ram.phase4/stage5 idle qca_fwp_step is not called, so ordinary polling allocates/frees no firmware pool and starts no chip operation.",
+      "sources": [
+        {
+          "file": "init_probe.c",
+          "line": 242
+        }
+      ]
+    },
+    {
+      "id": "F5",
+      "level": "measurement-limit",
+      "finding": "QPFX HCI recording accepts only phases1/2; phase0 intentionally omits every HCI event. Thus raw_count/overflow0 provides no DATA-stage HCI absence proof. usb_fault0 is a pre-write successful query, not a post-failure USB result. Credits15/inflight1 is coherent but does not export RX assembly, ACL size, queued count or later completion handling."
+    },
+    {
+      "id": "F6",
+      "level": "source-deterministic-fault-branches-not-cause",
+      "finding": "Inbound rl_bulk/rl_acl faults on invalid ACL length/PB/handle/framing, overlapping first fragment or continuation mismatch. Outbound reply can fault on queue-capacity; credits0 defers transmission. NumberCompleted for current handle with done>inflight faults; USB transfer/error/short OUT produces fatal poll result. None of these branches is captured after the failed actual DATA.",
+      "sources": [
+        {
+          "file": "ble_recovery_link.c",
+          "line": 112
+        },
+        {
+          "file": "ble_recovery_link.c",
+          "line": 88
+        },
+        {
+          "file": "usb_port.c",
+          "line": 77
+        }
+      ]
+    },
+    {
+      "id": "F7",
+      "level": "source-deterministic-coverage-gap",
+      "finding": "Fullboot60 native models upload complete assets by direct qca_ram_att calls; modeled USB bulk-IN always times out. These models do not replay signed60 DATA through actual USB bulk\u2192HCI assembly\u2192ATT\u2192channel\u2192queued ACK during live city/partial receipt. QEMU validates other full supervisor/world traffic but has no actual PCI/firmware staging hardware."
+    },
+    {
+      "id": "F8",
+      "level": "source-branch-hypothesis-not-proof",
+      "finding": "Bulk-IN timeout/not-ready is accepted without feeding any changed partial DataLength to rl_bulk. If actual firmware consumed partial bytes on a timeout, later stream assembly could be affected; actual post-write status/DataLength/bytes are absent. This is a falsifiable loss-path hypothesis, not an established reference/specification violation or60 cause."
+    },
+    {
+      "id": "F9",
+      "level": "observed-host-not-cause",
+      "finding": "Mac-selected peer history includes RSSI-78..-85/No-Sync/NACK before timeout; valid read success followed by first DATA failure and smaller100B repeat does not distinguish radio loss from inbound assembly/ATT rejection/ACK loss.100B failure weakens a maximum-sized-request-only explanation.",
+      "trials": [
+        {
+          "DATA_cap": 240,
+          "prefix_read_time": 1791441213.949421,
+          "disconnect_time": 1791441215.479249,
+          "read_to_disconnect_seconds": 1.5298280715942383,
+          "NSError_domain": "CBErrorDomain",
+          "NSError_code": 6,
+          "confirmed_floor_before_write": 18480,
+          "disconnect_floor_cached": true,
+          "RFCS_state": 1,
+          "RFCS_length": 65760,
+          "RFCS_received": 18480,
+          "RFCS_bitmap": 1,
+          "RFCS_ready": 0,
+          "QPFX_generation": 60,
+          "QPFX_phase": 0,
+          "hardware_stage": 5,
+          "adapter_phase": 12,
+          "cleanup_slot": 14,
+          "held_DMA": 0,
+          "BLE_state": 2,
+          "pending_HCI_opcode": 0,
+          "credits": 15,
+          "inflight": 1,
+          "raw_count": 0,
+          "raw_overflow": 0,
+          "usb_fault": 0,
+          "post_write_Dell_snapshot_present": false
+        },
+        {
+          "DATA_cap": 100,
+          "prefix_read_time": 1791442184.702945,
+          "disconnect_time": 1791442187.224549,
+          "read_to_disconnect_seconds": 2.521604061126709,
+          "NSError_domain": "CBErrorDomain",
+          "NSError_code": 6,
+          "confirmed_floor_before_write": 18480,
+          "disconnect_floor_cached": true,
+          "RFCS_state": 1,
+          "RFCS_length": 65760,
+          "RFCS_received": 18480,
+          "RFCS_bitmap": 1,
+          "RFCS_ready": 0,
+          "QPFX_generation": 60,
+          "QPFX_phase": 0,
+          "hardware_stage": 5,
+          "adapter_phase": 12,
+          "cleanup_slot": 14,
+          "held_DMA": 0,
+          "BLE_state": 2,
+          "pending_HCI_opcode": 0,
+          "credits": 15,
+          "inflight": 1,
+          "raw_count": 0,
+          "raw_overflow": 0,
+          "usb_fault": 0,
+          "post_write_Dell_snapshot_present": false
+        }
+      ]
+    },
+    {
+      "id": "F10",
+      "level": "unproven",
+      "finding": "Workspace/asset pointer or heap corruption remains possible only as speculation: RFCS exports logical state, not pool pointers/canaries, and no failing device memory snapshot exists. Earlier complete chunk0 reused the same65760-byte workspace, and normal C source provides no18480-specific write fault. No corruption is established."
+    }
+  ],
+  "falsifiable_tests_needed": [
+    {
+      "id": "T1",
+      "kind": "offline-exact-production-path",
+      "status": "NOT RUN",
+      "test": "Use frozen60 bytes and public signed chunk0/chunk1 to restore received18480, feed DATA240 and DATA100 through USB bulk/HCI/actual rg_att while city frames run. Enumerate every USB/HCI split/coalescing and legitimate ACL sizes27/64/251; assert received18720/18580, ATT0x13, pool/frame canaries and exact ACK credit lifecycle. No owner key/new packet/signature."
+    },
+    {
+      "id": "T2",
+      "kind": "offline-fault-classification",
+      "status": "NOT RUN",
+      "test": "Same exact path: inject timeout-with-changed-partial-length, lost/delayed completed-packet event, invalid/current-vs-old completion handle, duplicate/gapped DATA and outbound error/short-transfer. Record source branch plus expected receipt floor; distinguish unchanged floor from copied-but-ACK-lost floor."
+    },
+    {
+      "id": "T3",
+      "kind": "future-observation-requires-separate-root-authorization",
+      "status": "NOT RUN",
+      "test": "Capture device bulk-IN status/result/reported length and complete ACL\u2192ATT request\u2192handler result\u2192ACK queue/sent/completed chronology during DATA, plus workspace/pointer/canary metadata. Current phase0 QPFX cannot supply it. A new diagnostic candidate/controller is outside this audit; no timer fix is proposed."
+    },
+    {
+      "id": "T4",
+      "kind": "future-host-radio-observation-requires-separate-root-authorization",
+      "status": "NOT RUN",
+      "test": "If Root authorizes another trial, bind actual write callback and exact checkpoint/peer connection history; compare stable radio conditions and DATA vs read/control under one owner. Do not infer RF cause from RSSI alone and do not repeat hardware actions from this audit."
+    }
+  ],
+  "device_operations": 0,
+  "key_accesses": 0,
+  "state_accesses": 0,
+  "native_source_edits": 0,
+  "new_candidate": false,
+  "native_tests_run": 0,
+  "cause_established": false,
+  "denied_timer_preparation_accessed": false
+}

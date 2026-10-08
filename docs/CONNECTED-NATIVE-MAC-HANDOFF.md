@@ -5433,3 +5433,22 @@ exactRFCSretention/allsourcegates beforeone trial. FullWi-Fi/Dellstillnotready.
 Read-onlyaudit: nineproductiondata/BTfiles59↔60byteequal, chunk1payload/18480..18719
 bytesidenticaltoalreadyaccepted59; DATAcopyonly, crypto/firmware/MMIO later.
 No currentproofwhether inboundACL/outboundACK/creditstall orradio itselfcausesloss.
+
+### 2026-10-08: humanauthorized60sMacWi-Fi quiet test, progress/restored/normalresume
+
+Owner “делай” explicitlyauthorizedpreparedsingle60sMacWi-Fi-offtest. Fresh
+knownpeer60/RFCSpartialretention+source/packetowner checksPASS; noresign.
+Actualwifi_quiet60_trial.py originalDATA240 helper: firstRFCS18580 then22900
+then27220, validQPFX60 reads, noCBError beforecontrolled60sparentlimit. Sender
+killedatlimit/outcomeunknownpastlastACK; preservedcheckpoint. finallyen0On
+restored+verified, independent75swatchdogterminatedafterconfirmedrestore.
+Actualsecond -getairportpower alsoOn. Notproofpermanentfix/soleRFcause.
+
+Freshknownpeer60/RFCSafterrestore retains exactpacket; one reviewednormalWi-FiON
+continuationPID64363 nowcontinue_assets60_after_checked_disconnect.py,
+wifi-on60-posttrial-controller.json/logwifi-on60-posttrial-resume.log. New
+RFCSconfirmed33460 then37780(secondchunk); normaltransfercurrentlyprogresses.
+Same6fuyx2jq/same12signatures, no extraWi-Fi-offinterval/permissions assumed.
+Anynewrealdisconnect stops; ordinaryprogressing240shosttimeouts handledv2.
+Noactiveothercontroller/fullMAIN/Wi-FiDell/IPclaim yet. Evidence
+wifi-quiet60-result-and-on-continuation. Actualnewreceipts/livepidpriority.

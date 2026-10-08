@@ -1,0 +1,9 @@
+{
+  "pid": 64363,
+  "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-6fuyx2jq",
+  "log": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-fullboot60-root-route-v1/runs/control/wifi-on60-posttrial-resume.log",
+  "started_at": 1791443597.258495,
+  "Mac_WiFi": "On restored",
+  "new_signatures": 0,
+  "one_controller": true
+}
