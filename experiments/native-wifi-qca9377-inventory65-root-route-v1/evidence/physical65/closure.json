@@ -1,0 +1,17 @@
+{
+  "status": "ACTUAL65-EXACT-APPLIED-PUBLIC-CPU-GETINFO-CLOSED",
+  "files_sha256": {
+    "callbacks.jsonl": "ad6afaea139fb3a2d360971156c3715b2a5d7638ec3ec4614e9e93271f86598d",
+    "state.json": "6ef131faabd28de3a752cae6ccdf7a2fdb18709ee8382e6f07e69ea5f31d9dda",
+    "decoded.json": "e1bddf9d5f4f02aa805f1ed46dbd0c0acbb9515b1a76473938662e732e85c211",
+    "collector.log": "3e1aa43a28a4fa70ec53a240ba575b119a6b76a2cde136b2fcae383d1c391956",
+    "native-report.json": "c9bd7176716386f3483d61c6dfe956b6c0be0af626dee9e02c8a5dcc6c689531",
+    "receipt.log": "d2f341b7ff3961adb4788b577ba1cbf88fadeb68b8bde0f8033d6cfcd016fa6e"
+  },
+  "controller_retired": 38164,
+  "entropy_approved": false,
+  "GetRNG_RDSEED_MSR_calls": 0,
+  "IP": false,
+  "wifi_connected": false,
+  "credentials_read": false
+}

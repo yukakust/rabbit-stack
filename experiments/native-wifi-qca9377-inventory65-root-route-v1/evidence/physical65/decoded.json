@@ -1,0 +1,40 @@
+{
+  "status": "DECODED-PUBLIC-CPU-GETINFO-INVENTORY65",
+  "generation": 65,
+  "source_code_provenance_verified": true,
+  "cpu_flags": 3,
+  "cpu_leaf_count": 7,
+  "cpu_vendor": "GenuineIntel",
+  "cpu_brand": "Intel(R) Core(TM) i5-8500T CPU @ 2.10GHz",
+  "CPUID_leaf1_signature": 591594,
+  "GetInfo": {
+    "phase": 2,
+    "error": 0,
+    "status": 0,
+    "algorithm_count": 2,
+    "algorithm_GUID_bytes": [
+      "6edef0448c4d4540a8c74dd168856b9e",
+      "d77631e4e8b62748b7847ffdc4b68561"
+    ],
+    "pool_before_cleanup": 0,
+    "uncertain_before_cleanup": 0,
+    "pool_after_cleanup": 0,
+    "uncertain_after_cleanup": 0,
+    "closed": true
+  },
+  "entropy_approved": false,
+  "MSR_read": false,
+  "GetRNG_calls": 0,
+  "RDSEED_calls": 0,
+  "physical_admission": false,
+  "raw_sha256": "bcde8cd65410e96562c5f7acdb662e1f64ae882b4c6edaee99812c443273cf19",
+  "physical_observed": true,
+  "device_attestation": false,
+  "source_state_sha256": "6ef131faabd28de3a752cae6ccdf7a2fdb18709ee8382e6f07e69ea5f31d9dda",
+  "actual_inputs_sha256": {
+    "receipt.log": "d2f341b7ff3961adb4788b577ba1cbf88fadeb68b8bde0f8033d6cfcd016fa6e",
+    "collector.log": "3e1aa43a28a4fa70ec53a240ba575b119a6b76a2cde136b2fcae383d1c391956",
+    "callbacks.jsonl": "ad6afaea139fb3a2d360971156c3715b2a5d7638ec3ec4614e9e93271f86598d"
+  },
+  "collector_sha256": "f09120114b07b1b5803e0112e47de8369a8fc015808f7730b47fcacfbdf84023"
+}

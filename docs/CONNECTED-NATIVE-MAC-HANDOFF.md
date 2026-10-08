@@ -6322,3 +6322,29 @@ Role2 genuine mature child and NEW parent/loader/QEMU extension,47-owner warm
 stop integration still prepared independently. Strong Dell entropy remains
 unapproved; algorithm advertisements alone never suffice. Physical full QR
 pairing mandatory before password. AutomationACTIVE; IP/WAN not complete.
+
+
+### Physical native65 completed; strong entropy not approved
+
+Same sole38164 completed EXACT-APPLIED65 once-signed pci-native-q2c6mv6y,
+packet c5d40f573248ee9f66a352b910d3cda1b3450088a117670466afed38da8d61eb,
+full61216 wirebytes. Fresh RFS65 exact nonce/wirelength/outcome/counter/packetSHA
+plus actual sequential512/448 public callbacks decoded; no live controller now.
+CurrentstateSHA6ef131faabd28de3a752cae6ccdf7a2fdb18709ee8382e6f07e69ea5f31d9dda.
+Actual65 CPU GenuineIntel i5-8500T/CPUID1 0x906ea/family6/model0x9e/stepA, flags3
+(Intel+RDSEED, no hypervisor, NO SRBDS_CTRL enumeration). EFI_RNG GetInfo succeeds
+with CTR256 GUID44f0de6e-4d8c-4045-a8c7-4dd168856b9e and raw GUIDe43176d7-b6e8-
+4827-b784-7ffdc4b68561; all owned/uncertain pools0/closed1. No GetRNG/RDSEED/MSR
+calls or seed output. Public rawSHA bcde8cd65410e96562c5f7acdb662e1f64ae882b4c6edaee99812c443273cf19.
+Exact actual callbacks/report/state/native receipt archived evidence/physical65.
+
+Strong entropy remains UNAPPROVED. Actual affected CPU lacks reviewed SRBDS_CTRL
+read interface; never access unenumeratedMSR123 or infer mitigatedRDSEED. EFI
+algorithm labels alone do not identify underlying entropy/source implementation.
+Next independent read-only provenance branch: RNG provider handle and actual
+LoadedImage/FV filepath/code provenance; identify implementation before approval.
+Never hash/export mutable RNG data sections, samples or privatekeys. Physical
+QR/password remains future hard gate; no protected provisioning/IP/WAN yet.
+Frozen native65/root source/signature preserved; no new66 packet/intent yet.
+Role2 loader/child, real47 warm-stop and protectedTX prepared independently.
+AutomationACTIVE; do not re-run retired38164/sign65.
