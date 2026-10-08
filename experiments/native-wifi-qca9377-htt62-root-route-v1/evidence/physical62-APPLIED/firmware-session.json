@@ -1,0 +1,9 @@
+{
+  "native_counter": 62,
+  "session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-8wiq3vc5",
+  "packet_count": 12,
+  "completed_chunks_snapshot": 0,
+  "sole_controller_pid": 92963,
+  "firmware_container_sha256": "8f8b002fccfe81d42238f27dd1f56d189604f180bd4772c7c8e75ae1fef16f01",
+  "new_native_signatures": 0
+}

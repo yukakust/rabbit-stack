@@ -5781,3 +5781,13 @@ htt62-root-route-v1/runs/control/controller62-resume-92963.json; log
 htt62-native-resume-v1/runs/resume62.log. Zero newnative signatures.
 No secondBLE/nofirmware62signedyet/noDellreboot. CheckactualPID/state/logs
 beforeanotheroperation. Wrongstatus/counter/nonprogress rejected in3checks.
+
+Physicalnative62 EXACTAPPLIED confirmed: package874b0208... sessionpci-native-
+7meuoneq/counter62. CommitCBError7 recoveredbyoriginalsame-sessionquery; exact
+receiptSHA/session/counter matched, notassumed. stateengine62/nativependingnull.
+SolePID92963 continuesfrozencontinue62.py viaresumev1; initial62QPDsetupPASS,
+exact12gen62firmware locallysignedONCE sessionfirmware-ram-8wiq3vc5. Firstchunk
+notyetaccepted; ordinary240s progress43200 resumedexactpacket; latestconfirmed
+floor51360/65760 atthissnapshot. Actualreports/logspriority. DoNOTrestart
+controller/re-sign/replayprior61firmware. NoactualHTTversion/IP/SSIDyet.
+Evidencephysical62-APPLIED retains exactreceipt/commit/signaturemanifest hashes.
