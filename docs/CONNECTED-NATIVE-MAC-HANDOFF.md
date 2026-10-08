@@ -5568,3 +5568,19 @@ native61-resumed-query.json/log. Rawarchive hostreader has600s internalbound;
 currentcontrollerouter240s canstopwithpartialcapture, preservepartial and
 Rootcanrerunread-onlyaftercheckedquiescencewith>=660shostboundifneeded; never
 usepartial110pages/status asSSIDsuccess. No frozenreader/runtimeedit needed.
+
+### 2026-10-08: native61 physically APPLIED, firmware61 stagingstarted
+
+Exact APPLIED RFS/session/SHA/counter61 received; stateengine61payload305d017...
+andnative_pendingnull. Commit-timeCBError7 wasreconciled byunchangednative
+sender exactsame-sessionquery andactualAPPLIEDreceipt, noassumption/replay.
+New61initialQPD18 realsetup/BMI/all14close passedafter5boundedactive-probe
+read-onlyretries. ControllerPID74229 nowhasEXACT12 signedfirmware61session
+firmware-ram-ko8zoixg, all12 publicsignatures independentlyverifiedRoot.
+NOresign/old60assetreuse/newnativecounter. Continue61controller ownsoneBLE
+path; atthissnapshot completedchunks0, receiverprogress actuallogspriority.
+Afterfull4095ready1 itautomatically monitorsQWBT→QSCNrelease thenfullraw110x2.
+DoNOTcreateanothercontroller/connection; doNOTuse60PREFIXcollector on61:
+PREFIX29..51 removed, QWBT160 hasnogeneration. Actual61APPLIED sourcebinding
+isRoot prerequisite. Evidence native61-APPLIED.json/initial61-setup.json/
+firmware61-staging-start.json. SSID/association/WPA/DHCP/IPnotyetconfirmed.
