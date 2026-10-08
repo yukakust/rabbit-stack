@@ -1,0 +1,7 @@
+runs/
+__pycache__/
+*.obj
+*.efi
+*.dll
+*.a
+*.o

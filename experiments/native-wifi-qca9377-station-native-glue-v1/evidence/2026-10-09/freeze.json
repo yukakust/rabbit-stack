@@ -1,0 +1,27 @@
+{
+  "status": "FROZEN-DIRECT-STATION-GLUE-SOFTWARE-ONLY",
+  "report_sha256": "7094d754152cb73bd00a73c321030a57bfbb48cfeadc89aec8c41bbfda19ee01",
+  "eapol_report_sha256": "f839112dba5b3fd3b5f5678d86f916d6fd4be51553c32b1e28be98c4d93c40a6",
+  "glue_c_sha256": "43ae53081bc6e44f08c6b424cac53a6036aac08c332e90a711835f9ba63d42b5",
+  "key_operation_c_sha256": "a06073fc1478717fa2e1756bf5b49a5205974f6cec31307c6c8b886eda5530a0",
+  "key_operation_h_sha256": "3bc55b66ced0509e12510d678a159533a7d63e600e63f7097d9db392e3adc70d",
+  "cases": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    28,
+    29
+  ],
+  "eapol_checks": 11222,
+  "compiled_producer_files": 195,
+  "frozen_producer_files": 195,
+  "physical_admission": false,
+  "complete_native_candidate": false,
+  "mature_handshake_in_this_producer": false,
+  "authenticated_delivery": false,
+  "controlled_port": false,
+  "protected_tx": false,
+  "all47_stop": false
+}

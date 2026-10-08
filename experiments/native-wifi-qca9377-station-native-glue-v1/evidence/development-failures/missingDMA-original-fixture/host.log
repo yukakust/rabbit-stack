@@ -1,0 +1,28 @@
+CASE 22
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+DATA_PATH_BYTES=60920 aligned_pool=60927 maps=47
+ACTUAL NEW PRODUCER: SERVICE65+47DMA+CFG+OWNED_INORD+COPY+REFILL+MGMT_TYPE3+DMA_FIRST+HTT_FIRST+NOACK+RETAINED_TARGET_STOP_GAP PASS; SYNTHETIC ONLY
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+CASE 23
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+ACTUAL STATION GLUE CE4+OWNED_HTT_ACK+OWNED_AUTH_ASSOC+AID PASS; NO KEYS/PORT/IP; SYNTHETIC
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+CASE 24
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+ACTUAL STATION GLUE FAULTCASE24 ERROR23 REVOKES/RETAINS47 PASS SYNTHETIC
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+GLUE fault=23 phase=5 step=0 posted=1 DMA=1 status=1 response=0 dp_error=23 station_watermark=14
+CASE 25
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+ACTUAL CE3 KEY PUBLICATION+DMA+OWNED SEC/PTK/GTK+NONZERO_RSC17+WIPE PASS; NO AUTHENTICATED DATA/PORT/IP; SYNTHETIC
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+CASE 26
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+ACTUAL STATION GLUE FAULTCASE26 ERROR45 REVOKES/RETAINS47 PASS SYNTHETIC
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+GLUE fault=45 phase=4 step=1 posted=1 DMA=1 status=1 response=1 dp_error=45 station_watermark=18
+CASE 28
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+KEYFAIL prior=2 index=0 now=24694000 deadline=24694000 txphase=7 txepoch=1 epoch=1 pnepoch=1 pnq=1 pending=0 sec=1 dma=0 sq=1
+GLUE fault=41 phase=4 step=1 posted=1 DMA=1 status=1 response=1 dp_error=41 station_watermark=19
+test: /home/yuka/rabbit-world/parallel-station-native-glue-v1/source/runs/glue/fixture.c:569: void glue_tick(void): Assertion `key_model.sec_seen&&!key_model.dma_seen&&!key_tx->completed' failed.

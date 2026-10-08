@@ -1,0 +1,18 @@
+{
+  "status": "EAPOL-WIRE-ASAN-COFF-PASS-GLUE-PENDING",
+  "build_host": "yukabox",
+  "checks": 11222,
+  "tested_sources_sha256": {
+    "eapol_wire.c": "2e8ee1dd73f6c380c05c98156a78042d695835a6315eac70eeec9c66c8f01ba7",
+    "eapol_wire.h": "86003c859c9b8fdbc571072232b803adf5664d9a970f089f1b67d4a55ccfe4b6",
+    "test_eapol.c": "5191783d7a9e145b3c6a4bf66c7c35c2755c465accc1b03a2a3a9cfe45aff873",
+    "verify_eapol.py": "7752259752f619ad68548225ddbce4bc5e323d915089362b03b69c93f8b615ed"
+  },
+  "primary_tx_sha256": "739f88756d3df917538399472cd18364c40ac9f30c4ab9d0546da8223ac85dca",
+  "log_sha256": "c23c43b047ac51a34c0ca140ca219da351fdb70b966b9c35fd219be342198af4",
+  "coff_sha256": "86c2d4c2b1b61eefcafb0ed067b0327a7780c147313a1958d29c7705457e2d3f",
+  "physical_verified": false,
+  "native_integrated": false,
+  "direct_backend_glue_compiled": false,
+  "protected_tx_supported": false
+}

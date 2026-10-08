@@ -6243,3 +6243,38 @@ Funnel/endpoint unpublished and existing443/8443 unchanged. Actual station key
 publication/authenticatedRX/native module routes remain under integration.
 Do not request/read credentials before genuine strongDellRNG+full physical
 QR binding and protected provisioning. AutomationACTIVE; WiFi/IP/WAN unproved.
+
+
+### Physical64 complete: exact ECHO/HTT/passive13channels; no requested SSID
+
+Controller21465 exited normally after full once-signed12part staging, real
+chip boot5/error0, exact owned ECHO completion8>floor6, actual HTT3.56
+completion9>floor8, SERVICE_READY65 advertised and MACc0b5d778c3fb.
+Filter observed duration3.217s, ECHO/DMA observed0.401s after actualPOSTED,
+maxpollgap0.403s, timeout0. These are observed software calltimes, not exact
+hardware arrival timestamps. All14 actualresources CLOSED/pins0.
+Full232 callbacks, three stable statuses and two110-page raw passes classify
+PHYSICAL64-COMPLETED-PASSIVE-SCAN-NO-TARGET; no iPhone(9) beacon observed,
+association/IP false. Exact public raw/closure retained evidence/native64-final.
+Do not claim network unavailable cause: hotspot state/2.4GHz remains unanswered,
+and persistent RX_RING_CFG/data plane were not configured by partial64.
+No live controller now; any next operation must claim the single common lock.
+
+Correction of earlier self-authored human-screen precaution: user explicitly
+authorizes continuing until actualgoal/realwall. There is no hard source/admission
+requirement for a new human city/tail reply before every reversible noRF trial.
+For diagnostic-only65, verified source/admission/QEMUworld19/recovery/current
+receipt and physical64 release suffice. Keep requested screen observation open;
+never fabricate physical rendering evidence. Full QR/SPKI pairing remains a
+mandatory human gate before any credential read/provisioning. Hotspot2.4GHz
+question also renewed after actual completed scan. No new permission needed.
+
+NEW frozen station-native-glue-v1/sidecar: source/report pins checked locally.
+Seven genuine full producer cases22/23/24/25/26/28/29 test actual modeled47owners,
+owned AUTH/ASSOC/AID, NO_ACK, real CE3 DMA+fresh SEC PTK/GTK/nonzeroRSC17/wipe,
+wrongpeer/missingDMA/missingSEC. EAPOL11222 checks+COFF. Sidecar394 publicfiles
+preserves exact final fixture712bd269... and195 transitive compiler inputs,
+separate typed sources and logs. Main7094d754.../freezef571ce4b.../closurec518c1c6... .
+Not complete nativeEFI/mature handshake/protecteddata/controlledport authority.
+All47 genuine target-stop and role2 child integration still underway.
+Automation staysACTIVE; no physicalWiFi/IP/Yukabox roundtrip yet.

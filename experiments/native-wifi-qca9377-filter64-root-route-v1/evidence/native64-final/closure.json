@@ -1,0 +1,16 @@
+{
+  "status": "PHYSICAL64-COMPLETED-PASSIVE-SCAN-NO-TARGET",
+  "files_sha256": {
+    "raw64.log": "5458c2b6b7864a2f9c3b443452baf3bde68f77d2dae10bc6f260696e3d73419e",
+    "classification64.json": "81569d0d9faa5ad84dd02ac9a9d5af0e402ff06ed3486ffe1d4722667fd9b825",
+    "progress64.log": "436499c37a4d15f06dc92d3e29e1b761b34030c2c44930afba9fa17c158fdabb",
+    "raw64.jsonl": "558f0482f9cc2b169c35f09c0159ec71d3c75c020389445a4afd194616f216ba"
+  },
+  "exact_controller_pid_retired": 21465,
+  "hardware_writes_during_observation": 0,
+  "all14_released": true,
+  "association": false,
+  "IP": false,
+  "credentials_read": false,
+  "device_attestation": false
+}

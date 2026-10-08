@@ -1,0 +1,5 @@
+# Durable actual producer compiler closure
+
+This NEW sidecar preserves the exact final synthetic actual-C producer fixture, all 195 generated/transitive C/H compiler inputs and separately source-bound station glue inputs. `full-closure.json` maps every preserved source to its original public input path/hash. Main report/freeze/log are copied unchanged; `test_sha256` is the ASAN executable hash, not fixture.c. Binary objects/images and public firmware fixture binaries are excluded from Git.
+
+`check.py` is host-only Python and verifies all preserved bytes and the exact main report join. Reproduction must run only on Yukabox under a new dedicated source/TMPDIR, using the unchanged main scope verify_glue.py with the public signed firmware/world19 fixtures whose hashes are listed. No actual radio, key, state, signing or physical success is represented. Model-only dispatcher/MMIO hooks are preserved verbatim in fixture/init_probe; they do not claim a complete native candidate or mature handshake/controlled port/authenticated delivery.

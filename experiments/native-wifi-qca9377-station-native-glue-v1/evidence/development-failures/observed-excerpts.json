@@ -1,0 +1,20 @@
+{
+  "kind": "development-tool-output-excerpts",
+  "physical": false,
+  "old_draft_source_hash_recorded": false,
+  "not_frozen_proof": true,
+  "failures": [
+    {
+      "case": 23,
+      "finding": "Accepted WMI response returned0 and remained owned RX head; later progress blocked",
+      "observed": "SECOND phase=5 error=0 plan=20/0 streams=3 exec=2 stage=20/8448 pins=1 alloc=47 free=0 open=2 close=1; upload_fixture assertion failed",
+      "fix": "NEW glue copies raw responses[2], returns1 for accepted response; genuine actual-producer positive+NO_ACK passed afterward"
+    },
+    {
+      "case": 25,
+      "finding": "Credit-only owned HTC raw blocked GTK SEC after LIVE_DONE",
+      "observed": "KEYFAIL prior=2 index=1 now=24698000 deadline=24697000 txphase=5 txepoch=1 epoch=1 pnepoch=1 pnq=1 pending=1 sec=0 dma=1 sq=1; GLUE fault=40; positive assertion failed",
+      "fix": "NEW glue retains bounded8 raw credit/trailer records and consumes1 after source HTC join; subsequent actual-producer PTK+GTK/nonzeroRSC/wipe positive passed"
+    }
+  ]
+}
