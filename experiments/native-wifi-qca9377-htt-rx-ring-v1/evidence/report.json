@@ -1,0 +1,59 @@
+{
+  "status": "HTT-RING-DEFAULT-UPSTREAM-WIRE-OWNER-ASAN-COFF-PASS",
+  "build_host": "yukabox",
+  "checks": 27764,
+  "layout": {
+    "descriptor_bytes": 300,
+    "payload_bytes": 40,
+    "ring32_bytes": 36,
+    "offsets_words": [
+      59,
+      75,
+      21,
+      31,
+      3,
+      20,
+      6,
+      10,
+      1,
+      2
+    ]
+  },
+  "source_sha256": {
+    "ring.c": "635b6a8c1c188dc086e1642f971633599cdfad968ebbced2e199ab18a560cfc3",
+    "ring.h": "07fc0e8ced2bcc0e5e37e43fa54456c234960d853af39583f3eccb9dda909efd",
+    "ring_test.c": "0ad1baf41446dcf02341cf4e8778f48063d7d255b274c03198ec32832da17d93",
+    "derive_layout.py": "2a0e2e6d7a2e09ac8413547dad4308fc4d855f787061eb167e74eb9383c6e4ee",
+    "verify_remote.py": "425afe33ed5bd9c8b40bd4f6d8081310fa3c12a42d3862bee92e1848b9e710e4",
+    "references.json": "9face22229c3f847716631f51700eee542106bed4ace950fb733e5f7ff8f0af6",
+    "runs/reference/htt.c": "aaeaa40bd765bbe94b8371bcd91720317fd0955d73fa32d06f3af1e0c17f29c0",
+    "runs/reference/htt.h": "0cbb9326399ac9685f2a863edfcd5e4ed3ee58885dfdb5053f536386311220f7",
+    "runs/reference/htt_rx.c": "cabc2774651d670d247defc5f5f405640436dd131a0fc2522e605c2d8e7fb4d8",
+    "runs/reference/htt_tx.c": "3f73bddf26ec9e4e79a46c143a2fce35bf80a441068adbbe9aa29145692b33a3",
+    "runs/reference/hw.h": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13",
+    "runs/reference/htc.c": "ba19a833a986bcdc097550aff81c620501243db3792db248da34b39c145b9629",
+    "runs/reference/core.c": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2",
+    "runs/reference/rx_desc.h": "fa3d9957d11ea1b48c54e40646c0b003228fad72009871b2f7e3f32d497a418e",
+    "runs/reference/hw.c": "7e176346c8def2054138bf3458acd4fbda7fc01d0753b77985f82215b51400f4"
+  },
+  "compiler_sha256": "e6166786aee0388cc170ab761d8d51d6e0d708cc5ca533b0330f356ca99468cf",
+  "oracle_source_sha256": "15114413e97da1f602e2c4fa4b80fe02c4f720e0922831e342f016b91def70ef",
+  "rx_desc_header_sha256": "fa3d9957d11ea1b48c54e40646c0b003228fad72009871b2f7e3f32d497a418e",
+  "coff_sha256": "523bd5c7c785976a6fd04028720e3f270f40f153940b8647f2c3080826e5ebb7",
+  "coff_sections": {
+    ".text": 2460,
+    ".data": 0,
+    ".bss": 0,
+    ".rdata": 20,
+    "/57": 0
+  },
+  "host_log_sha256": "724adbd28d07e78ccbde270e79500ced0798f1f54a03216d8d27aa36f1368fd6",
+  "proposed_extra_HTT_maps": 33,
+  "proposed_total_with_CE": 47,
+  "allocated_DMA_maps": 0,
+  "physical_verified": false,
+  "native_integrated": false,
+  "device_operations": 0,
+  "credential_reads": 0,
+  "RX_dataplane_ready": false
+}

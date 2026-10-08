@@ -1,0 +1,27 @@
+#include "ring.h"
+#include "oracle_types.h"
+#include <assert.h>
+#include <string.h>
+#include <stdio.h>
+static unsigned checks;
+#define CHECK(x) do{assert(x);checks++;}while(0)
+static void maps(QRingMap*m){for(unsigned i=0;i<Q_RING_MAPS;i++)m[i]=(QRingMap){.identity=i+1,.epoch=9,.paddr=0x100000+0x10000*i,.bytes=i<32?65536:12288,.actual_map_valid=1,.coherent_common=1,.allocated_masteroff=1};}
+static const QRingPublishProof done={1,1,1,1,1};
+static void fill(QRingState*s,unsigned b){QRingRefill p;CHECK(!qca_ring_reserve(s,b,&p));CHECK(p.buffer_paddr==(uint32_t)(s->maps[b/32].paddr+(b%32)*2048)&&p.attention_clear_offset==4&&p.address_entry_offset==p.slot*4&&p.shadow_publish_offset==8192);CHECK(!qca_ring_publish(s,&p,&done));}
+int main(void){QRingMap m[33];maps(m);QRingState s,old;memset(&s,0,sizeof(s));old=s;CHECK(qca_ring_bind(&s,m,9,2,8,0x05020001)==-1&&!memcmp(&s,&old,sizeof(s)));CHECK(!qca_ring_bind(&s,m,9,3,8,0x05020001));
+ for(unsigned bad=0;bad<10;bad++){memset(&s,0,sizeof(s));QRingMap altered[33];memcpy(altered,m,sizeof(m));switch(bad){case 0:altered[0].paddr=0;break;case 1:altered[0].paddr++;break;case 2:altered[0].paddr=0x100000000ULL;break;case 3:altered[0].bytes--;break;case 4:altered[0].epoch++;break;case 5:altered[0].actual_map_valid=0;break;case 6:altered[0].coherent_common=0;break;case 7:altered[0].allocated_masteroff=0;break;case 8:altered[1].identity=altered[0].identity;break;case 9:altered[1].paddr=altered[0].paddr;break;}old=s;CHECK(qca_ring_bind(&s,altered,9,3,8,0x05020001)==-1&&!memcmp(&s,&old,sizeof(s)));}
+ QRingMap boundary[33];memcpy(boundary,m,sizeof(m));boundary[0].paddr=0xffff0000;memset(&s,0,sizeof(s));CHECK(!qca_ring_bind(&s,boundary,9,3,8,0x05020001));boundary[0].paddr=0xffff1000;memset(&s,0,sizeof(s));old=s;CHECK(qca_ring_bind(&s,boundary,9,3,8,0x05020001)==-1&&!memcmp(&s,&old,sizeof(s)));memset(&s,0,sizeof(s));CHECK(!qca_ring_bind(&s,m,9,3,8,0x05020001));old=s;CHECK(qca_ring_bind(&s,m,9,3,8,0x05020001)==-1&&!memcmp(&old,&s,sizeof(s)));
+ uint8_t guarded[42];memset(guarded,0xaa,sizeof(guarded));CHECK(qca_ring_cfg(&s,0,guarded+1)==-1&&guarded[1]==0xaa);
+ for(unsigned b=0;b<Q_RING_FILL;b++)fill(&s,b);QRingRefill p;CHECK(qca_ring_reserve(&s,1023,&p)==-1);CHECK(qca_ring_cfg(&s,0,guarded+1)==-1);CHECK(!qca_ring_cfg(&s,1023,guarded+1)&&guarded[0]==0xaa&&guarded[41]==0xaa);
+ struct __attribute__((packed)) Wire{struct htt_cmd_hdr h;struct htt_rx_ring_setup_hdr setup;struct htt_rx_ring_setup_ring32 ring;} ref={0};ref.h.msg_type=2;ref.setup.num_rings=1;ref.ring.fw_idx_shadow_reg_paddr=m[32].paddr+8192;ref.ring.rx_ring_base_paddr=m[32].paddr;ref.ring.rx_ring_len=2048;ref.ring.rx_ring_bufsize=2048;ref.ring.flags=65535;ref.ring.fw_idx_init_val=1023;
+ #define OFF(field,name) ref.ring.offsets.field=offsetof(struct htt_rx_desc_v1,name)/4
+ OFF(mac80211_hdr_offset,rx_hdr_status);OFF(msdu_payload_offset,msdu_payload);OFF(ppdu_start_offset,ppdu_start);OFF(ppdu_end_offset,ppdu_end);OFF(mpdu_start_offset,mpdu_start);OFF(mpdu_end_offset,mpdu_end);OFF(msdu_start_offset,msdu_start);OFF(msdu_end_offset,msdu_end);OFF(rx_attention_offset,attention);OFF(frag_info_offset,frag_info);
+ CHECK(sizeof(ref)==40&&sizeof(struct htt_rx_desc_v1)==300&&!memcmp(&ref,guarded+1,40));CHECK(qca_ring_cfg(&s,1023,guarded+1)==-1);CHECK(qca_ring_cfg_dma_complete(&s,8,1)==-1);CHECK(qca_ring_cfg_dma_complete(&s,9,1)==-1);CHECK(!qca_ring_cfg_posted(&s,9,10));CHECK(qca_ring_cfg_posted(&s,9,10)==-1);CHECK(!qca_ring_cfg_dma_complete(&s,9,1));
+ uint16_t claimed[]={0,1};old=s;CHECK(qca_ring_claim(&s,claimed,2,8,12)==-1&&!memcmp(&old,&s,sizeof(s)));claimed[1]=0;CHECK(qca_ring_claim(&s,claimed,2,9,12)==-1&&!memcmp(&old,&s,sizeof(s)));claimed[1]=1023;CHECK(qca_ring_claim(&s,claimed,2,9,12)==-1&&!memcmp(&old,&s,sizeof(s)));claimed[1]=1;CHECK(qca_ring_claim(&s,claimed,2,9,10)==-1&&!memcmp(&old,&s,sizeof(s)));CHECK(!qca_ring_claim(&s,claimed,2,9,12)&&s.fill==1021);old=s;CHECK(qca_ring_claim(&s,claimed,2,9,13)==-1&&!memcmp(&old,&s,sizeof(s)));CHECK(qca_ring_copied(&s,0,9,0,1)==-1);CHECK(!qca_ring_copied(&s,0,9,1,1));CHECK(!qca_ring_copied(&s,1,9,1,1));fill(&s,0);fill(&s,1);
+ /* Wrap producer repeatedly, only indication-owned/copy-complete buffers refill. */
+ for(unsigned k=0;k<4096;k++){uint16_t b=k%1023;CHECK(!qca_ring_claim(&s,&b,1,9,k+14));CHECK(!qca_ring_copied(&s,b,9,1,1));fill(&s,b);CHECK(s.fill==1023);}
+ old=s;QRingQuiesceProof qp={.epoch=9,.completion=99999,.target_halted=1,.bme_off=0,.callbacks_stopped=1,.device_write_barrier=1};CHECK(qca_ring_quiesce(&s,&qp)==-1&&!memcmp(&old,&s,sizeof(s)));qp.bme_off=1;CHECK(!qca_ring_quiesce(&s,&qp));CHECK(qca_ring_reserve(&s,0,&p)==-1);CHECK(qca_ring_map_released(&s,1,9,0)==-1);
+ for(unsigned i=0;i<33;i++){CHECK(!qca_ring_map_released(&s,i+1,9,1));CHECK(qca_ring_map_released(&s,i+1,9,1)==-1);}CHECK(s.phase==Q_RING_CLOSED&&s.released_maps==33);
+ /* Ambiguous publish quarantines reservation and all mappings until real halt. */
+ CHECK(!qca_ring_bind(&s,m,9,3,8,0x05020001));CHECK(!qca_ring_reserve(&s,0,&p));QRingPublishProof partial=done;partial.device_barrier_complete=0;CHECK(qca_ring_publish(&s,&p,&partial)==-1&&s.phase==Q_RING_FAULT&&s.pending_valid&&s.buffer_state[0]==Q_BUFFER_RESERVED);CHECK(qca_ring_reserve(&s,1,&p)==-1);CHECK(qca_ring_map_released(&s,1,9,1)==-1);CHECK(!qca_ring_quiesce(&s,&qp));
+ printf("checks=%u SYNTHETIC-HTT-RING-DEFAULT-OWNER-ORACLE-NOT-PHYSICAL PASS state_bytes=%zu\n",checks,sizeof(s));return 0;}

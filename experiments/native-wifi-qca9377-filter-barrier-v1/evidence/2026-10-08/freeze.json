@@ -1,0 +1,27 @@
+{
+  "status": "FROZEN-FILTER-BARRIER-OFFLINE-ASAN-COFF-PASS",
+  "sha256": {
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "README.md": "dbbf78fbbd640c30cc8ffe111f27a342e3f1c8c095674ee158944462a873e150",
+    "UPSTREAM-ISC.txt": "cbdf535b99a9f4cb208c5495c6dd9a1f84104d83c03f8f0d98ee7a0c43805388",
+    "dependencies/htc_credit.c": "53e5cc0482490daeccc05fc1b7b21069f47e16ffdfc05a3586bab722cd28bf2a",
+    "dependencies/htc_credit.h": "330c272ea2cd73bb684a72997d1eba82af30a84dc8f2ec409a6fcd5a5ed6b9a7",
+    "dependencies/htc_wire.c": "1ea19b85b8cd3e52f8165eb39a69346aca26c60a2fa3a52402bb547634080374",
+    "dependencies/htc_wire.h": "45af53b8d52ae30b77b05fc42daa1bcb8b6e2ddb4955a9d015b5fa6534f6ada4",
+    "dependencies/wmi_boot_info.c": "bb90ce0d55fbe650c4729f71573f5e7eafebc6367acc689c5f1000b460303e6c",
+    "dependencies/wmi_boot_info.h": "59c71b834bd43bfe5626bfef6062a88476c43762be2b10b8cf4861c67255f262",
+    "dependencies/wmi_scan.c": "eda085596e6eba21e34dd07d8ea6b845352b2b0c8095933de6b54fd4a455a213",
+    "dependencies/wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3",
+    "dependency-inputs.json": "cc1b2f1cd1cc9f1d251a3fd6dda897e848eba8c823ec9f2b07688a38fdf4a96d",
+    "evidence/2026-10-08/host.log": "a91009048a5d2a1f641bde4f0168368f2306beed3954019f9599cf5c26c6ec5d",
+    "evidence/2026-10-08/oracle.h": "75adbfbe31300a79aeddd422b2b539c92188401d9e6547c59b71493dc5f17812",
+    "evidence/2026-10-08/report.json": "18890d3f64dc5ad342114b30787e8cd6c28da4f4fadd1bad00aeff144a41cb6a",
+    "filter_barrier.c": "22c3656cfeade659f9a65195d65e3cab0b23b19c8c2b5caf63ea2016b05b1ae1",
+    "filter_barrier.h": "b838eb3bc45602e897504677d3c96477c4839798f12cee85f175c942cc836f4e",
+    "filter_test.c": "c44d424dfd5f3d37638bc592d984ffb4daa6d3a5acb974acbbc9b5fa6becf9fc",
+    "verify.py": "89937f861158314da71aac259b331904f59c1298d6ee72c26c92a88c38586900"
+  },
+  "physical_admission": false,
+  "device_operations": 0,
+  "key_accesses": 0
+}

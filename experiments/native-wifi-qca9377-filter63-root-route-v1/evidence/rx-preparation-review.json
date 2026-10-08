@@ -1,0 +1,16 @@
+{
+  "ring_report_sha256": "79c43f57f944c036b46b7a9edb6901ad9fb989bcae71a6ca6680efa0eec54009",
+  "ring_source_count": 15,
+  "ring_model_checks": 27764,
+  "ring_maps_allocated": 0,
+  "decoder_report_sha256": "049bcdf749c9c8a1231a1c01a086d533b2866bd3b6367478b1a93e3bf450a08e",
+  "decoder_model_checks": 705,
+  "physical62_HTT3_56_is_not_RX_data_plane": true,
+  "first_trial_plan": "filter/ECHO/version/passive iPhone (9) scan; existing14 maps",
+  "full_ring_startup_required_for_mature_data_plane_baseline": true,
+  "new_counter_reserved": false,
+  "new_signatures": 0,
+  "hardware_operations": 0,
+  "ssid_utf8_hex": "6950686f6e6520283929",
+  "ssid_bytes": 10
+}

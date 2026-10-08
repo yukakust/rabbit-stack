@@ -1,0 +1,24 @@
+{
+  "status": "PUBLIC62-PRE63-READ-ONLY-PROOF-CHECKS-PASS",
+  "checks": [
+    "actual public62 proof PASS",
+    "wrong counter rejected",
+    "wrong payload rejected",
+    "wrong world rejected",
+    "competing native rejected",
+    "competing world rejected",
+    "missing completed assets rejected",
+    "generic gate restored; prior has own identity",
+    "actual raw VERSION3.56 release proof joined"
+  ],
+  "source_sha256": {
+    "test_prior62.py": "27ace2439b3763c7d0d19bfb2f71f29ff88d68f2bbe1dafa5218aa2918bb1bf4",
+    "transition62.py": "8854916eb1496e9f19f0c2e09be953d80df3b1324d845c00f12894e0ed92e5e9",
+    "observe62.py": "fc0714856de8eba298bbe85f0dabaf6789570abe4768b5fad30360ba419742c7",
+    "prior62-pins.json": "42006ceba0e37181a616217e3831656d2bdae536561e8f967a7d16fab4f8cf7f"
+  },
+  "device_operations": 0,
+  "state_mutations": 0,
+  "new_signatures": 0,
+  "native63_admitted": false
+}

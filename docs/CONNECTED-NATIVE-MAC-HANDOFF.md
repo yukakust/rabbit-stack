@@ -5820,3 +5820,49 @@ enabled. Mac remainscommand/signing; allC/ASAN/COFF/QEMU onlyYukabox; noLinux
 Dell/noHCI deniedscope/USB/bootstrap/flash/reboot/secretread. Priorworld19
 modelpreservationverified; no newhumanphysicalrenderobservationclaimed.
 WiFi/IP/router/Yukaboxdataexchange STILLNOTconfirmed; automation staysACTIVE.
+
+### 2026-10-08: next RX/scan software preparation; minimal filter63 trial planned
+
+Currentphysical62 completeHTT3.56/release14 unchanged; noactivecontroller, no
+newnativecounter/signature/devicewrite. Primaryath10kcore QCA9377PCI hw1.0/1.1
+sets hw_filter_reset_required: supportedTLVdummySTAcreate0→delete0→actualECHO
+reply barrier precedes HTTstartup. TLVops lacksgen_pdev_set_base_macaddr, core
+toleratesEOPNOTSUPP; doNOTinventbaseMACcmdfromconstants. Source reviewfrozen
+htt-rx-startup-review-v1/evidence/review.json e001f9cb...; hardwarecauseof61
+missingMGMT STILLNOTPROVEN.
+
+Chosenfirstboundedpartial experiment63: actualREADY.mac dummycreate/delete/
+ECHO(ownedraw+arg+epoch/newRXfloor+actualDMA)→actualHTTversion→reviewed13channel
+passive0x21/emptyprobe lists realSTA scan matching exact b'iPhone (9)'10bytes.
+NOTfullath10kstartup/dataplane; RX_RING_CFG+AGGR stillfuturematurebaseline.
+All14existingDMAowners remain. Nocredentials/WPA/IP. iPhonecompatibility2.4GHz
+question pending; optional, keepsoftwareworkindependent.
+
+Frozenfilter-barrier-v1 report18890d3f...140125ASAN/UBSAN+pinnedoracle/5COFF
+ONLYYukabox. BODYONLY; qcaPersistentTx SOLEHTC/credit/CE3owner; immediatePOSTED
+observation BEFOREnextRXpump mandatory. ActualECHO beforeDMA cannotpassuntil
+DMAcompletion; DMAalone NOTbarrier. RXcreditsalreadyappliedonce, noseconddebit.
+FrozenRXdecoder-v1 report049bcdf7...705ASAN/COFF/oracle; ring-v1 report79c43f57...
+27764ASAN/COFF/oracle. These AREPURESOFTWARE/noDMAallocated/nophysicaladmission.
+Defaultfuture2048ring/fill1023 proposes33realextra maps/47total/~2.1MB runtime;
+notfit/native/lifetimeadmitted. Fullreorder requiresactualTLVservice65 low4bits
+perword, NOTversion3.56. RX_IND FIFO/reorder/fragment/datareassembly remainmissing.
+
+Native63 producerbeingbuilt in filter63-native-v1, provisional/unfrozen. New
+localraw/payloadbyteunion savesduplicate2040bytes perrecord tofit4MiB; fixed
+unbundledHTC payloadraw+8 only. Mustrebuildactualproducer/ASAN/COFF/wholeEFI/
+world19 andindependentreview; pure4081unionmodelnotABI/nativeadmission.
+Retainactualrawtrailer; normalizedexportvirtualpaddingmustnotzerooriginalraw.
+Handlevalidcreditonly/HTTunrelated frames beforeoldscandispatch, preserveowned
+raw, avoidfalsefault11/doublecredits. Host63awaitsactualproducer/GATTschema;
+Rootprefersfullraw56header+2048/5pages with22slots110pages cap. No physical63
+untilall exactgates/admission/fresh62release/durablearchive prepared.
+
+Rootfilter63-root-route-v1 transition62.py/observe62.py publicpreparation:
+actualold62signednative/all12/full67rawversion/release proofPASS;9readonlytests
+and31independentadditionaltestsPASS. Explicitfrozenbindings callback_join
+added; genericmodules/sys.path preserved. No keys, state writes or BLE invoked
+bythispreparation. New63gate/retirement/controller notready. Preservecompleted
+firmware62pending; neverclear/replay/re-sign withoutrevieweddurabletransition.
+DoNOTretrydeniedHCI generation/timerscope; Maccommand/sign only, nativeC
+ASAN/COFF/QEMU ONLYYukabox, noLinuxDell/USB/bootstrap/OTP/flash/reboot.

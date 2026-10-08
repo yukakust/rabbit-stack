@@ -1,0 +1,155 @@
+{
+  "status": "PINNED-ATH10K-QCA9377-RX-STARTUP-SOURCE-REVIEW",
+  "linux_commit": "6b5a2b7d9bc156e505f09e698d85d6a1547c1206",
+  "references": {
+    "htc.h": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/htc.h",
+      "sha256": "e2dc499ce2865b16456d436dc55db38da93282778d8cc86d03ed07a3c37c1963"
+    },
+    "htt.c": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/htt.c",
+      "sha256": "aaeaa40bd765bbe94b8371bcd91720317fd0955d73fa32d06f3af1e0c17f29c0"
+    },
+    "htt.h": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/htt.h",
+      "sha256": "0cbb9326399ac9685f2a863edfcd5e4ed3ee58885dfdb5053f536386311220f7"
+    },
+    "htt_rx.c": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/htt_rx.c",
+      "sha256": "cabc2774651d670d247defc5f5f405640436dd131a0fc2522e605c2d8e7fb4d8"
+    },
+    "htt_tx.c": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/htt_tx.c",
+      "sha256": "3f73bddf26ec9e4e79a46c143a2fce35bf80a441068adbbe9aa29145692b33a3"
+    },
+    "mac.c": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/mac.c",
+      "sha256": "e99b6749933719a39037645385ea88be181b380f1135d62aea07c0b474a8236c"
+    },
+    "txrx.c": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/txrx.c",
+      "sha256": "58d707e349ab6efeb4a447c8f7189a9150a4e4d5d92ce5b8f8209b03e45ac477"
+    },
+    "wmi-tlv.c": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi-tlv.c",
+      "sha256": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb"
+    },
+    "wmi-tlv.h": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi-tlv.h",
+      "sha256": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9"
+    },
+    "wmi.c": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi.c",
+      "sha256": "68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4"
+    },
+    "wmi.h": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/wmi.h",
+      "sha256": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c"
+    },
+    "core.c": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/core.c",
+      "sha256": "e36c575f6ad996d58d1cbbd0b813a9c5f350a068d18fe92882ac397b9ba722c2"
+    },
+    "hw.h": {
+      "url": "https://github.com/torvalds/linux/blob/6b5a2b7d9bc156e505f09e698d85d6a1547c1206/drivers/net/wireless/ath/ath10k/hw.h",
+      "sha256": "e9658e742445aa2049078a7da8c6ee6860762cec5f5dc40a99c552e6cd6cba13"
+    }
+  },
+  "hardware_table": {
+    "core_lines": "548-631",
+    "selector": "actual target/device revision + PCI low-latency, not HTT3.56 alone",
+    "QCA9377_PCI_hw1_0_and_1_1": {
+      "rx_desc_ops": "qca988x_rx_desc_ops",
+      "target_64bit": false,
+      "decap_align_bytes": 4,
+      "hw_filter_reset_required": true,
+      "continuous_frag_desc": false
+    },
+    "RX_ops": "htt_rx.c4463-4472: LL target64false selects32",
+    "in_order_mode": "actual SERVICE_READY raw TLV RX_FULL_REORDER65; core.c3080-3081; independent of HTTversion"
+  },
+  "normal_mature_order": [
+    "Early alloc RX ring/index/buffers; actualservicebits choose reordermode.",
+    "WMI_INIT and genuine WMI_READY.",
+    "Attempt baseMAC; TLV generator absent returnsEOPNOTSUPP, which coretolerates.",
+    "QCA9377 filterreset dummySTA VDEV0 CREATE thenDELETE with actualMAC.",
+    "Actual WMI ECHO reply barrier before crossingWMI\u2192HTT/ringstart.",
+    "Refill DMA-owned RX buffers/addressring/index.",
+    "HTT VERSION_REQ/CONF and acceptedmajor2/3.",
+    "Conditional FRAG_DESC_BANK: QCA9377 tablefalse so mature32sender returns0/no command.",
+    "RX_RING_CFG32 actual ring/index DMA addresses +desc offsets; sourceflagsFFFF includeMGMT_RX.",
+    "AGGR_CFG after ring; mature defaultsAMSDU3/AMPDU64, validbounds1..31/1..64.",
+    "RealSTA vdev creation/STAconfiguration thenchannelpolicy and scan."
+  ],
+  "barrier": {
+    "core_source_lines": "2827-2873",
+    "reason": "WMI andHTT pipes are not implicitly serialized; mostWMIcommands lackexplicitACK. ECHOreply orders create/delete beforetargetRXstart.",
+    "echo_marker_upstream": "0x0BA991E9",
+    "timeout_us": 3000000,
+    "DMA_or_credit_is_barrier": false,
+    "physical_filter_register_repair_proven_by_echo": false
+  },
+  "base_MAC_TLV": {
+    "command_id_and_tag_exist": true,
+    "generator_in_pinned_TLV_ops": false,
+    "wrapper_missing_generator_returns": "-EOPNOTSUPP",
+    "core_tolerates_unsupported": true,
+    "invent_new_sender_from_tag_only": false
+  },
+  "management_delivery": {
+    "source": "htt_rx.c2036-2042 andwmi-tlv.c665-669",
+    "essential_management_WMI_supported_by_mature_comment": true,
+    "HTT_management_duplicates_marked_only_monitor": true,
+    "static_TLV_WMI_MGMT_RX_dispatch_requires_extra_MGMT_RX_service": false,
+    "RX_ring_is_firmware_prerequisite_for_WMI_MGMT": null,
+    "cause_of_native61_missing_MGMT_proven": false,
+    "note": "Normaldriver ring-before-scan ordering and documentedWMIpath do not establish missing-beacon causality or firmware-independent ringoptional guarantee."
+  },
+  "filters_and_scan": {
+    "mac_configure_filter": "mac.c6051-6074 storesmac80211flags andmonitor_recalc; not anidentifiedmandatoryWMIbeaconenable command.",
+    "monitor_not_required_for_WMI_scan": "RealSTA scan usescreatedvdev, not AP/selfpeer/monitor. VDEV_START/UP relateschannel/association context, not shown mandatorybyhw_scan path.",
+    "scan_passive": "mac.c6454-6455 setsPASSIVE ifn_ssids0; WMI_TLV xorFILTER_PROBE_REQ bit20 leavescurrentreviewedlogicalPASSIVE\u2192wire0x21, noactiveprobe.",
+    "current_narrow_policy": "13reviewed2.4GHz channels,20MHz; iPhone(9) target mustbeobservedbyactualbeacon, notscanSTARTED/COMPLETED.",
+    "STA_configuration_gap": "Matureadd_interface additionallyconfigureskeepalive/NSS/STA_RX_WAKE_POLICY=WAKE/PS thresholds andlaterpolicy; omittedpartialdiagnostic cannotbe calledfullnormalstartup."
+  },
+  "servicebits": {
+    "legacy_bitmap": "raw TLVserviceid <rawbyte_len; word=id/4, bit=id%4, FOURlowbits per32bitword. Neverdenseid/32.",
+    "RX_FULL_REORDER": {
+      "id": 65,
+      "word": 16,
+      "bit": 1
+    },
+    "HOST_MANAGED_RX_REORDER": {
+      "id": 109,
+      "word": 27,
+      "bit": 1
+    },
+    "MGMT_TX_HTT": 75,
+    "MGMT_TX_WMI": 76,
+    "MGMT_TX_bits_are_RX_gate": false,
+    "actual_export_gap": "CurrentvalidQWOP0003 emitsmemoryrequests, notservicebitmap; QWINprefix isREADY. Existingresources.c internallycomputesactualbit65 but3.56 cannotreplace itsrawcapabilityproof."
+  },
+  "smallest_branch_A": {
+    "Root_choice": "boundedpartial native63: supporteddummyCREATE0\u2192DELETE0\u2192actualECHO\u2192HTTversion\u2192realSTA0\u2192same13passiveiPhone(9)scan, existing14maps",
+    "full_mature_startup": false,
+    "no_extra_RX_ring": true,
+    "positive_proves": "OnlyactualownedWMI0x7001 rawbeacon/proberesponse +SSID+BSSID+frequency+epoch/floor proves WMI observation inTHATconfiguration.",
+    "negative_proves": "Noacceptedtarget underthatpartialtrial; doesnotproveabsenceonair/filterfixed/HTTneeded.",
+    "mandatory_admission": [
+      "Exactcurrentfirmware/READYMAC/lifecycle14/oneCE3tx+oneRXowner.",
+      "Do not debit/applyWMIcredit twice. TXowner wraps/reserves, RXownerappliestrailer once.",
+      "RetainmatchingECHO rawbytes/arg/newcompletion/epoch ANDactualECHO TXcompletion beforeHTT.",
+      "Preserveunknownrawboundedarchive, finiteclock/timeout andactualfullownerrelease.",
+      "Noauth/credentials/association/IPclaims; primaryGE13channelbinding remainsunchanged."
+    ]
+  },
+  "branch_B": {
+    "scope": "Complete mature RX startup ring+AGGR+decoded RXframe path",
+    "owner_gap": "Extra DMA maps mustextendtyped port/radio/pool ownerlifetime; cannot hide extra maps inside hardcoded14maps/dma_users<=14 snapshot.",
+    "software_only_now": true
+  },
+  "physical_admission": false,
+  "device_operations": 0,
+  "native_source_edits": 0,
+  "secret_accesses": 0
+}

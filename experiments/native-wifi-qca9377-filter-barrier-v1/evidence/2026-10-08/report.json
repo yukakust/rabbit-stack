@@ -1,0 +1,51 @@
+{
+  "status": "FILTER-BARRIER-PINNED-WIRE-BODY-ONLY-SHARED-LEDGER-ASAN-COFF-PASS",
+  "result": "FILTER-BARRIER PASS 140125 checks; body-only/sharedcredit-readonly/actual-ECHO-contract; synthetic only",
+  "source_sha256": {
+    "filter_barrier.c": "22c3656cfeade659f9a65195d65e3cab0b23b19c8c2b5caf63ea2016b05b1ae1",
+    "filter_barrier.h": "b838eb3bc45602e897504677d3c96477c4839798f12cee85f175c942cc836f4e",
+    "filter_test.c": "c44d424dfd5f3d37638bc592d984ffb4daa6d3a5acb974acbbc9b5fa6becf9fc",
+    "verify.py": "89937f861158314da71aac259b331904f59c1298d6ee72c26c92a88c38586900",
+    "dependency-inputs.json": "cc1b2f1cd1cc9f1d251a3fd6dda897e848eba8c823ec9f2b07688a38fdf4a96d",
+    "dependencies/htc_credit.c": "53e5cc0482490daeccc05fc1b7b21069f47e16ffdfc05a3586bab722cd28bf2a",
+    "dependencies/htc_credit.h": "330c272ea2cd73bb684a72997d1eba82af30a84dc8f2ec409a6fcd5a5ed6b9a7",
+    "dependencies/htc_wire.c": "1ea19b85b8cd3e52f8165eb39a69346aca26c60a2fa3a52402bb547634080374",
+    "dependencies/htc_wire.h": "45af53b8d52ae30b77b05fc42daa1bcb8b6e2ddb4955a9d015b5fa6534f6ada4",
+    "dependencies/wmi_boot_info.c": "bb90ce0d55fbe650c4729f71573f5e7eafebc6367acc689c5f1000b460303e6c",
+    "dependencies/wmi_boot_info.h": "59c71b834bd43bfe5626bfef6062a88476c43762be2b10b8cf4861c67255f262",
+    "dependencies/wmi_scan.c": "eda085596e6eba21e34dd07d8ea6b845352b2b0c8095933de6b54fd4a455a213",
+    "dependencies/wmi_scan.h": "8f054e00c8c20b2b72759caf9023bcac94523500c2179549b29b676d3a4943c3"
+  },
+  "reference_sha256": {
+    "wmi.h": "fff0e5749d68c461ed08e69060321942d68bdb050954c39b2a57c0045457106c",
+    "wmi-tlv.h": "16c6b984177dd8c0f80dbc4df52597a6def435d8892fb55381091bdb88a258c9",
+    "wmi-tlv.c": "02309cad56513a1ef0975c9d73e568e343c874d35124f39111ddd26d8a75c5bb",
+    "wmi.c": "68a4fedc3d0cd815c209dda9c0eb3aa3869bd3d35847c633e0c458ba53c320f4",
+    "wmi-ops.h": "b2d7a57c5a2b4e5161d5045d770ae4314ddf4434fb73fd1c77221320f3b529c9"
+  },
+  "oracle_sha256": "75adbfbe31300a79aeddd422b2b539c92188401d9e6547c59b71493dc5f17812",
+  "host_log_sha256": "a91009048a5d2a1f641bde4f0168368f2306beed3954019f9599cf5c26c6ec5d",
+  "COFF_objects_sha256": {
+    "0.obj": "7304fbd71217030309f0ef5598aca2c7eeabc2c881969710301d166114cb9a91",
+    "1.obj": "b030c730f5fea2cbded9c0d2da59de928eeab33004c36bf13763c843ea5c0b12",
+    "2.obj": "7dc07ecd87bcb8642bd01ce49bf14d018b3151a617274aab4eff0e2c6ecf5a06",
+    "3.obj": "a030863fb8bec832314d420df17955ea39795301731cffc6e8f1c24b7a7ebb38",
+    "4.obj": "4f4d9f4a1cc49a9de790a136371512d282661d6e2eed7c9c87bdd40c03fc5bc6"
+  },
+  "credit_writers_in_coordinator": false,
+  "persistentTX_owner_required": true,
+  "RX_credits_already_applied": true,
+  "ECHO_raw_required": true,
+  "ECHO_dma_required": true,
+  "baseMAC_TLV_supported": false,
+  "all3_commands_actual_oracle_joined": true,
+  "device_operations": 0,
+  "key_accesses": 0,
+  "state_operations": 0,
+  "physical_verified": false,
+  "native_candidate": false,
+  "signing_admitted": false,
+  "complete_startup": false,
+  "SSID_observed": false,
+  "data_plane_ready": false
+}

@@ -1,0 +1,9 @@
+{
+  "status": "FROZEN-PINNED-SOURCE-STARTUP-REVIEW",
+  "sha256": {
+    ".gitignore": "e5cefd046795d6750f9d32a85ef5e0313f17383ed182f771dcd892c15c66e3b6",
+    "README.md": "cf5b523942f93f47256948aa7a6095471f663dd2dd24d69afdf6346a4d243d95",
+    "evidence/review.json": "e001f9cb5e48862c59515b23c42f9014ecf2141bbc66caa43505589cd8f441f3"
+  },
+  "physical_admission": false
+}

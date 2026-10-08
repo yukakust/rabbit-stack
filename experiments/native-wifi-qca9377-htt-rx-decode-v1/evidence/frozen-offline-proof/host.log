@@ -1,0 +1,22 @@
+desc_size=300
+attention=4
+frag=8
+mpdu_start=12
+msdu_start=24
+msdu_end=40
+payload=300
+hdr_status=236
+ind_hdr=7
+ind_ppdu=36
+ind_prefix=4
+range=4
+inord_hdr=7
+paddr32=8
+paddr64=12
+MSDU_DONE=2147483648
+LENGTH_MASK=16383
+DECAP_MASK=768
+FIRST=16384
+LAST=32768
+ERROR_MASK=2013396992
+PASS 705 pure HTT3.56 RX ABI/ownership/frame cases; SYNTHETIC NOT PHYSICAL

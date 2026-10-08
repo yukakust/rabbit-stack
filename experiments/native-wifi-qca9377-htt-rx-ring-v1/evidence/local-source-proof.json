@@ -1,0 +1,19 @@
+{
+  "status": "PUBLIC-RING-SOURCE-REFERENCE-CLOSURE-PASS",
+  "closure_checks": 18,
+  "build_report_sha256": "79c43f57f944c036b46b7a9edb6901ad9fb989bcae71a6ca6680efa0eec54009",
+  "source_sha256": {
+    "ring.c": "635b6a8c1c188dc086e1642f971633599cdfad968ebbced2e199ab18a560cfc3",
+    "ring.h": "07fc0e8ced2bcc0e5e37e43fa54456c234960d853af39583f3eccb9dda909efd",
+    "ring_test.c": "0ad1baf41446dcf02341cf4e8778f48063d7d255b274c03198ec32832da17d93",
+    "derive_layout.py": "2a0e2e6d7a2e09ac8413547dad4308fc4d855f787061eb167e74eb9383c6e4ee",
+    "verify_remote.py": "425afe33ed5bd9c8b40bd4f6d8081310fa3c12a42d3862bee92e1848b9e710e4",
+    "references.json": "9face22229c3f847716631f51700eee542106bed4ace950fb733e5f7ff8f0af6",
+    "fetch_references.py": "10aa2fa7c75b9808148be058dc2d9024a45b431b5d172103d00d9d0bb1675b4e",
+    "RESOURCE-CONTRACT.md": "7d2bddc0e67d0980e97c52cdd19aaa2b283362227058a2c0cb5319ce55db847e",
+    "README.md": "56eafeec8c9dcbd32344e80850909478f9ef4a0c88a3e2179decfcb212d5d086"
+  },
+  "physical_DMA_maps": 0,
+  "physical_RX_ring": false,
+  "native_integrated": false
+}

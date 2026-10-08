@@ -1,0 +1,24 @@
+{
+  "native_packet_sha256": "874b02081c58525bc2fb2efaec0dd3f3b53d84b8a64f8955ab93dcd17fb27ca5",
+  "native_payload_sha256": "22cde47acd97eec959522b720ebfb6b28fefd2581a32f790fe1f85f2a29d2b81",
+  "native_report_sha256": "171fd72b5f73fbb8812235a0c84cbed30ab56a2f65e6518b8ce212f86da57d99",
+  "native_root_admission_sha256": "bdd929d84d919623156fe5d58bd4a2ea988b225ee61138b6f32c0f4646612d5b",
+  "asset_report_sha256": "3150f7aa46cf774a7d1fcc1b47c0ca9310120b73334b3561d19e3a082bde578a",
+  "physical_evidence_sha256": {
+    "original-raw62.log": "b0714225c107d4d0772b5a734ab36180bf4d8d0950afea428d517263f266c917",
+    "original-progress62.jsonl": "4c882c8781354c9e2fc98690164fe208c601450b7089a873bdce0763b88466a9",
+    "hashes.json": "6c3c1e19073877ffd3b75cf269403068b8139c173a528e6e058b40b943db5de1",
+    "controller.json": "0db2ed07bc15d25fda96726c0b06ea6e9d8e32d221388065c7ddb4a96d306cfa",
+    "original-progress62.log": "6ae486e34d750eebe68843f02013cfbeed3b7e4c6093430b94cd4741de26853b",
+    "raw.log": "d1ea3dab27971dcdcb9afb8237504093e7f9e685e25ef9905f605d99472de9e7",
+    "original-raw62.jsonl": "4d0e00e7b23d75b52f92fb3a29e875f1f1f0e0a0c728ccfa53f31af1792d11f6",
+    "firmware62-report.json": "3150f7aa46cf774a7d1fcc1b47c0ca9310120b73334b3561d19e3a082bde578a",
+    "classification.json": "cb68b979d177d92f802db43b653da1848fcbcc1507192c9a365294adf2ea6cd1",
+    "raw.jsonl": "5551ea2b2179803c643e1011596e737482cf70bf967d33135cd2d34ef34de6a0"
+  },
+  "prior_gate_sha256": "3da6c628a8cc992ce746154b7efa9a335280d6a5ce931e01d5e93a1faff2d5e8",
+  "prior_root_route_sha256": "ee1dfc2ccbe12c8ff7f1d1c41f6b435b150454c3ea3ddd838895639cf0db7fe8",
+  "decoder_sha256": "43f3fdde1e3220c4fee5e7e853e2a39411a6ab76c1aeb6aef759c93fdee6699c",
+  "new_counter_reserved": false,
+  "state_mutated": false
+}

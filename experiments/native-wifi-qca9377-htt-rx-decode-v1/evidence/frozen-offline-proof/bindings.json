@@ -1,0 +1,18 @@
+{
+  "status": "FROZEN-PURE-HTT3.56-RX-COMPONENT-OFFLINE-EVIDENCE",
+  "files_sha256": {
+    "prepare_oracle.py": "04daecad611a4956cb3db67956ce13fce5ac98fe15827ea2400696177c1ec600",
+    "verify.py": "100ad1ce2c95b3a4e0c644d9ad77542287adc6cbbb5caec6619a9343b4b69c87",
+    "rx_decode.h": "0914be1806e91fb6f807117bba933cf52a823db59597bf35a842d983db168597",
+    "rx_decode.c": "02f78c37a60e4dc16fdf7e924818816255633878a8c5dea6bb09e73880b96738",
+    "test.c": "28e0816304c7d3da4ac0e2124a2a3dc60d0c3f5fe5c1f0f2ae74006da1480ad2",
+    "references.json": "fc5af4643e06c7db6011784a8e78ebed28ef0f09a5f39eaccbd7c24907d1d04f",
+    "README.md": "de83b474bbf5573e828f8ef27234fa785f7009d5be3ef2e7eed6c591d6b77169",
+    "checks/public_gate.py": "7f433a7739f486e0c0dc82c4ed612f0bc233c84e0b5549ff6b221a887f6f4bdb",
+    "evidence/frozen-offline-proof/report.json": "049bcdf749c9c8a1231a1c01a086d533b2866bd3b6367478b1a93e3bf450a08e",
+    "evidence/frozen-offline-proof/host.log": "4243f7c0b1af867ae05e5853b9376bcc128c5ca42b4d33fec0a4ddef11c011af"
+  },
+  "physical_admission": false,
+  "native_integration": false,
+  "provisional_generation": null
+}
