@@ -1,0 +1,47 @@
+{
+  "events": [
+    {
+      "slot": 0,
+      "completion": 1,
+      "pipe": 2,
+      "endpoint": 1,
+      "bytes": 120,
+      "event_id": "0x1d011"
+    },
+    {
+      "slot": 1,
+      "completion": 2,
+      "pipe": 2,
+      "endpoint": 1,
+      "bytes": 12,
+      "event_id": "0x1d019"
+    },
+    {
+      "slot": 2,
+      "completion": 3,
+      "pipe": 2,
+      "endpoint": 1,
+      "bytes": 152,
+      "event_id": "0x16006"
+    },
+    {
+      "slot": 3,
+      "completion": 4,
+      "pipe": 2,
+      "endpoint": 1,
+      "bytes": 624,
+      "event_id": "0x1d011"
+    },
+    {
+      "slot": 4,
+      "completion": 12,
+      "pipe": 2,
+      "endpoint": 1,
+      "bytes": 32,
+      "event_id": "0x1d011"
+    }
+  ],
+  "accepted_target": false,
+  "retained_MGMT_0x7001_count": 0,
+  "cause_of_no_observation_proven": false
+}

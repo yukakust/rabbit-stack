@@ -1,0 +1,11 @@
+{
+  "pid": 88228,
+  "started_at": 1791460013.816565,
+  "writes": 0,
+  "new_signatures": 0,
+  "native_counter": 61,
+  "asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-ko8zoixg",
+  "state_sha256": "36d4a8c01d65cfccba47b34b819ae36fbf33590a9870d99b09049776e22c6e84",
+  "corrected_monitor": "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-scan61-progress-monitor-v2/runs/control/collector",
+  "monitor_sha256": "97fa02e6e86589f16dd5dcef49edee0b4bb747e69f762e6a6eb48dfb09a8f45b"
+}

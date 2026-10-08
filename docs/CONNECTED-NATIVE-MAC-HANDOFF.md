@@ -5723,3 +5723,20 @@ stateunchanged/zerowrites. evidence/physical61-gatt-refresh preserveslogs/hash.
 Sole finish_scan61_v2.py nowreading full retained61 export understate_lock;
 output runs/finished61-after-bluetooth-toggle. DoNOTstartanotherBLEconnection.
 Waitfull227callbacks/classification beforeSSID/release/raw conclusions.
+
+### 2026-10-08: physical61 full scan capture COMPLETE, no accepted target
+
+Sole finish61 reader completed; no livecontroller/reader. Full227 actual
+callbacks/noNSError,3stableQSCNstatuses,110pages twicebyteequal. Rootclassifier
+PHYSICAL61-COMPLETE-SCAN-CAPTURE-NO-ACCEPTED-TARGET. ActualREADY/startupTX1,
+scanterminalreason0, nativeerror0/all14released confirmed, SSIDseen0. Five
+retainedarchiveevents1d011/1d019/16006/1d011/1d011; no retainedMGMT7001,
+observation slot16empty. This is no acceptedtarget, NOTproofAPabsent or cause
+identified. NoSSID/auth/keys/IP. Evidencephysical61-complete-scan storesfull
+logs/capture/classification/hashes. State retains completed61firmwaretrial;
+doNOTreplay or clear without reviewedretirement. Next isolate radio RX/HTT
+path before assuming SSIDrename alone fixes receiving beacon. Owner requests
+iPhone(9) for nextscan; retain exactspacedSSID, passwordnotcollected. Prepared
+unsignedHTT62 VERSIONREQ/CONF candidate mayhelp establishtransportbaseline;
+requiresRootphysical61archive/publicclosure and separateadmission before
+signing/deployment. No new62counter reserved or signingperformed here.
