@@ -5410,3 +5410,14 @@ SolePID60888 small_data60_trial.py; small-data60-controller.json/logsmall-data60
 Existing6fuyx2jq packets/checkpoints reused; no native/HCI/timer modification,
 newsignatures0. One controlledtrial; anyfailureSTOP(noauto-reconnect); outcome
 unconfirmedatsnapshot, notclaimedRFcausefix. Evidence/small-data60-trial-launch.
+
+DATA100 actualtrialPID60888 STOPPED sameCBErrorDomain6/connectiontimeout before
+newRFCScheckpoint; lastconfirmed18480. Reducingcap100 didNOTresolveobservedloss;
+don'tclaimPHY/long-PDUcauseproved. NoactiveBLEcontroller. Preserve6fuyx2jq
+exactpackets/floors, noresign/abort/replay/reboot. Outcomeofunacknowledgedwrite
+unknown; freshreadsrequiredbeforenextauthorizeddelivery. Publicfailureevidence
+evidence/small-data60-trial-failed. Ownercity+movingcat previouslyconfirmed.
+Rootassignedobservation59 read-only audit of actual frozen60 ATT→DATA→RAM ownership
+andHCIACL path at18480; no deniedtimerfix ornewhardwarecandidate, no privatekey.
+Do not blindlyretry. IndependentMaclogs/sourceauditcontinue; fullMAIN/Wi-Fi/IP
+stillnotstarted/confirmed.
