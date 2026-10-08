@@ -1,0 +1,48 @@
+{
+  "status": "HISTORICAL61-COPIED-MATURE-GRAMMAR-ASAN-COFF-PASS",
+  "checks": 7194,
+  "build_host": "yukabox",
+  "source_sha256": {
+    "historical.c": "1b6158d8ab319ecebe95795d4bbe6d5b0bc7ec54fe27a28652458578b8492aa6",
+    "copied/bss_security.c": "e95c67534328cfe2505610ac35c6917fbf416d63f638793a2b99c7009058dc63",
+    "copied/rsn_core.c": "4c2576282074d2c779107b46ae80f9ce3d72e5387d79f89ea2d8a2f167c4af39",
+    "copied/beacon_rx.c": "b14c40cfafe6da94414de28dcc9388e1756fcb26518d9cecb8d10f8d4b3262f8",
+    "copied/beacon_info.c": "10001c0b5c54748370aaa713be275ebe0476f282d2686f40a0267d4f1ab5d38c",
+    "copied/beacon_info.h": "98edfe74b4ff64292ab1e8279dced824d06aa8b98639792387b72b732f197a30",
+    "copied/beacon_rx.h": "606fcbc85a3deebef20a4902b2314daf68d879ebed4d6800b74b7c07b9a1afb4",
+    "copied/bss_security.h": "bbcc0da124531f1a8677e0b06152bc667d1429237e5a7171aebced59a74798c0",
+    "copied/rsn_core.h": "39c9f139880e40c53a17a5778889f1b1e6efa29866e40ba7370563c0884375f5",
+    "historical.h": "ca61211f1b1241211728676752817dd971d9b0b237f97fecd152ab37646731eb",
+    "historical_test.c": "893c9c6fd08d63cc7f1be4dff22c27af8fd9a4ba99e0bcd885bb310433fe712a",
+    "verify_remote.py": "3f72d9935764151374eca0ce403255125abab1089e3fa2b9efc307b6b41d5849",
+    "copied-pin.json": "aef14bdf81233f314408ca6acfd2a0105e1f326fdc555e7418ee959feb80036a"
+  },
+  "coff_object_sha256": {
+    "0.obj": "1e360b03aff668fac53b07df0ae2f66103f228e513e50f8965c64cc403501b16",
+    "1.obj": "59467f2649d6436e5a522857e43ad994fdc1a795f5ab6419a72559e8a884eece",
+    "2.obj": "7698b90ad6034695cf5c95941a06470509b982edd27478f07061db25368b5c4a",
+    "3.obj": "989cc6e6407edee04276467e3f5d5355e970ea88d88c68eae66daf5e67249e66",
+    "4.obj": "f90c7d18489b4b7584500103f9aae5c365b100c64abdb163a4b51f39400e6c41"
+  },
+  "coff_sections": {
+    ".text": 8613,
+    ".data": 0,
+    ".bss": 0,
+    ".rdata": 644,
+    "/98": 0,
+    "/100": 0,
+    "/19": 0,
+    "/38": 0,
+    "/44": 0
+  },
+  "compiler_sha256": "e6166786aee0388cc170ab761d8d51d6e0d708cc5ca533b0330f356ca99468cf",
+  "host_log_sha256": "cad3847b577c2059051fa5faede7da1578862e905bc330d15a2a5171b1352d55",
+  "positive_fixtures": "SYNTHETIC-NOT-PHYSICAL",
+  "physical_scan_verified": false,
+  "native_capabilities": "UNKNOWN",
+  "fresh_live_BSS_required": true,
+  "association_authority": false,
+  "controlled_port_authority": false,
+  "credential_reads": 0,
+  "native_operations": 0
+}

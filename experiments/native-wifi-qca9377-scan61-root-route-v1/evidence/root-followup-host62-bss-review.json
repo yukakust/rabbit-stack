@@ -1,0 +1,21 @@
+{
+  "native-wifi-qca9377-htt62-staging-observer-v1": {
+    "proof_sha256": "2399bb303f37225ca7cc5eea13d5ec39913ce7fd3d0372f97c212e94d8f4e2db",
+    "binding_sha256": "1423d8d13421713d1e6e005c8b0714d0fa61055a6c72578b5bc495ef9a9e1aa3",
+    "executable_sha256": "63a3a16c4a42ffb76f519a1f2199b7b3c84f2145d7eaf20721d148b99792395b",
+    "physical_admission": false
+  },
+  "native-wifi-qca9377-htt62-observer-v1": {
+    "proof_sha256": "a1f3f1d48551f4c6f5e34c38806390743edae74fa355bb88942e7a6813ca6852",
+    "binding_sha256": "d2eff7c3adcd1206bb2c5ce07e42d2642cd7a4755bb03f2f11b3acc15b3a4971",
+    "executable_sha256": "1ff8a6a94d855aad44a6f336dd29e89e8a7791c5676a63cb3922dfe7db1b0794",
+    "physical_admission": false
+  },
+  "historical_bss": {
+    "report_sha256": "3fba0b3e689a2382af7666411537043939255bac4a42965e48bc2c9ba79f6309",
+    "checks": 7194,
+    "native_capabilities": "UNKNOWN",
+    "association_authority": false,
+    "physical_scan_verified": false
+  }
+}

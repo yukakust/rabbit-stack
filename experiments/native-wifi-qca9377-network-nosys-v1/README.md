@@ -109,3 +109,11 @@ Hardened object sums:25,520 bytes text,32,361 bytes BSS,2 bytes data,2,813 bytes
 ordinary rdata plus small individual string sections. Final EFI mapped budget,
 bare-metal libc ABI, timer/RNG and HTT/RSN integration remain pending; no cap was
 enlarged and production signing remains false.
+
+The authorization structure remains a structural prototype boundary: no actual
+supplicant→network authority bridge is implemented. Its future token must prove
+**local STA** controlled-port readiness: confirmed PTK and GTK installation for
+the current association epoch, with no failed or quarantined installation. AP-side
+`authorized` alone is insufficient: a mature supplicant can send M4 before a local
+`set_key` failure, leaving the AP authorized while the STA is disconnected or
+quarantined. Neither synthetic flags nor an AP ACK create actual IP authority.

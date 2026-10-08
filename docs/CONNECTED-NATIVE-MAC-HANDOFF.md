@@ -5650,3 +5650,39 @@ localport0mustblockIPevenAPauthorized1. Ethernet/DHCPadapterbridge+actual
 confirmedPTK/GTK/association/entropy/secureprovisioning stillneeded.
 Actualfirmware61transfercurrently7/12acceptedandcontinuing sole74229; noSSID/
 association/IPproof, nohardwareengine62/signing/credentialsread.
+
+### 2026-10-08: physical61 all12 accepted; MAIN706552 progressing; next-stage host/core prepared
+
+Actualall12 firmware61ko8zoixg accepted4095/ready1, solePID74229 remainsv1
+QWBTmonitor. Atthissnapshot MAIN706552/727128 phase1/plan17, boot/planerrors0.
+DoNOTopenanotherBLEchannel orrestart/resign. AtQWBTphase5 oldv1 statusUUID2c
+willfail asdocumented; wait74229exit, thenfinish_scan61_v2.py undersolelock
+reusingcurrent61/all12 exactsignedassets, freshnewoutput. CorrectedV2UUID2b
+proofs alreadycommitted; no replay/download necessary. Scanrunsin61 itself;
+hosttool onlyreadsretainedresults. CapturedMGMT/SSID/raw110x2 notyetconfirmed.
+
+Parallel newhost62 scopes FROZEN/unadmitted: staging41callbacks+216pure checks,
+observer175callbacks+441pure checks/nativegeneratedGATTABI join. QHTT2e/2f at
+ATT31/status320, QHTXservice30/80..9d/raw30pagesx2+3statuses,67callbacks incl
+4discoveries; actualfirmwareIE6 and ownedrawVERSIONCONF major2/3 joined.
+Staging61→62 ONLYpacketgeneration guard changes; allQFS/checkpoint/timers
+unchanged. Rootallsource/compiler/exe/pinnedbindingschecked; noactual62/keys.
+Stagingproof2399bb303f37225ca7cc5eea13d5ec39913ce7fd3d0372f97c212e94d8f4e2db,
+observerproofa1f3f1d48551f4c6f5e34c38806390743edae74fa355bb88942e7a6813ca6852.
+
+NewhistoricalBSSbridge7194ASAN/UBSAN+5COFF onYukabox and6Python testsPASS.
+Frozenmaturegrammarcopiedexactly; publiclive_frequency0 stays0, observed
+frequencyseparate, selected_rates0/nativecapabilitiesUNKNOWN. Privategrammar
+comparison operands useactualIE-derivedrate/frequency only, NOTauthority.
+Optionalnativecapabilitymask structuralcheck can'tapproveassociation; fresh
+liveBSS mandatory. Report3fba0b3e689a2382af7666411537043939255bac4a42965e48bc2c9ba79f6309.
+Allpositivecases synthetic/notphysical61. RootsourcehashcheckPASS.
+
+New supplicant-native-v2 softwarelane ongoing: separateexactzero-fuzzofficial
+2026-2 PMKSAcontext/AKMPfix, realportablehostapAES/SHA/HMAC noOpenSSL;13genuine
+hostASANinteroptests+24COFFcompiledunitsPASS. Actualunpatchedwrongctx/wrongAKMP
+regression FAIL vs patchedPASS andmatchingpositive. NativeLINK stillfails31
+OS/eloop/string services; caller-ownedcallbackABI proofseparate/notconnected.
+Noactualnativeimage/credentials/entropy/confirmedfirmwarekeys/physicalWPA.
+Don'tmistakecompiledobjects fordeployment; futurecompleteGC/EFI/cap and
+allpool/lifetime proof remainsneeded. Frozenpreviousscopes/driver unchanged.

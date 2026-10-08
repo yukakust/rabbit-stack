@@ -1,0 +1,22 @@
+{
+  "status": "LOCAL-HISTORICAL61-PUBLIC-PIN-BRIDGE-PASS",
+  "closure_checks": 32,
+  "bridge_tests": 6,
+  "native_report_sha256": "3fba0b3e689a2382af7666411537043939255bac4a42965e48bc2c9ba79f6309",
+  "bridge_host_log_sha256": "1e43b905e11ca028139fe5078016515111aaf7cebf8d6a3e224b7d03b9cb6ac9",
+  "source_sha256": {
+    "bridge.py": "dcea3e6940185bb3cc2bc27dba0ebfa27d01fb47f439ec2a7c979851d1a61b95",
+    "test_bridge.py": "a52a5c88d56440305dad614910258020ec82bc3bfdc9c3767c0fadf1f54a480c",
+    "historical.c": "1b6158d8ab319ecebe95795d4bbe6d5b0bc7ec54fe27a28652458578b8492aa6",
+    "historical.h": "ca61211f1b1241211728676752817dd971d9b0b237f97fecd152ab37646731eb",
+    "historical_test.c": "893c9c6fd08d63cc7f1be4dff22c27af8fd9a4ba99e0bcd885bb310433fe712a",
+    "verify_remote.py": "3f72d9935764151374eca0ce403255125abab1089e3fa2b9efc307b6b41d5849",
+    "copied-pin.json": "aef14bdf81233f314408ca6acfd2a0105e1f326fdc555e7418ee959feb80036a"
+  },
+  "device_operations": 0,
+  "physical_scan": false,
+  "native_capabilities": "UNKNOWN",
+  "fresh_live_revalidation_required": true,
+  "association_authority": false,
+  "readme_sha256": "9a96dd4c5c7673eb47fbfb1429ae46ddd44a60095712a5374c38fcdb1d02d05d"
+}
