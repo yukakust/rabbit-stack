@@ -5686,3 +5686,24 @@ OS/eloop/string services; caller-ownedcallbackABI proofseparate/notconnected.
 Noactualnativeimage/credentials/entropy/confirmedfirmwarekeys/physicalWPA.
 Don'tmistakecompiledobjects fordeployment; futurecompleteGC/EFI/cap and
 allpool/lifetime proof remainsneeded. Frozenpreviousscopes/driver unchanged.
+
+### 2026-10-08: physical61 boot complete; scan status recovered through inconsistent Mac GATT inventory
+
+All12 firmware61 assets remain accepted; controller74229 exited. QWBT reports
+phase5/plan20/errors0/submitted=completed3114. Both frozenv1 and correctedv2
+monitor stopped on missing status characteristic. No firmware replay/signature.
+Full public CoreBluetooth discovery returned historicalPREFIXservice40 absent
+from native61, a CBService inside its characteristics, empty statusservice2a,
+and missing rawservice2c. V1 inventory crashed on unexpected object; newV2
+records runtime class safely. NewV3 read-only diagnostic selected existing
+UUID2b under historicalservice40, actual callback416bytes/QSCN0001, error0.
+Decoder accepts generation61/policy13, startupREADY1, all4TXcompleted, scan
+terminal_seen1/reason0, ownersreleased1/adapter12/cleanup14/zeroDMA, SSIDseen0.
+This inconsistent parent is NOT accepted by full scan classifier: no complete
+110pagesx2 export, no SSID/association/IP claim. Exact logs/source/executable
+hashes in evidence/physical61-gatt-inventory. State unchanged, zero writes.
+No active Bluetooth controller. Need supported Mac-side cache refresh then
+fresh full inventory and raw capture; do not change frozen61/replay assets.
+SystemSettings shows Dell is not a paired MyDevice; no scoped Forget action.
+Asked owner for 20s Mac Bluetooth off/on (accessories temporarily disconnect);
+not yet performed. Do not reset Dell/USB/bootstrap or edit system cache DB.

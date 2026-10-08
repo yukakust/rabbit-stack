@@ -1,0 +1,32 @@
+{"info":{"UUIDs":["52414242-4954-4649-8000-000000000001","52414242-4954-4649-8000-000000000040","52414242-4954-4649-8000-00000000000D","52414242-4954-4649-8000-000000000007","52414242-4954-4649-8000-000000000022","52414242-4954-4649-8000-000000000024","52414242-4954-4649-8000-000000000026","52414242-4954-4649-8000-00000000002A"]},"NSError_code":0,"NSError_domain":"","peripheral":"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF","stage":"all-services","timestamp":1791458795.519176,"writes":0}
+{"info":{"characteristics":[{"properties":8,"UUID":"52414242-4954-4649-8000-000000000002"},{"properties":8,"UUID":"52414242-4954-4649-8000-000000000003"},{"properties":2,"UUID":"52414242-4954-4649-8000-000000000004"}],"service":"52414242-4954-4649-8000-000000000001"},"NSError_code":0,"NSError_domain":"","peripheral":"F45BFCB2-ABC2-AB4E-BB0F-310A54D424AF","stage":"all-characteristics","timestamp":1791458795.530118,"writes":0}
+*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[CBService properties]: unrecognized selector sent to instance 0x146b04a70'
+*** First throw call stack:
+(
+	0   CoreFoundation                      0x000000019d8b72ec __exceptionPreprocess + 176
+	1   libobjc.A.dylib                     0x000000019d39e788 objc_exception_throw + 60
+	2   CoreFoundation                      0x000000019d96956c -[NSObject(NSObject) __retain_OA] + 0
+	3   CoreFoundation                      0x000000019d820f3c ___forwarding___ + 1580
+	4   CoreFoundation                      0x000000019d820850 _CF_forwarding_prep_0 + 96
+	5   inventory                           0x00000001044d4ed0 -[Inventory peripheral:didDiscoverCharacteristicsForService:error:] + 484
+	6   CoreBluetooth                       0x00000001b26e7468 -[CBPeripheral handleAttributeEvent:args:attributeSelector:delegateSelector:delegateFlag:] + 208
+	7   CoreBluetooth                       0x00000001b26e7514 -[CBPeripheral handleServiceEvent:serviceSelector:delegateSelector:delegateFlag:] + 104
+	8   CoreBluetooth                       0x00000001b26e3ce4 -[CBPeripheral handleMsg:args:] + 616
+	9   CoreBluetooth                       0x00000001b26c0ad0 -[CBCentralManager handleMsg:args:] + 168
+	10  CoreBluetooth                       0x00000001b26ae4b4 -[CBManager xpcConnectionDidReceiveMsg:args:] + 192
+	11  CoreBluetooth                       0x00000001b26ae3ac __30-[CBXpcConnection _handleMsg:]_block_invoke + 52
+	12  libdispatch.dylib                   0x000000019d5b0750 _dispatch_call_block_and_release + 32
+	13  libdispatch.dylib                   0x000000019d5b23e8 _dispatch_client_callout + 20
+	14  libdispatch.dylib                   0x000000019d5b9a14 _dispatch_lane_serial_drain + 748
+	15  libdispatch.dylib                   0x000000019d5ba578 _dispatch_lane_invoke + 432
+	16  libdispatch.dylib                   0x000000019d5c0ac8 _dispatch_main_queue_drain + 748
+	17  libdispatch.dylib                   0x000000019d5c07cc _dispatch_main_queue_callback_4CF + 44
+	18  CoreFoundation                      0x000000019d883ad4 __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__ + 16
+	19  CoreFoundation                      0x000000019d841258 __CFRunLoopRun + 1996
+	20  CoreFoundation                      0x000000019d840434 CFRunLoopRunSpecific + 608
+	21  Foundation                          0x000000019e974a88 -[NSRunLoop(NSRunLoop) runMode:beforeDate:] + 212
+	22  Foundation                          0x000000019e9ee6c4 -[NSRunLoop(NSRunLoop) run] + 64
+	23  inventory                           0x00000001044d6188 main + 460
+	24  dyld                                0x000000019d3da0e0 start + 2360
+)
+libc++abi: terminating due to uncaught exception of type NSException
