@@ -5715,3 +5715,11 @@ in evidence/requested-next-network.json, not a deployment/configuration claim.
 New isolated candidate/gates needed for changed target; no frozen edits/replay.
 Mac Bluetooth off/on consent remains unanswered; do not infer it from hotspot
 enabled. First preserve/read full61 raw before retiring completed generation.
+
+Owner explicitly authorized20s MacBluetoothoff/on; completed viaSystemSettings,
+UIconfirmedON restored. Freshknownpeer inventory nowhas NO oldPREFIX40, correct
+2a/2b and raw2c with110 actualread characteristics, error0. Dellnotrebooted,
+stateunchanged/zerowrites. evidence/physical61-gatt-refresh preserveslogs/hash.
+Sole finish_scan61_v2.py nowreading full retained61 export understate_lock;
+output runs/finished61-after-bluetooth-toggle. DoNOTstartanotherBLEconnection.
+Waitfull227callbacks/classification beforeSSID/release/raw conclusions.

@@ -1,0 +1,14 @@
+{
+  "owner_authorized_mac_bluetooth_off_on": true,
+  "off_duration_requested_seconds": 20,
+  "mac_bluetooth_restored_on_UI": true,
+  "Dell_reboot": false,
+  "writes_to_Dell": 0,
+  "inventory_sha256": "1fc8fed1df93b6cff98f4c6288173e1f1045fc564192a9c85ac7dc3bb4fd8367",
+  "old_prefix_service_absent": true,
+  "current_status_parent_present": true,
+  "raw_service_present": true,
+  "raw_characteristic_count": 110,
+  "new_scan_started": false,
+  "SSID_success": false
+}
