@@ -5634,3 +5634,19 @@ localkeyinstall; requirelocalconfirmedPTK+GTK/currentassociation/noquarantine.
 Alllibraries independentsoftwareonly; no privatekey/credentials/device ops.
 No retryofdeniedHCI timer/preparation scope. Hashpinnedcopied/vendor whitespace
 preserved (19files); allnewauthored-file whitespacechecksPASS.
+
+Parallel supplicant-linked-v1 nowFROZEN (realhostonly): report
+ab6d3fc62a2ff757c40f20088f28b160a929ae63b1c66aa12467eecbfdbd6bb2; freeze
+6403204028e0b2f53f4cf63371b424891a67c454b4a4f417e1ce9720aa8a9290.
+10actualmature supplicant/authenticator interopscenarios ASAN/UBSAN PASS,
+18upstreamunits/realOpenSSL3.5.5/publicsyntheticfixtureRNG. Rootall22local
+source/log hashes+331remote dependency/object/exe hashesread-onlyverified.
+PTK/GTK replay/rekey, MIC/counter/length/wrongPMK andambiguousinstalledtimeout
+quarantine/localcontrolledport exercised. NativeCOFFactualattempt FAILED
+missingstdlib.h; noclaimnativeport/physicalWPA. Official2026-2 PMKSAcontext/AKMP
+fix STILLNOTAPPLIED tohistorical2.11; notapprovedforactualcredentials.
+APauthorized!=localIPauthority proven: M4canprecedelocalset_keyfailure;
+localport0mustblockIPevenAPauthorized1. Ethernet/DHCPadapterbridge+actual
+confirmedPTK/GTK/association/entropy/secureprovisioning stillneeded.
+Actualfirmware61transfercurrently7/12acceptedandcontinuing sole74229; noSSID/
+association/IPproof, nohardwareengine62/signing/credentialsread.

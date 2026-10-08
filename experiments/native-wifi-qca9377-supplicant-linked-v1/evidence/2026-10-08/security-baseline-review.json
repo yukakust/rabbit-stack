@@ -1,0 +1,33 @@
+{
+  "status": "HISTORICAL-2.11-COMPARISON-ONLY-NOT-DEPLOYMENT-APPROVED",
+  "review_date": "2026-10-08",
+  "chosen_baseline": "wpa_supplicant 2.11 pinned unmodified archive",
+  "archive_sha256": "912ea06f74e30a8e36fbb68064d6cdff218d8d591db0fc5d75dee6c81ac7fc0a",
+  "primary_sources": [
+    {
+      "url": "https://w1.fi/releases/",
+      "finding": "Official release listing contains 2.12 dated 2026-08-07."
+    },
+    {
+      "url": "https://w1.fi/security/2026-2/missing-network-context-validation-for-pmksa-caching.txt",
+      "finding": "2026-07-09 advisory: driver-based PMKSA cache selection needs matching network context and AKMP; old versions affected, including WPA2 paths."
+    },
+    {
+      "url": "https://git.w1.fi/cgit/hostap/commit/?id=de5e73a03c34d83568afb3183b2b28c8d7641a30",
+      "finding": "Advisory-referenced targeted upstream PMKSA validation fix."
+    },
+    {
+      "url": "https://w1.fi/security/",
+      "finding": "Official advisory index; this scope does not claim complete current-security review."
+    }
+  ],
+  "patch_applied": false,
+  "version_upgraded": false,
+  "deployment_admitted": false,
+  "required_next_review": "Apply/review targeted fix or compare reviewed 2.12 baseline, then rerun relevant synthetic interop/PMKSA negatives before any credential admission. No broad upgrade performed.",
+  "scope_limits": [
+    "Fixed WPA2-PSK/CCMP synthetic fixture does not exercise PMKSA driver-network selection.",
+    "SAE/mesh/enterprise are not negotiated by this fixture; no blanket exclusion or security approval for library code is inferred.",
+    "No physical key install, recipient attestation, actual RNG or Wi-Fi credentials tested."
+  ]
+}

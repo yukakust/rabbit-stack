@@ -1,0 +1,14 @@
+{
+  "status": "ROOT-FROZEN-LINKED-HOST-PROOF-REVIEW-PASS",
+  "report_sha256": "ab6d3fc62a2ff757c40f20088f28b160a929ae63b1c66aa12467eecbfdbd6bb2",
+  "local_freeze_files": 22,
+  "remote_compiled_dependencies_objects_exe": 331,
+  "remote_review_log_sha256": "027185d2d55011be1e3e6b1e511103631fa9ba490d3d95ec300336b569ba7d28",
+  "interop_scenarios": 10,
+  "real_crypto": true,
+  "actual_native_COFF_success": false,
+  "PMKSA_fix_applied": false,
+  "physical_Dell_WPA": false,
+  "credential_reads": 0,
+  "new_device_operations": 0
+}

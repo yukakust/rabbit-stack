@@ -1,0 +1,5 @@
+In file included from /home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src/rsn_supp/wpa.c:10:
+/home/yuka/rabbit-world/parallel-security-v1/reference/wpa_supplicant-2.11/src/utils/includes.h:19:10: fatal error: 'stdlib.h' file not found
+   19 | #include <stdlib.h>
+      |          ^~~~~~~~~~
+1 error generated.

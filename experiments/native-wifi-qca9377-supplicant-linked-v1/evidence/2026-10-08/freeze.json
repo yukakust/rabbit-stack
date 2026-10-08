@@ -1,0 +1,29 @@
+{
+  "status": "FROZEN-HOST-ONLY-TEN-SCENARIOS-PASS",
+  "physical_verified": false,
+  "native_deployment_admitted": false,
+  "sha256": {
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "HOSTAP-LICENSE-README.txt": "f1b5992bbdd015c3ccb7faaadd62ef58ed821e15b9329bf2ceb27511ccc3f562",
+    "README.md": "bde48e4d169d5270fbb9bc538ccd1a5ddadcf8417a9bee8194baecfb0f1f11fa",
+    "evidence/2026-10-08/COFF-attempt.log": "5fbcbc35e00057ec7c21bf3bd58807f7dfdbeb0e5e24771a203666364b54ed84",
+    "evidence/2026-10-08/build-and-tests.log": "f090187f56fde8e9a8d9dd95efe47d82ad824a956f3b41008252618a144c2c08",
+    "evidence/2026-10-08/core-undefined.log": "22fc4eee87fc56c7c0f1ffd7ada3f0baf862800cced2d66cb0f6b48e128bb1cf",
+    "evidence/2026-10-08/dynamic-imports.log": "11a03e508636c5e968319fea761e4daf388f16eb1f7f682cfa884c5a5c460485",
+    "evidence/2026-10-08/ldd.log": "e542d5efb5aafdf23c7854507b0f97eedcdebc271f54999d2a2d7b6a3d8e2f1d",
+    "evidence/2026-10-08/mode-0.log": "1b536fc616b05479c844bcb9d511c45dc770a9bd1beaf4b65abf7503c28189ca",
+    "evidence/2026-10-08/mode-1.log": "01838f94fa07bb0aef2093bcc9ff5e46c9a177ec0873adf43dafd4951b473e89",
+    "evidence/2026-10-08/mode-2.log": "a99d2e93833198067cdda33d6abdf6db376b5ebc04e544555e6292d65bbb6836",
+    "evidence/2026-10-08/mode-3.log": "6f32ab52e7fb3cb46aeb8246131c5e4359ede2bd2dd0bbbbad7a8e72438d2ab0",
+    "evidence/2026-10-08/mode-4.log": "73fa6a5ddb902e45691a2c567344ec5b003edb0a490e92f12a1ad7a0cf69318d",
+    "evidence/2026-10-08/mode-5.log": "9eb79b69ab8489c932c01555388da539eb3a4f6d1e4606152914a6adfdbcdc79",
+    "evidence/2026-10-08/mode-6.log": "e6c96b58811a40fd6c9240693fb666d0806a2a0b4e017c59e4bd71f08b402513",
+    "evidence/2026-10-08/mode-7.log": "b671e3fb16f6335d2ac225ae45bd7a82e7b410fdb1727c48c3600770c0ac29d0",
+    "evidence/2026-10-08/mode-8.log": "850cd45bae6c83aa7f2ada5a78b7c9c118dc95b04b4e0f2fbb6d92a2c111c3cc",
+    "evidence/2026-10-08/mode-9.log": "f81cb3adf447cfcb77bfbff6d5ceaa622bf1ede062e5705cb5bd753fc1079549",
+    "evidence/2026-10-08/report.json": "ab6d3fc62a2ff757c40f20088f28b160a929ae63b1c66aa12467eecbfdbd6bb2",
+    "evidence/2026-10-08/security-baseline-review.json": "4bb94dcd384efdc84946ec222cac5e7cd38af0b2bab01122fdd1f16351c3d669",
+    "interop.c": "3a536f33ae0598461b22113a3169708ed57955f1805d9d97e51600625336ba64",
+    "verify.py": "407cba76cc3d177cf8bb545440d0b14504a71b9a5460d14de161828f54463753"
+  }
+}
