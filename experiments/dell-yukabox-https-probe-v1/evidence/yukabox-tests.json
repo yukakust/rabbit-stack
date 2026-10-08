@@ -1,0 +1,15 @@
+{
+  "status": "SOFTWARE-ONLY-BOUNDED-PROBE-TESTS-PASS",
+  "build_host": "yukabox",
+  "test_cases": 6,
+  "exit_code": 0,
+  "log": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.004s\n\nOK\n",
+  "physical_Dell": false,
+  "endpoint_running": false,
+  "endpoint_published": false,
+  "source_sha256": {
+    "test_probe.py": "7f872d67ed0268a08868f4913c175ee1bb36534dfd27d3193f636f6669ad81bf",
+    "test_http.py": "1a00efcf2c2823dd1203515c09e94e694f20a615568188fedfa3bccf1bbd19bb",
+    "probe.py": "4af8ae90fb27ffe5c11f1707f27a9e81fba2f2192ec0a3aa2b9ab547fcdf8887"
+  }
+}

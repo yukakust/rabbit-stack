@@ -6034,3 +6034,24 @@ physicalsource/raw proof; nativeC/ASAN/COFF/QEMU onlyYukabox. AvoiddeniedHCI tim
 scope; this is WMI filter-barrier logic, not HCI/USB changes. NoDellreboot/USB/
 OTP/flash/credentials. Oldautomationnative51 snapshot obsolete factualproof63
 priority. WiFi/IP/Yukaboxdataexchange STILLNO.
+
+### 2026-10-09: owner approved complete Wi-Fi/IP/WAN plan; isolated64 implementation underway
+
+Owner explicitly requested full six-stage implementation until physical success
+or a concrete blocker, including parallel independent software preparation.
+Current actualstate SHA f68db4fc... still native63/world19, completed12 firmware
+firmware-ram-d7zhmz9c retained; no active63/51 controllers found. Root new64
+prior63 public replay revalidated exact signed63-on62/full12/232owned callbacks
+and RELEASE14 diagnosticfailure. No new signature, retirement or BLE operation.
+New64 timing producer/host helpers remain unsigned/unadmitted while wholeEFI
+source/ASAN/COFF/reproduction/QEMU/current-world gates are prepared on Yukabox.
+Protected RNG/pool platform preparation is independent, not physical RNG approval.
+
+New dell-yukabox-https-probe-v1 handler/source has six bounded software tests
+PASS on Yukabox (evidence/yukabox-tests.json). Loopback9784 only; bounded nonce
+request/response/replay set, no file/management interface. NOT running/published;
+no Funnel configuration changed, no actual Dell request, no IP/Wi-Fi proof.
+User chose eventual isolated Funnel10000 endpoint preserving443/8443. Publish
+only at real protected Dell WAN test, close after correlated nonce proof.
+Frozen63 and denied HCI generation scope unchanged; no secrets read/exported,
+Dell reboot, USB/bootstrap/OTP/flash changes. Existing automation stays active.
