@@ -1,0 +1,40 @@
+/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c
+EXACT63 QUERY-BEFORE-RESUME 1 confirmed aggregate 0
+Chunk0 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c/chunk-0-1.log
+EXACT63 QUERY-BEFORE-RESUME 2 confirmed aggregate 43200
+Confirmed RAM chunk1/12 bitmap=1 ready=0
+Chunk1 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c/chunk-1-5.log
+EXACT63 QUERY-BEFORE-RESUME 3 confirmed aggregate 108960
+Confirmed RAM chunk2/12 bitmap=3 ready=0
+Chunk2 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c/chunk-2-9.log
+EXACT63 QUERY-BEFORE-RESUME 4 confirmed aggregate 174720
+Confirmed RAM chunk3/12 bitmap=7 ready=0
+Chunk3 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c/chunk-3-13.log
+EXACT63 QUERY-BEFORE-RESUME 5 confirmed aggregate 240480
+Confirmed RAM chunk4/12 bitmap=15 ready=0
+Chunk4 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c/chunk-4-17.log
+EXACT63 QUERY-BEFORE-RESUME 6 confirmed aggregate 306240
+Confirmed RAM chunk5/12 bitmap=31 ready=0
+Chunk5 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c/chunk-5-21.log
+EXACT63 QUERY-BEFORE-RESUME 7 confirmed aggregate 372000
+Confirmed RAM chunk6/12 bitmap=63 ready=0
+Chunk6 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c/chunk-6-25.log
+EXACT63 QUERY-BEFORE-RESUME 8 confirmed aggregate 437760
+Confirmed RAM chunk7/12 bitmap=127 ready=0
+Chunk7 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c/chunk-7-29.log
+EXACT63 QUERY-BEFORE-RESUME 9 confirmed aggregate 503520
+Chunk7 unconfirmed; preserve session and query before retry. Log: /Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c/chunk-7-31.log
+Traceback (most recent call last):
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-root-route-v1/continue63.py", line 101, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-root-route-v1/continue63.py", line 77, in main
+    floor=progress(report,session) if report['sender_steps'] else 0;gate.need(floor>previous,'no forward progress; stop');previous=floor
+          ~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-root-route-v1/continue63.py", line 14, in progress
+    gate.need(last['stage']=='bounded-timeout' and last['NSError_domain']=='RabbitAssetObserver' and last['NSError_code']==1,'non-timeout failure requires investigation')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-filter63-root-route-v1/gate.py", line 13, in need
+    if not v:raise ValueError(m)
+             ^^^^^^^^^^^^^^^^^^^
+ValueError: non-timeout failure requires investigation

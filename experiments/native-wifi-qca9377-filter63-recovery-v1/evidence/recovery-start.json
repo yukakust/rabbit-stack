@@ -1,0 +1,8 @@
+{
+  "pid": 11226,
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-fe6ebz_c",
+  "asset_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-d7zhmz9c",
+  "fresh_confirmed_floor": 52080,
+  "new_signatures": 0,
+  "source_sha256": "93a0c6ade2a680544042b6275fe0101258db1ffe1d92b05d1d64ba5844b0e9cd"
+}

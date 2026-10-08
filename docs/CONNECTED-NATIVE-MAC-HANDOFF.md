@@ -5984,3 +5984,27 @@ AGGRabsentpartialstartup; association/keys/IP/Yukaboxdataexchange STILLNO.
 Iftransferkeepsacknowledging/noindependentnecessarywork, heartbeat staysquiet;
 actualcontroller/receipt/logs outrankoldautomationnative51 snapshot. After
 terminal checkactuallivePIDandclassification; realfaultstop preservedsession.
+
+### 2026-10-08: seven firmware63 parts accepted; actual disconnect recovered read-first
+
+8689 stopped properly on actualCBErrorDomain6 unexpectedconnectiontimeout
+inchunk7 (eighth part), finalcachederrorcallback raw_bytes0 NOTusedasdata.
+Sevenexactreceipts bitmap127/ready0; lastgoodfloor51360 of65760 onpart8.
+No firmwareboot/scan/IPyet. 8034/8689 both verifieddead, no secondBLE.
+Rootseparatezero-write savedchunk8 query understate_lock/native63 exactgates
+returnedactualaction2/state1/error0/bitmap127/ready0/floor52080/65760/exact
+packetSHA682026410c636e87b1ea96d414745ebe7ebefa6541935a32e9151033b16e4590.
+No cache/errorinfreshcallbacks; originalaccepted7+partial8 preservedDellRAM.
+Causeofdisconnect NOTproven; no timer/HCI/firmware/source changes.
+
+Newisolated filter63-recovery-v1 resume63.py read-proof-gated manual recovery,
+not relaxationof frozencontrollerfaultguard. ActualsolePID11226 live,
+metadata live-controller.json/logrecovery63.log. SAMEassetfirmware-ram-d7zhmz9c,
+SAMEAPPLIEDnativepci-native-fe6ebz_c, ZEROnewsignatures. It checksfresh<=300s
+query/pins/knownpeer/exactpacket/bitmap/partialfloor beforeunchangedassets63.py
+deliver (whichqueriesagainbeforewrite). Afteroneverifiedresume it onlyexecs
+samecontinue63.py firmware ifcompleted12 orordinaryprogressingtimeout; real
+newfault stops. PID11226 stayssameonexec; inspectroot+recoverymetadata/livePID
+andactualstate BEFORE anyrestart. NEVERnewcontroller/resign/replaycompleted7.
+Evidence originalfailureandfreshrecoveryread retainedrecovery-v1/evidence.
+WiFiSSID/association/keys/IP/Yukaboxexchange STILLNOTconfirmed.

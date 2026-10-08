@@ -1,0 +1,8 @@
+{
+  "inputs": {
+    "query.log": "eb219fc20af4ef3fb4c053d984aa7ff98fcda1e34104bf8a0aba62f1ae7c6578",
+    "query.jsonl": "f434be3a4b49a05bdb834a69b30bd0ed6f120f7d15b074f7779f9ad2068fb67f"
+  },
+  "physical_recovery_only": true,
+  "new_signatures": 0
+}
