@@ -1,0 +1,11 @@
+{"code":0,"domain":"","message":"","stage":"manager:5"}
+{"code":0,"domain":"","message":"","stage":"connected; discover requested service"}
+{"code":0,"domain":"","message":"","stage":"discover services callback"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-000000000007"}
+{"code":0,"domain":"","message":"","stage":"discover characteristics:52414242-4954-4649-8000-000000000007"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000008 properties:8"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000009 properties:8"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-00000000000A properties:2"}
+{"code":0,"domain":"","message":"","stage":"read request:52414242-4954-4649-8000-00000000000A"}
+{"code":0,"domain":"","message":"","stage":"read callback:52414242-4954-4649-8000-00000000000A"}
+{"code":0,"domain":"","message":"","stage":"value bytes:64 hex:52464353303030310100000000000000e000010030480000478cb587d02b72b1abb570994cc840c98058f4183c61555891a6d8d3ccd4c3f30100000000000000"}

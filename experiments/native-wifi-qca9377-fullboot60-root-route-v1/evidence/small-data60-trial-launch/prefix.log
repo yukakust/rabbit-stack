@@ -1,0 +1,19 @@
+{"code":0,"domain":"","message":"","stage":"manager:5"}
+{"code":0,"domain":"","message":"","stage":"connected; discover requested service"}
+{"code":0,"domain":"","message":"","stage":"discover services callback"}
+{"code":0,"domain":"","message":"","stage":"service:52414242-4954-4649-8000-000000000040"}
+{"code":0,"domain":"","message":"","stage":"discover characteristics:52414242-4954-4649-8000-000000000040"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000041 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000050 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000051 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000052 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000053 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000054 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000055 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000056 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000057 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000058 properties:2"}
+{"code":0,"domain":"","message":"","stage":"characteristic:52414242-4954-4649-8000-000000000059 properties:2"}
+{"code":0,"domain":"","message":"","stage":"read request:52414242-4954-4649-8000-000000000041"}
+{"code":0,"domain":"","message":"","stage":"read callback:52414242-4954-4649-8000-000000000041"}
+{"code":0,"domain":"","message":"","stage":"value bytes:240 hex:51504658303030313c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005000000000000000c0000000e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000010000000f0000000100000000000000000000007f4b0100240200005b4901002402000000000000000000000000000015000000000000000000000000000000814b010018790000b80b000000000000000000000000000000000000"}

@@ -5398,3 +5398,15 @@ fromfrozenassetobserver, exactone-token DATAcap240→100, same50mspacing/240stim
 andbyte-exactsavedpacket/status/diagnostics. No native/HCI/resident/timerfix.
 Awaitmodel+source/executable proofandfresh60/retainedassetbeforeonesinglehardware
 trial; noresign/blindreconnect. Nothingnewtransmittedduringthisanalysis.
+
+DATA100 frozenhost65casesPASS: exactone-tokensender change240→100, maxATT104,
+same50ms/240stimeouts/status/signedpackets/serialQPFX. Proof
+8ee677d70d128280fbae23cedfc5bb70449a8afb9e8e1596925153bd9e7eed8c, sender
+f86f50806b4959de5441c21eb26840891c934a487786a6da527febf3ee66cca9. Rootindependent
+alloriginal/newsource+compiledexe+hostlog+exactdiff gatePASS. New small_data60_trial.py
+ONLYdeliverexisting12assets, no sign. FreshknownpeerRFS60/QPFX60phase0/noUSBfault
+/RFCSexactchunk1retained +unchangedstate validatedunderlock beforetrial.
+SolePID60888 small_data60_trial.py; small-data60-controller.json/logsmall-data60-trial.log.
+Existing6fuyx2jq packets/checkpoints reused; no native/HCI/timer modification,
+newsignatures0. One controlledtrial; anyfailureSTOP(noauto-reconnect); outcome
+unconfirmedatsnapshot, notclaimedRFcausefix. Evidence/small-data60-trial-launch.
