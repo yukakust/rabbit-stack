@@ -6008,3 +6008,29 @@ newfault stops. PID11226 stayssameonexec; inspectroot+recoverymetadata/livePID
 andactualstate BEFORE anyrestart. NEVERnewcontroller/resign/replaycompleted7.
 Evidence originalfailureandfreshrecoveryread retainedrecovery-v1/evidence.
 WiFiSSID/association/keys/IP/Yukaboxexchange STILLNOTconfirmed.
+
+### 2026-10-09: physical63 full12+boot success; filter overall deadline fault; raw ECHO queued
+
+All12 exactgen63 firmware receipts verified bitmap4095/ready1; no new signatures.
+ActualQWBTphase5/error0 confirms completed chipboot/INIT/READY. Sole11226 read
+releasedfault monitor-v2 then complete232actualcallbacks/threeequalQF63+QSCN/
+twoequal110pages. Rootpublic63signatureon62/full12/assets/rawjoin classifier
+PHYSICAL63-RELEASED-DIAGNOSTIC-FAILURE. Evidencephysical63-filter-timeout retains
+classification/progress/fullraw/currentstate/fullfirmwarereport/hashes.
+
+Pipelineerror102 = qca_filter_poll fault; filtererror4 = overall3s deadline,
+step2/ECHO, threecommandsPOSTED but onlytwoTXDMA completions observed byowner;
+filter.echo_seen0, echo_floor6, RXcompleted8, all14actualownersreleased/CLOSED.
+Actualowned slot21 RXqueue completion8/pipe2 contains ECHO event0x1d001/tag54/
+arg0x63000001 exactexpected; credit-only completion7 inotherRXqueue slot20.
+Thus firmware DOESrespond ECHO, but filterdidnotaccept/drain itbeforeglobal
+fault. Exactarrivalrelative todeadline NOTmeasured; don'tclaimtimingcauseproved
+orDMAthirdcompletion. HTTquery NOTbegun, SCAN NOTbegun, noSSID/IP/association.
+
+Nextsource-based waiting/order/timing correction in NEWisolatedversion only.
+Frozen63/filtercomponent/hosthelpers/reports unchanged; neverrerun full63firmware
+orresign. Check livePID/status beforeanynewBLE. Preserveworld19 andexisting
+physicalsource/raw proof; nativeC/ASAN/COFF/QEMU onlyYukabox. AvoiddeniedHCI timer
+scope; this is WMI filter-barrier logic, not HCI/USB changes. NoDellreboot/USB/
+OTP/flash/credentials. Oldautomationnative51 snapshot obsolete factualproof63
+priority. WiFi/IP/Yukaboxdataexchange STILLNO.
