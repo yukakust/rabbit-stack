@@ -1,0 +1,18 @@
+{
+  "status": "OFFLINE-OWNED-WMI-BSS-SELECTION-FROZEN",
+  "report_sha256": "eba085143c9cc4d786fb0b416fcb8a2cda1070f47c2ceac47ec9f5f620fed2e6",
+  "checks": 86284,
+  "source_files": 102,
+  "coff_objects": 7,
+  "selection_sha256": "f55ab14f9460771356629cb8bb4ff5830ed06f918ac0976679f406133c3f2973",
+  "live_adapter_sha256": "b2becc1915aea5d81c1012a60e34ced21946895fc2f2ab379c707ff6c0faad40",
+  "interface_sha256": "e58d41e820abbcc588d3fd2fa2c475c9bebb62d989ae51729b4270f95fa07f62",
+  "integration_contract_sha256": "0173c9854cf2e7de7768b2e8bbced406683553183e56675ebcfc0ef7152e3b14",
+  "physical_verified": false,
+  "native_integrated": false,
+  "native_capability_proof_pending": true,
+  "rf_admission_granted": false,
+  "association_authority": false,
+  "credential_reads": 0,
+  "generation_reserved": false
+}

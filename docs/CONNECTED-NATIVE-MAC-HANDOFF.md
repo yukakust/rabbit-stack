@@ -6098,3 +6098,30 @@ optional iPhone hotspot2.4GHz/MaxCompatibility question pending; no credentialre
 No Dell reboot/USB/bootstrap/OTP/flash changes; city19 source preservation verified,
 newphysicalrender observation after64 stillpending. WiFi/IP/YukaboxexchangeNO;
 automation staysACTIVE, obsolete native51 snapshot never overrides actualstate.
+
+### 2026-10-09: physical64 EXACT APPLIED; firmware64 exactsession active
+
+Native64 all203040 transportbytes staged, commit caused CBErrorDomain7 disconnect;
+the same retainedsession reconnect returned exact SHA/session/counter64 APPLIED.
+Sole native18456 exited; route.current validates payloadd40efd8c.../world19 and
+no nativepending. Public complete receipt retained evidence/native64-applied.
+MacBluetooth refreshed OFF20s/ON ONLYafter nativecontrollerexit, already authorized.
+Solefirmware64 PID21465 now continue64.py firmware SAMEpci-native-b_3xwpds,
+metadata runs/control/controller64-21465.json, firmware64-start.log. Exact once
+signed12gen64 session firmware-ram-j45u3fkd; chunk0 progressing (snapshot30240/65760),
+no completedparts yet/nochipboot/ECHO/HTT/scan/WiFi/IP/WANsuccess claim.
+ReadactualPID/state/receipt/log first; never secondBLE/resign/63replay.
+User optional hotspot2.4GHz/compatibility and requiredpost64 city/cat/tail observation
+questions pending. Do not infer observation; do not rebootDell.
+
+BSSselection-v1 frozen softwarecomponent: eba085143c9cc4d7... report,86284 C
+ASAN/UBSAN+7COFF/sourceclosure PASS onYukabox. Exact ownedbeacon/RSN/rates,
+strongestfreshSNR; actualnativecapabilitysource/lifetimecaller remainpending.
+network-wan-v1 frozen softwarecomponent: report1a84a90a0e387dcf7d8bd24e2b8d82d7b7bb76a09c051fbce0dde430a491c6d6,
+368 syntheticactual lwIP ASAN/UBSAN+23COFF PASS ONLYYukabox. Genuine2.2TCP/DNS
+addedtohardenedDHCP/ARP; boundedepochBIO/closewipe/backpressure/DNSquarantine
+and addressconflict/leaseexpiry checks. SumCOFFtext479xx/bss33552/rdata6565,
+notfullreachableEFI fit/physicalIP/HTTPS. NoTLSclient/certtime/noncehardwareproof.
+Persistent47owner/runtimearena, TLS13BLE and maturestationadapters independent
+softwarepreparation stillunderway; nohardwareauthority/pseudoentropy/credentials.
+AutomationACTIVE. Success requiresreallease/router+protectednonceYukaboxroundtrip.

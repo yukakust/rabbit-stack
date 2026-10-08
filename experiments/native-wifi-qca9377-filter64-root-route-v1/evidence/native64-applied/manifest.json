@@ -1,0 +1,15 @@
+{
+  "status": "EXACT-APPLIED-RECEIPT",
+  "counter": 64,
+  "payload_sha256": "d40efd8c0b08a9289f0caaa64d931519a253559c53ef732af8961ed91ad49965",
+  "world_counter": 19,
+  "world_sha256": "fa5a3250633f2bbbd288d947be567c2c5db8e3395033da99b765edf0a0f5cc74",
+  "packet_sha256": null,
+  "report_sha256": "59db53d67c47c3361d3361afbbb888c0bc031618e3aa8b84fd63412386ce3c2a",
+  "native_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/pci-native-b_3xwpds",
+  "firmware_session": "/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/runs/text-world/firmware-ram-j45u3fkd",
+  "sole_firmware_controller_pid": 21465,
+  "wifi_connected": false,
+  "IP_confirmed": false,
+  "Yukabox_exchange_confirmed": false
+}

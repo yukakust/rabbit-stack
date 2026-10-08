@@ -1,0 +1,18 @@
+{
+  "tcp.c": {
+    "url": "https://raw.githubusercontent.com/lwip-tcpip/lwip/0a0452b2c39bdd91e252aef045c115f88f6ca773/src/core/tcp.c",
+    "sha256": "76d701944a20dae435fb09a37046fea046ba1d996038362e37eae57157ba586f"
+  },
+  "tcp_in.c": {
+    "url": "https://raw.githubusercontent.com/lwip-tcpip/lwip/0a0452b2c39bdd91e252aef045c115f88f6ca773/src/core/tcp_in.c",
+    "sha256": "7a3f67af25eed370d8f9ac7c3bacc99b8cf8fdaf373137f92d4a5dc3221e8655"
+  },
+  "tcp_out.c": {
+    "url": "https://raw.githubusercontent.com/lwip-tcpip/lwip/0a0452b2c39bdd91e252aef045c115f88f6ca773/src/core/tcp_out.c",
+    "sha256": "f8d44fafd6f9dc81442317f9d196aec772f37e02bfdb8ef601601a73454e7660"
+  },
+  "dns.c": {
+    "url": "https://raw.githubusercontent.com/lwip-tcpip/lwip/0a0452b2c39bdd91e252aef045c115f88f6ca773/src/core/dns.c",
+    "sha256": "fe35ede9919974da54598630cc08d654ccc30b668c45b09668c3ba572686b26c"
+  }
+}
