@@ -6499,3 +6499,22 @@ pushed. Physical QR/password has not been requested because actual key/trusted
 protected endpoint is not installed. Wi-Fi/IP/router/protectedWAN unconfirmed;
 city19 unchanged. AutomationACTIVE (success condition not reached); on wake
 read this actual review wall, do not retry blocked integration automatically.
+
+
+### Owner roadmap extension and Daybreak access check —2026-10-09
+
+Owner requested adjacent modern-city Unreal district with Olympian gods, heroes,
+Titans and monsters fighting. Added sequence/acceptance to CONNECTED-WORLD-
+CONTROL-PLAN.md and ROADMAP.md; Unreal already installed on Yukabox according
+to previous evidence, actual Dell display/network first. Commit1375796.
+
+OpenAI Docs official https://learn.chatgpt.com/docs/cyber-safety fetched:
+individual application https://chatgpt.com/cyber ; application/identity
+verification does not guarantee approval. Platform status URL redirected to
+login. Official individual page showed all three eligibility steps incomplete:
+Advanced Account Security, identity verification, Daybreak hardware keys.
+Set up Daybreak opened actual auth.openai.com/email-verification (Check your
+inbox). User must enter fresh email code in current visible Codex in-app tab.
+No credentials/code read, account-security/key/enrollment change, approval or
+blocked integration retry performed. Access remains unverified. Earlier actual
+safety-review wall remains; physical Dell/world65/19 unchanged.
