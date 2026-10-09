@@ -1,0 +1,23 @@
+{
+  "frozen_original_sha256": {
+    "experiments/native-wifi-qca9377-module-artifact-v1/loader.c": "2550015a379dbd77719405742434bc8b069b86d5e14f574513264c3772e58231",
+    "experiments/native-wifi-qca9377-module-artifact-v1/module_abi.h": "1c225129fa9589d9268b8729b67f029a054e58e203833ee50a217f12b0cf25dc",
+    "experiments/native-wifi-qca9377-module-artifact-v1/qemu_probe.py": "0352dfd7db934b2fc13f71b78de03305e9752c09be8763dcf6eab4c16535fcde",
+    "experiments/native-wifi-qca9377-module-artifact-v1/artifact.h": "bda143ebbb479af4ac44a84ef2c59a0ad152f4768307f5c09fe95fe0e0f73a01",
+    "experiments/native-wifi-qca9377-module-artifact-v1/README.md": "98ad82afe00c3ffe41a25452cb032f79d2a5d946ac8ae0f2931397bc8450ad92",
+    "experiments/native-wifi-qca9377-module-artifact-v1/loader.h": "85d55f097230437cecd9dd4b51d7eba031a0c02ef7b696b16c76b11cbbe3fb57",
+    "experiments/native-wifi-qca9377-module-artifact-v1/.gitignore": "31eb9c895293dbb9b58b0b58e0eec0b58780a6131cca2b18f247926cec822dc1",
+    "experiments/native-wifi-qca9377-module-artifact-v1/qemu_parent.c": "b375e49cb9f6bdfc42f83b539dc886a4fcbc7e97b1002324295786cb52c516c2",
+    "experiments/native-wifi-qca9377-module-artifact-v1/test_module.c": "8263b4dac63cb1db28c594838623102e7834bfdbde8fd7afda2cfc33a73327fa",
+    "experiments/native-wifi-qca9377-module-artifact-v1/verify.py": "73ae2f7422c4b446b3d82ffddf3b3f48b3a655630a450270b2475a4e1c18f34f",
+    "experiments/native-wifi-qca9377-module-artifact-v1/artifact.c": "36d79f6f07e6a28033820f9678b8005fca657f6324888fbfc6ad5f727d0a52da",
+    "experiments/native-wifi-qca9377-module-artifact-v1/reference/monocypher.h": "fcaf6ed771358bb4f40fba016f6518ae86ec02b1b877d2cc35ad92d3a26fd7b3",
+    "experiments/native-wifi-qca9377-module-artifact-v1/reference/uefi_abi.h": "a337006b799f4d974997952fa7bb1b31a522b49880a1966410db7400bb73ffb4",
+    "experiments/native-wifi-qca9377-module-artifact-v1/reference/monocypher-ed25519.h": "3a3035181f991a158d0e1c7567258f0bae8ba0f1f23c5512b4a1db1b3c9730ce",
+    "experiments/native-wifi-qca9377-module-artifact-v1/reference/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+    "experiments/native-wifi-qca9377-module-artifact-v1/reference/monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "experiments/native-wifi-qca9377-module-artifact-v1/reference/monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+    "experiments/native-wifi-qca9377-module-artifact-v1/reference/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+    "experiments/native-wifi-qca9377-module-artifact-v1/reference/memory_bridge.c": "f24078fed0ce13fd7f867d494bc3e9cf89b40adbf7c2e04d9aaf15bf5cfe38ae"
+  }
+}

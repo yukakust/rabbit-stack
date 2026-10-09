@@ -1,0 +1,6 @@
+["gcc", "-std=c11", "-O1", "-g", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-fno-omit-frame-pointer", "-I.", "-Ireference", "pump.c", "test_pump.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-tls-cipher-pump-v1/runs/test"]
+
+["/home/yuka/rabbit-world/native-wifi-qca9377-tls-cipher-pump-v1/runs/test"]
+CIPHERTEXT-PUMP 18 adversarial cases; providers injected, TLS/physical pairing authority=0
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-Ireference", "-c", "pump.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-tls-cipher-pump-v1/runs/pump.c.obj"]

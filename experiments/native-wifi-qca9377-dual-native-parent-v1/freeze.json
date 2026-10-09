@@ -1,0 +1,27 @@
+{
+  "status": "DIRECT-NATIVE-SHARED-DUAL-SOFTWARE-FROZEN",
+  "source_sha256": {
+    "loader.h": "fc1c9a96577c1957e6ea2f35bb4280b0e2b3282699c8c0b7aa41a6b34ef07fd3",
+    "dual.c": "e86faebd47b43fe1d3bf6788b2a5bd584b45b059e09ca33ee0b01e27e82a1f54",
+    "native_parent.c": "1d5554bf2b020624048a8adf6ca0deb5863861aec8a1129139ddb9123bb38543",
+    "artifact.h": "8be1ac001696e9d89dd122cb7391741d5eff8c22452171f8c65970f63c303154",
+    "test_native.c": "201ef4b4681a1795b1da986f11dae31574022442998aadfc4f13feb56b66dfbd",
+    "README.md": "05b4141ddd508198c3e06dfa9ccfacc93c3e0b84e39c03c5e3883571afb1c001",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "native_parent.h": "18181c9b1db8ea47b6bdcf2d38764a20c17d62a4aa6714edf89b1129221bfea0",
+    "loader.c": "135dc271b676463e6f9862870defc079ca7749765927862e9290e98226a28331",
+    "artifact.c": "169ff3aff13717a049c41269dd6b703e49a7fdb4c39db86692f7a0584919a45f",
+    "module_abi.h": "1c225129fa9589d9268b8729b67f029a054e58e203833ee50a217f12b0cf25dc",
+    "verify.py": "ef652fdcba1d45df52653d049b519428b98e0493156f004c3070cd2edfe77328",
+    "dual.h": "6df7c534142856ed32ecdc8218d13d633ce287cd645c440671dd197f02880f7e",
+    "reference/monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+    "reference/monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "reference/monocypher.h": "fcaf6ed771358bb4f40fba016f6518ae86ec02b1b877d2cc35ad92d3a26fd7b3",
+    "reference/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+    "reference/uefi_abi.h": "a337006b799f4d974997952fa7bb1b31a522b49880a1966410db7400bb73ffb4",
+    "reference/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+    "reference/monocypher-ed25519.h": "3a3035181f991a158d0e1c7567258f0bae8ba0f1f23c5512b4a1db1b3c9730ce"
+  },
+  "report_sha256": "832e50cd7af2ca5a5afdc8e1cb4be4043626c3bb3c5b72c189740f69bb960e1b",
+  "physical_admission": false
+}

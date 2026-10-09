@@ -1,0 +1,10 @@
+{
+  "frozen_qr_source_sha256": {
+    "experiments/native-wifi-qca9377-pairing-qr-v1/panel.c": "63409013434ca609ebfd190a0d5164dae772b7ab9d865b8d22d17df13a5b9496",
+    "experiments/native-wifi-qca9377-pairing-qr-v1/panel.h": "81cf113d8ad8128256dbd554635b66c7898444d69a9d6b8643c630b3d410a895",
+    "experiments/native-wifi-qca9377-pairing-qr-v1/reference/qrcodegen.c": "6a2b9cc65176f2345dde260c74b6d352627e8a0a6385d086ae0e9c5d0913c70c",
+    "experiments/native-wifi-qca9377-pairing-qr-v1/reference/qrcodegen.h": "e82df4bff37d18b5863b9e7486fe6bda1b6cda8c3b9ecebfec473907265cb589",
+    "experiments/native-wifi-qca9377-pairing-qr-v1/upstream.json": "7391735fefcbd5d96a8e2f0ceb01db27579544fc29ff79a41b616505fe67eda7",
+    "experiments/native-wifi-qca9377-pairing-qr-v1/freeze.json": "276cfa0651330a0d6a8d5041ff3db3c387bb70dacb02190b3372d7d792f91592"
+  }
+}

@@ -1,0 +1,6 @@
+["gcc", "-std=c11", "-O1", "-g", "-Wall", "-Wextra", "-Werror", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-fno-omit-frame-pointer", "-I.", "-Ireference", "paint.c", "test_paint.c", "reference/panel.c", "reference/qrcodegen.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-qr-paint-only-v1/runs/test"]
+
+["/home/yuka/rabbit-world/native-wifi-qca9377-qr-paint-only-v1/runs/test"]
+QR-PAINT-ONLY 777722 assertions; six genuine generator bit-identical public frames; identity authority=0
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-Ireference", "-c", "paint.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-qr-paint-only-v1/runs/paint.c.obj"]

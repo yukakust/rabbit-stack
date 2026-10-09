@@ -6417,3 +6417,53 @@ actual callback negatives/admission/native whole integration remain pending.
 No password read/private key export/QR pairing/WiFi/IP/WAN success.
 AutomationACTIVE. Continue independent software integration; physical one
 controller only, fresh65 receipts/closed owners before any66 signing.
+
+
+### Internal-key/TLS lifecycle and direct shared native loading software proof
+
+Fresh saved state remains world19/native65/no pending native/hardware trial;
+no live65 controller. No66 packet, intent, signing, Bluetooth, hardware entropy
+sample, credentials, physical QR, Wi-Fi/IP/WAN event performed in this slice.
+
+NEW frozen tls-internal-identity-v1 has genuine MbedTLS3.6.7 P256 generation
+inside private child, public full SPKI/hash/QR only,600s identity lifetime,
+<=60s TLS13 sessions, RESET_SESSION retaining identity with exact keystore
+heap baseline and a second full handshake. Actual9 identity+9 baseline TLS
+cases/260 pin checks/3 bridge checks/117COFF; actual OVMF LoadImage/StartImage/
+public identity and QR/unload refusal/close/private-pool wipe, synthetic source.
+PE c43a6787487716f192ad1a33bf35058beda4ee1d2d728f4dadf2baf1feeba770,
+136704file/180224mapped. Root replayed330 public source hashes and4 evidence
+hashes. Freeze8ebf5122fc767d08fce30fc868ac546609d87a3d05b6d63bfcc65dac872cf08d;
+not physical source/key/provisioning admission.
+
+NEW dual-native-parent-v1 directly adapts validated actual parent h/SystemTable/
+LoadedImage to the shared two-child mapped/counter ledger, actual2 EFI arenas
+of262144, private deferred owner-signed public chunk acceptance. No installed
+public protocol prerequisite. Genuine signature software tests:526848 shared
+loader checks plus3934829 checks/six allocation/ownership failure boundaries,
+8COFF. Allocation/free ambiguity retains ownership; actual child revoke/close/
+unload precedes wipe/free. Root verified20 source hashes+log. Typed TLS/RSN
+leases and actual full native two-child OVMF remain integration requirements.
+
+NEW tls-cipher-pump-v1 frozen18 adversarial ASAN/UBSAN cases/1COFF:240-byte
+staging, provider feed/poll/drain/revoke only outside ATT, real-time deadline
+checks around callbacks, duplicate-frame/ACK bounds and borrow-safe disconnect.
+Injected provider; no genuine provider/native BLE integration authority.
+NEW qr-paint-only-v1:777722 ASAN/UBSAN assertions, six genuine encoder frames
+byte-identical to original full renderer,1COFF. Native only public bitmap
+paint/no encoder; caller supplies leased actual child panel. Validates full
+canonical hash text/current epoch/lifetime capped by key expiry/frame bounds.
+
+NEW mac-tls-client-v1:26 genuine OpenSSL MemoryBIO two-endpoint mutual synthetic
+certificate/TLS13/fullSPKI/bounded negative checks. TLS1.3 only/no ticket or
+session/early-data interface; exact out-of-band DER-SPKI SHA256 checked before
+application output,240-byte fragments/8192 bounds/60s monotonic epoch lifetime.
+No BLE, owner keys, actual credentials or hardware authority; Python runtime
+release is not claimed as explicit secret zeroization. Public module sender
+callback proof is now167 checks (earlier pending status superseded).
+
+Pending: whole persistent parent/direct loader/typed source+TLS and async RSN
+bridge/network integration, exact whole file/mapped/admission/world gates,
+then fresh closed65 receipt and one signed66 physical controller. QR/human
+full-pin and local password input remain required only when concrete actual
+Dell-local identity/verified protected interface exists. AutomationACTIVE.

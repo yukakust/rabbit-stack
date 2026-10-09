@@ -1,0 +1,20 @@
+{
+  "status": "BOUNDED-DEFERRED-CIPHERTEXT-PUMP-ASAN-UBSAN-COFF-PASS",
+  "source_sha256": {
+    "README.md": "20aea77d35925a35d0271d6e2377deafbc55a3ea7521cb84a8996d1d31b85747",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "pump.h": "cbcbc854096745453240eb97513f03867d2d8626750bc69fb5903343ab8f0d99",
+    "test_pump.c": "4a402e6ce9349a9e791f04e219ed5effca23cebbe60b285d2058f463946cdd56",
+    "verify.py": "d0d540881c170ddd2d4e607b962faddbf708c68535374ebc1c144e3156fffdea",
+    "pump.c": "0314a9a10627f6e424fed7c1a464ed14c3ea1cfc78977ec185029af75d74bd5d"
+  },
+  "result": "CIPHERTEXT-PUMP 18 adversarial cases; providers injected, TLS/physical pairing authority=0\n",
+  "log_sha256": "962ffd7a54822f05b57c189c62506e51f7c2878eca6d2f702ae10fcb67a5c7fa",
+  "coff_sha256": {
+    "pump.c.obj": "c37146dcc96fa957815b9c8971eaa29a7d827058723aec918641d14242f5a4b2"
+  },
+  "Dell_identity_authority": false,
+  "actual_physical_QR_pairing": false,
+  "physical_admission": false,
+  "whole_native_parent_integrated": false
+}

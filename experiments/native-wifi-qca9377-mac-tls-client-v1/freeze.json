@@ -1,0 +1,12 @@
+{
+  "status": "MAC-TLS13-FIXTURE-SOFTWARE-FROZEN",
+  "source_sha256": {
+    "client.py": "a459e3421111eebe5ef2fcbfaf5ddc634dad7c8d4878166832df6993e3373546",
+    "README.md": "89833d7598b816e64a34b51b843c8957fd16831787fa6dd6796949e9952693b4",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "verify.py": "6d74f837f213555390d7fa0a13aceaa0c3d5f010cd8fc97acbee88da388b80a1",
+    "test_client.py": "fbde5cd1ae65b937825efd8ad4218cc834adf4428ee167cd954af93845b6c8ab"
+  },
+  "report_sha256": "236c41af5efd74344b057562c076d113073d82b813209008499dd28df249995e",
+  "physical_admission": false
+}

@@ -1,0 +1,24 @@
+{
+  "status": "QR-PAINT-ONLY-ASAN-UBSAN-COFF-PASS",
+  "source_sha256": {
+    "README.md": "a27bfc0acfd7ddf51da4cf91625d552e0b2782e13ed39130e8aad829d8b50dae",
+    "paint.h": "09afe722b8435582a043e511616f3a64ffe743e9a0242d67d5ef3c27cc44bb64",
+    ".gitignore": "f04bbf57261b9153f9a7ba4d42419a3dc3e9f60e9ec8123d431fad20ea12e47b",
+    "test_paint.c": "8e03b9e476b3e6547fc67ac1f69f560af5bf6dcf7201f7ab057b638dcc5659d2",
+    "paint.c": "9265620fcc8e5e64f5589acedbc85095d2aa3ab6b315c8d2bc3b2e605e6e5f18",
+    "verify.py": "75bc3ea9df4b7c656b6f02d99840d2640f03af1893f38a0e3775b323a61fb688",
+    "reference/qrcodegen.c": "6a2b9cc65176f2345dde260c74b6d352627e8a0a6385d086ae0e9c5d0913c70c",
+    "reference/panel.c": "63409013434ca609ebfd190a0d5164dae772b7ab9d865b8d22d17df13a5b9496",
+    "reference/panel.h": "81cf113d8ad8128256dbd554635b66c7898444d69a9d6b8643c630b3d410a895",
+    "reference/qrcodegen.h": "e82df4bff37d18b5863b9e7486fe6bda1b6cda8c3b9ecebfec473907265cb589"
+  },
+  "result": "QR-PAINT-ONLY 777722 assertions; six genuine generator bit-identical public frames; identity authority=0\n",
+  "log_sha256": "dfa5c2c715a5b419e9cf625117cbece4fb115cf5e8ff7776714ec7c02efe6f15",
+  "coff_sha256": {
+    "paint.c.obj": "c4cc8fee86e0815a5496944089afd7c2f8d1818eb0bdb0d422a3806f8784862a"
+  },
+  "Dell_identity_authority": false,
+  "actual_physical_QR_pairing": false,
+  "physical_admission": false,
+  "whole_native_parent_integrated": false
+}

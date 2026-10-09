@@ -1,0 +1,19 @@
+["gcc", "-std=c11", "-O1", "-g", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-fno-omit-frame-pointer", "-I.", "dual.c", "test_native.c", "artifact.c", "loader.c", "native_parent.c", "reference/sha256.c", "reference/monocypher.c", "reference/monocypher-ed25519.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-dual-native-parent-v1/runs/test"]
+
+["/home/yuka/rabbit-world/native-wifi-qca9377-dual-native-parent-v1/runs/test"]
+DUAL signed loader/shared mapped ledger: 526848 checks; firmware injected, physical=0
+DIRECT-NATIVE-DUAL 6 boundary cases / 3934829 checks; firmware injected, physical=0
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-c", "dual.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-dual-native-parent-v1/runs/dual.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-c", "artifact.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-dual-native-parent-v1/runs/artifact.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-c", "loader.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-dual-native-parent-v1/runs/loader.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-c", "native_parent.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-dual-native-parent-v1/runs/native_parent.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-c", "reference/sha256.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-dual-native-parent-v1/runs/sha256.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-c", "reference/monocypher.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-dual-native-parent-v1/runs/monocypher.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-c", "reference/monocypher-ed25519.c", "-o", "/home/yuka/rabbit-world/native-wifi-qca9377-dual-native-parent-v1/runs/monocypher-ed25519.c.obj"]
