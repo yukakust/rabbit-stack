@@ -49,6 +49,20 @@ District map/persistence, live legacy exhibits, cross-engine portals, shared
 rendering, owner-authorized federation and budgeted streaming are planned work,
 not capabilities proved by the current native7/world12 receipts.
 
+## Next Unreal district — owner decision2026-10-09
+
+After Unreal is operational on Yukabox and its scene reaches the physical Dell
+monitor, build an adjacent modern city district with Olympian gods, heroes,
+Titans and mythological monsters fighting in its streets. Begin with one hero
+and one opponent, then expand the models, animation, combat behaviour and area.
+Rabbit commands change the scene; district state persists. Preserve the old
+city/cat and legacy exhibits, and connect the new district through the planned
+visible portals and shared composition. Mac remains the command point.
+
+The detailed sequence and acceptance criteria are in
+[CONNECTED-WORLD-CONTROL-PLAN.md](CONNECTED-WORLD-CONTROL-PLAN.md#новый-район-unreal--олимп-в-современном-городе-решение-от2026-10-09).
+This is planned content, not a completed district or combat demonstration.
+
 ## Architectural boundary
 
 ### Universal layer
