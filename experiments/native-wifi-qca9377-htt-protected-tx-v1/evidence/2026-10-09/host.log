@@ -1,0 +1,26 @@
+CASE 31
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+CASE31 STATUS0 ACTUAL EXPERIMENTAL ETHERNET2/TID16/NO_ENCRYPT0 +CE3_POLICY_NATIVE1+PTK_GTK_SEC+REALDMA_HTT+EAPOL_BEFORE_PORT+IP_CLOSED_REJECT PASS; NO PHYSICAL ENCRYPTION CLAIM
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+CASE 32
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+ACTUAL ETHERNET NON_OK CASE32 STATUS2 REVOKES/RETAINS47 PASS SYNTHETIC
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+CASE 33
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+ACTUAL ETHERNET MISSING OWNER CASE33 ERROR20 RETAINS47 PASS SYNTHETIC
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+ETHFAULT case=33 error=20 pol=3 txid=3 posted=1 DMA=0 HTT=1 gsg=0
+CASE 34
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+ACTUAL ETHERNET MISSING OWNER CASE34 ERROR20 RETAINS47 PASS SYNTHETIC
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+ETHFAULT case=34 error=20 pol=3 txid=3 posted=1 DMA=1 HTT=0 gsg=0
+CASE 35
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+ACTUAL ETHERNET NON_OK CASE35 STATUS1 REVOKES/RETAINS47 PASS SYNTHETIC
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+CASE 36
+UEFI PCI port: exclusive claim, fresh identity, BAR descriptor/bounds, memory-only enable, allowlisted IO, wake-before-release, ambiguous-write/cleanup retries, actual Command readback/Write16 fallback/stale API/drop-write retention PASS; MOCK HARDWARE ONLY
+ACTUAL ETHERNET NON_OK CASE36 STATUS3 REVOKES/RETAINS47 PASS SYNTHETIC
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5

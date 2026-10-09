@@ -1,0 +1,16 @@
+["gcc", "-std=c11", "-O1", "-g", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-fsanitize=address,undefined", "-fno-sanitize-recover=all", "-fno-omit-frame-pointer", "-I.", "-Ireference", "transport.c", "gatt.c", "test_transport.c", "artifact.c", "reference/sha256.c", "reference/monocypher.c", "reference/monocypher-ed25519.c", "-o", "/home/yuka/rabbit-world/module-ble-transport-v1/source/runs/test"]
+
+["/home/yuka/rabbit-world/module-ble-transport-v1/source/runs/test"]
+MODULE TRANSPORT genuine signed artifact tests: 19358056 checks; no physical LoadImage/BLE or credential claim
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-Ireference", "-c", "transport.c", "-o", "/home/yuka/rabbit-world/module-ble-transport-v1/source/runs/transport.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-Ireference", "-c", "gatt.c", "-o", "/home/yuka/rabbit-world/module-ble-transport-v1/source/runs/gatt.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-Ireference", "-c", "artifact.c", "-o", "/home/yuka/rabbit-world/module-ble-transport-v1/source/runs/artifact.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-Ireference", "-c", "reference/sha256.c", "-o", "/home/yuka/rabbit-world/module-ble-transport-v1/source/runs/sha256.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-Ireference", "-c", "reference/monocypher.c", "-o", "/home/yuka/rabbit-world/module-ble-transport-v1/source/runs/monocypher.c.obj"]
+
+["x86_64-w64-mingw32-gcc", "-std=c11", "-Os", "-Wall", "-Wextra", "-Werror", "-Wno-misleading-indentation", "-ffreestanding", "-fno-builtin", "-fno-stack-protector", "-mno-red-zone", "-I.", "-Ireference", "-c", "reference/monocypher-ed25519.c", "-o", "/home/yuka/rabbit-world/module-ble-transport-v1/source/runs/monocypher-ed25519.c.obj"]

@@ -1,0 +1,21 @@
+/* All CPUID/RDSEED/clock operations injected; NEVER host hardware samples. */
+#include "entropy.h"
+#include <assert.h>
+#include <string.h>
+#include <stdio.h>
+static unsigned mode,cf_calls,cpu_calls,clock_calls,extra_clock;static TrustedRng*borrow;
+int RNG_API __wrap_trusted_cpu_native(RngCpu*c){cpu_calls++;c->signature=mode==1?0x123:0x906ea;c->flags=mode==2?7:3;memcpy(c->vendor,"GenuineIntel",12);return mode==3?-1:0;}
+int RNG_API __wrap_trusted_rdseed64_native(uint64_t*out){cf_calls++;if(mode>=15&&mode<=17&&cf_calls==6)extra_clock=2492+(mode-15);if(mode==4)return 0;if(mode==5&&cf_calls>3)return 0;if(mode==6)return -1;if(mode==7)return 2;if(mode==8)*out=0;else *out=UINT64_C(0x0706050403020100)+cf_calls;return 1;}
+static int RNG_API clock_fake(void*c,uint64_t*out){(void)c;clock_calls++;if(mode==9)return -1;if(mode==10)*out=clock_calls*1000u;else if(mode==11)*out=clock_calls==1?100:1;else if(mode==12)*out=UINT64_MAX;else if(mode==14)*out=0;else *out=clock_calls+extra_clock;if(mode==13&&borrow){assert(trusted_rng_close(borrow)<0&&trusted_rng_revoke(borrow)<0);}return 0;}
+static RngApproval approval(void){RngApproval a={0};a.epoch=66;a.cpu_signature=0x906ea;a.cpu_flags=3;a.reviewed=a.trusted_owner_code_only=1;a.actual_inventory_sha256[0]=1;a.parent_file_sha256[0]=2;a.admitted_code_set_sha256[0]=3;return a;}
+static void zero(const uint8_t*b,size_t n){for(size_t i=0;i<n;i++)assert(!b[i]);}
+int main(void){unsigned cases=0;RngServices v={.clock_us=clock_fake};uint8_t output[1024],code[32]={3};
+ for(mode=0;mode<=17;mode++){TrustedRng s={0};RngApproval a=approval();cpu_calls=cf_calls=clock_calls=extra_clock=0;borrow=&s;int r=trusted_rng_open(&s,&a,&v);if(mode==0||mode==8||mode==13||mode==14||mode==15){assert(!r&&s.initialized&&cf_calls==6);unsigned before=s.reseed_count;memset(output,0x55,sizeof output);assert(!trusted_rng_random(&s,66,code,output,sizeof output)&&s.reseed_count==before+1&&cf_calls==12);assert(trusted_rng_random(&s,66,code,(uint8_t*)&s,sizeof s)<0);if(mode==13)assert(s.initialized&&!s.revoked);assert(!trusted_rng_close(&s));assert(s.attempted&&s.revoked&&!s.initialized);assert(trusted_rng_open(&s,&a,&v)<0);}else{assert(r<0&&!s.initialized);if(mode>=4)assert(s.revoked&&s.attempted);if(mode==4||mode==5)assert(cf_calls<=RNG_MAX_ATTEMPTS);assert(!trusted_rng_close(&s));}cases++;}
+ /* No hardware call for unreviewed/environment/identity/alias admission. */
+ for(unsigned j=0;j<6;j++){TrustedRng s={0};RngApproval a=approval();mode=0;cpu_calls=cf_calls=clock_calls=extra_clock=0;if(j==0)a.reviewed=0;if(j==1)a.trusted_owner_code_only=0;if(j==2)a.actual_inventory_sha256[0]=0;if(j==3)a.admitted_code_set_sha256[0]=0;if(j==4)a.cpu_flags=7;if(j==5)a.epoch=0;assert(trusted_rng_open(&s,&a,&v)<0&&!cpu_calls&&!cf_calls);cases++;}
+ TrustedRng s={0};RngApproval a=approval();mode=0;cpu_calls=cf_calls=clock_calls=extra_clock=0;assert(trusted_rng_open(&s,(RngApproval*)&s,&v)<0&&!cpu_calls);assert(!trusted_rng_open(&s,&a,&v));memset(output,0xaa,sizeof output);mode=5;cf_calls=0;assert(trusted_rng_random(&s,66,code,output,sizeof output)<0&&s.revoked&&!s.initialized);zero(output,sizeof output);assert(!trusted_rng_close(&s));cases++;
+ s=(TrustedRng){0};mode=0;cpu_calls=cf_calls=clock_calls=extra_clock=0;assert(!trusted_rng_open(&s,&a,&v));memset(output,0xaa,32);code[0]^=1;assert(trusted_rng_random(&s,66,code,output,32)<0&&s.revoked&&!s.initialized);zero(output,32);assert(!trusted_rng_close(&s));cases++;
+ /* Split parent-owned source / child DRBG: genuine same path and quarantine. */
+ TrustedSeedSource raw={0};s=(TrustedRng){0};a=approval();mode=0;cf_calls=cpu_calls=clock_calls=extra_clock=0;borrow=&s;assert(!trusted_seed_open(&raw,&a,&v)&&!cf_calls);assert(!trusted_rng_open_source(&s,&a,&raw)&&cf_calls==6);assert(!trusted_rng_random(&s,66,a.admitted_code_set_sha256,output,32));assert(trusted_seed_fill(&raw,66,a.admitted_code_set_sha256,(uint8_t*)&raw,sizeof raw)<0);assert(!trusted_rng_close(&s)&&raw.initialized);assert(!trusted_seed_close(&raw));cases++;
+ s=(TrustedRng){0};RngServices alias={.context=&s.drbg,.context_bytes=sizeof s.drbg,.clock_us=clock_fake};cpu_calls=cf_calls=0;assert(trusted_rng_open(&s,&a,&alias)<0&&!cpu_calls&&!cf_calls);cases++;
+ borrow=0;printf("PASS %u injected CPU/CF/deadline/reseed/revocation/alias/reentry cases; hardware_instructions=0\n",cases);return 0;}

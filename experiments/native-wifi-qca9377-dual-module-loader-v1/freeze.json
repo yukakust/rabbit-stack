@@ -1,0 +1,26 @@
+{
+  "kind": "software-source-freeze",
+  "source_sha256": {
+    "inputs.json": "3a21b464d725c3b516288e21f6e465be8eb7aea395a0b4fa5bd087ce499cf5be",
+    "loader.h": "fc1c9a96577c1957e6ea2f35bb4280b0e2b3282699c8c0b7aa41a6b34ef07fd3",
+    "dual.c": "e86faebd47b43fe1d3bf6788b2a5bd584b45b059e09ca33ee0b01e27e82a1f54",
+    "artifact.h": "8be1ac001696e9d89dd122cb7391741d5eff8c22452171f8c65970f63c303154",
+    "README.md": "f3c2daf2552630da1ca1f16a406f22bab830d66d7906bc1d29249b8efa52cee5",
+    ".gitignore": "f04bbf57261b9153f9a7ba4d42419a3dc3e9f60e9ec8123d431fad20ea12e47b",
+    "loader.c": "135dc271b676463e6f9862870defc079ca7749765927862e9290e98226a28331",
+    "test_dual.c": "55ae8165629c6d32c109b022506688a72744b3dcb49da0166c851a0b489a54ac",
+    "artifact.c": "169ff3aff13717a049c41269dd6b703e49a7fdb4c39db86692f7a0584919a45f",
+    "module_abi.h": "1c225129fa9589d9268b8729b67f029a054e58e203833ee50a217f12b0cf25dc",
+    "verify.py": "c344c37269901d00af91050ba06ba26b212ec6fa45131f3d77d860044b5e0949",
+    "dual.h": "6df7c534142856ed32ecdc8218d13d633ce287cd645c440671dd197f02880f7e",
+    "reference/monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+    "reference/monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "reference/monocypher.h": "fcaf6ed771358bb4f40fba016f6518ae86ec02b1b877d2cc35ad92d3a26fd7b3",
+    "reference/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+    "reference/uefi_abi.h": "a337006b799f4d974997952fa7bb1b31a522b49880a1966410db7400bb73ffb4",
+    "reference/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+    "reference/monocypher-ed25519.h": "3a3035181f991a158d0e1c7567258f0bae8ba0f1f23c5512b4a1db1b3c9730ce"
+  },
+  "report_sha256": "0e96f0736970d963655b8a9248379d35b9ee54f3c0bb05b2b221403055f2523c",
+  "physical_admission": false
+}

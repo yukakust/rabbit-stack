@@ -1,0 +1,16 @@
+{
+  "kind": "software-source-freeze",
+  "source_sha256": {
+    "panel.c": "63409013434ca609ebfd190a0d5164dae772b7ab9d865b8d22d17df13a5b9496",
+    "test_panel.c": "f1fe0e15d0635dc9a91a3611ec1e040ab4e4f5053f379d6891402412eb844cd2",
+    "README.md": "6f631354c0801b5058958b1c8d05d8543c2833f5977f7699ddc2f025d39d714f",
+    ".gitignore": "0cd429883adf66cff5870cb6e367f8cbc58bd18cee9696e4d4de8d57ba5f719a",
+    "upstream.json": "7391735fefcbd5d96a8e2f0ceb01db27579544fc29ff79a41b616505fe67eda7",
+    "panel.h": "81cf113d8ad8128256dbd554635b66c7898444d69a9d6b8643c630b3d410a895",
+    "verify.py": "9b644c508c36c8a1af88e4265102fe455c1714e85c7cfc94da04e370f4c8c9e7",
+    "reference/qrcodegen.c": "6a2b9cc65176f2345dde260c74b6d352627e8a0a6385d086ae0e9c5d0913c70c",
+    "reference/qrcodegen.h": "e82df4bff37d18b5863b9e7486fe6bda1b6cda8c3b9ecebfec473907265cb589"
+  },
+  "report_sha256": "598cd067d462e8a779316a41cad11a0cb17e883509694816084b2c044308a04d",
+  "physical_admission": false
+}

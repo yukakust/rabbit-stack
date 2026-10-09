@@ -1,0 +1,14 @@
+{
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/artifact.c": "cac6bd09b0e4cf6a38e36eaf583c052fcb035217dcb649ac31b60c8035aff7e4",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/artifact.h": "8be1ac001696e9d89dd122cb7391741d5eff8c22452171f8c65970f63c303154",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/loader.c": "135dc271b676463e6f9862870defc079ca7749765927862e9290e98226a28331",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/loader.h": "fc1c9a96577c1957e6ea2f35bb4280b0e2b3282699c8c0b7aa41a6b34ef07fd3",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/module_abi.h": "1c225129fa9589d9268b8729b67f029a054e58e203833ee50a217f12b0cf25dc",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/reference/uefi_abi.h": "a337006b799f4d974997952fa7bb1b31a522b49880a1966410db7400bb73ffb4",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/reference/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/reference/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/reference/monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/reference/monocypher.h": "fcaf6ed771358bb4f40fba016f6518ae86ec02b1b877d2cc35ad92d3a26fd7b3",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/reference/monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+  "experiments/native-wifi-qca9377-role2-module-loader-v1/reference/monocypher-ed25519.h": "3a3035181f991a158d0e1c7567258f0bae8ba0f1f23c5512b4a1db1b3c9730ce"
+}

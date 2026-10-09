@@ -1,0 +1,23 @@
+{
+  "kind": "software-source-freeze",
+  "source_sha256": {
+    "inputs.json": "0fd6f1c105bdd3a1bd79435a3c587a626889425a3d22d53c3ad72a6b1f84f925",
+    "transport.h": "8e05f7098edd8f3db6a15ac16ff361c89b2537265f0afe9d36771f8fe3e01769",
+    "artifact.h": "8be1ac001696e9d89dd122cb7391741d5eff8c22452171f8c65970f63c303154",
+    "README.md": "835000419a96046726d84bd41c9a9a8c9aba0ac813ca9b03a9e0074e412692e2",
+    ".gitignore": "f04bbf57261b9153f9a7ba4d42419a3dc3e9f60e9ec8123d431fad20ea12e47b",
+    "transport.c": "03f187960d064411bfda402d54cc14fd9d9e18d460270652dd9928e33560688b",
+    "test_transport.c": "79f993e26ae6ebd637fa65c08776143739433e284793f1686c50e6ec1e52b94c",
+    "gatt.c": "fc2ad75a42f3b99aed86ce6b377a0034568748b9efb219691db4d8a54533df44",
+    "artifact.c": "cac6bd09b0e4cf6a38e36eaf583c052fcb035217dcb649ac31b60c8035aff7e4",
+    "verify.py": "b1d7873082e24c643be8fbecd021ec6b2be5df946031c927b92511c4c637b81b",
+    "reference/monocypher-ed25519.c": "ce0d2f8e32ca8f66398ba5b3456cc74327c3eff14e7b950ce7d57be9025cc453",
+    "reference/monocypher.c": "f1f838cdd483bdebe0df0ff5c5ed60535e496f769c6a2f933ac4c0b114207123",
+    "reference/monocypher.h": "fcaf6ed771358bb4f40fba016f6518ae86ec02b1b877d2cc35ad92d3a26fd7b3",
+    "reference/sha256.c": "53c610894e436c6a5c4f9de007679e094b0682370c3d9d7d968c98514babce12",
+    "reference/sha256.h": "1c8184845fbf1084ba4c28be082d3b9d9239aed9b42855266269bea295c1356b",
+    "reference/monocypher-ed25519.h": "3a3035181f991a158d0e1c7567258f0bae8ba0f1f23c5512b4a1db1b3c9730ce"
+  },
+  "report_sha256": "acd0d51b133e2089cb6b6dce4000add59892ca3037e69493b1d16b8d191cae39",
+  "physical_admission": false
+}

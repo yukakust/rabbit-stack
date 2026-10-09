@@ -1,0 +1,12 @@
+#ifndef RABBIT_TRUSTED_DRBG_CONFIG
+#define RABBIT_TRUSTED_DRBG_CONFIG
+#define MBEDTLS_AES_C
+#define MBEDTLS_AES_ROM_TABLES
+#define MBEDTLS_CTR_DRBG_C
+#define MBEDTLS_PLATFORM_C
+#define MBEDTLS_PLATFORM_MEMORY
+#define MBEDTLS_PLATFORM_NO_STD_FUNCTIONS
+#define MBEDTLS_PLATFORM_SNPRINTF_ALT
+#define MBEDTLS_CTR_DRBG_ENTROPY_LEN 48
+/* No OS entropy, RDRAND, timing/jitter entropy, threads, filesystem or network. */
+#endif

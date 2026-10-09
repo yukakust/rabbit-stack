@@ -1,0 +1,4 @@
+CASE 31
+RAM phase=4 error=0 allocs=2 frees=0 setup=4/0 bmi=2/0 type=8 stage=5
+ETHFAULT case=31 error=20 pol=3 txid=3 posted=1 DMA=1 HTT=0 gsg=20
+test: /home/yuka/rabbit-world/parallel-htt-protected-tx-v1/source/runs/glue/fixture.c:604: int ethernet_failure_tick(void): Assertion `(data_case==33||data_case==34)&&d->error==20&&d->tx_posted&&d->runtime->tx_owners==1&&d->runtime->port->dma_users==47&&!runtime_phase_retire()' failed.

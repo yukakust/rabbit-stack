@@ -6383,3 +6383,37 @@ TLS identity creation; NEW deferred public signed-module BLE chunk transport.
 Frozen scopes remain unchanged; module BLE/credential provisioning/native whole
 integration not yet proved. No credential read, private key export, QR pairing,
 WiFi/IP or WAN success. AutomationACTIVE.
+
+
+### New frozen software slices; no physical66 delivery yet
+
+Actual65 remains latest physical state, engine65/world19/all pools closed. No
+live BLE controller or66 signature/intent. Root verified fresh local public
+hash closures for frozen protected HTT Ethernet TX (642 source/evidence files),
+actual47-owner warm stop (212), trusted RDSEEDv1 (185) and correctedv2 (186).
+V2 checks fresh monotonic time AFTER final successful RDSEED before releasing
+bytes; before/at/after deadline cases pass,28 ASAN cases/8COFF. No hardware
+random sample or source approval is inferred. Frozenv1 remains historical.
+
+Root new module-ble-transport-v1:19,358,056 actual ASAN/UBSAN assertions/6COFF;
+owner-signed public chunks, exact retained session, bounded staging/deadline,
+deferred privileged acceptance outside ATT callbacks. Root dual-module-loader:
+525,656 ASAN/UBSAN assertions/6COFF, genuine signature and shared parent+two-child
+mapped/counter ledger, exact child hashes, code-set seal/revoke before unload.
+Both standalone software freezes; no actual LoadImage/native service delivery.
+New public full-SPKI QR panel:129619 ASAN/UBSAN assertions/2COFF, exact64hex,
+ECC quartile/version<=6/quiet zone, epoch/expiry/frame/span/alignment bounds.
+It renders public bytes and grants no identity/physical-pairing authority.
+
+NEW unsigned persistent parent has actual47 stop/lifetime model and owned live
+beacon handover plus external-city rendering. Source-bound capability record,
+station and mature async bridge integration still in progress. NEW genuine
+mature async model now completes M1/M3 through owned47 RX, M2 real publication,
+PTK/GTK actual CE3+freshSEC joins, then held M4 protected TX+DMA+HTT and local
+eligibility. Expanded negatives/COFF/freeze pending; software only. NEW internal
+TLS identity creates keys inside Dell child; final native/crypto proof pending.
+Mac public saved chunk sender compiles/preflights without manager/writes/keys;
+actual callback negatives/admission/native whole integration remain pending.
+No password read/private key export/QR pairing/WiFi/IP/WAN success.
+AutomationACTIVE. Continue independent software integration; physical one
+controller only, fresh65 receipts/closed owners before any66 signing.
