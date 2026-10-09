@@ -6518,3 +6518,30 @@ inbox). User must enter fresh email code in current visible Codex in-app tab.
 No credentials/code read, account-security/key/enrollment change, approval or
 blocked integration retry performed. Access remains unverified. Earlier actual
 safety-review wall remains; physical Dell/world65/19 unchanged.
+
+
+### Owner chooses QCA9377 + independent human developer —2026-10-09
+
+Owner selected continuing current QCA9377 and independent developer/self work;
+Daybreak is not the selected continuation route. No blocked integration restart,
+account/security change, new native signature, BLE or Dell change performed.
+Fresh saved state still world19/native65/pendingNone/SHA6ef131faabd28de3a752cae6ccdf7a2fdb18709ee8382e6f07e69ea5f31d9dda.
+continue65.py not found in process listing; not a complete BLE-client inventory.
+
+Prepared docs/WIFI-DEVELOPER-HANDOFF-2026-10-09.md: concrete technical task,
+physical64 versus current65, ready components versus unfinished drafts, first
+unsigned joint software milestone, owner-retained signature/QR/password,
+full physical Wi-Fi/IP/protectedWAN acceptance and existing constraints.
+Archive at /Users/yukakust/Documents/Codex/2026-10-09/wifi-developer-handoff/
+rabbit-wifi-source-handoff.tar.gz ; baseef62f43fb82c2a87b454a5bd6482cc21fa59d23b.
+10794 file hashes verified,927 unfinished source-only draft files,32.65MiB.
+SHA2564d07672df1ae7ca8e750610e434fe919cd3ead98eabf2742532a744018d28c03.
+Includes committed public baseline plus current persistent-parent/mature-async/
+tls-parent-lease/identity-wan-measure/supplicant-native-v2 source snapshots.
+MANIFEST.json, START-HERE.md and SHA256SUMS.txt alongside. No runs/generated
+executables/local credentials/owner keys, no secret reads; public upstream
+crypto test fixtures remain explicitly test material. Not an admitted release.
+No external recipient specified, no upload or message to another person.
+Prior actual safety-review stop still applies to this chat; independent human
+handoff does not authorize circumvention here. Automation completion condition
+not reached; do not automatically retry the blocked integration.
