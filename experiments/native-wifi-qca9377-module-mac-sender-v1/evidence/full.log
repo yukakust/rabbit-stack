@@ -1,0 +1,20 @@
+["xcrun", "--sdk", "macosx", "clang", "-x", "objective-c", "-fobjc-arc", "-Wall", "-Wextra", "-Werror", "sender.m", "-framework", "Foundation", "-framework", "CoreBluetooth", "-Wl,-sectcreate,__TEXT,__info_plist,/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist", "-o", "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-module-mac-sender-v1/runs/sender"]
+
+["xcrun", "--sdk", "macosx", "clang", "-x", "objective-c", "-fobjc-arc", "-Wall", "-Wextra", "-Werror", "host_test.m", "-framework", "Foundation", "-framework", "CoreBluetooth", "-Wl,-sectcreate,__TEXT,__info_plist,/Users/yukakust/rabbit-stack/experiments/x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist", "-o", "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-module-mac-sender-v1/runs/host-test"]
+
+["/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-module-mac-sender-v1/runs/sender", "--preflight"]
+PUBLIC-MODULE-MAC-PREFLIGHT; manager=0 writes=0 keys=0
+
+["/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-module-mac-sender-v1/runs/host-test", "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-module-mac-sender-v1/runs/host-cases"]
+MODULE STATUS state=1 received=500/1000 result=0; NOT device attestation
+MODULE STATUS state=2 received=1000/1000 result=0; NOT device attestation
+MODULE STATUS state=3 received=1000/1000 result=1; NOT device attestation
+EXACT CHUNK ACCEPTED; complete module/entropy/WIFI not inferred
+PASS 167 actual host callback checks; real Bluetooth manager=0 writes=0 secrets=0
+
+["python3", "-m", "unittest", "discover", "-s", "/Users/yukakust/rabbit-stack/experiments/native-wifi-qca9377-module-mac-sender-v1", "-p", "test_*.py"]
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

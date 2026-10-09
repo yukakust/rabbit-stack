@@ -1,0 +1,16 @@
+{
+  "status": "PUBLIC-MAC-SENDER-SOFTWARE-ONLY-FROZEN",
+  "source_sha256": {
+    "test_protocol.py": "3458dcb45fc5c5ed4059b25d66d73043bc9cb2645db603a38fbd4261338500b9",
+    "host_test.m": "636c4ca35925c9e251aa5c3fe81082d23429820c4888ec87eec22d0c2ddfff93",
+    "protocol.py": "a820dd8993dc58cf9dbdd501e647f112e117ded99887c9f996b8adb4968f4295",
+    "session.py": "5f9c65cfedcd55c9fdc485c812d827d2d078b73eaeb0aca313e45a1220d10f7e",
+    "README.md": "d0ddbb62917c6c949cafccc639908830317ca8c4d2aaa3fa4cdbab4a26766f0b",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "verify_host.py": "bef3243ce65161ecbd3f13632aac188c066b469cc35ead5328ac41b8d5f8fda9",
+    "sender.m": "397eeb4f5e3df2a867e1667629431dd7b8fe0d0a6dd26e552e420d3356ab3267",
+    "../x86-64-uefi-connected-supervisor-v1/FileSender-Info.plist": "872c8c98dc8177bfb2e783f673adfb5c06bcf036cb2578d0af4a0a7d26da1f0d"
+  },
+  "report_sha256": "7883da918496eb98c5be3b37299f6795656b30d6ddff50365837dfc17a981248",
+  "physical_enabled": false
+}
