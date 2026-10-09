@@ -1,0 +1,12 @@
+{
+  "status": "MAC-PUBLIC-PAIR-AUTH-SOFTWARE-FROZEN",
+  "source_sha256": {
+    "auth.py": "4615ba9f1bdf66897ed96c022bfa3be0d689e80214baf0f4c80aeb44abb1f8ea",
+    "test_auth.py": "0f7dc491d1a2c4f3fc9679945f0d2f6098c98268238462bead735978a6fdbd0f",
+    "README.md": "922652419112b460accca6706f0821ebc45d167bcf5bfa9284fc7bffcbaff709",
+    ".gitignore": "ccf58e28fccde6c0c37d6abe83e98be8db118e70e1d82214ccaceca4bcac7931",
+    "verify.py": "6fc7eb666c2601cdd13365e7a8ad56385571e23f17aa3525ae852944df14ef83"
+  },
+  "report_sha256": "bf106dcd10ffb4853ee97ceb09a703a42dc604ee908e0f8f2865e605f7f0604b",
+  "physical_admission": false
+}
